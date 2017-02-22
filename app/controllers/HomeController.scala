@@ -1,7 +1,8 @@
 package controllers
 
 import javax.inject._
-import play.api._
+
+import deadzone.parsers.{FactionsImporter, WeaponImporter}
 import play.api.mvc._
 
 /**
@@ -18,6 +19,11 @@ class HomeController @Inject() extends Controller {
    * a path of `/`.
    */
   def index = Action {
+
+    val plagueWeapon = WeaponImporter.getWeaponsForFaction("Enforcers")
+
+    val factions = FactionsImporter.getSoldierForFaction("Plague")
+
     Ok(views.html.index("Your new application is ready."))
   }
 

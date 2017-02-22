@@ -9,12 +9,51 @@
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
  *@
-@main("Welcome to Play") {
+@main("Lets test some stuff here") {
 
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @play20.welcome(message, style = "Scala")
+  @for(fraction <- deadzone.parsers.FactionsImporter.getAllAvaibleFactions){
+    <h2>@fraction</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Points</th>
+          <th>Type</th>
+          <th>Speed</th>
+          <th>Shoot</th>
+          <th>Fight</th>
+          <th>Size</th>
+          <th>Armour</th>
+          <th>VPs</th>
+          <th>Abilities</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(soldier <- deadzone.parsers.FactionsImporter.getSoldierForFaction(fraction)) {
+          <tr>
+            <td>@soldier.name</td>
+            <td>@soldier.points</td>
+            <td>@soldier.soldierType</td>
+            <td>@soldier.speed._1 - @soldier.speed._2 </td>
+            <td>@if(soldier.shoot == 0) { - } else { @soldier.shoot+ }</td>
+            <td>@if(soldier.fight == 0) { - } else { @soldier.fight+ }</td>
+            <td>@soldier.size</td>
+            <td>@soldier.armour</td>
+            <td>@soldier.victoryPoints</td>
+            <td>
+              @for(ability <- soldier.abilities) {
+                @ability.title @if(ability.factor > 0) {(@ability.factor)}<br />
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
+
+
+    </table>
+  }
+
+    
 
 }
