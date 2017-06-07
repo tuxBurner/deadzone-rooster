@@ -25,10 +25,6 @@ object ArmyTroopDAO {
   }
 
   def addFromSoldierDto(soldierDto:SoldierDto, factionDo: ArmyFactionDO) : ArmyTroopDO = {
-
-    // create all abilities for this troop
-    soldierDto.abilities.foreach(AbilityDAO.addByAbilityDtos(_))
-
     val armyTroopDO = new ArmyTroopDO()
     armyTroopDO.faction = factionDo;
     armyTroopDO.name = soldierDto.name
@@ -43,6 +39,9 @@ object ArmyTroopDAO {
     armyTroopDO.armour = soldierDto.armour
     armyTroopDO.victoryPoints = soldierDto.victoryPoints
     armyTroopDO.save()
+
+    soldierDto.abilities.foreach(DefaulTroopAbilityDAO.addAbilityForTroop(armyTroopDO,_))
+
     armyTroopDO
   }
 
