@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  mariadb:
+      image: "mariadb:latest"
+      environment:
+        - MYSQL_ALLOW_EMPTY_PASSWORD=true
+        - MYSQL_USER=deadzone
+        - MYSQL_PASSWORD=deadzone
+        - MYSQL_DATABASE=deadzone
+      volumes:
+        - ./test/mariadb:/var/lib/mysql
+      ports:
+        - 3307:3306

@@ -11,6 +11,41 @@
  *@
 @main("Lets test some stuff here") {
 
+  @deadzone.parsers.FactionCleaner.cleanFactionSoldiers
+
+  <h1>Weapons</h1>
+  <table border="1">
+    <thead>
+      <th>Name</th>
+      <th>Faction</th>
+      <th>Type</th>
+      <th>SubType</th>
+      <th>Range</th>
+      <th>AP</th>
+      <th>Points</th>
+      <th>VP</th>
+      <th>HP</th>
+      <th>Free</th>
+    </thead>
+    <tbody>
+      @for(weapon <-  deadzone.parsers.WeaponImporter.weapons) {
+        <tr>
+          <td>@weapon.name</td>
+          <td>@weapon.faction</td>
+          <td>@weapon.weaponType</td>
+          <td>@weapon.subWeaponType</td>
+          <td>@weapon.range</td>
+          <td>@weapon.armorPircing</td>
+          <td>@weapon.points</td>
+          <td>@weapon.victoryPoints</td>
+          <td>@weapon.hardPoint</td>
+          <td>@weapon.free</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <h1>Factions</h1>
   @for(fraction <- deadzone.parsers.FactionsImporter.getAllAvaibleFactions){
     <h2>@fraction</h2>
 

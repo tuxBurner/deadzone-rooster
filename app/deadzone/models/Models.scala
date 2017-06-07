@@ -8,14 +8,11 @@ package deadzone.models
 object Models {
 
 
-
-
   case class AbilityDto(title: String, factor: Int = 0)
 
-  case class  WeaponBaseDto(faction: String, name: String, points: Int, victoryPoints: Int, range: Int, armorPircing: Int, weaponType: String, subWeaponType: String, hardPoint: Int = 0, abilities: List[AbilityDto] = List())
+  case class WeaponBaseDto(faction: String, name: String, points: Int, victoryPoints: Int, range: Int, armorPircing: Int, weaponType: String, subWeaponType: String, hardPoint: Int = 0, free: Boolean = false, abilities: List[AbilityDto] = List())
 
-  case class SoldierDto(faction: String, name: String, points: Int, soldierType: ModelType.Value, speed: (Int,Int), shoot: Int, fight: Int,survive :Int, size: Int,armour: Int,victoryPoints: Int,abilities:  List[AbilityDto])
-
+  case class SoldierDto(faction: String, name: String, points: Int, soldierType: ModelType.Value, speed: (Int, Int), shoot: Int, fight: Int, survive: Int, size: Int, armour: Int, victoryPoints: Int, abilities: List[AbilityDto])
 
 
 }

@@ -31,10 +31,14 @@ object WeaponImporter {
   private val ABILITIES_HEADER = "Abilities"
 
   private val HARDPOINTS_HEADER = "Hardpoints"
+
+  // when true the free when small arms is allowed
+  private val ADD_ON_HEADER ="Add On"
     
   private val NUMBER_REGEX = new Regex("(\\(.*?)\\)")
 
-  private lazy val weapons = importWeaponFromCsv()
+  lazy val weapons = importWeaponFromCsv()
+
 
   
   def getWeaponsForFaction(faction: String) : List[WeaponBaseDto] = {
@@ -99,7 +103,9 @@ object WeaponImporter {
     val abilitiesData = lineData.get(ABILITIES_HEADER).get.trim
     val abilities = parseAbilities(abilitiesData)
 
-    return Option.apply(WeaponBaseDto(factionStr, nameStr, points, vps, rangeAsInt, ap, typeStr, subTypeStr, hp, abilities))
+    val free = lineData.get(ADD_ON_HEADER).get.trim == "x"
+
+    return Option.apply(WeaponBaseDto(factionStr, nameStr, points, vps, rangeAsInt, ap, typeStr, subTypeStr, hp, free, abilities))
   }
 
 

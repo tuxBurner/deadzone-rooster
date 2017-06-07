@@ -37,7 +37,6 @@ object FactionsImporter {
 
   private val ABILITIES_HEADER = "Abilities"
 
-
   private lazy val soldiers = importSoldiersFromCsvs()
 
   def getAllAvaibleFactions: List[String] = soldiers.map(_.faction).toSet.toList
