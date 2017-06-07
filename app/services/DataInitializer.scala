@@ -3,7 +3,7 @@ package services
 import javax.inject.{Inject, Singleton}
 
 import deadzone.parsers.FactionsImporter
-import models.{ArmyFactionDAO, ArmyTroopDAO}
+import models.{AbilityDAO, ArmyFactionDAO, ArmyTroopDAO}
 import play.api.{Configuration, Logger}
 
 /**
@@ -30,7 +30,7 @@ import play.api.{Configuration, Logger}
       val factionDo = ArmyFactionDAO.addFaction(factionName)
       val soldierDtos = FactionsImporter.getSoldierForFaction(factionName)
       soldierDtos.foreach(soldierDto => {
-        ArmyTroopDAO.addFromSoldierDro(soldierDto,factionDo)
+        ArmyTroopDAO.addFromSoldierDto(soldierDto,factionDo)
       })
     })
   }
@@ -40,7 +40,8 @@ import play.api.{Configuration, Logger}
     */
   private def cleanDatabase(): Unit = {
     Logger.info("Deleting data from database.")
-    ArmyFactionDAO.deleteAll()
     ArmyTroopDAO.deleteAll()
+    ArmyFactionDAO.deleteAll()
+    AbilityDAO.deleteAll()
   }
 }

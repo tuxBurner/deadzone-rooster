@@ -24,7 +24,11 @@ object ArmyTroopDAO {
     FINDER.all().toList.foreach(_.delete())
   }
 
-  def addFromSoldierDro(soldierDto:SoldierDto, factionDo: ArmyFactionDO) : ArmyTroopDO = {
+  def addFromSoldierDto(soldierDto:SoldierDto, factionDo: ArmyFactionDO) : ArmyTroopDO = {
+
+    // create all abilities for this troop
+    soldierDto.abilities.foreach(AbilityDAO.addByAbilityDtos(_))
+
     val armyTroopDO = new ArmyTroopDO()
     armyTroopDO.faction = factionDo;
     armyTroopDO.name = soldierDto.name
