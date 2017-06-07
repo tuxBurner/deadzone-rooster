@@ -30,6 +30,14 @@ object ArmyTroopDAO {
     armyTroopDO.name = soldierDto.name
     armyTroopDO.points = soldierDto.points
     armyTroopDO.modelType = soldierDto.soldierType.toString
+    armyTroopDO.speed = soldierDto.speed._1
+    armyTroopDO.sprint = soldierDto.speed._2
+    armyTroopDO.shoot = soldierDto.shoot
+    armyTroopDO.fight = soldierDto.fight
+    armyTroopDO.survive = soldierDto.survive
+    armyTroopDO.size = soldierDto.size
+    armyTroopDO.armour = soldierDto.armour
+    armyTroopDO.victoryPoints = soldierDto.victoryPoints
     armyTroopDO.save()
     armyTroopDO
   }
@@ -45,7 +53,23 @@ object ArmyTroopDAO {
 
   @NotNull var points:Int = 0
 
-  @NotNull var modelType:String = "";
+  @NotNull var modelType:String = ""
+
+  @NotNull var speed:Int = 0
+
+  @NotNull var sprint:Int = 0
+
+  @NotNull var shoot:Int = 0
+
+  @NotNull var fight:Int = 0
+
+  @NotNull var survive:Int = 0
+
+  @NotNull var size:Int = 0
+
+  @NotNull var armour:Int = 0
+
+  @NotNull var victoryPoints:Int = 0
 
   @ManyToOne var faction: ArmyFactionDO = null
 }
