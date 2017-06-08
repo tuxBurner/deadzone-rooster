@@ -2,7 +2,7 @@ package controllers
 
 import javax.inject._
 
-import models.FactionDAO
+import models.{FactionDAO, TroopDAO}
 import play.api.mvc._
 
 /**
@@ -13,9 +13,16 @@ import play.api.mvc._
 class HomeController @Inject() extends Controller {
 
 
-  def index = Action {
+  def factionSelect = Action {
     val factions = FactionDAO.getAll()
-    Ok(views.html.index(factions))
+    Ok(views.html.factionSelect(factions))
   }
+
+  def displayFactionTroops(factionName:String) = Action {
+    val troops = TroopDAO.findAllForFactionByName(factionName)
+    Ok(views.html.factionTroops(troops))
+  }
+
+
 
 }

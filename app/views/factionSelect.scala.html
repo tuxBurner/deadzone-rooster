@@ -6,6 +6,6 @@
  *@
 @main("Select a faction") {
   @for(faction <- factions) {
-    @faction.name <br />
+    <a href="@routes.HomeController.displayFactionTroops(faction.name)">@faction.name</a> <br />
   }
 }

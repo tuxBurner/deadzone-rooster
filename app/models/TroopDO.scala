@@ -28,6 +28,10 @@ object TroopDAO {
     })
   }
 
+  def findAllForFactionByName(factionName: String): List[TroopDO] = {
+    FINDER.where().eq("faction.name",factionName).findList.toList
+  }
+
   def addFromSoldierDto(soldierDto: SoldierDto, factionDo: FactionDO): TroopDO = {
 
     Logger.info("Creating troop: " + soldierDto.name + " for faction: " + factionDo.name)
@@ -48,9 +52,9 @@ object TroopDAO {
 
     // find the weapons
     soldierDto.defaultWeaponNames.foreach(weaponName => {
-      val defaultWeapon = WeaponDAO.findByNameAndFaction(weaponName,factionDo)
-      if(defaultWeapon == null) {
-        Logger.error("Could not add default weapon "+weaponName+" to troop: "+armyTroopDO.name+" faction: "+factionDo.name+" was not found in the db")
+      val defaultWeapon = WeaponDAO.findByNameAndFaction(weaponName, factionDo)
+      if (defaultWeapon == null) {
+        Logger.error("Could not add default weapon " + weaponName + " to troop: " + armyTroopDO.name + " faction: " + factionDo.name + " was not found in the db")
       } else {
         armyTroopDO.defaultEquipment.addAll(defaultWeapon)
       }
@@ -94,5 +98,6 @@ object TroopDAO {
 
   @ManyToOne var faction: FactionDO = null
 
-  @ManyToMany @JoinTable(name = "def_troop_weapon") var defaultEquipment: java.util.List[WeaponDO] = null
+  @ManyToMany
+  @JoinTable(name = "def_troop_weapon") var defaultEquipment: java.util.List[WeaponDO] = null
 }
