@@ -43,6 +43,21 @@ create table def_troop_ability (
   constraint pk_def_troop_ability primary key (id)
 );
 
+create table weapon (
+  id                            bigint auto_increment not null,
+  name                          varchar(255) not null,
+  faction_id                    bigint not null,
+  weapon_type                   varchar(255),
+  weapon_sub_type               varchar(255),
+  victory_points                integer not null,
+  points                        integer not null,
+  shoot_range                   integer not null,
+  armor_pircing                 integer not null,
+  hart_points                   integer not null,
+  free                          tinyint(1) default 0 not null,
+  constraint pk_weapon primary key (id)
+);
+
 alter table troop add constraint fk_troop_faction_id foreign key (faction_id) references faction (id) on delete restrict on update restrict;
 create index ix_troop_faction_id on troop (faction_id);
 
@@ -51,6 +66,9 @@ create index ix_def_troop_ability_troop_id on def_troop_ability (troop_id);
 
 alter table def_troop_ability add constraint fk_def_troop_ability_ability_id foreign key (ability_id) references ability (id) on delete restrict on update restrict;
 create index ix_def_troop_ability_ability_id on def_troop_ability (ability_id);
+
+alter table weapon add constraint fk_weapon_faction_id foreign key (faction_id) references faction (id) on delete restrict on update restrict;
+create index ix_weapon_faction_id on weapon (faction_id);
 
 
 # --- !Downs
@@ -64,6 +82,9 @@ drop index ix_def_troop_ability_troop_id on def_troop_ability;
 alter table def_troop_ability drop foreign key fk_def_troop_ability_ability_id;
 drop index ix_def_troop_ability_ability_id on def_troop_ability;
 
+alter table weapon drop foreign key fk_weapon_faction_id;
+drop index ix_weapon_faction_id on weapon;
+
 drop table if exists ability;
 
 drop table if exists faction;
@@ -71,4 +92,6 @@ drop table if exists faction;
 drop table if exists troop;
 
 drop table if exists def_troop_ability;
+
+drop table if exists weapon;
 

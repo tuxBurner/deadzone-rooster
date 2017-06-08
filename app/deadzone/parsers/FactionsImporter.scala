@@ -37,6 +37,8 @@ object FactionsImporter {
 
   private val ABILITIES_HEADER = "Abilities"
 
+  private val WEAPONS_HEADER = "Weapons and Equipment"
+
   private lazy val soldiers = importSoldiersFromCsvs()
 
   def getAllAvaibleFactions: List[String] = soldiers.map(_.faction).toSet.toList
@@ -116,6 +118,12 @@ object FactionsImporter {
 
     val abilitiesData = lineData.get(ABILITIES_HEADER).get.trim
     val abilities = WeaponImporter.parseAbilities(abilitiesData)
+
+    val weaponsEquipmentData = lineData.get(WEAPONS_HEADER).get.trim
+    val splitWeapons = weaponsEquipmentData.split(',')
+    splitWeapons
+
+    Logger.error(weaponsEquipmentData)
 
 
 

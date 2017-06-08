@@ -22,7 +22,7 @@ object WeaponImporter {
 
   private val VPS_HEADER = "VPs"
 
-  private val AP_HEADER = "AP"
+  private val ARMOR_PIERCING_HEADER = "AP"
 
   private val TYPE_HEADER = "Type"
 
@@ -97,7 +97,7 @@ object WeaponImporter {
 
     val rangeAsInt = range.replace("R", "").replace("F", "0").toInt
 
-    val ap = getNumberWithDefault(lineData.get(AP_HEADER),0)
+    val ap = getNumberWithDefault(lineData.get(ARMOR_PIERCING_HEADER),0)
     val hp = getNumberWithDefault(lineData.get(HARDPOINTS_HEADER),0)
 
     val abilitiesData = lineData.get(ABILITIES_HEADER).get.trim

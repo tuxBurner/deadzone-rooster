@@ -5,9 +5,15 @@ import javax.validation.constraints.NotNull
 
 import com.avaje.ebean.Model
 import deadzone.models.Models.AbilityDto
+import play.api.Logger
+
+import scala.collection.JavaConversions._
 
 
 object DefaulTroopAbilityDAO {
+
+  private val FINDER = new Model.Finder[Long, DefaulTroopAbilityDO](classOf[DefaulTroopAbilityDO])
+
 
   def addAbilityForTroop(armyTroopDO: ArmyTroopDO, abilityDto: AbilityDto): Unit = {
     val abilityDO = AbilityDAO.addByAbilityDtos(abilityDto)
@@ -21,6 +27,11 @@ object DefaulTroopAbilityDAO {
     defaulTroopAbilityDO.defaultValue = abilityDto.factor;
 
     defaulTroopAbilityDO.save()
+  }
+
+  def deleteAll(): Unit = {
+    Logger.info("Deleting all: " + classOf[DefaulTroopAbilityDO].getName + " from database")
+    FINDER.all().toList.foreach(_.delete())
   }
 }
 
@@ -38,5 +49,5 @@ object DefaulTroopAbilityDAO {
 
   @ManyToOne var ability: AbilityDO = null
 
-  @NotNull var defaultValue: Int = 0;
+  @NotNull var defaultValue: Int = 0
 }
