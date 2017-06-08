@@ -1,94 +1,11 @@
-@*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(message: String)
-
+@(factions: List[FactionDO])
 @*
  * Call the `main` template with two arguments. The first
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
  *@
-@main("Lets test some stuff here") {
-
-  @deadzone.parsers.FactionCleaner.cleanFactionSoldiers
-
-  <h1>Weapons</h1>
-  <table border="1">
-    <thead>
-      <th>Name</th>
-      <th>Faction</th>
-      <th>Type</th>
-      <th>SubType</th>
-      <th>Range</th>
-      <th>AP</th>
-      <th>Points</th>
-      <th>VP</th>
-      <th>HP</th>
-      <th>Free</th>
-    </thead>
-    <tbody>
-      @for(weapon <-  deadzone.parsers.WeaponImporter.weapons) {
-        <tr>
-          <td>@weapon.name</td>
-          <td>@weapon.faction</td>
-          <td>@weapon.weaponType</td>
-          <td>@weapon.subWeaponType</td>
-          <td>@weapon.range</td>
-          <td>@weapon.armorPircing</td>
-          <td>@weapon.points</td>
-          <td>@weapon.victoryPoints</td>
-          <td>@weapon.hardPoint</td>
-          <td>@weapon.free</td>
-        </tr>
-      }
-    </tbody>
-  </table>
-
-  <h1>Factions</h1>
-  @for(fraction <- deadzone.parsers.FactionsImporter.getAllAvaibleFactions){
-    <h2>@fraction</h2>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Points</th>
-          <th>Type</th>
-          <th>Speed</th>
-          <th>Shoot</th>
-          <th>Fight</th>
-          <th>Size</th>
-          <th>Armour</th>
-          <th>VPs</th>
-          <th>Abilities</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for(soldier <- deadzone.parsers.FactionsImporter.getSoldierForFaction(fraction)) {
-          <tr>
-            <td>@soldier.name</td>
-            <td>@soldier.points</td>
-            <td>@soldier.soldierType</td>
-            <td>@soldier.speed._1 - @soldier.speed._2 </td>
-            <td>@if(soldier.shoot == 0) { - } else { @soldier.shoot+ }</td>
-            <td>@if(soldier.fight == 0) { - } else { @soldier.fight+ }</td>
-            <td>@soldier.size</td>
-            <td>@soldier.armour</td>
-            <td>@soldier.victoryPoints</td>
-            <td>
-              @for(ability <- soldier.abilities) {
-                @ability.title @if(ability.factor > 0) {(@ability.factor)}<br />
-              }
-            </td>
-          </tr>
-        }
-      </tbody>
-
-
-    </table>
+@main("Select a faction") {
+  @for(faction <- factions) {
+    @faction.name <br />
   }
-
-    
-
 }

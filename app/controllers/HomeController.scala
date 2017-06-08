@@ -2,7 +2,7 @@ package controllers
 
 import javax.inject._
 
-import deadzone.parsers.{FactionsImporter, WeaponImporter}
+import models.FactionDAO
 import play.api.mvc._
 
 /**
@@ -12,19 +12,10 @@ import play.api.mvc._
 @Singleton
 class HomeController @Inject() extends Controller {
 
-  /**
-   * Create an Action to render an HTML page with a welcome message.
-   * The configuration in the `routes` file means that this method
-   * will be called when the application receives a `GET` request with
-   * a path of `/`.
-   */
+
   def index = Action {
-
-    val plagueWeapon = WeaponImporter.getWeaponsForFaction("Enforcers")
-
-    val factions = FactionsImporter.getSoldierForFaction("Plague")
-
-    Ok(views.html.index("Your new application is ready."))
+    val factions = FactionDAO.getAll()
+    Ok(views.html.index(factions))
   }
 
 }

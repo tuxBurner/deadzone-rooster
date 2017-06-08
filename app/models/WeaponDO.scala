@@ -1,5 +1,6 @@
 package models
 
+import java.util
 import javax.persistence._
 import javax.validation.constraints.NotNull
 
@@ -17,7 +18,13 @@ object WeaponDAO {
 
   private val FINDER = new Model.Finder[Long, WeaponDO](classOf[WeaponDO])
 
-  def addWeaponToFaction(weaponDto: WeaponBaseDto, factionDo: ArmyFactionDO): WeaponDO = {
+  def findByNameAndFaction(name: String, factionDO: FactionDO): util.List[WeaponDO] = {
+    FINDER.where().ieq("name",name).and().eq("faction",factionDO).findList()
+  }
+
+  def addWeaponToFaction(weaponDto: WeaponBaseDto, factionDo: FactionDO): WeaponDO = {
+
+    Logger.info("Creating weapon: " + weaponDto.name + " for faction: " + factionDo.name)
 
     val newWeaponDo = new WeaponDO()
     newWeaponDo.name = weaponDto.name
@@ -34,7 +41,7 @@ object WeaponDAO {
 
     // add abilities to weapon
     weaponDto.abilities.foreach(ability => {
-       DefaultWeaponAbilityDAO.addAbilityForWeapon(newWeaponDo,ability)
+      DefaultWeaponAbilityDAO.addAbilityForWeapon(newWeaponDo, ability)
     })
 
     newWeaponDo
@@ -59,12 +66,12 @@ class WeaponDO extends Model {
 
   @NotNull
   @ManyToOne
-  var faction:ArmyFactionDO = null
+  var faction: FactionDO = null
 
 
   var weaponType: String = null
 
-  var weaponSubType:String = null
+  var weaponSubType: String = null
 
   @NotNull var victoryPoints: Int = 0
 
@@ -82,6 +89,5 @@ class WeaponDO extends Model {
 
   @NotNull
   var free: Boolean = false
-
 
 }

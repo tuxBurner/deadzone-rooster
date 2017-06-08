@@ -15,7 +15,7 @@ object DefaultTroopAbilityDAO {
   private val FINDER = new Model.Finder[Long, DefaultTroopAbilityDO](classOf[DefaultTroopAbilityDO])
 
 
-  def addAbilityForTroop(armyTroopDO: ArmyTroopDO, abilityDto: AbilityDto): Unit = {
+  def addAbilityForTroop(armyTroopDO: TroopDO, abilityDto: AbilityDto): Unit = {
     val abilityDO = AbilityDAO.addByAbilityDtos(abilityDto)
     if (abilityDO == null) {
       return
@@ -45,7 +45,7 @@ object DefaultTroopAbilityDAO {
 
   @Id val id: Long = 0L
 
-  @ManyToOne var troop: ArmyTroopDO = null
+  @ManyToOne var troop: TroopDO = null
 
   @ManyToOne var ability: AbilityDO = null
 

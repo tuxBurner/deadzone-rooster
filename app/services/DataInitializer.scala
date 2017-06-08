@@ -21,13 +21,16 @@ import play.api.{Configuration, Logger}
     cleanDatabase()
   }
 
-  importFactions()
+  if(FactionDAO.countAll() == 0) {
+    Logger.info("No Factions found in db filling up from the csv data")
+    importFactions()
+  }
 
 
   private def importFactions() : Unit = {
     val factions = FactionsImporter.getAllAvaibleFactions
     factions.foreach(factionName => {
-      val factionDo = ArmyFactionDAO.addFaction(factionName)
+      val factionDo = FactionDAO.addFaction(factionName)
 
       val weaponsDto = WeaponImporter.getWeaponsForFaction(factionName)
       weaponsDto.foreach(weaponDto => {
@@ -36,7 +39,7 @@ import play.api.{Configuration, Logger}
 
       val soldierDtos = FactionsImporter.getSoldierForFaction(factionName)
       soldierDtos.foreach(soldierDto => {
-        ArmyTroopDAO.addFromSoldierDto(soldierDto,factionDo)
+        TroopDAO.addFromSoldierDto(soldierDto,factionDo)
       })
     })
   }
@@ -47,9 +50,10 @@ import play.api.{Configuration, Logger}
   private def cleanDatabase(): Unit = {
     Logger.info("Deleting data from database.")
     DefaultTroopAbilityDAO.deleteAll()
+    DefaultWeaponAbilityDAO.deleteAll()
     AbilityDAO.deleteAll()
+    TroopDAO.deleteAll()
     WeaponDAO.deleteAll()
-    ArmyTroopDAO.deleteAll()
-    ArmyFactionDAO.deleteAll()
+    FactionDAO.deleteAll()
   }
 }

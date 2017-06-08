@@ -5,7 +5,10 @@ import java.io.File
 import com.github.tototoshi.csv.CSVReader
 import deadzone.models.ModelType
 import deadzone.models.Models.SoldierDto
+import org.apache.commons.lang3.StringUtils
 import play.api.Logger
+
+import scala.collection.mutable.ListBuffer
 
 /**
   * @author Sebastian Hardt (s.hardt@micromata.de)
@@ -120,15 +123,26 @@ object FactionsImporter {
     val abilities = WeaponImporter.parseAbilities(abilitiesData)
 
     val weaponsEquipmentData = lineData.get(WEAPONS_HEADER).get.trim
-    val splitWeapons = weaponsEquipmentData.split(',')
-    splitWeapons
+    val defaultWeaponNames = ListBuffer.empty[String]
 
-    Logger.error(weaponsEquipmentData)
+    if (StringUtils.isBlank(weaponsEquipmentData) == false) {
+      val splitWeapons = weaponsEquipmentData.split(',')
+      splitWeapons.foreach(weaponInfo => {
+        // check if the weapon is available
+        val factionWeapons = WeaponImporter.getWeaponsForFaction(faction)
+        val trimmedWeaponName = weaponInfo.trim
+        factionWeapons.find(_.name.equals(trimmedWeaponName))
+          .map(matchedWeapon => {
+            defaultWeaponNames += matchedWeapon.name
+          })
+          .getOrElse(
+            Logger.error("Weapon: " + trimmedWeaponName + " not found for troop: " + name + " faction: " + faction)
+          )
+      })
+    }
 
 
-
-
-    Option.apply(SoldierDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue,sizeValue,armour,victoryPoints,abilities))
+    Option.apply(SoldierDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue, sizeValue, armour, victoryPoints, abilities, defaultWeaponNames.toList))
   }
 
   private def parsePlusValue(data: String): Int = {

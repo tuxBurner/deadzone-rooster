@@ -1,37 +1,37 @@
 Name,Points,Type,Speed,Shoot,Fight,Survive,Size,Armour,VPs,Weapons and Equipment,Abilities,Weapon Upgrades,Skill Tables
-Stage 1A,36,L,1-1,-,3+,4+,3,2,4,"Talons (RF, AP1)","Tactician(2), Tough",-,"Melee, Command"
-"Stage 3A ""General""",16,L,2-3,6+,5+,5+,1,0,2,"Rifle (R6, Rapid Fire)",Tactician(1),"Leader, Small Arms","Ranged, Melee, Command"
-"Stage 3A ""General""",14,L,2-3,6+,5+,5+,1,0,2,Pistol (R3),Tactician(1),"Leader, Small Arms","Ranged, Melee, Command"
+Stage 1A,36,L,1-1,-,3+,4+,3,2,4,Talons,"Tactician(2), Tough",-,"Melee, Command"
+"Stage 3A ""General""",16,L,2-3,6+,5+,5+,1,0,2,Rifle,Tactician(1),"Leader, Small Arms","Ranged, Melee, Command"
+"Stage 3A ""General""",14,L,2-3,6+,5+,5+,1,0,2,Pistol,Tactician(1),"Leader, Small Arms","Ranged, Melee, Command"
 Stage 3D Hellhound,6,T,2-3,-,5+,5+,1,0,1,,Beast,-,None
-Stage 3A,10,T,2-3,6+,5+,5+,1,0,1,"Rifle (R6, Rapid Fire)",,Small Arms,Melee
-Stage 3A,8,T,2-3,6+,5+,5+,1,0,1,Pistol (R3),,Small Arms,Melee
+Stage 3A,10,T,2-3,6+,5+,5+,1,0,1,Rifle,,Small Arms,Melee
+Stage 3A,8,T,2-3,6+,5+,5+,1,0,1,Pistol,,Small Arms,Melee
 Stage 3Z Zombie,6,T,1-2,-,5+,6+,1,0,0,,"Horde, Vulnerable",-,None
 Stage 2A,16,T,1-2,-,4+,4+,2,1,2,,Rampage,-,Melee
-"Stage 3A ""Loader""",14,T,2-3,6+,5+,5+,1,0,1,"Rifle (R6, Rapid Fire)",Loader,Small Arms,Ranged
-"Stage 3A ""Loader""",12,T,2-3,6+,5+,5+,1,0,1,Pistol (R3),Loader,Small Arms,Ranged
-Stage 3A Specialist,16,S,2-3,5+,6+,5+,1,0,2,"Grenade Launcher (R5, Indirect(3))",,"Small Arms, Light (All)",Ranged
-Stage 3A Specialist,12,S,2-3,5+,6+,5+,1,0,1,"HMG (R6, WoF(1), Supression)",,"Small Arms, Light (All)",Ranged
-Stage 3A Specialist,20,S,2-3,5+,6+,5+,1,0,2,"Mortar (R8, Indirect(4), Heavy, Slow Reload)",,"Small Arms, Light (All)",Ranged
-Aberration,40,S,1-2,-,3+,4+,4,1,4,"Talons: RF, AP2, Knockback",Rampage,-,Melee
-Plague Swarm,20,S,1-2,-,3+,5+,2,0,2,"Acid Bite: RF, AP2","Agile, Tough, Beast",-,None
-Plague Teraton,24,S,1-2,-,4+,5+,3,1,3,"Claws: RF, Knockback","Teleport, Tough",-,"Melee, Specialist"
-Plague Enforcer,20,S,1-2,5+,5+,5+,1,1,2,"Experimental Weapon (R5, Experimental), Jump Pack",,"Heavy (Automatic, Assault, Explosive)","Ranged, Melee"
+"Stage 3A ""Loader""",14,T,2-3,6+,5+,5+,1,0,1,Rifle,Loader,Small Arms,Ranged
+"Stage 3A ""Loader""",12,T,2-3,6+,5+,5+,1,0,1,Pistol,Loader,Small Arms,Ranged
+Stage 3A Specialist,16,S,2-3,5+,6+,5+,1,0,2,Grenade Launcher,,"Small Arms, Light (All)",Ranged
+Stage 3A Specialist,12,S,2-3,5+,6+,5+,1,0,1,HMG,,"Small Arms, Light (All)",Ranged
+Stage 3A Specialist,20,S,2-3,5+,6+,5+,1,0,2,Mortar,,"Small Arms, Light (All)",Ranged
+Aberration,40,S,1-2,-,3+,4+,4,1,4,Talons,Rampage,-,Melee
+Plague Swarm,20,S,1-2,-,3+,5+,2,0,2,Acid Bite,"Agile, Tough, Beast",-,None
+Plague Teraton,24,S,1-2,-,4+,5+,3,1,3,Claws,"Teleport, Tough",-,"Melee, Specialist"
+Plague Enforcer,20,S,1-2,5+,5+,5+,1,1,2,"Experimental Weapon, Jump Pack",,"Heavy (Automatic, Assault, Explosive)","Ranged, Melee"
 Murderbirds,19,S,2-3,-,4+,5+,2,0,2,"Tough, Beast, Flight, Scout",,,
-Stage 2B Burster,11,S,1-2,-,5+,4+,2,1,1,Boom(4),,,
-Plague Strider,41,V,1-2,6+,4+,4+,4,3,4,"Polaris Canon (R10, AP4)",Vehicle,Hardpoints: 2 - Walker (All),"Ranged, Melee"
-Plague Strider,40,V,1-2,6+,4+,4+,4,3,4,"Chainsaw (RF, AP1), Assault Flamer (R2, Volatile, It Burns!)",Vehicle,Hardpoints: 2 - Walker (All),"Ranged, Melee"
-Plague Strider,38,V,1-2,4+,5+,4+,4,3,4,"Heavy Burst Laser (R10, WoF(2), Suppression)",Vehicle,Hardpoints: 2 - Walker (All),"Ranged, Melee"
-Aqissiaq (Kish),16,C,1-2,-,3+,5+,1,0,2,"Nuka (RF, AP2, Knockback)","Tough, Frenzy(1), Rampage",Plague,
-Bjarn Starnafall,30,C,1-2,4+,6+,3+,1,1,4,"Mining Laser (R4, AP2) Orbital Drop Armour",Tough,"Any, Except Asterians",
-Blaine,30,C,1-2,6+,3+,4+,1,1,3,"Raskan Punch-Blade (RF, AP2), Pistol (R3)","Tough, Scout, Frenzy (1)",Any,
-Blaine on Jetbike,34,C,1-5,5+,3+,4+,2,1,4,"Wicked Blades (RF, AP2), Pistol (R3)","Tough, Frenzy (1), Vehicle",Any,
-"Boomer, Grenadier",18,C,1-2,4+,6+,6+,1,0,2,"Pistol (R3), Frag Grenades (R3, Frag 3, Grenade), Smoke Grenades (R3, Grenade), Stun Grenades (R3, Grenade)","Engineer, Volatile, Tough, Boom!(3)",Any,
-Chief Radgrad,40,C,1-2,5+,4+,4+,3,1,5,"Decapitator (RF, AP3), Twin Blasters (R4, AP2, WoF(1))","Tough, Frenzy (1), Solid, Tactician(1)",Any,
-Chovar Psychic,20,C,1-2,5+,-,6+,3,0,2,"Mind Storm (R4, Blast, Psychic), Blank (R4, Stun, Psychic), Passion (R4, Invigorate, Psychic)","Psychic, Energy Shield (2)",Any,
-Dr Simmonds,18,C,2-3,6+,5+,3+,1,0,2,"Rifle (R6, Rapid Fire)","Tough, Tactician(1), Medic",Plague,
-Freya,16,C,1-2,5+,5+,4+,1,0,1,"Hailstorm Pistol (R4, WoF(1))",Engineer,Any,
-Nastanza,25,C,1-2,3+,6+,5+,1,0,2,"Sniper Rifle (R14, AP1, Sniper Scope), Energy Field (1)",,Any,
-Project Oberon,28,C,1-2,4+,4+,4+,1,0,3,"Needler (R4, AP1), Toxic Shards (RF, AP1, Toxic), Energy Field (1)","Scout, WoF(1)",Any ,
-The Helfather,22,C,1-2,5+,6+,5+,1,2,2,"Xerxes Cannon (R6, AP3, Heavy, It Burns!)",,Any,
-The Survivor,22,C,1-2,5+,5+,3+,1,1,2,"Sawn-Off (R2, Knockback), Pistol (R3)","Tough, WoF(1), Frenzy (1)",Any,
-Wrath,32,C,1-2,3+,3+,3+,1,1,3,"Fusion Gauntlet (R4, Frag(3), One Use), Praetorian Pistol (R4, AP1, It Burns!), Blade of the Seven (RF, AP1)","Rampage, Tough,","Any, Except Enforcers",
+Stage 2B Burster,11,S,1-2,-,5+,4+,2,1,1,Boom,,,
+Plague Strider,41,V,1-2,6+,4+,4+,4,3,4,Polaris Canon,Vehicle,Hardpoints: 2 - Walker (All),"Ranged, Melee"
+Plague Strider,40,V,1-2,6+,4+,4+,4,3,4,"Chainsaw, Assault Flamer",Vehicle,Hardpoints: 2 - Walker (All),"Ranged, Melee"
+Plague Strider,38,V,1-2,4+,5+,4+,4,3,4,Heavy Burst Laser,Vehicle,Hardpoints: 2 - Walker (All),"Ranged, Melee"
+Aqissiaq (Kish),16,C,1-2,-,3+,5+,1,0,2,Nuka,"Tough, Frenzy(1), Rampage",Plague,
+Bjarn Starnafall,30,C,1-2,4+,6+,3+,1,1,4,"Mining Laser, Orbital Drop Armour",Tough,"Any, Except Asterians",
+Blaine,30,C,1-2,6+,3+,4+,1,1,3,"Raskan Punch-Blade, Pistol","Tough, Scout, Frenzy (1)",Any,
+Blaine on Jetbike,34,C,1-5,5+,3+,4+,2,1,4,"Wicked Blades, Pistol","Tough, Frenzy (1), Vehicle",Any,
+"Boomer, Grenadier",18,C,1-2,4+,6+,6+,1,0,2,"Pistol, Frag Grenades, Smoke Grenades, Stun Grenades","Engineer, Volatile, Tough, Boom!(3)",Any,
+Chief Radgrad,40,C,1-2,5+,4+,4+,3,1,5,"Decapitator, Twin Blasters","Tough, Frenzy (1), Solid, Tactician(1)",Any,
+Chovar Psychic,20,C,1-2,5+,-,6+,3,0,2,"Mind Storm, Blank, Passion","Psychic, Energy Shield (2)",Any,
+Dr Simmonds,18,C,2-3,6+,5+,3+,1,0,2,Rifle,"Tough, Tactician(1), Medic",Plague,
+Freya,16,C,1-2,5+,5+,4+,1,0,1,Hailstorm Pistol,Engineer,Any,
+Nastanza,25,C,1-2,3+,6+,5+,1,0,2,"Sniper Rifle, Energy Field",,Any,
+Project Oberon,28,C,1-2,4+,4+,4+,1,0,3,"Needler, Toxic Shards, Energy Field","Scout, WoF(1)",Any ,
+The Helfather,22,C,1-2,5+,6+,5+,1,2,2,Xerxes Cannon,,Any,
+The Survivor,22,C,1-2,5+,5+,3+,1,1,2,"Sawn-Of, Pistol","Tough, WoF(1), Frenzy (1)",Any,
+Wrath,32,C,1-2,3+,3+,3+,1,1,3,"Fusion Gauntlet, Praetorian Pistol, Blade of the Seven","Rampage, Tough,","Any, Except Enforcers",
