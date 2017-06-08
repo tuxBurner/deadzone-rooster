@@ -17,7 +17,7 @@ object WeaponDAO {
 
   private val FINDER = new Model.Finder[Long, WeaponDO](classOf[WeaponDO])
 
-  def addWeaponToFaction(weaponDto: WeaponBaseDto, factionDo: ArmyFactionDO): Unit = {
+  def addWeaponToFaction(weaponDto: WeaponBaseDto, factionDo: ArmyFactionDO): WeaponDO = {
 
     val newWeaponDo = new WeaponDO()
     newWeaponDo.name = weaponDto.name
@@ -31,6 +31,13 @@ object WeaponDAO {
     newWeaponDo.shootRange = weaponDto.range
     newWeaponDo.victoryPoints = weaponDto.victoryPoints
     newWeaponDo.save()
+
+    // add abilities to weapon
+    weaponDto.abilities.foreach(ability => {
+       DefaultWeaponAbilityDAO.addAbilityForWeapon(newWeaponDo,ability)
+    })
+
+    newWeaponDo
   }
 
 

@@ -46,7 +46,7 @@ import play.api.{Configuration, Logger}
     */
   private def cleanDatabase(): Unit = {
     Logger.info("Deleting data from database.")
-    DefaulTroopAbilityDAO.deleteAll()
+    DefaultTroopAbilityDAO.deleteAll()
     AbilityDAO.deleteAll()
     WeaponDAO.deleteAll()
     ArmyTroopDAO.deleteAll()

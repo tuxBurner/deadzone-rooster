@@ -10,9 +10,9 @@ import play.api.Logger
 import scala.collection.JavaConversions._
 
 
-object DefaulTroopAbilityDAO {
+object DefaultTroopAbilityDAO {
 
-  private val FINDER = new Model.Finder[Long, DefaulTroopAbilityDO](classOf[DefaulTroopAbilityDO])
+  private val FINDER = new Model.Finder[Long, DefaultTroopAbilityDO](classOf[DefaultTroopAbilityDO])
 
 
   def addAbilityForTroop(armyTroopDO: ArmyTroopDO, abilityDto: AbilityDto): Unit = {
@@ -21,7 +21,7 @@ object DefaulTroopAbilityDAO {
       return
     }
 
-    val defaulTroopAbilityDO = new DefaulTroopAbilityDO();
+    val defaulTroopAbilityDO = new DefaultTroopAbilityDO();
     defaulTroopAbilityDO.ability = abilityDO;
     defaulTroopAbilityDO.troop = armyTroopDO;
     defaulTroopAbilityDO.defaultValue = abilityDto.factor;
@@ -30,7 +30,7 @@ object DefaulTroopAbilityDAO {
   }
 
   def deleteAll(): Unit = {
-    Logger.info("Deleting all: " + classOf[DefaulTroopAbilityDO].getName + " from database")
+    Logger.info("Deleting all: " + classOf[DefaultTroopAbilityDO].getName + " from database")
     FINDER.all().toList.foreach(_.delete())
   }
 }
@@ -41,7 +41,7 @@ object DefaulTroopAbilityDAO {
   *         Time: 22:57
   */
 @Entity
-@Table(name = "def_troop_ability") class DefaulTroopAbilityDO extends Model {
+@Table(name = "def_troop_ability") class DefaultTroopAbilityDO extends Model {
 
   @Id val id: Long = 0L
 

@@ -24,7 +24,7 @@ object ArmyTroopDAO {
     FINDER.all().toList.foreach(_.delete())
   }
 
-  def addFromSoldierDto(soldierDto:SoldierDto, factionDo: ArmyFactionDO) : ArmyTroopDO = {
+  def addFromSoldierDto(soldierDto: SoldierDto, factionDo: ArmyFactionDO): ArmyTroopDO = {
     val armyTroopDO = new ArmyTroopDO()
     armyTroopDO.faction = factionDo;
     armyTroopDO.name = soldierDto.name
@@ -40,7 +40,7 @@ object ArmyTroopDAO {
     armyTroopDO.victoryPoints = soldierDto.victoryPoints
     armyTroopDO.save()
 
-    soldierDto.abilities.foreach(DefaulTroopAbilityDAO.addAbilityForTroop(armyTroopDO,_))
+    soldierDto.abilities.foreach(DefaultTroopAbilityDAO.addAbilityForTroop(armyTroopDO, _))
 
     armyTroopDO
   }
@@ -54,25 +54,25 @@ object ArmyTroopDAO {
 
   @NotNull var name: String = ""
 
-  @NotNull var points:Int = 0
+  @NotNull var points: Int = 0
 
-  @NotNull var modelType:String = ""
+  @NotNull var modelType: String = ""
 
-  @NotNull var speed:Int = 0
+  @NotNull var speed: Int = 0
 
-  @NotNull var sprint:Int = 0
+  @NotNull var sprint: Int = 0
 
-  @NotNull var shoot:Int = 0
+  @NotNull var shoot: Int = 0
 
-  @NotNull var fight:Int = 0
+  @NotNull var fight: Int = 0
 
-  @NotNull var survive:Int = 0
+  @NotNull var survive: Int = 0
 
-  @NotNull var size:Int = 0
+  @NotNull var size: Int = 0
 
-  @NotNull var armour:Int = 0
+  @NotNull var armour: Int = 0
 
-  @NotNull var victoryPoints:Int = 0
+  @NotNull var victoryPoints: Int = 0
 
   @ManyToOne var faction: ArmyFactionDO = null
 }
