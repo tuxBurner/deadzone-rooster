@@ -32,8 +32,7 @@ object WeaponDAO {
     newWeaponDo.armorPircing = weaponDto.armorPircing
     newWeaponDo.faction = factionDo
     newWeaponDo.free = weaponDto.free
-    newWeaponDo.weaponType = weaponDto.weaponType
-    newWeaponDo.weaponSubType = weaponDto.subWeaponType
+    newWeaponDo.weaponType = WeaponTypeDAO.findOrCreateTypeByName(weaponDto.name)
     newWeaponDo.hartPoints = weaponDto.hardPoint
     newWeaponDo.shootRange = weaponDto.range
     newWeaponDo.victoryPoints = weaponDto.victoryPoints
@@ -68,10 +67,10 @@ class WeaponDO extends Model {
   @ManyToOne
   var faction: FactionDO = null
 
+  @ManyToOne
+  @NotNull
+  var weaponType:WeaponTypeDO = null
 
-  var weaponType: String = null
-
-  var weaponSubType: String = null
 
   @NotNull var victoryPoints: Int = 0
 

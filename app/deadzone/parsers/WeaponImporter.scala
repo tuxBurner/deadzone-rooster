@@ -54,19 +54,13 @@ object WeaponImporter {
 
   private def parseLineMap(lineData: Map[String, String]): Option[WeaponBaseDto] = {
 
-    var typeStr = lineData.get(TYPE_HEADER).get.trim
+    val typeStr = lineData.get(TYPE_HEADER).get.trim
     if (typeStr.isEmpty) {
       Logger.error("No type was found at line: " + lineData + " skipping it")
       return Option.empty
     }
 
 
-    val typeSplit = typeStr.split(' ')
-    var subTypeStr = ""
-    if (typeSplit.length == 2) {
-      typeStr = typeSplit(0)
-      subTypeStr = typeSplit(1);
-    }
 
     val factionStr = lineData.get(FACTION_HEADER).get.trim
     if (factionStr.isEmpty) {
@@ -105,7 +99,7 @@ object WeaponImporter {
 
     val free = lineData.get(ADD_ON_HEADER).get.trim == "x"
 
-    return Option.apply(WeaponBaseDto(factionStr, nameStr, points, vps, rangeAsInt, ap, typeStr, subTypeStr, hp, free, abilities))
+    return Option.apply(WeaponBaseDto(factionStr, nameStr, points, vps, rangeAsInt, ap, typeStr, hp, free, abilities))
   }
 
 

@@ -57,12 +57,17 @@ create table def_troop_weapon (
   constraint pk_def_troop_weapon primary key (troop_id,weapon_id)
 );
 
+create table troop_weapon_type (
+  troop_id                      bigint not null,
+  weapon_type_id                bigint not null,
+  constraint pk_troop_weapon_type primary key (troop_id,weapon_type_id)
+);
+
 create table weapon (
   id                            bigint auto_increment not null,
   name                          varchar(255) not null,
   faction_id                    bigint not null,
-  weapon_type                   varchar(255),
-  weapon_sub_type               varchar(255),
+  weapon_type_id                bigint not null,
   victory_points                integer not null,
   points                        integer not null,
   shoot_range                   integer not null,
@@ -70,6 +75,12 @@ create table weapon (
   hart_points                   integer not null,
   free                          tinyint(1) default 0 not null,
   constraint pk_weapon primary key (id)
+);
+
+create table weapon_type (
+  id                            bigint auto_increment not null,
+  name                          varchar(255) not null,
+  constraint pk_weapon_type primary key (id)
 );
 
 alter table def_troop_ability add constraint fk_def_troop_ability_troop_do_id foreign key (troop_do_id) references troop (id) on delete restrict on update restrict;
@@ -93,8 +104,17 @@ create index ix_def_troop_weapon_troop on def_troop_weapon (troop_id);
 alter table def_troop_weapon add constraint fk_def_troop_weapon_weapon foreign key (weapon_id) references weapon (id) on delete restrict on update restrict;
 create index ix_def_troop_weapon_weapon on def_troop_weapon (weapon_id);
 
+alter table troop_weapon_type add constraint fk_troop_weapon_type_troop foreign key (troop_id) references troop (id) on delete restrict on update restrict;
+create index ix_troop_weapon_type_troop on troop_weapon_type (troop_id);
+
+alter table troop_weapon_type add constraint fk_troop_weapon_type_weapon_type foreign key (weapon_type_id) references weapon_type (id) on delete restrict on update restrict;
+create index ix_troop_weapon_type_weapon_type on troop_weapon_type (weapon_type_id);
+
 alter table weapon add constraint fk_weapon_faction_id foreign key (faction_id) references faction (id) on delete restrict on update restrict;
 create index ix_weapon_faction_id on weapon (faction_id);
+
+alter table weapon add constraint fk_weapon_weapon_type_id foreign key (weapon_type_id) references weapon_type (id) on delete restrict on update restrict;
+create index ix_weapon_weapon_type_id on weapon (weapon_type_id);
 
 
 # --- !Downs
@@ -120,8 +140,17 @@ drop index ix_def_troop_weapon_troop on def_troop_weapon;
 alter table def_troop_weapon drop foreign key fk_def_troop_weapon_weapon;
 drop index ix_def_troop_weapon_weapon on def_troop_weapon;
 
+alter table troop_weapon_type drop foreign key fk_troop_weapon_type_troop;
+drop index ix_troop_weapon_type_troop on troop_weapon_type;
+
+alter table troop_weapon_type drop foreign key fk_troop_weapon_type_weapon_type;
+drop index ix_troop_weapon_type_weapon_type on troop_weapon_type;
+
 alter table weapon drop foreign key fk_weapon_faction_id;
 drop index ix_weapon_faction_id on weapon;
+
+alter table weapon drop foreign key fk_weapon_weapon_type_id;
+drop index ix_weapon_weapon_type_id on weapon;
 
 drop table if exists ability;
 
@@ -135,5 +164,9 @@ drop table if exists troop;
 
 drop table if exists def_troop_weapon;
 
+drop table if exists troop_weapon_type;
+
 drop table if exists weapon;
+
+drop table if exists weapon_type;
 

@@ -62,6 +62,8 @@ object TroopDAO {
 
     armyTroopDO.save()
 
+    
+
     soldierDto.abilities.foreach(DefaultTroopAbilityDAO.addAbilityForTroop(armyTroopDO, _))
 
     armyTroopDO
@@ -103,4 +105,7 @@ object TroopDAO {
 
   @OneToMany
   var defaultTroopAbilities: java.util.List[DefaultTroopAbilityDO] = null
+
+  @ManyToMany
+  var allowedWeaponTypes:  java.util.List[WeaponTypeDO] = null
 }

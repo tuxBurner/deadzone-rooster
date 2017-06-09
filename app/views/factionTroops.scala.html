@@ -37,7 +37,7 @@
       <td>@troop.armour</td>
       <td>@troop.victoryPoints</td>
       <td>
-        @if(troop.defaultTroopAbilities.isEmpty == false) {
+        @if(troop.defaultTroopAbilities.isEmpty == false || troop.allowedWeaponTypes.isEmpty == false) {
           <ul>
             @for(ability <- troop.defaultTroopAbilities) {
               <li>
@@ -46,6 +46,10 @@
                   (@ability.defaultValue)
                 }
               </li>
+
+              @for(weaponType <- troop.allowedWeaponTypes) {
+                <li>@weaponType.name</li>
+              }
             }
           </ul>
         }
