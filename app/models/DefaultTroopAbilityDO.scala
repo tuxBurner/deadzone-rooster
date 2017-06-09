@@ -23,7 +23,7 @@ object DefaultTroopAbilityDAO {
 
     val defaulTroopAbilityDO = new DefaultTroopAbilityDO();
     defaulTroopAbilityDO.ability = abilityDO;
-    defaulTroopAbilityDO.troop = armyTroopDO;
+    defaulTroopAbilityDO.troopDo = armyTroopDO;
     defaulTroopAbilityDO.defaultValue = abilityDto.factor;
 
     defaulTroopAbilityDO.save()
@@ -45,7 +45,7 @@ object DefaultTroopAbilityDAO {
 
   @Id val id: Long = 0L
 
-  @ManyToOne var troop: TroopDO = null
+  @ManyToOne var troopDo: TroopDO = null
 
   @ManyToOne var ability: AbilityDO = null
 

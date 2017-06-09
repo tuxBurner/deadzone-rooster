@@ -9,16 +9,17 @@
   <table class="table">
     <thead>
       <tr>
-        <th>tropp.name</th>
-        <th>tropp.type</th>
-        <th>tropp.costs</th>
-        <th>tropp.size</th>
+        <th>troop.name</th>
+        <th>troop.type</th>
+        <th>troop.costs</th>
+        <th>troop.size</th>
         <th>troop.movement</th>
         <th>troop.shoot</th>
         <th>troop.fight</th>
         <th>troop.survive</th>
         <th>troop.armour</th>
         <th>troop.vp</th>
+        <th>troop.abilities</th>
         <th>troop.weapons</th>
       </tr>
     </thead>
@@ -35,6 +36,20 @@
       <td>@troop.survive</td>
       <td>@troop.armour</td>
       <td>@troop.victoryPoints</td>
+      <td>
+        @if(troop.defaultTroopAbilities.isEmpty == false) {
+          <ul>
+            @for(ability <- troop.defaultTroopAbilities) {
+              <li>
+                @ability.ability.name
+                @if(ability.defaultValue > 0) {
+                  (@ability.defaultValue)
+                }
+              </li>
+            }
+          </ul>
+        }
+      </td>
       <td>
         @if(troop.defaultEquipment.isEmpty == false) {
           <ul>

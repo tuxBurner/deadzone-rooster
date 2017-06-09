@@ -100,4 +100,7 @@ object TroopDAO {
 
   @ManyToMany
   @JoinTable(name = "def_troop_weapon") var defaultEquipment: java.util.List[WeaponDO] = null
+
+  @OneToMany
+  var defaultTroopAbilities: java.util.List[DefaultTroopAbilityDO] = null
 }

@@ -13,7 +13,7 @@ create table ability (
 
 create table def_troop_ability (
   id                            bigint auto_increment not null,
-  troop_id                      bigint,
+  troop_do_id                   bigint,
   ability_id                    bigint,
   default_value                 integer not null,
   constraint pk_def_troop_ability primary key (id)
@@ -72,8 +72,8 @@ create table weapon (
   constraint pk_weapon primary key (id)
 );
 
-alter table def_troop_ability add constraint fk_def_troop_ability_troop_id foreign key (troop_id) references troop (id) on delete restrict on update restrict;
-create index ix_def_troop_ability_troop_id on def_troop_ability (troop_id);
+alter table def_troop_ability add constraint fk_def_troop_ability_troop_do_id foreign key (troop_do_id) references troop (id) on delete restrict on update restrict;
+create index ix_def_troop_ability_troop_do_id on def_troop_ability (troop_do_id);
 
 alter table def_troop_ability add constraint fk_def_troop_ability_ability_id foreign key (ability_id) references ability (id) on delete restrict on update restrict;
 create index ix_def_troop_ability_ability_id on def_troop_ability (ability_id);
@@ -99,8 +99,8 @@ create index ix_weapon_faction_id on weapon (faction_id);
 
 # --- !Downs
 
-alter table def_troop_ability drop foreign key fk_def_troop_ability_troop_id;
-drop index ix_def_troop_ability_troop_id on def_troop_ability;
+alter table def_troop_ability drop foreign key fk_def_troop_ability_troop_do_id;
+drop index ix_def_troop_ability_troop_do_id on def_troop_ability;
 
 alter table def_troop_ability drop foreign key fk_def_troop_ability_ability_id;
 drop index ix_def_troop_ability_ability_id on def_troop_ability;
