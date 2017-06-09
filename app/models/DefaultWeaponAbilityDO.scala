@@ -23,7 +23,7 @@ object DefaultWeaponAbilityDAO {
 
     val DefaulWeaponAbilityDO = new DefaultWeaponAbilityDO()
     DefaulWeaponAbilityDO.ability = abilityDO
-    DefaulWeaponAbilityDO.weapon = weaponDO
+    DefaulWeaponAbilityDO.weaponDo = weaponDO
     DefaulWeaponAbilityDO.defaultValue = abilityDto.factor
 
     DefaulWeaponAbilityDO.save()
@@ -45,7 +45,7 @@ object DefaultWeaponAbilityDAO {
 
   @Id val id: Long = 0L
 
-  @ManyToOne var weapon: WeaponDO = null
+  @ManyToOne var weaponDo: WeaponDO = null
 
   @ManyToOne var ability: AbilityDO = null
 

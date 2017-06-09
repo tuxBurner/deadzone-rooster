@@ -21,7 +21,7 @@ create table def_troop_ability (
 
 create table def_weapon_ability (
   id                            bigint auto_increment not null,
-  weapon_id                     bigint,
+  weapon_do_id                  bigint,
   ability_id                    bigint,
   default_value                 integer not null,
   constraint pk_def_weapon_ability primary key (id)
@@ -78,8 +78,8 @@ create index ix_def_troop_ability_troop_id on def_troop_ability (troop_id);
 alter table def_troop_ability add constraint fk_def_troop_ability_ability_id foreign key (ability_id) references ability (id) on delete restrict on update restrict;
 create index ix_def_troop_ability_ability_id on def_troop_ability (ability_id);
 
-alter table def_weapon_ability add constraint fk_def_weapon_ability_weapon_id foreign key (weapon_id) references weapon (id) on delete restrict on update restrict;
-create index ix_def_weapon_ability_weapon_id on def_weapon_ability (weapon_id);
+alter table def_weapon_ability add constraint fk_def_weapon_ability_weapon_do_id foreign key (weapon_do_id) references weapon (id) on delete restrict on update restrict;
+create index ix_def_weapon_ability_weapon_do_id on def_weapon_ability (weapon_do_id);
 
 alter table def_weapon_ability add constraint fk_def_weapon_ability_ability_id foreign key (ability_id) references ability (id) on delete restrict on update restrict;
 create index ix_def_weapon_ability_ability_id on def_weapon_ability (ability_id);
@@ -105,8 +105,8 @@ drop index ix_def_troop_ability_troop_id on def_troop_ability;
 alter table def_troop_ability drop foreign key fk_def_troop_ability_ability_id;
 drop index ix_def_troop_ability_ability_id on def_troop_ability;
 
-alter table def_weapon_ability drop foreign key fk_def_weapon_ability_weapon_id;
-drop index ix_def_weapon_ability_weapon_id on def_weapon_ability;
+alter table def_weapon_ability drop foreign key fk_def_weapon_ability_weapon_do_id;
+drop index ix_def_weapon_ability_weapon_do_id on def_weapon_ability;
 
 alter table def_weapon_ability drop foreign key fk_def_weapon_ability_ability_id;
 drop index ix_def_weapon_ability_ability_id on def_weapon_ability;
