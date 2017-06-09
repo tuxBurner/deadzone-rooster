@@ -1,6 +1,6 @@
-Name,Points,Type,Speed,Shoot,Fight,Survive,Size,Armour,VPs,Weapons,Equipment,Abilities,Weapon Upgrades,Skill Tables
-Enforcer Captain,34,L,1-2,4+,5+,4+,1,1,4,"Pistol,Energy Gauntlet",Jump Pack,Tactician(2),"Leader, Small Arms, Light (Melee)","Ranged, Melee, Command"
-Enforcer Captain,36,L,1-2,4+,5+,4+,1,1,4,"Laser Rifle,Energy Gauntlet, Jump Pack", Jump Pack,Tactician(2),"Leader, Small Arms, Light (Melee)","Ranged, Melee, Command"
+Name,Points,Type,Speed,Shoot,Fight,Survive,Size,Armour,VPs,Weapons and Equipment,Equipment,Abilities,Weapon Upgrades,Skill Tables
+Enforcer Captain,34,L,1-2,4+,5+,4+,1,1,4,"Pistol,Energy Gauntlet, Jump Pack",,Tactician(2),"Leader, Small Arms, Light (Melee)","Ranged, Melee, Command"
+Enforcer Captain,36,L,1-2,4+,5+,4+,1,1,4,"Laser Rifle,Energy Gauntlet, Jump Pack",,Tactician(2),"Leader, Small Arms, Light (Melee)","Ranged, Melee, Command"
 Enforcer Captain,35,L,1-2,4+,5+,4+,1,1,4,"Combat Shotgun,Energy Gauntlet, Jump Pack",,Tactician(2),"Leader, Small Arms, Light (Melee)","Ranged, Melee, Command"
 Enforcer Captain,36,L,1-2,4+,5+,4+,1,1,4,"Pistol, Wristblade, Jump Pack",,Tactician(2),"Leader, Small Arms, Light (Melee)","Ranged, Melee, Command"
 Enforcer Captain,38,L,1-2,4+,5+,4+,1,1,4,"Laser Rifle, Wristblade, Jump Pack",,Tactician(2),"Leader, Small Arms, Light (Melee)","Ranged, Melee, Command"

@@ -90,4 +90,6 @@ class WeaponDO extends Model {
   @NotNull
   var free: Boolean = false
 
+  @OneToMany
+  var defaultWeaponAbilities: java.util.List[DefaultWeaponAbilityDO] = null
 }

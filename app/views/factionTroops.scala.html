@@ -5,11 +5,62 @@
  * argument is an `Html` object containing the body of the page.
  *@
 @main("Select a faction") {
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>tropp.name</th>
+        <th>tropp.type</th>
+        <th>tropp.costs</th>
+        <th>tropp.size</th>
+        <th>troop.movement</th>
+        <th>troop.shoot</th>
+        <th>troop.fight</th>
+        <th>troop.survive</th>
+        <th>troop.armour</th>
+        <th>troop.vp</th>
+        <th>troop.weapons</th>
+      </tr>
+    </thead>
+    <tbody>
   @for(troop <- troops) {
-    @troop.name
-    @for(weapon <- troop.defaultEquipment) {
-      @weapon.name
-    }
-    <br />
+    <tr>
+      <td>@troop.name</td>
+      <td>@troop.modelType</td>
+      <td>@troop.points</td>
+      <td>@troop.size</td>
+      <td>@troop.speed - @troop.sprint</td>
+      <td>@troop.shoot</td>
+      <td>@troop.fight</td>
+      <td>@troop.survive</td>
+      <td>@troop.armour</td>
+      <td>@troop.victoryPoints</td>
+      <td>
+        @if(troop.defaultEquipment.isEmpty == false) {
+          <ul>
+            @for(weapon <- troop.defaultEquipment) {
+              <li>
+                @weapon.name
+                @if(weapon.shootRange > 0) {
+                  R@weapon.shootRange
+                } else {
+                  RF
+                }
+                @if(weapon.armorPircing > 0) {
+                  ,AP@weapon.armorPircing
+                }
+
+                @for(ability <- weapon.defaultWeaponAbilities) {
+                  ,@ability.ability.name
+                  @if(ability.defaultValue > 0) {(@ability.defaultValue)}
+                }
+              </li>
+            }
+          </ul>
+        }
+      </td>
+    </tr>
   }
+    </tbody>
+  </table>
 }
