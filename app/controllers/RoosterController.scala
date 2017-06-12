@@ -28,7 +28,6 @@ import scala.concurrent.duration._
     * @return
     */
   @JSRoute def getFactions = Action {
-
     Ok(Json.toJson(FactionLogic.getAllFactions()))
   }
 
@@ -46,40 +45,47 @@ import scala.concurrent.duration._
   @JSRoute def addTroopToSelection() = Action(parse.tolerantJson) { request =>
 
     val factionName = (request.body \ "faction").as[String]
-    val troopName =  (request.body \ "troop").as[String]
+    val troopName = (request.body \ "troop").as[String]
 
-    val armyFromCache = getArmyFromCache(request,factionName)
-    val armyWithNewTroop = ArmyLogic.addTroopToArmy(factionName,troopName,armyFromCache)
+    val armyFromCache = getArmyFromCache(request)
+    val armyWithNewTroop = ArmyLogic.addTroopToArmy(factionName, troopName, armyFromCache)
 
-    writeArmyToCache(request,armyWithNewTroop)
-    withCacheId(Ok(Json.toJson(armyWithNewTroop)).as(JSON),request)
+    writeArmyToCache(request, armyWithNewTroop)
+    withCacheId(Ok(Json.toJson(armyWithNewTroop)).as(JSON), request)
+  }
+
+  @JSRoute def removeTroopFromArmy(uuid: String) = Action { request =>
+    val armyFromCache = getArmyFromCache(request)
+    val newArmy = ArmyLogic.removeTroopFromArmy(uuid, armyFromCache)
+    writeArmyToCache(request, newArmy)
+    withCacheId(Ok(Json.toJson(newArmy)).as(JSON), request)
+
   }
 
   @JSRoute def getArmy() = Action { request =>
-    val factionName = request.getQueryString("faction").get
-    val army = getArmyFromCache(request,factionName)
-    writeArmyToCache(request,army)
-    withCacheId(Ok(Json.toJson(army)).as(JSON),request)
+    val army = getArmyFromCache(request)
+    writeArmyToCache(request, army)
+    withCacheId(Ok(Json.toJson(army)).as(JSON), request)
   }
 
-  private def withCacheId(result:Result, request: Request[Any]):Result =  {
+  private def withCacheId(result: Result, request: Request[Any]): Result = {
     val cacheId = getCacheIdFromSession(request)
-    result.withSession(request.session +  ("test" -> cacheId))
+    result.withSession(request.session + ("test" -> cacheId))
   }
 
-  private def getArmyFromCache(request:Request[Any],factionName: String) = {
+  private def getArmyFromCache(request: Request[Any]) = {
     val cacheId = getCacheIdFromSession(request)
     cache.getOrElse[ArmyDto](cacheId) {
-      ArmyDto("",factionName)
+      ArmyDto("")
     }
   }
 
-  private def writeArmyToCache(request:Request[Any],army:ArmyDto): Unit = {
+  private def writeArmyToCache(request: Request[Any], army: ArmyDto): Unit = {
     val cacheId = getCacheIdFromSession(request)
     cache.set(cacheId, army, 5.minutes)
   }
 
-  private def getCacheIdFromSession(request:Request[Any]): String = {
+  private def getCacheIdFromSession(request: Request[Any]): String = {
     request.session.get("test").getOrElse(UUID.randomUUID.toString)
   }
 

@@ -67,7 +67,6 @@ object TroopDAO {
 
     armyTroopDO.save()
 
-
     soldierDto.abilities.foreach(DefaultTroopAbilityDAO.addAbilityForTroop(armyTroopDO, _))
 
     armyTroopDO

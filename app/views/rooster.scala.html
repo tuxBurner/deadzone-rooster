@@ -6,16 +6,21 @@
   <select class="form-control" id="rooster_faction_select"></select>
 
   <select class="form-control" id="rooster_addTroop_select"></select>
-  <button class="btn btn-info" id="rooster_addTroop_btn">@Messages("troop.addBtn")</button>
+  <button class="btn btn-info" id="rooster_addTroop_btn"><span class="glyphicon glyphicon-plus"></span> @Messages("troop.addBtn")</button>
 
 
+  <div>
+    <span>@Messages("army.points"): </span>
+    <span class="badge" id="rooster_army_points"></span>
+  </div>
 
-  <table class="table">
+  <table class="table table-condensed table-bordered">
     <thead>
       <tr>
         <th>@Messages("troop.tbl.name")</th>
         <th>@Messages("troop.tbl.type")</th>
         <th>@Messages("troop.tbl.points")</th>
+        <th>@Messages("troop.tbl.victoryPoints")</th>
         <th>@Messages("troop.tbl.armour")</th>
         <th>@Messages("troop.tbl.size")</th>
         <th>@Messages("troop.tbl.speed")</th>
@@ -24,6 +29,7 @@
         <th>@Messages("troop.tbl.survive")</th>
         <th>@Messages("troop.tbl.abilities")</th>
         <th>@Messages("troop.tbl.weapons")</th>
+        <th></th>
       </tr>
     </thead>
     <tbody id="rooster_troop_tbody">

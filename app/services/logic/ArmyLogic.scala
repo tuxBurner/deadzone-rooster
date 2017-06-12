@@ -1,5 +1,7 @@
 package services.logic
 
+import java.util.UUID
+
 import models.{TroopDAO, TroopDO, WeaponDO}
 
 import scala.collection.JavaConversions._
@@ -20,6 +22,12 @@ object ArmyLogic {
     army.copy(troops = newTroops, points = armyPoints)
   }
 
+  def removeTroopFromArmy(uuid:String, army:ArmyDto): ArmyDto = {
+    val newTroops = army.troops.filter(_.uuid != uuid)
+    val armyPoints = newTroops.map(_.points).sum
+    army.copy(troops = newTroops, points = armyPoints)
+  }
+
   def troopDoToArmyTroopDto(troopDo: TroopDO): ArmyTroopDto = {
 
     val troopAbilities = troopDo.defaultTroopAbilities.toList.map(abilityDo => ArmyAbilityDto(abilityDo.ability.name, abilityDo.defaultValue))
@@ -27,7 +35,9 @@ object ArmyLogic {
 
     val points = troopDo.points + troopDo.defaultEquipment.toList.map(_.points).sum
 
-    ArmyTroopDto(
+    val uuid = UUID.randomUUID().toString
+
+    ArmyTroopDto(uuid,
       troopDo.name,
       troopDo.modelType,
       points,
@@ -54,14 +64,15 @@ object ArmyLogic {
 
 }
 
-case class ArmyDto(name: String, faction: String, points: Int = 0, troops: List[ArmyTroopDto] = List())
+case class ArmyDto(name: String, points: Int = 0, troops: List[ArmyTroopDto] = List())
 
 case class ArmyAbilityDto(name: String, defaultVal: Int)
 
-case class ArmyTroopDto(name: String,
+case class ArmyTroopDto(uuid: String,
+                        name: String,
                         modelType: String,
                         points: Int,
-                        vp: Int,
+                        victoryPoints: Int,
                         speed: Int,
                         sprint: Int,
                         armour: Int,
