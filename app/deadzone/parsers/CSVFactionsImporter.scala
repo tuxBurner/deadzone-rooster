@@ -46,6 +46,10 @@ object CSVFactionsImporter {
 
   private val HARDPOINTS_HEADER = "Hardpoints"
 
+  private val RECON_HEADER = "Recon"
+
+  private val ARMY_SPECIAL_HEADER = "Army Special"
+
   private lazy val soldiers = importSoldiersFromCsvs()
 
   def getAllAvaibleFactions: List[String] = soldiers.map(_.faction).toSet.toList
@@ -119,6 +123,9 @@ object CSVFactionsImporter {
     val fightValue = parsePlusValue(lineData.get(FIGHT_HEADER).get)
     val surviveValue = parsePlusValue(lineData.get(SURVIVE_HEADER).get)
 
+    val recon = parsePlusValue(lineData.get(RECON_HEADER).get)
+    val armySpecial = lineData.get(ARMY_SPECIAL_HEADER).get.trim
+
     val sizeValue = lineData.get(SIZE_HEADER).get.trim.toInt
     val armour = lineData.get(ARMOUR_HEADER).get.trim.toInt
     var victoryPoints = lineData.get(VICTORY_POINTS_HEADER).get.trim.toInt
@@ -152,7 +159,7 @@ object CSVFactionsImporter {
     val weaponTypes = lineData.get(WEAPON_UPGRADES_HEADER).get.trim.split(',').map(_.trim)
 
 
-    Option.apply(CSVSoldierDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue, sizeValue, armour, victoryPoints, abilities, defaultWeaponNames.toList,weaponTypes,hardPoints))
+    Option.apply(CSVSoldierDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue, sizeValue, armour, victoryPoints, abilities, defaultWeaponNames.toList,weaponTypes,hardPoints,recon,armySpecial))
   }
 
   private def parsePlusValue(data: String): Int = {

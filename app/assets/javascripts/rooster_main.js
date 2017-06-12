@@ -94,6 +94,13 @@ var roosterGuiHandler = {
   displayCurrentArmyData: function(armyData) {
 
     $('#rooster_army_points').text(armyData.points);
+    $('#rooster_army_faction').text(armyData.faction);
+
+    $('#rooster_faction_select').attr('disabled',armyData.faction !== '');
+
+    if(armyData.faction !== '') {
+
+    } else {}
 
     $('#rooster_troop_tbody').html('');
     var tableContent = '';
@@ -129,6 +136,11 @@ var roosterGuiHandler = {
         weaponsContent += '<br />';
       });
 
+      var reconArmySpecialContent = '';
+      if(troop.recon !== 0) {
+        reconArmySpecialContent += troop.recon + '+ / ' + troop.armySpecial;
+      }
+
 
       tableContent += '<tr data-uuid="' + troop.uuid + '">';
 
@@ -144,6 +156,7 @@ var roosterGuiHandler = {
       tableContent += '<td>' + troop.survive + '+</td>';
       tableContent += '<td>' + abilitiesContent + '</td>';
       tableContent += '<td>' + weaponsContent + '</td>';
+      tableContent += '<td>' + reconArmySpecialContent + '</td>';
 
       tableContent += '<td>';
       tableContent += '<button class="btn btn-info btn-sm rooster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button> ';

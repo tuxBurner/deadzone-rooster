@@ -48,6 +48,8 @@ create table troop (
   armour                        integer not null,
   victory_points                integer not null,
   hard_points                   integer not null,
+  recon                         integer not null,
+  army_special                  varchar(255) not null,
   faction_id                    bigint,
   constraint uq_troop_name unique (name),
   constraint pk_troop primary key (id)

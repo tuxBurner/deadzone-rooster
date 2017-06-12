@@ -16,16 +16,17 @@ object ArmyLogic {
 
     val newTroop = troopDoToArmyTroopDto(troopDo)
 
-    val newTroops: List[ArmyTroopDto] = newTroop :: army.troops
+    val newTroops: List[ArmyTroopDto] = army.troops :+ newTroop
     val armyPoints = newTroops.map(_.points).sum
 
-    army.copy(troops = newTroops, points = armyPoints)
+    army.copy(troops = newTroops,faction = factionName, points = armyPoints)
   }
 
   def removeTroopFromArmy(uuid: String, army: ArmyDto): ArmyDto = {
     val newTroops = army.troops.filter(_.uuid != uuid)
     val armyPoints = newTroops.map(_.points).sum
-    army.copy(troops = newTroops, points = armyPoints)
+    val faction = if(newTroops.size == 0) "" else army.faction
+    army.copy(troops = newTroops, faction = faction, points = armyPoints)
   }
 
   def troopDoToArmyTroopDto(troopDo: TroopDO): ArmyTroopDto = {
@@ -55,7 +56,9 @@ object ArmyLogic {
       troopDo.survive,
       troopAbilities,
       weapons,
-      weaponTypes)
+      weaponTypes,
+      troopDo.recon,
+      troopDo.armySpecial)
   }
 
   def getWeaponsForTroop(uuid: String, army: ArmyDto): List[ArmyWeaponDto] = {
@@ -70,12 +73,13 @@ object ArmyLogic {
       weaponDo.points,
       weaponDo.shootRange,
       weaponDo.armorPircing,
+      weaponDo.victoryPoints,
       abilities)
   }
 
 }
 
-case class ArmyDto(name: String, points: Int = 0, troops: List[ArmyTroopDto] = List())
+case class ArmyDto(name: String, faction:String = "", points: Int = 0, troops: List[ArmyTroopDto] = List())
 
 case class ArmyAbilityDto(name: String, defaultVal: Int)
 
@@ -94,10 +98,13 @@ case class ArmyTroopDto(uuid: String,
                         survive: Int,
                         abilities: List[ArmyAbilityDto],
                         weapons: List[ArmyWeaponDto],
-                        allowedWeaponTypes: List[String])
+                        allowedWeaponTypes: List[String],
+                        recon: Int,
+                        armySpecial: String)
 
 case class ArmyWeaponDto(name: String,
                          points: Int,
                          shootRange: Int,
                          armorPircing: Int,
+                         victoryPoints: Int,
                          abilities: List[ArmyAbilityDto])
