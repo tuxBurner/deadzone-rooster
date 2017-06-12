@@ -17,7 +17,7 @@ object WeaponDAO {
 
 
   private val FINDER = new Model.Finder[Long, WeaponDO](classOf[WeaponDO])
-
+  
   def findByNameAndFaction(name: String, factionDO: FactionDO): util.List[WeaponDO] = {
     FINDER.where().ieq("name",name).and().eq("faction",factionDO).findList()
   }

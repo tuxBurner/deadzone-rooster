@@ -32,12 +32,16 @@ object TroopDAO {
     FINDER.where().eq("faction.name", factionName).findList.toList
   }
 
+  def findByFactionAndName(factionName: String, name:String): TroopDO = {
+    FINDER.where().eq("faction.name", factionName).and().eq("name",name).findUnique
+  }
+
   def addFromSoldierDto(soldierDto: SoldierDto, factionDo: FactionDO): TroopDO = {
 
     Logger.info("Creating troop: " + soldierDto.name + " for faction: " + factionDo.name)
 
     val armyTroopDO = new TroopDO()
-    armyTroopDO.faction = factionDo;
+    armyTroopDO.faction = factionDo
     armyTroopDO.name = soldierDto.name
     armyTroopDO.points = soldierDto.points
     armyTroopDO.modelType = soldierDto.soldierType.toString
