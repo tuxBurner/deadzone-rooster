@@ -1,7 +1,7 @@
 package deadzone.parsers
 
 import com.github.tototoshi.csv.CSVReader
-import deadzone.models.Models.{AbilityDto, WeaponBaseDto}
+import deadzone.models.CSVModels.{AbilityDto, CSVWeaponBaseDto}
 import play.api.Logger
 
 import scala.util.matching.Regex
@@ -11,7 +11,7 @@ import scala.util.matching.Regex
   *         Date: 15.02.17
   *         Time: 23:06
   */
-object WeaponImporter {
+object CSVWeaponImporter {
 
 
   private val FACTION_HEADER = "Faction"
@@ -41,36 +41,39 @@ object WeaponImporter {
 
 
   
-  def getWeaponsForFaction(faction: String) : List[WeaponBaseDto] = {
+  def getWeaponsForFaction(faction: String) : List[CSVWeaponBaseDto] = {
     weapons.filter(_.faction.equals(faction))
   }
 
-  private def importWeaponFromCsv(): List[WeaponBaseDto] = {
+  private def importWeaponFromCsv(): List[CSVWeaponBaseDto] = {
     val reader = CSVReader.open("conf/deadzone/weapons.csv")
     val dataWithHeaders = reader.allWithHeaders()
     val parsedResult = dataWithHeaders.map(parseLineMap(_)).filter(_.isDefined).map(_.get)
     parsedResult
   }
 
-  private def parseLineMap(lineData: Map[String, String]): Option[WeaponBaseDto] = {
+  private def parseLineMap(lineData: Map[String, String]): Option[CSVWeaponBaseDto] = {
 
     val typeStr = lineData.get(TYPE_HEADER).get.trim
     if (typeStr.isEmpty) {
-      Logger.error("No type was found at line: " + lineData + " skipping it")
+      Logger.error("CSV Weapon: No type was found at line: " + lineData + " skipping it")
       return Option.empty
     }
+    val weaponTypes = typeStr.split(',').map(_.trim)
+
+    Logger.error(weaponTypes.toString)
 
 
 
     val factionStr = lineData.get(FACTION_HEADER).get.trim
     if (factionStr.isEmpty) {
-      Logger.error("No faction was found at line: " + lineData + " skipping it")
+      Logger.error("CSV Weapon: No faction was found at line: " + lineData + " skipping it")
       return Option.empty
     }
 
     val nameStr = lineData.get(WEAPON_NAME_HEADER).get.trim
     if (nameStr.isEmpty) {
-      Logger.error("No name was found at line: " + lineData + " skipping it")
+      Logger.error("CSV Weapon: No name was found at line: " + lineData + " skipping it")
       return Option.empty
     }
 
@@ -80,12 +83,12 @@ object WeaponImporter {
 
     val range = lineData.get(RANGE_HEADER).get.trim
     if (range.isEmpty == true) {
-      Logger.error("No range was found at line: " + lineData + " skipping it")
+      Logger.error("CSV Weapon: No range was found at line: " + lineData + " skipping it")
       return Option.empty
     }
 
     if (range.count(_ == 'R') != 1) {
-      Logger.error("Found no or multiple: R in Range for " + lineData + " skipping it")
+      Logger.error("CSV Weapon: Found no or multiple: R in Range for " + lineData + " skipping it")
       return Option.empty
     }
 
@@ -99,7 +102,7 @@ object WeaponImporter {
 
     val free = lineData.get(ADD_ON_HEADER).get.trim == "x"
 
-    return Option.apply(WeaponBaseDto(factionStr, nameStr, points, vps, rangeAsInt, ap, typeStr, hp, free, abilities))
+    return Option.apply(CSVWeaponBaseDto(factionStr, nameStr, points, vps, rangeAsInt, ap, weaponTypes, hp, free, abilities))
   }
 
 

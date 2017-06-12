@@ -4,7 +4,7 @@ import javax.persistence._
 import javax.validation.constraints.NotNull
 
 import com.avaje.ebean.Model
-import deadzone.models.Models.SoldierDto
+import deadzone.models.CSVModels.CSVSoldierDto
 import play.api.Logger
 
 import scala.collection.JavaConversions._
@@ -36,7 +36,7 @@ object TroopDAO {
     FINDER.where().eq("faction.name", factionName).and().eq("name",name).findUnique
   }
 
-  def addFromSoldierDto(soldierDto: SoldierDto, factionDo: FactionDO): TroopDO = {
+  def addFromSoldierDto(soldierDto: CSVSoldierDto, factionDo: FactionDO): TroopDO = {
 
     Logger.info("Creating troop: " + soldierDto.name + " for faction: " + factionDo.name)
 

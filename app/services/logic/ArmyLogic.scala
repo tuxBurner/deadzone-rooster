@@ -54,6 +54,10 @@ object ArmyLogic {
       weapons)
   }
 
+  def getWeaponsForTroop(uuid: String, army:ArmyDto) : Unit = {
+    val getTroop = army.troops.find(_.uuid == uuid).get
+  }
+
   def weaponDoToWeaponDto(weaponDo: WeaponDO): ArmyWeaponDto = {
     val abilities = weaponDo.defaultWeaponAbilities.toList.map(abilityDo => ArmyAbilityDto(abilityDo.ability.name, abilityDo.defaultValue))
     ArmyWeaponDto(weaponDo.name,

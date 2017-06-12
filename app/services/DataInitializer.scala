@@ -2,7 +2,7 @@ package services
 
 import javax.inject.{Inject, Singleton}
 
-import deadzone.parsers.{FactionsImporter, WeaponImporter}
+import deadzone.parsers.{CSVFactionsImporter, CSVWeaponImporter}
 import models._
 import play.api.{Configuration, Logger}
 
@@ -28,16 +28,16 @@ import play.api.{Configuration, Logger}
 
 
   private def importFactions() : Unit = {
-    val factions = FactionsImporter.getAllAvaibleFactions
+    val factions = CSVFactionsImporter.getAllAvaibleFactions
     factions.foreach(factionName => {
       val factionDo = FactionDAO.addFaction(factionName)
 
-      val weaponsDto = WeaponImporter.getWeaponsForFaction(factionName)
+      val weaponsDto = CSVWeaponImporter.getWeaponsForFaction(factionName)
       weaponsDto.foreach(weaponDto => {
            WeaponDAO.addWeaponToFaction(weaponDto,factionDo)
       })
 
-      val soldierDtos = FactionsImporter.getSoldierForFaction(factionName)
+      val soldierDtos = CSVFactionsImporter.getSoldierForFaction(factionName)
       soldierDtos.foreach(soldierDto => {
         TroopDAO.addFromSoldierDto(soldierDto,factionDo)
       })
@@ -54,6 +54,7 @@ import play.api.{Configuration, Logger}
     AbilityDAO.deleteAll()
     TroopDAO.deleteAll()
     WeaponDAO.deleteAll()
+    WeaponTypeDAO.deleteAll()
     FactionDAO.deleteAll()
   }
 }

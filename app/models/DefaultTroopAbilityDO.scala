@@ -4,7 +4,7 @@ import javax.persistence._
 import javax.validation.constraints.NotNull
 
 import com.avaje.ebean.Model
-import deadzone.models.Models.AbilityDto
+import deadzone.models.CSVModels.AbilityDto
 import play.api.Logger
 
 import scala.collection.JavaConversions._

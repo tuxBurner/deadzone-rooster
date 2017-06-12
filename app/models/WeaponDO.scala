@@ -5,7 +5,7 @@ import javax.persistence._
 import javax.validation.constraints.NotNull
 
 import com.avaje.ebean.Model
-import deadzone.models.Models.WeaponBaseDto
+import deadzone.models.CSVModels.CSVWeaponBaseDto
 import play.api.Logger
 
 import scala.collection.JavaConversions._
@@ -22,7 +22,7 @@ object WeaponDAO {
     FINDER.where().ieq("name",name).and().eq("faction",factionDO).findList()
   }
 
-  def addWeaponToFaction(weaponDto: WeaponBaseDto, factionDo: FactionDO): WeaponDO = {
+  def addWeaponToFaction(weaponDto: CSVWeaponBaseDto, factionDo: FactionDO): WeaponDO = {
 
     Logger.info("Creating weapon: " + weaponDto.name + " for faction: " + factionDo.name)
 
@@ -32,7 +32,6 @@ object WeaponDAO {
     newWeaponDo.armorPircing = weaponDto.armorPircing
     newWeaponDo.faction = factionDo
     newWeaponDo.free = weaponDto.free
-    newWeaponDo.weaponType = WeaponTypeDAO.findOrCreateTypeByName(weaponDto.name)
     newWeaponDo.hartPoints = weaponDto.hardPoint
     newWeaponDo.shootRange = weaponDto.range
     newWeaponDo.victoryPoints = weaponDto.victoryPoints
@@ -41,6 +40,12 @@ object WeaponDAO {
     // add abilities to weapon
     weaponDto.abilities.foreach(ability => {
       DefaultWeaponAbilityDAO.addAbilityForWeapon(newWeaponDo, ability)
+    })
+
+    // add type to weapon
+    weaponDto.weaponTypes.foreach(weaponType => {
+      newWeaponDo.weaponTypes.add(WeaponTypeDAO.findOrCreateTypeByName(weaponType))
+      newWeaponDo.save()
     })
 
     newWeaponDo
@@ -67,9 +72,9 @@ class WeaponDO extends Model {
   @ManyToOne
   var faction: FactionDO = null
 
-  @ManyToOne
+  @ManyToMany
   @NotNull
-  var weaponType:WeaponTypeDO = null
+  var weaponTypes:java.util.List[WeaponTypeDO] = null
 
 
   @NotNull var victoryPoints: Int = 0

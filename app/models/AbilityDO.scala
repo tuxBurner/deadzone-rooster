@@ -4,7 +4,7 @@ import javax.persistence.{Column, Entity, Id, Table}
 import javax.validation.constraints.NotNull
 
 import com.avaje.ebean.Model
-import deadzone.models.Models
+import deadzone.models.CSVModels
 import org.apache.commons.lang3.StringUtils
 import play.api.Logger
 
@@ -24,7 +24,7 @@ object AbilityDAO {
     FINDER.all().toList.foreach(_.delete())
   }
 
-  def addByAbilityDtos(abilityDto: Models.AbilityDto): AbilityDO = {
+  def addByAbilityDtos(abilityDto: CSVModels.AbilityDto): AbilityDO = {
     findOrAddByName(abilityDto.title, abilityDto.factor != 0)
   }
 
