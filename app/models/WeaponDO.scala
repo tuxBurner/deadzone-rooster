@@ -22,6 +22,10 @@ object WeaponDAO {
     FINDER.where().ieq("name", name).and().eq("faction", factionDO).findList()
   }
 
+  def findByFactionAndTypes(factionName: String, weaponTypes: java.util.List[String]): util.List[WeaponDO] = {
+    FINDER.where().ieq("faction.name",factionName).and().in("weaponTypes.name",weaponTypes).findList
+  }
+
   def addWeaponToFaction(weaponDto: CSVWeaponBaseDto, factionDo: FactionDO): WeaponDO = {
 
     Logger.info("Creating weapon: " + weaponDto.name + " for faction: " + factionDo.name)

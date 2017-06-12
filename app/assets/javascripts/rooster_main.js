@@ -28,7 +28,7 @@ var roosterGuiHandler = {
         $('#rooster_addTroop_select').html('');
 
         $.each(data, function(idx, troop) {
-          $('#rooster_addTroop_select').append('<option value="' + troop.name + '">'+troop.modelType+' | Name: ' + troop.name +  ' | Points: ' + troop.points + '</option>');
+          $('#rooster_addTroop_select').append('<option value="' + troop.name + '">' + troop.modelType + ' | Name: ' + troop.name + ' | Points: ' + troop.points + '</option>');
         });
       }
     });
@@ -74,6 +74,19 @@ var roosterGuiHandler = {
     });
   },
 
+
+  /**
+   * Gets needed weapon/item informations from the backend and displays the edit popup
+   * @param uuid
+   */
+  displayEditPopup: function(uuid) {
+    jsRoutes.controllers.RoosterController.getWeaponsForTroop(uuid).ajax({
+      success: function(data) {
+        console.error(data);
+      }
+    });
+  },
+
   /**
    * Populates the army table with the current data
    * @param armyData
@@ -97,18 +110,18 @@ var roosterGuiHandler = {
 
       var weaponsContent = '';
       $.each(troop.weapons, function(idx, weapon) {
-        weaponsContent += weapon.name+' <span class="badge">R';
+        weaponsContent += weapon.name + ' <span class="badge">R';
         if(weapon.shootRange === 0) {
           weaponsContent += 'F';
         } else {
           weaponsContent += weapon.shootRange;
         }
-        weaponsContent+='</span>';
+        weaponsContent += '</span>';
         if(weapon.armorPircing !== 0) {
-          weaponsContent+=',AP'+weapon.armorPircing;
+          weaponsContent += ',AP' + weapon.armorPircing;
         }
-        $.each(weapon.abilities,function(idx,ability){
-          weaponsContent += ','+ability.name;
+        $.each(weapon.abilities, function(idx, ability) {
+          weaponsContent += ',' + ability.name;
           if(ability.defaultVal !== 0) {
             weaponsContent += ' (' + ability.defaultVal + ')';
           }
@@ -117,7 +130,7 @@ var roosterGuiHandler = {
       });
 
 
-      tableContent += '<tr data-uuid="'+troop.uuid+'">';
+      tableContent += '<tr data-uuid="' + troop.uuid + '">';
 
       tableContent += '<td>' + troop.name + '</td>';
       tableContent += '<td>' + troop.modelType + '</td>';
@@ -157,9 +170,14 @@ $(function() {
     roosterGuiHandler.addSelectedTroopToArmy();
   });
 
-  $(document).on('click','.rooster_del_btn',function() {
+  $(document).on('click', '.rooster_del_btn', function() {
     var uuid = $(this).closest('tr').attr('data-uuid');
     roosterGuiHandler.removeTroopFromArmy(uuid);
+  });
+
+  $(document).on('click', '.rooster_edit_btn', function() {
+    var uuid = $(this).closest('tr').attr('data-uuid');
+    roosterGuiHandler.displayEditPopup(uuid);
   });
 
 });                                                              

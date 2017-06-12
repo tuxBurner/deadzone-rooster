@@ -93,6 +93,7 @@ create table weapon_def_weapon_ability (
 create table weapon_type (
   id                            bigint auto_increment not null,
   name                          varchar(255) not null,
+  constraint uq_weapon_type_name unique (name),
   constraint pk_weapon_type primary key (id)
 );
 

@@ -2,7 +2,7 @@ package services.logic
 
 import java.util.UUID
 
-import models.{TroopDAO, TroopDO, WeaponDO}
+import models.{TroopDAO, TroopDO, WeaponDAO, WeaponDO}
 
 import scala.collection.JavaConversions._
 
@@ -22,7 +22,7 @@ object ArmyLogic {
     army.copy(troops = newTroops, points = armyPoints)
   }
 
-  def removeTroopFromArmy(uuid:String, army:ArmyDto): ArmyDto = {
+  def removeTroopFromArmy(uuid: String, army: ArmyDto): ArmyDto = {
     val newTroops = army.troops.filter(_.uuid != uuid)
     val armyPoints = newTroops.map(_.points).sum
     army.copy(troops = newTroops, points = armyPoints)
@@ -36,9 +36,12 @@ object ArmyLogic {
     val points = troopDo.points + troopDo.defaultEquipment.toList.map(_.points).sum
     val victoryPoints = troopDo.victoryPoints + troopDo.defaultEquipment.toList.map(_.victoryPoints).sum
 
+    val weaponTypes = troopDo.allowedWeaponTypes.map(_.name).toList
+
     val uuid = UUID.randomUUID().toString
 
     ArmyTroopDto(uuid,
+      troopDo.faction.name,
       troopDo.name,
       troopDo.modelType,
       points,
@@ -51,11 +54,14 @@ object ArmyLogic {
       troopDo.fight,
       troopDo.survive,
       troopAbilities,
-      weapons)
+      weapons,
+      weaponTypes)
   }
 
-  def getWeaponsForTroop(uuid: String, army:ArmyDto) : Unit = {
-    val getTroop = army.troops.find(_.uuid == uuid).get
+  def getWeaponsForTroop(uuid: String, army: ArmyDto): List[ArmyWeaponDto] = {
+    val troopDto = army.troops.find(_.uuid == uuid).get
+    val weapons = WeaponDAO.findByFactionAndTypes(troopDto.faction, troopDto.allowedWeaponTypes)
+    weapons.toList.map(weaponDoToWeaponDto(_))
   }
 
   def weaponDoToWeaponDto(weaponDo: WeaponDO): ArmyWeaponDto = {
@@ -74,6 +80,7 @@ case class ArmyDto(name: String, points: Int = 0, troops: List[ArmyTroopDto] = L
 case class ArmyAbilityDto(name: String, defaultVal: Int)
 
 case class ArmyTroopDto(uuid: String,
+                        faction: String,
                         name: String,
                         modelType: String,
                         points: Int,
@@ -86,7 +93,8 @@ case class ArmyTroopDto(uuid: String,
                         fight: Int,
                         survive: Int,
                         abilities: List[ArmyAbilityDto],
-                        weapons: List[ArmyWeaponDto])
+                        weapons: List[ArmyWeaponDto],
+                        allowedWeaponTypes: List[String])
 
 case class ArmyWeaponDto(name: String,
                          points: Int,

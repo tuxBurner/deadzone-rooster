@@ -1,6 +1,6 @@
 package models
 
-import javax.persistence.{Entity, Id, Table}
+import javax.persistence.{Column, Entity, Id, Table}
 import javax.validation.constraints.NotNull
 
 import com.avaje.ebean.Model
@@ -43,5 +43,6 @@ class WeaponTypeDO extends Model {
   val id:Long  = 0L
 
   @NotNull
+  @Column(unique = true)
   var name:String = ""
 }

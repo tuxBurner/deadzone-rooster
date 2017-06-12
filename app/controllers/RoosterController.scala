@@ -62,6 +62,12 @@ import scala.concurrent.duration._
 
   }
 
+  @JSRoute def getWeaponsForTroop(uuid: String) = Action { request =>
+    val armyFromCache = getArmyFromCache(request)
+    val weapons = ArmyLogic.getWeaponsForTroop(uuid,armyFromCache)
+    withCacheId(Ok(Json.toJson(weapons)).as(JSON), request)
+  }
+
   @JSRoute def getArmy() = Action { request =>
     val army = getArmyFromCache(request)
     writeArmyToCache(request, army)
