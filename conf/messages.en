@@ -13,4 +13,7 @@ troop.tbl.weapons=Weapons
 
 troop.addBtn=Add Troop
 
+faction.select=Faction:
+troop.select=Troop:
+
 army.points=Total Points
