@@ -103,7 +103,7 @@ object WeaponImporter {
   }
 
 
-  private def getNumberWithDefault(data: Option[String], default: Int): Int = {
+  def getNumberWithDefault(data: Option[String], default: Int): Int = {
     data match {
       case Some(apsString) => {
         if (apsString == "") {

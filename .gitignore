@@ -7,4 +7,5 @@ target
 /.settings
 /RUNNING_PID
 
+.~lock.*
 dev_deadzone_dockercompose/test/

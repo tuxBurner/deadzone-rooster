@@ -49,6 +49,7 @@ object TroopDAO {
     armyTroopDO.size = soldierDto.size
     armyTroopDO.armour = soldierDto.armour
     armyTroopDO.victoryPoints = soldierDto.victoryPoints
+    armyTroopDO.hardPoints = soldierDto.hardPoints
 
     // find the weapons
     soldierDto.defaultWeaponNames.foreach(weaponName => {
@@ -97,6 +98,8 @@ object TroopDAO {
   @NotNull var armour: Int = 0
 
   @NotNull var victoryPoints: Int = 0
+
+  @NotNull var hardPoints: Int = 0
 
   @ManyToOne var faction: FactionDO = null
 
