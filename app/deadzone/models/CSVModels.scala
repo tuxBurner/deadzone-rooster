@@ -12,7 +12,7 @@ object CSVModels {
 
   case class CSVWeaponBaseDto(faction: String, name: String, points: Int, victoryPoints: Int, range: Int, armorPircing: Int, weaponTypes:Array[String], hardPoint: Int = 0, free: Boolean = false, abilities: List[AbilityDto] = List())
 
-  case class CSVSoldierDto(faction: String, name: String, points: Int, soldierType: ModelType.Value, speed: (Int, Int), shoot: Int, fight: Int, survive: Int, size: Int, armour: Int, victoryPoints: Int, abilities: List[AbilityDto], defaultWeaponNames: List[String], hardPoints:Int)
+  case class CSVSoldierDto(faction: String, name: String, points: Int, soldierType: ModelType.Value, speed: (Int, Int), shoot: Int, fight: Int, survive: Int, size: Int, armour: Int, victoryPoints: Int, abilities: List[AbilityDto], defaultWeaponNames: List[String], weaponTypes: Array[String],hardPoints:Int)
 
 
 }

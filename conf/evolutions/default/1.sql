@@ -84,6 +84,12 @@ create table weapon_weapon_type (
   constraint pk_weapon_weapon_type primary key (weapon_id,weapon_type_id)
 );
 
+create table weapon_def_weapon_ability (
+  weapon_id                     bigint not null,
+  def_weapon_ability_id         bigint not null,
+  constraint pk_weapon_def_weapon_ability primary key (weapon_id,def_weapon_ability_id)
+);
+
 create table weapon_type (
   id                            bigint auto_increment not null,
   name                          varchar(255) not null,
@@ -126,6 +132,12 @@ create index ix_weapon_weapon_type_weapon on weapon_weapon_type (weapon_id);
 alter table weapon_weapon_type add constraint fk_weapon_weapon_type_weapon_type foreign key (weapon_type_id) references weapon_type (id) on delete restrict on update restrict;
 create index ix_weapon_weapon_type_weapon_type on weapon_weapon_type (weapon_type_id);
 
+alter table weapon_def_weapon_ability add constraint fk_weapon_def_weapon_ability_weapon foreign key (weapon_id) references weapon (id) on delete restrict on update restrict;
+create index ix_weapon_def_weapon_ability_weapon on weapon_def_weapon_ability (weapon_id);
+
+alter table weapon_def_weapon_ability add constraint fk_weapon_def_weapon_ability_def_weapon_ability foreign key (def_weapon_ability_id) references def_weapon_ability (id) on delete restrict on update restrict;
+create index ix_weapon_def_weapon_ability_def_weapon_ability on weapon_def_weapon_ability (def_weapon_ability_id);
+
 
 # --- !Downs
 
@@ -165,6 +177,12 @@ drop index ix_weapon_weapon_type_weapon on weapon_weapon_type;
 alter table weapon_weapon_type drop foreign key fk_weapon_weapon_type_weapon_type;
 drop index ix_weapon_weapon_type_weapon_type on weapon_weapon_type;
 
+alter table weapon_def_weapon_ability drop foreign key fk_weapon_def_weapon_ability_weapon;
+drop index ix_weapon_def_weapon_ability_weapon on weapon_def_weapon_ability;
+
+alter table weapon_def_weapon_ability drop foreign key fk_weapon_def_weapon_ability_def_weapon_ability;
+drop index ix_weapon_def_weapon_ability_def_weapon_ability on weapon_def_weapon_ability;
+
 drop table if exists ability;
 
 drop table if exists def_troop_ability;
@@ -182,6 +200,8 @@ drop table if exists troop_weapon_type;
 drop table if exists weapon;
 
 drop table if exists weapon_weapon_type;
+
+drop table if exists weapon_def_weapon_ability;
 
 drop table if exists weapon_type;
 

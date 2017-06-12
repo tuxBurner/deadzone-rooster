@@ -74,21 +74,21 @@ object CSVFactionsImporter {
 
     val name = lineData.get(NAME_HEADER).get
     if (name.isEmpty == true) {
-      Logger.error("No name given for soldier for faction: " + faction + " in line: " + lineData)
+      Logger.error("CSV Troop: No name given for soldier for faction: " + faction + " in line: " + lineData)
       return Option.empty
     }
 
 
     val pointsData = lineData.get(POINTS_HEADER).get
     if (pointsData.isEmpty == true) {
-      Logger.error("No point given for soldier: " + name + " for faction: " + faction + " in line: " + lineData)
+      Logger.error("CSV Troop: No point given for soldier: " + name + " for faction: " + faction + " in line: " + lineData)
       return Option.empty
     }
     var points = pointsData.toInt
 
     val typeData = lineData.get(TYPE_HEADER).get
     if (typeData.isEmpty == true) {
-      Logger.error("No type given for soldier: " + name + " for faction: " + faction + " in line: " + lineData)
+      Logger.error("CSV Troop: No type given for soldier: " + name + " for faction: " + faction + " in line: " + lineData)
       return Option.empty
     }
 
@@ -149,8 +149,10 @@ object CSVFactionsImporter {
       })
     }
 
+    val weaponTypes = lineData.get(WEAPON_UPGRADES_HEADER).get.trim.split(',').map(_.trim)
 
-    Option.apply(CSVSoldierDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue, sizeValue, armour, victoryPoints, abilities, defaultWeaponNames.toList,hardPoints))
+
+    Option.apply(CSVSoldierDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue, sizeValue, armour, victoryPoints, abilities, defaultWeaponNames.toList,weaponTypes,hardPoints))
   }
 
   private def parsePlusValue(data: String): Int = {

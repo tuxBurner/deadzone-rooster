@@ -40,36 +40,41 @@ object TroopDAO {
 
     Logger.info("Creating troop: " + soldierDto.name + " for faction: " + factionDo.name)
 
-    val armyTroopDO = new TroopDO()
-    armyTroopDO.faction = factionDo
-    armyTroopDO.name = soldierDto.name
-    armyTroopDO.points = soldierDto.points
-    armyTroopDO.modelType = soldierDto.soldierType.toString
-    armyTroopDO.speed = soldierDto.speed._1
-    armyTroopDO.sprint = soldierDto.speed._2
-    armyTroopDO.shoot = soldierDto.shoot
-    armyTroopDO.fight = soldierDto.fight
-    armyTroopDO.survive = soldierDto.survive
-    armyTroopDO.size = soldierDto.size
-    armyTroopDO.armour = soldierDto.armour
-    armyTroopDO.victoryPoints = soldierDto.victoryPoints
-    armyTroopDO.hardPoints = soldierDto.hardPoints
+    val troopDO = new TroopDO()
+    troopDO.faction = factionDo
+    troopDO.name = soldierDto.name
+    troopDO.points = soldierDto.points
+    troopDO.modelType = soldierDto.soldierType.toString
+    troopDO.speed = soldierDto.speed._1
+    troopDO.sprint = soldierDto.speed._2
+    troopDO.shoot = soldierDto.shoot
+    troopDO.fight = soldierDto.fight
+    troopDO.survive = soldierDto.survive
+    troopDO.size = soldierDto.size
+    troopDO.armour = soldierDto.armour
+    troopDO.victoryPoints = soldierDto.victoryPoints
+    troopDO.hardPoints = soldierDto.hardPoints
 
     // find the weapons
     soldierDto.defaultWeaponNames.foreach(weaponName => {
       val defaultWeapon = WeaponDAO.findByNameAndFaction(weaponName, factionDo)
       if (defaultWeapon == null) {
-        Logger.error("Could not add default weapon " + weaponName + " to troop: " + armyTroopDO.name + " faction: " + factionDo.name + " was not found in the db")
+        Logger.error("Could not add default weapon " + weaponName + " to troop: " + troopDO.name + " faction: " + factionDo.name + " was not found in the db")
       } else {
-        armyTroopDO.defaultEquipment.addAll(defaultWeapon)
+        troopDO.defaultEquipment.addAll(defaultWeapon)
       }
     })
 
-    armyTroopDO.save()
+    soldierDto.weaponTypes.foreach(weaponTypeName => {
+      val weaponTypeDo = WeaponTypeDAO.findOrCreateTypeByName(weaponTypeName)
+      troopDO.allowedWeaponTypes.add(weaponTypeDo);
+    })
 
-    soldierDto.abilities.foreach(DefaultTroopAbilityDAO.addAbilityForTroop(armyTroopDO, _))
+    troopDO.save()
 
-    armyTroopDO
+    soldierDto.abilities.foreach(DefaultTroopAbilityDAO.addAbilityForTroop(troopDO, _))
+
+    troopDO
   }
 
 }

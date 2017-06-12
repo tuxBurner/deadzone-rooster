@@ -17,9 +17,9 @@ object WeaponDAO {
 
 
   private val FINDER = new Model.Finder[Long, WeaponDO](classOf[WeaponDO])
-  
+
   def findByNameAndFaction(name: String, factionDO: FactionDO): util.List[WeaponDO] = {
-    FINDER.where().ieq("name",name).and().eq("faction",factionDO).findList()
+    FINDER.where().ieq("name", name).and().eq("faction", factionDO).findList()
   }
 
   def addWeaponToFaction(weaponDto: CSVWeaponBaseDto, factionDo: FactionDO): WeaponDO = {
@@ -74,7 +74,7 @@ class WeaponDO extends Model {
 
   @ManyToMany
   @NotNull
-  var weaponTypes:java.util.List[WeaponTypeDO] = null
+  var weaponTypes: java.util.List[WeaponTypeDO] = null
 
 
   @NotNull var victoryPoints: Int = 0
@@ -94,6 +94,6 @@ class WeaponDO extends Model {
   @NotNull
   var free: Boolean = false
 
-  @OneToMany
+  @ManyToMany
   var defaultWeaponAbilities: java.util.List[DefaultWeaponAbilityDO] = null
 }

@@ -61,10 +61,6 @@ object CSVWeaponImporter {
     }
     val weaponTypes = typeStr.split(',').map(_.trim)
 
-    Logger.error(weaponTypes.toString)
-
-
-
     val factionStr = lineData.get(FACTION_HEADER).get.trim
     if (factionStr.isEmpty) {
       Logger.error("CSV Weapon: No faction was found at line: " + lineData + " skipping it")
