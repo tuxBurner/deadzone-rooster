@@ -1,73 +1,16 @@
-Name,Points,Type,Speed,Shoot,Fight,Survive,Size,Armour,VPs,Weapons and Equipment,Equipment,Abilities,Weapon Upgrades,Skill Tables
-Enforcer Captain,34,L,1-2,4+,5+,4+,1,1,4,"Pistol,Energy Gauntlet, Jump Pack",,Tactician(2),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Enforcer Captain,36,L,1-2,4+,5+,4+,1,1,4,"Laser Rifle,Energy Gauntlet, Jump Pack",,Tactician(2),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Enforcer Captain,35,L,1-2,4+,5+,4+,1,1,4,"Combat Shotgun,Energy Gauntlet, Jump Pack",,Tactician(2),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Enforcer Captain,36,L,1-2,4+,5+,4+,1,1,4,"Pistol, Wristblade, Jump Pack",,Tactician(2),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Enforcer Captain,38,L,1-2,4+,5+,4+,1,1,4,"Laser Rifle, Wristblade, Jump Pack",,Tactician(2),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Enforcer Captain,37,L,1-2,4+,5+,4+,1,1,4,"Combat Shotgun, Wristblade, Jump Pack",,Tactician(2),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Enforcer Sergeant,28,L,1-2,4+,5+,4+,1,1,3,"Pistol, Energy Gauntlet, Jump Pack",,Tactician(1),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Enforcer Sergeant,30,L,1-2,4+,5+,4+,1,1,3,"Laser Rifle, Energy Gauntlet, Jump Pack",,Tactician(1),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Enforcer Sergeant,29,L,1-2,4+,5+,4+,1,1,3,"Combat Shotgun, Energy Gauntlet, Jump Pack",,Tactician(1),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Enforcer Sergeant,30,L,1-2,4+,5+,4+,1,1,3,"Pistol, Wristblade, Jump Pack",,Tactician(1),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Enforcer Sergeant,32,L,1-2,4+,5+,4+,1,1,3,"Laser Rifle, Wristblade, Jump Pack",,Tactician(1),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Enforcer Sergeant,31,L,1-2,4+,5+,4+,1,1,3,"Combat Shotgun, Wristblade, Jump Pack",,Tactician(1),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
-Peacekeeper Captain,48,L,1-2,4+,5+,3+,2,2,5,"Laser Rifle, Wristblade, Jump Pack",,Tactician(2),"Leader, Light Melee, Heavy Melee","Ranged, Melee, Command"
-Peacekeeper Captain,46,L,1-2,4+,5+,3+,2,2,5,"Laser Rifle, Energy Gauntlet, Jump Pack",,Tactician(2),"Leader, Light Melee, Heavy Melee","Ranged, Melee, Command"
+Name,Points,Type,Speed,Shoot,Fight,Survive,Size,Armour,VPs,Weapons,Equipment,Abilities,Weapon Upgrades,Skill Tables
+Peacekeeper Captain,48,L,1-2,4+,5+,3+,2,2,5,"DB Laser Rifle,Wristblade",Jump Pack,Tactician(2),"Leader, Light Melee, Heavy Melee","Ranged, Melee, Command"
+Enforcer Sergeant,28,L,1-2,4+,5+,4+,1,1,3,"Pistol, Energy Gauntlet",Jump Pack,Tactician(1),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
 Pathfinder Sergeant,22,L,1-2,4+,5+,4+,1,0,3,Pistol,,Tactician(1),"Leader, Light Melee, Heavy Melee","Ranged, Melee, Command"
-Pathfinder Sergeant,27,L,1-2,4+,5+,4+,1,0,3,"Pistol, Wristblade",,Tactician(1),"Leader, Light Melee, Heavy Melee","Ranged, Melee, Command"
-Pathfinder Sergeant,25,L,1-2,4+,5+,4+,1,0,3,"Pistol, Energy Gauntlet",,Tactician(1),"Leader, Light Melee, Heavy Melee","Ranged, Melee, Command"
-Enforcer,14,T,1-2,4+,6+,4+,1,1,2,"Pistol, Jump Pack",,,Small Arms,Ranged
-Enforcer,16,T,1-2,4+,6+,4+,1,1,2,"Laser Rifle, Jump Pack",,,Small Arms,Ranged
-Enforcer,15,T,1-2,4+,6+,4+,1,1,2,"Combat Shotgun, Jump Pack",,,Small Arms,Ranged
-Assault Enforcer,14,T,1-2,5+,5+,4+,1,1,1,"Pistol, Wristblade, Jump Pack",,,"Small Arms, Light Melee, ",Melee
-Assault Enforcer,16,T,1-2,5+,5+,4+,1,1,1,"Laser Rifle, Wristblade, Jump Pack",,,"Small Arms, Light Melee, ",Melee
-Assault Enforcer,15,T,1-2,5+,5+,4+,1,1,1,"Combat Shotgun, Wristblade, Jump Pack",,,"Small Arms, Light Melee, ",Melee
-Assault Enforcer,17,T,1-2,5+,5+,4+,1,1,1,"Pistol, Energy Gauntlet, Jump Pack",,,"Small Arms, Light Melee, ",Melee
-Assault Enforcer,19,T,1-2,5+,5+,4+,1,1,1,"Laser Rifle, Energy Gauntlet, Jump Pack",,,"Small Arms, Light Melee, ",Melee
-Assault Enforcer,18,T,1-2,5+,5+,4+,1,1,1,"Combat Shotgun, Energy Gauntlet, Jump Pack",,,"Small Arms, Light Melee, ",Melee
-Pathfinder,15,T,1-2,4+,6+,4+,1,0,2,"Tag Rifle, Pistol",,Scout,"Small Arms, Recon",Ranged
-Pathfinder,9,T,1-2,4+,6+,4+,1,0,2,Laser Rifle,,Scout,"Small Arms, Recon",Ranged
-Pathfinder,8,T,1-2,4+,6+,4+,1,0,2,Combat Shotgun,,Scout,"Small Arms, Recon",Ranged
-Enforcer Specialist,20,S,1-2,4+,6+,4+,1,1,2,"Burst Laser, Jump Pack",,,"Small Arms, Light (Automatic, Explosive, Sniper, Assault), ",Ranged
-Enforcer Specialist,24,S,1-2,4+,6+,4+,1,1,3,"Missile Launcher, Jump Pack",,,"Small Arms, Light (Automatic, Explosive, Sniper, Assault), ",Ranged
-Enforcer Specialist,28,S,1-2,4+,6+,4+,1,1,3,"Sniper Rifle, Jump Pack",,,"Small Arms, Light (Automatic, Explosive, Sniper, Assault), ",Ranged
-Enforcer Specialist,22,S,1-2,4+,6+,4+,1,1,3,"Fusion Gun, Jump Pack",,,"Small Arms, Light (Automatic, Explosive, Sniper, Assault), ",Ranged
-Enforcer Specialist,20,S,1-2,4+,6+,4+,1,1,2,"Incinerator, Jump Pack",,,"Small Arms, Light (Automatic, Explosive, Sniper, Assault), ",Ranged
-Enforcer Specialist,23,S,1-2,4+,6+,4+,1,1,3,"Thermal Rifle, Jump Pack",,,"Small Arms, Light (Automatic, Explosive, Sniper, Assault), ",Ranged
-Pathfinder Specialist,19,S,1-2,4+,6+,4+,1,0,3,"Sniper Rifle, Pistol",,Scout,"Small Arms, Recon, Light (Sniper)","Ranged, Specialist"
-Peacekeeper,30,S,1-2,4+,5+,4+,2,2,3,"Laser Rile, Energy Gauntlet, Jump Pack",,,"Light Melee, Heavy (All)","Ranged, Melee"
-Peacekeeper,31,S,1-2,4+,5+,4+,2,2,3,"Burst Laser, Energy Gauntlet, Jump Pack",,,"Light Melee, Heavy (All)","Ranged, Melee"
-Peacekeeper,31,S,1-2,4+,5+,4+,2,2,3,"Incinerator, Energy Gauntlet, Jump Pack",,,"Light Melee, Heavy (All)","Ranged, Melee"
-Peacekeeper,32,S,1-2,4+,5+,4+,2,2,3,"Laser Rile, Wristblade, Jump Pack",,,"Light Melee, Heavy (All)","Ranged, Melee"
-Peacekeeper,33,S,1-2,4+,5+,4+,2,2,3,"Burst Laser, Wristblade, Jump Pack",,,"Light Melee, Heavy (All)","Ranged, Melee"
-Peacekeeper,33,S,1-2,4+,5+,4+,2,2,3,"Incinerator, Wristblade, Jump Pack",,,"Light Melee, Heavy (All)","Ranged, Melee"
-Enforcer Medic,20,S,1-2,5+,6+,4+,1,1,2,"Pistol, Jump Pack",,Medic,"Small Arms, ","Ranged, Specialist"
-Enforcer Medic,22,S,1-2,5+,6+,4+,1,1,2,"Laser Rifle, Jump Pack",,Medic,"Small Arms, ","Ranged, Specialist"
-Enforcer Medic,21,S,1-2,5+,6+,4+,1,1,2,"Combat Shotgun, Jump Pack",,Medic,"Small Arms, ","Ranged, Specialist"
-Enforcer Engineer,12,S,1-2,5+,6+,4+,1,1,2,"Pistol, Jump Pack",,Engineer,"Small Arms, ","Ranged, Specialist"
-Enforcer Engineer,14,S,1-2,5+,6+,4+,1,1,2,"Laser Rifle, Jump Pack",,Engineer,"Small Arms, ","Ranged, Specialist"
-Enforcer Engineer,13,S,1-2,5+,6+,4+,1,1,2,"Combat Shotgun, Jump Pack",,Engineer,"Small Arms, ","Ranged, Specialist"
-DOG Drone,12,S,2-4,6+,-,6+,1,0,1,Burst Laser,,"Construct, Beast",-,None
-Enforcer Jet Bike,24,V,1-5,4+,6+,4+,2,1,2,Laser Rile,,Vehicle,-,Ranged
-Enforcer Strider,40,V,1-2,4+,5+,4+,4,3,4,Equalizer,,Vehicle,Hardpoints: 2 - Walker (All),Ranged
-Enforcer Strider,41,V,1-2,4+,5+,4+,4,3,4,"Chainsaw, Assault Flamer",,Vehicle,Hardpoints: 2 - Walker (All),Ranged
-Enforcer Strider,38,V,1-2,4+,5+,4+,4,3,4,Heavy Burst Laser,,Vehicle,Hardpoints: 2 - Walker (All),Ranged
-GR95 Model Strider,55,V,1-2,4+,5+,4+,4,3,5,"Strider Aggressor Shield, Strider Grav-Ram Spear",,Vehicle,Hardpoints: 2 - Walker (All),Ranged
-Bjarn Starnafall,30,C,1-2,4+,6+,3+,1,1,4,"Mining Laser, Orbital Drop Armour",,Tough,"Any, Except Asterians",
-Blaine,30,C,1-2,6+,3+,4+,1,1,3,"Raskan Punch-Blade, Pistol",,"Tough, Scout, Frenzy (1)",Any,
-Blaine on Jetbike,34,C,1-5,5+,3+,4+,2,1,4,"Wicked Blades, Pistol",,"Tough, Frenzy (1), Vehicle",Any,
-"Boomer, Grenadier",18,C,1-2,4+,6+,6+,1,0,2,"Pistol, Frag Grenades, Smoke Grenades, Stun Grenades",,"Engineer, Volatile, Tough, Boom!(3)",Any,
-Chief Radgrad,40,C,1-2,5+,4+,4+,3,1,5,"Decapitator, Twin Blasters",,"Tough, Frenzy (1), Solid, Tactician(1)",Any,
-Chovar Psychic,20,C,1-2,5+,-,6+,3,0,2,"Mind Storm, Blank, Passion",,"Psychic, Energy Shield (2)",Any,
-Freya,16,C,1-2,5+,5+,4+,1,0,1,Hailstorm Pistol,,Engineer,Any,
-Hund Rebel Bounty Hunter,27,C,1-2,3+,5+,3+,1,1,3,"Twin Pistols, Sniper Rifle",,Fire Control,"Any, Except Plague",
-N7-117 Forward Observer,34,C,1-2,4+,6+,3+,1,1,5,"Laser Rifle, Grenade Launcher, Energy Gauntlet",,Tactician(1),Enforcers,
-Nastanza,25,C,1-2,3+,6+,5+,1,0,2,"Sniper Rifle, Energy Field",,,Any,
-Ogre Terminator,28,C,1-2,5+,6+,4+,3,1,3,"Mini-Gun,  Shank Bayonet",,Solid,"Any, Except Plague",
-Project Oberon,28,C,1-2,4+,4+,4+,1,0,3,"Needler, Toxic Shards, Energy Field",,"Scout, WoF(1)",Any ,
-Recon Drone,,,2-3,5+,6+,4+,1,0,0,"Electro Shock, Rangefinder",,"Scout, Beast, Construct",,
-Recon Unit N32-19,30,C,1-2,4+,6+,3+,1,0,2,"Tag Rifle, Holo-sight.",,"Tactician(1), Recon Drone",Enforcers,
-Sergeant Howlett,27,C,1-2,5+,4+,3+,1,1,3,"Claws, Pistol, Jump Pack",,"Tough, Frenzy (1), Rampage",Enforcers,
-Teraton Shock Trooper,20,C,1-2,5+,5+,4+,2,1,2,"ARC Launcher, Mace",,Teleport,"Any, Except Plague and Veer-Myn",
-The Helfather,22,C,1-2,5+,6+,5+,1,2,2,Xerxes Cannon,,,Any,
-The Survivor,22,C,1-2,5+,5+,3+,1,1,2,"Sawn-Off, Pistol",,"Tough, WoF(1), Frenzy (1)",Any,
+Enforcer Captain,34,L,1-2,4+,5+,4+,1,1,4,"Pistol, Energy Gauntlet",Jump Pack,Tactician(2),"Leader, Small Arms, Light Melee","Ranged, Melee, Command"
+Assault Enforcer,14,T,1-2,5+,5+,4+,1,1,1,"Pistol,Wristblade",Jump Pack,,"Small Arms, Light Melee",Melee
+Pathfinder,15,T,1-2,4+,6+,4+,1,0,2,Tag Rifle,,Scout,"Small Arms, Recon",Ranged
+Enforcer,16,T,1-2,4+,6+,4+,1,1,2,Laser Rifle,Jump Pack,,Small Arms,Ranged
+Enforcer Specialist,16,S,1-2,4+,6+,4+,1,1,2,Laser Rifle,Jump Pack,,"Small Arms, Light Automatic, Light Explosive, Light Sniper, Light Assault",Ranged
+Pathfinder Specialist,15,S,1-2,4+,6+,4+,1,0,2,Tag Rifle,,Scout,"Small Arms, Recon, Light Sniper","Ranged,Specialist"
+Peacekeeper,30,S,1-2,4+,5+,4+,2,2,3,"DB Laser Rifle,Energy Gauntlet",Jump Pack,,"Light Melee, Heavy ","Ranged, Melee"
+Enforcer Medic,20,S,1-2,5+,6+,4+,1,1,2,Pistol,Jump Pack,Medic,Small Arms,"Ranged,Specialist"
+Enforcer Engineer,14,S,1-2,5+,6+,4+,1,1,2,Laser Rifle,Jump Pack,Engineer,Small Arms,"Ranged,Specialist"
+D.O.G Drone,12,S,2-4,6+,-,6+,1,0,1,Burst Laser,,,,
+Enforcer Jet Bike,24,V,1-5,4+,6+,4+,2,1,2,DB Laser Rifle,,Vehicle,,Ranged
+Enforcer Strider,30,V,1-2,4+,5+,4+,4,3,3,,,Scout,Walker,Vehicle

@@ -1,0 +1,16 @@
+Name,Points,Type,Speed,Shoot,Fight,Survive,Size,Armour,VPs,Weapons,Equipment,Abilities,Weapon Upgrades,Skill Tables
+Steel Warrior Huscarl,32,L,1-2,3,4,4,1,1,3,"Hailstorm Pistol, Forge Hammer",,Tactician(1),"Leader, Small Arms, Light Melee","Ranged,Melee,Command"
+Chief Brokkr,26,L,1-2,5,3,4,1,0,2,Burst Pistol,,"Tactician(1), Frenzy(1),Tough","Leader, Small Arms, Light Melee","Ranged,Melee,Command"
+Forge Guard Huscarl,41,L,1-2,3,4,4,1,2,3,"Hailstorm Rifle, Forge Hammer",,"Tactician(2),Life Support","Leader, Heavy Automatic, Light Melee","Ranged,Melee,Command"
+Steel Warrior,21,T,1-2,4,5,4,1,1,2,Hailstorm Rifle,,,Small Arms,Ranged
+Brokkr,16,T,1-2,5,4,4,1,0,1,Burst Pistol,,Frenzy(1),"Small Arms, Light Melee",Melee
+Militia,14,T,1-2,5,5,4,1,0,1,Hailstorm Rifle,,,Small Arms,Ranged
+Steel Warrior Specialist (Stormrage Veteran),21,S,1-2,4,5,4,1,1,2,Hailstorm Rifle,,,"Small Arms, Light Automatic, Light Explosive, Light Assault, Heavy Automatic",Ranged
+Forge Guard,30,S,1-1,4,5,4,1,2,3,"Hailstorm Rifle, Forge Hammer",,Life Support,"Heavy Automatic, Heavy Assault, Light Explosive",Ranged
+Bomb Bot,8,S,1-2,,,5,1,0,0,,,"Vehicle, Remote, BOOM!(5)",,
+Brokkr Engineer,14,S,1-2,6,5,4,1,0,1,Burst Pistol,,Engineer,Small Arms,Ranged Specialist
+Brokkr Specialist,16,S,1-2,5,4,4,1,0,1,Burst Pistol,,Frenzy(1),"Small Arms, Light Assault, Light Melee",Ranged
+Inferno Drill,16,V,1-2,4,,,2,1,2,Mining Laser,,"Vehicle, Remote",,
+Brokkr Bike,23,V,1-4,5,5,4,2,1,2,Twin Hailstorm Rifles,,Vehicle,,"Ranged,Melee"
+Iron Ancestor,44,V,1-1,4,5,4,4,4,3,Walker,,"Vehicle, Fire Control",Walker,"Ranged,Melee"
+Thor Pattern Iron Ancestor,62,V,1-2,,5,4,4,4,5,Twin Forge Hammers,,"Vehicle, Frenzy(1)",,Melee
