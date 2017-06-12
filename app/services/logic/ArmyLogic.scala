@@ -1,6 +1,7 @@
 package services.logic
 
-import models.{TroopDAO, TroopDO}
+import models.{TroopDAO, TroopDO, WeaponDO}
+
 import scala.collection.JavaConversions._
 
 /**
@@ -8,23 +9,28 @@ import scala.collection.JavaConversions._
   */
 object ArmyLogic {
 
-  def addTroopToArmy(factionName: String, troopName: String, army:ArmyDto): ArmyDto = {
-    val troopDo = TroopDAO.findByFactionAndName(factionName,troopName)
+  def addTroopToArmy(factionName: String, troopName: String, army: ArmyDto): ArmyDto = {
+    val troopDo = TroopDAO.findByFactionAndName(factionName, troopName)
 
-     val newTroop = troopDoToArmyTroopDto(troopDo)
+    val newTroop = troopDoToArmyTroopDto(troopDo)
 
-    val newTroops:List[ArmyTroopDto] = newTroop :: army.troops
-    army.copy(troops = newTroops)
+    val newTroops: List[ArmyTroopDto] = newTroop :: army.troops
+    val armyPoints = newTroops.map(_.points).sum
+
+    army.copy(troops = newTroops, points = armyPoints)
   }
 
-  def troopDoToArmyTroopDto(troopDo:TroopDO): ArmyTroopDto = {
+  def troopDoToArmyTroopDto(troopDo: TroopDO): ArmyTroopDto = {
 
-    val troopAbilities = troopDo.defaultTroopAbilities.toList.map(abilityDo => ArmyAbilityDto(abilityDo.ability.name,abilityDo.defaultValue))
-    val weapons = troopDo.defaultEquipment.toList.map(_.name)
+    val troopAbilities = troopDo.defaultTroopAbilities.toList.map(abilityDo => ArmyAbilityDto(abilityDo.ability.name, abilityDo.defaultValue))
+    val weapons = troopDo.defaultEquipment.toList.map(weaponDoToWeaponDto(_))
+
+    val points = troopDo.points + troopDo.defaultEquipment.toList.map(_.points).sum
 
     ArmyTroopDto(
       troopDo.name,
-      troopDo.points,
+      troopDo.modelType,
+      points,
       troopDo.victoryPoints,
       troopDo.speed,
       troopDo.sprint,
@@ -37,21 +43,37 @@ object ArmyLogic {
       weapons)
   }
 
+  def weaponDoToWeaponDto(weaponDo: WeaponDO): ArmyWeaponDto = {
+    val abilities = weaponDo.defaultWeaponAbilities.toList.map(abilityDo => ArmyAbilityDto(abilityDo.ability.name, abilityDo.defaultValue))
+    ArmyWeaponDto(weaponDo.name,
+      weaponDo.points,
+      weaponDo.shootRange,
+      weaponDo.armorPircing,
+      abilities)
+  }
+
 }
 
-case class ArmyDto (name: String, faction: String, troops: List[ArmyTroopDto] = List())
+case class ArmyDto(name: String, faction: String, points: Int = 0, troops: List[ArmyTroopDto] = List())
 
 case class ArmyAbilityDto(name: String, defaultVal: Int)
 
 case class ArmyTroopDto(name: String,
+                        modelType: String,
                         points: Int,
                         vp: Int,
                         speed: Int,
                         sprint: Int,
                         armour: Int,
                         size: Int,
-                        shoot:Int,
-                        fight:Int,
+                        shoot: Int,
+                        fight: Int,
                         survive: Int,
                         abilities: List[ArmyAbilityDto],
-                        weapons: List[String])
+                        weapons: List[ArmyWeaponDto])
+
+case class ArmyWeaponDto(name: String,
+                         points: Int,
+                         shootRange: Int,
+                         armorPircing: Int,
+                         abilities: List[ArmyAbilityDto])

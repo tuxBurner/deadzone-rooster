@@ -1,10 +1,35 @@
-@()
+@()(implicit messages: Messages)
+
+
 @main("Rooster") {
 
   <select class="form-control" id="rooster_faction_select"></select>
 
   <select class="form-control" id="rooster_addTroop_select"></select>
-  <button class="btn btn-info" id="rooster_addTroop_btn">???ADD???</button>
+  <button class="btn btn-info" id="rooster_addTroop_btn">@Messages("troop.addBtn")</button>
 
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>@Messages("troop.tbl.name")</th>
+        <th>@Messages("troop.tbl.type")</th>
+        <th>@Messages("troop.tbl.points")</th>
+        <th>@Messages("troop.tbl.armour")</th>
+        <th>@Messages("troop.tbl.size")</th>
+        <th>@Messages("troop.tbl.speed")</th>
+        <th>@Messages("troop.tbl.shoot")</th>
+        <th>@Messages("troop.tbl.fight")</th>
+        <th>@Messages("troop.tbl.survive")</th>
+        <th>@Messages("troop.tbl.abilities")</th>
+        <th>@Messages("troop.tbl.weapons")</th>
+      </tr>
+    </thead>
+    <tbody id="rooster_troop_tbody">
+
+    </tbody>
+
+  </table>
 
 }

@@ -1,0 +1,11 @@
+troop.tbl.name=Name
+troop.tbl.type=Type
+troop.tbl.points=PTS
+troop.tbl.armour=ARM
+troop.tbl.size=SZ
+troop.tbl.speed=SPD
+troop.tbl.shoot=SH
+troop.tbl.fight=FT
+troop.tbl.survive=SV
+troop.tbl.abilities=Abilities
+troop.tbl.weapons=Weapons

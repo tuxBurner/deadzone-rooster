@@ -82,7 +82,7 @@ object FactionsImporter {
       Logger.error("No point given for soldier: " + name + " for faction: " + faction + " in line: " + lineData)
       return Option.empty
     }
-    val points = pointsData.toInt
+    var points = pointsData.toInt
 
     val typeData = lineData.get(TYPE_HEADER).get
     if (typeData.isEmpty == true) {
@@ -137,6 +137,7 @@ object FactionsImporter {
         val trimmedWeaponName = weaponInfo.trim
         factionWeapons.find(_.name.equals(trimmedWeaponName))
           .map(matchedWeapon => {
+            points -= matchedWeapon.points
             defaultWeaponNames += matchedWeapon.name
           })
           .getOrElse(

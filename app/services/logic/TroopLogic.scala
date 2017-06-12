@@ -2,12 +2,19 @@ package services.logic
 
 import models.TroopDAO
 
+import scala.collection.JavaConversions._
 
 object TroopLogic {
 
   def getSelectTroopsForFaction(factionName: String) : List[TroopSelectDto] = {
     TroopDAO.findAllForFactionByName(factionName).map(troopDo => {
-      TroopSelectDto(troopDo.name, troopDo.modelType, troopDo.points, troopDo.victoryPoints)
+      // calculate the points from the weapon to the troop
+      var points = troopDo.points
+      troopDo.defaultEquipment.toList.foreach(defWeapon => {
+        points+=defWeapon.points
+      })
+
+      TroopSelectDto(troopDo.name, troopDo.modelType, points, troopDo.victoryPoints)
     })
   }
 }

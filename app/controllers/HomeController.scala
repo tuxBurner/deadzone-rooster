@@ -3,18 +3,19 @@ package controllers
 import javax.inject._
 
 import com.github.tuxBurner.jsAnnotations.JsRoutesComponent
-import models.{FactionDAO, TroopDAO}
+import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc._
 import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
 
 import scala.collection.JavaConversions._
+
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
  */
 @Singleton
-class HomeController @Inject()(jsRoutesComponent:JsRoutesComponent) extends Controller {
+class HomeController @Inject()(jsRoutesComponent:JsRoutesComponent,val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
 
   def roosterMain = Action {

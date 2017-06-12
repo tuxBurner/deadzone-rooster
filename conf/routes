@@ -8,6 +8,7 @@ GET        /                                                   controllers.HomeC
 GET        /rooster/factions                                   controllers.RoosterController.getFactions()
 GET        /rooster/faction/:factionName/troopsForSelect       controllers.RoosterController.getSelectTroopsForFaction(factionName : String)
 POST       /rooster/army/addTroop                              controllers.RoosterController.addTroopToSelection()
+GET        /rooster/army                                       controllers.RoosterController.getArmy()
 
 
 # Map static resources from the /public folder to the /assets URL path
