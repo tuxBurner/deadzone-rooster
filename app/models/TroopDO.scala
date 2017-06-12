@@ -29,7 +29,7 @@ object TroopDAO {
   }
 
   def findAllForFactionByName(factionName: String): List[TroopDO] = {
-    FINDER.where().eq("faction.name",factionName).findList.toList
+    FINDER.where().eq("faction.name", factionName).findList.toList
   }
 
   def addFromSoldierDto(soldierDto: SoldierDto, factionDo: FactionDO): TroopDO = {
@@ -62,7 +62,6 @@ object TroopDAO {
 
     armyTroopDO.save()
 
-    
 
     soldierDto.abilities.foreach(DefaultTroopAbilityDAO.addAbilityForTroop(armyTroopDO, _))
 
@@ -76,6 +75,7 @@ object TroopDAO {
 
   @Id val id: Long = 0L
 
+  @Column(unique = true)
   @NotNull var name: String = ""
 
   @NotNull var points: Int = 0
@@ -107,5 +107,5 @@ object TroopDAO {
   var defaultTroopAbilities: java.util.List[DefaultTroopAbilityDO] = null
 
   @ManyToMany
-  var allowedWeaponTypes:  java.util.List[WeaponTypeDO] = null
+  var allowedWeaponTypes: java.util.List[WeaponTypeDO] = null
 }

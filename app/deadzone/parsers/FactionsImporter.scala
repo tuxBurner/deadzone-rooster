@@ -40,7 +40,7 @@ object FactionsImporter {
 
   private val ABILITIES_HEADER = "Abilities"
 
-  private val WEAPONS_HEADER = "Weapons and Equipment"
+  private val WEAPONS_HEADER = "Weapons"
 
   private lazy val soldiers = importSoldiersFromCsvs()
 
