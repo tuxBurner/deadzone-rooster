@@ -34,6 +34,7 @@ object ArmyLogic {
     val weapons = troopDo.defaultEquipment.toList.map(weaponDoToWeaponDto(_))
 
     val points = troopDo.points + troopDo.defaultEquipment.toList.map(_.points).sum
+    val victoryPoints = troopDo.victoryPoints + troopDo.defaultEquipment.toList.map(_.victoryPoints).sum
 
     val uuid = UUID.randomUUID().toString
 
@@ -41,7 +42,7 @@ object ArmyLogic {
       troopDo.name,
       troopDo.modelType,
       points,
-      troopDo.victoryPoints,
+      victoryPoints,
       troopDo.speed,
       troopDo.sprint,
       troopDo.armour,

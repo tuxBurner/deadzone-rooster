@@ -28,7 +28,7 @@ var roosterGuiHandler = {
         $('#rooster_addTroop_select').html('');
 
         $.each(data, function(idx, troop) {
-          $('#rooster_addTroop_select').append('<option value="' + troop.name + '">' + troop.name + ' (' + troop.modelType + ')' + ' Points: ' + troop.points + '</option>');
+          $('#rooster_addTroop_select').append('<option value="' + troop.name + '">'+troop.modelType+' | Name: ' + troop.name +  ' | Points: ' + troop.points + '</option>');
         });
       }
     });
@@ -133,6 +133,7 @@ var roosterGuiHandler = {
       tableContent += '<td>' + weaponsContent + '</td>';
 
       tableContent += '<td>';
+      tableContent += '<button class="btn btn-info btn-sm rooster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button> ';
       tableContent += '<button class="btn btn-danger btn-sm rooster_del_btn"><span class="glyphicon glyphicon-trash"></span></button>';
       tableContent += '</td>';
 

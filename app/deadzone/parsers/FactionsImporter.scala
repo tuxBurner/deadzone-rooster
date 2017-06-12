@@ -119,7 +119,7 @@ object FactionsImporter {
 
     val sizeValue = lineData.get(SIZE_HEADER).get.trim.toInt
     val armour = lineData.get(ARMOUR_HEADER).get.trim.toInt
-    val victoryPoints = lineData.get(VICTORY_POINTS_HEADER).get.trim.toInt
+    var victoryPoints = lineData.get(VICTORY_POINTS_HEADER).get.trim.toInt
 
     val hardPoints = WeaponImporter.getNumberWithDefault(lineData.get(HARDPOINTS_HEADER),0)
 
@@ -138,6 +138,7 @@ object FactionsImporter {
         factionWeapons.find(_.name.equals(trimmedWeaponName))
           .map(matchedWeapon => {
             points -= matchedWeapon.points
+            victoryPoints -= matchedWeapon.victoryPoints
             defaultWeaponNames += matchedWeapon.name
           })
           .getOrElse(
