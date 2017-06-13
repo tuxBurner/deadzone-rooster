@@ -65,33 +65,53 @@
 
   @* EDIT TROOP MODAL *@
   <div class="modal fade" id="rooster_troop_edit_modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="myModalLabel">@Messages("edit.headline") <span id="rooster_troop_edit_name"></span></h4>
         </div>
-        <div class="modal-body" id="rooster_troop_edit_body">
+        <div class="modal-body">
+
+
+          <h4>@Messages("weapon.headline")</h4>
 
           <table class="table table-bordered table-condensed">
             <thead>
-              <tr>
-                <td>@Messages("weapon.name")</td>
-                <td>@Messages("weapon.points")</td>
-                <td>@Messages("weapon.victoryPoints")</td>
-                <td>@Messages("weapon.range")</td>
-                <td>@Messages("weapon.armorPircing")</td>
-                <td>@Messages("weapon.abilities")</td>
+              <tr class="active">
+                <th>@Messages("weapon.name")</th>
+                <th>@Messages("weapon.points")</th>
+                <th>@Messages("weapon.victoryPoints")</th>
+                <th>@Messages("weapon.range")</th>
+                <th>@Messages("weapon.armorPircing")</th>
+                <th>@Messages("weapon.abilities")</th>
               </tr>
             </thead>
 
-            <tbody>
-              
+            <tbody id="rooster_troop_edit_weapons">
+              @* FILLED VIA rooster_main.js *@
             </tbody>
-
           </table>
 
-          @* FILLED VIA rooster_main.js *@
+          <hr/>
+
+          <h4>@Messages("item.headline")</h4>
+
+          <table class="table table-bordered table-condensed">
+            <thead>
+              <tr class="active">
+                <th>@Messages("item.name")</th>
+                <th>@Messages("item.points")</th>
+                <th>@Messages("item.rarity")</th>
+              </tr>
+            </thead>
+
+            <tbody id="rooster_troop_edit_items">
+              @* FILLED VIA rooster_main.js *@
+            </tbody>
+          </table>
+
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

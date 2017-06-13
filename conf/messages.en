@@ -13,6 +13,19 @@ troop.tbl.weapons=Weapons
 troop.tbl.items=Items
 troop.tbl.reconArmySpecial=REC/Special
 
+weapon.headline=Weapons:
+weapon.name=Name
+weapon.points=PTS
+weapon.victoryPoints=VPS
+weapon.range=Range
+weapon.armorPircing=AP
+weapon.abilities=Abilities
+
+item.headline=Items:
+item.name=Name
+item.points=PTS
+item.rarity=Rarity
+
 troop.addBtn=Add Troop
 
 faction.select=Faction:
@@ -20,3 +33,5 @@ troop.select=Troop:
 
 army.points=Total Points:
 army.faction=Faction:
+
+edit.headline=Edit:

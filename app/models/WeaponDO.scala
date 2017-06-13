@@ -49,8 +49,9 @@ object WeaponDAO {
     // add type to weapon
     weaponDto.weaponTypes.foreach(weaponType => {
       newWeaponDo.weaponTypes.add(WeaponTypeDAO.findOrCreateTypeByName(weaponType))
-      newWeaponDo.save()
     })
+
+    newWeaponDo.save()
 
     newWeaponDo
   }
@@ -102,6 +103,6 @@ class WeaponDO extends Model {
   @NotNull
   var free: Boolean = false
 
-  @ManyToMany
+  @OneToMany
   var defaultWeaponAbilities: java.util.List[DefaultWeaponAbilityDO] = null
 }

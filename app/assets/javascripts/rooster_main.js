@@ -3,12 +3,12 @@ var roosterGuiHandler = {
   /**
    * Gets the avaible factions from the backend and fills them into the select
    */
-  getAndFillFactions: function () {
+  getAndFillFactions: function() {
     jsRoutes.controllers.RoosterController.getFactions().ajax({
-      success: function (data) {
+      success: function(data) {
         $('#rooster_faction_select').html('');
 
-        $.each(data, function (idx, faction) {
+        $.each(data, function(idx, faction) {
           $('#rooster_faction_select').append('<option value="' + faction.name + '">' + faction.name + '</option>');
         });
 
@@ -21,13 +21,13 @@ var roosterGuiHandler = {
   /**
    * Gets the avaible troops for the selected faction from the backend and displays them in the add troop drop down
    */
-  getAndFillFactionTroopSelect: function () {
+  getAndFillFactionTroopSelect: function() {
     var selectedFaction = $('#rooster_faction_select').val();
     jsRoutes.controllers.RoosterController.getSelectTroopsForFaction(selectedFaction).ajax({
-      success: function (data) {
+      success: function(data) {
         $('#rooster_addTroop_select').html('');
 
-        $.each(data, function (idx, troop) {
+        $.each(data, function(idx, troop) {
           $('#rooster_addTroop_select').append('<option value="' + troop.name + '">' + troop.modelType + ' | Name: ' + troop.name + ' | Points: ' + troop.points + '</option>');
         });
       }
@@ -37,7 +37,7 @@ var roosterGuiHandler = {
   /**
    * Adds the selected troop to the army list
    */
-  addSelectedTroopToArmy: function () {
+  addSelectedTroopToArmy: function() {
     var troopToAdd = {
       faction: $('#rooster_faction_select').val(),
       troop: $('#rooster_addTroop_select').val()
@@ -45,7 +45,7 @@ var roosterGuiHandler = {
     jsRoutes.controllers.RoosterController.addTroopToSelection().ajax({
       data: JSON.stringify(troopToAdd),
       contentType: "application/json; charset=utf-8",
-      success: function (data) {
+      success: function(data) {
         roosterGuiHandler.displayCurrentArmyData(data);
       }
     });
@@ -54,9 +54,9 @@ var roosterGuiHandler = {
   /**
    * Gets the current army as json
    */
-  getCurrentArmy: function () {
+  getCurrentArmy: function() {
     jsRoutes.controllers.RoosterController.getArmy().ajax({
-      success: function (data) {
+      success: function(data) {
         roosterGuiHandler.displayCurrentArmyData(data);
       }
     });
@@ -66,9 +66,9 @@ var roosterGuiHandler = {
    * Removes the selected troop from the army
    * @param uuid
    */
-  removeTroopFromArmy: function (uuid) {
+  removeTroopFromArmy: function(uuid) {
     jsRoutes.controllers.RoosterController.removeTroopFromArmy(uuid).ajax({
-      success: function (data) {
+      success: function(data) {
         roosterGuiHandler.displayCurrentArmyData(data);
       }
     });
@@ -79,86 +79,92 @@ var roosterGuiHandler = {
    * Gets needed weapon/item informations from the backend and displays the edit popup
    * @param uuid
    */
-  displayEditPopup: function (uuid) {
-    jsRoutes.controllers.RoosterController.getWeaponsForTroop(uuid).ajax({
-      success: function (data) {
-        console.error(data);
+  displayEditPopup: function(uuid,troopName) {
+    jsRoutes.controllers.RoosterController.getWeaponsAndItemsForTroop(uuid).ajax({
+      success: function(data) {
 
-        var modalBodyContent = '';
-        if(data.free.length !== 0) {
-          $.each(data.free,function(idx,weapon) {
-            modalBodyContent+=weapon.name;
-          });
-        }
+        $('#rooster_troop_edit_name').text(troopName);
 
-        $('#rooster_troop_edit_body').html(modalBodyContent);
+        var weaponsContent = '';
+        weaponsContent += roosterGuiHandler.displayEditWeaponType('Free','free',data.weapons);
+        weaponsContent += roosterGuiHandler.displayEditWeaponType('Fight','fight',data.weapons);
+        weaponsContent += roosterGuiHandler.displayEditWeaponType('Ranged','ranged',data.weapons);
+
+        $('#rooster_troop_edit_weapons').html(weaponsContent);
+
         $('#rooster_troop_edit_modal').modal('show');
       }
     });
   },
 
   /**
+   * Display a given type of weapons in the edit popup
+   * @param headline
+   * @param type
+   * @param data
+   * @returns {string}
+   */
+  displayEditWeaponType: function(headline, type, data) {
+    var content = '';
+
+    if(data[type].length !== 0) {
+      content = '<tr class="info"><th colspan="6">'+headline+'</th></tr>';
+      $.each(data[type], function(idx, weapon) {
+        content += '<tr>';
+        content += '<td>' + weapon.name + '</td>';
+        content += '<td>' + weapon.points + '</td>';
+        content += '<td>' + weapon.victoryPoints + '</td>';
+        content += '<td>' + roosterGuiHandler.weaponRangeForDisplay(weapon) + '</td>';
+        content += '<td>' + weapon.armorPircing + '</td>';
+        content += '<td>' + roosterGuiHandler.abilitiesForDisplay(weapon.abilities, ',') + '</td>';
+        content += '</tr>';
+      });
+    }
+    return content;
+  },
+
+  /**
    * Populates the army table with the current data
    * @param armyData
    */
-  displayCurrentArmyData: function (armyData) {
+  displayCurrentArmyData: function(armyData) {
 
     $('#rooster_army_points').text(armyData.points);
     $('#rooster_army_faction').text(armyData.faction);
 
     $('#rooster_faction_select').attr('disabled', armyData.faction !== '');
 
-    if (armyData.faction !== '') {
-
-    } else {
-    }
-
     $('#rooster_troop_tbody').html('');
     var tableContent = '';
-    $.each(armyData.troops, function (idx, troop) {
-
-      var abilitiesContent = '';
-      $.each(troop.abilities, function (idx, ability) {
-        abilitiesContent += ability.name;
-        if (ability.defaultVal !== 0) {
-          abilitiesContent += ' (' + ability.defaultVal + ')';
-        }
-        abilitiesContent += '<br />';
-      });
+    $.each(armyData.troops, function(idx, troop) {
 
       var weaponsContent = '';
-      $.each(troop.weapons, function (idx, weapon) {
-        weaponsContent += weapon.name + ' <span class="badge">R';
-        if (weapon.shootRange === 0) {
-          weaponsContent += 'F';
-        } else {
-          weaponsContent += weapon.shootRange;
-        }
-        weaponsContent += '</span>';
-        if (weapon.armorPircing !== 0) {
+      $.each(troop.weapons, function(idx, weapon) {
+        weaponsContent += weapon.name;
+        weaponsContent += '<span class="badge">' + roosterGuiHandler.weaponRangeForDisplay(weapon) + '</span>';
+
+        if(weapon.armorPircing !== 0) {
           weaponsContent += ',AP' + weapon.armorPircing;
         }
-        $.each(weapon.abilities, function (idx, ability) {
-          weaponsContent += ',' + ability.name;
-          if (ability.defaultVal !== 0) {
-            weaponsContent += ' (' + ability.defaultVal + ')';
-          }
-        });
+
+        weaponsContent += roosterGuiHandler.abilitiesForDisplay(weapon.abilities, ',');
+
+
         weaponsContent += '<br />';
       });
 
       var reconArmySpecialContent = '';
-      if (troop.recon !== 0) {
+      if(troop.recon !== 0) {
         reconArmySpecialContent += troop.recon + '+ / ' + troop.armySpecial;
       }
 
       var itemsContent = '';
-      $.each(troop.items, function (idx, item) {
+      $.each(troop.items, function(idx, item) {
         itemsContent += item.name + '<br />';
       });
 
 
-      tableContent += '<tr data-uuid="' + troop.uuid + '">';
+      tableContent += '<tr data-uuid="' + troop.uuid + '" data-troopname="'+troop.name+'">';
 
       tableContent += '<td>' + troop.name + '</td>';
       tableContent += '<td>' + troop.modelType + '</td>';
@@ -170,7 +176,7 @@ var roosterGuiHandler = {
       tableContent += '<td>' + troop.shoot + '+</td>';
       tableContent += '<td>' + troop.fight + '+</td>';
       tableContent += '<td>' + troop.survive + '+</td>';
-      tableContent += '<td>' + abilitiesContent + '</td>';
+      tableContent += '<td>' + roosterGuiHandler.abilitiesForDisplay(troop.abilities, '<br />') + '</td>';
       tableContent += '<td>' + weaponsContent + '</td>';
       tableContent += '<td>' + itemsContent + '</td>';
       tableContent += '<td>' + reconArmySpecialContent + '</td>';
@@ -184,30 +190,63 @@ var roosterGuiHandler = {
     });
 
     $('#rooster_troop_tbody').html(tableContent);
+  },
+  /**
+   * Gets the correct display format for a weapon range
+   * @param weapon
+   * @returns {*}
+   */
+  weaponRangeForDisplay: function(weapon) {
+
+    if(weapon.shootRange === 0) {
+      return 'RF';
+    } else {
+      return 'R' + weapon.shootRange;
+    }
+  },
+  /**
+   * Prints a list of abilities and their default value
+   * @param abilities
+   * @param abSeperator
+   * @returns {string}
+   */
+  abilitiesForDisplay: function(abilities, abSeperator) {
+    var abilitiesContent = '';
+    var seperator = '';
+    $.each(abilities, function(idx, ability) {
+      abilitiesContent += seperator;
+      abilitiesContent += ability.name;
+      if(ability.defaultVal !== 0) {
+        abilitiesContent += ' (' + ability.defaultVal + ')';
+      }
+      seperator = abSeperator;
+    });
+    return abilitiesContent;
   }
 };
 
 
-$(function () {
+$(function() {
 
   roosterGuiHandler.getAndFillFactions();
 
-  $('#rooster_faction_select').on('change', function () {
+  $('#rooster_faction_select').on('change', function() {
     roosterGuiHandler.getAndFillFactionTroopSelect();
   });
 
-  $('#rooster_addTroop_btn').on('click', function () {
+  $('#rooster_addTroop_btn').on('click', function() {
     roosterGuiHandler.addSelectedTroopToArmy();
   });
 
-  $(document).on('click', '.rooster_del_btn', function () {
+  $(document).on('click', '.rooster_del_btn', function() {
     var uuid = $(this).closest('tr').attr('data-uuid');
     roosterGuiHandler.removeTroopFromArmy(uuid);
   });
 
-  $(document).on('click', '.rooster_edit_btn', function () {
-    var uuid = $(this).closest('tr').attr('data-uuid');
-    roosterGuiHandler.displayEditPopup(uuid);
+  $(document).on('click', '.rooster_edit_btn', function() {
+    var uuid = $(this).closest('tr').data('uuid');
+    var troopName = $(this).closest('tr').data('troopname');
+    roosterGuiHandler.displayEditPopup(uuid,troopName);
   });
 
 });                                                              

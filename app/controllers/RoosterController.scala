@@ -63,16 +63,30 @@ import scala.concurrent.duration._
 
   }
 
-  @JSRoute def getWeaponsForTroop(uuid: String) = Action { request =>
+  /**
+    * Gets the avaible weapons and items for the given troop
+    * @param uuid
+    * @return
+    */
+  @JSRoute def getWeaponsAndItemsForTroop(uuid: String) = Action { request =>
     val armyFromCache = getArmyFromCache(request)
     val weapons = ArmyLogic.getWeaponsForTroop(uuid,armyFromCache)
-    withCacheId(Ok(Json.toJson(weapons)).as(JSON), request)
+
+    val returnVal = Map("weapons" -> weapons)
+
+    renewArmyInCache(request)
+    withCacheId(Ok(Json.toJson(returnVal)).as(JSON), request)
   }
 
   @JSRoute def getArmy() = Action { request =>
     val army = getArmyFromCache(request)
     writeArmyToCache(request, army)
     withCacheId(Ok(Json.toJson(army)).as(JSON), request)
+  }
+
+  private def renewArmyInCache(request: Request[Any]): Unit = {
+    val armyFromCache = getArmyFromCache(request)
+    writeArmyToCache(request, armyFromCache)
   }
 
   private def withCacheId(result: Result, request: Request[Any]): Result = {
