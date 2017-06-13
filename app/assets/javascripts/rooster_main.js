@@ -121,7 +121,7 @@ var roosterGuiHandler = {
       content = '<tr class="info"><th colspan="7">'+headline+'</th></tr>';
       $.each(data[type], function(idx, weapon) {
         content += '<tr>';
-        content += '<td><input type="radio" /></td>';
+        content += '<td><input type="radio" name="edit_weapon_'+type+'"/></td>';
         content += '<td>' + weapon.name + '</td>';
         content += '<td>' + weapon.points + '</td>';
         content += '<td>' + weapon.victoryPoints + '</td>';
