@@ -58,7 +58,11 @@ object WeaponDAO {
 
   def deleteAll(): Unit = {
     Logger.info("Deleting all: " + classOf[WeaponDO].getName + " from database")
-    FINDER.all().toList.foreach(_.delete())
+    FINDER.all().toList.foreach(weaponDo => {
+      weaponDo.weaponTypes.clear()
+      weaponDo.update()
+      weaponDo.delete()
+    })
   }
 }
 

@@ -23,6 +23,8 @@ object TroopDAO {
     Logger.info("Deleting all: " + classOf[TroopDO].getName + " from database")
     FINDER.all().toList.foreach(troopDo => {
       troopDo.defaultWeapons.clear()
+      troopDo.allowedWeaponTypes.clear()
+      troopDo.defaultItems.clear()
       troopDo.update()
       troopDo.delete()
     })
@@ -72,10 +74,10 @@ object TroopDAO {
       troopDO.allowedWeaponTypes.add(weaponTypeDo);
     })
 
-    /*soldierDto.defaultItems.foreach(itemName => {
+    soldierDto.defaultItems.foreach(itemName => {
       val itemDo = ItemDAO.findByNameAndFaction(itemName,factionDo)
       troopDO.defaultItems.add(itemDo)
-    })*/
+    })
 
     troopDO.save()
 

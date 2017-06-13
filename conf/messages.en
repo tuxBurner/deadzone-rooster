@@ -10,6 +10,7 @@ troop.tbl.fight=FT
 troop.tbl.survive=SV
 troop.tbl.abilities=Abilities
 troop.tbl.weapons=Weapons
+troop.tbl.items=Items
 troop.tbl.reconArmySpecial=REC/Special
 
 troop.addBtn=Add Troop

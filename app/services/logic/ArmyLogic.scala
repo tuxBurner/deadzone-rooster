@@ -2,7 +2,7 @@ package services.logic
 
 import java.util.UUID
 
-import models.{TroopDAO, TroopDO, WeaponDAO, WeaponDO}
+import models._
 
 import scala.collection.JavaConversions._
 
@@ -39,6 +39,8 @@ object ArmyLogic {
 
     val weaponTypes = troopDo.allowedWeaponTypes.map(_.name).toList
 
+    val items = troopDo.defaultItems.map(itemDoToItemDto(_)).toList
+
     val uuid = UUID.randomUUID().toString
 
     ArmyTroopDto(uuid,
@@ -56,15 +58,21 @@ object ArmyLogic {
       troopDo.survive,
       troopAbilities,
       weapons,
+      items,
       weaponTypes,
       troopDo.recon,
       troopDo.armySpecial)
   }
 
+
   def getWeaponsForTroop(uuid: String, army: ArmyDto): List[ArmyWeaponDto] = {
     val troopDto = army.troops.find(_.uuid == uuid).get
     val weapons = WeaponDAO.findByFactionAndTypes(troopDto.faction, troopDto.allowedWeaponTypes)
     weapons.toList.map(weaponDoToWeaponDto(_))
+  }
+
+  def itemDoToItemDto(itemDo: ItemDO) : ArmyItemDto = {
+    ArmyItemDto(itemDo.name)
   }
 
   def weaponDoToWeaponDto(weaponDo: WeaponDO): ArmyWeaponDto = {
@@ -98,6 +106,7 @@ case class ArmyTroopDto(uuid: String,
                         survive: Int,
                         abilities: List[ArmyAbilityDto],
                         weapons: List[ArmyWeaponDto],
+                        items: List[ArmyItemDto],
                         allowedWeaponTypes: List[String],
                         recon: Int,
                         armySpecial: String)
@@ -108,3 +117,5 @@ case class ArmyWeaponDto(name: String,
                          armorPircing: Int,
                          victoryPoints: Int,
                          abilities: List[ArmyAbilityDto])
+
+case class ArmyItemDto(name: String)

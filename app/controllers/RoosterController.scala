@@ -18,6 +18,7 @@ import scala.concurrent.duration._
 
   implicit val armyAbilityDtoFormat = Json.format[ArmyAbilityDto]
   implicit val armyWeaponDtoFormat = Json.format[ArmyWeaponDto]
+  implicit val armyItemDtoFormat = Json.format[ArmyItemDto]
   implicit val armyTroopDtoFormat = Json.format[ArmyTroopDto]
   implicit val armyDtoFormat = Json.format[ArmyDto]
   implicit val factionDtoFormat = Json.format[FactionDto]

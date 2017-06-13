@@ -58,6 +58,7 @@ import play.api.{Configuration, Logger}
     DefaultWeaponAbilityDAO.deleteAll()
     AbilityDAO.deleteAll()
     TroopDAO.deleteAll()
+    ItemDAO.deleteAll()
     WeaponDAO.deleteAll()
     WeaponTypeDAO.deleteAll()
     FactionDAO.deleteAll()
