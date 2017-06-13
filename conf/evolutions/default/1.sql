@@ -34,6 +34,16 @@ create table faction (
   constraint pk_faction primary key (id)
 );
 
+create table item (
+  id                            bigint auto_increment not null,
+  name                          varchar(255) not null,
+  rarity                        varchar(255) not null,
+  faction_id                    bigint not null,
+  points                        integer not null,
+  no_update                     tinyint(1) default 0 not null,
+  constraint pk_item primary key (id)
+);
+
 create table troop (
   id                            bigint auto_increment not null,
   name                          varchar(255) not null,
@@ -65,6 +75,12 @@ create table troop_weapon_type (
   troop_id                      bigint not null,
   weapon_type_id                bigint not null,
   constraint pk_troop_weapon_type primary key (troop_id,weapon_type_id)
+);
+
+create table troop_item (
+  troop_id                      bigint not null,
+  item_id                       bigint not null,
+  constraint pk_troop_item primary key (troop_id,item_id)
 );
 
 create table weapon (
@@ -111,6 +127,9 @@ create index ix_def_weapon_ability_weapon_do_id on def_weapon_ability (weapon_do
 alter table def_weapon_ability add constraint fk_def_weapon_ability_ability_id foreign key (ability_id) references ability (id) on delete restrict on update restrict;
 create index ix_def_weapon_ability_ability_id on def_weapon_ability (ability_id);
 
+alter table item add constraint fk_item_faction_id foreign key (faction_id) references faction (id) on delete restrict on update restrict;
+create index ix_item_faction_id on item (faction_id);
+
 alter table troop add constraint fk_troop_faction_id foreign key (faction_id) references faction (id) on delete restrict on update restrict;
 create index ix_troop_faction_id on troop (faction_id);
 
@@ -125,6 +144,12 @@ create index ix_troop_weapon_type_troop on troop_weapon_type (troop_id);
 
 alter table troop_weapon_type add constraint fk_troop_weapon_type_weapon_type foreign key (weapon_type_id) references weapon_type (id) on delete restrict on update restrict;
 create index ix_troop_weapon_type_weapon_type on troop_weapon_type (weapon_type_id);
+
+alter table troop_item add constraint fk_troop_item_troop foreign key (troop_id) references troop (id) on delete restrict on update restrict;
+create index ix_troop_item_troop on troop_item (troop_id);
+
+alter table troop_item add constraint fk_troop_item_item foreign key (item_id) references item (id) on delete restrict on update restrict;
+create index ix_troop_item_item on troop_item (item_id);
 
 alter table weapon add constraint fk_weapon_faction_id foreign key (faction_id) references faction (id) on delete restrict on update restrict;
 create index ix_weapon_faction_id on weapon (faction_id);
@@ -156,6 +181,9 @@ drop index ix_def_weapon_ability_weapon_do_id on def_weapon_ability;
 alter table def_weapon_ability drop foreign key fk_def_weapon_ability_ability_id;
 drop index ix_def_weapon_ability_ability_id on def_weapon_ability;
 
+alter table item drop foreign key fk_item_faction_id;
+drop index ix_item_faction_id on item;
+
 alter table troop drop foreign key fk_troop_faction_id;
 drop index ix_troop_faction_id on troop;
 
@@ -170,6 +198,12 @@ drop index ix_troop_weapon_type_troop on troop_weapon_type;
 
 alter table troop_weapon_type drop foreign key fk_troop_weapon_type_weapon_type;
 drop index ix_troop_weapon_type_weapon_type on troop_weapon_type;
+
+alter table troop_item drop foreign key fk_troop_item_troop;
+drop index ix_troop_item_troop on troop_item;
+
+alter table troop_item drop foreign key fk_troop_item_item;
+drop index ix_troop_item_item on troop_item;
 
 alter table weapon drop foreign key fk_weapon_faction_id;
 drop index ix_weapon_faction_id on weapon;
@@ -194,11 +228,15 @@ drop table if exists def_weapon_ability;
 
 drop table if exists faction;
 
+drop table if exists item;
+
 drop table if exists troop;
 
 drop table if exists def_troop_weapon;
 
 drop table if exists troop_weapon_type;
+
+drop table if exists troop_item;
 
 drop table if exists weapon;
 

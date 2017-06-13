@@ -22,7 +22,7 @@ object TroopDAO {
   def deleteAll(): Unit = {
     Logger.info("Deleting all: " + classOf[TroopDO].getName + " from database")
     FINDER.all().toList.foreach(troopDo => {
-      troopDo.defaultEquipment.clear()
+      troopDo.defaultWeapons.clear()
       troopDo.update()
       troopDo.delete()
     })
@@ -63,7 +63,7 @@ object TroopDAO {
       if (defaultWeapon == null) {
         Logger.error("Could not add default weapon " + weaponName + " to troop: " + troopDO.name + " faction: " + factionDo.name + " was not found in the db")
       } else {
-        troopDO.defaultEquipment.addAll(defaultWeapon)
+        troopDO.defaultWeapons.addAll(defaultWeapon)
       }
     })
 
@@ -71,6 +71,11 @@ object TroopDAO {
       val weaponTypeDo = WeaponTypeDAO.findOrCreateTypeByName(weaponTypeName)
       troopDO.allowedWeaponTypes.add(weaponTypeDo);
     })
+
+    /*soldierDto.defaultItems.foreach(itemName => {
+      val itemDo = ItemDAO.findByNameAndFaction(itemName,factionDo)
+      troopDO.defaultItems.add(itemDo)
+    })*/
 
     troopDO.save()
 
@@ -118,11 +123,14 @@ object TroopDAO {
   @ManyToOne var faction: FactionDO = null
 
   @ManyToMany
-  @JoinTable(name = "def_troop_weapon") var defaultEquipment: java.util.List[WeaponDO] = null
+  @JoinTable(name = "def_troop_weapon") var defaultWeapons: java.util.List[WeaponDO] = null
 
   @OneToMany
   var defaultTroopAbilities: java.util.List[DefaultTroopAbilityDO] = null
 
   @ManyToMany
   var allowedWeaponTypes: java.util.List[WeaponTypeDO] = null
+
+  @ManyToMany
+  var defaultItems: java.util.List[ItemDO] = null
 }

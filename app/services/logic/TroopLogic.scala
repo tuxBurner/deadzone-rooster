@@ -10,7 +10,7 @@ object TroopLogic {
     TroopDAO.findAllForFactionByName(factionName).map(troopDo => {
       // calculate the points from the weapon to the troop
       var points = troopDo.points
-      troopDo.defaultEquipment.toList.foreach(defWeapon => {
+      troopDo.defaultWeapons.toList.foreach(defWeapon => {
         points+=defWeapon.points
       })
 

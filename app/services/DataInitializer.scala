@@ -2,7 +2,7 @@ package services
 
 import javax.inject.{Inject, Singleton}
 
-import deadzone.parsers.{CSVFactionsImporter, CSVWeaponImporter}
+import deadzone.parsers.{CSVFactionsImporter, CSVItemsImporter, CSVWeaponImporter}
 import models._
 import play.api.{Configuration, Logger}
 
@@ -35,6 +35,11 @@ import play.api.{Configuration, Logger}
       val weaponsDto = CSVWeaponImporter.getWeaponsForFaction(factionName)
       weaponsDto.foreach(weaponDto => {
            WeaponDAO.addWeaponToFaction(weaponDto,factionDo)
+      })
+
+      val itemsDto = CSVItemsImporter.getItemsForFaction(factionName)
+      itemsDto.foreach(itemDto => {
+         ItemDAO.addItemToFaction(itemDto,factionDo)
       })
 
       val soldierDtos = CSVFactionsImporter.getSoldierForFaction(factionName)

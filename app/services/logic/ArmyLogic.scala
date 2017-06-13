@@ -32,10 +32,10 @@ object ArmyLogic {
   def troopDoToArmyTroopDto(troopDo: TroopDO): ArmyTroopDto = {
 
     val troopAbilities = troopDo.defaultTroopAbilities.toList.map(abilityDo => ArmyAbilityDto(abilityDo.ability.name, abilityDo.defaultValue))
-    val weapons = troopDo.defaultEquipment.toList.map(weaponDoToWeaponDto(_))
+    val weapons = troopDo.defaultWeapons.toList.map(weaponDoToWeaponDto(_))
 
-    val points = troopDo.points + troopDo.defaultEquipment.toList.map(_.points).sum
-    val victoryPoints = troopDo.victoryPoints + troopDo.defaultEquipment.toList.map(_.victoryPoints).sum
+    val points = troopDo.points + troopDo.defaultWeapons.toList.map(_.points).sum
+    val victoryPoints = troopDo.victoryPoints + troopDo.defaultWeapons.toList.map(_.victoryPoints).sum
 
     val weaponTypes = troopDo.allowedWeaponTypes.map(_.name).toList
 
