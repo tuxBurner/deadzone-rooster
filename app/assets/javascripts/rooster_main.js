@@ -89,8 +89,17 @@ var roosterGuiHandler = {
         weaponsContent += roosterGuiHandler.displayEditWeaponType('Free','free',data.weapons);
         weaponsContent += roosterGuiHandler.displayEditWeaponType('Fight','fight',data.weapons);
         weaponsContent += roosterGuiHandler.displayEditWeaponType('Ranged','ranged',data.weapons);
-
         $('#rooster_troop_edit_weapons').html(weaponsContent);
+
+        var itemsContent = '';
+        $.each(data.items,function(idx, item) {
+          itemsContent += '<tr>';
+          itemsContent += '<td>'+item.name+'</td>';
+          itemsContent += '<td>'+item.points+'</td>';
+          itemsContent += '<td>'+item.rarity+'</td>';
+          itemsContent += '</tr>';
+        });
+        $('#rooster_troop_edit_items').html(itemsContent);
 
         $('#rooster_troop_edit_modal').modal('show');
       }

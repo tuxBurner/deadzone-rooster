@@ -64,7 +64,19 @@ object ArmyLogic {
       troopDo.armySpecial)
   }
 
+  def getWeaponsAndItemsForTroop(uuid: String, army: ArmyDto) : ArmyTroopWeaponsItemsDto = {
+    val weapons = getWeaponsForTroop(uuid,army)
+    val items = getItemsForTroop(uuid,army)
+    ArmyTroopWeaponsItemsDto(weapons,items)
+  }
 
+
+  /**
+    * Gets all avaible weapon options for the given troop
+    * @param uuid
+    * @param army
+    * @return
+    */
   def getWeaponsForTroop(uuid: String, army: ArmyDto): Map[String,List[ArmyWeaponDto]] = {
     val troopDto = army.troops.find(_.uuid == uuid).get
     val weapons = WeaponDAO.findByFactionAndTypes(troopDto.faction, troopDto.allowedWeaponTypes).toList
@@ -77,8 +89,23 @@ object ArmyLogic {
     Map("ranged" -> rangedWeaopns, "fight" -> fightWeapons, "free" -> freeWeapons)
   }
 
+  /**
+    * Gets the items for the given troop
+    * @param uuid
+    * @param army
+    * @return
+    */
+  def getItemsForTroop(uuid:String, army: ArmyDto) : List[ArmyItemDto] = {
+    ItemDAO.findAllItemsForFaction(army.faction).map(itemDoToItemDto(_))
+  }
+
+  /**
+    * Transforms an item from the backend to an item for the frontend.
+    * @param itemDo
+    * @return
+    */
   def itemDoToItemDto(itemDo: ItemDO) : ArmyItemDto = {
-    ArmyItemDto(itemDo.name)
+    ArmyItemDto(itemDo.name, itemDo.points, itemDo.rarity)
   }
 
   def weaponDoToWeaponDto(weaponDo: WeaponDO): ArmyWeaponDto = {
@@ -124,4 +151,6 @@ case class ArmyWeaponDto(name: String,
                          victoryPoints: Int,
                          abilities: List[ArmyAbilityDto])
 
-case class ArmyItemDto(name: String)
+case class ArmyItemDto(name: String, points: Int, rarity: String)
+
+case class ArmyTroopWeaponsItemsDto(weapons: Map[String,List[ArmyWeaponDto]], items: List[ArmyItemDto])

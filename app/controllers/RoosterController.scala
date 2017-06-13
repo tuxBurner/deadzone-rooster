@@ -22,6 +22,7 @@ import scala.concurrent.duration._
   implicit val armyTroopDtoFormat = Json.format[ArmyTroopDto]
   implicit val armyDtoFormat = Json.format[ArmyDto]
   implicit val factionDtoFormat = Json.format[FactionDto]
+  implicit val armyTroopWeaponsItemsFormat = Json.format[ArmyTroopWeaponsItemsDto]
 
   /**
     * Returns all the avaible factions as a json array
@@ -70,12 +71,10 @@ import scala.concurrent.duration._
     */
   @JSRoute def getWeaponsAndItemsForTroop(uuid: String) = Action { request =>
     val armyFromCache = getArmyFromCache(request)
-    val weapons = ArmyLogic.getWeaponsForTroop(uuid,armyFromCache)
-
-    val returnVal = Map("weapons" -> weapons)
+    val result = ArmyLogic.getWeaponsAndItemsForTroop(uuid,armyFromCache)
 
     renewArmyInCache(request)
-    withCacheId(Ok(Json.toJson(returnVal)).as(JSON), request)
+    withCacheId(Ok(Json.toJson(result)).as(JSON), request)
   }
 
   @JSRoute def getArmy() = Action { request =>
