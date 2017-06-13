@@ -94,6 +94,7 @@ var roosterGuiHandler = {
         var itemsContent = '';
         $.each(data.items,function(idx, item) {
           itemsContent += '<tr>';
+          itemsContent += '<td><input type="checkbox" /></td>';
           itemsContent += '<td>'+item.name+'</td>';
           itemsContent += '<td>'+item.points+'</td>';
           itemsContent += '<td>'+item.rarity+'</td>';
@@ -117,9 +118,10 @@ var roosterGuiHandler = {
     var content = '';
 
     if(data[type].length !== 0) {
-      content = '<tr class="info"><th colspan="6">'+headline+'</th></tr>';
+      content = '<tr class="info"><th colspan="7">'+headline+'</th></tr>';
       $.each(data[type], function(idx, weapon) {
         content += '<tr>';
+        content += '<td><input type="radio" /></td>';
         content += '<td>' + weapon.name + '</td>';
         content += '<td>' + weapon.points + '</td>';
         content += '<td>' + weapon.victoryPoints + '</td>';
