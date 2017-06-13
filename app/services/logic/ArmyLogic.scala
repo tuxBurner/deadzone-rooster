@@ -65,10 +65,16 @@ object ArmyLogic {
   }
 
 
-  def getWeaponsForTroop(uuid: String, army: ArmyDto): List[ArmyWeaponDto] = {
+  def getWeaponsForTroop(uuid: String, army: ArmyDto): Map[String,List[ArmyWeaponDto]] = {
     val troopDto = army.troops.find(_.uuid == uuid).get
-    val weapons = WeaponDAO.findByFactionAndTypes(troopDto.faction, troopDto.allowedWeaponTypes)
-    weapons.toList.map(weaponDoToWeaponDto(_))
+    val weapons = WeaponDAO.findByFactionAndTypes(troopDto.faction, troopDto.allowedWeaponTypes).toList
+
+    val rangedWeaopns = weapons.filter(weaponDo => weaponDo.shootRange != 0 && weaponDo.free == false).map(weaponDoToWeaponDto(_))
+    val fightWeapons = weapons.filter(weaponDo => weaponDo.shootRange == 0 && weaponDo.free == false).map(weaponDoToWeaponDto(_))
+    val freeWeapons = weapons.filter(_.free == true).map(weaponDoToWeaponDto(_))
+
+
+    Map("ranged" -> rangedWeaopns, "fight" -> fightWeapons, "free" -> freeWeapons)
   }
 
   def itemDoToItemDto(itemDo: ItemDO) : ArmyItemDto = {

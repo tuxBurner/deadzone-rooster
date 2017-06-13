@@ -83,6 +83,16 @@ var roosterGuiHandler = {
     jsRoutes.controllers.RoosterController.getWeaponsForTroop(uuid).ajax({
       success: function (data) {
         console.error(data);
+
+        var modalBodyContent = '';
+        if(data.free.length !== 0) {
+          $.each(data.free,function(idx,weapon) {
+            modalBodyContent+=weapon.name;
+          });
+        }
+
+        $('#rooster_troop_edit_body').html(modalBodyContent);
+        $('#rooster_troop_edit_modal').modal('show');
       }
     });
   },
