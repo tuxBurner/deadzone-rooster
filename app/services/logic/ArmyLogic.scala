@@ -64,21 +64,32 @@ object ArmyLogic {
       troopDo.armySpecial)
   }
 
+  /**
+    * Gets the weapons and items which are allowed for the given uui troop
+    * Also returns the currently selected items and weapons
+    * @param uuid
+    * @param army
+    * @return
+    */
   def getWeaponsAndItemsForTroop(uuid: String, army: ArmyDto) : ArmyTroopWeaponsItemsDto = {
-    val weapons = getWeaponsForTroop(uuid,army)
-    val items = getItemsForTroop(uuid,army)
-    ArmyTroopWeaponsItemsDto(weapons,items)
+
+    val troopDto = getTroopFromArmy(uuid,army)
+    val weapons = getWeaponsForTroop(troopDto)
+    val items = getItemsForTroop(army)
+
+    val currentTroopWeapons = troopDto.weapons.map(_.name)
+    val currentTroopItems = troopDto.items.map(_.name)
+
+    ArmyTroopWeaponsItemsDto(weapons,items,currentTroopWeapons, currentTroopItems)
   }
 
 
   /**
     * Gets all avaible weapon options for the given troop
-    * @param uuid
-    * @param army
+    * @param troopDto the troop which the weapons are for
     * @return
     */
-  def getWeaponsForTroop(uuid: String, army: ArmyDto): Map[String,List[ArmyWeaponDto]] = {
-    val troopDto = army.troops.find(_.uuid == uuid).get
+  def getWeaponsForTroop(troopDto: ArmyTroopDto): Map[String,List[ArmyWeaponDto]] = {
     val weapons = WeaponDAO.findByFactionAndTypes(troopDto.faction, troopDto.allowedWeaponTypes).toList
 
     val rangedWeaopns = weapons.filter(weaponDo => weaponDo.shootRange != 0 && weaponDo.free == false).map(weaponDoToWeaponDto(_))
@@ -90,12 +101,20 @@ object ArmyLogic {
   }
 
   /**
-    * Gets the items for the given troop
+    * Gets the troop from the given army by its uuid
     * @param uuid
+    * @param army
+    */
+  private def getTroopFromArmy(uuid:String, army: ArmyDto): ArmyTroopDto = {
+    army.troops.find(_.uuid == uuid).get
+  }
+
+  /**
+    * Gets the items for the given troop
     * @param army
     * @return
     */
-  def getItemsForTroop(uuid:String, army: ArmyDto) : List[ArmyItemDto] = {
+  def getItemsForTroop(army: ArmyDto) : List[ArmyItemDto] = {
     ItemDAO.findAllItemsForFaction(army.faction).map(itemDoToItemDto(_))
   }
 
@@ -108,6 +127,11 @@ object ArmyLogic {
     ArmyItemDto(itemDo.name, itemDo.points, itemDo.rarity)
   }
 
+  /**
+    * Transforms a weapon database object to a weapon dto
+    * @param weaponDo
+    * @return
+    */
   def weaponDoToWeaponDto(weaponDo: WeaponDO): ArmyWeaponDto = {
     val abilities = weaponDo.defaultWeaponAbilities.toList.map(abilityDo => ArmyAbilityDto(abilityDo.ability.name, abilityDo.defaultValue))
     ArmyWeaponDto(weaponDo.name,
@@ -153,4 +177,4 @@ case class ArmyWeaponDto(name: String,
 
 case class ArmyItemDto(name: String, points: Int, rarity: String)
 
-case class ArmyTroopWeaponsItemsDto(weapons: Map[String,List[ArmyWeaponDto]], items: List[ArmyItemDto])
+case class ArmyTroopWeaponsItemsDto(weapons: Map[String,List[ArmyWeaponDto]], items: List[ArmyItemDto], currentWeapons: List[String], currentItems: List[String])

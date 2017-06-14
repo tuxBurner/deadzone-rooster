@@ -86,15 +86,18 @@ var roosterGuiHandler = {
         $('#rooster_troop_edit_name').text(troopName);
 
         var weaponsContent = '';
-        weaponsContent += roosterGuiHandler.displayEditWeaponType('Free','free',data.weapons);
-        weaponsContent += roosterGuiHandler.displayEditWeaponType('Fight','fight',data.weapons);
-        weaponsContent += roosterGuiHandler.displayEditWeaponType('Ranged','ranged',data.weapons);
+        weaponsContent += roosterGuiHandler.displayEditWeaponType('Free','free',data);
+        weaponsContent += roosterGuiHandler.displayEditWeaponType('Fight','fight',data);
+        weaponsContent += roosterGuiHandler.displayEditWeaponType('Ranged','ranged',data);
         $('#rooster_troop_edit_weapons').html(weaponsContent);
 
         var itemsContent = '';
         $.each(data.items,function(idx, item) {
+
+          var checked = ($.inArray(item.name,data.currentItems) !== -1) ? 'checked' : '';
+
           itemsContent += '<tr>';
-          itemsContent += '<td><input type="checkbox" /></td>';
+          itemsContent += '<td><input class="edit_troop_slected_item" value="'+item.name+'" type="checkbox" '+checked+' /></td>';
           itemsContent += '<td>'+item.name+'</td>';
           itemsContent += '<td>'+item.points+'</td>';
           itemsContent += '<td>'+item.rarity+'</td>';
@@ -117,11 +120,14 @@ var roosterGuiHandler = {
   displayEditWeaponType: function(headline, type, data) {
     var content = '';
 
-    if(data[type].length !== 0) {
+    if(data.weapons[type].length !== 0) {
       content = '<tr class="info"><th colspan="7">'+headline+'</th></tr>';
-      $.each(data[type], function(idx, weapon) {
+      $.each(data.weapons[type], function(idx, weapon) {
+
+        var checked = ($.inArray(weapon.name,data.currentWeapons) !== -1) ? 'checked' : '';
+
         content += '<tr>';
-        content += '<td><input type="radio" name="edit_weapon_'+type+'"/></td>';
+        content += '<td><input value="'+weapon.name+'" class="edit_troop_slected_weapon" type="radio" name="edit_weapon_'+type+'" '+checked+'/></td>';
         content += '<td>' + weapon.name + '</td>';
         content += '<td>' + weapon.points + '</td>';
         content += '<td>' + weapon.victoryPoints + '</td>';
