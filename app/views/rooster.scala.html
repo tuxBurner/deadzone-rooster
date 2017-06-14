@@ -60,8 +60,18 @@
     <tbody id="rooster_troop_tbody">
       @* FILLED VIA rooster_main.js *@
     </tbody>
-
   </table>
+
+  <hr />
+
+  @* ACTION BUTTONS *@
+  <div class="row">
+    <div class="col-xs-10">
+      <a href="@routes.RoosterController.getTablePdf()" target="_blank" class="btn btn-info"><span class="glyphicon glyphicon-print"></span></a>
+    </div>
+  </div>
+  @* EO ACTION BUTTONS *@
+
 
   @* EDIT TROOP MODAL *@
   <div class="modal fade" id="rooster_troop_edit_modal" data-troopuuid="" tabindex="-1" role="dialog">

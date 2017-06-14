@@ -4,7 +4,9 @@ import java.util.UUID
 import javax.inject._
 
 import com.github.tuxBurner.jsAnnotations.JSRoute
+import it.innove.play.pdf.PdfGenerator
 import play.api.cache.CacheApi
+import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.libs.json._
 import play.api.mvc._
 import services.logic._
@@ -14,7 +16,7 @@ import scala.concurrent.duration._
 /**
   * Controller which handles all the endpoints for the rooster editor
   */
-@Singleton class RoosterController @Inject()(cache: CacheApi) extends Controller {
+@Singleton class RoosterController @Inject()(cache: CacheApi,pdfGenerator: PdfGenerator,val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
   implicit val armyAbilityDtoFormat = Json.format[ArmyAbilityDto]
   implicit val armyWeaponDtoFormat = Json.format[ArmyWeaponDto]
@@ -111,6 +113,16 @@ import scala.concurrent.duration._
     val army = getArmyFromCache(request)
     writeArmyToCache(request, army)
     withCacheId(Ok(Json.toJson(army)).as(JSON), request)
+  }
+
+  /**
+    * Gets the table pdf
+    * @return
+    */
+  def getTablePdf() = Action { request =>
+    val army = getArmyFromCache(request)
+    val pdfBytes = pdfGenerator.toBytes(views.html.pdf.roosterTable.render(army,messagesApi.preferred(request)),"http://localhost:9000")
+    withCacheId(Ok(pdfBytes),request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
   }
 
   private def renewArmyInCache(request: Request[Any]): Unit = {

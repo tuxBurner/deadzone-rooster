@@ -18,9 +18,15 @@ import scala.collection.JavaConversions._
 class HomeController @Inject()(jsRoutesComponent:JsRoutesComponent,val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
 
+  /**
+    * Display the main view
+    * @return
+    */
   def roosterMain = Action {
     Ok(views.html.rooster())
   }
+
+
 
 
   /**

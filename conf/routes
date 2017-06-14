@@ -13,6 +13,8 @@ DELETE        /rooster/army/troop/:uuid                            controllers.R
 GET           /rooster/army/troop/:uuid/weapons                    controllers.RoosterController.getWeaponsAndItemsForTroop(uuid:String)
 PUT           /rooster/army/troop/:uuid/weapons                    controllers.RoosterController.updateTroopWeaponsAndItems(uuid:String)
 
+GET           /rooster/pdf/table                                   controllers.RoosterController.getTablePdf()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET           /assets/*file                                        controllers.Assets.versioned(path="/public", file: Asset)
