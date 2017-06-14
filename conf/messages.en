@@ -33,5 +33,9 @@ troop.select=Troop:
 
 army.points=Total Points:
 army.faction=Faction:
+army.troops=Troops:
+army.abilities=Abilities:
 
 edit.headline=Edit:
+
+ability.desc.RapidFire=teesst

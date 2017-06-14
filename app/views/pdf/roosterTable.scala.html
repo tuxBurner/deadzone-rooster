@@ -1,5 +1,6 @@
 @import services.logic.ArmyDto
-@(army: ArmyDto)(implicit messages: Messages)
+@import services.logic.ArmyPdfInfos
+@(army: ArmyDto, armyPdfInfos: ArmyPdfInfos )(implicit messages: Messages)
 
 <html>
   <head>
@@ -18,10 +19,7 @@
       border: solid 1px #000000;
       padding: 2pt;
     }
-
-    table.pdf td {
-      text-align: center;
-    }
+    
 
     table.pdf th {
       background-color: #ababab;
@@ -31,37 +29,39 @@
   </head>
   <body>
 
-    <h1>Points: @army.points Faction: @army.faction</h1>
+    <h1>@Messages("army.points") @army.points @Messages("army.faction") @army.faction</h1>
+
+    <hr />
+
+    <h3>@Messages("army.troops")</h3>
 
     <table class="pdf">
       <thead>
         <th>@Messages("troop.tbl.name")</th>
         <th>@Messages("troop.tbl.type")</th>
-        <th>@Messages("troop.tbl.points")</th>
-        <th>@Messages("troop.tbl.victoryPoints")</th>
-        <th>@Messages("troop.tbl.armour")</th>
-        <th>@Messages("troop.tbl.size")</th>
         <th>@Messages("troop.tbl.speed")</th>
         <th>@Messages("troop.tbl.shoot")</th>
         <th>@Messages("troop.tbl.fight")</th>
         <th>@Messages("troop.tbl.survive")</th>
+        <th>@Messages("troop.tbl.armour")</th>
+        <th>@Messages("troop.tbl.size")</th>
         <th>@Messages("troop.tbl.abilities")</th>
         <th>@Messages("troop.tbl.weapons")</th>
         <th>@Messages("troop.tbl.items")</th>
+        <th>@Messages("troop.tbl.points")</th>
+        <th>@Messages("troop.tbl.victoryPoints")</th>
       </thead>
       <tbody>
       @for(troop <- army.troops) {
         <tr>
           <td>@troop.name</td>
           <td>@troop.modelType</td>
-          <td>@troop.points</td>
-          <td>@troop.victoryPoints</td>
-          <td>@troop.armour</td>
-          <td>@troop.size</td>
-          <td>@troop.speed - @troop.sprint</td>
+          <td>@troop.speed-@troop.sprint</td>
           <td>@troop.shoot+</td>
           <td>@troop.fight+</td>
           <td>@troop.survive+</td>
+          <td>@troop.armour</td>
+          <td>@troop.size</td>
           <td>
           @for(ability <- troop.abilities) {
             @ability.name @if(ability.defaultVal != 0) { (@ability.defaultVal) } <br />
@@ -85,9 +85,34 @@
             @item.name <br />
           }
           </td>
+          <td>@troop.points</td>
+          <td>@troop.victoryPoints</td>
         </tr>
       }
       </tbody>
+    </table>
+
+    
+
+    <hr />
+
+    <h3>@Messages("army.abilities")</h3>
+
+    <table class="pdf">
+      <thead>
+        <tr>
+          <th>@Messages("ability.name")</th>
+          <th>@Messages("ability.desc")</th>
+        </tr>
+      </thead>
+      <tbod>
+      @for(ability <- armyPdfInfos.abilities) {
+        <tr>
+          <th>@ability</th>
+          <td>@Messages("ability.desc."+ability.replace(" ",""))</td>
+        </tr>
+      }
+      </tbod>
     </table>
   </body>
 </html>

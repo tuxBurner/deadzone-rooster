@@ -11,6 +11,7 @@ import play.api.libs.json._
 import play.api.mvc._
 import services.logic._
 
+import scala.collection.mutable.ListBuffer
 import scala.concurrent.duration._
 
 /**
@@ -121,7 +122,10 @@ import scala.concurrent.duration._
     */
   def getTablePdf() = Action { request =>
     val army = getArmyFromCache(request)
-    val pdfBytes = pdfGenerator.toBytes(views.html.pdf.roosterTable.render(army,messagesApi.preferred(request)),"http://localhost:9000")
+
+    val armyPdfInfos = ArmyLogic.extractPdfArmyInfos(army)
+
+    val pdfBytes = pdfGenerator.toBytes(views.html.pdf.roosterTable.render(army,armyPdfInfos,messagesApi.preferred(request)),"http://localhost:9000")
     withCacheId(Ok(pdfBytes),request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
   }
 

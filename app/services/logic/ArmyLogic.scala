@@ -5,13 +5,20 @@ import java.util.UUID
 import models._
 
 import scala.collection.JavaConversions._
+import scala.collection.mutable.ListBuffer
 
 /**
   * Created by tuxburner on 12.06.17.
   */
 object ArmyLogic {
 
-
+  /**
+    * Adds a new troop to the army
+    * @param factionName
+    * @param troopName
+    * @param army
+    * @return
+    */
   def addTroopToArmy(factionName: String, troopName: String, army: ArmyDto): ArmyDto = {
     val troopDo = TroopDAO.findByFactionAndName(factionName, troopName)
 
@@ -23,6 +30,12 @@ object ArmyLogic {
     army.copy(troops = newTroops, faction = factionName, points = armyPoints)
   }
 
+  /**
+    * Removes the given troop from the army
+    * @param uuid
+    * @param army
+    * @return
+    */
   def removeTroopFromArmy(uuid: String, army: ArmyDto): ArmyDto = {
     val newTroops = army.troops.filter(_.uuid != uuid)
     val armyPoints = newTroops.map(_.points).sum
@@ -166,6 +179,36 @@ object ArmyLogic {
     ArmyWeaponDto(weaponDo.name, weaponDo.points, weaponDo.shootRange, weaponDo.armorPircing, weaponDo.victoryPoints, abilities)
   }
 
+  /**
+    * Extracts informations about the army from it for pdf informations
+    * @param army
+    * @return
+    */
+  def extractPdfArmyInfos(army:ArmyDto) : ArmyPdfInfos = {
+    val abilitiesBuffer = ListBuffer[String]()
+    val itemsBuffer = ListBuffer[String]()
+    army.troops.foreach(troop => {
+      troop.abilities.foreach(ability => {
+        abilitiesBuffer += ability.name
+      })
+
+      troop.items.foreach(item => {
+        itemsBuffer+=item.name
+      })
+
+      troop.weapons.foreach(weapon => {
+        weapon.abilities.foreach(ability => abilitiesBuffer+=ability.name)
+      })
+    })
+    val abilities = abilitiesBuffer.toList.distinct.sortWith(_<_)
+
+    val items = itemsBuffer.toList.distinct.sortWith(_<_)
+
+    val reconVals = army.troops.filter(_.recon != 0).map(troop => (troop.name, troop.recon, troop.armySpecial)).distinct.sortWith(_._3<_._3)
+
+    ArmyPdfInfos(abilities,items,reconVals)
+  }
+
 }
 
 case class ArmyDto(name: String, faction: String = "", points: Int = 0, troops: List[ArmyTroopDto] = List())
@@ -179,3 +222,5 @@ case class ArmyWeaponDto(name: String, points: Int, shootRange: Int, armorPircin
 case class ArmyItemDto(name: String, points: Int, rarity: String)
 
 case class ArmyTroopWeaponsItemsDto(weapons: Map[String, List[ArmyWeaponDto]], items: List[ArmyItemDto], currentWeapons: List[String], currentItems: List[String])
+
+case class ArmyPdfInfos(abilities: List[String], items:List[String], reconVals: List[(String,Int,String)])
