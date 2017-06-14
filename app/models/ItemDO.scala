@@ -28,6 +28,10 @@ object ItemDAO {
     FINDER.where().ieq("name", name).and().eq("faction", factionDO).findUnique
   }
 
+  def findByNameAndFactionName(name: String, faction: String): ItemDO = {
+    FINDER.where().ieq("name", name).and().eq("faction.name", faction).findUnique
+  }
+
   /**
     * Finds all items for the given faction ordered by its name
     * @param factionName

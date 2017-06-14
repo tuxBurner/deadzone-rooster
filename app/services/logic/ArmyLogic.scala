@@ -11,6 +11,7 @@ import scala.collection.JavaConversions._
   */
 object ArmyLogic {
 
+
   def addTroopToArmy(factionName: String, troopName: String, army: ArmyDto): ArmyDto = {
     val troopDo = TroopDAO.findByFactionAndName(factionName, troopName)
 
@@ -27,6 +28,35 @@ object ArmyLogic {
     val armyPoints = newTroops.map(_.points).sum
     val faction = if(newTroops.size == 0) "" else army.faction
     army.copy(troops = newTroops, faction = faction, points = armyPoints)
+  }
+
+  def updateTroop(uuid:String, army:ArmyDto, weapons:List[String], items: List[String]) : ArmyDto = {
+    val currentTroop = getTroopFromArmy(uuid,army)
+    val newWeapons = weapons.map(weaponName => {
+      val weaponDo = WeaponDAO.findByNameAndFactionName(weaponName,currentTroop.faction)
+      weaponDoToWeaponDto(weaponDo)
+    })
+
+    val newItems = items.map(itemName => {
+      val itemDo = ItemDAO.findByNameAndFactionName(itemName,currentTroop.faction)
+      itemDoToItemDto(itemDo)
+    })
+
+    val points = currentTroop.basePoints + newWeapons.map(_.points).sum
+
+
+
+
+    val newTroops = army.troops.map(troop => {
+      if(troop.uuid != uuid) troop
+      else {
+        troop.copy(points=points,weapons=newWeapons,items=newItems)
+      }
+    })
+
+    val armyPoints = newTroops.map(_.points).sum
+
+    army.copy(points = armyPoints,troops = newTroops)
   }
 
   def troopDoToArmyTroopDto(troopDo: TroopDO): ArmyTroopDto = {
@@ -47,6 +77,7 @@ object ArmyLogic {
       troopDo.faction.name,
       troopDo.name,
       troopDo.modelType,
+      troopDo.points,
       points,
       victoryPoints,
       troopDo.speed,
@@ -152,6 +183,7 @@ case class ArmyTroopDto(uuid: String,
                         faction: String,
                         name: String,
                         modelType: String,
+                        basePoints: Int,
                         points: Int,
                         victoryPoints: Int,
                         speed: Int,

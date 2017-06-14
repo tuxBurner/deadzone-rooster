@@ -44,7 +44,11 @@ import scala.concurrent.duration._
     Ok(Json.toJson(TroopLogic.getSelectTroopsForFaction(factionName)))
   }
 
-  @JSRoute def addTroopToSelection() = Action(parse.tolerantJson) { request =>
+  /**
+    * Adds a troop to the army
+    * @return
+    */
+  @JSRoute def addTroopToArmy() = Action(parse.tolerantJson) { request =>
 
     val factionName = (request.body \ "faction").as[String]
     val troopName = (request.body \ "troop").as[String]
@@ -56,12 +60,16 @@ import scala.concurrent.duration._
     withCacheId(Ok(Json.toJson(armyWithNewTroop)).as(JSON), request)
   }
 
+  /**
+    * Removes a troop from the army
+    * @param uuid
+    * @return
+    */
   @JSRoute def removeTroopFromArmy(uuid: String) = Action { request =>
     val armyFromCache = getArmyFromCache(request)
     val newArmy = ArmyLogic.removeTroopFromArmy(uuid, armyFromCache)
     writeArmyToCache(request, newArmy)
     withCacheId(Ok(Json.toJson(newArmy)).as(JSON), request)
-
   }
 
   /**
@@ -77,6 +85,28 @@ import scala.concurrent.duration._
     withCacheId(Ok(Json.toJson(result)).as(JSON), request)
   }
 
+  /**
+    * Update the troop in the army with the selected weapons and items
+    * @param uuid
+    * @return
+    */
+  @JSRoute def updateTroopWeaponsAndItems(uuid:String) = Action(parse.tolerantJson) { request =>
+    val armyFromCache = getArmyFromCache(request)
+
+    val selectedWeapons = (request.body \ "selectedWeapons").as[List[String]]
+    val selectedItems = (request.body \ "selectedItems").as[List[String]]
+
+    val newArmy = ArmyLogic.updateTroop(uuid,armyFromCache,selectedWeapons,selectedItems)
+
+    writeArmyToCache(request,newArmy)
+
+    withCacheId(Ok(Json.toJson(newArmy)).as(JSON), request)
+  }
+
+  /**
+    * Gets the current army
+    * @return
+    */
   @JSRoute def getArmy() = Action { request =>
     val army = getArmyFromCache(request)
     writeArmyToCache(request, army)

@@ -7,10 +7,11 @@ GET           /                                                    controllers.H
 
 GET           /rooster/factions                                    controllers.RoosterController.getFactions()
 GET           /rooster/faction/:factionName/troopsForSelect        controllers.RoosterController.getSelectTroopsForFaction(factionName : String)
-POST          /rooster/army/addTroop                               controllers.RoosterController.addTroopToSelection()
+POST          /rooster/army/addTroop                               controllers.RoosterController.addTroopToArmy()
 GET           /rooster/army                                        controllers.RoosterController.getArmy()
 DELETE        /rooster/army/troop/:uuid                            controllers.RoosterController.removeTroopFromArmy(uuid:String)
 GET           /rooster/army/troop/:uuid/weapons                    controllers.RoosterController.getWeaponsAndItemsForTroop(uuid:String)
+PUT           /rooster/army/troop/:uuid/weapons                    controllers.RoosterController.updateTroopWeaponsAndItems(uuid:String)
 
 
 # Map static resources from the /public folder to the /assets URL path
