@@ -112,7 +112,7 @@ object ArmyLogic {
 
     val troopDto = getTroopFromArmy(uuid, army)
     val weapons = getWeaponsForTroop(troopDto)
-    val items = getItemsForTroop(army)
+    val items = getItemsForTroop(troopDto)
 
     val currentTroopWeapons = troopDto.weapons.map(_.name)
     val currentTroopItems = troopDto.items.map(_.name)
@@ -151,11 +151,14 @@ object ArmyLogic {
   /**
     * Gets the items for the given troop
     *
-    * @param army
+    * @param troop
     * @return
     */
-  def getItemsForTroop(army: ArmyDto): List[ArmyItemDto] = {
-    ItemDAO.findAllItemsForFaction(army.faction).map(itemDoToItemDto(_))
+  def getItemsForTroop(troop: ArmyTroopDto): List[ArmyItemDto] = {
+    if(troop.abilities.find(ability => ability.name == "Beast" || ability.name =="Vehicle").isDefined) {
+      return List()
+    }
+    ItemDAO.findAllItemsForFaction(troop.faction).map(itemDoToItemDto(_))
   }
 
   /**
