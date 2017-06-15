@@ -1,0 +1,15 @@
+Name,Points,Type,Speed,Shoot,Fight,Survive,Size,Armour,VPs,Weapons,Equipment,Abilities,Weapon Upgrades,Skill Tables,Hardpoints,Recon,Army Special
+Commando Captain,22,L,1-2,6,6,4,1,0,2,Pistol,,Tactician(2),"Leader, Small Arms","Ranged, Command, Specialist",,3,Tactical Genius
+Commando Sergeant,18,L,1-2,5,4,4,1,0,1,Pistol,,Tactician(1),"Leader, Small Arms, Light Melee","Ranged, Melee, Command",,4,By the Numbers
+Marauder Warlord,26,L,1-2,5,3,4,2,0,1,Heavy Pistol,,"Tactician(1), Tough","Leader, Small Arms, Light Melee","Ranged, Melee, Command",,5,Green Rage
+Commando,12,T,1-2,5,5,4,1,0,1,Rifle,,,"Small Arms, Light Melee",Melee,,,
+Mawbeast,12,T,2-3,0,4,5,1,0,1,Chainmaw,,Beast,Light Beast,,,,
+Commando Specialist,12,S,1-2,5,5,4,1,0,1,Rifle,,,"Small Arms, Light Automatic, Light Assault",Ranged,,,
+Goblin Sniper,14,S,1-2,5,7,5,1,0,2,Heavy Rifle,,,"Small Arms, Light Sniper",Ranged,,,
+Hulk,28,S,1-2,4,6,4,3,1,3,HEW Cannon,,Tough,"Heavy Melee, Heavy Automatic, Heavy Lance, Heavy Explosive, Hulk","Ranged, Melee",,,
+Ripper Mauler,22,S,1-2,0,4,4,3,1,2,"Buzzsaw, Ram",,"Tactician(1), Solid",Heavy Melee,"Melee, Command",,,
+Ripper Rainmaker,22,S,1-2,5,6,4,3,1,2,"Rotary Cannon, HEW Beamer, Frag Launchers, Rocket Salvo",,Solid,"Heavy Explosive, Heavy Lance, Heavy Automatic","Ranged, Specialist",,,
+Mawbeast Bomber,14,S,2-3,0,4,5,1,0,1,Chainmaw,,"Beast, BOOM!(4)",Light Beast,,,,
+Sky Scraper,17,S,1-3,5,5,4,1,0,2,Rifle,Jump Pack,,"Small Arms, Light Automatic, Light Melee","Ranged, Melee",,,
+Guntrack,13,V,1-1,5,0,6,4,1,2,,,Vehicle,"Vehicle Lance, Vehicle Arillery",Ranged,1,,
+Stuntbot,26,V,1-2,5,6,5,4,3,4,,,Vehicle,"Walker Assault, Walker Melee",Ranged,3,,
