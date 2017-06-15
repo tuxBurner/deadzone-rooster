@@ -52,6 +52,8 @@ object CSVFactionsImporter {
 
   private val ITEM_HEADER = "Equipment"
 
+  private val FACTION_HEADER = "Faction"
+
   private lazy val soldiers = importSoldiersFromCsvs()
 
   def getAllAvaibleFactions: List[String] = soldiers.map(_.faction).toSet.toList
@@ -59,24 +61,18 @@ object CSVFactionsImporter {
   def getSoldierForFaction(factionName: String) = soldiers.filter(_.faction == factionName)
 
   private def importSoldiersFromCsvs(): List[CSVSoldierDto] = {
-
-    // iterate over all files
-    val armiesConfFolder = new File("conf/deadzone/armies")
-
-    armiesConfFolder.listFiles.filter(f => (f.isFile && f.getName.endsWith(".csv"))).flatMap(file => {
-      val armyName = file.getName.replaceAll(".csv", "")
-
-      Logger.debug("Reading configuration for factions: " + armyName + " from file: " + file.getAbsolutePath)
-
-      // process the file
-      val reader = CSVReader.open(file)
-      val dataWithHeaders = reader.allWithHeaders()
-
-      dataWithHeaders.map(parseLineMap(_, armyName)).filter(_.isDefined).map(_.get)
-    }).toList
+    val reader = CSVReader.open("conf/deadzone/armies.csv")
+    val dataWithHeaders = reader.allWithHeaders()
+    dataWithHeaders.map(parseLineMap(_)).filter(_.isDefined).map(_.get)
   }
 
-  private def parseLineMap(lineData: Map[String, String], faction: String): Option[CSVSoldierDto] = {
+  private def parseLineMap(lineData: Map[String, String]): Option[CSVSoldierDto] = {
+
+    val faction =  lineData.get(FACTION_HEADER).get
+    if (faction.isEmpty == true) {
+      Logger.error("CSV Troop: No faction given in line: " + lineData)
+      return Option.empty
+    }
 
     val name = lineData.get(NAME_HEADER).get
     if (name.isEmpty == true) {
