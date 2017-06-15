@@ -22,8 +22,8 @@ class HomeController @Inject()(jsRoutesComponent:JsRoutesComponent,val messagesA
     * Display the main view
     * @return
     */
-  def roosterMain = Action {
-    Ok(views.html.rooster())
+  def rosterMain = Action {
+    Ok(views.html.roster())
   }
 
 

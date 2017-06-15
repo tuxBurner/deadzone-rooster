@@ -15,9 +15,9 @@ import scala.collection.mutable.ListBuffer
 import scala.concurrent.duration._
 
 /**
-  * Controller which handles all the endpoints for the rooster editor
+  * Controller which handles all the endpoints for the roster editor
   */
-@Singleton class RoosterController @Inject()(cache: CacheApi,pdfGenerator: PdfGenerator,val messagesApi: MessagesApi) extends Controller with I18nSupport {
+@Singleton class RosterController @Inject()(cache: CacheApi, pdfGenerator: PdfGenerator, val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
   implicit val armyAbilityDtoFormat = Json.format[ArmyAbilityDto]
   implicit val armyWeaponDtoFormat = Json.format[ArmyWeaponDto]
@@ -125,7 +125,7 @@ import scala.concurrent.duration._
 
     val armyPdfInfos = ArmyLogic.extractPdfArmyInfos(army)
 
-    val pdfBytes = pdfGenerator.toBytes(views.html.pdf.roosterTable.render(army,armyPdfInfos,messagesApi.preferred(request)),"http://localhost:9000")
+    val pdfBytes = pdfGenerator.toBytes(views.html.pdf.rosterTable.render(army,armyPdfInfos,messagesApi.preferred(request)),"http://localhost:9000")
     withCacheId(Ok(pdfBytes),request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
   }
 

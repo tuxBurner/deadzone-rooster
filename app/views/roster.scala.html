@@ -1,7 +1,7 @@
 @()(implicit messages: Messages)
 
 
-@main("Rooster") {
+@main("Roster") {
   <div class="row">
     <div class="col-xs-12">
       <div class="input-group">
@@ -58,7 +58,7 @@
       </tr>
     </thead>
     <tbody id="rooster_troop_tbody">
-      @* FILLED VIA rooster_main.js *@
+      @* FILLED VIA roster_main.js *@
     </tbody>
   </table>
 
@@ -67,7 +67,7 @@
   @* ACTION BUTTONS *@
   <div class="row">
     <div class="col-xs-10">
-      <a href="@routes.RoosterController.getTablePdf()" target="_blank" class="btn btn-info"><span class="glyphicon glyphicon-print"></span></a>
+      <a href="@routes.RosterController.getTablePdf()" target="_blank" class="btn btn-info"><span class="glyphicon glyphicon-print"></span></a>
     </div>
   </div>
   @* ACTION BUTTONS *@
@@ -100,7 +100,7 @@
             </thead>
 
             <tbody id="rooster_troop_edit_weapons">
-              @* FILLED VIA rooster_main.js *@
+              @* FILLED VIA roster_main.js *@
             </tbody>
           </table>
 
@@ -119,7 +119,7 @@
             </thead>
 
             <tbody id="rooster_troop_edit_items">
-              @* FILLED VIA rooster_main.js *@
+              @* FILLED VIA roster_main.js *@
             </tbody>
           </table>
 
