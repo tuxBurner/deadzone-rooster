@@ -1,0 +1,12 @@
+Name,Points,Type,Speed,Shoot,Fight,Survive,Size,Armour,VPs,Weapons,Equipment,Abilities,Weapon Upgrades,Skill Tables,Hardpoints,Recon,Army Special
+Brood Mother,34,L,1-2,5,5,4,2,2,4,"Chem Staff, Claws",,Tactician(2),"Leader, Small Arms, Light Assault, Light Automatic, Light Explosive","Ranged, Melee, Command",,4,Bodyguard
+Progenitor,30,L,2-3,5,5,4,1,0,3,Ray Gun,,Tactician(1),"Leader, Small Arms, Light Assault, Light Automatic, Light Explosive","Melee, Command, Specialist",,3,Surge
+Crawler,12,T,2-3,6,5,5,1,0,1,Ray Gun,,,Small Arms,Ranged,,,
+Stalker,10,T,2-3,7,4,5,1,0,1,Ray Pistol,,,"Small Arms, Light Melee",Melee,,,
+Malignus,14,S,2-3,5,6,5,1,0,2,Ray Gun,,,"Small Arms, Light Assault, Light Automatic, Light Explosive","Ranged, Specialist",,,
+Night Terror with Scythes,26,S,2-3,0,4,5,2,0,3,Scythes,,"Rampage, Beast",Beast Melee,,,,
+Night Terror with Spitter,26,S,2-3,5,5,5,2,0,3,Heavy Chem Spitter,,"Rampage, Beast",Beast Ranged,,,,
+Creeper,12,S,2-3,6,5,5,1,0,1,"Ray Pistol, Det Packs (Mag Lock), Det Packs (Prox Fuse)",,Engineer,"Small Arms, Light Melee, Light Explosive","Melee, Ranged",,,
+Nightmare,23,S,1-2,6,4,4,2,0,2,,,,"Small Arms, Light Melee, Light Assault, Heavy Assault, Heavy Melee","Melee, Ranged",2,,
+Rumbler Weapon Platform,16,V,1-2,5,0,5,4,0,2,,,Vehicle,"Vehicle Assault, Vehicle Automatic",Ranged,1,,
+Tangle,25,V,1-1,5,6,5,4,1,3,"Visions of Glory, Psychic Visions of Death",,"Psychic, Vehicle",,Command,,,
