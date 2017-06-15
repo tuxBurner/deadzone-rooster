@@ -157,7 +157,7 @@ var rosterGuiHandler = {
         var checked = ($.inArray(weapon.name, data.currentWeapons) !== -1) ? 'checked' : '';
 
         content += '<tr>';
-        content += '<td><input value="' + weapon.name + '" class="edit_troop_slected_weapon" type="radio" name="edit_weapon_' + type + '" ' + checked + '/></td>';
+        content += '<td><input value="' + weapon.name + '" class="edit_troop_slected_weapon" type="checkbox" ' + checked + '/></td>';
         content += '<td>' + weapon.name + '</td>';
         content += '<td>' + weapon.points + '</td>';
         content += '<td>' + weapon.victoryPoints + '</td>';
