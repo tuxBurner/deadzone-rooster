@@ -76,7 +76,11 @@ object TroopDAO {
 
     soldierDto.defaultItems.foreach(itemName => {
       val itemDo = ItemDAO.findByNameAndFaction(itemName,factionDo)
-      troopDO.defaultItems.add(itemDo)
+      if(itemDo == null)  {
+        Logger.error("Troop: "+soldierDto.name+" in faction: "+soldierDto.faction+" cannot find item: "+itemName+" in DB.")
+      } else {
+        troopDO.defaultItems.add(itemDo)
+      }
     })
 
     troopDO.save()
@@ -93,7 +97,6 @@ object TroopDAO {
 
   @Id val id: Long = 0L
 
-  @Column(unique = true)
   @NotNull var name: String = ""
 
   @NotNull var points: Int = 0
