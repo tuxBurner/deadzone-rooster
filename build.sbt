@@ -1,6 +1,11 @@
-name := """deadzone-rooster"""
+import com.typesafe.sbt.packager.docker.ExecCmd
+
+name := """deadzone-roster"""
 
 version := "1.0-SNAPSHOT"
+
+maintainer := "Sebastian Hardt <s.hardt@micromata.de>"
+
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala,PlayEbean)
 
@@ -20,3 +25,18 @@ libraryDependencies ++= Seq(
 
 resolvers += "tuxburner.github.io" at "http://tuxburner.github.io/repo"
 
+// http://www.scala-sbt.org/sbt-native-packager/formats/docker.html
+// docker infos go here
+maintainer in Docker := "Sebastian Hardt <s.hardt@micromata.de>"
+packageName in Docker := "micromata/deadzoneroster"
+dockerExposedPorts in Docker := Seq(9000,9443)
+dockerExposedVolumes in Docker := Seq("/data")
+
+// add the command to use whalerider conf
+dockerCommands  ++= Seq(
+  ExecCmd("CMD","-Dconfig.file=/opt/docker/conf/whaleRider.conf")
+)
+
+
+
+dockerUpdateLatest in Docker := true
