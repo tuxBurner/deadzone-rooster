@@ -179,7 +179,7 @@ var rosterGuiHandler = {
     $('#rooster_army_points').text(armyData.points);
     $('#rooster_army_faction').text(armyData.faction);
 
-    $('#rooster_faction_select').attr('disabled', armyData.faction !== '');
+    //$('#rooster_faction_select').attr('disabled', armyData.faction !== '');
 
     $('#rooster_troop_tbody').html('');
     var tableContent = '';

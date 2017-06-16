@@ -27,7 +27,18 @@ object ArmyLogic {
     val newTroops: List[ArmyTroopDto] = army.troops :+ newTroop
     val armyPoints = newTroops.map(_.points).sum
 
-    army.copy(troops = newTroops, faction = factionName, points = armyPoints)
+    val factions = getFactionsFromArmy(newTroops)
+
+    army.copy(troops = newTroops, faction = factions, points = armyPoints)
+  }
+
+  /**
+    * Collects all factions from the troops as a a comma separated string
+    * @param troops
+    * @return
+    */
+  private def getFactionsFromArmy(troops: List[ArmyTroopDto]) : String = {
+    troops.map(_.faction).distinct.mkString(",");
   }
 
   /**
@@ -39,7 +50,7 @@ object ArmyLogic {
   def removeTroopFromArmy(uuid: String, army: ArmyDto): ArmyDto = {
     val newTroops = army.troops.filter(_.uuid != uuid)
     val armyPoints = newTroops.map(_.points).sum
-    val faction = if (newTroops.size == 0) "" else army.faction
+    val faction = if (newTroops.size == 0) "" else getFactionsFromArmy(newTroops)
     army.copy(troops = newTroops, faction = faction, points = armyPoints)
   }
 
