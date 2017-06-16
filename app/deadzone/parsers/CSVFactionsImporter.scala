@@ -153,7 +153,7 @@ object CSVFactionsImporter {
           )
       })
     }
-    val weaponTypes = lineData.get(WEAPON_UPGRADES_HEADER).get.trim.split(',').map(_.trim)
+    val weaponTypes = lineData.get(WEAPON_UPGRADES_HEADER).get.trim.split(',').map(_.trim).filter(_ != "")
 
     val items = lineData.get(ITEM_HEADER).get.trim.split(',').map(_.trim).filter(_ != "").toList
 
