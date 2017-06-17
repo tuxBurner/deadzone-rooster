@@ -28,7 +28,7 @@ import scala.concurrent.duration._
   implicit val armyTroopWeaponsItemsFormat = Json.format[ArmyTroopWeaponsItemsDto]
 
   /**
-    * Returns all the avaible factions as a json array
+    * Returns all the available factions as a json array
     *
     * @return
     */

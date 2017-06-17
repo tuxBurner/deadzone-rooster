@@ -30,6 +30,7 @@ troop.addBtn=Add Troop
 
 faction.select=Faction:
 troop.select=Troop:
+type.select=Type:
 
 army.points=Total Points:
 army.faction=Faction:
