@@ -1,0 +1,61 @@
+@()(implicit messages: Messages)
+@* EDIT TROOP MODAL *@
+<div class="modal fade" id="roster_troop_edit_modal" data-troopuuid="" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">@Messages("edit.headline") <span id="roster_troop_edit_name"></span></h4>
+      </div>
+      <div class="modal-body">
+
+
+        <h4>@Messages("weapon.headline")</h4>
+
+        <table class="table table-bordered table-condensed">
+          <thead>
+            <tr class="active">
+              <th></th>
+              <th>@Messages("weapon.name")</th>
+              <th>@Messages("weapon.points")</th>
+              <th>@Messages("weapon.victoryPoints")</th>
+              <th>@Messages("weapon.range")</th>
+              <th>@Messages("weapon.armorPircing")</th>
+              <th>@Messages("weapon.abilities")</th>
+            </tr>
+          </thead>
+
+          <tbody id="roster_troop_edit_weapons">
+            @* FILLED VIA roster_main.js *@
+          </tbody>
+        </table>
+
+        <hr/>
+
+        <h4>@Messages("item.headline")</h4>
+
+        <table class="table table-bordered table-condensed">
+          <thead>
+            <tr class="active">
+              <th></th>
+              <th>@Messages("item.name")</th>
+              <th>@Messages("item.points")</th>
+              <th>@Messages("item.rarity")</th>
+            </tr>
+          </thead>
+
+          <tbody id="roster_troop_edit_items">
+            @* FILLED VIA roster_main.js *@
+          </tbody>
+        </table>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="roster_troop_edit_save_btn">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+@* EO EDIT TROOP MODAL *@

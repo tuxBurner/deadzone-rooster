@@ -50,4 +50,6 @@ validate.toMuchItemsPerRarity=For the rarity: {0} only {1} items are allowed.
 validate.toMuchFightWeapons=The troop: {0} has {1} fight weapons only one is allowed.
 validate.toMuchShootWeapons=The troop: {0} has {1} shoot weapons only one is allowed.
 
+validate.modal.headline=Validation Result
+
 ability.desc.RapidFire=A model using a weapon with the Rapid Fire special rule may elect to Fire for Effect when making a Shoot action

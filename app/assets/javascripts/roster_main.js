@@ -297,11 +297,26 @@ var rosterGuiHandler = {
   /**
    * Calls the backend to validate the army and displays the result
    */
-  validateArmy: function() {
+  validateArmy: function () {
     jsRoutes.controllers.RosterController.validateArmy().ajax({
-     success: function(data) {
-       console.error(data);
-     }
+      success: function (data) {
+
+        var content = '';
+
+        if (data.length === 0) {
+          content += 'No errors.';
+        } else {
+          content += 'Found: ' + data.length + ' errors in army';
+          content += '<ul>';
+          $.each(data, function (idx, msg) {
+            content += '<li>' + msg + '</li>';
+          });
+          content += '</ul>';
+        }
+
+        $('#roster_army_validate_modal_body').html(content);
+        $('#roster_army_validate_modal').modal('show');
+      }
     });
   }
 };
@@ -328,7 +343,7 @@ $(function () {
     rosterGuiHandler.saveChangesToTroop();
   });
 
-  $('#roster_validate_army_btn').on('click', function() {
+  $('#roster_validate_army_btn').on('click', function () {
     rosterGuiHandler.validateArmy();
   });
 
