@@ -39,13 +39,15 @@ army.abilities=Abilities:
 
 edit.headline=Edit:
 
-validate.noSingleFaction=No single faction army
-validate.noLeaderSelected=No leader selected
-validate.moreThanOneLeaderSelected=More than one leader selected
-validate.toMuchSpecialistSelected=More specialists than troops selected
-validate.toMuchVehiclesSelected=Not enough troops for vehicles. 3 troops per vehicle required
-validate.onlyOneCharacterAllowed=Only one character per army allowed
-validate.troopsToMuchItems=Only one item per troop allowed
-validate.toMuchItemsPerRarity=For the rarity: {0} only {1} items are allowed
+validate.noSingleFaction=No single faction army.
+validate.noLeaderSelected=No leader selected.
+validate.moreThanOneLeaderSelected=More than one leader selected.
+validate.toMuchSpecialistSelected=More specialists than troops selected.
+validate.toMuchVehiclesSelected=Not enough troops for vehicles. 3 troops per vehicle required.
+validate.onlyOneCharacterAllowed=Only one character per army allowed.
+validate.troopsToMuchItems=Only one item per troop allowed.
+validate.toMuchItemsPerRarity=For the rarity: {0} only {1} items are allowed.
+validate.toMuchFightWeapons=The troop: {0} has {1} fight weapons only one is allowed.
+validate.toMuchShootWeapons=The troop: {0} has {1} shoot weapons only one is allowed.
 
 ability.desc.RapidFire=A model using a weapon with the Rapid Fire special rule may elect to Fire for Effect when making a Shoot action

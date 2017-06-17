@@ -193,7 +193,7 @@ object ArmyLogic {
     */
   def weaponDoToWeaponDto(weaponDo: WeaponDO): ArmyWeaponDto = {
     val abilities = weaponDo.defaultWeaponAbilities.toList.map(abilityDo => ArmyAbilityDto(abilityDo.ability.name, abilityDo.defaultValue))
-    ArmyWeaponDto(weaponDo.name, weaponDo.points, weaponDo.shootRange, weaponDo.armorPircing, weaponDo.victoryPoints, abilities)
+    ArmyWeaponDto(weaponDo.name, weaponDo.points, weaponDo.shootRange, weaponDo.armorPircing, weaponDo.victoryPoints, abilities, weaponDo.free)
   }
 
   /**
@@ -234,7 +234,7 @@ case class ArmyAbilityDto(name: String, defaultVal: Int)
 
 case class ArmyTroopDto(uuid: String, faction: String, name: String, modelType: String, basePoints: Int, points: Int, victoryPoints: Int, speed: Int, sprint: Int, armour: Int, size: Int, shoot: Int, fight: Int, survive: Int, abilities: List[ArmyAbilityDto], weapons: List[ArmyWeaponDto], items: List[ArmyItemDto], allowedWeaponTypes: List[String], recon: Int, armySpecial: String)
 
-case class ArmyWeaponDto(name: String, points: Int, shootRange: Int, armorPircing: Int, victoryPoints: Int, abilities: List[ArmyAbilityDto])
+case class ArmyWeaponDto(name: String, points: Int, shootRange: Int, armorPircing: Int, victoryPoints: Int, abilities: List[ArmyAbilityDto], free: Boolean)
 
 case class ArmyItemDto(name: String, points: Int, rarity: String, noUpdate: Boolean)
 

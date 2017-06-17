@@ -21,7 +21,7 @@ class ArmyValidator(messages: Messages) {
   def validateArmy(army: ArmyDto): List[String] = {
     army.troops.length match {
       case 0 => List()
-      case _ => checkSingleFaction(army) ++ checkIfOneLeader(army) ++ validateSpecialist(army) ++ validateVehicle(army) ++ validateCharacters(army) ++ validateItems(army)
+      case _ => checkSingleFaction(army) ++ checkIfOneLeader(army) ++ validateSpecialist(army) ++ validateVehicle(army) ++ validateCharacters(army) ++ validateItems(army) ++ validateWeaponTypesPerTroop(army)
     }
   }
 
@@ -169,7 +169,30 @@ class ArmyValidator(messages: Messages) {
     } else {
       List()
     }
+  }
 
+  /**
+    * Checks if the weapon types ranged, fight are single
+    * @param army
+    * @return
+    */
+  private def validateWeaponTypesPerTroop(army: ArmyDto) : List[String] = {
+
+    val result: ListBuffer[String] = ListBuffer()
+
+    army.troops.foreach(troop => {
+      val fightWeapons = troop.weapons.filter(weapon => weapon.shootRange == 0 && weapon.free == false)
+      if(fightWeapons.length > 1) {
+        result += messages("validate.toMuchFightWeapons", troop.name, fightWeapons.length)
+      }
+
+      val shootWeapons = troop.weapons.filter(weapon => weapon.shootRange != 0 && weapon.free == false)
+      if(shootWeapons.length > 1) {
+        result += messages("validate.toMuchShootWeapons", troop.name, shootWeapons.length)
+      }
+    })
+
+    return result.toList
 
   }
 
