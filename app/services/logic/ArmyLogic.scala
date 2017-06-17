@@ -55,6 +55,22 @@ object ArmyLogic {
   }
 
   /**
+    * Clones the given troop and adds it to the army
+    * @param uuid
+    * @param army
+    * @return
+    */
+  def cloneTroop(uuid: String, army: ArmyDto) : ArmyDto = {
+    val troopToClone = getTroopFromArmy(uuid,army)
+
+    val newTroops = army.troops :+ troopToClone.copy(uuid = UUID.randomUUID().toString)
+
+    val armyPoints = newTroops.map(_.points).sum
+
+    army.copy(troops = newTroops, points = armyPoints)
+  }
+
+  /**
     * Updates the troop with the given items and weapons
     *
     * @param uuid

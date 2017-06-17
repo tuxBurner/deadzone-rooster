@@ -243,7 +243,7 @@ var rosterGuiHandler = {
       tableContent += '<td>' + troop.victoryPoints + '</td>';
       tableContent += '<td>' + troop.armour + '</td>';
       tableContent += '<td>' + troop.size + '</td>';
-      tableContent += '<td>' + troop.speed + ' - ' + troop.sprint + '</td>';
+      tableContent += '<td>' + troop.speed + '-' + troop.sprint + '</td>';
       tableContent += '<td>' + troop.shoot + '+</td>';
       tableContent += '<td>' + troop.fight + '+</td>';
       tableContent += '<td>' + troop.survive + '+</td>';
@@ -253,8 +253,9 @@ var rosterGuiHandler = {
       tableContent += '<td>' + reconArmySpecialContent + '</td>';
 
       tableContent += '<td>';
-      tableContent += '<button class="btn btn-info btn-sm roster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button> ';
-      tableContent += '<button class="btn btn-danger btn-sm roster_del_btn"><span class="glyphicon glyphicon-trash"></span></button>';
+      tableContent += '<button class="btn btn-info btn-xs roster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button>';
+      tableContent += '<button class="btn btn-info btn-xs roster_clone_btn"><span class="glyphicon glyphicon-plus-sign"></span></button>';
+      tableContent += '<button class="btn btn-danger btn-xs roster_del_btn"><span class="glyphicon glyphicon-trash"></span></button>';
       tableContent += '</td>';
 
       tableContent += '</tr>';
@@ -268,7 +269,6 @@ var rosterGuiHandler = {
    * @returns {*}
    */
   weaponRangeForDisplay: function (weapon) {
-
     if (weapon.shootRange === 0) {
       return 'RF';
     } else {
@@ -318,6 +318,13 @@ var rosterGuiHandler = {
         $('#roster_army_validate_modal').modal('show');
       }
     });
+  },
+  cloneTroop: function(uuid) {
+    jsRoutes.controllers.RosterController.cloneTroop(uuid).ajax({
+      success: function (data) {
+        rosterGuiHandler.displayCurrentArmyData(data);
+      }
+    });
   }
 };
 
@@ -357,6 +364,11 @@ $(function () {
     var uuid = $(this).closest('tr').data('uuid');
     var troopName = $(this).closest('tr').data('troopname');
     rosterGuiHandler.displayEditPopup(uuid, troopName);
+  });
+
+  $(document).on('click', '.roster_clone_btn', function () {
+    var uuid = $(this).closest('tr').data('uuid');
+    rosterGuiHandler.cloneTroop(uuid);
   });
 
 });                                                              

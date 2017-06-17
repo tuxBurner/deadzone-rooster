@@ -136,6 +136,13 @@ import scala.concurrent.duration._
     withCacheId(Ok(Json.toJson(validationResult)).as(JSON), request)
   }
 
+  @JSRoute def cloneTroop(uuid: String) = Action { request =>
+    val army = getArmyFromCache(request)
+    val newArmy = ArmyLogic.cloneTroop(uuid,army)
+    writeArmyToCache(request,newArmy)
+    withCacheId(Ok(Json.toJson(newArmy)).as(JSON), request)
+  }
+
   private def renewArmyInCache(request: Request[Any]): Unit = {
     val armyFromCache = getArmyFromCache(request)
     writeArmyToCache(request, armyFromCache)
