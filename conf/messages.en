@@ -55,3 +55,5 @@ validate.modal.headline=Validation Result
 ability.name=Name
 ability.desc=Description
 ability.desc.RapidFire=A model using a weapon with the Rapid Fire special rule may elect to Fire for Effect when making a Shoot action
+ability.desc.Agile=After a model takes a Move or Sprint action it may additionally choose to move up or down one level in the same stack for free. This change in level follows the normal movement rules.
+ability.desc.Beast=The model cannot pick up, carry or use items. All of its weapons and equipment are either natural or have been grafted on permanently by skilled bio-technicians. This ability can also apply to models that are already so burdened by their normal combat load that they have no room to carry more.
