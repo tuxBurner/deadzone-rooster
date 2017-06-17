@@ -2,6 +2,8 @@ package services.logic
 
 import play.api.i18n.Messages
 
+import scala.collection.mutable.ListBuffer
+
 /**
   * Validates the army
   */
@@ -16,7 +18,7 @@ class ArmyValidator(messages: Messages) {
   def validateArmy(army: ArmyDto): List[String] = {
     army.troops.length match {
       case 0 => List()
-      case _ => checkSingleFaction(army) ++ checkIfOneLeader(army) ++ validateSpecialist(army) ++ validateVehicle(army) ++ validateCharacters(army)
+      case _ => checkSingleFaction(army) ++ checkIfOneLeader(army) ++ validateSpecialist(army) ++ validateVehicle(army) ++ validateCharacters(army) ++ validateItems(army)
     }
   }
 
@@ -35,6 +37,7 @@ class ArmyValidator(messages: Messages) {
 
   /**
     * Validates if the army contains one leader
+    *
     * @param army
     * @return
     */
@@ -48,6 +51,7 @@ class ArmyValidator(messages: Messages) {
 
   /**
     * Checks if there are enough troops for the amount of specialists.
+    *
     * @param army
     * @return
     */
@@ -55,7 +59,7 @@ class ArmyValidator(messages: Messages) {
     val troopCount = army.troops.count(_.modelType == "Troop")
     val specialistCount = army.troops.count(_.modelType == "Specialist")
 
-    if(specialistCount > troopCount) {
+    if (specialistCount > troopCount) {
       List(messages("validate.toMuchSpecialistSelected"))
     } else {
       List()
@@ -64,6 +68,7 @@ class ArmyValidator(messages: Messages) {
 
   /**
     * Checks if there are enough troops for the amount of vehicles
+    *
     * @param army
     * @return
     */
@@ -73,7 +78,7 @@ class ArmyValidator(messages: Messages) {
 
     val allowedAmountOfVehicles: Int = troopCount / 3;
 
-    if(allowedAmountOfVehicles < vehicleCount) {
+    if (allowedAmountOfVehicles < vehicleCount) {
       List(messages("validate.toMuchVehiclesSelected"))
     } else {
       List()
@@ -82,6 +87,7 @@ class ArmyValidator(messages: Messages) {
 
   /**
     * Checks if there is only one characte in the army
+    *
     * @param army
     * @return
     */
@@ -91,7 +97,19 @@ class ArmyValidator(messages: Messages) {
       case 1 => List()
       case _ => List(messages("validate.onlyOneCharacterAllowed"))
     }
+  }
 
+  /**
+    * Checks if the items the army contains are valid
+    * @param army
+    * @return
+    */
+  private def validateItems(army: ArmyDto) : List[String] = {
+    val result:ListBuffer[String] = ListBuffer()
+    val troopsWithToMuchItems = army.troops.count(_.items.filter(_.noUpdate == false).length > 1)
+    if(troopsWithToMuchItems > 0) result += messages("validate.troopsToMuchItems")
+
+    return result.toList
   }
 
 }

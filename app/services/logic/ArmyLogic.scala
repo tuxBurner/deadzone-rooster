@@ -75,11 +75,14 @@ object ArmyLogic {
       itemDoToItemDto(itemDo)
     })
 
+
     val points = currentTroop.basePoints + newWeapons.map(_.points).sum + newItems.map(_.points).sum
 
     val newTroops = army.troops.map(troop => {
       if (troop.uuid != uuid) troop else {
-        troop.copy(points = points, weapons = newWeapons, items = newItems)
+        // add all items which are in the old troop and no upgrade item
+          val itemsToSet = newItems ++ troop.items.filter(_.noUpdate == true)
+          troop.copy(points = points, weapons = newWeapons, items = itemsToSet)
       }
     })
 
@@ -179,7 +182,7 @@ object ArmyLogic {
     * @return
     */
   def itemDoToItemDto(itemDo: ItemDO): ArmyItemDto = {
-    ArmyItemDto(itemDo.name, itemDo.points, itemDo.rarity)
+    ArmyItemDto(itemDo.name, itemDo.points, itemDo.rarity, itemDo.noUpdate)
   }
 
   /**
@@ -233,7 +236,7 @@ case class ArmyTroopDto(uuid: String, faction: String, name: String, modelType: 
 
 case class ArmyWeaponDto(name: String, points: Int, shootRange: Int, armorPircing: Int, victoryPoints: Int, abilities: List[ArmyAbilityDto])
 
-case class ArmyItemDto(name: String, points: Int, rarity: String)
+case class ArmyItemDto(name: String, points: Int, rarity: String, noUpdate: Boolean)
 
 case class ArmyTroopWeaponsItemsDto(weapons: Map[String, List[ArmyWeaponDto]], items: List[ArmyItemDto], currentWeapons: List[String], currentItems: List[String])
 
