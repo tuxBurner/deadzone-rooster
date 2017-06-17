@@ -46,5 +46,6 @@ validate.toMuchSpecialistSelected=More specialists than troops selected
 validate.toMuchVehiclesSelected=Not enough troops for vehicles. 3 troops per vehicle required
 validate.onlyOneCharacterAllowed=Only one character per army allowed
 validate.troopsToMuchItems=Only one item per troop allowed
+validate.toMuchItemsPerRarity=For the rarity: {0} only {1} items are allowed
 
 ability.desc.RapidFire=A model using a weapon with the Rapid Fire special rule may elect to Fire for Effect when making a Shoot action

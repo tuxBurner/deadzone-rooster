@@ -10,6 +10,9 @@ import scala.collection.mutable.ListBuffer
 class ArmyValidator(messages: Messages) {
 
 
+  val itemsPerPoint: Map[String, Map[Int, Int]] = Map("Common" -> Map(100 -> 2, 150 -> 3, 200 -> 4, 250 -> 5, 300 -> 6), "Rare" -> Map(100 -> 1, 150 -> 1, 200 -> 2, 250 -> 2, 300 -> 3), "Unique" -> Map(100 -> 1, 150 -> 1, 200 -> 1, 250 -> 1, 300 -> 1))
+
+
   /**
     * Validates the army if it is conform with the rules
     *
@@ -101,15 +104,73 @@ class ArmyValidator(messages: Messages) {
 
   /**
     * Checks if the items the army contains are valid
+    *
     * @param army
     * @return
     */
-  private def validateItems(army: ArmyDto) : List[String] = {
-    val result:ListBuffer[String] = ListBuffer()
+  private def validateItems(army: ArmyDto): List[String] = {
+    val result: ListBuffer[String] = ListBuffer()
+
+    // check if there are troops with more than one item
     val troopsWithToMuchItems = army.troops.count(_.items.filter(_.noUpdate == false).length > 1)
-    if(troopsWithToMuchItems > 0) result += messages("validate.troopsToMuchItems")
+    if (troopsWithToMuchItems > 0) result += messages("validate.troopsToMuchItems")
+
+
+    // check if the rarity is okay for the items
+    val itemsInArmy = army.troops.flatten(_.items.filter(_.noUpdate == false))
+
+
+    result ++= validateItemsPerRarity(itemsInArmy, "Common", army.points)
+    result ++= validateItemsPerRarity(itemsInArmy, "Unique", army.points)
+    result ++= validateItemsPerRarity(itemsInArmy, "Rare", army.points)
+
 
     return result.toList
+  }
+
+  /**
+    * Checks if the items in the army are matching the allowed amount of items of this rarity by army points
+    *
+    * @param itemsInArmy
+    * @param rarity
+    * @param armyTotalPoints
+    * @return
+    */
+  private def validateItemsPerRarity(itemsInArmy: List[ArmyItemDto], rarity: String, armyTotalPoints: Int): List[String] = {
+
+    val rarityItems = itemsInArmy.filter(_.rarity == rarity)
+    // no items ?
+    if (rarityItems.length == 0) {
+      return List();
+    }
+
+
+    val armyItemsRange: Int =
+      if (100 >= armyTotalPoints) {
+        100
+      } else if (150 >= armyTotalPoints) {
+        150
+      } else if (200 >= armyTotalPoints) {
+        200
+      } else if (250 >= armyTotalPoints) {
+        250
+      } else if (300 >= armyTotalPoints) {
+        300
+      } else {
+        100
+      }
+
+    // get the allowed amount of items for the amount of army points
+    val itemsPerArmyPoint = itemsPerPoint.get(rarity).get.get(armyItemsRange).get
+
+
+    if (itemsPerArmyPoint < rarityItems.length) {
+      List(messages("validate.toMuchItemsPerRarity", rarity, itemsPerArmyPoint))
+    } else {
+      List()
+    }
+
+
   }
 
 }
