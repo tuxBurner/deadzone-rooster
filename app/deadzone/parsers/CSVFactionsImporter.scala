@@ -97,7 +97,7 @@ object CSVFactionsImporter {
     val matchedTyp = typeData match {
       case "L" => ModelType.Leader
       case "T" => ModelType.Troop
-      case "S" => ModelType.Speacialist
+      case "S" => ModelType.Specialist
       case "V" => ModelType.Vehicle
       case "C" => ModelType.Character
       case _ => None

@@ -11,7 +11,6 @@ import play.api.libs.json._
 import play.api.mvc._
 import services.logic._
 
-import scala.collection.mutable.ListBuffer
 import scala.concurrent.duration._
 
 /**
@@ -131,7 +130,8 @@ import scala.concurrent.duration._
 
   @JSRoute def validateArmy() = Action { request =>
     val army = getArmyFromCache(request)
-    val validationResult = ArmyValidatorLogic.validateArmy(army)
+    val validator = new ArmyValidator(messagesApi.preferred(request))
+    val validationResult = validator.validateArmy(army)
     writeArmyToCache(request, army)
     withCacheId(Ok(Json.toJson(validationResult)).as(JSON), request)
   }

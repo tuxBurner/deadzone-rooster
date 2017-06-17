@@ -6,5 +6,5 @@ package deadzone.models
   *         Time: 14:53
   */
 object ModelType extends Enumeration {
-  val Leader, Troop, Speacialist, Vehicle, Character= Value
+  val Leader, Troop, Specialist, Vehicle, Character= Value
 }
