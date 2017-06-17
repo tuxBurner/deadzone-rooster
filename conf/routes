@@ -5,6 +5,8 @@
 # An example controller showing a sample home page
 GET           /                                                   controllers.HomeController.rosterMain
 
+GET           /abilities                                          controllers.HomeController.displayAllAbilities()
+
 GET           /roster/factions                                    controllers.RosterController.getFactions()
 GET           /roster/faction/:factionName/troopsForSelect        controllers.RosterController.getSelectTroopsForFaction(factionName : String)
 POST          /roster/army/addTroop                               controllers.RosterController.addTroopToArmy()

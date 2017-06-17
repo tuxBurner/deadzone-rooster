@@ -19,6 +19,14 @@ object AbilityDAO {
 
   private val FINDER = new Model.Finder[Long, AbilityDO](classOf[AbilityDO])
 
+  /**
+    * Finds all abilities
+    * @return
+    */
+  def findAll(): List[AbilityDO] = {
+    FINDER.order().asc("name").findList().toList
+  }
+
   def deleteAll(): Unit = {
     Logger.info("Deleting all: " + classOf[AbilityDO].getName + " from database")
     FINDER.all().toList.foreach(_.delete())
