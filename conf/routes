@@ -12,6 +12,7 @@ GET           /roster/army                                        controllers.Ro
 DELETE        /roster/army/troop/:uuid                            controllers.RosterController.removeTroopFromArmy(uuid:String)
 GET           /roster/army/troop/:uuid/weapons                    controllers.RosterController.getWeaponsAndItemsForTroop(uuid:String)
 PUT           /roster/army/troop/:uuid/weapons                    controllers.RosterController.updateTroopWeaponsAndItems(uuid:String)
+GET           /roster/army/validate                               controllers.RosterController.validateArmy()
 
 GET           /roster/pdf/table                                   controllers.RosterController.getTablePdf()
 

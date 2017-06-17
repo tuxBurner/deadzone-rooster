@@ -293,6 +293,16 @@ var rosterGuiHandler = {
       seperator = abSeperator;
     });
     return abilitiesContent;
+  },
+  /**
+   * Calls the backend to validate the army and displays the result
+   */
+  validateArmy: function() {
+    jsRoutes.controllers.RosterController.validateArmy().ajax({
+     success: function(data) {
+       console.error(data);
+     }
+    });
   }
 };
 
@@ -316,6 +326,10 @@ $(function () {
 
   $('#roster_troop_edit_save_btn').on('click', function () {
     rosterGuiHandler.saveChangesToTroop();
+  });
+
+  $('#roster_validate_army_btn').on('click', function() {
+    rosterGuiHandler.validateArmy();
   });
 
   $(document).on('click', '.roster_del_btn', function () {

@@ -1,4 +1,4 @@
-package controllers
+  package controllers
 
 import java.util.UUID
 import javax.inject._
@@ -127,6 +127,13 @@ import scala.concurrent.duration._
 
     val pdfBytes = pdfGenerator.toBytes(views.html.pdf.rosterTable.render(army,armyPdfInfos,messagesApi.preferred(request)),"http://localhost:9000")
     withCacheId(Ok(pdfBytes),request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
+  }
+
+  @JSRoute def validateArmy() = Action { request =>
+    val army = getArmyFromCache(request)
+    val validationResult = ArmyValidatorLogic.validateArmy(army)
+    writeArmyToCache(request, army)
+    withCacheId(Ok(Json.toJson(validationResult)).as(JSON), request)
   }
 
   private def renewArmyInCache(request: Request[Any]): Unit = {
