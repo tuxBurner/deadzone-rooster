@@ -43,6 +43,10 @@
 
   <hr />
 
+  @rosterActions()
+
+  <hr />
+
   <table class="table table-condensed table-bordered">
     <thead>
       <tr>
@@ -67,16 +71,6 @@
       @* FILLED VIA roster_main.js *@
     </tbody>
   </table>
-
-  <hr />
-
-  @* ACTION BUTTONS *@
-  <div class="row">
-    <div class="col-xs-10">
-      <a href="@routes.RosterController.getTablePdf()" target="_blank" class="btn btn-info"><span class="glyphicon glyphicon-print"></span></a>
-    </div>
-  </div>
-  @* ACTION BUTTONS *@
 
 
   @* EDIT TROOP MODAL *@
