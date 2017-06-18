@@ -22,8 +22,8 @@ object WeaponDAO {
     FINDER.where().ieq("name", name).and().eq("faction", factionDO).and().in("weaponTypes.name",allowedTypes).findUnique
   }
 
-  def findByNameAndFactionName(name: String, faction: String): WeaponDO = {
-    FINDER.where().ieq("name", name).and().eq("faction.name", faction).findUnique
+  def findByNameAndFactionNameAndAllowedTypes(name: String, faction: String, allowedTypes: java.util.List[String]): WeaponDO = {
+    FINDER.where().ieq("name", name).and().eq("faction.name", faction).and().in("weaponTypes.name",allowedTypes).findUnique
   }
 
   def findByFactionAndTypes(factionName: String, weaponTypes: java.util.List[String]): util.List[WeaponDO] = {

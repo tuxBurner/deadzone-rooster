@@ -82,7 +82,7 @@ object ArmyLogic {
   def updateTroop(uuid: String, army: ArmyDto, weapons: List[String], items: List[String]): ArmyDto = {
     val currentTroop = getTroopFromArmy(uuid, army)
     val newWeapons = weapons.map(weaponName => {
-      val weaponDo = WeaponDAO.findByNameAndFactionName(weaponName, currentTroop.faction)
+      val weaponDo = WeaponDAO.findByNameAndFactionNameAndAllowedTypes(weaponName, currentTroop.faction, currentTroop.allowedWeaponTypes)
       weaponDoToWeaponDto(weaponDo)
     })
 
