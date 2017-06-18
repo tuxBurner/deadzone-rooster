@@ -182,13 +182,18 @@ class ArmyValidator(messages: Messages) {
 
     army.troops.foreach(troop => {
       val fightWeapons = troop.weapons.filter(weapon => weapon.shootRange == 0 && weapon.free == false)
-      if(fightWeapons.length > 1) {
-        result += messages("validate.toMuchFightWeapons", troop.name, fightWeapons.length)
-      }
 
-      val shootWeapons = troop.weapons.filter(weapon => weapon.shootRange != 0 && weapon.free == false)
-      if(shootWeapons.length > 1) {
-        result += messages("validate.toMuchShootWeapons", troop.name, shootWeapons.length)
+      val mappedDefaultWeapons = troop.defaultWeapons.count(defaultWeapon => troop.weapons.find(_.name == defaultWeapon.name).isDefined)
+
+      if(mappedDefaultWeapons != troop.weapons.length) {
+        if (fightWeapons.length > 1) {
+          result += messages("validate.toMuchFightWeapons", troop.name, fightWeapons.length)
+        }
+
+        val shootWeapons = troop.weapons.filter(weapon => weapon.shootRange != 0 && weapon.free == false)
+        if (shootWeapons.length > 1) {
+          result += messages("validate.toMuchShootWeapons", troop.name, shootWeapons.length)
+        }
       }
     })
 
