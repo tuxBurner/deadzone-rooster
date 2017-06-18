@@ -6,6 +6,12 @@ var rosterGuiHandler = {
   factionTroops: {},
 
   /**
+   * In which order to sort the troop types
+   */
+  troopTypeSort: ["Leader", "Troop", "Specialist", "Vehicle", "Character"],
+
+
+  /**
    * Gets the avaible factions from the backend and fills them into the select
    */
   getAndFillFactions: function () {
@@ -34,9 +40,18 @@ var rosterGuiHandler = {
         // store the troops for the faction in the var
         rosterGuiHandler.factionTroops = data;
 
-        $('#roster_troop_type_select').html('');
+        var troopTypes = [];
         $.each(data, function (idx) {
-          $('#roster_troop_type_select').append('<option value="' + idx + '">' + idx + '</option>');
+          troopTypes.push(idx);
+        });
+
+        troopTypes.sort(function (a, b) {
+          return rosterGuiHandler.troopTypeSort.indexOf(a) - rosterGuiHandler.troopTypeSort.indexOf(b);
+        });
+
+        $('#roster_troop_type_select').html('');
+        $.each(troopTypes, function (idx, troopType) {
+          $('#roster_troop_type_select').append('<option value="' + troopType + '">' + troopType + '</option>');
         });
 
         rosterGuiHandler.fillTroopSelectForType();
@@ -120,8 +135,8 @@ var rosterGuiHandler = {
         $.each(data.items, function (idx, item) {
 
           var checked = '';
-          for(var iidx in data.troop.items) {
-            if(data.troop.items[iidx].name === item.name) {
+          for (var iidx in data.troop.items) {
+            if (data.troop.items[iidx].name === item.name) {
               checked = 'checked';
               break;
             }
@@ -184,16 +199,16 @@ var rosterGuiHandler = {
       $.each(data.weapons[type], function (idx, weapon) {
 
         var checked = '';
-        for(var widx in data.troop.weapons) {
-          if(data.troop.weapons[widx].name === weapon.name) {
+        for (var widx in data.troop.weapons) {
+          if (data.troop.weapons[widx].name === weapon.name) {
             checked = 'checked';
             break;
           }
         }
 
         var tableRow = '<tr>';
-        for(var wdidx in data.troop.defaultWeapons) {
-          if(data.troop.defaultWeapons[wdidx].name === weapon.name) {
+        for (var wdidx in data.troop.defaultWeapons) {
+          if (data.troop.defaultWeapons[wdidx].name === weapon.name) {
             tableRow = '<tr class="warning">';
             break;
           }
@@ -338,7 +353,7 @@ var rosterGuiHandler = {
       }
     });
   },
-  cloneTroop: function(uuid) {
+  cloneTroop: function (uuid) {
     jsRoutes.controllers.RosterController.cloneTroop(uuid).ajax({
       success: function (data) {
         rosterGuiHandler.displayCurrentArmyData(data);
