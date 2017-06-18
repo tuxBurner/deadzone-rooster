@@ -9,6 +9,7 @@ import play.api.cache.CacheApi
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.libs.json._
 import play.api.mvc._
+import services.logic.ArmyImExpLogic.TroopExportDto
 import services.logic._
 
 import scala.concurrent.duration._
@@ -25,6 +26,7 @@ import scala.concurrent.duration._
   implicit val armyDtoFormat = Json.format[ArmyDto]
   implicit val factionDtoFormat = Json.format[FactionDto]
   implicit val armyTroopWeaponsItemsFormat = Json.format[ArmyTroopWeaponsItemsDto]
+  implicit val troopExportDtoFormat = Json.format[TroopExportDto]
 
   /**
     * Returns all the available factions as a json array
@@ -80,10 +82,8 @@ import scala.concurrent.duration._
     * @return
     */
   @JSRoute def getWeaponsAndItemsForTroop(uuid: String) = Action { request =>
-    val armyFromCache = getArmyFromCache(request)
+    val armyFromCache = renewArmyInCache(request)
     val result = ArmyLogic.getWeaponsAndItemsForTroop(uuid,armyFromCache)
-
-    renewArmyInCache(request)
     withCacheId(Ok(Json.toJson(result)).as(JSON), request)
   }
 
@@ -110,8 +110,7 @@ import scala.concurrent.duration._
     * @return
     */
   @JSRoute def getArmy() = Action { request =>
-    val army = getArmyFromCache(request)
-    writeArmyToCache(request, army)
+    val army = renewArmyInCache(request)
     withCacheId(Ok(Json.toJson(army)).as(JSON), request)
   }
 
@@ -128,6 +127,10 @@ import scala.concurrent.duration._
     withCacheId(Ok(pdfBytes),request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
   }
 
+  /**
+    * Validates the army against the rule set of deadzone
+    * @return
+    */
   @JSRoute def validateArmy() = Action { request =>
     val army = getArmyFromCache(request)
     val validator = new ArmyValidator(messagesApi.preferred(request))
@@ -136,6 +139,11 @@ import scala.concurrent.duration._
     withCacheId(Ok(Json.toJson(validationResult)).as(JSON), request)
   }
 
+  /**
+    * Clones the troop by the given uuid
+    * @param uuid
+    * @return
+    */
   @JSRoute def cloneTroop(uuid: String) = Action { request =>
     val army = getArmyFromCache(request)
     val newArmy = ArmyLogic.cloneTroop(uuid,army)
@@ -143,9 +151,21 @@ import scala.concurrent.duration._
     withCacheId(Ok(Json.toJson(newArmy)).as(JSON), request)
   }
 
-  private def renewArmyInCache(request: Request[Any]): Unit = {
+  /**
+    * Exports the army as a json file
+    * @return
+    */
+  @JSRoute def exportArmy() = Action { request =>
+    val army = renewArmyInCache(request)
+    val exportData = ArmyImExpLogic.troopsToExportTroops(army)
+    val jsonData = Json.prettyPrint(Json.toJson(exportData))
+    withCacheId(Ok(jsonData).as(JSON), request).as(JSON).withHeaders("Content-Disposition" -> "attachement; filename=army.json")
+  }
+
+  private def renewArmyInCache(request: Request[Any]): ArmyDto = {
     val armyFromCache = getArmyFromCache(request)
     writeArmyToCache(request, armyFromCache)
+    armyFromCache
   }
 
   private def withCacheId(result: Result, request: Request[Any]): Result = {

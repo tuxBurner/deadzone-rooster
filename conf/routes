@@ -17,6 +17,7 @@ PUT           /roster/army/troop/:uuid/weapons                    controllers.Ro
 PUT           /roster/army/clone/:uuid                            controllers.RosterController.cloneTroop(uuid: String)
 GET           /roster/army/validate                               controllers.RosterController.validateArmy()
 
+GET           /roster/army/export                                 controllers.RosterController.exportArmy()
 GET           /roster/pdf/table                                   controllers.RosterController.getTablePdf()
 
 
