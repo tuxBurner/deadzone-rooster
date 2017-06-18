@@ -65,7 +65,7 @@ object TroopDAO {
       if (defaultWeapon == null) {
         Logger.error("Could not add default weapon " + weaponName + " to troop: " + troopDO.name + " faction: " + factionDo.name + " was not found in the db")
       } else {
-        troopDO.defaultWeapons.addAll(defaultWeapon)
+        troopDO.defaultWeapons.add(defaultWeapon)
       }
     })
 

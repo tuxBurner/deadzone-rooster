@@ -18,8 +18,8 @@ object WeaponDAO {
 
   private val FINDER = new Model.Finder[Long, WeaponDO](classOf[WeaponDO])
 
-  def findByNameAndFactionAndAllowedTypes(name: String, factionDO: FactionDO, allowedTypes: java.util.List[String]): util.List[WeaponDO] = {
-    FINDER.where().ieq("name", name).and().eq("faction", factionDO).and().in("weaponTypes.name",allowedTypes).findList()
+  def findByNameAndFactionAndAllowedTypes(name: String, factionDO: FactionDO, allowedTypes: java.util.List[String]): WeaponDO = {
+    FINDER.where().ieq("name", name).and().eq("faction", factionDO).and().in("weaponTypes.name",allowedTypes).findUnique
   }
 
   def findByNameAndFactionName(name: String, faction: String): WeaponDO = {
