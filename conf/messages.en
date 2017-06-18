@@ -52,6 +52,9 @@ validate.toMuchShootWeapons=The troop: {0} has {1} shoot weapons only one is all
 
 validate.modal.headline=Validation Result
 
+upload.label=Select file to import
+upload.btn=Import
+
 ability.name=Name
 ability.desc=Description
 ability.desc.RapidFire=A model using a weapon with the Rapid Fire special rule may elect to Fire for Effect when making a Shoot action

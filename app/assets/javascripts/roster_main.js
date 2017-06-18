@@ -353,12 +353,33 @@ var rosterGuiHandler = {
       }
     });
   },
+  /**
+   * Clones a troop
+   * @param uuid
+   */
   cloneTroop: function (uuid) {
     jsRoutes.controllers.RosterController.cloneTroop(uuid).ajax({
       success: function (data) {
         rosterGuiHandler.displayCurrentArmyData(data);
       }
     });
+  },
+  importArmy: function() {
+    var formData = new FormData();
+    formData.append('file', $('#roster_upload_file')[0].files[0]);
+    console.error(formData);
+    /*
+    *      url : 'upload.php',
+     type : 'POST',
+     data : formData,
+     processData: false,  // tell jQuery not to process the data
+     contentType: false,  // tell jQuery not to set contentType
+     success : function(data) {
+     console.log(data);
+     ale
+    *
+    *
+    * */
   }
 };
 
@@ -386,6 +407,10 @@ $(function () {
 
   $('#roster_validate_army_btn').on('click', function () {
     rosterGuiHandler.validateArmy();
+  });
+
+  $('#roster_import_army_btn').on('click', function () {
+     rosterGuiHandler.importArmy();
   });
 
   $(document).on('click', '.roster_del_btn', function () {
