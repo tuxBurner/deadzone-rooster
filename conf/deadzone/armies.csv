@@ -11,7 +11,7 @@ Asterians,Marionette Specialist,10,S,1-2,5,6,5,1,0,1,Noh Rifle,,Construct,"Small
 Asterians,Sky Razor,20,V,2-4,4,0,5,2,0,2,Twin Noh Rifles,,Vehicle,Bike Automatic,Ranged,,,
 Enforcers,Peacekeeper Captain,48,L,1-2,4+,5+,3+,2,2,5,"DB Laser Rifle,Wristblade",Jump Pack,Tactician(2),"Leader, Light Melee, Heavy Melee, Peacekeeper Captain","Ranged, Melee, Command",,4,Bastion
 Enforcers,Enforcer Sergeant,28,L,1-2,4+,5+,4+,1,1,3,"Pistol, Energy Gauntlet",Jump Pack,Tactician(1),"Leader, Small Arms, Light Melee","Ranged, Melee, Command",,4,Mobile Infantry
-Enforcers,Pathfinder Sergeant,22,L,1-2,4+,5+,4+,1,0,3,Pistol,,Tactician(1),"Leader, Light Melee, Heavy Melee","Ranged, Melee, Command",,3,Target Acquisition
+Enforcers,Pathfinder Sergeant,22,L,1-2,4+,5+,4+,1,0,3,Pistol,,Tactician(1),"Leader, Light Melee, Heavy Melee,Pathfinder Sergeant","Ranged, Melee, Command",,3,Target Acquisition
 Enforcers,Enforcer Captain,34,L,1-2,4+,5+,4+,1,1,4,"Pistol, Energy Gauntlet",Jump Pack,Tactician(2),"Leader, Small Arms, Light Melee","Ranged, Melee, Command",,4,Stalwart
 Enforcers,Assault Enforcer,14,T,1-2,5+,5+,4+,1,1,1,"Pistol,Wristblade",Jump Pack,,"Small Arms, Light Melee",Melee,,,
 Enforcers,Pathfinder,15,T,1-2,4+,6+,4+,1,0,2,Tag Rifle,,Scout,"Small Arms, Recon",Ranged,,,
@@ -21,18 +21,18 @@ Enforcers,Pathfinder Specialist,15,S,1-2,4+,6+,4+,1,0,2,Tag Rifle,,Scout,"Small 
 Enforcers,Peacekeeper,30,S,1-2,4+,5+,4+,2,2,3,"DB Laser Rifle,Energy Gauntlet",Jump Pack,,"Light Melee, Heavy Assault,  Heavy Automatic","Ranged, Melee",,,
 Enforcers,Enforcer Medic,20,S,1-2,5+,6+,4+,1,1,2,Pistol,Jump Pack,Medic,Small Arms,"Ranged,Specialist",,,
 Enforcers,Enforcer Engineer,14,S,1-2,5+,6+,4+,1,1,2,Laser Rifle,Jump Pack,Engineer,Small Arms,"Ranged,Specialist",,,
-Enforcers,D.O.G Drone,12,S,2-4,6+,-,6+,1,0,1,Burst Laser,,"Construct, Beast",,,,,
+Enforcers,D.O.G Drone,12,S,2-4,6+,-,6+,1,0,1,Burst Laser,,"Construct, Beast",Light Automatic,,,,
 Enforcers,Enforcer Jet Bike,24,V,1-5,4+,6+,4+,2,1,2,DB Laser Rifle,,Vehicle,"Heavy Automatic, Light Explosive",Ranged,,,
 Enforcers,Enforcer Strider,30,V,1-2,4+,5+,4+,4,3,3,,,Vehicle,"Walker Lance,Walker Assault,Walker Melee, Walker Shield","Ranged, Melee",2,,
-Enforcers,Recon Unit N32-19,30,C,1-2,4,6,3,1,0,3,Tag Rifle,,"Tactician(1), Recon Drone",,,,3,Rope-a-dope
-Forge Fathers,Steel Warrior Huscarl,32,L,1-2,3,4,4,1,1,3,"Hailstorm Pistol, Forge Hammer",,Tactician(1),"Leader, Small Arms, Light Melee","Ranged,Melee,Command",,4,Too Stubborn To Die
+Enforcers,Recon Unit N32-19,30,C,1-2,4,6,3,1,0,3,Tag Rifle,Holo Sight,"Tactician(1), Recon Drone",Recon,,,3,Rope-a-dope
+Forge Fathers,Steel Warrior Huscarl,32,L,1-2,3,4,4,1,1,3,"Hailstorm Pistol, Forge Hammer",,Tactician(1),"Leader, Small Arms, Light Mele, Steel Warrior Huscarl","Ranged,Melee,Command",,4,Too Stubborn To Die
 Forge Fathers,Chief Brokkr,26,L,1-2,5,3,4,1,0,2,Burst Pistol,,"Tactician(1), Frenzy(1),Tough","Leader, Small Arms, Light Melee","Ranged,Melee,Command",,5,Strike It Lucky
-Forge Fathers,Forge Guard Huscarl,41,L,1-2,3,4,4,1,2,3,"Hailstorm Rifle, Forge Hammer",,"Tactician(2),Life Support","Leader, Heavy Automatic, Light Melee","Ranged,Melee,Command",,4,Starforged Armour
+Forge Fathers,Forge Guard Huscarl,41,L,1-2,3,4,4,1,2,3,"Hailstorm Rifle, Forge Hammer",,"Tactician(2),Life Support","Leader, Heavy Automatic, Light Melee, Forge Guard Huscarl","Ranged,Melee,Command",,4,Starforged Armour
 Forge Fathers,Steel Warrior,21,T,1-2,4,5,4,1,1,2,Hailstorm Rifle,,,Small Arms,Ranged,,,
 Forge Fathers,Brokkr,16,T,1-2,5,4,4,1,0,1,Burst Pistol,,Frenzy(1),"Small Arms, Light Melee",Melee,,,
 Forge Fathers,Militia,14,T,1-2,5,5,4,1,0,1,Hailstorm Rifle,,,Small Arms,Ranged,,,
 Forge Fathers,Steel Warrior Specialist (Stormrage Veteran),21,S,1-2,4,5,4,1,1,2,Hailstorm Rifle,,,"Small Arms, Light Automatic, Light Explosive, Light Assault, Heavy Automatic, Heavy Assault",Ranged,,,
-Forge Fathers,Forge Guard,30,S,1-1,4,5,4,1,2,3,"Hailstorm Rifle, Forge Hammer",,Life Support,"Heavy Automatic, Heavy Assault, Light Explosive",Ranged,,,
+Forge Fathers,Forge Guard,30,S,1-1,4,5,4,1,2,3,"Hailstorm Rifle, Forge Hammer",,Life Support, ,Ranged,,,
 Forge Fathers,Bomb Bot,8,S,1-2,,,5,1,0,0,,,"Vehicle, Remote, BOOM!(5)",,,,,
 Forge Fathers,Brokkr Engineer,14,S,1-2,6,5,4,1,0,1,Burst Pistol,,Engineer,Small Arms,Ranged Specialist,,,
 Forge Fathers,Brokkr Specialist,16,S,1-2,5,4,4,1,0,1,Burst Pistol,,Frenzy(1),"Small Arms, Light Assault, Light Melee",Ranged,,,
@@ -54,7 +54,7 @@ Marauders,Mawbeast Bomber,14,S,2-3,0,4,5,1,0,1,Chainmaw,,"Beast, BOOM!(4)",Light
 Marauders,Sky Scraper,17,S,1-3,5,5,4,1,0,2,Rifle,Jump Pack,,"Small Arms, Light Automatic, Light Melee","Ranged, Melee",,,
 Marauders,Guntrack,13,V,1-1,5,0,6,4,1,2,,,Vehicle,"Vehicle Lance, Vehicle Arillery",Ranged,1,,
 Marauders,Stuntbot,26,V,1-2,5,6,5,4,3,4,,,Vehicle,"Walker Assault, Walker Melee",Ranged,3,,
-Plague,Stage 1A,36,L,1-1,0,3,4,3,2,4,Talons,,"Tactician(2), Tough",,"Melee, Command",,5,Mutation
+Plague,Stage 1A,36,L,1-1,0,3,4,3,2,4,Talons,,"Tactician(2), Tough",Talons ,"Melee, Command",,5,Mutation
 Plague,Stage 3A “General”,16,L,2-3,6,5,5,1,0,2,Rifle,,Tactician(1),"Leader, Small Arms","Ranged, Melee, Command",,4,Infection
 Plague,Stage 3D “Hellhound”,6,T,2-3,0,5,5,1,0,1,,,Beast,,,,,
 Plague,Stage 3A,10,T,2-3,6,5,5,1,0,1,Rifle,,,Small Arms,Melee,,,
@@ -62,14 +62,14 @@ Plague,Stage 3Z “Zombie”,6,T,1-2,0,5,6,1,0,0,,,"Horde,  Vulnerable",,,,,
 Plague,Stage 2A,16,T,1-2,0,4,4,2,1,2,,,Rampage,,Melee,,,
 Plague,Stage 3A “Loader”,12,T,2-3,6,5,5,1,0,1,Pistol,,Loader,Small Arms,Ranged,,,
 Plague,Stage 3A “Specialist”,10,S,2-3,5,6,5,1,0,1,Rifle,,,"Small Arms, Light Automatic, Light Explosive, Light Artillery",Ranged,,,
-Plague,Aberration,40,S,1-2,0,3,4,4,1,4,Talons Aberration,,Rampage,,Melee,,,
-Plague,Plague Swarm,20,S,1-2,0,3,5,2,0,2,Acid Bite,,"Agile, Tough, Beast",,,,,
-Plague,Plague Teraton,24,S,1-2,0,4,5,3,1,3,Claws,,"Teleport, Tough",,"Melee, Specialist",,,
+Plague,Aberration,40,S,1-2,0,3,4,4,1,4,Talons Aberration,,Rampage,Talons Aberration,Melee,,,
+Plague,Plague Swarm,20,S,1-2,0,3,5,2,0,2,Acid Bite,,"Agile, Tough, Beast",Acid Bite Swarm,,,,
+Plague,Plague Teraton,24,S,1-2,0,4,5,3,1,3,Claws,,"Teleport, Tough",Claws Teraton,"Melee, Specialist",,,
 Plague,Plague Enforcer,20,S,1-2,5,5,5,1,1,2,Experimental Weapon,Jump Pack,,"Heavy Automatic, Heavy Assault, Heavy Explosive","Ranged, Melee",,,
 Plague,Plague Strider,30,V,1-2,6,4,4,4,3,3,,,Vehicle,"Walker Automatic, Walker Melee, Walker Lance","Ranged, Melee",2,,
 Plague,Murder Birds,19,S,2-3,0,4,5,2,0,2,,,"Tough, Beast, Flight, Scout",,,,,
 Plague,Stage 2B Burster,11,S,1-2,0,5,4,2,1,1,,,Boom(4),,,,,
-Plague,Dr Simmonds,18,C,2-3,6,5,3,1,0,2,Rifle,,"Tough, Tactician(1),Medic",,,,4,Under the Knife
+Plague,Dr Simmonds,18,C,2-3,6,5,3,1,0,2,Rifle,,"Tough, Tactician(1),Medic",Small Arms,,,4,Under the Knife
 Veer-Myn,Brood Mother,34,L,1-2,5,5,4,2,2,4,"Chem Staff, Claws",,Tactician(2),"Leader, Small Arms, Light Assault, Light Automatic, Light Explosive, Brood Mother","Ranged, Melee, Command",,4,Bodyguard
 Veer-Myn,Progenitor,30,L,2-3,5,5,4,1,0,3,Ray Gun,,Tactician(1),"Leader, Small Arms, Light Assault, Light Automatic, Light Explosive","Melee, Command, Specialist",,3,Surge
 Veer-Myn,Crawler,12,T,2-3,6,5,5,1,0,1,Ray Gun,,,Small Arms,Ranged,,,
@@ -98,7 +98,7 @@ Rebs,Sphyr Lancer,18,S,1-2,4,6,5,1,0,2,Mata Magma Lance,,,"Small Arms, Light Ass
 Rebs,Rin Nomad,17,S,1-2,4,5,5,1,1,2,"Twin Pistols, Twin Knives",,,"Small Arms, Light Sniper, Light Automatic, Light Melee, Rin Nomad","Ranged, Melee",,,
 Rebs,Rebel Sniper,16,S,1-2,4,6,6,1,0,2,Sniper Rifle,,,"Small Arms, Light Sniper","Ranged, Specialist",,,
 Rebs,Rebel Strider,30,V,1-2,5,5,4,4,3,3,,,Vehicle,"Walker Assault, Walker Melee, Walker Automatic,  Walker Lance","Ranged, Melee",2,,
-Enforcers,Sergeant Howlett,27,C,1-2,5,4,3,1,1,3,"Claws, Pistol",Jump Pack,"Tough, Frenzy(1), Rampage",Sergeant Howlett,,,,
+Enforcers,Sergeant Howlett,27,C,1-2,5,4,3,1,1,3,"Claws, Pistol",Jump Pack,"Tough, Frenzy(1), Rampage","Sergeant Howlett, Mercs",,,,
 Plague,Aqissiaq,16,C,1-2,0,3,5,1,0,2,Nuka,,"Tough, Frenzy(1), Rampage",Aqissiaq,,,,
 Rebs,Eddak P‘Mera,30,C,2-3,4,5,5,1,0,3,Crossbow,,"Agile, Tough, Scout, Tactician(1)",Eddak P‘Mera,,,,
 Asterians,Chief Radgrad,40,C,1-2,5,4,4,3,1,5,"Decapitator, Twin Blasters",,"Tough, Frenzy(1), Solid, Tactician(1)",Chief Radgrad,,,,

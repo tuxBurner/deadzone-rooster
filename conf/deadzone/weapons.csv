@@ -1,5 +1,5 @@
 Faction,Weapon,Points,VPs,Range,AP,Abilities,Type,Hardpoints,Add On
-Enforcers,Pistol,0,0,R3,0,,Small Arms,,x
+Enforcers,Pistol,0,0,R3,0,,"Small Arms,Pathfinder Sergeant",,x
 Enforcers,Laser Rifle,2,0,R6,0,Rapid Fire,Small Arms,,
 Enforcers,Incinerator,4,0,R2,0,"Volatile, It Burns!","Light Assault, Heavy Assault",,
 Enforcers,Burst Laser,4,0,R8,0,"Weight of Fire(1), Suppression","Light Automatic, Heavy Automatic",,
@@ -19,8 +19,8 @@ Enforcers,Chainsaw,5,0,RF,1,,Walker Melee,1,
 Enforcers,Heavy Burst Laser,8,1,R10,0,"Suppression, Weight of Fire(2)",Walker Automatic,2,
 Enforcers,Strider Aggressor Shield,10,1,RF,0,Walker Shield,Walker Shield,1,
 Enforcers,Strider Grav-ram Spear,15,1,RF / R4,2,R4 Frag(3),Walker Explosive,,
-Forge Fathers,Forge Hammer,5,0,RF,1,,Light Melee,,
-Forge Fathers,Hailstorm Rifle,3,0,R6,1,Rapid Fire,Small Arms,,
+Forge Fathers,Forge Hammer,5,0,RF,1,,"Light Melee, Forge Guard",,
+Forge Fathers,Hailstorm Rifle,3,0,R6,1,Rapid Fire,"Small Arms, Forge Guard Huscarl,Forge Guard",,
 Forge Fathers,Burst Pistol,0,0,R3,0,Rapid Fire,Small Arms,,x
 Forge Fathers,Hailstorm Pistol,3,0,R4,0,"Weight of Fire(1), Rapid Fire",Light Automatic,,
 Forge Fathers,Missile Launcher,8,1,R10,5,Heavy,Light Explosive,,
@@ -171,7 +171,7 @@ Veer-Myn,Xerxes Cannon,0,0,R6,3,"Heavy, It Burns!",The Helfather,,
 Rebs,Xerxes Cannon,0,0,R6,3,"Heavy, It Burns!",The Helfather,,
 Asterians,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,
 Enforcers,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,
-Forge Fathers,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,
+Forge Fathers,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),"Freya, Steel Warrior Huscarl",,
 Marauders,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,
 Plague,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,
 Veer-Myn,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,
