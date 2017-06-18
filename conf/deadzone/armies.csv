@@ -32,7 +32,7 @@ Forge Fathers,Steel Warrior,21,T,1-2,4,5,4,1,1,2,Hailstorm Rifle,,,Small Arms,Ra
 Forge Fathers,Brokkr,16,T,1-2,5,4,4,1,0,1,Burst Pistol,,Frenzy(1),"Small Arms, Light Melee",Melee,,,
 Forge Fathers,Militia,14,T,1-2,5,5,4,1,0,1,Hailstorm Rifle,,,Small Arms,Ranged,,,
 Forge Fathers,Steel Warrior Specialist (Stormrage Veteran),21,S,1-2,4,5,4,1,1,2,Hailstorm Rifle,,,"Small Arms, Light Automatic, Light Explosive, Light Assault, Heavy Automatic, Heavy Assault",Ranged,,,
-Forge Fathers,Forge Guard,30,S,1-1,4,5,4,1,2,3,"Hailstorm Rifle, Forge Hammer",,Life Support, ,Ranged,,,
+Forge Fathers,Forge Guard,30,S,1-1,4,5,4,1,2,3,"Hailstorm Rifle, Forge Hammer",,Life Support,"Heavy Automatic, Heavy Assault, Light Explosive,Forge Guard",Ranged,1,,
 Forge Fathers,Bomb Bot,8,S,1-2,,,5,1,0,0,,,"Vehicle, Remote, BOOM!(5)",,,,,
 Forge Fathers,Brokkr Engineer,14,S,1-2,6,5,4,1,0,1,Burst Pistol,,Engineer,Small Arms,Ranged Specialist,,,
 Forge Fathers,Brokkr Specialist,16,S,1-2,5,4,4,1,0,1,Burst Pistol,,Frenzy(1),"Small Arms, Light Assault, Light Melee",Ranged,,,
