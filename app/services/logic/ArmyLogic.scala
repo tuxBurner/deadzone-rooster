@@ -127,7 +127,8 @@ object ArmyLogic {
 
     val uuid = UUID.randomUUID().toString
 
-    ArmyTroopDto(uuid, troopDo.faction.name, troopDo.name, troopDo.modelType, troopDo.points, points, victoryPoints, troopDo.speed, troopDo.sprint, troopDo.armour, troopDo.size, troopDo.shoot, troopDo.fight, troopDo.survive, troopAbilities, weapons, items, weaponTypes, troopDo.recon, troopDo.armySpecial)
+
+    ArmyTroopDto(uuid, troopDo.faction.name, troopDo.name, troopDo.modelType, troopDo.points, points, victoryPoints, troopDo.speed, troopDo.sprint, troopDo.armour, troopDo.size, troopDo.shoot, troopDo.fight, troopDo.survive, troopAbilities, weapons, items, weaponTypes, troopDo.recon, troopDo.armySpecial, weapons)
   }
 
   /**
@@ -144,10 +145,7 @@ object ArmyLogic {
     val weapons = getWeaponsForTroop(troopDto)
     val items = getItemsForTroop(troopDto)
 
-    val currentTroopWeapons = troopDto.weapons.map(_.name)
-    val currentTroopItems = troopDto.items.map(_.name)
-
-    ArmyTroopWeaponsItemsDto(weapons, items, currentTroopWeapons, currentTroopItems)
+    ArmyTroopWeaponsItemsDto(weapons, items, troopDto)
   }
 
 
@@ -248,12 +246,12 @@ case class ArmyDto(name: String, faction: String = "", points: Int = 0, troops: 
 
 case class ArmyAbilityDto(name: String, defaultVal: Int)
 
-case class ArmyTroopDto(uuid: String, faction: String, name: String, modelType: String, basePoints: Int, points: Int, victoryPoints: Int, speed: Int, sprint: Int, armour: Int, size: Int, shoot: Int, fight: Int, survive: Int, abilities: List[ArmyAbilityDto], weapons: List[ArmyWeaponDto], items: List[ArmyItemDto], allowedWeaponTypes: List[String], recon: Int, armySpecial: String)
+case class ArmyTroopDto(uuid: String, faction: String, name: String, modelType: String, basePoints: Int, points: Int, victoryPoints: Int, speed: Int, sprint: Int, armour: Int, size: Int, shoot: Int, fight: Int, survive: Int, abilities: List[ArmyAbilityDto], weapons: List[ArmyWeaponDto], items: List[ArmyItemDto], allowedWeaponTypes: List[String], recon: Int, armySpecial: String, defaultWeapons: List[ArmyWeaponDto])
 
 case class ArmyWeaponDto(name: String, points: Int, shootRange: Int, armorPircing: Int, victoryPoints: Int, abilities: List[ArmyAbilityDto], free: Boolean)
 
 case class ArmyItemDto(name: String, points: Int, rarity: String, noUpdate: Boolean)
 
-case class ArmyTroopWeaponsItemsDto(weapons: Map[String, List[ArmyWeaponDto]], items: List[ArmyItemDto], currentWeapons: List[String], currentItems: List[String])
+case class ArmyTroopWeaponsItemsDto(weapons: Map[String, List[ArmyWeaponDto]], items: List[ArmyItemDto], troop: ArmyTroopDto)
 
 case class ArmyPdfInfos(abilities: List[String], items:List[String], reconVals: List[(String,Int,String)])

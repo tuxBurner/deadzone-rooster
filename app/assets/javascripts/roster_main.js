@@ -107,7 +107,6 @@ var rosterGuiHandler = {
     jsRoutes.controllers.RosterController.getWeaponsAndItemsForTroop(uuid).ajax({
       success: function (data) {
 
-
         $('#roster_troop_edit_name').text(troopName);
         $('#roster_troop_edit_modal').data('troopuuid', uuid);
 
@@ -120,7 +119,13 @@ var rosterGuiHandler = {
         var itemsContent = '';
         $.each(data.items, function (idx, item) {
 
-          var checked = ($.inArray(item.name, data.currentItems) !== -1) ? 'checked' : '';
+          var checked = '';
+          for(var iidx in data.troop.items) {
+            if(data.troop.items[iidx].name === item.name) {
+              checked = 'checked';
+              break;
+            }
+          }
 
           itemsContent += '<tr>';
           itemsContent += '<td><input class="edit_troop_slected_item" value="' + item.name + '" type="checkbox" ' + checked + ' /></td>';
@@ -178,9 +183,23 @@ var rosterGuiHandler = {
       content = '<tr class="info"><th colspan="7">' + headline + '</th></tr>';
       $.each(data.weapons[type], function (idx, weapon) {
 
-        var checked = ($.inArray(weapon.name, data.currentWeapons) !== -1) ? 'checked' : '';
+        var checked = '';
+        for(var widx in data.troop.weapons) {
+          if(data.troop.weapons[widx].name === weapon.name) {
+            checked = 'checked';
+            break;
+          }
+        }
 
-        content += '<tr>';
+        var tableRow = '<tr>';
+        for(var wdidx in data.troop.defaultWeapons) {
+          if(data.troop.defaultWeapons[wdidx].name === weapon.name) {
+            tableRow = '<tr class="warning">';
+            break;
+          }
+        }
+
+        content += tableRow;
         content += '<td><input value="' + weapon.name + '" class="edit_troop_slected_weapon" type="checkbox" ' + checked + '/></td>';
         content += '<td>' + weapon.name + '</td>';
         content += '<td>' + weapon.points + '</td>';
