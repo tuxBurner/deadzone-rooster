@@ -364,12 +364,21 @@ var rosterGuiHandler = {
       }
     });
   },
-  importArmy: function() {
+  importArmy: function () {
     var formData = new FormData();
     formData.append('file', $('#roster_upload_file')[0].files[0]);
-    console.error(formData);
+
+    jsRoutes.controllers.RosterController.importArmy().ajax({
+      data: formData,
+      processData: false,  // tell jQuery not to process the data
+      contentType: false,  // tell jQuery not to set contentType
+      success: function (data) {
+        console.log(data);
+      }
+    });
+
     /*
-    *      url : 'upload.php',
+     *      url : 'upload.php',
      type : 'POST',
      data : formData,
      processData: false,  // tell jQuery not to process the data
@@ -377,9 +386,9 @@ var rosterGuiHandler = {
      success : function(data) {
      console.log(data);
      ale
-    *
-    *
-    * */
+     *
+     *
+     * */
   }
 };
 
@@ -410,7 +419,7 @@ $(function () {
   });
 
   $('#roster_import_army_btn').on('click', function () {
-     rosterGuiHandler.importArmy();
+    rosterGuiHandler.importArmy();
   });
 
   $(document).on('click', '.roster_del_btn', function () {

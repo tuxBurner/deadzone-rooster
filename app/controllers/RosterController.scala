@@ -13,6 +13,7 @@ import services.logic.ArmyImExpLogic.TroopExportDto
 import services.logic._
 
 import scala.concurrent.duration._
+import scala.io.Source
 
 /**
   * Controller which handles all the endpoints for the roster editor
@@ -160,6 +161,20 @@ import scala.concurrent.duration._
     val exportData = ArmyImExpLogic.troopsToExportTroops(army)
     val jsonData = Json.prettyPrint(Json.toJson(exportData))
     withCacheId(Ok(jsonData).as(JSON), request).as(JSON).withHeaders("Content-Disposition" -> "attachement; filename=army.json")
+  }
+
+  /**
+    * Import army from json
+    * @return
+    */
+  @JSRoute def importArmy() = Action(parse.multipartFormData) { request =>
+    request.body.file("file").map(file => {
+      val jsonVal = Source.fromFile(  file.ref.file).getLines().mkString
+      val jsValue = Json.parse(jsonVal)
+      
+      val armyImportTroops[List[TroopExportDto]] = Json.fromJson(jsValue)
+      Ok("")
+    }).getOrElse(Ok(""))
   }
 
   private def renewArmyInCache(request: Request[Any]): ArmyDto = {
