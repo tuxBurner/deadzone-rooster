@@ -10,3 +10,4 @@ target
 .~lock.*
 docker_runtimes/dev_deadzone_dockercompose/test/
 docker_runtimes/deadzone_dockercompose/data/
+docker_runtimes/deadzone_dockercompose/deadzone-roster.conf
