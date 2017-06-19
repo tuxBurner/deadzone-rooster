@@ -1,10 +1,7 @@
 package deadzone.parsers
 
-import java.io.File
-
-import com.github.tototoshi.csv.CSVReader
-import deadzone.models.ModelType
 import deadzone.models.CSVModels.CSVSoldierDto
+import deadzone.models.ModelType
 import org.apache.commons.lang3.StringUtils
 import play.api.Logger
 
@@ -15,7 +12,7 @@ import scala.collection.mutable.ListBuffer
   *         Date: 16.02.17
   *         Time: 14:39
   */
-object CSVFactionsImporter {
+object CSVFactionsImporter extends CSVDataParser {
 
 
   private val NAME_HEADER = "Name"
@@ -61,9 +58,8 @@ object CSVFactionsImporter {
   def getSoldierForFaction(factionName: String) = soldiers.filter(_.faction == factionName)
 
   private def importSoldiersFromCsvs(): List[CSVSoldierDto] = {
-    val reader = CSVReader.open("conf/deadzone/armies.csv")
-    val dataWithHeaders = reader.allWithHeaders()
-    dataWithHeaders.map(parseLineMap(_)).filter(_.isDefined).map(_.get)
+    val dataWithHeaders =  readCsvFile("deadzone/armies.csv")
+    dataWithHeaders.map(parseLineMap(_)).flatten
   }
 
   private def parseLineMap(lineData: Map[String, String]): Option[CSVSoldierDto] = {

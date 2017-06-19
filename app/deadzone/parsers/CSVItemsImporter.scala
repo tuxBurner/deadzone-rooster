@@ -1,17 +1,14 @@
 package deadzone.parsers
 
-import com.github.tototoshi.csv.CSVReader
-import deadzone.models.CSVModels.{AbilityDto, CSVItemDto, CSVWeaponBaseDto}
+import deadzone.models.CSVModels.CSVItemDto
 import play.api.Logger
-
-import scala.util.matching.Regex
 
 /**
   * @author Sebastian Hardt (s.hardt@micromata.de)
   *         Date: 15.02.17
   *         Time: 23:06
   */
-object CSVItemsImporter {
+object CSVItemsImporter extends CSVDataParser {
 
 
   private val FACTION_HEADER = "Faction"
@@ -28,17 +25,14 @@ object CSVItemsImporter {
 
   lazy val items = importItemsFromCsv()
 
-
   
   def getItemsForFaction(faction: String) : List[CSVItemDto] = {
     items.filter(_.faction.equals(faction))
   }
 
   private def importItemsFromCsv(): List[CSVItemDto] = {
-    val reader = CSVReader.open("conf/deadzone/items.csv")
-    val dataWithHeaders = reader.allWithHeaders()
-    val parsedResult = dataWithHeaders.map(parseLineMap(_)).filter(_.isDefined).map(_.get)
-    parsedResult
+    val dataWithHeaders =  readCsvFile("deadzone/items.csv")
+    dataWithHeaders.map(parseLineMap(_)).flatten
   }
 
   private def parseLineMap(lineData: Map[String, String]): Option[CSVItemDto] = {
