@@ -27,14 +27,14 @@ resolvers += "tuxburner.github.io" at "http://tuxburner.github.io/repo"
 
 // http://www.scala-sbt.org/sbt-native-packager/formats/docker.html
 // docker infos go here
-maintainer in Docker := "Sebastian Hardt <s.hardt@micromata.de>"
-packageName in Docker := "micromata/deadzoneroster"
+maintainer in Docker := "Sebastian Hardt"
+packageName in Docker := "tuxburner/deadzoneroster"
 dockerExposedPorts in Docker := Seq(9000,9443)
 dockerExposedVolumes in Docker := Seq("/data")
 
 // add the command to use whalerider conf
 dockerCommands  ++= Seq(
-  ExecCmd("CMD","-Dconfig.file=/opt/docker/conf/whaleRider.conf")
+  ExecCmd("CMD","-Dconfig.file=/opt/docker/conf/deadzone-roster.conf")
 )
 
 

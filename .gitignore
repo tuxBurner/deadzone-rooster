@@ -9,3 +9,4 @@ target
 
 .~lock.*
 dev_deadzone_dockercompose/test/
+deadzone_dockercompose/data/
