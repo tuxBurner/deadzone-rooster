@@ -67,3 +67,63 @@ ability.desc=Description
 ability.desc.RapidFire=A model using a weapon with the Rapid Fire special rule may elect to Fire for Effect when making a Shoot action
 ability.desc.Agile=After a model takes a Move or Sprint action it may additionally choose to move up or down one level in the same stack for free. This change in level follows the normal movement rules.
 ability.desc.Beast=The model cannot pick up, carry or use items. All of its weapons and equipment are either natural or have been grafted on permanently by skilled bio-technicians. This ability can also apply to models that are already so burdened by their normal combat load that they have no room to carry more.
+ability.desc.Blast=<p>The weapon does no direct Damage, though the force of the blast may push models off buildings or slam them into walls.</p>\
+  <p>If the attack is a HIT then all models in the cube except the target are thrown one cube directly away from the target model and then Pinned. The target model is thrown one cube in a random direction (see Scatter, page 26) and then Pinned.\
+  <p>If the attack is a MISS then all models in the target cube are Pinned.</p>
+ability.desc.BOOM=<p>When a model with this ability is killed, they explode.</p>\
+  <p>In addition, the model may choose to trigger the explosion as a Special action.</p>\
+  <p>Regardless of the cause, when the model explodes, treat it as a Frag (n) explosion (page 29) in that cube, where (n) is the value of BOOM!</p>
+ability.desc.Construct=This model is an artificial creature and as such is immune to certain abilities. Additionally, the model can never be Pinned. If hit by an attack that has effects in addition to pinning, such as Blast, the additional effects still apply.
+ability.desc.Engineer=<p>The model is experienced with tripwires and mines. If they reveal a Booby Trap item then the Engineer’s activation ends immediately. However, the Booby Trap does not explode. Instead it is defused and discarded.</p>\
+  <p>In addition, some items can only be used by Engineers.</p>
+ability.desc.Experimental=<p>This weapon is an unstable prototype, and as such, no-one is quite sure what it will do until the trigger is pulled. When the weapon is used to make a Shoot action, roll a dice on the following table and apply the listed ability to the attack:</p>\
+  <p><strong>1-2:</strong> Blast</p>\
+  <p><strong>3-4:</strong> Knockback</p>\
+  <p><strong>5-6:</strong> Weight of Fire (2)</p>\
+  <p><strong>7:</strong> AP3</p>\
+  <p><strong>8:</strong> Ominous Hum: The owning model gains the BOOM! (1) ability until the end of the game, and rolls again on this table. This effect is cumulative: The value of BOOM! increases by 1 each time an 8 is rolled.</p>
+ability.desc.FireControl=When the model takes a Shoot action it can use two weapons instead of one. Each weapon may choose the same or a different target. Declare the targets of both weapons before rolling any attack dice.
+ability.desc.Frag=<p>When a Frag explodes it may injure or kill models in the target cube and the force of the explosion will throw survivors to the ground. Frag will always be listed with a number after it in place of the (n), e.g. Frag (3), Frag (5), etc.</p>\
+  <p>Roll a variable dice 4+ test (X) for the strength of the attack, where the number of dice rolled is the number in brackets after Frag. For example, a Frag (5) weapon would roll 5 dice for the test. Models in the target cube must roll a 3 dice Survive test (X). Roll once for the attack and separately for each target model’s survival roll.</p>\
+  <p><strong>Draw or target has more successes:</strong><br />Attack misses or fails to cause any harm.</p>\
+  <p><strong>Frag has more successses:</strong><br />The difference in number of successes is the Potential Damage.</p>\
+  <p>Whatever the results of the explosion, all surviving models in the target cube are thrown one cube in a random direction (see Scatter,page 26) and then Pinned.</p>
+ability.desc.Frenzy=<p>A model with this ability attacks so ferociously that it’s hard to defend against it. Frenzy will always be expressed with a value in the place of the (n), e.g. Frenzy (1) or Frenzy (2). Up to that number of Fight dice that fail during a test may be re-rolled once. This also applies to any additional dice gained by rolling an 8.</p>\
+  <p>Frenzy is cumulative. If more than one Frenzy modifier applies to an attack then add together the (n) value from each source; this is the total number of failed dice the model may re-roll for the Fight test.</p>
+ability.desc.Glide=<p>The model may drop any number of levels without harm. This may be done by choice or as the result of being blasted out of a position. In either case they glide to the ground unharmed by the drop and land on their feet. In addition, for every level they drop they may move one cube sideways, relative to their original position.</p>
+ability.desc.Grenade=<p>All Grenades are thrown the same way, using a Shoot action. Choose a target cube. You do not need LOS to an enemy model, though if you do not have LOS then both the shooting model and the target cube must be visible when viewed by the throwing player from directly above. </p>\
+  <p>Roll a 3 dice Shoot test (1), with no modifiers. Success means that the Grenade has landed in that cube. Failure requires a scatter roll (page 26) to determine which cube the Grenade detonates in. An inaccurate Grenade will scatter onto the same or lower level (never up).</p>\
+  <p>A Grenade that would scatter into a wall or other solid object will bounce off that object and stay in the original target cube.</p>\
+  <p>The effect the Grenade has varies by type.</p>
+ability.desc.Heavy=<p>The weapon is cumbersome and takes time to set up and sight in, so Shoot counts as a long action. In addition, all Fight rolls for a model carrying a Heavy weapon are at an additional -1 dice.</p>
+ability.desc.Horde=<p>Most models in Deadzones fight as highly trained individuals. However, a few shun individual talent and rely instead on simply piling into their opponents en masse to drag them down by sheer weight of numbers. The best example of this is the Plague Zombies.</p>\
+  <p>When a model with Horde is in a Fight it gets the +1 modifier for having friendly models in the cube as usual. In addition, it receives an extra +1 for each friendly model in the same cube (not counting itself) that also has Horde.</p>
+ability.desc.Indirect=<p>Indirect weapons are typically Mortars or Grenade Launchers, capable of lobbing an explosive projectile at an area where the enemy is suspected to be.</p>\
+  <p>Indirect weapons can Shoot at models within Line of Sight, or they can choose to Shoot at targets they cannot see. In both cases, use the following rules:</p>\
+  <p>Indirect will always be listed with a number after it in place of the (n), e.g. Indirect (3), Indirect (5), etc.</p>\
+  <p>If using an Indirect weapon, Shoot becomes a long action. </p>\
+  <p>To shoot, choose a target cube. Due to its arcing trajectory the weapon cannot target anything within 2 cubes of the shooter, regardless of its normal Range.</p>\
+  <p>You do not need LOS to an enemy model, though both the shooting model and the target cube must be visible when viewed by the shooting player from directly above.</p>\
+  <p>If the firing model has LOS to an enemy model in the target cube, roll a 3 dice Shoot test (1), with no modifiers permitted (not even from Command Dice).</p>\
+  <p>If the firing model does not have LOS to an enemy model within the target cube, roll a 3 dice Shoot test (2), with no modifiers permitted (not even from Command Dice).</p>\
+  <p>Success for either test means that the shot has landed in the target cube. Failure requires a scatter roll to determine which cube the shot explodes in. An inaccurate shot will scatter (page 26) onto the highest level of the stack it scatters onto.</p>\
+  <p>When an Indirect shot explodes it may injure or kill models in the same cube. Roll a variable dice 4+ test (X) for the strength of the attack, where the number of dice rolled is the number in brackets after Indirect. For example, an Indirect (5) weapon would roll 5 dice for the test. Models in the cube must roll a 3 dice Survive test (X). Roll once for the attack and separately for each target model’s survival roll.</p>\
+  <p><strong>Draw or Survive has more successes:</strong><br />Attack misses or fails to cause any harm.</p>\
+  <p><strong>Indirect has more successes:</strong><br />The difference in number of successes is the Potential Damage.</p>\
+  <p>Whatever the results of the explosion, all surviving models in the target cube are thrown one cube in a random direction (page 26) and then Pinned.</p>
+ability.desc.Invigorate=<p>Weapons with this ability deliver a jolt of energy to their target, whether through a cocktail of combat drugs or through a Psychic unleashing a soldier’s hidden potential. Weapons with Invigorate may target friendly units, and units in the same cube as the active model. The firing model rolls a 3 dice Shoot test (2) with no modifiers. If successful, the target model removes an activation token.</p>
+ability.desc.ItBurns=<p>The weapon unleashes indiscriminate sheets of flame, acid, or similar lethal concoctions.</p>\
+  <p>It Burns! weapons attack every model in same cube as the primary target, regardless of which side they are on or whether they are visible to the Shooter.</p>\
+  <p>Choose one visible model as the primary target and roll for the attack with no modifiers.Roll Survive separately for each model in the target cube and compare each individually to the attack roll see the results.</p>\
+  <p>Whatever the result of the attack (even if it misses) all models in the target cube are set on fire (mark them with a Flame counter). In reality, the weapon fires great gouts of flame that fill the cube, and even near-misses set things alight.</p>\
+  <p>If a model is on fire when it is activated, then its first action must be to attempt to put out the fire. This is a free Special action that the model must take but will not count towards its normal action limit this activation. It is worked out as follows: </p>\
+  <p>The fire/flames roll a 3 dice 4+ test (X).</p>\
+  <p>The target rolls a 3 dice Survival test (X).</p>\
+  <p><strong>Draw or Survive has more successes:</strong><br />The target puts out the flames before they do any real Damage. The model may continue with any remaining actions as normal.</p>\
+  <p><strong>Fire/flames has more successes:</strong><br />The target manages to put out the flames and is no longer on fire, but suffers Damage in the process. The Potential Damage is equal to the difference in total successes and is resolved at AP1. The model’s activation ends immediately.</p>
+ability.desc.Knockback=<p>When a weapon or model with this ability hits its target it will knock it back into a different cube. Resolve the attack as normal, then move the target one cube directly away from the attacker (see page 27). If the knocked-back model’s route is blocked by a wall, the model is slammed into it (see page 27).</p>
+ability.desc.LifeSupport=<p>The individual has an in-built automated life support system designed to keep them alive even when gravely wounded. If the model is Injured, but not killed, by an attack then the Life Support automatically kicks into overdrive. The model is immediately returned to an Undamaged state. This happens automatically and does not cost an action. This only works once per game.</p>\
+  <p>Life Support cannot be used to resurrect models that have been killed outright by a single attack. Also note that Life Support only works on the model itself and cannot be used on nearby models (unlike a Medi-Pack item).</p>
+ability.desc.Loader=<p>If a model with this ability is in the same cube as a friendly model, then the Loader can remove a Reload counter from that model by taking a Special action.</p>
+ability.desc.Medic=<p>A Medic can heal a single Injured model in the same cube (which could be the Medic himself) by taking a Special action. No test is required. One Damage counter is removed per use of this ability.</p>\
+  <p>This ability only heals living models, and cannot repair Constructs or Vehicles.</p>

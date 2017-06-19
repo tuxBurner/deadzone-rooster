@@ -146,7 +146,7 @@
       @for(ability <- armyPdfInfos.abilities) {
         <tr>
           <th>@ability</th>
-          <td>@Messages("ability.desc."+ability.replace(" ",""))</td>
+          <td>@Html(Messages("ability.desc."+ability.replace(" ","").replace("!","")))</td>
         </tr>
       }
       </tbody>
