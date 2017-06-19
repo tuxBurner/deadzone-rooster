@@ -51,6 +51,10 @@ validate.toMuchFightWeapons=The troop: {0} has {1} fight weapons only one is all
 validate.toMuchShootWeapons=The troop: {0} has {1} shoot weapons only one is allowed.
 
 validate.modal.headline=Validation Result
+validate.btn=Validate
+print.all.btn=Print All
+
+export.btn=Export
 
 upload.label=Select file to import
 upload.btn=Import
