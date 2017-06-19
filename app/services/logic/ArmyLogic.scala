@@ -37,7 +37,7 @@ object ArmyLogic {
     * @param troops
     * @return
     */
-  private def getFactionsFromArmy(troops: List[ArmyTroopDto]) : String = {
+  def getFactionsFromArmy(troops: List[ArmyTroopDto]) : String = {
     troops.map(_.faction).distinct.mkString(",");
   }
 

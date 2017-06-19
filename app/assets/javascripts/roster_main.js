@@ -364,31 +364,25 @@ var rosterGuiHandler = {
       }
     });
   },
+  /**
+   * Uploads the selected file and displays the imported army
+   */
   importArmy: function () {
     var formData = new FormData();
     formData.append('file', $('#roster_upload_file')[0].files[0]);
 
     jsRoutes.controllers.RosterController.importArmy().ajax({
       data: formData,
-      processData: false,  // tell jQuery not to process the data
-      contentType: false,  // tell jQuery not to set contentType
+      processData: false,
+      contentType: false,
       success: function (data) {
-        console.log(data);
+        rosterGuiHandler.displayCurrentArmyData(data);
+      },
+      error: function(data) {
+        alert('Error !!!!');
       }
-    });
 
-    /*
-     *      url : 'upload.php',
-     type : 'POST',
-     data : formData,
-     processData: false,  // tell jQuery not to process the data
-     contentType: false,  // tell jQuery not to set contentType
-     success : function(data) {
-     console.log(data);
-     ale
-     *
-     *
-     * */
+    });
   }
 };
 

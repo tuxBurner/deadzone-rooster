@@ -9,7 +9,7 @@ import play.api.cache.CacheApi
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.libs.json._
 import play.api.mvc._
-import services.logic.ArmyImExpLogic.TroopExportDto
+import services.logic.ArmyImExpLogic.{ArmyImpExpDto, TroopImExpDto}
 import services.logic._
 
 import scala.concurrent.duration._
@@ -27,7 +27,8 @@ import scala.io.Source
   implicit val armyDtoFormat = Json.format[ArmyDto]
   implicit val factionDtoFormat = Json.format[FactionDto]
   implicit val armyTroopWeaponsItemsFormat = Json.format[ArmyTroopWeaponsItemsDto]
-  implicit val troopExportDtoFormat = Json.format[TroopExportDto]
+  implicit val troopExportDtoFormat = Json.format[TroopImExpDto]
+  implicit val armyExpImpDtoFormat = Json.format[ArmyImpExpDto]
 
   /**
     * Returns all the available factions as a json array
@@ -158,7 +159,7 @@ import scala.io.Source
     */
   @JSRoute def exportArmy() = Action { request =>
     val army = renewArmyInCache(request)
-    val exportData = ArmyImExpLogic.troopsToExportTroops(army)
+    val exportData = ArmyImExpLogic.armyForExport(army)
     val jsonData = Json.prettyPrint(Json.toJson(exportData))
     withCacheId(Ok(jsonData).as(JSON), request).as(JSON).withHeaders("Content-Disposition" -> "attachement; filename=army.json")
   }
@@ -171,10 +172,14 @@ import scala.io.Source
     request.body.file("file").map(file => {
       val jsonVal = Source.fromFile(  file.ref.file).getLines().mkString
       val jsValue = Json.parse(jsonVal)
-      
-      val armyImportTroops[List[TroopExportDto]] = Json.fromJson(jsValue)
-      Ok("")
-    }).getOrElse(Ok(""))
+      armyExpImpDtoFormat.reads(jsValue)
+        .map(armyToImport => {
+          val army = ArmyImExpLogic.importArmy(armyToImport)
+          writeArmyToCache(request,army)
+          withCacheId(Ok(Json.toJson(army)),request)
+        })
+        .getOrElse(InternalServerError(""))
+    }).getOrElse(InternalServerError(""))
   }
 
   private def renewArmyInCache(request: Request[Any]): ArmyDto = {

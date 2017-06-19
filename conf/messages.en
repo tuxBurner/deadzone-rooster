@@ -55,6 +55,9 @@ validate.modal.headline=Validation Result
 upload.label=Select file to import
 upload.btn=Import
 
+mainmenu.roster=Roster
+mainmenu.abilities=Abilities
+
 ability.name=Name
 ability.desc=Description
 ability.desc.RapidFire=A model using a weapon with the Rapid Fire special rule may elect to Fire for Effect when making a Shoot action
