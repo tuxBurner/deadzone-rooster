@@ -12,7 +12,7 @@
     @for(ability <- abilities) {
       <tr>
         <th>@ability.name</th>
-        <td>@Html(Messages("ability.desc." + ability.name.replace(" ", "").replace("!","")))</td>
+        <td>@displayAbiltityDescr(ability.name)</td>
       </tr>
     }
     </tbody>
