@@ -8,5 +8,5 @@ target
 /RUNNING_PID
 
 .~lock.*
-dev_deadzone_dockercompose/test/
-deadzone_dockercompose/data/
+docker_runtimes/dev_deadzone_dockercompose/test/
+docker_runtimes/deadzone_dockercompose/data/
