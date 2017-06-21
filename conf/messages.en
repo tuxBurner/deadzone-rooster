@@ -80,6 +80,19 @@ armyspecial.desc.TooStubbornToDie=<p>You can spend an Army Special result on you
 armyspecial.desc.BytheNumbers=<p>You may spend an Army Special result on your Command Dice to re-roll any normal test made by a model with Commando in their type name</p>
 armyspecial.desc.GreenRage=<p>Spend an Army Special result tp give Frenzy(4) to a model for the rest of the round. You may spend this dice before taking any Fight test. If the model already has Frenzy the higher of the two values is used.</p>
 armyspecial.desc.TacticalGenius=<p>Spend an Army Special result during a model's activation. The active model may immediately use and discard one of the opponent's Move, Shoot or Fight Command Dice results. This result may only be played once per activation, and the active model may not also use a Move,Shoot or Fight Command Dice result from the owning player's Command Dice pool.</p>
+armyspecial.desc.Infection=<p>When an enemy model is killed you may spend an Army Special result on your Command Dice to spread the infection and raise it again as a Zombie. Swap the Dead enemy model for a Pinned Zombie in the same cube. The Zombie is marked as activated for this Round. The original model is dead and the Zombie is counted as part of the Plague Strike Team.</p>
+armyspecial.desc.Mutation=<p>Spend an Army Special result at the start of the model's activation. That model manifests a random mutation for the rest of the Round.</p>\
+  <p><strong>1-2:</strong> Agile</p>\
+  <p><strong>3-4:</strong> Frenzy(+1)</p>\
+  <p><strong>5-6:</strong> Increase AP of one RF weapon by +1</p>\
+  <p><strong>7-8:</strong> Increase Armour of model +1</p>
+armyspecial.desc.UndertheKnife=<p>Spend an Army Special result to activate the bio-modifications Dr Simmonds has implanted within her troops. The non-vehicle active model gains an effect of the player's choice from the following list:</p>\
+  <ul>\
+  <li>Claws: Gain a RF,AP2 weapon until the end of the round.</li>\
+  <li>Adrenal Burst Gain: Gain +1/+0 speed until the end of the round.</li>\
+  <li>Grav-Pods: Gain Jump Pack and Glide until the end of the round.</li>\
+  </ul>
+
 
 ability.name=Name
 ability.desc=Description
