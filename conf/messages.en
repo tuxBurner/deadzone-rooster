@@ -69,7 +69,17 @@ armyspecial.troop=Troop
 armyspecial.desc=Description
 armyspecial.desc.Overcharge=<p>Spend an Army Special result at the start of the model's activation. Target model's Noh Rifle gains Rapid Fire, Weight of fire(2) until the end of its activation</p>
 armyspecial.desc.WheelsWithinWheels=<p>You may spend an Army Special result on your Command Dice to discard any one of your opponent's Command Dice. This does not count as an action.</p>
-
+armyspecial.desc.Bastion=<p>You may spend a Special result on your Command Dice to add +1 Armour to a model for a single attack. You must decide to spend this Command Dice before the attack is rolled, and only one dice can be spent per attack.</p>
+armyspecial.desc.MobileInfantry=<p>Spend an Army Special result at the beginning of a model’s activation. If the active model is equipped with a Jump Pack, and does not have the Vehicle ability, it may make a free Sprint action. The model may not take a second Sprint action or a Move action this activation.</p>
+armyspecial.desc.Ropeadope=<p>Spend an Army Special result when an enemy model moves into a cube containing one of your unactivated models. Move an unactivated model in that cube one cube, as it had a Move Command Dice played on it; it does not need to make a test to leave an enemy occupied cube. This model remains unactivated.</p>
+armyspecial.desc.Stalwart=<p>Enforcers are famed for their resilience and stubbornness. You may spend a Special result on your Command Dice to immediately reroll any number of your dice on a Survive test.</p>
+armyspecial.desc.TargetAcquisition=<p>Spend an Army Special result on your Command Dice to mark an enemy model as a target for the rest of the Round. The model is treated as though it had been marked as a target by a model using the Tag ability. This does not require Line of Sight and does not count as an action.</p>
+armyspecial.desc.StarforgedArmour=<p>Spend an Army Special result when you are resolving Potential Damage of an attack against one of your models.. You may reduce the AP value of the attack by 1 for every Army Special result you spend in this manner. This does not count as an action.</p>
+armyspecial.desc.StrikeItLucky=<p>Spend an Army Special result after a friendly model picks up an item to discard that item. This does not count as an action. Pick a new item at random from the unused Item tokens; the model has found this item instead. This ability cannot be used if a model activates a booby trap.</p>
+armyspecial.desc.TooStubbornToDie=<p>You can spend an Army Special result on your Command Dice to try and remove a point of Damage on the active model. Roll a 3 dice Survive test (3). Success removes one Damage token. Failure has no effect. This does not count as an action.</p>
+armyspecial.desc.BytheNumbers=<p>You may spend an Army Special result on your Command Dice to re-roll any normal test made by a model with Commando in their type name</p>
+armyspecial.desc.GreenRage=<p>Spend an Army Special result tp give Frenzy(4) to a model for the rest of the round. You may spend this dice before taking any Fight test. If the model already has Frenzy the higher of the two values is used.</p>
+armyspecial.desc.TacticalGenius=<p>Spend an Army Special result during a model's activation. The active model may immediately use and discard one of the opponent's Move, Shoot or Fight Command Dice results. This result may only be played once per activation, and the active model may not also use a Move,Shoot or Fight Command Dice result from the owning player's Command Dice pool.</p>
 
 ability.name=Name
 ability.desc=Description
