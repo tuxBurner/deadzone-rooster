@@ -64,9 +64,9 @@ object ArmyImExpLogic {
     })
 
     val points = troopDo.points + newWeapons.map(_.points).sum + newItems.map(_.points).sum
+    val victoryPoints =  troopDo.victoryPoints + newWeapons.map(_.victoryPoints).sum
 
-
-    val troopForAmry = ArmyLogic.troopDoToArmyTroopDto(troopDo).copy(points = points, weapons = newWeapons, items = newItems)
+    val troopForAmry = ArmyLogic.troopDoToArmyTroopDto(troopDo).copy(points = points, victoryPoints = victoryPoints,weapons = newWeapons, items = newItems)
 
     Option.apply(troopForAmry)
 
