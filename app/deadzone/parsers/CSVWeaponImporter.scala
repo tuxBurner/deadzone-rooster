@@ -1,7 +1,7 @@
 package deadzone.parsers
 
 import com.github.tototoshi.csv.CSVReader
-import deadzone.models.CSVModels.{AbilityDto, CSVWeaponBaseDto}
+import deadzone.models.CSVModels.{AbilityDto, CSVWeaponDto}
 import deadzone.parsers.CSVItemsImporter.{parseLineMap, readCsvFile}
 import play.api.Logger
 
@@ -33,6 +33,8 @@ object CSVWeaponImporter extends CSVDataParser {
 
   private val HARDPOINTS_HEADER = "Hardpoints"
 
+  private val LINKED_WEAPON_NAME_HEADER = "LinkedName"
+
   // when true the free when small arms is allowed
   private val ADD_ON_HEADER ="Add On"
     
@@ -42,16 +44,16 @@ object CSVWeaponImporter extends CSVDataParser {
 
 
   
-  def getWeaponsForFaction(faction: String) : List[CSVWeaponBaseDto] = {
+  def getWeaponsForFaction(faction: String) : List[CSVWeaponDto] = {
     weapons.filter(_.faction.equals(faction))
   }
 
-  private def importWeaponFromCsv(): List[CSVWeaponBaseDto] = {
+  private def importWeaponFromCsv(): List[CSVWeaponDto] = {
     val dataWithHeaders =  readCsvFile("deadzone/weapons.csv")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 
-  private def parseLineMap(lineData: Map[String, String]): Option[CSVWeaponBaseDto] = {
+  private def parseLineMap(lineData: Map[String, String]): Option[CSVWeaponDto] = {
 
     val typeStr = lineData.get(TYPE_HEADER).get.trim
     if (typeStr.isEmpty) {
@@ -97,7 +99,9 @@ object CSVWeaponImporter extends CSVDataParser {
 
     val free = lineData.get(ADD_ON_HEADER).get.trim == "x"
 
-    return Option.apply(CSVWeaponBaseDto(factionStr, nameStr, points, vps, rangeAsInt, ap, weaponTypes, hp, free, abilities))
+    val linkedName = lineData.get(LINKED_WEAPON_NAME_HEADER).get.trim
+
+    return Option.apply(CSVWeaponDto(factionStr, nameStr, points, vps, rangeAsInt, ap, weaponTypes, hp, free, abilities, linkedName))
   }
 
 

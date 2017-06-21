@@ -3,6 +3,7 @@ package services.logic
 import java.util.UUID
 
 import models._
+import org.apache.commons.lang3.StringUtils
 
 import scala.collection.JavaConversions._
 import scala.collection.mutable.ListBuffer
@@ -163,12 +164,13 @@ object ArmyLogic {
   def getWeaponsForTroop(troopDto: ArmyTroopDto): Map[String, List[ArmyWeaponDto]] = {
     val weapons = WeaponDAO.findByFactionAndTypes(troopDto.faction, troopDto.allowedWeaponTypes).toList
 
-    val rangedWeaopns = weapons.filter(weaponDo => weaponDo.shootRange != 0 && weaponDo.free == false).map(weaponDoToWeaponDto(_))
-    val fightWeapons = weapons.filter(weaponDo => weaponDo.shootRange == 0 && weaponDo.free == false).map(weaponDoToWeaponDto(_))
+    val rangedWeaopns = weapons.filter(weaponDo => weaponDo.shootRange != 0 && weaponDo.free == false && StringUtils.isBlank(weaponDo.linkedName)).map(weaponDoToWeaponDto(_))
+    val fightWeapons = weapons.filter(weaponDo => weaponDo.shootRange == 0 && weaponDo.free == false && StringUtils.isBlank(weaponDo.linkedName)).map(weaponDoToWeaponDto(_))
     val freeWeapons = weapons.filter(_.free == true).map(weaponDoToWeaponDto(_))
+    val linkedWeapons = weapons.filter(weaponDo => weaponDo.free == false && StringUtils.isNoneBlank(weaponDo.linkedName)).map(weaponDoToWeaponDto(_))
 
 
-    Map("ranged" -> rangedWeaopns, "fight" -> fightWeapons, "free" -> freeWeapons)
+    Map("ranged" -> rangedWeaopns, "fight" -> fightWeapons, "free" -> freeWeapons, "linked" -> linkedWeapons)
   }
 
   /**
@@ -212,7 +214,7 @@ object ArmyLogic {
     */
   def weaponDoToWeaponDto(weaponDo: WeaponDO): ArmyWeaponDto = {
     val abilities = weaponDo.defaultWeaponAbilities.toList.map(abilityDo => ArmyAbilityDto(abilityDo.ability.name, abilityDo.defaultValue))
-    ArmyWeaponDto(weaponDo.name, weaponDo.points, weaponDo.shootRange, weaponDo.armorPircing, weaponDo.victoryPoints, abilities, weaponDo.free)
+    ArmyWeaponDto(weaponDo.name, weaponDo.points, weaponDo.shootRange, weaponDo.armorPircing, weaponDo.victoryPoints, abilities, weaponDo.free,weaponDo.linkedName)
   }
 
   /**
@@ -254,7 +256,7 @@ case class ArmyAbilityDto(name: String, defaultVal: Int)
 
 case class ArmyTroopDto(uuid: String, faction: String, name: String, modelType: String, basePoints: Int, points: Int, baseVictoryPoints: Int, victoryPoints: Int, speed: Int, sprint: Int, armour: Int, size: Int, shoot: Int, fight: Int, survive: Int, abilities: List[ArmyAbilityDto], weapons: List[ArmyWeaponDto], items: List[ArmyItemDto], allowedWeaponTypes: List[String], recon: Int, armySpecial: String, defaultWeapons: List[ArmyWeaponDto])
 
-case class ArmyWeaponDto(name: String, points: Int, shootRange: Int, armorPircing: Int, victoryPoints: Int, abilities: List[ArmyAbilityDto], free: Boolean)
+case class ArmyWeaponDto(name: String, points: Int, shootRange: Int, armorPircing: Int, victoryPoints: Int, abilities: List[ArmyAbilityDto], free: Boolean, linkedName: String)
 
 case class ArmyItemDto(name: String, points: Int, rarity: String, noUpdate: Boolean)
 

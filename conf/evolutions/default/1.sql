@@ -92,6 +92,7 @@ create table weapon (
   armor_pircing                 integer not null,
   hart_points                   integer not null,
   free                          tinyint(1) default 0 not null,
+  linked_name                   varchar(255),
   constraint pk_weapon primary key (id)
 );
 

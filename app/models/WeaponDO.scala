@@ -5,7 +5,7 @@ import javax.persistence._
 import javax.validation.constraints.NotNull
 
 import com.avaje.ebean.Model
-import deadzone.models.CSVModels.CSVWeaponBaseDto
+import deadzone.models.CSVModels.CSVWeaponDto
 import play.api.Logger
 
 import scala.collection.JavaConversions._
@@ -30,28 +30,29 @@ object WeaponDAO {
     FINDER.where().ieq("faction.name",factionName).and().in("weaponTypes.name",weaponTypes).findList
   }
 
-  def addWeaponToFaction(weaponDto: CSVWeaponBaseDto, factionDo: FactionDO): WeaponDO = {
+  def addWeaponToFaction(csvWeaponDto: CSVWeaponDto, factionDo: FactionDO): WeaponDO = {
 
-    Logger.info("Creating weapon: " + weaponDto.name + " for faction: " + factionDo.name)
+    Logger.info("Creating weapon: " + csvWeaponDto.name + " for faction: " + factionDo.name)
 
     val newWeaponDo = new WeaponDO()
-    newWeaponDo.name = weaponDto.name
-    newWeaponDo.points = weaponDto.points
-    newWeaponDo.armorPircing = weaponDto.armorPircing
+    newWeaponDo.name = csvWeaponDto.name
+    newWeaponDo.points = csvWeaponDto.points
+    newWeaponDo.armorPircing = csvWeaponDto.armorPircing
     newWeaponDo.faction = factionDo
-    newWeaponDo.free = weaponDto.free
-    newWeaponDo.hartPoints = weaponDto.hardPoint
-    newWeaponDo.shootRange = weaponDto.range
-    newWeaponDo.victoryPoints = weaponDto.victoryPoints
+    newWeaponDo.free = csvWeaponDto.free
+    newWeaponDo.hartPoints = csvWeaponDto.hardPoint
+    newWeaponDo.shootRange = csvWeaponDto.range
+    newWeaponDo.victoryPoints = csvWeaponDto.victoryPoints
+    newWeaponDo.linkedName = csvWeaponDto.linkedName
     newWeaponDo.save()
 
     // add abilities to weapon
-    weaponDto.abilities.foreach(ability => {
+    csvWeaponDto.abilities.foreach(ability => {
       DefaultWeaponAbilityDAO.addAbilityForWeapon(newWeaponDo, ability)
     })
 
     // add type to weapon
-    weaponDto.weaponTypes.foreach(weaponType => {
+    csvWeaponDto.weaponTypes.foreach(weaponType => {
       newWeaponDo.weaponTypes.add(WeaponTypeDAO.findOrCreateTypeByName(weaponType))
     })
 
@@ -106,6 +107,8 @@ class WeaponDO extends Model {
 
   @NotNull
   var free: Boolean = false
+
+  var linkedName: String = ""
 
   @OneToMany
   var defaultWeaponAbilities: java.util.List[DefaultWeaponAbilityDO] = null

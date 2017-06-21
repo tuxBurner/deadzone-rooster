@@ -129,6 +129,7 @@ var rosterGuiHandler = {
         weaponsContent += rosterGuiHandler.displayEditWeaponType('Free', 'free', data);
         weaponsContent += rosterGuiHandler.displayEditWeaponType('Fight', 'fight', data);
         weaponsContent += rosterGuiHandler.displayEditWeaponType('Ranged', 'ranged', data);
+        weaponsContent += rosterGuiHandler.displayEditWeaponType('Combo', 'linked', data);
         $('#roster_troop_edit_weapons').html(weaponsContent);
 
         var itemsContent = '';
@@ -166,7 +167,7 @@ var rosterGuiHandler = {
       selectedItems: []
     };
 
-    $.each($('.edit_troop_slected_weapon:checked'), function (idx, obj) {
+    $.each($('.edit_troop_selected_weapon:checked'), function (idx, obj) {
       dataToSave.selectedWeapons.push($(obj).val());
     });
 
@@ -215,8 +216,10 @@ var rosterGuiHandler = {
         }
 
         content += tableRow;
-        content += '<td><input value="' + weapon.name + '" class="edit_troop_slected_weapon" type="checkbox" ' + checked + '/></td>';
-        content += '<td>' + weapon.name + '</td>';
+        content += '<td><div class="checkbox"><label>';
+        content += '<input data-linked-name="'+weapon.linkedName+'" value="' + weapon.name + '" class="edit_troop_selected_weapon" type="checkbox" ' + checked + '/> ';
+        content += weapon.name;
+        content += '</label></div></td>';
         content += '<td>' + weapon.points + '</td>';
         content += '<td>' + weapon.victoryPoints + '</td>';
         content += '<td>' + rosterGuiHandler.weaponRangeForDisplay(weapon) + '</td>';
@@ -427,6 +430,18 @@ $(function () {
     var troopName = $(this).closest('tr').data('troopname');
     rosterGuiHandler.displayEditPopup(uuid, troopName);
   });
+
+  $(document).on('click', '.edit_troop_selected_weapon', function () {
+    var linkedName = $(this).data('linkedName');
+    if(linkedName === '') {
+      return;
+    }
+
+    var thisStatus = $(this).prop('checked');
+    $('.edit_troop_selected_weapon[data-linked-name="'+linkedName+'"]').prop('checked',thisStatus);
+  });
+
+
 
   $(document).on('click', '.roster_clone_btn', function () {
     var uuid = $(this).closest('tr').data('uuid');

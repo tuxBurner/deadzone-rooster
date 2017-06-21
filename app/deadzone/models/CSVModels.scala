@@ -10,7 +10,7 @@ object CSVModels {
 
   case class AbilityDto(title: String, factor: Int = 0)
 
-  case class CSVWeaponBaseDto(faction: String, name: String, points: Int, victoryPoints: Int, range: Int, armorPircing: Int, weaponTypes:Array[String], hardPoint: Int = 0, free: Boolean = false, abilities: List[AbilityDto] = List())
+  case class CSVWeaponDto(faction: String, name: String, points: Int, victoryPoints: Int, range: Int, armorPircing: Int, weaponTypes:Array[String], hardPoint: Int = 0, free: Boolean = false, abilities: List[AbilityDto] = List(), linkedName: String = "")
 
   case class CSVItemDto(faction: String, name: String, points: Int, rarity: String, noUpgrade: Boolean)
 
