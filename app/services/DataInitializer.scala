@@ -44,7 +44,7 @@ import play.api.{Configuration, Logger}
 
       val soldierDtos = CSVFactionsImporter.getSoldierForFaction(factionName)
       soldierDtos.foreach(soldierDto => {
-        TroopDAO.addFromSoldierDto(soldierDto,factionDo)
+        TroopDAO.addFromCSVSoldierDto(soldierDto,factionDo)
       })
     })
   }

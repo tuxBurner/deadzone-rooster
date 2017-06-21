@@ -61,6 +61,15 @@ upload.btn=Import
 
 mainmenu.roster=Roster
 mainmenu.abilities=Abilities
+mainmenu.armyspecials=Army Specials
+
+armyspecial.name=Name
+armyspecial.faction=Faction
+armyspecial.troop=Troop
+armyspecial.desc=Description
+armyspecial.desc.Overcharge=<p>Spend an Army Special result at the start of the model's activation. Target model's Noh Rifle gains Rapid Fire, Weight of fire(2) until the end of its activation</p>
+armyspecial.desc.WheelsWithinWheels=<p>You may spend an Army Special result on your Command Dice to discard any one of your opponent's Command Dice. This does not count as an action.</p>
+
 
 ability.name=Name
 ability.desc=Description

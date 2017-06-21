@@ -6,6 +6,7 @@
 GET           /                                                   controllers.HomeController.rosterMain
 
 GET           /abilities                                          controllers.HomeController.displayAllAbilities()
+GET           /armyspecials                                       controllers.HomeController.displayAllArmySpecials()
 
 GET           /roster/factions                                    controllers.RosterController.getFactions()
 GET           /roster/faction/:factionName/troopsForSelect        controllers.RosterController.getSelectTroopsForFaction(factionName : String)

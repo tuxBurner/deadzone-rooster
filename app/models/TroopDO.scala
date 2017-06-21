@@ -38,8 +38,21 @@ object TroopDAO {
     FINDER.where().eq("faction.name", factionName).and().eq("name",name).findUnique
   }
 
-  def addFromSoldierDto(soldierDto: CSVSoldierDto, factionDo: FactionDO): TroopDO = {
+  /**
+    * Finds all troops with an army special in the database
+    * @return
+    */
+  def findAllWithArmySpecials() : List[TroopDO] = {
+    FINDER.where().ne("armySpecial","").order().asc("faction.name").orderBy().asc("armySpecial").findList().toList
+  }
 
+  /**
+    * Adds a troop to the databse from the csv information's
+    * @param soldierDto
+    * @param factionDo
+    * @return
+    */
+  def addFromCSVSoldierDto(soldierDto: CSVSoldierDto, factionDo: FactionDO): TroopDO = {
     Logger.info("Creating troop: " + soldierDto.name + " for faction: " + factionDo.name)
 
     val troopDO = new TroopDO()

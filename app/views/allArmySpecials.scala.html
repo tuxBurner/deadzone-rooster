@@ -1,0 +1,26 @@
+@(troops: List[TroopDO])(implicit messages: Messages)
+
+@main("Army Specials") {
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>@Messages("armyspecial.faction")</th>
+        <th>@Messages("armyspecial.troop")</th>
+        <th>@Messages("armyspecial.name")</th>
+        <th>@Messages("army.recon.recon")</th>
+        <th>@Messages("armyspecial.desc")</th>
+      </tr>
+    </thead>
+    <tbody>
+    @for(troop <- troops) {
+      <tr>
+        <th>@troop.faction.name</th>
+        <td>@troop.name</td>
+        <td>@troop.armySpecial</td>
+        <td>@troop.recon+</td>
+        <td>@displayArmySpecialDescr(troop.armySpecial)</td>
+      </tr>
+    }
+    </tbody>
+  </table>
+}
