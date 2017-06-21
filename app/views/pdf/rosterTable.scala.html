@@ -1,6 +1,6 @@
 @import services.logic.ArmyDto
 @import services.logic.ArmyPdfInfos
-@(army: ArmyDto, armyPdfInfos: ArmyPdfInfos )(implicit messages: Messages)
+@(army: ArmyDto, armyPdfInfos: ArmyPdfInfos)(implicit messages: Messages)
 
 <html>
   <head>
@@ -25,15 +25,20 @@
       padding: 2pt;
     }
 
-
     table.pdf th {
       background-color: #ababab;
     }
 
+    table.pdf td {
+      vertical-align: top;
+    }
+
     @@page {
-      @@bottom-right {
-        content: "Page " counter(page) " of " counter(pages);
-      }
+
+    @@bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+    }
+
     }
 
     </style>
@@ -105,51 +110,53 @@
     </table>
 
 
-    <hr />
+    <div style="-fs-page-sequence: start;
+      page-break-before: always">
+      <h3>@Messages("armyspecial.headline")</h3>
 
-    <h3>@Messages("army.recon.headline")</h3>
+      <table class="pdf">
+        <thead>
+          <tr>
+            <th>@Messages("armyspecial.troop")</th>
+            <th>@Messages("army.recon")</th>
+            <th>@Messages("armyspecial.name")</th>
+            <th>@Messages("armyspecial.desc")</th>
+          </tr>
+        </thead>
+        <tbody>
+        @for(recon <- armyPdfInfos.reconVals) {
+          <tr>
+            <th>@recon._1</th>
+            <td>@recon._2+</td>
+            <td>@recon._3</td>
+            <td>@displayArmySpecialDescr(recon._3)</td>
+          </tr>
+        }
+        </tbody>
+      </table>
+    </div>
 
+    <div style="-fs-page-sequence: start;
+      page-break-before: always">
 
-    <table class="pdf">
-      <thead>
-        <tr>
-          <th>@Messages("army.recon.troop")</th>
-          <th>@Messages("army.recon.recon")</th>
-          <th>@Messages("army.recon.special")</th>
-          <th>@Messages("army.recon.special.desc")</th>
-        </tr>
-      </thead>
-      <tbody>
-      @for(recon <- armyPdfInfos.reconVals) {
-        <tr>
-          <th>@recon._1</th>
-          <td>@recon._2+</td>
-          <td>@recon._3</td>
-          <td>@Messages("army.special.desc."+recon._3.replace(" ",""))</td>
-        </tr>
-      }
-      </tbody>
-    </table>
+      <h3>@Messages("army.abilities")</h3>
 
-    <hr />
-
-    <h3>@Messages("army.abilities")</h3>
-
-    <table class="pdf">
-      <thead>
-        <tr>
-          <th>@Messages("ability.name")</th>
-          <th>@Messages("ability.desc")</th>
-        </tr>
-      </thead>
-      <tbody>
-      @for(ability <- armyPdfInfos.abilities) {
-        <tr>
-          <th>@ability</th>
-          <td>@displayAbiltityDescr(ability)</td>
-        </tr>
-      }
-      </tbody>
-    </table>
+      <table class="pdf">
+        <thead>
+          <tr>
+            <th>@Messages("ability.name")</th>
+            <th>@Messages("ability.desc")</th>
+          </tr>
+        </thead>
+        <tbody>
+        @for(ability <- armyPdfInfos.abilities) {
+          <tr>
+            <th>@ability</th>
+            <td>@displayAbiltityDescr(ability)</td>
+          </tr>
+        }
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>

@@ -36,6 +36,7 @@ army.points=Total Points:
 army.faction=Faction:
 army.troops=Troops:
 army.abilities=Abilities:
+army.recon=Recon
 
 edit.headline=Edit:
 
@@ -63,6 +64,7 @@ mainmenu.roster=Roster
 mainmenu.abilities=Abilities
 mainmenu.armyspecials=Army Specials
 
+armyspecial.headline=Army Specials and Recon
 armyspecial.name=Name
 armyspecial.faction=Faction
 armyspecial.troop=Troop
