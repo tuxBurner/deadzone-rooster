@@ -1,4 +1,4 @@
-@(title: String)(content: Html)(implicit messages: Messages)
+@(title: String, scripts: Html = Html(""))(content: Html)(implicit messages: Messages)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +43,5 @@
   <script type="text/javascript" src="@routes.HomeController.jsRoutes"></script>
   <script type="text/javascript" src="@routes.Assets.versioned("lib/jquery/jquery.min.js")"> </script>
   <script type="text/javascript" src="@routes.Assets.versioned("lib/bootstrap/js/bootstrap.min.js")"> </script>
-  <script type="text/javascript" src="@routes.Assets.versioned("javascripts/roster_main.js")"> </script>
-
+  @scripts
 </html>

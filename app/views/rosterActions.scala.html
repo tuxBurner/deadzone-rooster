@@ -2,9 +2,9 @@
 @* ACTION BUTTONS *@
 <div class="row">
   <div class="col-xs-6">
-    <button class="btn btn-info" id="roster_validate_army_btn"><span class="glyphicon glyphicon-check"></span> <small>@Messages("validate.btn")</small></button>
-    <a href="@routes.RosterController.getTablePdf()" target="_blank" class="btn btn-info"><span class="glyphicon glyphicon-print"></span> <small>@Messages("print.all.btn")</small></a>
-    <a href="@routes.RosterController.exportArmy()" target="_blank" class="btn btn-info"><span class="glyphicon glyphicon-download"></span> <small>@Messages("export.btn")</small></a>
+    <button class="btn btn-info roster_action_btn" id="roster_validate_army_btn"><span class="glyphicon glyphicon-check"></span> <small>@Messages("validate.btn")</small></button>
+    <a href="@routes.RosterController.getTablePdf()" target="_blank" class="btn btn-info roster_action_btn"><span class="glyphicon glyphicon-print"></span> <small>@Messages("print.all.btn")</small></a>
+    <a href="@routes.RosterController.exportArmy()" target="_blank" class="btn btn-info  roster_action_btn"><span class="glyphicon glyphicon-download"></span> <small>@Messages("export.btn")</small></a>
   </div>
   <div class="col-xs-6">
     <form class="form-inline">

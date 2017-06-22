@@ -14,6 +14,16 @@ import scala.collection.mutable.ListBuffer
 object ArmyLogic {
 
   /**
+    * Changes the name of the given army
+    * @param armyName
+    * @param army
+    * @return
+    */
+  def changeNameOfArmy(armyName: String, army:ArmyDto) : ArmyDto = {
+    army.copy(name = armyName)
+  }
+
+  /**
     * Adds a new troop to the army
     *
     * @param factionName

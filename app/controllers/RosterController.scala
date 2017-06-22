@@ -51,6 +51,19 @@ import scala.io.Source
   }
 
   /**
+    * Endpoint for changing the army's name
+    * @return
+    */
+  @JSRoute def changeArmyName() = Action(parse.tolerantJson) { request =>
+    val armyName = (request.body \ "armyName").as[String]
+    val armyFromCache = getArmyFromCache(request)
+    val newArmy = ArmyLogic.changeNameOfArmy(armyName,armyFromCache)
+
+    writeArmyToCache(request,newArmy)
+    withCacheId(Ok(Json.toJson(newArmy)).as(JSON), request)
+  }
+
+  /**
     * Adds a troop to the army
     * @return
     */

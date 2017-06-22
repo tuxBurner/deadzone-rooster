@@ -237,6 +237,9 @@ var rosterGuiHandler = {
    */
   displayCurrentArmyData: function (armyData) {
 
+    var disableBtns = armyData.troops.length === 0;
+    $('.roster_action_btn').prop('disabled',disableBtns);
+
     $('#roster_army_points').text(armyData.points);
     $('#roster_army_faction').text(armyData.faction);
 

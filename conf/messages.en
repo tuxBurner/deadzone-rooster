@@ -32,6 +32,7 @@ faction.select=Faction:
 troop.select=Troop:
 type.select=Type:
 
+army.name=Army Name:
 army.points=Total Points:
 army.faction=Faction:
 army.troops=Troops:

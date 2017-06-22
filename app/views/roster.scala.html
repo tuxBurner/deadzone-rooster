@@ -1,7 +1,10 @@
 @()(implicit messages: Messages)
 
+@scripts = {
+  <script type="text/javascript" src="@routes.Assets.versioned("javascripts/roster_main.js")"> </script>
+}
 
-@main("Roster") {
+@main("Roster", scripts) {
   <div class="row">
     <div class="col-xs-12">
       <div class="input-group">
@@ -33,6 +36,17 @@
 
   <hr />
 
+  @rosterActions()
+
+  <hr />
+
+  <div class="input-group">
+    <label for="roster_army_name" class="input-group-addon">@Messages("army.name")</label>
+    <input type="text" class="form-control" id="roster_army_name" />
+  </div>
+
+  <hr />
+
   <h4>
     <span><strong>@Messages("army.points") </strong></span>
     <span class="badge" id="roster_army_points"></span>
@@ -43,9 +57,6 @@
 
   <hr />
 
-  @rosterActions()
-
-  <hr />
 
   <table class="table table-condensed table-bordered">
     <thead>
