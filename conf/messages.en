@@ -94,6 +94,11 @@ armyspecial.desc.UndertheKnife=<p>Spend an Army Special result to activate the b
   <li>Adrenal Burst Gain: Gain +1/+0 speed until the end of the round.</li>\
   <li>Grav-Pods: Gain Jump Pack and Glide until the end of the round.</li>\
   </ul>
+armyspecial.desc.AlwaysShort=<p>You can spend an Army Special result on your Command Dice to place a new random item, face down, in an unoccupied cube thata is adjacent to the active model. This does not count as an action.</p>
+armyspecial.desc.HideinShadows=<p>Spend an Army Special result at the end of a model's activation. The active model slinks into hiding. For the rest of the Round, this model cannot be targeted by Shoot actions, and cannot have Line of Sight drawn to it. The model is still affected by abilities that target every model in the cube (such as Frag, Indirect, It Burns or Blast) and can still be the target of Fight actions.</p>
+armyspecial.desc.Bodyguard=<p>When Brood Mother is the target of a Shooting attack, you may spend a Special result on your Command Dice to move a Crawler or Stalker one cube into the path of the attack, anywhere along the Line of Sight. Resolve the Shoot action as if it had targeted this model instead.</p>
+armyspecial.desc.Surge=<p>A Veer-Myn model that was already marked as activated at the start of this Turn may make a Move action of up to 1 cube. This may trigger Fights as normal.</p>
+
 
 
 ability.name=Name
