@@ -174,7 +174,9 @@ import scala.io.Source
     val army = renewArmyInCache(request)
     val exportData = ArmyImExpLogic.armyForExport(army)
     val jsonData = Json.prettyPrint(Json.toJson(exportData))
-    withCacheId(Ok(jsonData).as(JSON), request).as(JSON).withHeaders("Content-Disposition" -> "attachement; filename=army.json")
+    val fileName = if(army.name.isEmpty) "army" else army.name
+    val headerContent =  "attachement; filename="+fileName+".json";
+    withCacheId(Ok(jsonData).as(JSON), request).as(JSON).withHeaders("Content-Disposition" -> headerContent)
   }
 
   /**

@@ -20,7 +20,7 @@ object ArmyImExpLogic {
     */
   def armyForExport(army: ArmyDto): ArmyImpExpDto = {
     val troops = army.troops.map(troop => TroopImExpDto(troop.faction, troop.name, troop.weapons.map(_.name), troop.items.map(_.name)))
-    ArmyImpExpDto(troops = troops)
+    ArmyImpExpDto(army.name,troops = troops)
   }
 
   /**
@@ -34,7 +34,7 @@ object ArmyImExpLogic {
     val troops = armyToImport.troops.map(createTroopFromImport(_)).flatten
     val points = troops.map(_.points).sum
     val factions = ArmyLogic.getFactionsFromArmy(troops)
-    ArmyDto("",factions,points,troops)
+    ArmyDto(armyToImport.name,factions,points,troops)
   }
 
   /**
@@ -72,7 +72,7 @@ object ArmyImExpLogic {
 
   }
 
-  case class ArmyImpExpDto(troops: List[TroopImExpDto])
+  case class ArmyImpExpDto(name:String = "",troops: List[TroopImExpDto])
 
   case class TroopImExpDto(faction: String, name: String, weapons: List[String], items: List[String])
 

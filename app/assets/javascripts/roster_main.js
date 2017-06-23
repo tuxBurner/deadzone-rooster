@@ -14,12 +14,12 @@ var rosterGuiHandler = {
   /**
    * Gets the avaible factions from the backend and fills them into the select
    */
-  getAndFillFactions: function () {
+  getAndFillFactions: function() {
     jsRoutes.controllers.RosterController.getFactions().ajax({
-      success: function (data) {
+      success: function(data) {
         $('#roster_faction_select').html('');
 
-        $.each(data, function (idx, faction) {
+        $.each(data, function(idx, faction) {
           $('#roster_faction_select').append('<option value="' + faction.name + '">' + faction.name + '</option>');
         });
 
@@ -32,25 +32,25 @@ var rosterGuiHandler = {
   /**
    * Gets the avaible troops for the selected faction from the backend and displays them in the add troop drop down
    */
-  getAndFillFactionTroopSelect: function () {
+  getAndFillFactionTroopSelect: function() {
     var selectedFaction = $('#roster_faction_select').val();
     jsRoutes.controllers.RosterController.getSelectTroopsForFaction(selectedFaction).ajax({
-      success: function (data) {
+      success: function(data) {
 
         // store the troops for the faction in the var
         rosterGuiHandler.factionTroops = data;
 
         var troopTypes = [];
-        $.each(data, function (idx) {
+        $.each(data, function(idx) {
           troopTypes.push(idx);
         });
 
-        troopTypes.sort(function (a, b) {
+        troopTypes.sort(function(a, b) {
           return rosterGuiHandler.troopTypeSort.indexOf(a) - rosterGuiHandler.troopTypeSort.indexOf(b);
         });
 
         $('#roster_troop_type_select').html('');
-        $.each(troopTypes, function (idx, troopType) {
+        $.each(troopTypes, function(idx, troopType) {
           $('#roster_troop_type_select').append('<option value="' + troopType + '">' + troopType + '</option>');
         });
 
@@ -62,12 +62,12 @@ var rosterGuiHandler = {
   /**
    * Fills the troop for the selected type
    */
-  fillTroopSelectForType: function () {
+  fillTroopSelectForType: function() {
     var selectedTroopType = $('#roster_troop_type_select').val();
     var troops = rosterGuiHandler.factionTroops[selectedTroopType];
 
     $('#roster_addTroop_select').html('');
-    $.each(troops, function (idx, troop) {
+    $.each(troops, function(idx, troop) {
       $('#roster_addTroop_select').append('<option value="' + troop.name + '">' + troop.name + ' (' + troop.points + ')</option>');
     });
 
@@ -76,7 +76,7 @@ var rosterGuiHandler = {
   /**
    * Adds the selected troop to the army list
    */
-  addSelectedTroopToArmy: function () {
+  addSelectedTroopToArmy: function() {
     var troopToAdd = {
       faction: $('#roster_faction_select').val(),
       troop: $('#roster_addTroop_select').val()
@@ -84,7 +84,7 @@ var rosterGuiHandler = {
     jsRoutes.controllers.RosterController.addTroopToArmy().ajax({
       data: JSON.stringify(troopToAdd),
       contentType: "application/json; charset=utf-8",
-      success: function (data) {
+      success: function(data) {
         rosterGuiHandler.displayCurrentArmyData(data);
       }
     });
@@ -93,9 +93,9 @@ var rosterGuiHandler = {
   /**
    * Gets the current army as json
    */
-  getCurrentArmy: function () {
+  getCurrentArmy: function() {
     jsRoutes.controllers.RosterController.getArmy().ajax({
-      success: function (data) {
+      success: function(data) {
         rosterGuiHandler.displayCurrentArmyData(data);
       }
     });
@@ -105,9 +105,9 @@ var rosterGuiHandler = {
    * Removes the selected troop from the army
    * @param uuid
    */
-  removeTroopFromArmy: function (uuid) {
+  removeTroopFromArmy: function(uuid) {
     jsRoutes.controllers.RosterController.removeTroopFromArmy(uuid).ajax({
-      success: function (data) {
+      success: function(data) {
         rosterGuiHandler.displayCurrentArmyData(data);
       }
     });
@@ -118,9 +118,9 @@ var rosterGuiHandler = {
    * Gets needed weapon/item informations from the backend and displays the edit popup
    * @param uuid
    */
-  displayEditPopup: function (uuid, troopName) {
+  displayEditPopup: function(uuid, troopName) {
     jsRoutes.controllers.RosterController.getWeaponsAndItemsForTroop(uuid).ajax({
-      success: function (data) {
+      success: function(data) {
 
         $('#roster_troop_edit_name').text(troopName);
         $('#roster_troop_edit_modal').data('troopuuid', uuid);
@@ -133,11 +133,11 @@ var rosterGuiHandler = {
         $('#roster_troop_edit_weapons').html(weaponsContent);
 
         var itemsContent = '';
-        $.each(data.items, function (idx, item) {
+        $.each(data.items, function(idx, item) {
 
           var checked = '';
-          for (var iidx in data.troop.items) {
-            if (data.troop.items[iidx].name === item.name) {
+          for(var iidx in data.troop.items) {
+            if(data.troop.items[iidx].name === item.name) {
               checked = 'checked';
               break;
             }
@@ -160,25 +160,25 @@ var rosterGuiHandler = {
   /**
    * Collects the data for the troop and saves the changes in the backend
    */
-  saveChangesToTroop: function () {
+  saveChangesToTroop: function() {
     var uuid = $('#roster_troop_edit_modal').data('troopuuid');
     var dataToSave = {
       selectedWeapons: [],
       selectedItems: []
     };
 
-    $.each($('.edit_troop_selected_weapon:checked'), function (idx, obj) {
+    $.each($('.edit_troop_selected_weapon:checked'), function(idx, obj) {
       dataToSave.selectedWeapons.push($(obj).val());
     });
 
-    $.each($('.edit_troop_slected_item:checked'), function (idx, obj) {
+    $.each($('.edit_troop_slected_item:checked'), function(idx, obj) {
       dataToSave.selectedItems.push($(obj).val());
     });
 
     jsRoutes.controllers.RosterController.updateTroopWeaponsAndItems(uuid).ajax({
       data: JSON.stringify(dataToSave),
       contentType: "application/json; charset=utf-8",
-      success: function (data) {
+      success: function(data) {
         rosterGuiHandler.displayCurrentArmyData(data);
         $('#roster_troop_edit_modal').modal('hide');
       }
@@ -192,24 +192,24 @@ var rosterGuiHandler = {
    * @param data
    * @returns {string}
    */
-  displayEditWeaponType: function (headline, type, data) {
+  displayEditWeaponType: function(headline, type, data) {
     var content = '';
 
-    if (data.weapons[type].length !== 0) {
+    if(data.weapons[type].length !== 0) {
       content = '<tr class="info"><th colspan="7">' + headline + '</th></tr>';
-      $.each(data.weapons[type], function (idx, weapon) {
+      $.each(data.weapons[type], function(idx, weapon) {
 
         var checked = '';
-        for (var widx in data.troop.weapons) {
-          if (data.troop.weapons[widx].name === weapon.name) {
+        for(var widx in data.troop.weapons) {
+          if(data.troop.weapons[widx].name === weapon.name) {
             checked = 'checked';
             break;
           }
         }
 
         var tableRow = '<tr>';
-        for (var wdidx in data.troop.defaultWeapons) {
-          if (data.troop.defaultWeapons[wdidx].name === weapon.name) {
+        for(var wdidx in data.troop.defaultWeapons) {
+          if(data.troop.defaultWeapons[wdidx].name === weapon.name) {
             tableRow = '<tr class="warning">';
             break;
           }
@@ -217,7 +217,7 @@ var rosterGuiHandler = {
 
         content += tableRow;
         content += '<td><div class="checkbox"><label>';
-        content += '<input data-linked-name="'+weapon.linkedName+'" value="' + weapon.name + '" class="edit_troop_selected_weapon" type="checkbox" ' + checked + '/> ';
+        content += '<input data-linked-name="' + weapon.linkedName + '" value="' + weapon.name + '" class="edit_troop_selected_weapon" type="checkbox" ' + checked + '/> ';
         content += weapon.name;
         content += '</label></div></td>';
         content += '<td>' + weapon.points + '</td>';
@@ -235,26 +235,26 @@ var rosterGuiHandler = {
    * Populates the army table with the current data
    * @param armyData
    */
-  displayCurrentArmyData: function (armyData) {
+  displayCurrentArmyData: function(armyData) {
 
     var disableBtns = armyData.troops.length === 0;
-    $('.roster_action_btn').prop('disabled',disableBtns);
+    $('.roster_action_btn').prop('disabled', disableBtns);
 
     $('#roster_army_points').text(armyData.points);
     $('#roster_army_faction').text(armyData.faction);
 
-    //$('#roster_faction_select').attr('disabled', armyData.faction !== '');
+    $('#roster_army_name').val(armyData.name);
 
     $('#roster_troop_tbody').html('');
     var tableContent = '';
-    $.each(armyData.troops, function (idx, troop) {
+    $.each(armyData.troops, function(idx, troop) {
 
       var weaponsContent = '';
-      $.each(troop.weapons, function (idx, weapon) {
+      $.each(troop.weapons, function(idx, weapon) {
         weaponsContent += weapon.name;
         weaponsContent += '<span class="badge">' + rosterGuiHandler.weaponRangeForDisplay(weapon) + '</span>';
 
-        if (weapon.armorPircing !== 0) {
+        if(weapon.armorPircing !== 0) {
           weaponsContent += ',AP' + weapon.armorPircing;
         }
 
@@ -265,12 +265,12 @@ var rosterGuiHandler = {
       });
 
       var reconArmySpecialContent = '';
-      if (troop.recon !== 0) {
+      if(troop.recon !== 0) {
         reconArmySpecialContent += troop.recon + '+ / ' + troop.armySpecial;
       }
 
       var itemsContent = '';
-      $.each(troop.items, function (idx, item) {
+      $.each(troop.items, function(idx, item) {
         itemsContent += item.name + '<br />';
       });
 
@@ -308,8 +308,8 @@ var rosterGuiHandler = {
    * @param weapon
    * @returns {*}
    */
-  weaponRangeForDisplay: function (weapon) {
-    if (weapon.shootRange === 0) {
+  weaponRangeForDisplay: function(weapon) {
+    if(weapon.shootRange === 0) {
       return 'RF';
     } else {
       return 'R' + weapon.shootRange;
@@ -321,13 +321,13 @@ var rosterGuiHandler = {
    * @param abSeperator
    * @returns {string}
    */
-  abilitiesForDisplay: function (abilities, abSeperator) {
+  abilitiesForDisplay: function(abilities, abSeperator) {
     var abilitiesContent = '';
     var seperator = '';
-    $.each(abilities, function (idx, ability) {
+    $.each(abilities, function(idx, ability) {
       abilitiesContent += seperator;
       abilitiesContent += ability.name;
-      if (ability.defaultVal !== 0) {
+      if(ability.defaultVal !== 0) {
         abilitiesContent += ' (' + ability.defaultVal + ')';
       }
       seperator = abSeperator;
@@ -337,18 +337,17 @@ var rosterGuiHandler = {
   /**
    * Calls the backend to validate the army and displays the result
    */
-  validateArmy: function () {
+  validateArmy: function() {
     jsRoutes.controllers.RosterController.validateArmy().ajax({
-      success: function (data) {
-
+      success: function(data) {
         var content = '';
 
-        if (data.length === 0) {
+        if(data.length === 0) {
           content += 'No errors.';
         } else {
           content += 'Found: ' + data.length + ' errors in army';
           content += '<ul>';
-          $.each(data, function (idx, msg) {
+          $.each(data, function(idx, msg) {
             content += '<li>' + msg + '</li>';
           });
           content += '</ul>';
@@ -363,9 +362,9 @@ var rosterGuiHandler = {
    * Clones a troop
    * @param uuid
    */
-  cloneTroop: function (uuid) {
+  cloneTroop: function(uuid) {
     jsRoutes.controllers.RosterController.cloneTroop(uuid).ajax({
-      success: function (data) {
+      success: function(data) {
         rosterGuiHandler.displayCurrentArmyData(data);
       }
     });
@@ -373,7 +372,7 @@ var rosterGuiHandler = {
   /**
    * Uploads the selected file and displays the imported army
    */
-  importArmy: function () {
+  importArmy: function() {
     var formData = new FormData();
     formData.append('file', $('#roster_upload_file')[0].files[0]);
 
@@ -381,7 +380,7 @@ var rosterGuiHandler = {
       data: formData,
       processData: false,
       contentType: false,
-      success: function (data) {
+      success: function(data) {
         rosterGuiHandler.displayCurrentArmyData(data);
       },
       error: function(data) {
@@ -389,64 +388,80 @@ var rosterGuiHandler = {
       }
 
     });
+  },
+  /**
+   * Changes the name of the army
+   */
+  changeArmyName: function(newArmyName) {
+    jsRoutes.controllers.RosterController.changeArmyName().ajax({
+      data: JSON.stringify({ 'armyName' : newArmyName }),
+      contentType: "application/json; charset=utf-8",
+      success: function(data) {
+        rosterGuiHandler.displayCurrentArmyData(data);
+      }
+    });
   }
 };
 
 
-$(function () {
+$(function() {
 
   rosterGuiHandler.getAndFillFactions();
 
-  $('#roster_faction_select').on('change', function () {
+  $('#roster_faction_select').on('change', function() {
     rosterGuiHandler.getAndFillFactionTroopSelect();
   });
 
-  $('#roster_troop_type_select').on('change', function () {
+  $('#roster_troop_type_select').on('change', function() {
     rosterGuiHandler.fillTroopSelectForType();
   });
 
-  $('#roster_addTroop_btn').on('click', function () {
+  $('#roster_addTroop_btn').on('click', function() {
     rosterGuiHandler.addSelectedTroopToArmy();
   });
 
 
-  $('#roster_troop_edit_save_btn').on('click', function () {
+  $('#roster_troop_edit_save_btn').on('click', function() {
     rosterGuiHandler.saveChangesToTroop();
   });
 
-  $('#roster_validate_army_btn').on('click', function () {
+  $('#roster_validate_army_btn').on('click', function() {
     rosterGuiHandler.validateArmy();
   });
 
-  $('#roster_import_army_btn').on('click', function () {
+  $('#roster_import_army_btn').on('click', function() {
     rosterGuiHandler.importArmy();
   });
 
-  $(document).on('click', '.roster_del_btn', function () {
+  $('#roster_army_name').on('blur', function() {
+    var newName = $(this).val();
+    rosterGuiHandler.changeArmyName(newName);
+  });
+
+  $(document).on('click', '.roster_del_btn', function() {
     var uuid = $(this).closest('tr').attr('data-uuid');
     rosterGuiHandler.removeTroopFromArmy(uuid);
   });
 
 
-  $(document).on('click', '.roster_edit_btn', function () {
+  $(document).on('click', '.roster_edit_btn', function() {
     var uuid = $(this).closest('tr').data('uuid');
     var troopName = $(this).closest('tr').data('troopname');
     rosterGuiHandler.displayEditPopup(uuid, troopName);
   });
 
-  $(document).on('click', '.edit_troop_selected_weapon', function () {
+  $(document).on('click', '.edit_troop_selected_weapon', function() {
     var linkedName = $(this).data('linkedName');
     if(linkedName === '') {
       return;
     }
 
     var thisStatus = $(this).prop('checked');
-    $('.edit_troop_selected_weapon[data-linked-name="'+linkedName+'"]').prop('checked',thisStatus);
+    $('.edit_troop_selected_weapon[data-linked-name="' + linkedName + '"]').prop('checked', thisStatus);
   });
 
 
-
-  $(document).on('click', '.roster_clone_btn', function () {
+  $(document).on('click', '.roster_clone_btn', function() {
     var uuid = $(this).closest('tr').data('uuid');
     rosterGuiHandler.cloneTroop(uuid);
   });

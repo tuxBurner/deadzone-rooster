@@ -12,6 +12,7 @@ GET           /roster/factions                                    controllers.Ro
 GET           /roster/faction/:factionName/troopsForSelect        controllers.RosterController.getSelectTroopsForFaction(factionName : String)
 POST          /roster/army/addTroop                               controllers.RosterController.addTroopToArmy()
 GET           /roster/army                                        controllers.RosterController.getArmy()
+POST          /roster/army/name                                   controllers.RosterController.changeArmyName()
 DELETE        /roster/army/troop/:uuid                            controllers.RosterController.removeTroopFromArmy(uuid:String)
 GET           /roster/army/troop/:uuid/weapons                    controllers.RosterController.getWeaponsAndItemsForTroop(uuid:String)
 PUT           /roster/army/troop/:uuid/weapons                    controllers.RosterController.updateTroopWeaponsAndItems(uuid:String)

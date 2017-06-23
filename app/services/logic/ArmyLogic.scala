@@ -20,7 +20,7 @@ object ArmyLogic {
     * @return
     */
   def changeNameOfArmy(armyName: String, army:ArmyDto) : ArmyDto = {
-    army.copy(name = armyName)
+    army.copy(name = armyName.trim)
   }
 
   /**
