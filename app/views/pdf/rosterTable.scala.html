@@ -4,6 +4,7 @@
 
 <html>
   <head>
+    <title>@Messages("application.title") - @army.name</title>
     <style>
 
 
@@ -45,7 +46,10 @@
   </head>
   <body>
 
-    <h1>@Messages("army.faction") @army.faction</h1>
+    @if(army.name.isEmpty == false) {
+      <h1>@Messages("army.name") @army.name</h1>
+    }
+    <h2>@Messages("army.faction") @army.faction</h2>
     <h2>@Messages("army.points") @army.points</h2>
 
     <hr />
