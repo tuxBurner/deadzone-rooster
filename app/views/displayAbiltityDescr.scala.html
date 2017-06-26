@@ -1,2 +1,2 @@
 @(ability:String)(implicit messages: Messages)
-@Html(Messages("ability.desc." + ability.replace(" ", "").replace("!","").replace("-","")))
+@displayDescription("ability",ability)

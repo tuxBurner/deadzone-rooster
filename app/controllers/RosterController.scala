@@ -39,6 +39,10 @@ import scala.io.Source
     Ok(Json.toJson(FactionLogic.getAllFactions()))
   }
 
+  @JSRoute def getPopOverData(popoverType:String, key:String) = Action {
+    Ok(views.html.displayDescription(popoverType,key));
+  }
+
   /**
     * Returns all troops of the given faction for selection
     *

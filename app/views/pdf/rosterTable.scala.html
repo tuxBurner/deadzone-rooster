@@ -26,6 +26,10 @@
       padding: 2pt;
     }
 
+    table.pdf td, table.pdf tbody th  {
+      border-top: none 0px;
+    }
+
     table.pdf th {
       background-color: #ababab;
     }
@@ -34,12 +38,17 @@
       vertical-align: top;
     }
 
+
     @@page {
+      @@bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+      }
 
-    @@bottom-right {
-      content: "Page " counter(page) " of " counter(pages);
-    }
-
+      @if(army.name.isEmpty == false) {
+        @@bottom-left {
+          content: "@army.name"
+        }
+      }
     }
 
     </style>

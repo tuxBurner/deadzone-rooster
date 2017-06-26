@@ -10,6 +10,11 @@ var rosterGuiHandler = {
    */
   troopTypeSort: ["Leader", "Troop", "Specialist", "Vehicle", "Character"],
 
+  /**
+   * Stores the already loaded popover infos vor caching purpose
+   */
+  popOverInfos: {},
+
 
   /**
    * Gets the avaible factions from the backend and fills them into the select
@@ -126,10 +131,10 @@ var rosterGuiHandler = {
         $('#roster_troop_edit_modal').data('troopuuid', uuid);
 
         var weaponsContent = '';
-        weaponsContent += rosterGuiHandler.displayEditWeaponType('Free', 'free', data);
-        weaponsContent += rosterGuiHandler.displayEditWeaponType('Fight', 'fight', data);
-        weaponsContent += rosterGuiHandler.displayEditWeaponType('Ranged', 'ranged', data);
-        weaponsContent += rosterGuiHandler.displayEditWeaponType('Combo', 'linked', data);
+        weaponsContent += rosterGuiHandler._displayEditWeaponType('Free', 'free', data);
+        weaponsContent += rosterGuiHandler._displayEditWeaponType('Fight', 'fight', data);
+        weaponsContent += rosterGuiHandler._displayEditWeaponType('Ranged', 'ranged', data);
+        weaponsContent += rosterGuiHandler._displayEditWeaponType('Combo', 'linked', data);
         $('#roster_troop_edit_weapons').html(weaponsContent);
 
         var itemsContent = '';
@@ -192,7 +197,7 @@ var rosterGuiHandler = {
    * @param data
    * @returns {string}
    */
-  displayEditWeaponType: function(headline, type, data) {
+  _displayEditWeaponType: function(headline, type, data) {
     var content = '';
 
     if(data.weapons[type].length !== 0) {
@@ -222,9 +227,9 @@ var rosterGuiHandler = {
         content += '</label></div></td>';
         content += '<td>' + weapon.points + '</td>';
         content += '<td>' + weapon.victoryPoints + '</td>';
-        content += '<td>' + rosterGuiHandler.weaponRangeForDisplay(weapon) + '</td>';
+        content += '<td>' + rosterGuiHandler._weaponRangeForDisplay(weapon) + '</td>';
         content += '<td>' + weapon.armorPircing + '</td>';
-        content += '<td>' + rosterGuiHandler.abilitiesForDisplay(weapon.abilities, ',') + '</td>';
+        content += '<td>' + rosterGuiHandler._abilitiesForDisplay(weapon.abilities, ',') + '</td>';
         content += '</tr>';
       });
     }
@@ -249,24 +254,12 @@ var rosterGuiHandler = {
     var tableContent = '';
     $.each(armyData.troops, function(idx, troop) {
 
-      var weaponsContent = '';
-      $.each(troop.weapons, function(idx, weapon) {
-        weaponsContent += weapon.name;
-        weaponsContent += '<span class="badge">' + rosterGuiHandler.weaponRangeForDisplay(weapon) + '</span>';
-
-        if(weapon.armorPircing !== 0) {
-          weaponsContent += ',AP' + weapon.armorPircing;
-        }
-
-        weaponsContent += rosterGuiHandler.abilitiesForDisplay(weapon.abilities, ',');
-
-
-        weaponsContent += '<br />';
-      });
+      var weaponsContent = rosterGuiHandler._displayTroopWeapons(troop);
 
       var reconArmySpecialContent = '';
       if(troop.recon !== 0) {
-        reconArmySpecialContent += troop.recon + '+ / ' + troop.armySpecial;
+        reconArmySpecialContent += troop.recon + ' / ' +
+          '<u class="infoPopOver helpMouse" data-type="armyspecial" title="' + troop.armySpecial + '">' + troop.armySpecial + '</u>';
       }
 
       var itemsContent = '';
@@ -274,41 +267,75 @@ var rosterGuiHandler = {
         itemsContent += item.name + '<br />';
       });
 
-
       tableContent += '<tr data-uuid="' + troop.uuid + '" data-troopname="' + troop.name + '">';
-
       tableContent += '<td>' + troop.name + '</td>';
-      tableContent += '<td>' + troop.modelType + '</td>';
+      tableContent += '<td>' + troop.modelType.charAt(0) + '</td>';
       tableContent += '<td>' + troop.points + '</td>';
       tableContent += '<td>' + troop.victoryPoints + '</td>';
       tableContent += '<td>' + troop.armour + '</td>';
       tableContent += '<td>' + troop.size + '</td>';
       tableContent += '<td>' + troop.speed + '-' + troop.sprint + '</td>';
-      tableContent += '<td>' + troop.shoot + '+</td>';
-      tableContent += '<td>' + troop.fight + '+</td>';
-      tableContent += '<td>' + troop.survive + '+</td>';
-      tableContent += '<td>' + rosterGuiHandler.abilitiesForDisplay(troop.abilities, '<br />') + '</td>';
+      tableContent += '<td>' + rosterGuiHandler._displayStatsValue(troop.shoot) + '</td>';
+      tableContent += '<td>' + rosterGuiHandler._displayStatsValue(troop.fight) + '</td>';
+      tableContent += '<td>' + rosterGuiHandler._displayStatsValue(troop.survive) + '</td>';
+      tableContent += '<td>' + rosterGuiHandler._abilitiesForDisplay(troop.abilities, '<br />') + '</td>';
       tableContent += '<td>' + weaponsContent + '</td>';
       tableContent += '<td>' + itemsContent + '</td>';
       tableContent += '<td>' + reconArmySpecialContent + '</td>';
-
       tableContent += '<td>';
       tableContent += '<button class="btn btn-info btn-xs roster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button>';
       tableContent += '<button class="btn btn-info btn-xs roster_clone_btn"><span class="glyphicon glyphicon-plus-sign"></span></button>';
       tableContent += '<button class="btn btn-danger btn-xs roster_del_btn"><span class="glyphicon glyphicon-trash"></span></button>';
       tableContent += '</td>';
-
       tableContent += '</tr>';
     });
 
     $('#roster_troop_tbody').html(tableContent);
   },
+
+  /**
+   * Generates the html output for the troop weapons
+   * @param troop
+   * @returns {string}
+   * @private
+   */
+  _displayTroopWeapons: function(troop) {
+    var weaponsContent = '';
+
+    $.each(troop.weapons, function(idx, weapon) {
+      weaponsContent += '<b>'+weapon.name+'</b>';
+      weaponsContent += ' ,' + rosterGuiHandler._weaponRangeForDisplay(weapon);
+      if(weapon.armorPircing !== 0) {
+        weaponsContent += ', AP' + weapon.armorPircing;
+      }
+      if(weapon.abilities.length !== 0) {
+        weaponsContent += ' ,';
+      }
+      weaponsContent += rosterGuiHandler._abilitiesForDisplay(weapon.abilities, ',');
+      weaponsContent += '<br />';
+    });
+    
+    return weaponsContent;
+  },
+
+  /**
+   * Generates the stats value to display
+   * @param value
+   */
+  _displayStatsValue: function(value) {
+    if(value === 0) {
+      return '-';
+    }
+
+    return value + '+';
+  },
+
   /**
    * Gets the correct display format for a weapon range
    * @param weapon
    * @returns {*}
    */
-  weaponRangeForDisplay: function(weapon) {
+  _weaponRangeForDisplay: function(weapon) {
     if(weapon.shootRange === 0) {
       return 'RF';
     } else {
@@ -321,19 +348,39 @@ var rosterGuiHandler = {
    * @param abSeperator
    * @returns {string}
    */
-  abilitiesForDisplay: function(abilities, abSeperator) {
+  _abilitiesForDisplay: function(abilities, abSeperator) {
     var abilitiesContent = '';
     var seperator = '';
     $.each(abilities, function(idx, ability) {
-      abilitiesContent += seperator;
+      abilitiesContent += seperator + '<u class="infoPopOver helpMouse" data-type="ability" title="' + ability.name + '">';
       abilitiesContent += ability.name;
       if(ability.defaultVal !== 0) {
         abilitiesContent += ' (' + ability.defaultVal + ')';
       }
+      abilitiesContent += '</u>';
       seperator = abSeperator;
     });
     return abilitiesContent;
   },
+
+  /**
+   * Gets the pop over data to display
+   * @param type
+   * @param key
+   */
+  getPopoverData: function(type, key, callBack) {
+    if(rosterGuiHandler.popOverInfos[type + key] !== undefined) {
+      callBack(rosterGuiHandler.popOverInfos[type + key]);
+      return;
+    }
+    jsRoutes.controllers.RosterController.getPopOverData(type, key).ajax({
+      success: function(data) {
+        rosterGuiHandler.popOverInfos[type + key] = data;
+        callBack(data);
+      }
+    });
+  },
+
   /**
    * Calls the backend to validate the army and displays the result
    */
@@ -394,7 +441,7 @@ var rosterGuiHandler = {
    */
   changeArmyName: function(newArmyName) {
     jsRoutes.controllers.RosterController.changeArmyName().ajax({
-      data: JSON.stringify({ 'armyName' : newArmyName }),
+      data: JSON.stringify({'armyName': newArmyName}),
       contentType: "application/json; charset=utf-8",
       success: function(data) {
         rosterGuiHandler.displayCurrentArmyData(data);
@@ -464,6 +511,16 @@ $(function() {
   $(document).on('click', '.roster_clone_btn', function() {
     var uuid = $(this).closest('tr').data('uuid');
     rosterGuiHandler.cloneTroop(uuid);
+  });
+
+  $(document).on('mouseenter', '.infoPopOver', function() {
+    var key = $(this).attr('title');
+    var type = $(this).data('type');
+    $(this).removeClass('infoPopOver');
+    var el = $(this);
+    rosterGuiHandler.getPopoverData(type, key, function(data) {
+      el.popover({content: data, html: true, trigger: 'hover'}).popover('show');
+    });
   });
 
 });                                                              

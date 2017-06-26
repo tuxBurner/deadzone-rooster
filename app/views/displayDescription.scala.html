@@ -1,0 +1,2 @@
+@(prefix:String,key:String)(implicit messages: Messages)
+@Html(Messages(prefix+".desc." + key.replace(" ", "").replace("!","").replace("-","")))
