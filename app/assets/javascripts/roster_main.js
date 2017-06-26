@@ -73,9 +73,23 @@ var rosterGuiHandler = {
 
     $('#roster_addTroop_select').html('');
     $.each(troops, function(idx, troop) {
-      $('#roster_addTroop_select').append('<option value="' + troop.name + '">' + troop.name + ' (' + troop.points + ')</option>');
+      $('#roster_addTroop_select').append('<option value="' + troop.name + '" data-image-url="'+troop.imageUrl+'">' + troop.name + ' (' + troop.points + ')</option>');
     });
 
+    rosterGuiHandler.displaySelectedTroopImage();
+  },
+
+  /**
+   * Displays when avaible the image of the currently selected troop
+   */
+  displaySelectedTroopImage: function() {
+    var imgUrl = $('#roster_addTroop_select :selected').data('imageUrl');
+
+    if(imgUrl !== '') {
+      $('#roster_troop_img').attr('src',imgUrl).show();
+    } else {
+      $('#roster_troop_img').attr('src','').hide();
+    }
   },
 
   /**
@@ -461,6 +475,10 @@ $(function() {
 
   $('#roster_troop_type_select').on('change', function() {
     rosterGuiHandler.fillTroopSelectForType();
+  });
+
+  $('#roster_addTroop_select').on('change',function(){
+     rosterGuiHandler.displaySelectedTroopImage();
   });
 
   $('#roster_addTroop_btn').on('click', function() {

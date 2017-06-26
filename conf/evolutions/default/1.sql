@@ -60,6 +60,7 @@ create table troop (
   hard_points                   integer not null,
   recon                         integer not null,
   army_special                  varchar(255) not null,
+  image_url                     varchar(255),
   faction_id                    bigint,
   constraint pk_troop primary key (id)
 );

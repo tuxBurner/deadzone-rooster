@@ -71,6 +71,7 @@ object TroopDAO {
     troopDO.hardPoints = soldierDto.hardPoints
     troopDO.recon = soldierDto.recon
     troopDO.armySpecial = soldierDto.armySpecial
+    troopDO.imageUrl = soldierDto.imageUrl
 
     // find the weapons
     soldierDto.defaultWeaponNames.foreach(weaponName => {
@@ -137,6 +138,8 @@ object TroopDAO {
   @NotNull var recon: Int = 0
 
   @NotNull var armySpecial: String = ""
+
+  var imageUrl:String = ""
 
   @ManyToOne var faction: FactionDO = null
 

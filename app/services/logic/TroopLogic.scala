@@ -14,11 +14,11 @@ object TroopLogic {
         points+=defWeapon.points
       })
 
-      TroopSelectDto(troopDo.name, troopDo.modelType, points, troopDo.victoryPoints)
+      TroopSelectDto(troopDo.name, troopDo.modelType, points, troopDo.victoryPoints, troopDo.imageUrl)
     })
 
     troops.groupBy(_.modelType)
   }
 }
 
-case class TroopSelectDto(name:String, modelType: String, points: Int, victoryPoints:Int)
+case class TroopSelectDto(name:String, modelType: String, points: Int, victoryPoints:Int, imageUrl: String)

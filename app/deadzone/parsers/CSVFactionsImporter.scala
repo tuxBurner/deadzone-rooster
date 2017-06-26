@@ -51,6 +51,8 @@ object CSVFactionsImporter extends CSVDataParser {
 
   private val FACTION_HEADER = "Faction"
 
+  private val IMG_URL_HEADER = "Img"
+
   private lazy val soldiers = importSoldiersFromCsvs()
 
   def getAllAvaibleFactions: List[String] = soldiers.map(_.faction).toSet.toList
@@ -153,8 +155,9 @@ object CSVFactionsImporter extends CSVDataParser {
 
     val items = lineData.get(ITEM_HEADER).get.trim.split(',').map(_.trim).filter(_ != "").toList
 
+    val imgUrl = lineData.get(IMG_URL_HEADER).getOrElse("")
 
-    Option.apply(CSVSoldierDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue, sizeValue, armour, victoryPoints, abilities, defaultWeaponNames.toList,weaponTypes,hardPoints,recon,armySpecial,items))
+    Option.apply(CSVSoldierDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue, sizeValue, armour, victoryPoints, abilities, defaultWeaponNames.toList,weaponTypes,hardPoints,recon,armySpecial,items,imgUrl))
   }
 
   private def parsePlusValue(data: String): Int = {

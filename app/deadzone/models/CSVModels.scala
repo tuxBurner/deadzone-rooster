@@ -14,7 +14,7 @@ object CSVModels {
 
   case class CSVItemDto(faction: String, name: String, points: Int, rarity: String, noUpgrade: Boolean)
 
-  case class CSVSoldierDto(faction: String, name: String, points: Int, soldierType: ModelType.Value, speed: (Int, Int), shoot: Int, fight: Int, survive: Int, size: Int, armour: Int, victoryPoints: Int, abilities: List[AbilityDto], defaultWeaponNames: List[String], weaponTypes: Array[String], hardPoints:Int, recon: Int, armySpecial: String, defaultItems: List[String])
+  case class CSVSoldierDto(faction: String, name: String, points: Int, soldierType: ModelType.Value, speed: (Int, Int), shoot: Int, fight: Int, survive: Int, size: Int, armour: Int, victoryPoints: Int, abilities: List[AbilityDto], defaultWeaponNames: List[String], weaponTypes: Array[String], hardPoints:Int, recon: Int, armySpecial: String, defaultItems: List[String], imageUrl: String)
 
 
 }
