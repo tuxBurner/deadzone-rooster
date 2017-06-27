@@ -537,7 +537,7 @@ $(function() {
     $(this).removeClass('infoPopOver');
     var el = $(this);
     rosterGuiHandler.getPopoverData(type, key, function(data) {
-      el.popover({content: data, html: true, trigger: 'hover'}).popover('show');
+      el.popover({content: data, html: true, trigger: 'hover',placement: 'auto'}).popover('show');
     });
   });
 
