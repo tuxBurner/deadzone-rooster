@@ -5,6 +5,7 @@ import javax.inject._
 
 import com.github.tuxBurner.jsAnnotations.JSRoute
 import it.innove.play.pdf.PdfGenerator
+import play.api.Configuration
 import play.api.cache.CacheApi
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.libs.json._
@@ -18,7 +19,7 @@ import scala.io.Source
 /**
   * Controller which handles all the endpoints for the roster editor
   */
-@Singleton class RosterController @Inject()(cache: CacheApi, pdfGenerator: PdfGenerator, val messagesApi: MessagesApi) extends Controller with I18nSupport {
+@Singleton class RosterController @Inject()(cache: CacheApi, pdfGenerator: PdfGenerator, config: Configuration, val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
   implicit val armyAbilityDtoFormat = Json.format[ArmyAbilityDto]
   implicit val armyWeaponDtoFormat = Json.format[ArmyWeaponDto]
@@ -29,6 +30,13 @@ import scala.io.Source
   implicit val armyTroopWeaponsItemsFormat = Json.format[ArmyTroopWeaponsItemsDto]
   implicit val troopExportDtoFormat = Json.format[TroopImExpDto]
   implicit val armyExpImpDtoFormat = Json.format[ArmyImpExpDto]
+
+  /**
+    * The name of the army cache id in the session
+    */
+  val SESSION_ARMY_CACHE_ID_NAME = "army_cache_id"
+
+  val cachetimeOut = config.getInt("deadzone.cacheTimeOut").getOrElse(15)
 
   /**
     * Returns all the available factions as a json array
@@ -201,17 +209,33 @@ import scala.io.Source
     }).getOrElse(InternalServerError(""))
   }
 
+  /**
+    * Renews the army in the cache and returns it.
+    * @param request
+    * @return
+    */
   private def renewArmyInCache(request: Request[Any]): ArmyDto = {
     val armyFromCache = getArmyFromCache(request)
     writeArmyToCache(request, armyFromCache)
     armyFromCache
   }
 
+  /**
+    * Returns a response with the cacheid in the seeion
+    * @param result
+    * @param request
+    * @return
+    */
   private def withCacheId(result: Result, request: Request[Any]): Result = {
     val cacheId = getCacheIdFromSession(request)
-    result.withSession(request.session + ("test" -> cacheId))
+    result.withSession(request.session + (SESSION_ARMY_CACHE_ID_NAME -> cacheId))
   }
 
+  /**
+    * Reads the army from the cache
+    * @param request
+    * @return
+    */
   private def getArmyFromCache(request: Request[Any]) = {
     val cacheId = getCacheIdFromSession(request)
     cache.getOrElse[ArmyDto](cacheId) {
@@ -219,13 +243,23 @@ import scala.io.Source
     }
   }
 
+  /**
+    * Writes the army to the cache
+    * @param request
+    * @param army
+    */
   private def writeArmyToCache(request: Request[Any], army: ArmyDto): Unit = {
     val cacheId = getCacheIdFromSession(request)
-    cache.set(cacheId, army, 5.minutes)
+    cache.set(cacheId, army, cachetimeOut.minutes)
   }
 
+  /**
+    * Gets the cache id from the session
+    * @param request
+    * @return
+    */
   private def getCacheIdFromSession(request: Request[Any]): String = {
-    request.session.get("test").getOrElse(UUID.randomUUID.toString)
+    request.session.get(SESSION_ARMY_CACHE_ID_NAME).getOrElse(UUID.randomUUID.toString)
   }
 
 }

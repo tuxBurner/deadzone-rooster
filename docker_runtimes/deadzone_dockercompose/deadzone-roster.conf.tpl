@@ -11,6 +11,7 @@ play.evolutions.autoApply = true
 
 deadzone {
   reinitData = true
+  cacheTimeOut = 15
 }
 
 play.crypto.secret="changemeDeadzoneRoster"
