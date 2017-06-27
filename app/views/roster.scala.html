@@ -56,30 +56,32 @@
   <hr />
 
 
-  <table class="table table-condensed table-bordered table-responsive">
-    <thead>
-      <tr class="active">
-        <th>@Messages("troop.tbl.name")</th>
-        <th>@Messages("troop.tbl.type")</th>
-        <th>@Messages("troop.tbl.points")</th>
-        <th>@Messages("troop.tbl.victoryPoints")</th>
-        <th>@Messages("troop.tbl.armour")</th>
-        <th>@Messages("troop.tbl.size")</th>
-        <th>@Messages("troop.tbl.speed")</th>
-        <th>@Messages("troop.tbl.shoot")</th>
-        <th>@Messages("troop.tbl.fight")</th>
-        <th>@Messages("troop.tbl.survive")</th>
-        <th>@Messages("troop.tbl.abilities")</th>
-        <th>@Messages("troop.tbl.weapons")</th>
-        <th>@Messages("troop.tbl.items")</th>
-        <th>@Messages("troop.tbl.reconArmySpecial")</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody id="roster_troop_tbody">
-      @* FILLED VIA roster_main.js *@
-    </tbody>
-  </table>
+  <div class=" table-responsive">
+    <table class="table table-condensed table-bordered">
+      <thead>
+        <tr class="active">
+          <th>@Messages("troop.tbl.name")</th>
+          <th>@Messages("troop.tbl.type")</th>
+          <th>@Messages("troop.tbl.points")</th>
+          <th>@Messages("troop.tbl.victoryPoints")</th>
+          <th>@Messages("troop.tbl.armour")</th>
+          <th>@Messages("troop.tbl.size")</th>
+          <th>@Messages("troop.tbl.speed")</th>
+          <th>@Messages("troop.tbl.shoot")</th>
+          <th>@Messages("troop.tbl.fight")</th>
+          <th>@Messages("troop.tbl.survive")</th>
+          <th>@Messages("troop.tbl.abilities")</th>
+          <th>@Messages("troop.tbl.weapons")</th>
+          <th>@Messages("troop.tbl.items")</th>
+          <th>@Messages("troop.tbl.reconArmySpecial")</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="roster_troop_tbody">
+        @* FILLED VIA roster_main.js *@
+      </tbody>
+    </table>
+  </div>
 
   @rosterTroopEditModal()
   @rosterValidateModal()
