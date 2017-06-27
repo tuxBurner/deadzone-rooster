@@ -4,22 +4,19 @@
   <div class="col-xs-6">
 
     <form target="_blank">
-      <button type="button" class="btn btn-info roster_action_btn" id="roster_validate_army_btn"><span class="glyphicon glyphicon-check"></span> <small>@Messages("validate.btn")</small></button>
-      <button formaction="@routes.RosterController.getTablePdf()" class="btn btn-info roster_action_btn"><span class="glyphicon glyphicon-print"></span> <small>@Messages("print.all.btn")</small></button>
-      <button formaction="@routes.RosterController.exportArmy()" class="btn btn-info  roster_action_btn"><span class="glyphicon glyphicon-download"></span> <small>@Messages("export.btn")</small></button>
+      <button type="button" class="btn btn-info btn-sm roster_action_btn" id="roster_validate_army_btn"><span class="glyphicon glyphicon-check"></span> <small>@Messages("validate.btn")</small></button>
+      <button formaction="@routes.RosterController.getTablePdf()" class="btn btn-sm btn-info roster_action_btn"><span class="glyphicon glyphicon-print"></span> <small>@Messages("print.all.btn")</small></button>
+      <button formaction="@routes.RosterController.exportArmy()" class="btn btn-info btn-sm roster_action_btn"><span class="glyphicon glyphicon-download"></span> <small>@Messages("export.btn")</small></button>
     </form>
 
 
   </div>
   <div class="col-xs-6">
-    <form class="form-inline">
-
+    <form class="form-inline pull-right">
       <div class="form-group">
-        <label class="sr-only" for="roster_upload_file">@Messages("upload.label")</label>
-        <input type="file" class="form-control" id="roster_upload_file" accept="application/json" />
+        <input type="file" class="form-control input-sm" id="roster_upload_file" accept="application/json" />
       </div>
-
-      <button type="button" id="roster_import_army_btn" class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span> @Messages("upload.btn")</button>
+      <button type="button" id="roster_import_army_btn" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-upload"></span> @Messages("upload.btn")</button>
     </form>
   </div>
 </div>
