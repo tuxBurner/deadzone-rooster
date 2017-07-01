@@ -1,0 +1,20 @@
+@(items: List[ItemDO])(implicit messages: Messages)
+
+@main("Items") {
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>@Messages("item.name")</th>
+        <th>@Messages("item.desc")</th>
+      </tr>
+    </thead>
+    <tbody>
+    @for(item <- items) {
+      <tr>
+        <th>@item.name</th>
+        <td>@displayItemDescr(item.name)</td>
+      </tr>
+    }
+    </tbody>
+  </table>
+}

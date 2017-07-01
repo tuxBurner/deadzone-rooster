@@ -3,7 +3,7 @@ package controllers
 import javax.inject._
 
 import com.github.tuxBurner.jsAnnotations.JsRoutesComponent
-import models.{AbilityDAO, TroopDAO}
+import models.{AbilityDAO, ItemDAO, TroopDAO}
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc._
 import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
@@ -36,11 +36,23 @@ class HomeController @Inject()(jsRoutesComponent:JsRoutesComponent,val messagesA
     Ok(views.html.allAbilities(abilities))
   }
 
+  /**
+    * Displays all available army specials
+    * @return
+    */
   def displayAllArmySpecials() = Action {
     val troopsWithArmySpecials = TroopDAO.findAllWithArmySpecials()
     Ok(views.html.allArmySpecials(troopsWithArmySpecials))
   }
 
+  /**
+    * Display all items
+    * @return
+    */
+  def displayAllItems() = Action {
+    val items = ItemDAO.findAllItems()
+    Ok(views.html.allItems(items))
+  }
 
 
 

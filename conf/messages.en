@@ -25,6 +25,7 @@ weapon.abilities=Abilities
 
 item.headline=Items:
 item.name=Name
+item.desc=Description
 item.points=PTS
 item.rarity=Rarity
 
@@ -67,6 +68,7 @@ import.modal.headline=Import your army
 
 mainmenu.roster=Roster
 mainmenu.abilities=Abilities
+mainmenu.items=Items
 mainmenu.armyspecials=Army Specials
 
 armyspecial.headline=Army Specials and Recon
@@ -216,3 +218,44 @@ ability.desc.Vulnerable=<p>A model with this ability is never Injured. Any actua
 ability.desc.WalkerShield=<p>A model equipped with this gains +1 Armour</p>
 ability.desc.WeightofFire=<p>A weapon with this ability throws so much firepower at the target that something’s bound to happen. Weight of Fire will always be expressed with a value in the place of the (n), e.g.Weight of Fire (1) or Weight of Fire (2). That number of Shoot dice that fail may be re-rolled <strong>once</strong>. This also applies to any additional dice gained by rolling an 8.</p>\
   <p>Weight of Fire is cumulative. If more than one Weight of Fire modifier applies to an attack then add together the (n) value from each source; this is the total number of failed dice the model may be re-rolled for that Shoot test.</p>
+
+item.desc.Ammo=<p>Ammo is One-Use.</p>\
+  <p>A model that is carrying Ammo may choose to use it when it makes a normal Shoot action. It adds a +1 dice modifier for that Shoot action</p>
+item.desc.APAmmo=<p>AP Ammo is One-Use</p>\
+  <p>A model that is carrying AP Ammo may choose to use it when it takes a normal Shoot action. It adds a +1 dice modifier for that Shoot action, and any Actual Damage is resolved witht he AP1 characteristic (cumulative with any other AP that applies to the attack).</p>
+item.desc.BoobyTraps=<p>A Deadzone is a hostile place, riddled with traps rigged to punish the unwary. If a model reveals the Booby Trap icon when picking up an item, treat it as though a Frag (3) explosion (page 29) has detonated in the model’s cube.</p>
+item.desc.DefenderShield=<p>The model carrying the Defender Shield uses it to form a moving barricade behind which he and his comrades can advance safely.</p>\
+  <p>The model with this item gains +1 Armour. In addition, all Size 1 or 2 friendly models in the same cube also gain +1 Armour. </p>\
+  <p>Each model can only benefit from a single Defender Shield bonus at a time. </p>
+item.desc.EnergyShield=<p>Energy shields are designed to absorb the energy of incoming attacks, whether this is from particle weapons or kinetic energy devices. </p>\
+  <p>When a model wearing this item suffers Potential Damage, make an (n) dice 6+ test.</p>\
+  <p>For each success you roll, one Potential Damage is absorbed by the shield. However, the shields are new technology and somewhat unreliable. If you roll more 1s than successes then the incoming energy overwhelms the shield’s ability to buffer the surge of power and it is destroyed. Any successes in that roll will still reduce the Potential Damage as normal, but the shield will not work again during this game.</p>\
+  <p>If a model is protected by more than one Energy Shield/Shield Generator then all apply. Roll for each separately and reduce the Potential Damage by the total number of successes.</p>
+item.desc.FragGrenade=<p>A Frag Grenade is a One-Use, R3, Frag (3),Grenade. See page 30.</p>
+item.desc.HoloSight=<p>A model that is equipped with a Holo-Sight adds a +1 modifier to their Shoot actions. A Holo-Sight cannot be used with Indirect weapons. Also, a weapon with Sniper Scope may not benefit from the +1 Dice from a Holo-Sight.</p>
+item.desc.Intel=<p>When an Intel item is picked up by a model, immediately exchange it for a 1VP counter and add it to the player’s total. The Intel item is then discarded.</p>\
+  <p>The item is not being carried by the model. Instead, the data has been transmitted back to High Command where it can be properly analysed.</p>
+item.desc.JumpPack=<p>A model that is equipped with a jump pack is notPinned by falling and takes no Damage if it falls.In addition, a model with a jump pack can:</p>\
+  <ul>\
+  <li>Move up or down levels without needing a wall to climb.</li>\
+  <li>Jump over solid walls on the same level.</li>\
+  <li>Jump over gaps in the floor of the same level (up to one cube wide), provided it has enough cubes of movement to do so.</li>\
+  <ul>
+item.desc.MediPack=<p>A Medi-Pack is One-Use.</p>\
+  <p>Medi-Packs are used to heal Injured models. They may only be used on living models, and cannot repair Constructs or Vehicles</p>\
+  <p>A model with a Medi-Pack may use it either on themselves or any other single living model in the same cube as long as no enemy models are in that cube.</p>\
+  <p>Using a Medi-Pack is a Special action for the model carrying it. It does not require a dice roll and works automatically. The effect of using a Medi-Pack is to completely heal the target model (remove all Damage counters from it). The Medi-Pack is then discarded.</p>
+item.desc.SentryGun=<p>The Sentry Gun is both an item and a model. As an item it can be carried by any model, just like any other item.</p>\
+  <p>Only an Engineer can change the Sentry Gun from an item to a model (emplacing), and back again (packing). The Engineer doesn’t necessarily need to be carrying the Sentry Gun item to emplace it.</p>\
+  <p>Emplacing or packing up a Sentry Gun is a Special action. Emplacing a Sentry Gun does not count as the gun’s action for that Round. Once emplaced, a Sentry Gun cannot move or be moved in any way until an Engineer packs it again</p>\
+  <p>As a model it has the following profile:</p>\
+  <p><b>S:</b> 4+ <b>F:</b> - <b>SV:</b> 5+ <b>Armour: </b> - <b>Size: </b> 1 <b>Speed: </b> -\
+  <br /><b>Heavy Rifle: R8, Weight of Fire (1) | Construct | Vulnerable</b></p>\
+  <p>A Sentry Gun gets one Shoot action in every Round. It cannot have any Command Dice spent on it</p>\
+  <p>If a Sentry Gun is destroyed, its on-board AI packs itself, ready for repairs at home base. The model reverts to an item, and may not be emplaced again this game.</p>
+item.desc.SmokeGrenade=<p>Smoke Grenades are One-Use, R3, Grenades</p>\
+  <p>(See page 30) that generate a thick cloud of smoke when they detonate. No Damage is caused to models in the target cube. The smokefilled cube blocks all LOS, including to and from models inside it. Note, however, that it does not block LOS to the cube itself. Any Shoot attacks that trace a LOS through a cube that is adjacent to a smoke-filled cube suffer a -1 dice modifier (regardless of how many such cubes they cross). At the end of each Round roll one dice per smokefilled cube. On a 1-4 the smoke in that cube remains in place. On a 5-8 the smoke dissipates and is removed.</p>
+item.desc.StunGrenade=<p>Stun Grenades are One-Use, R3, Grenades</p>\
+  <p>(see page 30) that disorient those nearby. No Damage is caused to models in the target cube. All models in the affected cube are marked as activated.</p>
+item.desc.ThermalMines=<p>Thermal mines are One-Use, RF, AP3 weapons.</p>
+item.desc.MonoWheelScoutBike=<p>For game purposes, riding this bike counts as carrying it as an item. While the Scout Bike is being ridden, the model has the Vehicle ability and their Speed changes to 1-5.</p>

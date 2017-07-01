@@ -20,6 +20,7 @@ object ItemDAO {
 
   /**
     * Gets an item by it's name and faction.
+    *
     * @param name
     * @param factionDO
     * @return
@@ -34,15 +35,26 @@ object ItemDAO {
 
   /**
     * Finds all items for the given faction ordered by its name
+    *
     * @param factionName
     * @return
     */
-  def findAllItemsForFaction(factionName: String) : List[ItemDO] = {
-    FINDER.where().ieq("faction.name",factionName).and().eq("noUpdate", false).orderBy().asc("name").findList.toList
+  def findAllItemsForFaction(factionName: String): List[ItemDO] = {
+    FINDER.where().ieq("faction.name", factionName).and().eq("noUpdate", false).orderBy().asc("name").findList.toList
+  }
+
+  /**
+    * Returns all items
+    *
+    * @return
+    */
+  def findAllItems(): List[ItemDO] = {
+    FINDER.findList.toList.groupBy(_.name).map(_._2.head).toList.sortWith(_.name<_.name)
   }
 
   /**
     * Adds an item from the csv to the given faction to the database.
+    *
     * @param csvItemDto
     * @param factionDo
     * @return
