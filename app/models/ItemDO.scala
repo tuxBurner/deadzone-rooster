@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull
 
 import com.avaje.ebean.Model
 import deadzone.models.CSVModels.CSVItemDto
+import deadzone.parsers.CSVWeaponImporter.NUMBER_REGEX
 import play.api.Logger
 
 import scala.collection.JavaConversions._
@@ -49,7 +50,16 @@ object ItemDAO {
     * @return
     */
   def findAllItems(): List[ItemDO] = {
-    FINDER.findList.toList.groupBy(_.name).map(_._2.head).toList.sortWith(_.name<_.name)
+    FINDER.findList.toList
+      .groupBy(_.name)
+      .map(_._2.head)
+      .toList
+      .filter(_.name.startsWith("M|") == false)
+        .map(item => {
+          item.name = NUMBER_REGEX.replaceAllIn(item.name, "")
+          item
+        })
+      .sortWith(_.name<_.name)
   }
 
   /**

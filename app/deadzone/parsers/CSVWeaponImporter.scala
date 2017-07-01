@@ -38,7 +38,7 @@ object CSVWeaponImporter extends CSVDataParser {
   // when true the free when small arms is allowed
   private val ADD_ON_HEADER ="Add On"
     
-  private val NUMBER_REGEX = new Regex("(\\(.*?)\\)")
+  val NUMBER_REGEX = new Regex("(\\(.*?)\\)")
 
   lazy val weapons = importWeaponFromCsv()
 
