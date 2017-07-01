@@ -60,8 +60,10 @@ print.all.btn=Print All
 
 export.btn=Export
 
-upload.label=Select file to import
-upload.btn=Import
+import.label=Select file to import
+import.btn=Import
+import.open.btn=Import army
+import.modal.headline=Import your army
 
 mainmenu.roster=Roster
 mainmenu.abilities=Abilities

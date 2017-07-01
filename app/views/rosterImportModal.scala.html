@@ -1,0 +1,32 @@
+@()(implicit messages: Messages)
+<div class="modal fade" id="roster_army_import_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">@Messages("import.modal.headline")</h4>
+      </div>
+      <div class="modal-body">
+
+        <form class="form-inline">
+          <div class="row">
+            <div class="col-xs-9">
+              <div class="input-group">
+                <label for="roster_upload_file" class="input-group-addon">@Messages("import.label")</label>
+                <input type="file" class="form-control input-sm" id="roster_upload_file" accept="application/json" />
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <button type="button" id="roster_import_army_btn" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-upload"></span> @Messages("import.btn")</button>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

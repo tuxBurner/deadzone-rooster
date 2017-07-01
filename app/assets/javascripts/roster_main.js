@@ -163,8 +163,10 @@ var rosterGuiHandler = {
           }
 
           itemsContent += '<tr>';
-          itemsContent += '<td><input class="edit_troop_slected_item" value="' + item.name + '" type="checkbox" ' + checked + ' /></td>';
-          itemsContent += '<td>' + item.name + '</td>';
+          itemsContent += '<td><div class="checkbox"><label>';
+          itemsContent += '<input class="edit_troop_slected_item" value="' + item.name + '" type="checkbox" ' + checked + ' />';
+          itemsContent += item.name;
+          itemsContent += '</label></div></td>';
           itemsContent += '<td>' + item.points + '</td>';
           itemsContent += '<td>' + item.rarity + '</td>';
           itemsContent += '</tr>';
@@ -297,9 +299,11 @@ var rosterGuiHandler = {
       tableContent += '<td>' + itemsContent + '</td>';
       tableContent += '<td>' + reconArmySpecialContent + '</td>';
       tableContent += '<td>';
-      tableContent += '<button class="btn btn-info btn-xs roster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button>';
-      tableContent += '<button class="btn btn-info btn-xs roster_clone_btn"><span class="glyphicon glyphicon-plus-sign"></span></button>';
-      tableContent += '<button class="btn btn-danger btn-xs roster_del_btn"><span class="glyphicon glyphicon-trash"></span></button>';
+      tableContent += '<div class="btn-group btn-group-xs">';
+      tableContent += '<button class="btn btn-info roster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button>';
+      tableContent += '<button class="btn btn-info roster_clone_btn"><span class="glyphicon glyphicon-plus-sign"></span></button>';
+      tableContent += '<button class="btn btn-danger roster_del_btn"><span class="glyphicon glyphicon-trash"></span></button>';
+      tableContent += '</div>';
       tableContent += '</td>';
       tableContent += '</tr>';
     });
@@ -419,6 +423,7 @@ var rosterGuiHandler = {
       }
     });
   },
+
   /**
    * Clones a troop
    * @param uuid
@@ -443,6 +448,7 @@ var rosterGuiHandler = {
       contentType: false,
       success: function(data) {
         rosterGuiHandler.displayCurrentArmyData(data);
+        $('#roster_army_import_modal').modal('hide');
       },
       error: function(data) {
         alert('Error !!!!');
@@ -492,6 +498,10 @@ $(function() {
 
   $('#roster_validate_army_btn').on('click', function() {
     rosterGuiHandler.validateArmy();
+  });
+
+  $('#roster_open_import_army_btn').on('click', function() {
+    $('#roster_army_import_modal').modal('show');
   });
 
   $('#roster_import_army_btn').on('click', function() {

@@ -34,14 +34,18 @@
 
   <hr />
 
-  @rosterActions()
-
-  <hr />
-
-  <div class="input-group">
-    <label for="roster_army_name" class="input-group-addon">@Messages("army.name")</label>
-    <input type="text" class="form-control input-sm" id="roster_army_name" />
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="input-group">
+        <label for="roster_army_name" class="input-group-addon">@Messages("army.name")</label>
+        <input type="text" class="form-control input-sm" id="roster_army_name" />
+      </div>
+    </div>
+    <div class="col-xs-6">
+      @rosterActions()
+    </div>
   </div>
+
 
   <hr />
 
@@ -85,5 +89,6 @@
 
   @rosterTroopEditModal()
   @rosterValidateModal()
+  @rosterImportModal()
 
 }
