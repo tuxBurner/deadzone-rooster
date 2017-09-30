@@ -1,53 +1,26 @@
 package models
 
-import javax.persistence._
-import javax.validation.constraints.NotNull
-
-import com.avaje.ebean.Model
 import deadzone.models.CSVModels.AbilityDto
-import play.api.Logger
-
-import scala.collection.JavaConversions._
 
 
 object DefaultTroopAbilityDAO {
 
-  private val FINDER = new Model.Finder[Long, DefaultTroopAbilityDO](classOf[DefaultTroopAbilityDO])
 
+  def addAbilityForTroop(abilityDto: AbilityDto): Option[DefaultTroopAbilityDO] = {
 
-  def addAbilityForTroop(armyTroopDO: TroopDO, abilityDto: AbilityDto): Unit = {
     val abilityDO = AbilityDAO.addByAbilityDtos(abilityDto)
-    if (abilityDO == null) {
-      return
+
+    if (abilityDO.isEmpty == true) {
+      return None
     }
 
-    val defaulTroopAbilityDO = new DefaultTroopAbilityDO();
-    defaulTroopAbilityDO.ability = abilityDO;
-    defaulTroopAbilityDO.troopDo = armyTroopDO;
-    defaulTroopAbilityDO.defaultValue = abilityDto.factor;
+    Some(DefaultTroopAbilityDO(
+      ability = abilityDO.get,
+      defaultValue = abilityDto.factor
+    ))
 
-    defaulTroopAbilityDO.save()
-  }
-
-  def deleteAll(): Unit = {
-    Logger.info("Deleting all: " + classOf[DefaultTroopAbilityDO].getName + " from database")
-    FINDER.all().toList.foreach(_.delete())
   }
 }
 
-/**
-  * @author Sebastian Hardt (s.hardt@micromata.de)
-  *         Date: 07.06.17
-  *         Time: 22:57
-  */
-@Entity
-@Table(name = "def_troop_ability") class DefaultTroopAbilityDO extends Model {
 
-  @Id val id: Long = 0L
-
-  @ManyToOne var troopDo: TroopDO = null
-
-  @ManyToOne var ability: AbilityDO = null
-
-  @NotNull var defaultValue: Int = 0
-}
+case class DefaultTroopAbilityDO(ability: AbilityDO, defaultValue: Int = 0)

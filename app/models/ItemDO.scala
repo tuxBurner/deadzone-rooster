@@ -1,23 +1,16 @@
 package models
 
-import java.util
-import javax.persistence._
-import javax.validation.constraints.NotNull
-
-import com.avaje.ebean.Model
 import deadzone.models.CSVModels.CSVItemDto
 import deadzone.parsers.CSVWeaponImporter.NUMBER_REGEX
 import play.api.Logger
 
-import scala.collection.JavaConversions._
+import scala.collection.mutable.ListBuffer
 
-/**
-  * Created by tuxburner on 08.06.17.
-  */
+
 object ItemDAO {
 
+  val items: ListBuffer[ItemDO] = ListBuffer()
 
-  private val FINDER = new Model.Finder[Long, ItemDO](classOf[ItemDO])
 
   /**
     * Gets an item by it's name and faction.
@@ -26,12 +19,13 @@ object ItemDAO {
     * @param factionDO
     * @return
     */
-  def findByNameAndFaction(name: String, factionDO: FactionDO): ItemDO = {
-    FINDER.where().ieq("name", name).and().eq("faction", factionDO).findUnique
+  def findByNameAndFaction(name: String, factionDO: FactionDO): Option[ItemDO] = {
+    findByNameAndFactionName(name, factionDO.name)
   }
 
-  def findByNameAndFactionName(name: String, faction: String): ItemDO = {
-    FINDER.where().ieq("name", name).and().eq("faction.name", faction).findUnique
+  def findByNameAndFactionName(name: String, faction: String): Option[ItemDO] = {
+    items
+      .find(item => (item.name == name && item.faction.name == faction))
   }
 
   /**
@@ -41,7 +35,10 @@ object ItemDAO {
     * @return
     */
   def findAllItemsForFaction(factionName: String): List[ItemDO] = {
-    FINDER.where().ieq("faction.name", factionName).and().eq("noUpdate", false).orderBy().asc("name").findList.toList
+    items
+      .filter(item => item.faction.name == factionName && item.noUpdate == false)
+      .sortBy(_.name)
+      .toList
   }
 
   /**
@@ -50,16 +47,15 @@ object ItemDAO {
     * @return
     */
   def findAllItems(): List[ItemDO] = {
-    FINDER.findList.toList
+    items
       .groupBy(_.name)
       .map(_._2.head)
       .toList
       .filter(_.name.startsWith("M|") == false)
-        .map(item => {
-          item.name = NUMBER_REGEX.replaceAllIn(item.name, "")
-          item
-        })
-      .sortWith(_.name<_.name)
+      .map(item => {
+        item.copy(name = NUMBER_REGEX.replaceAllIn(item.name, ""))
+      })
+      .sortWith(_.name < _.name)
   }
 
   /**
@@ -73,47 +69,25 @@ object ItemDAO {
 
     Logger.info("Creating item: " + csvItemDto.name + " for faction: " + factionDo.name)
 
-    val newItemDo = new ItemDO()
-    newItemDo.name = csvItemDto.name
-    newItemDo.faction = factionDo
-    newItemDo.points = csvItemDto.points
-    newItemDo.rarity = csvItemDto.rarity
-    newItemDo.noUpdate = csvItemDto.noUpgrade
+    val newItemDo = new ItemDO(
+      name = csvItemDto.name,
+      faction = factionDo,
+      points = csvItemDto.points,
+      rarity = csvItemDto.rarity,
+      noUpdate = csvItemDto.noUpgrade
+    )
 
-    newItemDo.save()
+    items += newItemDo
 
     newItemDo
   }
 
-
-  def deleteAll(): Unit = {
-    Logger.info("Deleting all: " + classOf[WeaponDO].getName + " from database")
-    FINDER.all().toList.foreach(_.delete())
-  }
 }
 
-@Entity
-@Table(name = "item")
-class ItemDO extends Model {
 
-  @Id
-  val id: Long = 0L
+case class ItemDO(name: String = "",
+                  rarity: String = "",
+                  faction: FactionDO = null,
+                  points: Int = 0,
+                  noUpdate: Boolean = false)
 
-  @NotNull
-  var name: String = ""
-
-  @NotNull
-  var rarity: String = ""
-
-  @NotNull
-  @ManyToOne
-  var faction: FactionDO = null
-
-
-  @NotNull
-  var points: Int = 0
-
-
-  @NotNull
-  var noUpdate: Boolean = false
-}

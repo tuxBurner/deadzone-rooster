@@ -4,51 +4,57 @@ import deadzone.models.CSVModels
 import org.apache.commons.lang3.StringUtils
 import play.api.Logger
 
-/**
-  * @author Sebastian Hardt (s.hardt@micromata.de)
-  *         Date: 07.06.17
-  *         Time: 22:50
-  */
+import scala.collection.mutable.ListBuffer
+
+
 object AbilityDAO {
+
+
+  /**
+    * The abilities which are avaible
+    */
+  val abilities: ListBuffer[AbilityDO] = ListBuffer()
+
 
   /**
     * Finds all abilities
+    *
     * @return
     */
   def findAll(): List[AbilityDO] = {
-    FINDER.order().asc("name").findList().toList
+    abilities.sortBy(_.name).toList
   }
 
-  def addByAbilityDtos(abilityDto: CSVModels.AbilityDto): AbilityDO = {
+  def addByAbilityDtos(abilityDto: CSVModels.AbilityDto): Option[AbilityDO] = {
     findOrAddByName(abilityDto.title, abilityDto.factor != 0)
   }
 
 
-  def findOrAddByName(name: String, incValue: Boolean): AbilityDO = {
+  def findOrAddByName(name: String, incValue: Boolean): Option[AbilityDO] = {
 
     if (StringUtils.isEmpty(name)) {
-      return null;
+      return None
     }
 
-    val dbDo = FINDER.where().ieq("name", name).findUnique()
-    if (dbDo != null) {
-      return dbDo
-    }
-
-    Logger.info("Creating ability: " + name + " in database")
-    val newDbDo = new AbilityDO()
-    newDbDo.name = name
-    newDbDo.hasIncVal = incValue
-    newDbDo.save()
-    newDbDo
+    abilities
+      .find(_.name == name)
+      .orElse(
+        {
+          Logger.info("Creating ability: " + name + " in database")
+          val newDbDo = AbilityDO(name, incValue)
+          abilities += newDbDo
+          Some(newDbDo)
+        }
+      )
   }
 }
 
 /**
   * The Do which represents an ability
-  * @param name the name of the ability
+  *
+  * @param name      the name of the ability
   * @param hasIncVal When true this means the value of the ability can be incremented.
   */
-case class AbilityDO( name: String,
-                      hasIncVal: Boolean = false
-                    );
+case class AbilityDO(name: String,
+                     hasIncVal: Boolean = false
+                    )
