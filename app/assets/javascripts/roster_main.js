@@ -280,7 +280,7 @@ var rosterGuiHandler = {
 
       var itemsContent = '';
       $.each(troop.items, function(idx, item) {
-        itemsContent += item.name + '<br />';
+        itemsContent +=  '<u class="infoPopOver helpMouse" data-type="item" title="' + item.name+ '">' + item.name+ '</u><br />';
       });
 
       tableContent += '<tr data-uuid="' + troop.uuid + '" data-troopname="' + troop.name + '">';
