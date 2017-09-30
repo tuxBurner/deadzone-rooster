@@ -4,23 +4,25 @@ import javax.inject._
 
 import com.github.tuxBurner.jsAnnotations.JsRoutesComponent
 import models.{AbilityDAO, ItemDAO, TroopDAO}
-import play.api.i18n.{I18nSupport, MessagesApi}
+import play.api.i18n.{I18nSupport, Lang, MessagesApi}
 import play.api.mvc._
 import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
+import play.i18n.Langs
 
 import scala.collection.JavaConversions._
 
 
 /**
- * This controller creates an `Action` to handle HTTP requests to the
- * application's home page.
- */
+  * This controller creates an `Action` to handle HTTP requests to the
+  * application's home page.
+  */
 @Singleton
-class HomeController @Inject()(jsRoutesComponent:JsRoutesComponent,val messagesApi: MessagesApi) extends Controller with I18nSupport {
+class HomeController @Inject()(jsRoutesComponent: JsRoutesComponent, val messagesApi: MessagesApi, langs: Langs) extends Controller with I18nSupport {
 
 
   /**
     * Display the main view
+    *
     * @return
     */
   def rosterMain = Action {
@@ -28,7 +30,25 @@ class HomeController @Inject()(jsRoutesComponent:JsRoutesComponent,val messagesA
   }
 
   /**
+    * Change the language of the current user
+    * @param language
+    * @return
+    */
+  def changeLanguage(language: String) = Action {
+    request =>
+
+      val redirectTo: String = request.headers.get(REFERER).getOrElse(routes.HomeController.rosterMain().url)
+
+      val lang = langs.availables()
+        .find(_.code == language)
+        .getOrElse(langs.availables().get(0))
+
+      Redirect(redirectTo).withLang(lang)
+  }
+
+  /**
     * Displays all abilities in a table overview
+    *
     * @return
     */
   def displayAllAbilities() = Action {
@@ -38,6 +58,7 @@ class HomeController @Inject()(jsRoutesComponent:JsRoutesComponent,val messagesA
 
   /**
     * Displays all available army specials
+    *
     * @return
     */
   def displayAllArmySpecials() = Action {
@@ -47,13 +68,13 @@ class HomeController @Inject()(jsRoutesComponent:JsRoutesComponent,val messagesA
 
   /**
     * Display all items
+    *
     * @return
     */
   def displayAllItems() = Action {
     val items = ItemDAO.findAllItems()
     Ok(views.html.allItems(items))
   }
-
 
 
   /**
@@ -64,12 +85,11 @@ class HomeController @Inject()(jsRoutesComponent:JsRoutesComponent,val messagesA
     */
   def jsRoutes = Action {
     request =>
-      val routes:Array[JavaScriptReverseRoute] = jsRoutesComponent.getJsRoutes.toSet.toArray
-      val routeScript = JavaScriptReverseRouter.apply("jsRoutes", Some("jQuery.ajax"),request.host,routes:_*)
+      val routes: Array[JavaScriptReverseRoute] = jsRoutesComponent.getJsRoutes.toSet.toArray
+      val routeScript = JavaScriptReverseRouter.apply("jsRoutes", Some("jQuery.ajax"), request.host, routes: _*)
 
       Ok(routeScript.body).as("text/javascript")
   }
-
 
 
 }
