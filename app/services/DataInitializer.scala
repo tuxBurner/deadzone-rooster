@@ -15,16 +15,10 @@ import play.api.{Configuration, Logger}
   */
 @Singleton class DataInitializer @Inject()(configuration: Configuration) {
 
-  val reinitData = configuration.getBoolean("deadzone.reinitData")
 
-  if (reinitData.isEmpty == false && reinitData.get == true) {
-    cleanDatabase()
-  }
 
-  if(FactionDAO.countAll() == 0) {
-    Logger.info("No Factions found in db filling up from the csv data")
-    importFactions()
-  }
+  importFactions()
+
 
 
   private def importFactions() : Unit = {
@@ -49,18 +43,4 @@ import play.api.{Configuration, Logger}
     })
   }
 
-  /**
-    * Clean the database from existing data files
-    */
-  private def cleanDatabase(): Unit = {
-    Logger.info("Deleting data from database.")
-    DefaultTroopAbilityDAO.deleteAll()
-    DefaultWeaponAbilityDAO.deleteAll()
-    AbilityDAO.deleteAll()
-    TroopDAO.deleteAll()
-    ItemDAO.deleteAll()
-    WeaponDAO.deleteAll()
-    WeaponTypeDAO.deleteAll()
-    FactionDAO.deleteAll()
-  }
 }

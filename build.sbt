@@ -4,7 +4,7 @@ name := """deadzone-roster"""
 
 version := "1.0-SNAPSHOT"
 
-maintainer := "Sebastian Hardt <s.hardt@micromata.de>"
+maintainer := "Sebastian Hardt"
 
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala, PlayEbean)
@@ -31,7 +31,7 @@ packageName in Docker := "tuxburner/deadzoneroster"
 dockerExposedPorts in Docker := Seq(9000, 9443)
 dockerExposedVolumes in Docker := Seq("/data")
 
-// add the command to use whalerider conf
+// add the command to use deadzone roster conf
 dockerCommands ++= Seq(
   ExecCmd("CMD", "-Dconfig.file=/opt/docker/conf/deadzone-roster.conf")
 )

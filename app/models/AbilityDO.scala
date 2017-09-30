@@ -1,14 +1,8 @@
 package models
 
-import javax.persistence.{Column, Entity, Id, Table}
-import javax.validation.constraints.NotNull
-
-import com.avaje.ebean.Model
 import deadzone.models.CSVModels
 import org.apache.commons.lang3.StringUtils
 import play.api.Logger
-
-import scala.collection.JavaConversions._
 
 /**
   * @author Sebastian Hardt (s.hardt@micromata.de)
@@ -17,19 +11,12 @@ import scala.collection.JavaConversions._
   */
 object AbilityDAO {
 
-  private val FINDER = new Model.Finder[Long, AbilityDO](classOf[AbilityDO])
-
   /**
     * Finds all abilities
     * @return
     */
   def findAll(): List[AbilityDO] = {
     FINDER.order().asc("name").findList().toList
-  }
-
-  def deleteAll(): Unit = {
-    Logger.info("Deleting all: " + classOf[AbilityDO].getName + " from database")
-    FINDER.all().toList.foreach(_.delete())
   }
 
   def addByAbilityDtos(abilityDto: CSVModels.AbilityDto): AbilityDO = {
@@ -57,19 +44,11 @@ object AbilityDAO {
   }
 }
 
-@Entity
-@Table(name = "ability") class AbilityDO extends Model {
-
-  @Id val id: Long = 0L
-
-  @NotNull
-  @Column(unique = true) var name: String = ""
-
-  /**
-    * When true this means the value of the ability can be incremented.
-    * Tactician (2)
-    * When false this meas the value cannot be changed.
-    */
-  @NotNull var hasIncVal: Boolean = false
-
-}
+/**
+  * The Do which represents an ability
+  * @param name the name of the ability
+  * @param hasIncVal When true this means the value of the ability can be incremented.
+  */
+case class AbilityDO( name: String,
+                      hasIncVal: Boolean = false
+                    );
