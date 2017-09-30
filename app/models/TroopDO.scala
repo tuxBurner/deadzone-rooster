@@ -51,7 +51,7 @@ object TroopDAO {
         weaponName => {
           val weapon = WeaponDAO.findByNameAndFactionAndAllowedTypes(weaponName, factionDo, soldierDto.weaponTypes.toList)
           if (weapon.isEmpty) {
-            Logger.error("Could not add default weapon " + weaponName + " to troop: " + troopDO.name + " faction: " + factionDo.name + " was not found in the db")
+            Logger.error("Could not add default weapon " + weaponName + " to troop: " + soldierDto.name + " faction: " + factionDo.name + " was not found in the db")
           }
           weapon
         }

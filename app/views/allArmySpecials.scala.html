@@ -15,10 +15,10 @@
     @for(troop <- troops) {
       <tr>
         <th>@troop.faction.name</th>
-        <td>@troop.name</td>
-        <td>@troop.armySpecial</td>
-        <td>@troop.recon+</td>
-        <td>@displayArmySpecialDescr(troop.armySpecial)</td>
+        <td>@troop.soldierDto.name</td>
+        <td>@troop.soldierDto.armySpecial</td>
+        <td>@troop.soldierDto.recon+</td>
+        <td>@displayArmySpecialDescr(troop.soldierDto.armySpecial)</td>
       </tr>
     }
     </tbody>

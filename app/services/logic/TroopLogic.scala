@@ -6,19 +6,27 @@ import scala.collection.JavaConversions._
 
 object TroopLogic {
 
-  def getSelectTroopsForFaction(factionName: String) : Map[String,List[TroopSelectDto]] = {
+  def getSelectTroopsForFaction(factionName: String): Map[String, List[TroopSelectDto]] = {
     val troops = TroopDAO.findAllForFactionByName(factionName).map(troopDo => {
       // calculate the points from the weapon to the troop
-      var points = troopDo.points
-      troopDo.defaultWeapons.toList.foreach(defWeapon => {
-        points+=defWeapon.points
+      var points = troopDo.soldierDto.points
+      troopDo.defaultWeapons.foreach(defWeapon => {
+        points += defWeapon.points
       })
 
-      TroopSelectDto(troopDo.name, troopDo.modelType, points, troopDo.victoryPoints, troopDo.imageUrl)
+      TroopSelectDto(name = troopDo.soldierDto.name,
+        modelType = troopDo.soldierDto.soldierType.toString,
+        points = points,
+        victoryPoints = troopDo.soldierDto.victoryPoints,
+        imageUrl = troopDo.soldierDto.imageUrl)
     })
 
     troops.groupBy(_.modelType)
   }
 }
 
-case class TroopSelectDto(name:String, modelType: String, points: Int, victoryPoints:Int, imageUrl: String)
+case class TroopSelectDto(name: String,
+                          modelType: String,
+                          points: Int,
+                          victoryPoints: Int,
+                          imageUrl: String)

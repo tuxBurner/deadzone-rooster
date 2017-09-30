@@ -45,26 +45,28 @@ object ArmyImExpLogic {
   private def createTroopFromImport(troop: TroopImExpDto): Option[ArmyTroopDto] = {
 
     if (StringUtils.isBlank(troop.name) || StringUtils.isBlank(troop.faction)) {
-      return Option.empty
+      return None
     }
 
-    val troopDo = TroopDAO.findByFactionAndName(troop.faction, troop.name)
-    if (troopDo == null) {
-      return Option.empty
+    val troopDoOption = TroopDAO.findByFactionAndName(troop.faction, troop.name)
+    if (troopDoOption.isEmpty) {
+      return None
     }
+
+    val troopDo = troopDoOption.get
 
     val newWeapons = troop.weapons.map(weaponName => {
-      val weaponDo = WeaponDAO.findByNameAndFactionNameAndAllowedTypes(weaponName, troop.faction, troopDo.allowedWeaponTypes.toList.map(_.name))
-      weaponDoToWeaponDto(weaponDo)
+      val weaponDo = WeaponDAO.findByNameAndFactionNameAndAllowedTypes(weaponName, troop.faction, troopDo.allowedWeaponTypes.map(_.name))
+      weaponDoToWeaponDto(weaponDo.get)
     })
 
     val newItems = troop.items.map(itemName => {
       val itemDo = ItemDAO.findByNameAndFactionName(itemName, troop.faction)
-      itemDoToItemDto(itemDo)
+      itemDoToItemDto(itemDo.get)
     })
 
-    val points = troopDo.points + newWeapons.map(_.points).sum + newItems.map(_.points).sum
-    val victoryPoints =  troopDo.victoryPoints + newWeapons.map(_.victoryPoints).sum
+    val points = troopDo.soldierDto.points + newWeapons.map(_.points).sum + newItems.map(_.points).sum
+    val victoryPoints =  troopDo.soldierDto.victoryPoints + newWeapons.map(_.victoryPoints).sum
 
     val troopForAmry = ArmyLogic.troopDoToArmyTroopDto(troopDo).copy(points = points, victoryPoints = victoryPoints,weapons = newWeapons, items = newItems)
 
