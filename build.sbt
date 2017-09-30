@@ -7,7 +7,7 @@ version := "1.0-SNAPSHOT"
 maintainer := "Sebastian Hardt"
 
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala, PlayEbean)
+lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "2.11.8"
 
