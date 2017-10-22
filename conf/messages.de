@@ -10,9 +10,9 @@ troop.tbl.speed=GES
 troop.tbl.shoot=SH
 troop.tbl.fight=KPF
 troop.tbl.survive=SV
-troop.tbl.abilities=Abilities
-troop.tbl.weapons=Weapons
-troop.tbl.items=Items
+troop.tbl.abilities=Fähigkeiten
+troop.tbl.weapons=Waffen
+troop.tbl.items=Gegenstände
 troop.tbl.reconArmySpecial=REC/Special
 
 weapon.headline=Weapons:
@@ -66,9 +66,9 @@ import.open.btn=Import army
 import.modal.headline=Import your army
 
 mainmenu.roster=Roster
-mainmenu.abilities=Abilities
-mainmenu.items=Items
-mainmenu.armyspecials=Army Specials
+mainmenu.abilities=Fähigkeiten
+mainmenu.items=Gegenstände
+mainmenu.armyspecials=Armee Specials
 
 armyspecial.headline=Army Specials and Recon
 armyspecial.name=Name
@@ -167,7 +167,7 @@ ability.desc.ItBurns=<p>The weapon unleashes indiscriminate sheets of flame, aci
   <p>The target rolls a 3 dice Survival test (X).</p>\
   <p><strong>Draw or Survive has more successes:</strong><br />The target puts out the flames before they do any real Damage. The model may continue with any remaining actions as normal.</p>\
   <p><strong>Fire/flames has more successes:</strong><br />The target manages to put out the flames and is no longer on fire, but suffers Damage in the process. The Potential Damage is equal to the difference in total successes and is resolved at AP1. The model’s activation ends immediately.</p>
-ability.desc.Knockback=<p>When a weapon or model with this ability hits its target it will knock it back into a different cube. Resolve the attack as normal, then move the target one cube directly away from the attacker (see page 27). If the knocked-back model’s route is blocked by a wall, the model is slammed into it (see page 27).</p>
+ability.desc.Knockback=<p>Wenn ein Model mit dieser Fähigkeit When a weapon or model with this ability hits its target it will knock it back into a different cube. Resolve the attack as normal, then move the target one cube directly away from the attacker (see page 27). If the knocked-back model’s route is blocked by a wall, the model is slammed into it (see page 27).</p>
 ability.desc.LifeSupport=<p>The individual has an in-built automated life support system designed to keep them alive even when gravely wounded. If the model is Injured, but not killed, by an attack then the Life Support automatically kicks into overdrive. The model is immediately returned to an Undamaged state. This happens automatically and does not cost an action. This only works once per game.</p>\
   <p>Life Support cannot be used to resurrect models that have been killed outright by a single attack. Also note that Life Support only works on the model itself and cannot be used on nearby models (unlike a Medi-Pack item).</p>
 ability.desc.Loader=<p>If a model with this ability is in the same cube as a friendly model, then the Loader can remove a Reload counter from that model by taking a Special action.</p>

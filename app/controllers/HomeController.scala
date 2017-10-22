@@ -26,6 +26,7 @@ class HomeController @Inject()(jsRoutesComponent: JsRoutesComponent, val message
     * @return
     */
   def rosterMain = Action {
+    request =>
     Ok(views.html.roster())
   }
 

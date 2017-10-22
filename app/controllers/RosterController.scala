@@ -1,4 +1,4 @@
-  package controllers
+package controllers
 
 import java.util.UUID
 import javax.inject._
@@ -47,8 +47,8 @@ import scala.io.Source
     Ok(Json.toJson(FactionLogic.getAllFactions()))
   }
 
-  @JSRoute def getPopOverData(popoverType:String, key:String) = Action {
-    Ok(views.html.displayDescription(popoverType,key));
+  @JSRoute def getPopOverData(popoverType: String, key: String) = Action {
+    Ok(views.html.displayDescription(popoverType, key));
   }
 
   /**
@@ -64,19 +64,21 @@ import scala.io.Source
 
   /**
     * Endpoint for changing the army's name
+    *
     * @return
     */
   @JSRoute def changeArmyName() = Action(parse.tolerantJson) { request =>
     val armyName = (request.body \ "armyName").as[String]
     val armyFromCache = getArmyFromCache(request)
-    val newArmy = ArmyLogic.changeNameOfArmy(armyName,armyFromCache)
+    val newArmy = ArmyLogic.changeNameOfArmy(armyName, armyFromCache)
 
-    writeArmyToCache(request,newArmy)
+    writeArmyToCache(request, newArmy)
     withCacheId(Ok(Json.toJson(newArmy)).as(JSON), request)
   }
 
   /**
     * Adds a troop to the army
+    *
     * @return
     */
   @JSRoute def addTroopToArmy() = Action(parse.tolerantJson) { request =>
@@ -93,6 +95,7 @@ import scala.io.Source
 
   /**
     * Removes a troop from the army
+    *
     * @param uuid
     * @return
     */
@@ -105,35 +108,38 @@ import scala.io.Source
 
   /**
     * Gets the avaible weapons and items for the given troop
+    *
     * @param uuid
     * @return
     */
   @JSRoute def getWeaponsAndItemsForTroop(uuid: String) = Action { request =>
     val armyFromCache = renewArmyInCache(request)
-    val result = ArmyLogic.getWeaponsAndItemsForTroop(uuid,armyFromCache)
+    val result = ArmyLogic.getWeaponsAndItemsForTroop(uuid, armyFromCache)
     withCacheId(Ok(Json.toJson(result)).as(JSON), request)
   }
 
   /**
     * Update the troop in the army with the selected weapons and items
+    *
     * @param uuid
     * @return
     */
-  @JSRoute def updateTroopWeaponsAndItems(uuid:String) = Action(parse.tolerantJson) { request =>
+  @JSRoute def updateTroopWeaponsAndItems(uuid: String) = Action(parse.tolerantJson) { request =>
     val armyFromCache = getArmyFromCache(request)
 
     val selectedWeapons = (request.body \ "selectedWeapons").as[List[String]]
     val selectedItems = (request.body \ "selectedItems").as[List[String]]
 
-    val newArmy = ArmyLogic.updateTroop(uuid,armyFromCache,selectedWeapons,selectedItems)
+    val newArmy = ArmyLogic.updateTroop(uuid, armyFromCache, selectedWeapons, selectedItems)
 
-    writeArmyToCache(request,newArmy)
+    writeArmyToCache(request, newArmy)
 
     withCacheId(Ok(Json.toJson(newArmy)).as(JSON), request)
   }
 
   /**
     * Gets the current army
+    *
     * @return
     */
   @JSRoute def getArmy() = Action { request =>
@@ -143,6 +149,7 @@ import scala.io.Source
 
   /**
     * Gets the table pdf
+    *
     * @return
     */
   def getTablePdf() = Action { request =>
@@ -150,12 +157,13 @@ import scala.io.Source
 
     val armyPdfInfos = ArmyLogic.extractPdfArmyInfos(army)
 
-    val pdfBytes = pdfGenerator.toBytes(views.html.pdf.rosterTable.render(army,armyPdfInfos,messagesApi.preferred(request)),"http://localhost:9000")
-    withCacheId(Ok(pdfBytes),request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
+    val pdfBytes = pdfGenerator.toBytes(views.html.pdf.rosterTable.render(army, armyPdfInfos, messagesApi.preferred(request)), "http://localhost:9000")
+    withCacheId(Ok(pdfBytes), request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
   }
 
   /**
     * Validates the army against the rule set of deadzone
+    *
     * @return
     */
   @JSRoute def validateArmy() = Action { request =>
@@ -168,42 +176,45 @@ import scala.io.Source
 
   /**
     * Clones the troop by the given uuid
+    *
     * @param uuid
     * @return
     */
   @JSRoute def cloneTroop(uuid: String) = Action { request =>
     val army = getArmyFromCache(request)
-    val newArmy = ArmyLogic.cloneTroop(uuid,army)
-    writeArmyToCache(request,newArmy)
+    val newArmy = ArmyLogic.cloneTroop(uuid, army)
+    writeArmyToCache(request, newArmy)
     withCacheId(Ok(Json.toJson(newArmy)).as(JSON), request)
   }
 
   /**
     * Exports the army as a json file
+    *
     * @return
     */
   @JSRoute def exportArmy() = Action { request =>
     val army = renewArmyInCache(request)
     val exportData = ArmyImExpLogic.armyForExport(army)
     val jsonData = Json.prettyPrint(Json.toJson(exportData))
-    val fileName = if(army.name.isEmpty) "army" else army.name
-    val headerContent =  "attachement; filename="+fileName+".json";
+    val fileName = if (army.name.isEmpty) "army" else army.name
+    val headerContent = "attachement; filename=" + fileName + ".json";
     withCacheId(Ok(jsonData).as(JSON), request).as(JSON).withHeaders("Content-Disposition" -> headerContent)
   }
 
   /**
     * Import army from json
+    *
     * @return
     */
   @JSRoute def importArmy() = Action(parse.multipartFormData) { request =>
     request.body.file("file").map(file => {
-      val jsonVal = Source.fromFile(  file.ref.file).getLines().mkString
+      val jsonVal = Source.fromFile(file.ref.file).getLines().mkString
       val jsValue = Json.parse(jsonVal)
       armyExpImpDtoFormat.reads(jsValue)
         .map(armyToImport => {
           val army = ArmyImExpLogic.importArmy(armyToImport)
-          writeArmyToCache(request,army)
-          withCacheId(Ok(Json.toJson(army)),request)
+          writeArmyToCache(request, army)
+          withCacheId(Ok(Json.toJson(army)), request)
         })
         .getOrElse(InternalServerError(""))
     }).getOrElse(InternalServerError(""))
@@ -211,6 +222,7 @@ import scala.io.Source
 
   /**
     * Renews the army in the cache and returns it.
+    *
     * @param request
     * @return
     */
@@ -222,6 +234,7 @@ import scala.io.Source
 
   /**
     * Returns a response with the cacheid in the seeion
+    *
     * @param result
     * @param request
     * @return
@@ -233,6 +246,7 @@ import scala.io.Source
 
   /**
     * Reads the army from the cache
+    *
     * @param request
     * @return
     */
@@ -245,6 +259,7 @@ import scala.io.Source
 
   /**
     * Writes the army to the cache
+    *
     * @param request
     * @param army
     */
@@ -255,6 +270,7 @@ import scala.io.Source
 
   /**
     * Gets the cache id from the session
+    *
     * @param request
     * @return
     */
