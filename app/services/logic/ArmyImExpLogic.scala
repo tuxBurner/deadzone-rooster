@@ -4,7 +4,7 @@ import models.{ItemDAO, TroopDAO, WeaponDAO}
 import org.apache.commons.lang3.StringUtils
 import services.logic.ArmyLogic.{itemDoToItemDto, weaponDoToWeaponDto}
 
-import scala.collection.JavaConversions._
+
 
 /**
   * Does the im exp of an army
@@ -15,7 +15,7 @@ object ArmyImExpLogic {
   /**
     * Exports a list of troops in an army
     *
-    * @param army
+    * @param army the army to export
     * @return
     */
   def armyForExport(army: ArmyDto): ArmyImpExpDto = {
@@ -26,12 +26,12 @@ object ArmyImExpLogic {
   /**
     * Imports an army from the data
     *
-    * @param armyToImport
+    * @param armyToImport the army to import
     * @return
     */
   def importArmy(armyToImport: ArmyImpExpDto): ArmyDto = {
 
-    val troops = armyToImport.troops.map(createTroopFromImport(_)).flatten
+    val troops = armyToImport.troops.flatMap(createTroopFromImport)
     val points = troops.map(_.points).sum
     val factions = ArmyLogic.getFactionsFromArmy(troops)
     ArmyDto(armyToImport.name,factions,points,troops)
@@ -39,7 +39,7 @@ object ArmyImExpLogic {
 
   /**
     * Creates a troop with weapon and item loadout
-    * @param troop
+    * @param troop the troop to create
     * @return
     */
   private def createTroopFromImport(troop: TroopImExpDto): Option[ArmyTroopDto] = {

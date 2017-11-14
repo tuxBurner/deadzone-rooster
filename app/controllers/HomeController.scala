@@ -9,7 +9,7 @@ import play.api.mvc._
 import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
 import play.i18n.Langs
 
-import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 
 
 /**
@@ -41,7 +41,7 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
 
       val redirectTo: String = request.headers.get(REFERER).getOrElse(routes.HomeController.rosterMain().url)
 
-      val lang = langs.availables()
+      val lang = langs.availables().asScala
         .find(_.code == language)
         .getOrElse(langs.availables().get(0))
 
@@ -90,7 +90,7 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
     */
   def jsRoutes = Action {
     request =>
-      val routes: Array[JavaScriptReverseRoute] = jsRoutesComponent.getJsRoutes.toSet.toArray
+      val routes: Array[JavaScriptReverseRoute] = jsRoutesComponent.getJsRoutes.asScala.toArray
       val routeScript = JavaScriptReverseRouter.apply("jsRoutes", Some("jQuery.ajax"), request.host, routes: _*)
 
       Ok(routeScript.body).as("text/javascript")

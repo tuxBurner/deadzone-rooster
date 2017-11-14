@@ -21,24 +21,23 @@ import scala.io.Source
   */
 @Singleton
 class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, pdfGenerator: PdfGenerator, config: Configuration) extends AbstractController(cc) with I18nSupport {
-  //class RosterController @Inject()(cache: CacheApi, pdfGenerator: PdfGenerator, config: Configuration, val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
-  implicit val armyAbilityDtoFormat = Json.format[ArmyAbilityDto]
-  implicit val armyWeaponDtoFormat = Json.format[ArmyWeaponDto]
-  implicit val armyItemDtoFormat = Json.format[ArmyItemDto]
-  implicit val armyTroopDtoFormat = Json.format[ArmyTroopDto]
-  implicit val armyDtoFormat = Json.format[ArmyDto]
-  implicit val factionDtoFormat = Json.format[FactionDto]
-  implicit val armyTroopWeaponsItemsFormat = Json.format[ArmyTroopWeaponsItemsDto]
-  implicit val troopExportDtoFormat = Json.format[TroopImExpDto]
-  implicit val armyExpImpDtoFormat = Json.format[ArmyImpExpDto]
+  implicit val armyAbilityDtoFormat: OFormat[ArmyAbilityDto] = Json.format[ArmyAbilityDto]
+  implicit val armyWeaponDtoFormat: OFormat[ArmyWeaponDto] = Json.format[ArmyWeaponDto]
+  implicit val armyItemDtoFormat: OFormat[ArmyItemDto] = Json.format[ArmyItemDto]
+  implicit val armyTroopDtoFormat: OFormat[ArmyTroopDto] = Json.format[ArmyTroopDto]
+  implicit val armyDtoFormat: OFormat[ArmyDto] = Json.format[ArmyDto]
+  implicit val factionDtoFormat: OFormat[FactionDto] = Json.format[FactionDto]
+  implicit val armyTroopWeaponsItemsFormat: OFormat[ArmyTroopWeaponsItemsDto] = Json.format[ArmyTroopWeaponsItemsDto]
+  implicit val troopExportDtoFormat: OFormat[TroopImExpDto] = Json.format[TroopImExpDto]
+  implicit val armyExpImpDtoFormat: OFormat[ArmyImpExpDto] = Json.format[ArmyImpExpDto]
 
   /**
     * The name of the army cache id in the session
     */
   val SESSION_ARMY_CACHE_ID_NAME = "army_cache_id"
 
-  val cachetimeOut = config.getInt("deadzone.cacheTimeOut").getOrElse(15)
+  val cachetimeOut: Int = config.getOptional[Int]("deadzone.cacheTimeOut").getOrElse(15)
 
   /**
     * Returns all the available factions as a json array
@@ -61,7 +60,7 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
     * @return
     */
   @JSRoute def getSelectTroopsForFaction(factionName: String) = Action {
-    implicit val implicitDtoFromat = Json.format[TroopSelectDto]
+    implicit val implicitDtoFromat: OFormat[TroopSelectDto] = Json.format[TroopSelectDto]
     Ok(Json.toJson(TroopLogic.getSelectTroopsForFaction(factionName)))
   }
 
@@ -211,7 +210,7 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
     */
   @JSRoute def importArmy() = Action(parse.multipartFormData) { request =>
     request.body.file("file").map(file => {
-      val jsonVal = Source.fromFile(file.ref.file).getLines().mkString
+      val jsonVal = Source.fromFile(file.ref.path.toFile).getLines().mkString
       val jsValue = Json.parse(jsonVal)
       armyExpImpDtoFormat.reads(jsValue)
         .map(armyToImport => {

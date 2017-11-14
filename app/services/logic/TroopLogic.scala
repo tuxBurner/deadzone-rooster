@@ -2,7 +2,6 @@ package services.logic
 
 import models.TroopDAO
 
-import scala.collection.JavaConversions._
 
 object TroopLogic {
 
