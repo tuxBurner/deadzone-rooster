@@ -4,4 +4,4 @@ deadzone {
   cacheTimeOut = 15
 }
 
-play.crypto.secret="changemeDeadzoneRoster"
+play.http.secret.key="changemeDeadzoneRoster"

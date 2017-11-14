@@ -1,4 +1,5 @@
 import com.typesafe.sbt.packager.docker.ExecCmd
+import sbt.Path
 
 name := """deadzone-roster"""
 
@@ -9,20 +10,21 @@ maintainer := "Sebastian Hardt"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.2"
 
 libraryDependencies ++= Seq(
-  cache,
+  ehcache,
   ws,
+  guice,
   "com.github.tototoshi" %% "scala-csv" % "1.3.4",
-  "org.webjars" %% "webjars-play" % "2.5.0",
+  "org.webjars" %% "webjars-play" % "2.6.1",
   "org.webjars" % "bootstrap" % "3.1.1-2",
-  "com.github.tuxBurner" %% "play-jsannotations" % "2.5.0",
-  "it.innove" % "play2-pdf" % "1.6.0",
-  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
+  "com.github.tuxBurner" %% "play-jsannotations" % "2.6.0",
+  "it.innove" % "play2-pdf" % "1.7.0"
 )
 
 resolvers += "tuxburner.github.io" at "http://tuxburner.github.io/repo"
+resolvers += Resolver.mavenLocal
 
 // http://www.scala-sbt.org/sbt-native-packager/formats/docker.html
 // docker infos go here

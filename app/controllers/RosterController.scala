@@ -6,8 +6,8 @@ import javax.inject._
 import com.github.tuxBurner.jsAnnotations.JSRoute
 import it.innove.play.pdf.PdfGenerator
 import play.api.Configuration
-import play.api.cache.CacheApi
-import play.api.i18n.{I18nSupport, MessagesApi}
+import play.api.cache.SyncCacheApi
+import play.api.i18n.I18nSupport
 import play.api.libs.json._
 import play.api.mvc._
 import services.logic.ArmyImExpLogic.{ArmyImpExpDto, TroopImExpDto}
@@ -19,7 +19,9 @@ import scala.io.Source
 /**
   * Controller which handles all the endpoints for the roster editor
   */
-@Singleton class RosterController @Inject()(cache: CacheApi, pdfGenerator: PdfGenerator, config: Configuration, val messagesApi: MessagesApi) extends Controller with I18nSupport {
+@Singleton
+class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, pdfGenerator: PdfGenerator, config: Configuration) extends AbstractController(cc) with I18nSupport {
+  //class RosterController @Inject()(cache: CacheApi, pdfGenerator: PdfGenerator, config: Configuration, val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
   implicit val armyAbilityDtoFormat = Json.format[ArmyAbilityDto]
   implicit val armyWeaponDtoFormat = Json.format[ArmyWeaponDto]
@@ -48,7 +50,8 @@ import scala.io.Source
   }
 
   @JSRoute def getPopOverData(popoverType: String, key: String) = Action {
-    Ok(views.html.displayDescription(popoverType, key));
+    implicit request =>
+      Ok(views.html.displayDescription(popoverType, key))
   }
 
   /**
@@ -252,9 +255,7 @@ import scala.io.Source
     */
   private def getArmyFromCache(request: Request[Any]) = {
     val cacheId = getCacheIdFromSession(request)
-    cache.getOrElse[ArmyDto](cacheId) {
-      ArmyDto("")
-    }
+    cache.get[ArmyDto](cacheId).getOrElse(ArmyDto(""))
   }
 
   /**

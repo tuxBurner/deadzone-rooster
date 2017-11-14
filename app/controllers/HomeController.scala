@@ -4,7 +4,7 @@ import javax.inject._
 
 import com.github.tuxBurner.jsAnnotations.JsRoutesComponent
 import models.{AbilityDAO, ItemDAO, TroopDAO}
-import play.api.i18n.{I18nSupport, Lang, MessagesApi}
+import play.api.i18n.I18nSupport
 import play.api.mvc._
 import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
 import play.i18n.Langs
@@ -17,7 +17,7 @@ import scala.collection.JavaConversions._
   * application's home page.
   */
 @Singleton
-class HomeController @Inject()(jsRoutesComponent: JsRoutesComponent, val messagesApi: MessagesApi, langs: Langs) extends Controller with I18nSupport {
+class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRoutesComponent, langs: Langs) extends AbstractController(cc) with I18nSupport {
 
 
   /**
@@ -26,12 +26,13 @@ class HomeController @Inject()(jsRoutesComponent: JsRoutesComponent, val message
     * @return
     */
   def rosterMain = Action {
-    request =>
-    Ok(views.html.roster())
+    implicit request =>
+      Ok(views.html.roster())
   }
 
   /**
     * Change the language of the current user
+    *
     * @param language
     * @return
     */
@@ -53,8 +54,9 @@ class HomeController @Inject()(jsRoutesComponent: JsRoutesComponent, val message
     * @return
     */
   def displayAllAbilities() = Action {
-    val abilities = AbilityDAO.findAll();
-    Ok(views.html.allAbilities(abilities))
+    implicit request =>
+      val abilities = AbilityDAO.findAll()
+      Ok(views.html.allAbilities(abilities))
   }
 
   /**
@@ -63,8 +65,9 @@ class HomeController @Inject()(jsRoutesComponent: JsRoutesComponent, val message
     * @return
     */
   def displayAllArmySpecials() = Action {
-    val troopsWithArmySpecials = TroopDAO.findAllWithArmySpecials()
-    Ok(views.html.allArmySpecials(troopsWithArmySpecials))
+    implicit request =>
+      val troopsWithArmySpecials = TroopDAO.findAllWithArmySpecials()
+      Ok(views.html.allArmySpecials(troopsWithArmySpecials))
   }
 
   /**
@@ -73,8 +76,9 @@ class HomeController @Inject()(jsRoutesComponent: JsRoutesComponent, val message
     * @return
     */
   def displayAllItems() = Action {
-    val items = ItemDAO.findAllItems()
-    Ok(views.html.allItems(items))
+    implicit request =>
+      val items = ItemDAO.findAllItems()
+      Ok(views.html.allItems(items))
   }
 
 
