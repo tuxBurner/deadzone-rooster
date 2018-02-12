@@ -1,12 +1,13 @@
 package services
 
-import java.io.File
-import java.nio.file.{FileSystem, FileSystems, Paths, StandardWatchEventKinds}
 import javax.inject.{Inject, Singleton}
 
+import better.files
 import deadzone.parsers.{CSVDataParser, CSVFactionsImporter, CSVItemsImporter, CSVWeaponImporter}
+import io.methvin.better.files.RecursiveFileMonitor
 import models._
-import play.api.{Configuration, Logger}
+import play.Logger
+import play.api.Configuration
 
 /**
   * When configured it will initialize the main data set from some csvs
@@ -31,26 +32,34 @@ import play.api.{Configuration, Logger}
 
     importFactions()
 
-   /* val externalConfigFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration)
-    externalConfigFolder.map(folderFile => {
+    val externalCfgFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration)
 
-      val watcher = FileSystems.getDefault.newWatchService()
-      Paths.get(folderFile.getAbsolutePath)
-        .register(watcher, StandardWatchEventKinds.ENTRY_MODIFY)
-      val key = watcher.take().pollEvents()
-      if (!key.isEmpty) {
-        importFactions()
+    // when an external cfg folder is found start a watcher for reloading.
+    if (externalCfgFolder.isDefined) {
+      Logger.info("Found external config folder starting file change watching")
+      val watcher = new RecursiveFileMonitor(better.files.File(externalCfgFolder.get.getAbsolutePath)) {
+        override def onCreate(file: files.File, count: Int): Unit = logAndReload(s"$file got changed reloading factions")
       }
-    })*/
+      import scala.concurrent.ExecutionContext.Implicits.global
+      watcher.start()
+    }
 
-
+    /**
+      * IS called when a file changed
+      *
+      * @param msg the message to print before reloading the factions data
+      */
+    def logAndReload(msg: String): Unit = synchronized {
+      Logger.info(msg)
+      importFactions()
+    }
   }
 
 
   /**
     * Imports all factions and its troops, weapons, abilities and items.
     */
-  private def importFactions(): Unit = {
+  def importFactions(): Unit = {
 
     FactionDAO.clearAll()
     AbilityDAO.clearAll()
@@ -77,6 +86,8 @@ import play.api.{Configuration, Logger}
         TroopDAO.addFromCSVSoldierDto(soldierDto, factionDo)
       })
     })
+
+    Logger.info("Done parsing and importing csv data files")
   }
 
 }
