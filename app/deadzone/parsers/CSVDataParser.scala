@@ -40,8 +40,6 @@ class CSVDataParser(configuration: Configuration) {
   }
 
 
-
-
 }
 
 object CSVDataParser {
