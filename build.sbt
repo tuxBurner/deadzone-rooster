@@ -10,13 +10,13 @@ maintainer := "Sebastian Hardt"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-scalaVersion := "2.12.2"
+scalaVersion := "2.12.4"
 
 libraryDependencies ++= Seq(
   ehcache,
   ws,
   guice,
-  "com.github.tototoshi" %% "scala-csv" % "1.3.4",
+  "com.github.tototoshi" %% "scala-csv" % "1.3.5",
   "org.webjars" %% "webjars-play" % "2.6.1",
   "org.webjars" % "bootstrap" % "3.1.1-2",
   "com.github.tuxBurner" %% "play-jsannotations" % "2.6.0",
