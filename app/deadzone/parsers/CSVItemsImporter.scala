@@ -1,7 +1,6 @@
 package deadzone.parsers
 
 
-
 import javax.inject.{Inject, Singleton}
 
 import deadzone.models.CSVModels.CSVItemDto
@@ -27,16 +26,15 @@ class CSVItemsImporter @Inject()(configuration: Configuration) extends CSVDataPa
   private val NO_UPGREADE_HEADER = "No Upgrade"
 
 
-
   lazy val items = importItemsFromCsv()
 
-  
-  def getItemsForFaction(faction: String) : List[CSVItemDto] = {
+
+  def getItemsForFaction(faction: String): List[CSVItemDto] = {
     items.filter(_.faction.equals(faction))
   }
 
   private def importItemsFromCsv(): List[CSVItemDto] = {
-    val dataWithHeaders =  readCsvFile("deadzone/items.csv")
+    val dataWithHeaders = readCsvFile("deadzone/items.csv")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 
@@ -45,19 +43,19 @@ class CSVItemsImporter @Inject()(configuration: Configuration) extends CSVDataPa
 
     val factionStr = lineData.get(FACTION_HEADER).get.trim
     if (factionStr.isEmpty) {
-      Logger.error("CSV Item: No faction was found at line: " + lineData + " skipping it")
+      Logger.error(s"CSV Item: No faction was found at line: ${lineData} skipping it")
       return Option.empty
     }
 
     val nameStr = lineData.get(NAME_HEADER).get.trim
     if (nameStr.isEmpty) {
-      Logger.error("CSV Item: No name was found at line: " + lineData + " skipping it")
+      Logger.error(s"CSV Item: No name was found at line: ${lineData} skipping it")
       return Option.empty
     }
 
     val rarityStr = lineData.get(RARITY_HEADER).get.trim
     if (rarityStr.isEmpty) {
-      Logger.error("CSV Item: No rarity was found at line: " + lineData + " skipping it")
+      Logger.error(s"CSV Item: No rarity was found at line: ${lineData} skipping it")
       return Option.empty
     }
 
