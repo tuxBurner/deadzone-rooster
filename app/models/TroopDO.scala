@@ -1,22 +1,49 @@
 package models
 
-import deadzone.models.CSVModels.CSVSoldierDto
+import deadzone.models.CSVModels.CSVTroopDto
 import org.apache.commons.lang3.StringUtils
 import play.api.Logger
 
 import scala.collection.mutable.ListBuffer
 
 
+/**
+  * Handles all data access which is related to a [[TroopDO]]
+  */
 object TroopDAO {
 
-  val troops: ListBuffer[TroopDO] = ListBuffer();
 
+  /**
+    * The internal storage of the [[TroopDO]] s
+    */
+  val troops: ListBuffer[TroopDO] = ListBuffer()
+
+  /**
+    * Removes all the troops from the internal list.
+    */
+  def clearAll(): Unit = {
+    troops.clear()
+  }
+
+  /**
+    * Returns all [[TroopDO]] which are from the given faction
+    *
+    * @param factionName name of the faction to look for
+    * @return a [[List]] of [[TroopDO]] of the faction.
+    */
   def findAllForFactionByName(factionName: String): List[TroopDO] = {
     troops
       .filter(_.faction.name == factionName)
       .toList
   }
 
+  /**
+    * Finds the [[TroopDO]] by the given factionName and troop name
+    *
+    * @param factionName name of the faction the [[TroopDO]] belongs to.
+    * @param name        the name of the troop
+    * @return [[Option]] which is empty when not found.
+    */
   def findByFactionAndName(factionName: String, name: String): Option[TroopDO] = {
     findAllForFactionByName(factionName)
       .find(_.soldierDto.name == name)
@@ -35,33 +62,21 @@ object TroopDAO {
   }
 
   /**
-    * Adds a troop to the databse from the csv information's
+    * Adds a troop to the database from the csv information's
     *
-    * @param soldierDto
-    * @param factionDo
+    * @param csvTroopDto the csv information'S for this new troop
+    * @param factionDo   the faction the new troop belongs to
     * @return
     */
-  def addFromCSVSoldierDto(soldierDto: CSVSoldierDto, factionDo: FactionDO): TroopDO = {
-    Logger.info("Creating troop: " + soldierDto.name + " for faction: " + factionDo.name)
+  def addFromCSVSoldierDto(csvTroopDto: CSVTroopDto, factionDo: FactionDO): TroopDO = {
+    Logger.info("Creating troop: " + csvTroopDto.name + " for faction: " + factionDo.name)
 
 
-    // find the weapons
-    val weapons = soldierDto.defaultWeaponNames
-      .map(
-        weaponName => {
-          val weapon = WeaponDAO.findByNameAndFactionAndAllowedTypes(weaponName, factionDo, soldierDto.weaponTypes.toList)
-          if (weapon.isEmpty) {
-            Logger.error("Could not add default weapon " + weaponName + " to troop: " + soldierDto.name + " faction: " + factionDo.name + " was not found in the db")
-          }
-          weapon
-        }
-      )
-      .filter(_.isDefined)
-      .map(_.get)
+    val defaultWeapons = findAllDefaultWeaponsForTroop(csvTroopDto)
 
 
     // find the allowed weapon types
-    val allowedWeaponTypes = soldierDto.weaponTypes
+    val allowedWeaponTypes = csvTroopDto.weaponTypes
       .map(
         weaponTypeName => {
           WeaponTypeDAO.findOrCreateTypeByName(weaponTypeName)
@@ -70,29 +85,18 @@ object TroopDAO {
       .toList
 
     // find the default items
-    val defaultItems = soldierDto.defaultItems
-      .map(
-        itemName => {
-          val itemDo = ItemDAO.findByNameAndFaction(itemName, factionDo)
-          if (itemDo.isEmpty == true) {
-            Logger.error("Troop: " + soldierDto.name + " in faction: " + soldierDto.faction + " cannot find item: " + itemName + " in DB.")
-          }
-          itemDo
-        }
-      )
-      .filter(_.isDefined)
-      .map(_.get)
+    val defaultItems = findAllDefaultItemsForTroop(csvTroopDto)
 
 
-    val defaultTroopAbilities = soldierDto.abilities
-      .map(DefaultTroopAbilityDAO.addAbilityForTroop(_))
+    val defaultTroopAbilities = csvTroopDto.abilities
+      .map(DefaultTroopAbilityDAO.createDefaultAbilityForTroop(_))
       .filter(_.isDefined)
       .map(_.get)
 
     val troopDO = new TroopDO(
-      soldierDto = soldierDto,
+      soldierDto = csvTroopDto,
       faction = factionDo,
-      defaultWeapons = weapons,
+      defaultWeapons = defaultWeapons,
       allowedWeaponTypes = allowedWeaponTypes,
       defaultItems = defaultItems,
       defaultTroopAbilities = defaultTroopAbilities
@@ -104,9 +108,61 @@ object TroopDAO {
     troopDO
   }
 
+  /**
+    * Finds all default weapons for the given troop
+    *
+    * @param csvTroopDto the troop from the csv import
+    * @return
+    */
+  private def findAllDefaultWeaponsForTroop(csvTroopDto: CSVTroopDto): List[WeaponDO] = {
+    csvTroopDto.defaultWeaponNames
+      .map(
+        weaponName => {
+          val weapon = WeaponDAO.findByNameAndFactionNameAndAllowedTypes(weaponName, csvTroopDto.faction, csvTroopDto.weaponTypes.toList)
+          if (weapon.isEmpty) {
+            Logger.error(s"Could not add default weapon ${weaponName} to troop: ${csvTroopDto.name} faction: ${csvTroopDto.faction} was not found in the db")
+          }
+          weapon
+        }
+      )
+      .filter(_.isDefined)
+      .map(_.get)
+  }
+
+  /**
+    * Finds all the default item the troop has.
+    *
+    * @param csvTroopDto the troop from the csv import.
+    * @return
+    */
+  private def findAllDefaultItemsForTroop(csvTroopDto: CSVTroopDto): List[ItemDO] = {
+    csvTroopDto.defaultItems
+      .map(
+        itemName => {
+          val itemDo = ItemDAO.findByNameAndFactionName(itemName, csvTroopDto.faction)
+          if (itemDo.isEmpty == true) {
+            Logger.error(s"Troop: ${csvTroopDto.name} in faction: ${csvTroopDto.faction} cannot find item: ${itemName} in DB.")
+          }
+          itemDo
+        }
+      )
+      .filter(_.isDefined)
+      .map(_.get)
+  }
+
 }
 
-case class TroopDO(soldierDto: CSVSoldierDto,
+/**
+  * Class holding all information's about a troop.
+  *
+  * @param soldierDto            the csv import entry of the soldier.
+  * @param faction               the faction the soldier belongs to.
+  * @param defaultWeapons        the default weapons for this troop
+  * @param defaultTroopAbilities the default abilities of this troop
+  * @param allowedWeaponTypes    all the weapon types which are allowed for this troop
+  * @param defaultItems          the default items of this troop
+  */
+case class TroopDO(soldierDto: CSVTroopDto,
                    faction: FactionDO,
                    defaultWeapons: List[WeaponDO] = List(),
                    defaultTroopAbilities: List[DefaultTroopAbilityDO] = List(),

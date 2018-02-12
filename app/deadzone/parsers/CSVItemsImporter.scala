@@ -1,14 +1,19 @@
 package deadzone.parsers
 
+
+
+import javax.inject.{Inject, Singleton}
+
 import deadzone.models.CSVModels.CSVItemDto
-import play.api.Logger
+import play.api.{Configuration, Logger}
 
 /**
   * @author Sebastian Hardt (s.hardt@micromata.de)
   *         Date: 15.02.17
   *         Time: 23:06
   */
-object CSVItemsImporter extends CSVDataParser {
+@Singleton()
+class CSVItemsImporter @Inject()(configuration: Configuration) extends CSVDataParser(configuration) {
 
 
   private val FACTION_HEADER = "Faction"
@@ -56,7 +61,7 @@ object CSVItemsImporter extends CSVDataParser {
       return Option.empty
     }
 
-    var points = lineData.get(POINTS_HEADER).get.toInt
+    val points = lineData.get(POINTS_HEADER).get.toInt
 
 
     val noUpgrade = lineData.get(NO_UPGREADE_HEADER).get.trim == "x"

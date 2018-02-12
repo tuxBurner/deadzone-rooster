@@ -7,25 +7,45 @@ import play.api.Logger
 import scala.collection.mutable.ListBuffer
 
 
+/**
+  * Handles all the access to the [[ItemDO]]s
+  */
 object ItemDAO {
 
+  /**
+    * Internal storage if the [[ItemDO]]s
+    */
   val items: ListBuffer[ItemDO] = ListBuffer()
+
+
+  /**
+    * Clears all items
+    */
+  def clearAll(): Unit = {
+    items.clear()
+  }
 
 
   /**
     * Gets an item by it's name and faction.
     *
-    * @param name
-    * @param factionDO
+    * @param name the name of the item
+    * @param factionDO the faction the item belongs to
     * @return
     */
   def findByNameAndFaction(name: String, factionDO: FactionDO): Option[ItemDO] = {
     findByNameAndFactionName(name, factionDO.name)
   }
 
-  def findByNameAndFactionName(name: String, faction: String): Option[ItemDO] = {
+  /**
+    * Find an item by it's name and factionName
+    * @param name the name of the item
+    * @param factionName the name of the faction
+    * @return
+    */
+  def findByNameAndFactionName(name: String, factionName: String): Option[ItemDO] = {
     items
-      .find(item => (item.name == name && item.faction.name == faction))
+      .find(item => item.name == name && item.faction.name == factionName)
   }
 
   /**
@@ -42,7 +62,7 @@ object ItemDAO {
   }
 
   /**
-    * Returns all items
+    * Returns all items sorted by there name
     *
     * @return
     */
@@ -84,7 +104,14 @@ object ItemDAO {
 
 }
 
-
+/**
+  * The class describing the item
+  * @param name the name of the item
+  * @param rarity the ratity of this item (rare/common/unique)
+  * @param faction the faction the item belongs to
+  * @param points the amount of points this item costs
+  * @param noUpdate when true this item cannot be added to a troop it is only as default item avaible.
+  */
 case class ItemDO(name: String = "",
                   rarity: String = "",
                   faction: FactionDO = null,

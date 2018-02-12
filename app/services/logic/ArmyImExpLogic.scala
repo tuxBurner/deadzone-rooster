@@ -20,7 +20,7 @@ object ArmyImExpLogic {
     */
   def armyForExport(army: ArmyDto): ArmyImpExpDto = {
     val troops = army.troops.map(troop => TroopImExpDto(troop.faction, troop.name, troop.weapons.map(_.name), troop.items.map(_.name)))
-    ArmyImpExpDto(army.name,troops = troops)
+    ArmyImpExpDto(name = army.name,troops = troops)
   }
 
   /**

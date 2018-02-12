@@ -1,9 +1,11 @@
 package deadzone.parsers
 
-import deadzone.models.CSVModels.CSVSoldierDto
+import javax.inject.{Inject, Singleton}
+
+import deadzone.models.CSVModels.CSVTroopDto
 import deadzone.models.ModelType
 import org.apache.commons.lang3.StringUtils
-import play.api.Logger
+import play.api.{Configuration, Logger}
 
 import scala.collection.mutable.ListBuffer
 
@@ -12,7 +14,8 @@ import scala.collection.mutable.ListBuffer
   *         Date: 16.02.17
   *         Time: 14:39
   */
-object CSVFactionsImporter extends CSVDataParser {
+@Singleton
+class CSVFactionsImporter @Inject()(configuration: Configuration, csvWeaponImporter: CSVWeaponImporter) extends CSVDataParser(configuration) {
 
 
   private val NAME_HEADER = "Name"
@@ -59,12 +62,12 @@ object CSVFactionsImporter extends CSVDataParser {
 
   def getSoldierForFaction(factionName: String) = soldiers.filter(_.faction == factionName)
 
-  private def importSoldiersFromCsvs(): List[CSVSoldierDto] = {
+  private def importSoldiersFromCsvs(): List[CSVTroopDto] = {
     val dataWithHeaders =  readCsvFile("deadzone/armies.csv")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 
-  private def parseLineMap(lineData: Map[String, String]): Option[CSVSoldierDto] = {
+  private def parseLineMap(lineData: Map[String, String]): Option[CSVTroopDto] = {
 
     val faction =  lineData.get(FACTION_HEADER).get
     if (faction.isEmpty == true) {
@@ -126,10 +129,10 @@ object CSVFactionsImporter extends CSVDataParser {
     val armour = lineData.get(ARMOUR_HEADER).get.trim.toInt
     var victoryPoints = lineData.get(VICTORY_POINTS_HEADER).get.trim.toInt
 
-    val hardPoints = CSVWeaponImporter.getNumberWithDefault(lineData.get(HARDPOINTS_HEADER),0)
+    val hardPoints = csvWeaponImporter.getNumberWithDefault(lineData.get(HARDPOINTS_HEADER),0)
 
     val abilitiesData = lineData.get(ABILITIES_HEADER).get.trim
-    val abilities = CSVWeaponImporter.parseAbilities(abilitiesData)
+    val abilities = csvWeaponImporter.parseAbilities(abilitiesData)
 
     val weaponsEquipmentData = lineData.get(WEAPONS_HEADER).get.trim
     val defaultWeaponNames = ListBuffer.empty[String]
@@ -138,7 +141,7 @@ object CSVFactionsImporter extends CSVDataParser {
       val splitWeapons = weaponsEquipmentData.split(',')
       splitWeapons.foreach(weaponInfo => {
         // check if the weapon is available
-        val factionWeapons = CSVWeaponImporter.getWeaponsForFaction(faction)
+        val factionWeapons = csvWeaponImporter.getWeaponsForFaction(faction)
         val trimmedWeaponName = weaponInfo.trim
         factionWeapons.find(_.name.equals(trimmedWeaponName))
           .map(matchedWeapon => {
@@ -157,7 +160,7 @@ object CSVFactionsImporter extends CSVDataParser {
 
     val imgUrl = lineData.get(IMG_URL_HEADER).getOrElse("")
 
-    Option.apply(CSVSoldierDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue, sizeValue, armour, victoryPoints, abilities, defaultWeaponNames.toList,weaponTypes,hardPoints,recon,armySpecial,items,imgUrl))
+    Option.apply(CSVTroopDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue, sizeValue, armour, victoryPoints, abilities, defaultWeaponNames.toList,weaponTypes,hardPoints,recon,armySpecial,items,imgUrl))
   }
 
   private def parsePlusValue(data: String): Int = {

@@ -1,12 +1,21 @@
 package models
 
-import deadzone.models.CSVModels.AbilityDto
+import deadzone.models.CSVModels.CsvAbilityDto
 
 
+/**
+  * Handles the data access to the default abilities a [[TroopDO]] can have
+  */
 object DefaultTroopAbilityDAO {
 
 
-  def addAbilityForTroop(abilityDto: AbilityDto): Option[DefaultTroopAbilityDO] = {
+  /**
+    * Creates a new [[DefaultTroopAbilityDO]] from the given [[CsvAbilityDto]]
+    *
+    * @param abilityDto the ability to create the [[DefaultTroopAbilityDO]] from
+    * @return
+    */
+  def createDefaultAbilityForTroop(abilityDto: CsvAbilityDto): Option[DefaultTroopAbilityDO] = {
 
     val abilityDO = AbilityDAO.addByAbilityDtos(abilityDto)
 
@@ -23,4 +32,9 @@ object DefaultTroopAbilityDAO {
 }
 
 
+/**
+  * The default ability a [[TroopDO]] has from the beginning on.
+  * @param ability the ability itself.
+  * @param defaultValue the default value this ability has for the troop.
+  */
 case class DefaultTroopAbilityDO(ability: AbilityDO, defaultValue: Int = 0)

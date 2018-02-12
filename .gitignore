@@ -7,6 +7,8 @@ target
 /.settings
 /RUNNING_PID
 
+testconfs/
+
 .~lock.*
 docker_runtimes/dev_deadzone_dockercompose/test/
 docker_runtimes/deadzone_dockercompose/data/

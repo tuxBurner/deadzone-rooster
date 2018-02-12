@@ -8,7 +8,7 @@ package deadzone.models
 object CSVModels {
 
 
-  case class AbilityDto(title: String, factor: Int = 0)
+  case class CsvAbilityDto(title: String, factor: Int = 0)
 
   case class CSVWeaponDto(faction: String,
                           name: String,
@@ -19,7 +19,7 @@ object CSVModels {
                           weaponTypes:Array[String],
                           hardPoint: Int = 0,
                           free: Boolean = false,
-                          abilities: List[AbilityDto] = List(),
+                          abilities: List[CsvAbilityDto] = List(),
                           linkedName: String = "")
 
   case class CSVItemDto(faction: String,
@@ -28,25 +28,25 @@ object CSVModels {
                         rarity: String,
                         noUpgrade: Boolean)
 
-  case class CSVSoldierDto(faction: String,
-                           name: String,
-                           points: Int,
-                           soldierType: ModelType.Value,
-                           speed: (Int, Int),
-                           shoot: Int,
-                           fight: Int,
-                           survive: Int,
-                           size: Int,
-                           armour: Int,
-                           victoryPoints: Int,
-                           abilities: List[AbilityDto],
-                           defaultWeaponNames: List[String],
-                           weaponTypes: Array[String],
-                           hardPoints:Int,
-                           recon: Int,
-                           armySpecial: String,
-                           defaultItems: List[String],
-                           imageUrl: String)
+  case class CSVTroopDto(faction: String,
+                         name: String,
+                         points: Int,
+                         soldierType: ModelType.Value,
+                         speed: (Int, Int),
+                         shoot: Int,
+                         fight: Int,
+                         survive: Int,
+                         size: Int,
+                         armour: Int,
+                         victoryPoints: Int,
+                         abilities: List[CsvAbilityDto],
+                         defaultWeaponNames: List[String],
+                         weaponTypes: Array[String],
+                         hardPoints:Int,
+                         recon: Int,
+                         armySpecial: String,
+                         defaultItems: List[String],
+                         imageUrl: String)
 
 
 }

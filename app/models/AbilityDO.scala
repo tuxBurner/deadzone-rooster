@@ -7,13 +7,24 @@ import play.api.Logger
 import scala.collection.mutable.ListBuffer
 
 
+/**
+  * Handles all data access which is related to the [[AbilityDO]]
+  */
 object AbilityDAO {
 
 
   /**
-    * The abilities which are avaible
+    * The abilities which are available
     */
   val abilities: ListBuffer[AbilityDO] = ListBuffer()
+
+
+  /**
+    * Clears all the abilities
+    */
+  def clearAll(): Unit = {
+    abilities.clear();
+  }
 
 
   /**
@@ -25,11 +36,24 @@ object AbilityDAO {
     abilities.sortBy(_.name).toList
   }
 
-  def addByAbilityDtos(abilityDto: CSVModels.AbilityDto): Option[AbilityDO] = {
-    findOrAddByName(abilityDto.title, abilityDto.factor != 0)
+  /**
+    * Adds a new [[AbilityDO]] from a csv import, when it is not already in the inernal storage.
+    *
+    * @param csvAbilityDto the csv entry to import.
+    * @return
+    */
+  def addByAbilityDtos(csvAbilityDto: CSVModels.CsvAbilityDto): Option[AbilityDO] = {
+    findOrAddByName(csvAbilityDto.title, csvAbilityDto.factor != 0)
   }
 
 
+  /**
+    * Tries to find the ability by its name and if it does not exists it will be added internally.
+    *
+    * @param name     the name of the ability
+    * @param incValue when true the ability factor can be incremented.
+    * @return
+    */
   def findOrAddByName(name: String, incValue: Boolean): Option[AbilityDO] = {
 
     if (StringUtils.isEmpty(name)) {
@@ -53,7 +77,7 @@ object AbilityDAO {
   * The Do which represents an ability
   *
   * @param name      the name of the ability
-  * @param hasIncVal When true this means the value of the ability can be incremented.
+  * @param hasIncVal when true this means the value of the ability can be incremented.
   */
 case class AbilityDO(name: String,
                      hasIncVal: Boolean = false

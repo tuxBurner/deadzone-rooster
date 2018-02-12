@@ -9,15 +9,45 @@ object WeaponDAO {
 
   val weapons: ListBuffer[WeaponDO] = ListBuffer()
 
-  def findByNameAndFactionAndAllowedTypes(name: String, factionDO: FactionDO, allowedTypes: List[String]): Option[WeaponDO] = {
-    findByNameAndFactionNameAndAllowedTypes(name, factionDO.name, allowedTypes)
+  /**
+    * Clears all weapons from this dao.
+    */
+  def clearAll(): Unit = {
+    weapons.clear();
   }
 
-  def findByNameAndFactionNameAndAllowedTypes(name: String, faction: String, allowedTypes: List[String]): Option[WeaponDO] = {
-    findByFactionAndTypes(faction, allowedTypes)
+  /**
+    * Tries to find the weapon by it's name, belonging faction and allowed types
+    *
+    * @param name         the name of the weapon
+    * @param factionDo    the faction the weapon belongs to
+    * @param allowedTypes the type the weapon must have
+    * @return
+    */
+  def findByNameAndFactionAndAllowedTypes(name: String, factionDo: FactionDO, allowedTypes: List[String]): Option[WeaponDO] = {
+    findByNameAndFactionNameAndAllowedTypes(name, factionDo.name, allowedTypes)
+  }
+
+  /**
+    * Tries to find the weapon by it's name, belonging faction and allowed types
+    *
+    * @param name         the name of the weapon
+    * @param factionName  the name of the faction the weapon belongs to
+    * @param allowedTypes the type the weapon must have
+    * @return
+    */
+  def findByNameAndFactionNameAndAllowedTypes(name: String, factionName: String, allowedTypes: List[String]): Option[WeaponDO] = {
+    findByFactionAndTypes(factionName, allowedTypes)
       .find(_.name == name)
   }
 
+  /**
+    * Returns all weapons as a [[List]] which belong to the given faction and is one of the weapon types.
+    *
+    * @param factionName the name of the faction
+    * @param weaponTypes the weapontypes the weapons must have.
+    * @return
+    */
   def findByFactionAndTypes(factionName: String, weaponTypes: List[String]): List[WeaponDO] = {
     weapons
       .filter(_.faction.name == factionName)
@@ -25,16 +55,22 @@ object WeaponDAO {
       .toList
   }
 
+  /**
+    * Adds a weapon to a faction.
+    *
+    * @param csvWeaponDto the information about the weapon from the csv entry.
+    * @param factionDo    the faction the weapon belongs to
+    * @return
+    */
   def addWeaponToFaction(csvWeaponDto: CSVWeaponDto, factionDo: FactionDO): WeaponDO = {
 
     Logger.info("Creating weapon: " + csvWeaponDto.name + " for faction: " + factionDo.name)
 
 
     val abilities = csvWeaponDto.abilities
-      .map(csvAbility => DefaultWeaponAbilityDAO.addAbilityForWeapon(csvAbility))
+      .map(csvAbility => DefaultWeaponAbilityDAO.createDefaultAbilityForWeapon(csvAbility))
       .filter(_.isDefined)
       .map(_.get)
-      .toList
 
 
     val weaponTypes = csvWeaponDto.weaponTypes.map(weaponType =>
@@ -64,6 +100,20 @@ object WeaponDAO {
 
 }
 
+/**
+  * Class for the weapon
+  * @param name the name of the weapon
+  * @param faction the faction the weapon belongs to
+  * @param weaponTypes the types the weapon belongs to like Small Arms
+  * @param victoryPoints how many vps does the weapon have
+  * @param points how many points does this weapon cost
+  * @param shootRange how far can this weapon shoot
+  * @param armorPircing the armor pircing of this weapon
+  * @param hartPoints how many hart points are used when this weapon is equipped
+  * @param free is this weapon for free ?
+  * @param linkedName when set those weapons must be used together
+  * @param defaultWeaponAbilities the abilities this weapon brings initially.
+  */
 case class WeaponDO(name: String,
                     faction: FactionDO,
                     weaponTypes: List[WeaponTypeDO] = List(),
