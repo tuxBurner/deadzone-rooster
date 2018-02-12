@@ -30,7 +30,6 @@ import play.api.{Configuration, Logger}
   private def startImportingData(): Unit = {
 
     importFactions()
-    importFactions()
 
    /* val externalConfigFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration)
     externalConfigFolder.map(folderFile => {
