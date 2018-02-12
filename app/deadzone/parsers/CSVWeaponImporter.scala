@@ -55,20 +55,20 @@ import scala.util.matching.Regex
 
     val typeStr = lineData.get(TYPE_HEADER).get.trim
     if (typeStr.isEmpty) {
-      Logger.error("CSV Weapon: No type was found at line: " + lineData + " skipping it")
+      Logger.error(s"CSV Weapon: No type was found at line: ${lineData} skipping it")
       return Option.empty
     }
     val weaponTypes = typeStr.split(',').map(_.trim)
 
     val factionStr = lineData.get(FACTION_HEADER).get.trim
     if (factionStr.isEmpty) {
-      Logger.error("CSV Weapon: No faction was found at line: " + lineData + " skipping it")
+      Logger.error(s"CSV Weapon: No faction was found at line: ${lineData} skipping it")
       return Option.empty
     }
 
     val nameStr = lineData.get(WEAPON_NAME_HEADER).get.trim
     if (nameStr.isEmpty) {
-      Logger.error("CSV Weapon: No name was found at line: " + lineData + " skipping it")
+      Logger.error(s"CSV Weapon: No name was found at line: ${lineData} skipping it")
       return Option.empty
     }
 
@@ -78,12 +78,12 @@ import scala.util.matching.Regex
 
     val range = lineData.get(RANGE_HEADER).get.trim
     if (range.isEmpty == true) {
-      Logger.error("CSV Weapon: No range was found at line: " + lineData + " skipping it")
+      Logger.error(s"CSV Weapon: No range was found at line: ${lineData} skipping it")
       return Option.empty
     }
 
     if (range.count(_ == 'R') != 1) {
-      Logger.error("CSV Weapon: Found no or multiple: R in Range for " + lineData + " skipping it")
+      Logger.error(s"CSV Weapon: Found no or multiple: R in Range for ${lineData} skipping it")
       return Option.empty
     }
 
