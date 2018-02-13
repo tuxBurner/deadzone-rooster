@@ -6,6 +6,8 @@ import javax.inject.{Inject, Singleton}
 import deadzone.models.CSVModels.CSVItemDto
 import play.api.{Configuration, Logger}
 
+import scala.collection.mutable.ListBuffer
+
 /**
   * @author Sebastian Hardt (s.hardt@micromata.de)
   *         Date: 15.02.17
@@ -26,11 +28,15 @@ class CSVItemsImporter @Inject()(configuration: Configuration) extends CSVDataPa
   private val NO_UPGREADE_HEADER = "No Upgrade"
 
 
-  lazy val items = importItemsFromCsv()
+  var items = importItemsFromCsv()
 
+
+  def refresh(): Unit = {
+    items = importItemsFromCsv()
+  }
 
   def getItemsForFaction(faction: String): List[CSVItemDto] = {
-    items.filter(_.faction.equals(faction))
+    items.filter(_.faction.equals(faction)).toList
   }
 
   private def importItemsFromCsv(): List[CSVItemDto] = {

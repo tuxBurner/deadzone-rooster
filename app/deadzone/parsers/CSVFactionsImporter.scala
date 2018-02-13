@@ -56,11 +56,16 @@ class CSVFactionsImporter @Inject()(configuration: Configuration, csvWeaponImpor
 
   private val IMG_URL_HEADER = "Img"
 
-  private lazy val soldiers = importSoldiersFromCsvs()
+  private var soldiers = importSoldiersFromCsvs()
+
+  def refresh(): Unit = {
+    soldiers = importSoldiersFromCsvs()
+  }
 
   def getAllAvaibleFactions: List[String] = soldiers.map(_.faction).toSet.toList
 
   def getSoldierForFaction(factionName: String) = soldiers.filter(_.faction == factionName)
+
 
   private def importSoldiersFromCsvs(): List[CSVTroopDto] = {
     val dataWithHeaders = readCsvFile("deadzone/armies.csv")

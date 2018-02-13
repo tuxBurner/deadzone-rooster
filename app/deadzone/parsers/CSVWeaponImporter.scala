@@ -39,7 +39,11 @@ import scala.util.matching.Regex
   private val ADD_ON_HEADER = "Add On"
 
 
-  lazy val weapons = importWeaponFromCsv()
+  var weapons = importWeaponFromCsv()
+
+  def refresh(): Unit = {
+    weapons = importWeaponFromCsv()
+  }
 
 
   def getWeaponsForFaction(faction: String): List[CSVWeaponDto] = {

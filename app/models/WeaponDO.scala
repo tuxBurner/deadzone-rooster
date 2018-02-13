@@ -64,7 +64,7 @@ object WeaponDAO {
     */
   def addWeaponToFaction(csvWeaponDto: CSVWeaponDto, factionDo: FactionDO): WeaponDO = {
 
-    Logger.info("Creating weapon: " + csvWeaponDto.name + " for faction: " + factionDo.name)
+    Logger.info(s"Creating weapon: ${csvWeaponDto.name} / ${csvWeaponDto.range} for faction: ${factionDo.name}")
 
 
     val abilities = csvWeaponDto.abilities

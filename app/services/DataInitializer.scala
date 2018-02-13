@@ -38,7 +38,14 @@ import play.api.Configuration
     if (externalCfgFolder.isDefined) {
       Logger.info("Found external config folder starting file change watching")
       val watcher = new RecursiveFileMonitor(better.files.File(externalCfgFolder.get.getAbsolutePath)) {
-        override def onCreate(file: files.File, count: Int): Unit = logAndReload(s"$file got changed reloading factions")
+
+
+
+        override def onModify(file: files.File, count: Int): Unit = {
+          if(file.name.endsWith(".csv")) {
+            logAndReload(s"$file got changed reloading factions")
+          }
+        }
       }
       import scala.concurrent.ExecutionContext.Implicits.global
       watcher.start()
@@ -66,6 +73,10 @@ import play.api.Configuration
     WeaponDAO.clearAll()
     ItemDAO.clearAll()
     TroopDAO.clearAll()
+
+    csvFactionsImporter.refresh()
+    csvItemsImporter.refresh()
+    csvWeaponImporter.refresh()
 
     val factions = csvFactionsImporter.getAllAvaibleFactions
     factions.foreach(factionName => {
