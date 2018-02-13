@@ -25,6 +25,12 @@ libraryDependencies ++= Seq(
 
 )
 
+// encapsulates the launching of the app in an empty jar. This is needed because the classpath var will be to long under windows.
+enablePlugins(LauncherJarPlugin)
+
+
+
+
 resolvers += "tuxburner.github.io" at "http://tuxburner.github.io/repo"
 resolvers += Resolver.mavenLocal
 
