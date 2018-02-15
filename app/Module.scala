@@ -1,5 +1,5 @@
 import com.google.inject.AbstractModule
-import deadzone.parsers.{CSVFactionsImporter, CSVItemsImporter, CSVWeaponImporter}
+import deadzone.parsers.{CSVArmyImporter, CSVItemsImporter, CSVWeaponImporter}
 import services.DataInitializer
 
 /**
@@ -16,7 +16,7 @@ class Module extends AbstractModule {
 
   override def configure() = {
     bind(classOf[CSVItemsImporter]).asEagerSingleton()
-    bind(classOf[CSVFactionsImporter]).asEagerSingleton()
+    bind(classOf[CSVArmyImporter]).asEagerSingleton()
     bind(classOf[CSVWeaponImporter]).asEagerSingleton()
     bind(classOf[DataInitializer]).asEagerSingleton()
   }

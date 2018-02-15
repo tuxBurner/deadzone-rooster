@@ -15,7 +15,7 @@ import scala.collection.mutable.ListBuffer
   *         Time: 14:39
   */
 @Singleton
-class CSVFactionsImporter @Inject()(configuration: Configuration, csvWeaponImporter: CSVWeaponImporter) extends CSVDataParser(configuration) {
+class CSVArmyImporter @Inject()(configuration: Configuration, csvWeaponImporter: CSVWeaponImporter) extends CSVDataParser(configuration) {
 
 
   private val NAME_HEADER = "Name"
@@ -72,32 +72,38 @@ class CSVFactionsImporter @Inject()(configuration: Configuration, csvWeaponImpor
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 
-  private def parseLineMap(lineData: Map[String, String]): Option[CSVTroopDto] = {
+  /**
+    * Parses the line data from a csv
+    *
+    * @param lineData
+    * @return
+    */
+  private def parseLineMap(lineData: Map[String, String]): List[CSVTroopDto] = {
 
-    val faction = lineData.get(FACTION_HEADER).get
-    if (faction.isEmpty == true) {
-      Logger.error(s"CSV Troop: No faction given in line: ${lineData}")
-      return Option.empty
+    val factions = lineData.get(FACTION_HEADER).get
+    if (factions.isEmpty == true) {
+      Logger.error(s"CSV Army: No factions given in line: ${lineData}")
+      return List.empty
     }
 
     val name = lineData.get(NAME_HEADER).get
     if (name.isEmpty == true) {
-      Logger.error(s"CSV Troop: No name given for soldier for faction: ${faction} in line: ${lineData}")
-      return Option.empty
+      Logger.error(s"CSV Army: No name given for soldier for faction: ${factions} in line: ${lineData}")
+      return List.empty
     }
 
 
     val pointsData = lineData.get(POINTS_HEADER).get
     if (pointsData.isEmpty == true) {
-      Logger.error(s"CSV Troop: No point given for soldier: ${name} for faction: ${faction} in line: ${lineData}")
-      return Option.empty
+      Logger.error(s"CSV Army: No point given for soldier: ${name} for faction: ${factions} in line: ${lineData}")
+      return List.empty
     }
     var points = pointsData.toInt
 
     val typeData = lineData.get(TYPE_HEADER).get
     if (typeData.isEmpty == true) {
-      Logger.error(s"CSV Troop: No type given for soldier: ${name} for faction: ${faction} in line: ${lineData}")
-      return Option.empty
+      Logger.error(s"CSV Army: No type given for soldier: ${name} for faction: ${factions} in line: ${lineData}")
+      return List.empty
     }
 
     val matchedTyp = typeData match {
@@ -109,8 +115,8 @@ class CSVFactionsImporter @Inject()(configuration: Configuration, csvWeaponImpor
       case _ => None
     }
     if (matchedTyp == None) {
-      Logger.error(s"No type matched for: ${typeData} for soldier: ${name} for faction: ${faction} in line: ${lineData}")
-      return Option.empty
+      Logger.error(s"No type matched for: ${typeData} for soldier: ${name} for faction: ${factions} in line: ${lineData}")
+      return List.empty
     }
 
     val speedData = lineData.get(SPEED_HEADER).get.trim
@@ -142,31 +148,44 @@ class CSVFactionsImporter @Inject()(configuration: Configuration, csvWeaponImpor
     val weaponsEquipmentData = lineData.get(WEAPONS_HEADER).get.trim
     val defaultWeaponNames = ListBuffer.empty[String]
 
+    val splittedFactions = splitStringByCommaAndTrim(factions)
+
     if (StringUtils.isBlank(weaponsEquipmentData) == false) {
-      val splitWeapons = weaponsEquipmentData.split(',')
+      val splitWeapons = splitStringByCommaAndTrim(weaponsEquipmentData)
+
       splitWeapons.foreach(weaponInfo => {
-        // check if the weapon is available
-        val factionWeapons = csvWeaponImporter.getWeaponsForFaction(faction)
-        val trimmedWeaponName = weaponInfo.trim
-        factionWeapons.find(_.name.equals(trimmedWeaponName))
-          .map(matchedWeapon => {
-            points -= matchedWeapon.points
-            victoryPoints -= matchedWeapon.victoryPoints
-            defaultWeaponNames += matchedWeapon.name
-          })
-          .getOrElse(
-            Logger.error(s"Weapon: ${trimmedWeaponName} not found for troop: ${name} faction: ${faction}")
-          )
+
+        // check if we have the weapons for the faction
+        splittedFactions.foreach(faction => {
+
+          // check if the weapon is available
+          val factionWeapons = csvWeaponImporter.getWeaponsForFaction(faction)
+          val trimmedWeaponName = weaponInfo.trim
+          factionWeapons.find(_.name.equals(trimmedWeaponName))
+            .map(matchedWeapon => {
+              points -= matchedWeapon.points
+              victoryPoints -= matchedWeapon.victoryPoints
+              defaultWeaponNames += matchedWeapon.name
+            })
+            .getOrElse(
+              Logger.error(s"Weapon: ${trimmedWeaponName} not found for troop: ${name} faction: ${faction}")
+            )
+        })
       })
     }
-    val weaponTypes = lineData.get(WEAPON_UPGRADES_HEADER).get.trim.split(',').map(_.trim).filter(_ != "")
+    val weaponTypes = splitStringByCommaAndTrim(lineData.get(WEAPON_UPGRADES_HEADER).get).filter(_ != "")
 
-    val items = lineData.get(ITEM_HEADER).get.trim.split(',').map(_.trim).filter(_ != "").toList
+    val items = splitStringByCommaAndTrim(lineData.get(ITEM_HEADER).get).filter(_ != "").toList
 
     val imgUrl = lineData.get(IMG_URL_HEADER).getOrElse("")
 
-    Option.apply(CSVTroopDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue, sizeValue, armour, victoryPoints, abilities, defaultWeaponNames.toList, weaponTypes, hardPoints, recon, armySpecial, items, imgUrl))
+    splittedFactions.map(faction => {
+      CSVTroopDto(faction, name, points, matchedTyp.asInstanceOf[ModelType.Value], speed, shootRange, fightValue, surviveValue, sizeValue, armour, victoryPoints, abilities, defaultWeaponNames.toList, weaponTypes, hardPoints, recon, armySpecial, items, imgUrl)
+    }).toList
+
+
   }
+
 
   private def parsePlusValue(data: String): Int = {
     val trimData = data.trim

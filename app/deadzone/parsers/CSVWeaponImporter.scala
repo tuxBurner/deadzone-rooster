@@ -50,30 +50,39 @@ import scala.util.matching.Regex
     weapons.filter(_.faction.equals(faction))
   }
 
+  /**
+    * Imports the weapons from the weapons csv
+    * @return
+    */
   private def importWeaponFromCsv(): List[CSVWeaponDto] = {
     val dataWithHeaders = readCsvFile("deadzone/weapons.csv")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 
-  private def parseLineMap(lineData: Map[String, String]): Option[CSVWeaponDto] = {
+  /**
+    * Parses the data from a line in the csv.
+    * @param lineData
+    * @return
+    */
+  private def parseLineMap(lineData: Map[String, String]): List[CSVWeaponDto] = {
 
     val typeStr = lineData.get(TYPE_HEADER).get.trim
     if (typeStr.isEmpty) {
       Logger.error(s"CSV Weapon: No type was found at line: ${lineData} skipping it")
-      return Option.empty
+      return List.empty
     }
-    val weaponTypes = typeStr.split(',').map(_.trim)
+    val weaponTypes = splitStringByCommaAndTrim(typeStr)
 
-    val factionStr = lineData.get(FACTION_HEADER).get.trim
-    if (factionStr.isEmpty) {
+    val factionsStr = lineData.get(FACTION_HEADER).get.trim
+    if (factionsStr.isEmpty) {
       Logger.error(s"CSV Weapon: No faction was found at line: ${lineData} skipping it")
-      return Option.empty
+      return List.empty
     }
 
     val nameStr = lineData.get(WEAPON_NAME_HEADER).get.trim
     if (nameStr.isEmpty) {
       Logger.error(s"CSV Weapon: No name was found at line: ${lineData} skipping it")
-      return Option.empty
+      return List.empty
     }
 
     val points = lineData.get(POINTS_HEADER).get.toInt
@@ -83,12 +92,12 @@ import scala.util.matching.Regex
     val range = lineData.get(RANGE_HEADER).get.trim
     if (range.isEmpty == true) {
       Logger.error(s"CSV Weapon: No range was found at line: ${lineData} skipping it")
-      return Option.empty
+      return List.empty
     }
 
     if (range.count(_ == 'R') != 1) {
       Logger.error(s"CSV Weapon: Found no or multiple: R in Range for ${lineData} skipping it")
-      return Option.empty
+      return List.empty
     }
 
     val rangeAsInt = range.replace("R", "").replace("F", "0").toInt
@@ -103,7 +112,19 @@ import scala.util.matching.Regex
 
     val linkedName = lineData.get(LINKED_WEAPON_NAME_HEADER).get.trim
 
-    return Option.apply(CSVWeaponDto(factionStr, nameStr, points, vps, rangeAsInt, ap, weaponTypes, hp, free, abilities, linkedName))
+     splitStringByCommaAndTrim(factionsStr).map(factionStr => {
+       CSVWeaponDto(faction =factionStr,
+         name = nameStr,
+         points = points,
+         victoryPoints =  vps,
+         range = rangeAsInt,
+         armorPircing = ap,
+         weaponTypes = weaponTypes,
+         hardPoint = hp,
+         free = free,
+         abilities = abilities,
+         linkedName = linkedName)
+     }).toList
   }
 
 
@@ -121,7 +142,7 @@ import scala.util.matching.Regex
   }
 
   def parseAbilities(abilitiesData: String): List[CsvAbilityDto] = {
-    abilitiesData.split(',').map(abilitiyInfo => {
+    splitStringByCommaAndTrim(abilitiesData).map(abilitiyInfo => {
       val titleData = abilitiyInfo.trim
       val number = CSVWeaponImporter.NUMBER_REGEX.findFirstIn(titleData).map(p => p.replace("(", "").replace(")", "").trim.toInt).getOrElse(0)
       val title = CSVWeaponImporter.NUMBER_REGEX.replaceAllIn(titleData, "")

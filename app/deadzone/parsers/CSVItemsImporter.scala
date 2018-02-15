@@ -36,7 +36,7 @@ class CSVItemsImporter @Inject()(configuration: Configuration) extends CSVDataPa
   }
 
   def getItemsForFaction(faction: String): List[CSVItemDto] = {
-    items.filter(_.faction.equals(faction)).toList
+    items.filter(_.faction.equals(faction))
   }
 
   private def importItemsFromCsv(): List[CSVItemDto] = {
@@ -44,25 +44,25 @@ class CSVItemsImporter @Inject()(configuration: Configuration) extends CSVDataPa
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 
-  private def parseLineMap(lineData: Map[String, String]): Option[CSVItemDto] = {
+  private def parseLineMap(lineData: Map[String, String]): List[CSVItemDto] = {
 
 
-    val factionStr = lineData.get(FACTION_HEADER).get.trim
-    if (factionStr.isEmpty) {
+    val factionsStr = lineData.get(FACTION_HEADER).get.trim
+    if (factionsStr.isEmpty) {
       Logger.error(s"CSV Item: No faction was found at line: ${lineData} skipping it")
-      return Option.empty
+      return List.empty
     }
 
     val nameStr = lineData.get(NAME_HEADER).get.trim
     if (nameStr.isEmpty) {
       Logger.error(s"CSV Item: No name was found at line: ${lineData} skipping it")
-      return Option.empty
+      return List.empty
     }
 
     val rarityStr = lineData.get(RARITY_HEADER).get.trim
     if (rarityStr.isEmpty) {
       Logger.error(s"CSV Item: No rarity was found at line: ${lineData} skipping it")
-      return Option.empty
+      return List.empty
     }
 
     val points = lineData.get(POINTS_HEADER).get.toInt
@@ -70,6 +70,12 @@ class CSVItemsImporter @Inject()(configuration: Configuration) extends CSVDataPa
 
     val noUpgrade = lineData.get(NO_UPGREADE_HEADER).get.trim == "x"
 
-    return Option.apply(CSVItemDto(factionStr, nameStr, points, rarityStr, noUpgrade))
+    splitStringByCommaAndTrim(factionsStr).map(factionStr => {
+      CSVItemDto(faction = factionStr,
+        name = nameStr,
+        points = points,
+        rarity = rarityStr,
+        noUpgrade = noUpgrade)
+    }).toList
   }
 }

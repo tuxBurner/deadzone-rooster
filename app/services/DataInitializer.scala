@@ -3,7 +3,7 @@ package services
 import javax.inject.{Inject, Singleton}
 
 import better.files
-import deadzone.parsers.{CSVDataParser, CSVFactionsImporter, CSVItemsImporter, CSVWeaponImporter}
+import deadzone.parsers.{CSVDataParser, CSVArmyImporter, CSVItemsImporter, CSVWeaponImporter}
 import io.methvin.better.files.RecursiveFileMonitor
 import models._
 import play.Logger
@@ -15,7 +15,7 @@ import play.api.Configuration
   * @author Sebastian Hardt (s.hardt@micromata.de)
   */
 @Singleton class DataInitializer @Inject()(configuration: Configuration,
-                                           csvFactionsImporter: CSVFactionsImporter,
+                                           csvFactionsImporter: CSVArmyImporter,
                                            csvWeaponImporter: CSVWeaponImporter,
                                            csvItemsImporter: CSVItemsImporter) {
 

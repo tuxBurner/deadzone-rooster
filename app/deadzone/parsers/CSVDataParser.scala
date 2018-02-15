@@ -40,6 +40,16 @@ class CSVDataParser(configuration: Configuration) {
   }
 
 
+  /**
+    * Splits the given string by , and trims the results
+    * @param stringToSplit the string to split
+    * @return an [[Array[String]]
+    */
+  def splitStringByCommaAndTrim(stringToSplit: String): Array[String] = {
+    stringToSplit.split(',').map(_.trim)
+  }
+
+
 }
 
 object CSVDataParser {
