@@ -2,7 +2,7 @@ package deadzone.parsers
 
 import java.io.File
 
-import com.github.tototoshi.csv.CSVReader
+import com.github.tototoshi.csv.{CSVReader, DefaultCSVFormat}
 import org.apache.commons.lang3.StringUtils
 import play.api.{Configuration, Logger}
 
@@ -24,7 +24,11 @@ class CSVDataParser(configuration: Configuration) {
     */
   def readCsvFile(path: String): List[Map[String, String]] = {
 
-    val configuredExternalFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration);
+    val configuredExternalFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration)
+
+    implicit object MyFormat extends DefaultCSVFormat {
+      override val delimiter = ';'
+    }
 
     val reader = configuredExternalFolder.map(externalConfFolder => {
       val confFile = new File(externalConfFolder, path)

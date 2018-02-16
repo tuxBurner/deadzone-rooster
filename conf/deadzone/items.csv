@@ -1,71 +1,71 @@
-Faction,Item,Points,Rarity,No Upgrade
-Enforcers,Jump Pack,0,Common,x
-Enforcers,Ammo,2,Common,
-Enforcers,AP Ammo,4,Rare,
-Enforcers,Defender Shield,5,Rare,
-Enforcers,Frag Grenade,6,Common,
-Enforcers,Holo Sight,8,Rare,
-Enforcers,Medi-Pack,5,Common,
-Enforcers,Sentry Gun,8,Rare,
-Enforcers,Smoke Grenade,3,Common,
-Enforcers,Thermal Mines,4,Rare,
-Enforcers,Mono-Wheel Scout Bike,12,Unique,
-Forge Fathers,Ammo,2,Common,
-Forge Fathers,AP Ammo,4,Rare,
-Forge Fathers,Frag Grenade,6,Common,
-Forge Fathers,Smoke Grenade,3,Common,
-Forge Fathers,Holo Sight,8,Rare,
-Forge Fathers,Medi-Pack,5,Common,
-Forge Fathers,Thermal Mines,4,Rare,
-Plague,Jump Pack,0,Common,x
-Plague,Ammo,2,Common,
-Plague,AP Ammo,4,Rare,
-Plague,Energy Shield(3),12,Unique,
-Plague,Frag Grenade,6,Common,
-Plague,Holo Sight,8,Rare,
-Plague,Smoke Grenade,3,Common,
-Plague,Medi-Pack,5,Common,
-Asterians,Ammo,2,Common,
-Asterians,AP Ammo,4,Rare,
-Asterians,Energy Shield(2),5,Unique,
-Asterians,Energy Shield(3),7,Unique,
-Asterians,Energy Shield(4),9,Unique,
-Asterians,Frag Grenade,6,Common,
-Asterians,Holo Sight,8,Rare,
-Asterians,Smoke Grenade,3,Common,
-Asterians,Medi-Pack,5,Common,
-Asterians,Stun Grenade,4,Rare,
-Asterians,Jump Pack,0,Common,x
-Marauders,Jump Pack,0,Common,x
-Marauders,Ammo,2,Common,
-Marauders,AP Ammo,4,Rare,
-Marauders,Holo Sight,8,Rare,
-Marauders,Frag Grenade,6,Common,
-Marauders,Medi-Pack,5,Common,
-Marauders,Smoke Grenade,3,Common,
-Veer-Myn,Ammo,2,Common,
-Veer-Myn,AP Ammo,4,Rare,
-Veer-Myn,Frag Grenade,6,Common,
-Veer-Myn,Smoke Grenade,3,Common,
-Rebs,Ammo,2,Common,
-Rebs,AP Ammo,4,Rare,
-Rebs,Holo Sight,8,Rare,
-Rebs,Frag Grenade,6,Common,
-Rebs,Medi-Pack,5,Common,
-Rebs,Smoke Grenade,3,Common,
-Rebs,Energy Shield(3),12,Unique,
-Rebs,Stun Grenade,4,Rare,
-Asterians,M|Energy Shield(1),0,Common,x
-Enforcers,M|Energy Shield(1),0,Common,x
-Forge Fathers,M|Energy Shield(1),0,Common,x
-Marauders,M|Energy Shield(1),0,Common,x
-Plague,M|Energy Shield(1),0,Common,x
-Veer-Myn,M|Energy Shield(1),0,Common,x
-Rebs,M|Energy Shield(1),0,Common,x
-Asterians,M|Energy Shield(2),0,Common,x
-Enforcers,M|Energy Shield(2),0,Common,x
-Forge Fathers,M|Energy Shield(2),0,Common,x
-Marauders,M|Energy Shield(2),0,Common,x
-Plague,M|Energy Shield(2),0,Common,x
-Veer-Myn,M|Energy Shield(2),0,Common,x
-Rebs,M|Energy Shield(2),0,Common,x
+Faction;Item;Points;Rarity;No Upgrade
+Enforcers;Jump Pack;0;Common;x
+Enforcers;Ammo;2;Common;
+Enforcers;AP Ammo;4;Rare;
+Enforcers;Defender Shield;5;Rare;
+Enforcers;Frag Grenade;6;Common;
+Enforcers;Holo Sight;8;Rare;
+Enforcers;Medi-Pack;5;Common;
+Enforcers;Sentry Gun;8;Rare;
+Enforcers;Smoke Grenade;3;Common;
+Enforcers;Thermal Mines;4;Rare;
+Enforcers;Mono-Wheel Scout Bike;12;Unique;
+Forge Fathers;Ammo;2;Common;
+Forge Fathers;AP Ammo;4;Rare;
+Forge Fathers;Frag Grenade;6;Common;
+Forge Fathers;Smoke Grenade;3;Common;
+Forge Fathers;Holo Sight;8;Rare;
+Forge Fathers;Medi-Pack;5;Common;
+Forge Fathers;Thermal Mines;4;Rare;
+Plague;Jump Pack;0;Common;x
+Plague;Ammo;2;Common;
+Plague;AP Ammo;4;Rare;
+Plague;Energy Shield(3);12;Unique;
+Plague;Frag Grenade;6;Common;
+Plague;Holo Sight;8;Rare;
+Plague;Smoke Grenade;3;Common;
+Plague;Medi-Pack;5;Common;
+Asterians;Ammo;2;Common;
+Asterians;AP Ammo;4;Rare;
+Asterians;Energy Shield(2);5;Unique;
+Asterians;Energy Shield(3);7;Unique;
+Asterians;Energy Shield(4);9;Unique;
+Asterians;Frag Grenade;6;Common;
+Asterians;Holo Sight;8;Rare;
+Asterians;Smoke Grenade;3;Common;
+Asterians;Medi-Pack;5;Common;
+Asterians;Stun Grenade;4;Rare;
+Asterians;Jump Pack;0;Common;x
+Marauders;Jump Pack;0;Common;x
+Marauders;Ammo;2;Common;
+Marauders;AP Ammo;4;Rare;
+Marauders;Holo Sight;8;Rare;
+Marauders;Frag Grenade;6;Common;
+Marauders;Medi-Pack;5;Common;
+Marauders;Smoke Grenade;3;Common;
+Veer-Myn;Ammo;2;Common;
+Veer-Myn;AP Ammo;4;Rare;
+Veer-Myn;Frag Grenade;6;Common;
+Veer-Myn;Smoke Grenade;3;Common;
+Rebs;Ammo;2;Common;
+Rebs;AP Ammo;4;Rare;
+Rebs;Holo Sight;8;Rare;
+Rebs;Frag Grenade;6;Common;
+Rebs;Medi-Pack;5;Common;
+Rebs;Smoke Grenade;3;Common;
+Rebs;Energy Shield(3);12;Unique;
+Rebs;Stun Grenade;4;Rare;
+Asterians;M|Energy Shield(1);0;Common;x
+Enforcers;M|Energy Shield(1);0;Common;x
+Forge Fathers;M|Energy Shield(1);0;Common;x
+Marauders;M|Energy Shield(1);0;Common;x
+Plague;M|Energy Shield(1);0;Common;x
+Veer-Myn;M|Energy Shield(1);0;Common;x
+Rebs;M|Energy Shield(1);0;Common;x
+Asterians;M|Energy Shield(2);0;Common;x
+Enforcers;M|Energy Shield(2);0;Common;x
+Forge Fathers;M|Energy Shield(2);0;Common;x
+Marauders;M|Energy Shield(2);0;Common;x
+Plague;M|Energy Shield(2);0;Common;x
+Veer-Myn;M|Energy Shield(2);0;Common;x
+Rebs;M|Energy Shield(2);0;Common;x

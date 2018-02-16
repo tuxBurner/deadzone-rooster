@@ -1,304 +1,304 @@
-Faction,Weapon,Points,VPs,Range,AP,Abilities,Type,Hardpoints,Add On,LinkedName
-Enforcers,Pistol,0,0,R3,0,,"Small Arms,Pathfinder Sergeant",,x,
-Enforcers,Laser Rifle,2,0,R6,0,Rapid Fire,Small Arms,,,
-Enforcers,Incinerator,4,0,R2,0,"Volatile, It Burns!","Light Assault, Heavy Assault",,,
-Enforcers,Burst Laser,4,0,R8,0,"Weight of Fire(1), Suppression","Light Automatic, Heavy Automatic",,,
-Enforcers,Thermal Rifle,7,1,R3,2,,Light Assault,,,
-Enforcers,Fusion Gun,6,1,R4,0,"Heavy, Frag(3)",Light Assault,,,
-Enforcers,Missile Launcher,8,1,R8,5,Heavy,Light Explosive,,,
-Enforcers,Sniper Rifle,12,1,R10,0,"Heavy, Sniper Scope",Light Sniper,,,
-Enforcers,DB Laser Rifle,3,0,R6,0,"Weight of Fire(1), Rapid Fire","Heavy Automatic, Peacekeeper Captain",,,
-Enforcers,Energy Gauntlet,3,0,RF,0,Knockback,Light Melee,,,
-Enforcers,Tag Rifle,8,0,R6,0,Tag,Recon,,,
-Enforcers,Combat Shotgun,1,0,R2,0,Knockback,Small Arms,,,
-Enforcers,Wristblade,5,0,RF,1,,Light Melee,,,
-Enforcers,Equalizer,10,1,R12,4,,Walker Lance,2,,
-Enforcers,Electro-Shock,0,0,RF,0,Knockback,Electro-Shock,,,
-Enforcers,Assault Flamer,6,1,R2,0,"Volatile, It Burns!",Walker Assault,1,,
-Enforcers,Chainsaw,5,0,RF,1,,Walker Melee,1,,
-Enforcers,Heavy Burst Laser,8,1,R10,0,"Suppression, Weight of Fire(2)",Walker Automatic,2,,
-Enforcers,Strider Aggressor Shield,10,1,RF,0,Walker Shield,Walker Shield,1,,
-Enforcers,Strider Grav-ram Spear (RF),15,1,RF,2,,Walker Explosive,,,Strider Grav-ram Spear
-Enforcers,Strider Grav-ram Spear,0,0,R4,2,Frag(3),Walker Explosive,,,Strider Grav-ram Spear
-Forge Fathers,Forge Hammer,5,0,RF,1,,"Light Melee, Forge Guard, Steel Warrior Huscarl",,,
-Forge Fathers,Hailstorm Rifle,3,0,R6,1,Rapid Fire,"Small Arms, Forge Guard Huscarl,Forge Guard",,,
-Forge Fathers,Burst Pistol,0,0,R3,0,Rapid Fire,Small Arms,,x,
-Forge Fathers,Hailstorm Pistol,3,0,R4,0,"Weight of Fire(1), Rapid Fire",Light Automatic,,,
-Forge Fathers,Missile Launcher,8,1,R10,5,Heavy,Light Explosive,,,
-Forge Fathers,Twin Hailstorm Rifles,5,0,R6,1,"Weight of Fire(1), Rapid Fire",Bike Automatic,,,
-Forge Fathers,Magma Rifle,7,1,R3,2,It Burns!,Light Assault,,,
-Forge Fathers,Magma Cannon,8,1,R5,3,,Heavy Assault,,,
-Forge Fathers,Twin Hailstorm Pistols,6,0,R4,0,"Weight of Fire(2), Rapid Fire",Light Automatic,,,
-Forge Fathers,Twin Magma Cannon,8,1,R4,3,Weight of Fire(1),Walker Lance,,,
-Forge Fathers,Power Claw and Flamer (Claw),13,1,RF,3,,Walker Assault,,,Power Claw and Flamer
-Forge Fathers,Power Claw and Flamer (Flamer),0,0,R2,0,It Burns!,Walker Assault,,,Power Claw and Flamer
-Forge Fathers,Twin Hailstorm Autocannons,8,1,R8,1,Weight of Fire(1),Walker Automatic,,,
-Forge Fathers,Dragon’s Breath,4,0,R2,0,It Burns!,Light Assault,,,
-Forge Fathers,Hailstorm Autocannon,8,1,R8,1,"Weight of Fire(1), Suppression",Heavy Automatic,,,
-Forge Fathers,Twin Forge Hammers,5,1,RF,2,,Thor Pattern Iron Ancestor,,,
-Forge Fathers,Mining Laser,0,0,R24,3,Heavy,Inferno Drill,,,
-Plague,Heavy Burst Laser,8,1,R10,0,"Suppression, Weight of Fire(2)",Walker Automatic,2,,
-Rebs,Heavy Burst Laser,8,1,R10,0,"Suppression, Weight of Fire(2)",Walker Automatic,2,,
-Plague,Pistol,0,0,R3,0,,Small Arms,,x,
-Plague,Rifle,2,0,R6,0,Rapid Fire,Small Arms,,,
-Plague,HMG,4,0,R6,0,"Weight of Fire(1), Suppression",Light Automatic,,,
-Plague,Grenade Launcher,8,1,R5,0,Indirect(3),Light Explosive,,,
-Plague,Mortar,12,1,R8,0,"Indirect(4),Heavy,Slow Reload",Light Artillery,,,
-Plague,Experimental Weapon,5,1,R5,0,Experimental,Heavy Automatic,,,
-Plague,Chainsaw,5,0,RF,1,,Walker Melee,1,,
-Plague,Polaris Cannon (Genling 88),10,1,R10,4,,Walker Lance,2,,
-Plague,Talons,0,0,RF,1,,Talons ,,,
-Plague,Talons Aberration,0,0,RF,2,Knockback,Talons Aberration,,,
-Plague,Claws,0,0,RF,0,Knockback,Claws Teraton,,,
-Plague,Acid Bite,0,0,RF,2,,Acid Bite Swarm,,,
-Asterians,Energy Bow,1,0,R4,0,,Kalyshi,,,
-Asterians,Glaive,7,1,RF,1,Frenzy(1),Kalyshi,,,
-Asterians,Charge Glove (Energy Pulse),1,0,R1,0,Knockback,Small Arms,,,
-Asterians,Charge Glove,3,0,RF,0,Knockback,Small Arms,,,
-Asterians,Staff of Command,6,1,RF,2,,Overseer,,,
-Asterians,Lightblade,6,1,RF,2,,Light Melee,,,
-Asterians,Grenade Launcher,8,1,R5,0,Indirect(3),Light Explosive,,,
-Asterians,Phlogistor,5,0,R2,1,It Burns!,Light Assault,,,
-Asterians,Sniper Rifle,13,1,R8,1,"Heavy, Sniper Scope",Light Sniper,,,
-Asterians,Force Rifle,3,0,R5,0,Blast,Light Explosive,,,
-Asterians,Fission Beamer,12,1,R10,5,Heavy,"Platform Lance, Heavy Lance",,,
-Asterians,Light Missile Launcher,8,1,R7,2,,Light Explosive,,,
-Asterians,Noh Rifle,2,0,R5,0,,"Small Arms, Cypher Specialist",,,
-Asterians,Noh Pistol,0,0,R3,0,,Small Arms,,x,
-Asterians,Twin Noh Rifles,3,0,R5,0,Weight of Fire(1),Bike Automatic,,,
-Asterians,Plasma Vortex,18,2,R4,1,Frag(5),Platform Explosive,,,
-Asterians,Pulse Bombard,18,2,R8,0,Indirect(4),Platform Artillery,,,
-Asterians,Shield Generator,12,1,R0,0,Shield Generator(4),Platform Shield,,,
-Marauders,Pistol,0,0,R3,0,,Small Arms,,x,
-Marauders,Heavy Pistol,3,0,R4,0,Weight of Fire(1),Small Arms,,,
-Marauders,Claw,5,0,RF,1,,Light Melee,,,
-Marauders,Ripper Talon,8,0,RF,2,,Light Melee,,,
-Marauders,Thermal Cannon,3,0,R4,1,,Walker Assault,,,
-Marauders,Auxiliary Flamer,4,0,R2,0,"One Use, It Burns!",Walker Assault,,,
-Marauders,Chainmaw,5,0,RF,1,,Light Beast,,,
-Marauders,Rifle,2,0,R6,0,Rapid Fire,Small Arms,,,
-Marauders,Flamer,4,0,R2,0,"Volatile, It Burns!",Light Assault,,,
-Marauders,HMG,4,0,R6,0,"Weight of Fire(1),Suppression",Light Automatic,,,
-Marauders,Buzzsaw,7,1,RF,1,Frenzy(1),"Walker Melee, Heavy Melee",,,
-Marauders,Ram,3,0,RF,0,Knockback,Heavy Melee,,,
-Marauders,Rotary Cannon,3,0,R5,0,"Weight of Fire(1), Rapid Fire",Heavy Automatic,,,
-Marauders,HEW Beamer,8,1,R7,3,,Heavy Lance,,,
-Marauders,Frag Launchers,6,1,R3,0,Frag(3),Heavy Explosive,,,
-Marauders,Rocket Salvo,10,1,R8,0,"Indirect(3), One Use",Heavy Explosive,,,
-Marauders,HEW Cannon,10,2,R12,5,"Heavy, Weight of Fire(1)","Vehicle Lance, Hulk",,,
-Marauders,Heavy Mortar,12,2,R10,0,"Indirect(4),Heavy",Vehicle Artillery,,,
-Marauders,Heavy Rifle,13,1,R8,1,"Heavy, Sniper Scope",Light Sniper,,,
-Veer-Myn,Ray Pistol,0,0,R2,0,,Small Arms,,x,
-Veer-Myn,Ray Gun,3,0,R4,0,"Weight of Fire(1), Rapid Fire",Small Arms,,,
-Veer-Myn,Chem Staff,5,1,R1,1,It Burns!,Leader,,,
-Veer-Myn,Spitter Rifle,12,1,R6,1,"Sniper Scope, Heavy",Leader,,,
-Veer-Myn,Chem Thrower,4,0,R1,1,"Volatile, It Burns!",Light Assault,,,
-Veer-Myn,Chem Spitter,9,1,R6,2,Rapid Fire,Light Automatic,,,
-Veer-Myn,Chemical Grenade Launcher,12,1,R5,0,Indirect(4),Light Explosive,,,
-Veer-Myn,Det Packs (Mag Lock),4,0,RF,2,,Light Explosive,,,
-Veer-Myn,Det Packs (Prox Fuse),4,0,R1,2,,Light Explosive,,,
-Veer-Myn,Big Drill,5,0,RF,1,,Heavy Melee,,,
-Veer-Myn,Two-Handed Drill,8,1,RF,3,,Heavy Melee,2,,
-Veer-Myn,Pair of Drills,7,1,RF,1,Frenzy(1),Heavy Melee,2,,
-Veer-Myn,Heavy Chem Thrower,9,1,R3,1,"Volatile, It Burns!, Heavy",Heavy Assault,2,,
-Veer-Myn,Super Heavy Chem Thrower,12,1,R3,2,"Volatile, It Burns!, Heavy",Vehicle Assault,,,
-Veer-Myn,Scythes,7,1,RF,1,Frenzy(1),"Heavy Beast, Beast Melee",,,
-Veer-Myn,Super Heavy Chem Spitter,12,1,R8,2,"Weight of Fire(1), Suppression, Heavy",Vehicle Automatic,,,
-Veer-Myn,Heavy Chem Spitter,8,1,R5,3,,"Heavy Beast, Beast Ranged",,,
-Veer-Myn,Visions of Glory,0,0,R4,0,Invigorate,Tangle,,,
-Veer-Myn,Psychic Visions of Death,0,0,R5,0,"Stun, Psychic",Tangle,,,
-Veer-Myn,Claws,0,0,RF,1,,Brood Mother,,,
-Rebs,Pistol,0,0,R3,0,,Small Arms,,x,
-Rebs,Rifle,2,0,R6,0,Rapid Fire,Small Arms,,,
-Rebs,Long Rifle,3,0,R8,0,,Small Arms,,,
-Rebs,Assault Flamer,6,1,R2,0,"Volatile, It Burns!",Walker Assault,,,
-Rebs,Chainsaw,5,1,RF,1,,Walker Melee,,,
-Rebs,Sniper Rifle,16,0,R8,0,Sniper Scope,Light Sniper,,,
-Rebs,Polaris Cannon (Genling 88),10,1,R10,4,,Walker Lance,2,,
-Rebs,Onslaught Cannon,3,1,R5,0,"Weight of Fire(1), Suppression",Heavy Automatic,,,
-Rebs,Desolator,8,1,R8,2,,Heavy Lance,,,
-Rebs,Missile Launcher,8,1,R10,4,"Heavy, Slow Reload",Light Explosive,,,
-Rebs,Ceremonial Blades,5,1,RF,1,,Light Melee,,,
-Rebs,Grenade Launcher,3,0,R3,0,"One Use, Frag(3)","Light Explosive, Rebel Teraton",,,
-Rebs,Hand Flamer,4,0,R2,0,"One Use, It Burns!",Light Assault,,,
-Rebs,Wrist Blaster,2,0,R3,0,Blast,Light Assault,,,
-Rebs,Blaster,3,0,R4,0,Blast,Light Automatic,,,
-Rebs,Combat Blades,5,0,RF,0,Frenzy(1),Light Melee,,,
-Rebs,Mata Magma Lance,0,0,R5,2,,Sphyr Lancer,,,
-Rebs,Twin Pistols,0,0,R3,0,Weight of Fire(1),Rin Nomad,,,
-Rebs,Twin Knives,0,0,RF,0,Frenzy(1),Rin Nomad,,,
-Enforcers,Claws,0,0,RF,2,,Sergeant Howlett,,,
-Plague,Nuka,0,0,RF,2,Knockback,Aqissiaq,,,
-Rebs,Crossbow,0,0,R6,1,,Eddak P‘Mera,,,
-Asterians,Decapitator,0,0,RF,3,,Chief Radgrad,,,
-Enforcers,Decapitator,0,0,RF,3,,Chief Radgrad,,,
-Forge Fathers,Decapitator,0,0,RF,3,,Chief Radgrad,,,
-Marauders,Decapitator,0,0,RF,3,,Chief Radgrad,,,
-Plague,Decapitator,0,0,RF,3,,Chief Radgrad,,,
-Veer-Myn,Decapitator,0,0,RF,3,,Chief Radgrad,,,
-Rebs,Decapitator,0,0,RF,3,,Chief Radgrad,,,
-Asterians,Twin Blasters,0,0,R4,2,Weight of Fire(1),Chief Radgrad,,,
-Enforcers,Twin Blasters,0,0,R4,2,Weight of Fire(1),Chief Radgrad,,,
-Forge Fathers,Twin Blasters,0,0,R4,2,Weight of Fire(1),Chief Radgrad,,,
-Marauders,Twin Blasters,0,0,R4,2,Weight of Fire(1),Chief Radgrad,,,
-Plague,Twin Blasters,0,0,R4,2,Weight of Fire(1),Chief Radgrad,,,
-Veer-Myn,Twin Blasters,0,0,R4,2,Weight of Fire(1),Chief Radgrad,,,
-Rebs,Twin Blasters,0,0,R4,2,Weight of Fire(1),Chief Radgrad,,,
-Asterians,Frag Grenades,0,0,R3,0,"Frag(3), Grenade",Boomer Grenadier,,,
-Enforcers,Frag Grenades,0,0,R3,0,"Frag(3), Grenade",Boomer Grenadier,,,
-Forge Fathers,Frag Grenades,0,0,R3,0,"Frag(3), Grenade",Boomer Grenadier,,,
-Marauders,Frag Grenades,0,0,R3,0,"Frag(3), Grenade",Boomer Grenadier,,,
-Plague,Frag Grenades,0,0,R3,0,"Frag(3), Grenade",Boomer Grenadier,,,
-Veer-Myn,Frag Grenades,0,0,R3,0,"Frag(3), Grenade",Boomer Grenadier,,,
-Rebs,Frag Grenades,0,0,R3,0,"Frag(3), Grenade",Boomer Grenadier,,,
-Asterians,Smoke Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Enforcers,Smoke Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Forge Fathers,Smoke Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Marauders,Smoke Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Plague,Smoke Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Veer-Myn,Smoke Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Rebs,Smoke Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Asterians,Stun Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Enforcers,Stun Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Forge Fathers,Stun Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Marauders,Stun Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Plague,Stun Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Veer-Myn,Stun Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Rebs,Stun Grenades,0,0,R3,0,Grenade,Boomer Grenadier,,,
-Asterians,Xerxes Cannon,0,0,R6,3,"Heavy, It Burns!",The Helfather,,,
-Enforcers,Xerxes Cannon,0,0,R6,3,"Heavy, It Burns!",The Helfather,,,
-Forge Fathers,Xerxes Cannon,0,0,R6,3,"Heavy, It Burns!",The Helfather,,,
-Marauders,Xerxes Cannon,0,0,R6,3,"Heavy, It Burns!",The Helfather,,,
-Plague,Xerxes Cannon,0,0,R6,3,"Heavy, It Burns!",The Helfather,,,
-Veer-Myn,Xerxes Cannon,0,0,R6,3,"Heavy, It Burns!",The Helfather,,,
-Rebs,Xerxes Cannon,0,0,R6,3,"Heavy, It Burns!",The Helfather,,,
-Asterians,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,,
-Enforcers,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,,
-Forge Fathers,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),"Freya, Steel Warrior Huscarl",,,
-Marauders,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,,
-Plague,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,,
-Veer-Myn,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,,
-Rebs,Hailstorm Pistol,0,0,R4,0,Weight of Fire(1),Freya,,,
-Asterians,Sniper Rifle,0,0,R14,1,Sniper Scope,Nastanza,,,
-Enforcers,Sniper Rifle,0,0,R14,1,Sniper Scope,Nastanza,,,
-Forge Fathers,Sniper Rifle,0,0,R14,1,Sniper Scope,Nastanza,,,
-Marauders,Sniper Rifle,0,0,R14,1,Sniper Scope,Nastanza,,,
-Plague,Sniper Rifle,0,0,R14,1,Sniper Scope,Nastanza,,,
-Veer-Myn,Sniper Rifle,0,0,R14,1,Sniper Scope,Nastanza,,,
-Rebs,Sniper Rifle,0,0,R14,1,Sniper Scope,Nastanza,,,
-Asterians,Fusion Gauntlet,0,0,R4,0,"Frag(3), One Use",Wrath,,,
-Forge Fathers,Fusion Gauntlet,0,0,R4,0,"Frag(3), One Use",Wrath,,,
-Marauders,Fusion Gauntlet,0,0,R4,0,"Frag(3), One Use",Wrath,,,
-Plague,Fusion Gauntlet,0,0,R4,0,"Frag(3), One Use",Wrath,,,
-Veer-Myn,Fusion Gauntlet,0,0,R4,0,"Frag(3), One Use",Wrath,,,
-Rebs,Fusion Gauntlet,0,0,R4,0,"Frag(3), One Use",Wrath,,,
-Asterians,Praetorian Pistol,0,0,R4,1,It Burns!,Wrath,,,
-Forge Fathers,Praetorian Pistol,0,0,R4,1,It Burns!,Wrath,,,
-Marauders,Praetorian Pistol,0,0,R4,1,It Burns!,Wrath,,,
-Plague,Praetorian Pistol,0,0,R4,1,It Burns!,Wrath,,,
-Veer-Myn,Praetorian Pistol,0,0,R4,1,It Burns!,Wrath,,,
-Rebs,Praetorian Pistol,0,0,R4,1,It Burns!,Wrath,,,
-Asterians,Blade of the Seven,0,0,RF,1,,Wrath,,,
-Forge Fathers,Blade of the Seven,0,0,RF,1,,Wrath,,,
-Marauders,Blade of the Seven,0,0,RF,1,,Wrath,,,
-Plague,Blade of the Seven,0,0,RF,1,,Wrath,,,
-Veer-Myn,Blade of the Seven,0,0,RF,1,,Wrath,,,
-Rebs,Blade of the Seven,0,0,RF,1,,Wrath,,,
-Asterians,Mind Storm,0,0,R4,0,"Blast, Psychic",Chovar Psychic,,,
-Enforcers,Mind Storm,0,0,R4,0,"Blast, Psychic",Chovar Psychic,,,
-Forge Fathers,Mind Storm,0,0,R4,0,"Blast, Psychic",Chovar Psychic,,,
-Marauders,Mind Storm,0,0,R4,0,"Blast, Psychic",Chovar Psychic,,,
-Plague,Mind Storm,0,0,R4,0,"Blast, Psychic",Chovar Psychic,,,
-Veer-Myn,Mind Storm,0,0,R4,0,"Blast, Psychic",Chovar Psychic,,,
-Rebs,Mind Storm,0,0,R4,0,"Blast, Psychic",Chovar Psychic,,,
-Asterians,Blank,0,0,R4,0,"Stun, Psychic",Chovar Psychic,,,
-Enforcers,Blank,0,0,R4,0,"Stun, Psychic",Chovar Psychic,,,
-Forge Fathers,Blank,0,0,R4,0,"Stun, Psychic",Chovar Psychic,,,
-Marauders,Blank,0,0,R4,0,"Stun, Psychic",Chovar Psychic,,,
-Plague,Blank,0,0,R4,0,"Stun, Psychic",Chovar Psychic,,,
-Veer-Myn,Blank,0,0,R4,0,"Stun, Psychic",Chovar Psychic,,,
-Rebs,Blank,0,0,R4,0,"Stun, Psychic",Chovar Psychic,,,
-Asterians,Passion,0,0,R4,0,"Invigorate, Psychic",Chovar Psychic,,,
-Enforcers,Passion,0,0,R4,0,"Invigorate, Psychic",Chovar Psychic,,,
-Forge Fathers,Passion,0,0,R4,0,"Invigorate, Psychic",Chovar Psychic,,,
-Marauders,Passion,0,0,R4,0,"Invigorate, Psychic",Chovar Psychic,,,
-Plague,Passion,0,0,R4,0,"Invigorate, Psychic",Chovar Psychic,,,
-Veer-Myn,Passion,0,0,R4,0,"Invigorate, Psychic",Chovar Psychic,,,
-Rebs,Passion,0,0,R4,0,"Invigorate, Psychic",Chovar Psychic,,,
-Asterians,Sawn-Off,0,0,R2,0,Knockback,The Survivor,,,
-Enforcers,Sawn-Off,0,0,R2,0,Knockback,The Survivor,,,
-Forge Fathers,Sawn-Off,0,0,R2,0,Knockback,The Survivor,,,
-Marauders,Sawn-Off,0,0,R2,0,Knockback,The Survivor,,,
-Plague,Sawn-Off,0,0,R2,0,Knockback,The Survivor,,,
-Veer-Myn,Sawn-Off,0,0,R2,0,Knockback,The Survivor,,,
-Rebs,Sawn-Off,0,0,R2,0,Knockback,The Survivor,,,
-Asterians,Needler,0,0,R4,1,,Project Oberon,,,
-Enforcers,Needler,0,0,R4,1,,Project Oberon,,,
-Forge Fathers,Needler,0,0,R4,1,,Project Oberon,,,
-Marauders,Needler,0,0,R4,1,,Project Oberon,,,
-Plague,Needler,0,0,R4,1,,Project Oberon,,,
-Veer-Myn,Needler,0,0,R4,1,,Project Oberon,,,
-Rebs,Needler,0,0,R4,1,,Project Oberon,,,
-Asterians,Toxic Shards,0,0,RF,1,Toxic,Project Oberon,,,
-Enforcers,Toxic Shards,0,0,RF,1,Toxic,Project Oberon,,,
-Forge Fathers,Toxic Shards,0,0,RF,1,Toxic,Project Oberon,,,
-Marauders,Toxic Shards,0,0,RF,1,Toxic,Project Oberon,,,
-Plague,Toxic Shards,0,0,RF,1,Toxic,Project Oberon,,,
-Veer-Myn,Toxic Shards,0,0,RF,1,Toxic,Project Oberon,,,
-Rebs,Toxic Shards,0,0,RF,1,Toxic,Project Oberon,,,
-Asterians,Raskan Punch-Blade,0,0,RF,2,,Blaine,,,
-Enforcers,Raskan Punch-Blade,0,0,RF,2,,Blaine,,,
-Forge Fathers,Raskan Punch-Blade,0,0,RF,2,,Blaine,,,
-Marauders,Raskan Punch-Blade,0,0,RF,2,,Blaine,,,
-Plague,Raskan Punch-Blade,0,0,RF,2,,Blaine,,,
-Veer-Myn,Raskan Punch-Blade,0,0,RF,2,,Blaine,,,
-Rebs,Raskan Punch-Blade,0,0,RF,2,,Blaine,,,
-Asterians,Wicked Blades,0,0,RF,2,,Blaine on Jetbike,,,
-Enforcers,Wicked Blades,0,0,RF,2,,Blaine on Jetbike,,,
-Forge Fathers,Wicked Blades,0,0,RF,2,,Blaine on Jetbike,,,
-Marauders,Wicked Blades,0,0,RF,2,,Blaine on Jetbike,,,
-Plague,Wicked Blades,0,0,RF,2,,Blaine on Jetbike,,,
-Veer-Myn,Wicked Blades,0,0,RF,2,,Blaine on Jetbike,,,
-Rebs,Wicked Blades,0,0,RF,2,,Blaine on Jetbike,,,
-Rebs,ARC Launcher,0,0,R4,1,,Teraton Shock Trooper,,,
-Asterians,ARC Launcher,0,0,R4,1,,Teraton Shock Trooper,,,
-Enforcers,ARC Launcher,0,0,R4,1,,Teraton Shock Trooper,,,
-Forge Fathers,ARC Launcher,0,0,R4,1,,Teraton Shock Trooper,,,
-Marauders,ARC Launcher,0,0,R4,1,,Teraton Shock Trooper,,,
-Rebs,Mace,0,0,RF,0,Frenzy(1),Teraton Shock Trooper,,,
-Asterians,Mace,0,0,RF,0,Frenzy(1),Teraton Shock Trooper,,,
-Enforcers,Mace,0,0,RF,0,Frenzy(1),Teraton Shock Trooper,,,
-Forge Fathers,Mace,0,0,RF,0,Frenzy(1),Teraton Shock Trooper,,,
-Marauders,Mace,0,0,RF,0,Frenzy(1),Teraton Shock Trooper,,,
-Veer-Myn,Mini-Gun,0,0,R5,0,"Suppression, Weight of Fire(1)",Ogre Terminator,,,
-Rebs,Mini-Gun,0,0,R5,0,"Suppression, Weight of Fire(1)",Ogre Terminator,,,
-Asterians,Mini-Gun,0,0,R5,0,"Suppression, Weight of Fire(1)",Ogre Terminator,,,
-Enforcers,Mini-Gun,0,0,R5,0,"Suppression, Weight of Fire(1)",Ogre Terminator,,,
-Forge Fathers,Mini-Gun,0,0,R5,0,"Suppression, Weight of Fire(1)",Ogre Terminator,,,
-Marauders,Mini-Gun,0,0,R5,0,"Suppression, Weight of Fire(1)",Ogre Terminator,,,
-Veer-Myn,Shank Bayonet,0,0,RF,1,,Ogre Terminator,,,
-Rebs,Shank Bayonet,0,0,RF,1,,Ogre Terminator,,,
-Asterians,Shank Bayonet,0,0,RF,1,,Ogre Terminator,,,
-Enforcers,Shank Bayonet,0,0,RF,1,,Ogre Terminator,,,
-Forge Fathers,Shank Bayonet,0,0,RF,1,,Ogre Terminator,,,
-Marauders,Shank Bayonet,0,0,RF,1,,Ogre Terminator,,,
-Asterians,Twin Pistols,0,0,R3,0,Weight of Fire(1),Hund Rebel Bounty Hunter,,,
-Enforcers,Twin Pistols,0,0,R3,0,Weight of Fire(1),Hund Rebel Bounty Hunter,,,
-Forge Fathers,Twin Pistols,0,0,R3,0,Weight of Fire(1),Hund Rebel Bounty Hunter,,,
-Marauders,Twin Pistols,0,0,R3,0,Weight of Fire(1),Hund Rebel Bounty Hunter,,,
-Veer-Myn,Twin Pistols,0,0,R3,0,Weight of Fire(1),Hund Rebel Bounty Hunter,,,
-Rebs,Twin Pistols,0,0,R3,0,Weight of Fire(1),Hund Rebel Bounty Hunter,,,
-Asterians,Sniper Rifle,0,0,R8,0,Sniper Scope,Hund Rebel Bounty Hunter,,,
-Enforcers,Sniper Rifle,0,0,R8,0,Sniper Scope,Hund Rebel Bounty Hunter,,,
-Forge Fathers,Sniper Rifle,0,0,R8,0,Sniper Scope,Hund Rebel Bounty Hunter,,,
-Marauders,Sniper Rifle,0,0,R8,0,Sniper Scope,Hund Rebel Bounty Hunter,,,
-Veer-Myn,Sniper Rifle,0,0,R8,0,Sniper Scope,Hund Rebel Bounty Hunter,,,
-Rebs,Sniper Rifle,0,0,R8,0,Sniper Scope,Hund Rebel Bounty Hunter,,,
-Asterians,Pistol,0,0,R3,0,,Mercs,,,
-Enforcers,Pistol,0,0,R3,0,,Mercs,,,
-Forge Fathers,Pistol,0,0,R3,0,,Mercs,,,
-Marauders,Pistol,0,0,R3,0,,Mercs,,,
-Plague,Pistol,0,0,R3,0,,Mercs,,,
-Veer-Myn,Pistol,0,0,R3,0,,Mercs,,,
-Rebs,Pistol,0,0,R3,0,,Mercs,,,
-Enforcers,Rangefinder,0,0,R10,0,"Tag, Non-Lethal",Rangefinder,,,
+Faction;Weapon;Points;VPs;Range;AP;Abilities;Type;Hardpoints;Add On;LinkedName
+Enforcers;Pistol;0;0;R3;0;;Small Arms,Pathfinder Sergeant;;x;
+Enforcers;Laser Rifle;2;0;R6;0;Rapid Fire;Small Arms;;;
+Enforcers;Incinerator;4;0;R2;0;Volatile, It Burns!;Light Assault, Heavy Assault;;;
+Enforcers;Burst Laser;4;0;R8;0;Weight of Fire(1), Suppression;Light Automatic, Heavy Automatic;;;
+Enforcers;Thermal Rifle;7;1;R3;2;;Light Assault;;;
+Enforcers;Fusion Gun;6;1;R4;0;Heavy, Frag(3);Light Assault;;;
+Enforcers;Missile Launcher;8;1;R8;5;Heavy;Light Explosive;;;
+Enforcers;Sniper Rifle;12;1;R10;0;Heavy, Sniper Scope;Light Sniper;;;
+Enforcers;DB Laser Rifle;3;0;R6;0;Weight of Fire(1), Rapid Fire;Heavy Automatic, Peacekeeper Captain;;;
+Enforcers;Energy Gauntlet;3;0;RF;0;Knockback;Light Melee;;;
+Enforcers;Tag Rifle;8;0;R6;0;Tag;Recon;;;
+Enforcers;Combat Shotgun;1;0;R2;0;Knockback;Small Arms;;;
+Enforcers;Wristblade;5;0;RF;1;;Light Melee;;;
+Enforcers;Equalizer;10;1;R12;4;;Walker Lance;2;;
+Enforcers;Electro-Shock;0;0;RF;0;Knockback;Electro-Shock;;;
+Enforcers;Assault Flamer;6;1;R2;0;Volatile, It Burns!;Walker Assault;1;;
+Enforcers;Chainsaw;5;0;RF;1;;Walker Melee;1;;
+Enforcers;Heavy Burst Laser;8;1;R10;0;Suppression, Weight of Fire(2);Walker Automatic;2;;
+Enforcers;Strider Aggressor Shield;10;1;RF;0;Walker Shield;Walker Shield;1;;
+Enforcers;Strider Grav-ram Spear (RF);15;1;RF;2;;Walker Explosive;;;Strider Grav-ram Spear
+Enforcers;Strider Grav-ram Spear;0;0;R4;2;Frag(3);Walker Explosive;;;Strider Grav-ram Spear
+Forge Fathers;Forge Hammer;5;0;RF;1;;Light Melee, Forge Guard, Steel Warrior Huscarl;;;
+Forge Fathers;Hailstorm Rifle;3;0;R6;1;Rapid Fire;Small Arms, Forge Guard Huscarl,Forge Guard;;;
+Forge Fathers;Burst Pistol;0;0;R3;0;Rapid Fire;Small Arms;;x;
+Forge Fathers;Hailstorm Pistol;3;0;R4;0;Weight of Fire(1), Rapid Fire;Light Automatic;;;
+Forge Fathers;Missile Launcher;8;1;R10;5;Heavy;Light Explosive;;;
+Forge Fathers;Twin Hailstorm Rifles;5;0;R6;1;Weight of Fire(1), Rapid Fire;Bike Automatic;;;
+Forge Fathers;Magma Rifle;7;1;R3;2;It Burns!;Light Assault;;;
+Forge Fathers;Magma Cannon;8;1;R5;3;;Heavy Assault;;;
+Forge Fathers;Twin Hailstorm Pistols;6;0;R4;0;Weight of Fire(2), Rapid Fire;Light Automatic;;;
+Forge Fathers;Twin Magma Cannon;8;1;R4;3;Weight of Fire(1);Walker Lance;;;
+Forge Fathers;Power Claw and Flamer (Claw);13;1;RF;3;;Walker Assault;;;Power Claw and Flamer
+Forge Fathers;Power Claw and Flamer (Flamer);0;0;R2;0;It Burns!;Walker Assault;;;Power Claw and Flamer
+Forge Fathers;Twin Hailstorm Autocannons;8;1;R8;1;Weight of Fire(1);Walker Automatic;;;
+Forge Fathers;Dragon’s Breath;4;0;R2;0;It Burns!;Light Assault;;;
+Forge Fathers;Hailstorm Autocannon;8;1;R8;1;Weight of Fire(1), Suppression;Heavy Automatic;;;
+Forge Fathers;Twin Forge Hammers;5;1;RF;2;;Thor Pattern Iron Ancestor;;;
+Forge Fathers;Mining Laser;0;0;R24;3;Heavy;Inferno Drill;;;
+Plague;Heavy Burst Laser;8;1;R10;0;Suppression, Weight of Fire(2);Walker Automatic;2;;
+Rebs;Heavy Burst Laser;8;1;R10;0;Suppression, Weight of Fire(2);Walker Automatic;2;;
+Plague;Pistol;0;0;R3;0;;Small Arms;;x;
+Plague;Rifle;2;0;R6;0;Rapid Fire;Small Arms;;;
+Plague;HMG;4;0;R6;0;Weight of Fire(1), Suppression;Light Automatic;;;
+Plague;Grenade Launcher;8;1;R5;0;Indirect(3);Light Explosive;;;
+Plague;Mortar;12;1;R8;0;Indirect(4),Heavy,Slow Reload;Light Artillery;;;
+Plague;Experimental Weapon;5;1;R5;0;Experimental;Heavy Automatic;;;
+Plague;Chainsaw;5;0;RF;1;;Walker Melee;1;;
+Plague;Polaris Cannon (Genling 88);10;1;R10;4;;Walker Lance;2;;
+Plague;Talons;0;0;RF;1;;Talons ;;;
+Plague;Talons Aberration;0;0;RF;2;Knockback;Talons Aberration;;;
+Plague;Claws;0;0;RF;0;Knockback;Claws Teraton;;;
+Plague;Acid Bite;0;0;RF;2;;Acid Bite Swarm;;;
+Asterians;Energy Bow;1;0;R4;0;;Kalyshi;;;
+Asterians;Glaive;7;1;RF;1;Frenzy(1);Kalyshi;;;
+Asterians;Charge Glove (Energy Pulse);1;0;R1;0;Knockback;Small Arms;;;
+Asterians;Charge Glove;3;0;RF;0;Knockback;Small Arms;;;
+Asterians;Staff of Command;6;1;RF;2;;Overseer;;;
+Asterians;Lightblade;6;1;RF;2;;Light Melee;;;
+Asterians;Grenade Launcher;8;1;R5;0;Indirect(3);Light Explosive;;;
+Asterians;Phlogistor;5;0;R2;1;It Burns!;Light Assault;;;
+Asterians;Sniper Rifle;13;1;R8;1;Heavy, Sniper Scope;Light Sniper;;;
+Asterians;Force Rifle;3;0;R5;0;Blast;Light Explosive;;;
+Asterians;Fission Beamer;12;1;R10;5;Heavy;Platform Lance, Heavy Lance;;;
+Asterians;Light Missile Launcher;8;1;R7;2;;Light Explosive;;;
+Asterians;Noh Rifle;2;0;R5;0;;Small Arms, Cypher Specialist;;;
+Asterians;Noh Pistol;0;0;R3;0;;Small Arms;;x;
+Asterians;Twin Noh Rifles;3;0;R5;0;Weight of Fire(1);Bike Automatic;;;
+Asterians;Plasma Vortex;18;2;R4;1;Frag(5);Platform Explosive;;;
+Asterians;Pulse Bombard;18;2;R8;0;Indirect(4);Platform Artillery;;;
+Asterians;Shield Generator;12;1;R0;0;Shield Generator(4);Platform Shield;;;
+Marauders;Pistol;0;0;R3;0;;Small Arms;;x;
+Marauders;Heavy Pistol;3;0;R4;0;Weight of Fire(1);Small Arms;;;
+Marauders;Claw;5;0;RF;1;;Light Melee;;;
+Marauders;Ripper Talon;8;0;RF;2;;Light Melee;;;
+Marauders;Thermal Cannon;3;0;R4;1;;Walker Assault;;;
+Marauders;Auxiliary Flamer;4;0;R2;0;One Use, It Burns!;Walker Assault;;;
+Marauders;Chainmaw;5;0;RF;1;;Light Beast;;;
+Marauders;Rifle;2;0;R6;0;Rapid Fire;Small Arms;;;
+Marauders;Flamer;4;0;R2;0;Volatile, It Burns!;Light Assault;;;
+Marauders;HMG;4;0;R6;0;Weight of Fire(1),Suppression;Light Automatic;;;
+Marauders;Buzzsaw;7;1;RF;1;Frenzy(1);Walker Melee, Heavy Melee;;;
+Marauders;Ram;3;0;RF;0;Knockback;Heavy Melee;;;
+Marauders;Rotary Cannon;3;0;R5;0;Weight of Fire(1), Rapid Fire;Heavy Automatic;;;
+Marauders;HEW Beamer;8;1;R7;3;;Heavy Lance;;;
+Marauders;Frag Launchers;6;1;R3;0;Frag(3);Heavy Explosive;;;
+Marauders;Rocket Salvo;10;1;R8;0;Indirect(3), One Use;Heavy Explosive;;;
+Marauders;HEW Cannon;10;2;R12;5;Heavy, Weight of Fire(1);Vehicle Lance, Hulk;;;
+Marauders;Heavy Mortar;12;2;R10;0;Indirect(4),Heavy;Vehicle Artillery;;;
+Marauders;Heavy Rifle;13;1;R8;1;Heavy, Sniper Scope;Light Sniper;;;
+Veer-Myn;Ray Pistol;0;0;R2;0;;Small Arms;;x;
+Veer-Myn;Ray Gun;3;0;R4;0;Weight of Fire(1), Rapid Fire;Small Arms;;;
+Veer-Myn;Chem Staff;5;1;R1;1;It Burns!;Leader;;;
+Veer-Myn;Spitter Rifle;12;1;R6;1;Sniper Scope, Heavy;Leader;;;
+Veer-Myn;Chem Thrower;4;0;R1;1;Volatile, It Burns!;Light Assault;;;
+Veer-Myn;Chem Spitter;9;1;R6;2;Rapid Fire;Light Automatic;;;
+Veer-Myn;Chemical Grenade Launcher;12;1;R5;0;Indirect(4);Light Explosive;;;
+Veer-Myn;Det Packs (Mag Lock);4;0;RF;2;;Light Explosive;;;
+Veer-Myn;Det Packs (Prox Fuse);4;0;R1;2;;Light Explosive;;;
+Veer-Myn;Big Drill;5;0;RF;1;;Heavy Melee;;;
+Veer-Myn;Two-Handed Drill;8;1;RF;3;;Heavy Melee;2;;
+Veer-Myn;Pair of Drills;7;1;RF;1;Frenzy(1);Heavy Melee;2;;
+Veer-Myn;Heavy Chem Thrower;9;1;R3;1;Volatile, It Burns!, Heavy;Heavy Assault;2;;
+Veer-Myn;Super Heavy Chem Thrower;12;1;R3;2;Volatile, It Burns!, Heavy;Vehicle Assault;;;
+Veer-Myn;Scythes;7;1;RF;1;Frenzy(1);Heavy Beast, Beast Melee;;;
+Veer-Myn;Super Heavy Chem Spitter;12;1;R8;2;Weight of Fire(1), Suppression, Heavy;Vehicle Automatic;;;
+Veer-Myn;Heavy Chem Spitter;8;1;R5;3;;Heavy Beast, Beast Ranged;;;
+Veer-Myn;Visions of Glory;0;0;R4;0;Invigorate;Tangle;;;
+Veer-Myn;Psychic Visions of Death;0;0;R5;0;Stun, Psychic;Tangle;;;
+Veer-Myn;Claws;0;0;RF;1;;Brood Mother;;;
+Rebs;Pistol;0;0;R3;0;;Small Arms;;x;
+Rebs;Rifle;2;0;R6;0;Rapid Fire;Small Arms;;;
+Rebs;Long Rifle;3;0;R8;0;;Small Arms;;;
+Rebs;Assault Flamer;6;1;R2;0;Volatile, It Burns!;Walker Assault;;;
+Rebs;Chainsaw;5;1;RF;1;;Walker Melee;;;
+Rebs;Sniper Rifle;16;0;R8;0;Sniper Scope;Light Sniper;;;
+Rebs;Polaris Cannon (Genling 88);10;1;R10;4;;Walker Lance;2;;
+Rebs;Onslaught Cannon;3;1;R5;0;Weight of Fire(1), Suppression;Heavy Automatic;;;
+Rebs;Desolator;8;1;R8;2;;Heavy Lance;;;
+Rebs;Missile Launcher;8;1;R10;4;Heavy, Slow Reload;Light Explosive;;;
+Rebs;Ceremonial Blades;5;1;RF;1;;Light Melee;;;
+Rebs;Grenade Launcher;3;0;R3;0;One Use, Frag(3);Light Explosive, Rebel Teraton;;;
+Rebs;Hand Flamer;4;0;R2;0;One Use, It Burns!;Light Assault;;;
+Rebs;Wrist Blaster;2;0;R3;0;Blast;Light Assault;;;
+Rebs;Blaster;3;0;R4;0;Blast;Light Automatic;;;
+Rebs;Combat Blades;5;0;RF;0;Frenzy(1);Light Melee;;;
+Rebs;Mata Magma Lance;0;0;R5;2;;Sphyr Lancer;;;
+Rebs;Twin Pistols;0;0;R3;0;Weight of Fire(1);Rin Nomad;;;
+Rebs;Twin Knives;0;0;RF;0;Frenzy(1);Rin Nomad;;;
+Enforcers;Claws;0;0;RF;2;;Sergeant Howlett;;;
+Plague;Nuka;0;0;RF;2;Knockback;Aqissiaq;;;
+Rebs;Crossbow;0;0;R6;1;;Eddak P‘Mera;;;
+Asterians;Decapitator;0;0;RF;3;;Chief Radgrad;;;
+Enforcers;Decapitator;0;0;RF;3;;Chief Radgrad;;;
+Forge Fathers;Decapitator;0;0;RF;3;;Chief Radgrad;;;
+Marauders;Decapitator;0;0;RF;3;;Chief Radgrad;;;
+Plague;Decapitator;0;0;RF;3;;Chief Radgrad;;;
+Veer-Myn;Decapitator;0;0;RF;3;;Chief Radgrad;;;
+Rebs;Decapitator;0;0;RF;3;;Chief Radgrad;;;
+Asterians;Twin Blasters;0;0;R4;2;Weight of Fire(1);Chief Radgrad;;;
+Enforcers;Twin Blasters;0;0;R4;2;Weight of Fire(1);Chief Radgrad;;;
+Forge Fathers;Twin Blasters;0;0;R4;2;Weight of Fire(1);Chief Radgrad;;;
+Marauders;Twin Blasters;0;0;R4;2;Weight of Fire(1);Chief Radgrad;;;
+Plague;Twin Blasters;0;0;R4;2;Weight of Fire(1);Chief Radgrad;;;
+Veer-Myn;Twin Blasters;0;0;R4;2;Weight of Fire(1);Chief Radgrad;;;
+Rebs;Twin Blasters;0;0;R4;2;Weight of Fire(1);Chief Radgrad;;;
+Asterians;Frag Grenades;0;0;R3;0;Frag(3), Grenade;Boomer Grenadier;;;
+Enforcers;Frag Grenades;0;0;R3;0;Frag(3), Grenade;Boomer Grenadier;;;
+Forge Fathers;Frag Grenades;0;0;R3;0;Frag(3), Grenade;Boomer Grenadier;;;
+Marauders;Frag Grenades;0;0;R3;0;Frag(3), Grenade;Boomer Grenadier;;;
+Plague;Frag Grenades;0;0;R3;0;Frag(3), Grenade;Boomer Grenadier;;;
+Veer-Myn;Frag Grenades;0;0;R3;0;Frag(3), Grenade;Boomer Grenadier;;;
+Rebs;Frag Grenades;0;0;R3;0;Frag(3), Grenade;Boomer Grenadier;;;
+Asterians;Smoke Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Enforcers;Smoke Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Forge Fathers;Smoke Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Marauders;Smoke Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Plague;Smoke Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Veer-Myn;Smoke Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Rebs;Smoke Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Asterians;Stun Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Enforcers;Stun Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Forge Fathers;Stun Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Marauders;Stun Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Plague;Stun Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Veer-Myn;Stun Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Rebs;Stun Grenades;0;0;R3;0;Grenade;Boomer Grenadier;;;
+Asterians;Xerxes Cannon;0;0;R6;3;Heavy, It Burns!;The Helfather;;;
+Enforcers;Xerxes Cannon;0;0;R6;3;Heavy, It Burns!;The Helfather;;;
+Forge Fathers;Xerxes Cannon;0;0;R6;3;Heavy, It Burns!;The Helfather;;;
+Marauders;Xerxes Cannon;0;0;R6;3;Heavy, It Burns!;The Helfather;;;
+Plague;Xerxes Cannon;0;0;R6;3;Heavy, It Burns!;The Helfather;;;
+Veer-Myn;Xerxes Cannon;0;0;R6;3;Heavy, It Burns!;The Helfather;;;
+Rebs;Xerxes Cannon;0;0;R6;3;Heavy, It Burns!;The Helfather;;;
+Asterians;Hailstorm Pistol;0;0;R4;0;Weight of Fire(1);Freya;;;
+Enforcers;Hailstorm Pistol;0;0;R4;0;Weight of Fire(1);Freya;;;
+Forge Fathers;Hailstorm Pistol;0;0;R4;0;Weight of Fire(1);Freya, Steel Warrior Huscarl;;;
+Marauders;Hailstorm Pistol;0;0;R4;0;Weight of Fire(1);Freya;;;
+Plague;Hailstorm Pistol;0;0;R4;0;Weight of Fire(1);Freya;;;
+Veer-Myn;Hailstorm Pistol;0;0;R4;0;Weight of Fire(1);Freya;;;
+Rebs;Hailstorm Pistol;0;0;R4;0;Weight of Fire(1);Freya;;;
+Asterians;Sniper Rifle;0;0;R14;1;Sniper Scope;Nastanza;;;
+Enforcers;Sniper Rifle;0;0;R14;1;Sniper Scope;Nastanza;;;
+Forge Fathers;Sniper Rifle;0;0;R14;1;Sniper Scope;Nastanza;;;
+Marauders;Sniper Rifle;0;0;R14;1;Sniper Scope;Nastanza;;;
+Plague;Sniper Rifle;0;0;R14;1;Sniper Scope;Nastanza;;;
+Veer-Myn;Sniper Rifle;0;0;R14;1;Sniper Scope;Nastanza;;;
+Rebs;Sniper Rifle;0;0;R14;1;Sniper Scope;Nastanza;;;
+Asterians;Fusion Gauntlet;0;0;R4;0;Frag(3), One Use;Wrath;;;
+Forge Fathers;Fusion Gauntlet;0;0;R4;0;Frag(3), One Use;Wrath;;;
+Marauders;Fusion Gauntlet;0;0;R4;0;Frag(3), One Use;Wrath;;;
+Plague;Fusion Gauntlet;0;0;R4;0;Frag(3), One Use;Wrath;;;
+Veer-Myn;Fusion Gauntlet;0;0;R4;0;Frag(3), One Use;Wrath;;;
+Rebs;Fusion Gauntlet;0;0;R4;0;Frag(3), One Use;Wrath;;;
+Asterians;Praetorian Pistol;0;0;R4;1;It Burns!;Wrath;;;
+Forge Fathers;Praetorian Pistol;0;0;R4;1;It Burns!;Wrath;;;
+Marauders;Praetorian Pistol;0;0;R4;1;It Burns!;Wrath;;;
+Plague;Praetorian Pistol;0;0;R4;1;It Burns!;Wrath;;;
+Veer-Myn;Praetorian Pistol;0;0;R4;1;It Burns!;Wrath;;;
+Rebs;Praetorian Pistol;0;0;R4;1;It Burns!;Wrath;;;
+Asterians;Blade of the Seven;0;0;RF;1;;Wrath;;;
+Forge Fathers;Blade of the Seven;0;0;RF;1;;Wrath;;;
+Marauders;Blade of the Seven;0;0;RF;1;;Wrath;;;
+Plague;Blade of the Seven;0;0;RF;1;;Wrath;;;
+Veer-Myn;Blade of the Seven;0;0;RF;1;;Wrath;;;
+Rebs;Blade of the Seven;0;0;RF;1;;Wrath;;;
+Asterians;Mind Storm;0;0;R4;0;Blast, Psychic;Chovar Psychic;;;
+Enforcers;Mind Storm;0;0;R4;0;Blast, Psychic;Chovar Psychic;;;
+Forge Fathers;Mind Storm;0;0;R4;0;Blast, Psychic;Chovar Psychic;;;
+Marauders;Mind Storm;0;0;R4;0;Blast, Psychic;Chovar Psychic;;;
+Plague;Mind Storm;0;0;R4;0;Blast, Psychic;Chovar Psychic;;;
+Veer-Myn;Mind Storm;0;0;R4;0;Blast, Psychic;Chovar Psychic;;;
+Rebs;Mind Storm;0;0;R4;0;Blast, Psychic;Chovar Psychic;;;
+Asterians;Blank;0;0;R4;0;Stun, Psychic;Chovar Psychic;;;
+Enforcers;Blank;0;0;R4;0;Stun, Psychic;Chovar Psychic;;;
+Forge Fathers;Blank;0;0;R4;0;Stun, Psychic;Chovar Psychic;;;
+Marauders;Blank;0;0;R4;0;Stun, Psychic;Chovar Psychic;;;
+Plague;Blank;0;0;R4;0;Stun, Psychic;Chovar Psychic;;;
+Veer-Myn;Blank;0;0;R4;0;Stun, Psychic;Chovar Psychic;;;
+Rebs;Blank;0;0;R4;0;Stun, Psychic;Chovar Psychic;;;
+Asterians;Passion;0;0;R4;0;Invigorate, Psychic;Chovar Psychic;;;
+Enforcers;Passion;0;0;R4;0;Invigorate, Psychic;Chovar Psychic;;;
+Forge Fathers;Passion;0;0;R4;0;Invigorate, Psychic;Chovar Psychic;;;
+Marauders;Passion;0;0;R4;0;Invigorate, Psychic;Chovar Psychic;;;
+Plague;Passion;0;0;R4;0;Invigorate, Psychic;Chovar Psychic;;;
+Veer-Myn;Passion;0;0;R4;0;Invigorate, Psychic;Chovar Psychic;;;
+Rebs;Passion;0;0;R4;0;Invigorate, Psychic;Chovar Psychic;;;
+Asterians;Sawn-Off;0;0;R2;0;Knockback;The Survivor;;;
+Enforcers;Sawn-Off;0;0;R2;0;Knockback;The Survivor;;;
+Forge Fathers;Sawn-Off;0;0;R2;0;Knockback;The Survivor;;;
+Marauders;Sawn-Off;0;0;R2;0;Knockback;The Survivor;;;
+Plague;Sawn-Off;0;0;R2;0;Knockback;The Survivor;;;
+Veer-Myn;Sawn-Off;0;0;R2;0;Knockback;The Survivor;;;
+Rebs;Sawn-Off;0;0;R2;0;Knockback;The Survivor;;;
+Asterians;Needler;0;0;R4;1;;Project Oberon;;;
+Enforcers;Needler;0;0;R4;1;;Project Oberon;;;
+Forge Fathers;Needler;0;0;R4;1;;Project Oberon;;;
+Marauders;Needler;0;0;R4;1;;Project Oberon;;;
+Plague;Needler;0;0;R4;1;;Project Oberon;;;
+Veer-Myn;Needler;0;0;R4;1;;Project Oberon;;;
+Rebs;Needler;0;0;R4;1;;Project Oberon;;;
+Asterians;Toxic Shards;0;0;RF;1;Toxic;Project Oberon;;;
+Enforcers;Toxic Shards;0;0;RF;1;Toxic;Project Oberon;;;
+Forge Fathers;Toxic Shards;0;0;RF;1;Toxic;Project Oberon;;;
+Marauders;Toxic Shards;0;0;RF;1;Toxic;Project Oberon;;;
+Plague;Toxic Shards;0;0;RF;1;Toxic;Project Oberon;;;
+Veer-Myn;Toxic Shards;0;0;RF;1;Toxic;Project Oberon;;;
+Rebs;Toxic Shards;0;0;RF;1;Toxic;Project Oberon;;;
+Asterians;Raskan Punch-Blade;0;0;RF;2;;Blaine;;;
+Enforcers;Raskan Punch-Blade;0;0;RF;2;;Blaine;;;
+Forge Fathers;Raskan Punch-Blade;0;0;RF;2;;Blaine;;;
+Marauders;Raskan Punch-Blade;0;0;RF;2;;Blaine;;;
+Plague;Raskan Punch-Blade;0;0;RF;2;;Blaine;;;
+Veer-Myn;Raskan Punch-Blade;0;0;RF;2;;Blaine;;;
+Rebs;Raskan Punch-Blade;0;0;RF;2;;Blaine;;;
+Asterians;Wicked Blades;0;0;RF;2;;Blaine on Jetbike;;;
+Enforcers;Wicked Blades;0;0;RF;2;;Blaine on Jetbike;;;
+Forge Fathers;Wicked Blades;0;0;RF;2;;Blaine on Jetbike;;;
+Marauders;Wicked Blades;0;0;RF;2;;Blaine on Jetbike;;;
+Plague;Wicked Blades;0;0;RF;2;;Blaine on Jetbike;;;
+Veer-Myn;Wicked Blades;0;0;RF;2;;Blaine on Jetbike;;;
+Rebs;Wicked Blades;0;0;RF;2;;Blaine on Jetbike;;;
+Rebs;ARC Launcher;0;0;R4;1;;Teraton Shock Trooper;;;
+Asterians;ARC Launcher;0;0;R4;1;;Teraton Shock Trooper;;;
+Enforcers;ARC Launcher;0;0;R4;1;;Teraton Shock Trooper;;;
+Forge Fathers;ARC Launcher;0;0;R4;1;;Teraton Shock Trooper;;;
+Marauders;ARC Launcher;0;0;R4;1;;Teraton Shock Trooper;;;
+Rebs;Mace;0;0;RF;0;Frenzy(1);Teraton Shock Trooper;;;
+Asterians;Mace;0;0;RF;0;Frenzy(1);Teraton Shock Trooper;;;
+Enforcers;Mace;0;0;RF;0;Frenzy(1);Teraton Shock Trooper;;;
+Forge Fathers;Mace;0;0;RF;0;Frenzy(1);Teraton Shock Trooper;;;
+Marauders;Mace;0;0;RF;0;Frenzy(1);Teraton Shock Trooper;;;
+Veer-Myn;Mini-Gun;0;0;R5;0;Suppression, Weight of Fire(1);Ogre Terminator;;;
+Rebs;Mini-Gun;0;0;R5;0;Suppression, Weight of Fire(1);Ogre Terminator;;;
+Asterians;Mini-Gun;0;0;R5;0;Suppression, Weight of Fire(1);Ogre Terminator;;;
+Enforcers;Mini-Gun;0;0;R5;0;Suppression, Weight of Fire(1);Ogre Terminator;;;
+Forge Fathers;Mini-Gun;0;0;R5;0;Suppression, Weight of Fire(1);Ogre Terminator;;;
+Marauders;Mini-Gun;0;0;R5;0;Suppression, Weight of Fire(1);Ogre Terminator;;;
+Veer-Myn;Shank Bayonet;0;0;RF;1;;Ogre Terminator;;;
+Rebs;Shank Bayonet;0;0;RF;1;;Ogre Terminator;;;
+Asterians;Shank Bayonet;0;0;RF;1;;Ogre Terminator;;;
+Enforcers;Shank Bayonet;0;0;RF;1;;Ogre Terminator;;;
+Forge Fathers;Shank Bayonet;0;0;RF;1;;Ogre Terminator;;;
+Marauders;Shank Bayonet;0;0;RF;1;;Ogre Terminator;;;
+Asterians;Twin Pistols;0;0;R3;0;Weight of Fire(1);Hund Rebel Bounty Hunter;;;
+Enforcers;Twin Pistols;0;0;R3;0;Weight of Fire(1);Hund Rebel Bounty Hunter;;;
+Forge Fathers;Twin Pistols;0;0;R3;0;Weight of Fire(1);Hund Rebel Bounty Hunter;;;
+Marauders;Twin Pistols;0;0;R3;0;Weight of Fire(1);Hund Rebel Bounty Hunter;;;
+Veer-Myn;Twin Pistols;0;0;R3;0;Weight of Fire(1);Hund Rebel Bounty Hunter;;;
+Rebs;Twin Pistols;0;0;R3;0;Weight of Fire(1);Hund Rebel Bounty Hunter;;;
+Asterians;Sniper Rifle;0;0;R8;0;Sniper Scope;Hund Rebel Bounty Hunter;;;
+Enforcers;Sniper Rifle;0;0;R8;0;Sniper Scope;Hund Rebel Bounty Hunter;;;
+Forge Fathers;Sniper Rifle;0;0;R8;0;Sniper Scope;Hund Rebel Bounty Hunter;;;
+Marauders;Sniper Rifle;0;0;R8;0;Sniper Scope;Hund Rebel Bounty Hunter;;;
+Veer-Myn;Sniper Rifle;0;0;R8;0;Sniper Scope;Hund Rebel Bounty Hunter;;;
+Rebs;Sniper Rifle;0;0;R8;0;Sniper Scope;Hund Rebel Bounty Hunter;;;
+Asterians;Pistol;0;0;R3;0;;Mercs;;;
+Enforcers;Pistol;0;0;R3;0;;Mercs;;;
+Forge Fathers;Pistol;0;0;R3;0;;Mercs;;;
+Marauders;Pistol;0;0;R3;0;;Mercs;;;
+Plague;Pistol;0;0;R3;0;;Mercs;;;
+Veer-Myn;Pistol;0;0;R3;0;;Mercs;;;
+Rebs;Pistol;0;0;R3;0;;Mercs;;;
+Enforcers;Rangefinder;0;0;R10;0;Tag, Non-Lethal;Rangefinder;;;
