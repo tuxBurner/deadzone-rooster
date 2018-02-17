@@ -2,12 +2,13 @@ package controllers
 
 import javax.inject._
 
-import com.github.tuxBurner.jsAnnotations.JsRoutesComponent
-import models.{AbilityDAO, ItemDAO, TroopDAO}
+import com.github.tuxBurner.jsAnnotations.{JSRoute, JsRoutesComponent}
+import models.{AbilityDAO, FactionDAO, ItemDAO, TroopDAO}
 import play.api.i18n.I18nSupport
 import play.api.mvc._
 import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
 import play.i18n.Langs
+import services.logic.{ArmyLogic, FactionLogic, TroopLogic}
 
 import scala.collection.JavaConverters._
 
@@ -79,6 +80,20 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
     implicit request =>
       val items = ItemDAO.findAllItems()
       Ok(views.html.allItems(items))
+  }
+
+  /**
+    * Displays all troops of an army
+    * @return
+    */
+  @JSRoute
+  def displayTroopsOfFaction(faction: String) = Action {
+    implicit request =>
+
+      val factions = FactionLogic.getAllFactions()
+      val troopsForSelectedFaction = TroopLogic.getAllTroopsForFaction(faction)
+
+      Ok(views.html.allTroopsOfArmy(troopsForSelectedFaction, factions,faction))
   }
 
 

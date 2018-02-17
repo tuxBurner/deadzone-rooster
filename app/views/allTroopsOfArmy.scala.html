@@ -1,0 +1,141 @@
+@import deadzone.models.ModelType
+@import services.logic.{FactionDto, TroopWithAllowedWeaponsDto}
+@(troopsByType: Map[String, List[TroopWithAllowedWeaponsDto]], factions: List[FactionDto], currentFaction: String)(implicit messages: Messages)
+
+@scripts = {
+  <script type="text/javascript" src="@routes.Assets.versioned("javascripts/all_troops.js")"> </script>
+}
+
+@main("Troops of army", scripts) {
+
+  <div class="well">
+    <label>@Messages("faction.select")</label>
+    <select class="form-control" id="troopsArmySelect">
+    @for(faction <- factions) {
+      <option
+      @if(faction.name == currentFaction) { selected } value="@faction.name">@faction.name </option>
+    }
+    </select>
+  </div>
+
+
+  <hr />
+
+  <div class="well text-center">
+  @for(troopType <- troopsByType.keySet.toList.sortWith(_ < _)) {
+    <a href="#@troopType">@troopType</a>
+  }
+  </div>
+
+  <hr />
+
+
+  @for(troopType <- troopsByType.keySet.toList.sortWith(_ < _)) {
+    <div class="row" id="@troopType">
+      <div class="col-xs-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr class="danger">
+              <th colspan="@if(troopType == ModelType.Leader.toString) {13} else {12}">
+                <h4>@troopType</h4>
+              </th>
+            </tr>
+            <tr class="info">
+              <th>@Messages("troop.tbl.name")</th>
+              <th>@Messages("troop.tbl.speed")</th>
+              <th>@Messages("troop.tbl.shoot")</th>
+              <th>@Messages("troop.tbl.fight")</th>
+              <th>@Messages("troop.tbl.survive")</th>
+              <th>@Messages("troop.tbl.armour")</th>
+              <th>@Messages("troop.tbl.size")</th>
+              <th>@Messages("troop.tbl.points")</th>
+              <th>@Messages("troop.tbl.victoryPoints")</th>
+              <th>@Messages("troop.tbl.abilities")</th>
+              <th>@Messages("troop.tbl.allowedWeaponTypes")</th>
+              <th>@Messages("troop.tbl.weapons")</th>
+              @if(troopType == ModelType.Leader.toString) {
+                <th>@Messages("troop.tbl.reconArmySpecial")</th>
+              }
+            </tr>
+          </thead>
+
+          <tbody>
+          @for(troop <- troopsByType.get(troopType).get) {
+            <tr>
+              <td>@troop.troopDto.name</td>
+              <td>@troop.troopDto.speed - @troop.troopDto.sprint</td>
+              <td>@troop.troopDto.shoot+</td>
+              <td>@troop.troopDto.fight+</td>
+              <td>@troop.troopDto.survive+</td>
+              <td>@troop.troopDto.armour</td>
+              <td>@troop.troopDto.size</td>
+              <td>@troop.troopDto.basePoints</td>
+              <td>@troop.troopDto.baseVictoryPoints</td>
+              <td>
+                <ul>
+                @for(ability <- troop.troopDto.abilities) {
+                  <li>@ability.name @if(ability.defaultVal != 0) { (@ability.defaultVal) }</li>
+                }
+                </ul>
+              </td>
+              <td>
+                <ul>
+                @for(weaponType <- troop.troopDto.allowedWeaponTypes) {
+                  <li>@weaponType</li>
+                }
+                </ul>
+              </td>
+              <td>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr class="info">
+                      <th>@Messages("weapon.name")</th>
+                      <th>@Messages("weapon.armorPircing")</th>
+                      <th>@Messages("weapon.range")</th>
+                      <th>@Messages("weapon.points")</th>
+                      <th>@Messages("weapon.victoryPoints")</th>
+                      <th>@Messages("weapon.abilities")</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  @for(weaponType <- troop.allowedWeaponsDto.keySet.toList.sortWith(_ < _)) {
+
+                    @if(troop.allowedWeaponsDto.get(weaponType).get.isEmpty == false) {
+
+                      <tr class="danger">
+                        <th colspan="6">@weaponType</th>
+                      </tr>
+
+                      @for(weapon <- troop.allowedWeaponsDto.get(weaponType).get) {
+                        <tr @if(troop.troopDto.defaultWeapons.exists(_.name == weapon.name)) { class="warning" }>
+                          <td>@weapon.name</td>
+                          <td>@weapon.armorPircing</td>
+                          <td>@weapon.shootRange</td>
+                          <td>@weapon.points</td>
+                          <td>@weapon.victoryPoints</td>
+                          <td>
+                          @for(ability <- weapon.abilities) {
+                            <li>@ability.name @if(ability.defaultVal != 0) { (@ability.defaultVal) }</li>
+                          }
+                          </td>
+                        </tr>
+                      }
+                    }
+                  }
+                  </tbody>
+
+                </table>
+              </td>
+              @if(troopType == ModelType.Leader.toString) {
+                <td>@troop.troopDto.recon / @troop.troopDto.armySpecial</td>
+              }
+            </tr>
+          }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  }
+
+
+}

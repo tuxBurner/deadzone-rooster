@@ -15,8 +15,8 @@ object ArmyLogic {
   /**
     * Changes the name of the given army
     *
-    * @param armyName
-    * @param army
+    * @param armyName the name of the army to set
+    * @param army the army itself
     * @return
     */
   def changeNameOfArmy(armyName: String, army: ArmyDto): ArmyDto = {
@@ -26,9 +26,9 @@ object ArmyLogic {
   /**
     * Adds a new troop to the army
     *
-    * @param factionName
-    * @param troopName
-    * @param army
+    * @param factionName the name of the faction
+    * @param troopName the name of the troop to add
+    * @param army the army where to add the troop to
     * @return
     */
   def addTroopToArmy(factionName: String, troopName: String, army: ArmyDto): ArmyDto = {
@@ -47,32 +47,32 @@ object ArmyLogic {
   /**
     * Collects all factions from the troops as a a comma separated string
     *
-    * @param troops
+    * @param troops get all factions from the given troops
     * @return
     */
   def getFactionsFromArmy(troops: List[ArmyTroopDto]): String = {
-    troops.map(_.faction).distinct.mkString(",");
+    troops.map(_.faction).distinct.mkString(",")
   }
 
   /**
     * Removes the given troop from the army
     *
-    * @param uuid
-    * @param army
+    * @param uuid the uuid of the troop to remove from the army
+    * @param army the army containing the troop
     * @return
     */
   def removeTroopFromArmy(uuid: String, army: ArmyDto): ArmyDto = {
     val newTroops = army.troops.filter(_.uuid != uuid)
     val armyPoints = newTroops.map(_.points).sum
-    val faction = if (newTroops.size == 0) "" else getFactionsFromArmy(newTroops)
+    val faction = if (newTroops.isEmpty) "" else getFactionsFromArmy(newTroops)
     army.copy(troops = newTroops, faction = faction, points = armyPoints)
   }
 
   /**
     * Clones the given troop and adds it to the army
     *
-    * @param uuid
-    * @param army
+    * @param uuid the uuid of the troop to clone
+    * @param army the army containing the troop to clone and where to add the cloned troop
     * @return
     */
   def cloneTroop(uuid: String, army: ArmyDto): ArmyDto = {
@@ -187,13 +187,13 @@ object ArmyLogic {
 
 
   /**
-    * Gets all avaible weapon options for the given troop
+    * Gets all available weapon options for the given troop
     *
     * @param troopDto the troop which the weapons are for
     * @return
     */
   def getWeaponsForTroop(troopDto: ArmyTroopDto): Map[String, List[ArmyWeaponDto]] = {
-    val weapons = WeaponDAO.findByFactionAndTypes(troopDto.faction, troopDto.allowedWeaponTypes).toList
+    val weapons = WeaponDAO.findByFactionAndTypes(troopDto.faction, troopDto.allowedWeaponTypes)
 
     val rangedWeaopns = weapons.filter(weaponDo => weaponDo.shootRange != 0 && weaponDo.free == false && StringUtils.isBlank(weaponDo.linkedName)).map(weaponDoToWeaponDto(_))
     val fightWeapons = weapons.filter(weaponDo => weaponDo.shootRange == 0 && weaponDo.free == false && StringUtils.isBlank(weaponDo.linkedName)).map(weaponDoToWeaponDto(_))

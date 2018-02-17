@@ -4,8 +4,6 @@ import models.FactionDAO
 
 /**
   * @author Sebastian Hardt (s.hardt@micromata.de)
-  *         Date: 12.06.17
-  *         Time: 13:52
   */
 object FactionLogic {
 

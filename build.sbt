@@ -18,9 +18,9 @@ libraryDependencies ++= Seq(
   guice,
   "com.github.tototoshi" %% "scala-csv" % "1.3.5",
   "org.webjars" %% "webjars-play" % "2.6.1",
-  "org.webjars" % "bootstrap" % "3.1.1-2",
+  "org.webjars" % "bootstrap" % "3.3.7",
   "com.github.tuxBurner" %% "play-jsannotations" % "2.6.0",
-  "it.innove" % "play2-pdf" % "1.7.0",
+  "it.innove" % "play2-pdf" % "1.8.0",
   "io.methvin" %% "directory-watcher-better-files" % "0.4.0"
 
 )

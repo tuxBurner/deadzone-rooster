@@ -14,6 +14,7 @@ troop.tbl.abilities=Abilities
 troop.tbl.weapons=Weapons
 troop.tbl.items=Items
 troop.tbl.reconArmySpecial=REC/Special
+troop.tbl.allowedWeaponTypes=Allowed Weapon Types
 
 weapon.headline=Weapons:
 weapon.name=Name
@@ -67,6 +68,7 @@ import.open.btn=Import army
 import.modal.headline=Import your army
 
 mainmenu.roster=Roster
+mainmenu.armyTroops=Army Troops
 mainmenu.abilities=Abilities
 mainmenu.items=Items
 mainmenu.armyspecials=Army Specials

@@ -8,6 +8,7 @@ GET           /                                                   controllers.Ho
 GET           /abilities                                          controllers.HomeController.displayAllAbilities()
 GET           /armyspecials                                       controllers.HomeController.displayAllArmySpecials()
 GET           /items                                              controllers.HomeController.displayAllItems()
+GET           /army/:faction/troops                               controllers.HomeController.displayTroopsOfFaction(faction: String)
 
 GET           /changeLang/:language                               controllers.HomeController.changeLanguage(language: String)
 
