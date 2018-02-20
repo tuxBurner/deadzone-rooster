@@ -4,9 +4,8 @@ package deadzone.parsers
 import javax.inject.{Inject, Singleton}
 
 import deadzone.models.CSVModels.CSVItemDto
+import deadzone.models.ItemRarity
 import play.api.{Configuration, Logger}
-
-import scala.collection.mutable.ListBuffer
 
 /**
   * @author Sebastian Hardt (s.hardt@micromata.de)
@@ -65,6 +64,18 @@ class CSVItemsImporter @Inject()(configuration: Configuration) extends CSVDataPa
       return List.empty
     }
 
+    val matchedRarity = rarityStr match {
+      case "Common" => ItemRarity.Common
+      case "Rare" => ItemRarity.Rare
+      case "Unique" => ItemRarity.Unique
+      case _ => None
+    }
+
+    if(matchedRarity == None) {
+      Logger.error(s"CSV Item: No mazched rarity was found at line: ${lineData} skipping it")
+      return List.empty
+    }
+
     val points = lineData.get(POINTS_HEADER).get.toInt
 
 
@@ -74,7 +85,7 @@ class CSVItemsImporter @Inject()(configuration: Configuration) extends CSVDataPa
       CSVItemDto(faction = factionStr,
         name = nameStr,
         points = points,
-        rarity = rarityStr,
+        rarity = matchedRarity.toString,
         noUpgrade = noUpgrade)
     }).toList
   }

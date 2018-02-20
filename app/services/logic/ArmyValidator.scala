@@ -1,5 +1,6 @@
 package services.logic
 
+import deadzone.models.{ItemRarity, ModelType}
 import play.api.i18n.Messages
 
 import scala.collection.mutable.ListBuffer
@@ -10,7 +11,13 @@ import scala.collection.mutable.ListBuffer
 class ArmyValidator(messages: Messages) {
 
 
-  val itemsPerPoint: Map[String, Map[Int, Int]] = Map("Common" -> Map(100 -> 2, 150 -> 3, 200 -> 4, 250 -> 5, 300 -> 6), "Rare" -> Map(100 -> 1, 150 -> 1, 200 -> 2, 250 -> 2, 300 -> 3), "Unique" -> Map(100 -> 1, 150 -> 1, 200 -> 1, 250 -> 1, 300 -> 1))
+  /**
+    * How many items per rarity an army can have
+    */
+  val itemsPerPoint: Map[ItemRarity.Value, Map[Int, Int]] = Map(
+    ItemRarity.Common -> Map(100 -> 2, 150 -> 3, 200 -> 4, 250 -> 5, 300 -> 6),
+    ItemRarity.Rare -> Map(100 -> 1, 150 -> 1, 200 -> 2, 250 -> 2, 300 -> 3),
+    ItemRarity.Unique -> Map(100 -> 1, 150 -> 1, 200 -> 1, 250 -> 1, 300 -> 1))
 
 
   /**
@@ -45,7 +52,7 @@ class ArmyValidator(messages: Messages) {
     * @return
     */
   private def checkIfOneLeader(army: ArmyDto): List[String] = {
-    army.troopsWithAmount.count(_.troop.recon != 0) match {
+    getTroopAmountByType(army, ModelType.Leader) match {
       case 0 => List(messages("validate.noLeaderSelected"))
       case 1 => List()
       case _ => List(messages("validate.moreThanOneLeaderSelected"))
@@ -59,8 +66,8 @@ class ArmyValidator(messages: Messages) {
     * @return
     */
   private def validateSpecialist(army: ArmyDto): List[String] = {
-    val troopCount = army.troopsWithAmount.count(_.troop.modelType == "Troop")
-    val specialistCount = army.troopsWithAmount.count(_.troop.modelType == "Specialist")
+    val troopCount = getTroopAmountByType(army, ModelType.Troop)
+    val specialistCount = getTroopAmountByType(army, ModelType.Specialist)
 
     if (specialistCount > troopCount) {
       List(messages("validate.toMuchSpecialistSelected"))
@@ -72,14 +79,14 @@ class ArmyValidator(messages: Messages) {
   /**
     * Checks if there are enough troops for the amount of vehicles
     *
-    * @param army  the army with the troops in it
+    * @param army the army with the troops in it
     * @return
     */
   private def validateVehicle(army: ArmyDto): List[String] = {
-    val troopCount = army.troopsWithAmount.count(_.troop.modelType == "Troop")
-    val vehicleCount = army.troopsWithAmount.count(_.troop.modelType == "Vehicle")
+    val troopCount = getTroopAmountByType(army, ModelType.Troop)
+    val vehicleCount = getTroopAmountByType(army, ModelType.Vehicle)
 
-    val allowedAmountOfVehicles: Int = troopCount / 3;
+    val allowedAmountOfVehicles: Int = troopCount / 3
 
     if (allowedAmountOfVehicles < vehicleCount) {
       List(messages("validate.toMuchVehiclesSelected"))
@@ -89,13 +96,24 @@ class ArmyValidator(messages: Messages) {
   }
 
   /**
+    * Calculates the amount of troops of the given type in the army
+    *
+    * @param army      the army containing the troop
+    * @param modelType the type of model to count
+    * @return
+    */
+  private def getTroopAmountByType(army: ArmyDto, modelType: ModelType.Value): Int = {
+    army.troopsWithAmount.filter(_.troop.modelType == modelType.toString).map(_.amount).sum
+  }
+
+  /**
     * Checks if there is only one characte in the army
     *
     * @param army
     * @return
     */
   private def validateCharacters(army: ArmyDto): List[String] = {
-    army.troopsWithAmount.count(_.troop.modelType == "Character") match {
+    getTroopAmountByType(army, ModelType.Character) match {
       case 0 => List()
       case 1 => List()
       case _ => List(messages("validate.onlyOneCharacterAllowed"))
@@ -105,24 +123,26 @@ class ArmyValidator(messages: Messages) {
   /**
     * Checks if the items the army contains are valid
     *
-    * @param army  the army with the troops in it
+    * @param army the army with the troops in it
     * @return
     */
   private def validateItems(army: ArmyDto): List[String] = {
     val result: ListBuffer[String] = ListBuffer()
 
     // check if there are troops with more than one item
-    val troopsWithToMuchItems = army.troopsWithAmount.count(_.troop.items.filter(_.noUpdate == false).length > 1)
+
+    val troopsWithToMuchItems = army.troopsWithAmount.count(_.troop.items.count(_.noUpdate == false) > 1)
+
     if (troopsWithToMuchItems > 0) result += messages("validate.troopsToMuchItems")
 
 
     // check if the rarity is okay for the items
-    val itemsInArmy = army.troopsWithAmount.flatten(_.troop.items.filter(_.noUpdate == false))
+    //val itemsInArmy = army.troopsWithAmount.flatten(_.troop.items.filter(_.noUpdate == false))
 
 
-    result ++= validateItemsPerRarity(itemsInArmy, "Common", army.points)
-    result ++= validateItemsPerRarity(itemsInArmy, "Unique", army.points)
-    result ++= validateItemsPerRarity(itemsInArmy, "Rare", army.points)
+    result ++= validateItemsPerRarity(army, ItemRarity.Common)
+    result ++= validateItemsPerRarity(army, ItemRarity.Unique)
+    result ++= validateItemsPerRarity(army, ItemRarity.Rare)
 
 
     result.toList
@@ -131,30 +151,35 @@ class ArmyValidator(messages: Messages) {
   /**
     * Checks if the items in the army are matching the allowed amount of items of this rarity by army points
     *
-    * @param itemsInArmy all items in the army
+    * @param army   the army where the troops with there items are in
     * @param rarity the rarity to check
-    * @param armyTotalPoints the total amount of points in this army
     * @return
     */
-  private def validateItemsPerRarity(itemsInArmy: List[ArmyItemDto], rarity: String, armyTotalPoints: Int): List[String] = {
+  private def validateItemsPerRarity(army: ArmyDto, rarity: ItemRarity.Value): List[String] = {
 
-    val rarityItems = itemsInArmy.filter(_.rarity == rarity)
+    val rarityItems = army.troopsWithAmount.map(amountTroop => {
+      // count all items with the given rarity and no update
+      val itemsInTroop = amountTroop.troop.items.count(item => item.rarity == rarity.toString && item.noUpdate == false)
+      // multiply with the amount of troop
+      itemsInTroop * amountTroop.amount
+    }).sum
+
     // no items ?
-    if (rarityItems.length == 0) {
+    if (rarityItems == 0) {
       return List()
     }
 
 
     val armyItemsRange: Int =
-      if (100 >= armyTotalPoints) {
+      if (100 >= army.points) {
         100
-      } else if (150 >= armyTotalPoints) {
+      } else if (150 >= army.points) {
         150
-      } else if (200 >= armyTotalPoints) {
+      } else if (200 >= army.points) {
         200
-      } else if (250 >= armyTotalPoints) {
+      } else if (250 >= army.points) {
         250
-      } else if (300 >= armyTotalPoints) {
+      } else if (300 >= army.points) {
         300
       } else {
         100
@@ -164,7 +189,7 @@ class ArmyValidator(messages: Messages) {
     val itemsPerArmyPoint = itemsPerPoint.get(rarity).get.get(armyItemsRange).get
 
 
-    if (itemsPerArmyPoint < rarityItems.length) {
+    if (itemsPerArmyPoint < rarityItems) {
       List(messages("validate.toMuchItemsPerRarity", rarity, itemsPerArmyPoint))
     } else {
       List()
