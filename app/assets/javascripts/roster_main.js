@@ -1,4 +1,4 @@
-var rosterGuiHandler = {
+let rosterGuiHandler = {
 
   /**
    * Stores the current troops for the selected faction
@@ -38,14 +38,14 @@ var rosterGuiHandler = {
    * Gets the avaible troops for the selected faction from the backend and displays them in the add troop drop down
    */
   getAndFillFactionTroopSelect: function() {
-    var selectedFaction = $('#roster_faction_select').val();
+    let selectedFaction = $('#roster_faction_select').val();
     jsRoutes.controllers.RosterController.getSelectTroopsForFaction(selectedFaction).ajax({
       success: function(data) {
 
         // store the troops for the faction in the var
         rosterGuiHandler.factionTroops = data;
 
-        var troopTypes = [];
+        let troopTypes = [];
         $.each(data, function(idx) {
           troopTypes.push(idx);
         });
@@ -68,8 +68,8 @@ var rosterGuiHandler = {
    * Fills the troop for the selected type
    */
   fillTroopSelectForType: function() {
-    var selectedTroopType = $('#roster_troop_type_select').val();
-    var troops = rosterGuiHandler.factionTroops[selectedTroopType];
+    let selectedTroopType = $('#roster_troop_type_select').val();
+    let troops = rosterGuiHandler.factionTroops[selectedTroopType];
 
     $('#roster_addTroop_select').html('');
     $.each(troops, function(idx, troop) {
@@ -83,7 +83,7 @@ var rosterGuiHandler = {
    * Displays when avaible the image of the currently selected troop
    */
   displaySelectedTroopImage: function() {
-    var imgUrl = $('#roster_addTroop_select :selected').data('imageUrl');
+    let imgUrl = $('#roster_addTroop_select :selected').data('imageUrl');
 
     if(imgUrl !== '') {
       $('#roster_troop_img').attr('src', imgUrl).show();
@@ -96,7 +96,7 @@ var rosterGuiHandler = {
    * Adds the selected troop to the army list
    */
   addSelectedTroopToArmy: function() {
-    var troopToAdd = {
+    let troopToAdd = {
       faction: $('#roster_faction_select').val(),
       troop: $('#roster_addTroop_select').val()
     };
@@ -144,17 +144,17 @@ var rosterGuiHandler = {
         $('#roster_troop_edit_name').text(troopName);
         $('#roster_troop_edit_modal').data('troopuuid', uuid);
 
-        var weaponsContent = '';
-        weaponsContent += rosterGuiHandler._displayEditWeaponType('Free', 'free', data);
+
+        let weaponsContent = rosterGuiHandler._displayEditWeaponType('Free', 'free', data);
         weaponsContent += rosterGuiHandler._displayEditWeaponType('Fight', 'fight', data);
         weaponsContent += rosterGuiHandler._displayEditWeaponType('Ranged', 'ranged', data);
         weaponsContent += rosterGuiHandler._displayEditWeaponType('Combo', 'linked', data);
         $('#roster_troop_edit_weapons').html(weaponsContent);
 
-        var itemsContent = '';
-        $.each(data.items, function(idx, item) {
+        let itemsContent = '';
 
-          var checked = '';
+        data.items.forEach(item => {
+          let checked = '';
           for(var iidx in data.troop.items) {
             if(data.troop.items[iidx].name === item.name) {
               checked = 'checked';
@@ -162,15 +162,21 @@ var rosterGuiHandler = {
             }
           }
 
-          itemsContent += '<tr>';
-          itemsContent += '<td><div class="checkbox"><label>';
-          itemsContent += '<input class="edit_troop_slected_item" value="' + item.name + '" type="checkbox" ' + checked + ' />';
-          itemsContent += item.name;
-          itemsContent += '</label></div></td>';
-          itemsContent += '<td>' + item.points + '</td>';
-          itemsContent += '<td>' + item.rarity + '</td>';
-          itemsContent += '</tr>';
+          itemsContent += `<tr>
+                            <td>
+                              <div class="checkbox">
+                                <label> 
+                                  <input class="edit_troop_slected_item" value="${item.name}" type="checkbox" ${checked} />
+                                  ${item.name}
+                                </label>
+                              </div>
+                            </td>
+                            <td>${item.points}</td>
+                            <td>${item.rarity}</td>       
+                          </tr>`;
         });
+
+
         $('#roster_troop_edit_items').html(itemsContent);
 
         $('#roster_troop_edit_modal').modal('show');
@@ -182,24 +188,24 @@ var rosterGuiHandler = {
    * Collects the data for the troop and saves the changes in the backend
    */
   saveChangesToTroop: function() {
-    var uuid = $('#roster_troop_edit_modal').data('troopuuid');
-    var dataToSave = {
+    let uuid = $('#roster_troop_edit_modal').data('troopuuid');
+    let dataToSave = {
       selectedWeapons: [],
       selectedItems: []
     };
 
-    $.each($('.edit_troop_selected_weapon:checked'), function(idx, obj) {
+    $.each($('.edit_troop_selected_weapon:checked'), (idx, obj) => {
       dataToSave.selectedWeapons.push($(obj).val());
     });
 
-    $.each($('.edit_troop_slected_item:checked'), function(idx, obj) {
+    $.each($('.edit_troop_slected_item:checked'), (idx, obj) => {
       dataToSave.selectedItems.push($(obj).val());
     });
 
     jsRoutes.controllers.RosterController.updateTroopWeaponsAndItems(uuid).ajax({
       data: JSON.stringify(dataToSave),
       contentType: "application/json; charset=utf-8",
-      success: function(data) {
+      success: (data) => {
         rosterGuiHandler.displayCurrentArmyData(data);
         $('#roster_troop_edit_modal').modal('hide');
       }
@@ -214,39 +220,48 @@ var rosterGuiHandler = {
    * @returns {string}
    */
   _displayEditWeaponType: function(headline, type, data) {
-    var content = '';
+    let content = '';
 
     if(data.weapons[type].length !== 0) {
-      content = '<tr class="info"><th colspan="7">' + headline + '</th></tr>';
-      $.each(data.weapons[type], function(idx, weapon) {
 
-        var checked = '';
-        for(var widx in data.troop.weapons) {
+      content = `<tr class="info">
+                   <th colspan="7">${headline}</th>
+                 </tr>`;
+
+      data.weapons[type].forEach(weapon => {
+        let checked = '';
+        for(let widx in data.troop.weapons) {
           if(data.troop.weapons[widx].name === weapon.name) {
             checked = 'checked';
             break;
           }
         }
 
-        var tableRow = '<tr>';
-        for(var wdidx in data.troop.defaultWeapons) {
+
+        let tableRowClass = '';
+        for(let wdidx in data.troop.defaultWeapons) {
           if(data.troop.defaultWeapons[wdidx].name === weapon.name) {
-            tableRow = '<tr class="warning">';
+            tableRowClass = 'warning';
             break;
           }
         }
+        content += `<tr class="${tableRowClass}">
+                      <td>
+                        <div class="checkbox">
+                          <label>
+                            <input data-linked-name="${weapon.linkedName}" value="${weapon.name}" class="edit_troop_selected_weapon" type="checkbox" ${checked}/>
+                           ${weapon.name}
+                          </label>                          
+                        </div> 
+                      </td>
+                      <td>${weapon.points}</td>
+                      <td>${weapon.victoryPoints}</td>
+                      <td>${rosterGuiHandler._weaponRangeForDisplay(weapon)}</td>
+                      <td>${weapon.armorPircing}</td>
+                      <td>${rosterGuiHandler._abilitiesForDisplay(weapon.abilities, ',')}</td>
+                    </tr>`;
 
-        content += tableRow;
-        content += '<td><div class="checkbox"><label>';
-        content += '<input data-linked-name="' + weapon.linkedName + '" value="' + weapon.name + '" class="edit_troop_selected_weapon" type="checkbox" ' + checked + '/> ';
-        content += weapon.name;
-        content += '</label></div></td>';
-        content += '<td>' + weapon.points + '</td>';
-        content += '<td>' + weapon.victoryPoints + '</td>';
-        content += '<td>' + rosterGuiHandler._weaponRangeForDisplay(weapon) + '</td>';
-        content += '<td>' + weapon.armorPircing + '</td>';
-        content += '<td>' + rosterGuiHandler._abilitiesForDisplay(weapon.abilities, ',') + '</td>';
-        content += '</tr>';
+
       });
     }
     return content;
@@ -258,7 +273,7 @@ var rosterGuiHandler = {
    */
   displayCurrentArmyData: function(armyData) {
 
-    var disableBtns = armyData.troopsWithAmount.length === 0;
+    let disableBtns = armyData.troopsWithAmount.length === 0;
     $('.roster_action_btn').prop('disabled', disableBtns);
 
     $('#roster_army_points').text(armyData.points);
@@ -267,49 +282,80 @@ var rosterGuiHandler = {
     $('#roster_army_name').val(armyData.name);
 
     $('#roster_troop_tbody').html('');
-    var tableContent = '';
-    $.each(armyData.troopsWithAmount, function(idx, amountTroop) {
+    let tableContent = '';
 
-      var troop = amountTroop.troop;
+    let troopsByType = {};
 
-      var weaponsContent = rosterGuiHandler._displayTroopWeapons(troop);
-
-      var reconArmySpecialContent = '';
-      if(troop.recon !== 0) {
-        reconArmySpecialContent += troop.recon + ' / ' +
-          '<u class="infoPopOver helpMouse" data-type="armyspecial" title="' + troop.armySpecial + '">' + troop.armySpecial + '</u>';
+    armyData.troopsWithAmount.forEach(troopWithAmount => {
+      let modelType = troopWithAmount.troop.modelType;
+      if(troopsByType[modelType] === undefined) {
+        troopsByType[modelType] = [];
       }
 
-      var itemsContent = '';
-      $.each(troop.items, function(idx, item) {
-        itemsContent += '<u class="infoPopOver helpMouse" data-type="item" title="' + item.name + '">' + item.name + '</u><br />';
+      troopsByType[modelType].push(troopWithAmount);
+    });
+
+
+    Object.keys(troopsByType).forEach(modelType => {
+
+      tableContent += `<tr class="info"><th colspan="16"><h5>${modelType}</h5></th></tr>`;
+
+      // sort the troops by name
+      troopsByType[modelType].sort((a, b) => {
+        if(a.troop.name <= b.troop.name) {
+          return -1;
+        }
+
+        if(a.troop.name >= b.troop.name) {
+          return 1;
+        }
+
+        return 0;
       });
 
-      tableContent += '<tr data-uuid="' + troop.uuid + '" data-troopname="' + troop.name + '">';
-      tableContent += '<td>' + troop.name + '</td>';
-      tableContent += '<td>' + troop.modelType.charAt(0) + '</td>';
-      tableContent += '<td>' + troop.points + '</td>';
-      tableContent += '<td>' + troop.victoryPoints + '</td>';
-      tableContent += '<td>' + troop.armour + '</td>';
-      tableContent += '<td>' + troop.size + '</td>';
-      tableContent += '<td>' + troop.speed + '-' + troop.sprint + '</td>';
-      tableContent += '<td>' + rosterGuiHandler._displayStatsValue(troop.shoot) + '</td>';
-      tableContent += '<td>' + rosterGuiHandler._displayStatsValue(troop.fight) + '</td>';
-      tableContent += '<td>' + rosterGuiHandler._displayStatsValue(troop.survive) + '</td>';
-      tableContent += '<td>' + rosterGuiHandler._abilitiesForDisplay(troop.abilities, '<br />') + '</td>';
-      tableContent += '<td>' + weaponsContent + '</td>';
-      tableContent += '<td>' + itemsContent + '</td>';
-      tableContent += '<td>' + reconArmySpecialContent + '</td>';
-      tableContent += '<td><input class="form-control roster_amount_input" type="number" value="' + amountTroop.amount + '" min="1" style="width: 80px;"/></td>';
-      tableContent += '<td>';
-      tableContent += '<div class="btn-group btn-group-xs">';
-      tableContent += '<button class="btn btn-info roster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button>';
-      tableContent += '<button class="btn btn-info roster_clone_btn"><span class="glyphicon glyphicon-plus-sign"></span></button>';
-      tableContent += '<button class="btn btn-danger roster_del_btn"><span class="glyphicon glyphicon-trash"></span></button>';
-      tableContent += '</div>';
-      tableContent += '</td>';
-      tableContent += '</tr>';
+      // iterate over the troops and
+      troopsByType[modelType].forEach(amountTroop => {
+        let troop = amountTroop.troop;
+
+        let reconArmySpecialContent = (troop.recon !== 0) ? `${troop.recon} / <u class="infoPopOver helpMouse" data-type="armyspecial" title="${troop.armySpecial}">${troop.armySpecial}</u>` : '';
+
+        let itemsContent = '';
+        troop.items.forEach(item => {
+          itemsContent += `<u class="infoPopOver helpMouse" data-type="item" title="${item.name}">${item.name}</u><br />`;
+        });
+
+        tableContent += `<tr  data-uuid="${troop.uuid}" data-troopname="${troop.name}">
+                           <td>${troop.name}</td>
+                           <td>${troop.modelType.charAt(0)}</td>
+                           <td>${troop.points}</td>
+                           <td>${troop.victoryPoints}</td>
+                           <td>${troop.armour}</td>
+                           <td>${troop.size}</td>
+                           <td>${troop.speed}-${troop.sprint}</td>
+                           <td>${rosterGuiHandler._displayStatsValue(troop.shoot)}</td>
+                           <td>${rosterGuiHandler._displayStatsValue(troop.fight)}</td>
+                           <td>${rosterGuiHandler._displayStatsValue(troop.survive)}</td>
+                           <td>${rosterGuiHandler._abilitiesForDisplay(troop.abilities, '<br />')}</td>
+                           <td>${rosterGuiHandler._displayTroopWeapons(troop)}</td>
+                           <td>${itemsContent}</td>
+                           <td>${reconArmySpecialContent}</td>
+                           <td>
+                             <input class="form-control roster_amount_input" type="number" value="${amountTroop.amount}" min="1" style="width: 80px;"/>
+                           </td>
+                           <td>
+                             <div class="btn-group btn-group-xs">
+                                <button class="btn btn-info roster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button>
+                                <button class="btn btn-info roster_clone_btn"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                                <button class="btn btn-danger roster_del_btn"><span class="glyphicon glyphicon-trash"></span></button>
+                             </div> 
+                           </td>
+                         </tr>`;
+
+
+      });
+
     });
+
 
     $('#roster_troop_tbody').html(tableContent);
   },
@@ -321,19 +367,12 @@ var rosterGuiHandler = {
    * @private
    */
   _displayTroopWeapons: function(troop) {
-    var weaponsContent = '';
+    let weaponsContent = '';
 
-    $.each(troop.weapons, function(idx, weapon) {
-      weaponsContent += '<b>' + weapon.name + '</b>';
-      weaponsContent += ' ,' + rosterGuiHandler._weaponRangeForDisplay(weapon);
-      if(weapon.armorPircing !== 0) {
-        weaponsContent += ', AP' + weapon.armorPircing;
-      }
-      if(weapon.abilities.length !== 0) {
-        weaponsContent += ' ,';
-      }
-      weaponsContent += rosterGuiHandler._abilitiesForDisplay(weapon.abilities, ',');
-      weaponsContent += '<br />';
+    troop.weapons.forEach(weapon => {
+      let apContent = (weapon.armorPircing !== 0) ? `, AP ${weapon.armorPircing}` : '';
+      let abSep = (weapon.abilities.length !== 0) ? ' ,' : '';
+      weaponsContent += `<b>${weapon.name}</b>, ${rosterGuiHandler._weaponRangeForDisplay(weapon)} ${apContent} ${abSep} ${rosterGuiHandler._abilitiesForDisplay(weapon.abilities, ',')} <br />`;
     });
 
     return weaponsContent;
@@ -348,7 +387,7 @@ var rosterGuiHandler = {
       return '-';
     }
 
-    return value + '+';
+    return `${value}+`;
   },
 
   /**
@@ -358,9 +397,9 @@ var rosterGuiHandler = {
    */
   _weaponRangeForDisplay: function(weapon) {
     if(weapon.shootRange === 0) {
-      return 'RF';
+      return `RF`;
     } else {
-      return 'R' + weapon.shootRange;
+      return `R${weapon.shootRange}`;
     }
   },
   /**
@@ -370,17 +409,16 @@ var rosterGuiHandler = {
    * @returns {string}
    */
   _abilitiesForDisplay: function(abilities, abSeperator) {
-    var abilitiesContent = '';
-    var seperator = '';
-    $.each(abilities, function(idx, ability) {
-      abilitiesContent += seperator + '<u class="infoPopOver helpMouse" data-type="ability" title="' + ability.name + '">';
-      abilitiesContent += ability.name;
-      if(ability.defaultVal !== 0) {
-        abilitiesContent += ' (' + ability.defaultVal + ')';
-      }
-      abilitiesContent += '</u>';
+    let abilitiesContent = '';
+    let seperator = '';
+
+    abilities.forEach(ability => {
+      let abilityDefaultVal = (ability.defaultVal !== 0) ? ` (${ability.defaultVal})` : '';
+      abilitiesContent += `${seperator} <u class="infoPopOver helpMouse" data-type="ability" title="${ability.name}">${ability.name} ${abilityDefaultVal}</u>`;
       seperator = abSeperator;
+
     });
+
     return abilitiesContent;
   },
 
@@ -395,7 +433,7 @@ var rosterGuiHandler = {
       return;
     }
     jsRoutes.controllers.RosterController.getPopOverData(type, key).ajax({
-      success: function(data) {
+      success: (data) => {
         rosterGuiHandler.popOverInfos[type + key] = data;
         callBack(data);
       }
@@ -407,18 +445,22 @@ var rosterGuiHandler = {
    */
   validateArmy: function() {
     jsRoutes.controllers.RosterController.validateArmy().ajax({
-      success: function(data) {
+      success: (data) => {
         var content = '';
 
         if(data.length === 0) {
           content += 'No errors.';
         } else {
           content += 'Found: ' + data.length + ' errors in army';
-          content += '<ul>';
-          $.each(data, function(idx, msg) {
-            content += '<li>' + msg + '</li>';
+
+          let msgContent = '';
+          data.forEach(msg => {
+            msgContent += `<li>${msg}</li>`;
           });
-          content += '</ul>';
+
+
+          content += `<ul>${data.map(msg => `<li>${msg}</li>`).join('')}</ul>`;
+
         }
 
         $('#roster_army_validate_modal_body').html(content);
@@ -433,7 +475,7 @@ var rosterGuiHandler = {
    */
   cloneTroop: function(uuid) {
     jsRoutes.controllers.RosterController.cloneTroop(uuid).ajax({
-      success: function(data) {
+      success: (data) => {
         rosterGuiHandler.displayCurrentArmyData(data);
       }
     });
@@ -442,19 +484,19 @@ var rosterGuiHandler = {
    * Uploads the selected file and displays the imported army
    */
   importArmy: function() {
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append('file', $('#roster_upload_file')[0].files[0]);
 
     jsRoutes.controllers.RosterController.importArmy().ajax({
       data: formData,
       processData: false,
       contentType: false,
-      success: function(data) {
+      success: (data) => {
         rosterGuiHandler.displayCurrentArmyData(data);
         $('#roster_army_import_modal').modal('hide');
       },
-      error: function(data) {
-        alert('Error !!!!');
+      error: (data) => {
+        alert(`Error !!!! ${data}`);
       }
 
     });
@@ -466,7 +508,7 @@ var rosterGuiHandler = {
     jsRoutes.controllers.RosterController.changeArmyName().ajax({
       data: JSON.stringify({armyName: newArmyName}),
       contentType: "application/json; charset=utf-8",
-      success: function(data) {
+      success: (data) => {
         rosterGuiHandler.displayCurrentArmyData(data);
       }
     });
@@ -481,7 +523,7 @@ var rosterGuiHandler = {
     jsRoutes.controllers.RosterController.changeAmountOfTroop(uuid).ajax({
       data: JSON.stringify({amount: newAmount}),
       contentType: "application/json; charset=utf-8",
-      success: function(data) {
+      success: (data) => {
         rosterGuiHandler.displayCurrentArmyData(data);
       }
     });
@@ -493,83 +535,67 @@ $(function() {
 
   rosterGuiHandler.getAndFillFactions();
 
-  $('#roster_faction_select').on('change', function() {
-    rosterGuiHandler.getAndFillFactionTroopSelect();
-  });
+  $('#roster_faction_select').on('change', () => rosterGuiHandler.getAndFillFactionTroopSelect());
 
-  $('#roster_troop_type_select').on('change', function() {
-    rosterGuiHandler.fillTroopSelectForType();
-  });
+  $('#roster_troop_type_select').on('change', () => rosterGuiHandler.fillTroopSelectForType());
 
-  $('#roster_addTroop_select').on('change', function() {
-    rosterGuiHandler.displaySelectedTroopImage();
-  });
+  $('#roster_addTroop_select').on('change', () => rosterGuiHandler.displaySelectedTroopImage());
 
-  $('#roster_addTroop_btn').on('click', function() {
-    rosterGuiHandler.addSelectedTroopToArmy();
-  });
+  $('#roster_addTroop_btn').on('click', () => rosterGuiHandler.addSelectedTroopToArmy());
 
 
-  $('#roster_troop_edit_save_btn').on('click', function() {
-    rosterGuiHandler.saveChangesToTroop();
-  });
+  $('#roster_troop_edit_save_btn').on('click', () => rosterGuiHandler.saveChangesToTroop());
 
-  $('#roster_validate_army_btn').on('click', function() {
-    rosterGuiHandler.validateArmy();
-  });
+  $('#roster_validate_army_btn').on('click', () => rosterGuiHandler.validateArmy());
 
-  $('#roster_open_import_army_btn').on('click', function() {
-    $('#roster_army_import_modal').modal('show');
-  });
+  $('#roster_open_import_army_btn').on('click', () => $('#roster_army_import_modal').modal('show'));
 
-  $('#roster_import_army_btn').on('click', function() {
-    rosterGuiHandler.importArmy();
-  });
+  $('#roster_import_army_btn').on('click', () => rosterGuiHandler.importArmy());
 
   $('#roster_army_name').on('blur', function() {
-    var newName = $(this).val();
+    let newName = $(this).val();
     rosterGuiHandler.changeArmyName(newName);
   });
 
   $(document).on('click', '.roster_del_btn', function() {
-    var uuid = $(this).closest('tr').attr('data-uuid');
+    let uuid = $(this).closest('tr').attr('data-uuid');
     rosterGuiHandler.removeTroopFromArmy(uuid);
   });
 
   $(document).on('change', '.roster_amount_input', function() {
-    var uuid = $(this).closest('tr').data('uuid');
-    var amount = $(this).val();
+    let uuid = $(this).closest('tr').data('uuid');
+    let amount = $(this).val();
     rosterGuiHandler.changeTroopAmount(uuid, amount);
 
   });
 
   $(document).on('click', '.roster_edit_btn', function() {
-    var uuid = $(this).closest('tr').data('uuid');
-    var troopName = $(this).closest('tr').data('troopname');
+    let uuid = $(this).closest('tr').data('uuid');
+    let troopName = $(this).closest('tr').data('troopname');
     rosterGuiHandler.displayEditPopup(uuid, troopName);
   });
 
   $(document).on('click', '.edit_troop_selected_weapon', function() {
-    var linkedName = $(this).data('linkedName');
+    let linkedName = $(this).data('linkedName');
     if(linkedName === '') {
       return;
     }
 
-    var thisStatus = $(this).prop('checked');
+    let thisStatus = $(this).prop('checked');
     $('.edit_troop_selected_weapon[data-linked-name="' + linkedName + '"]').prop('checked', thisStatus);
   });
 
 
   $(document).on('click', '.roster_clone_btn', function() {
-    var uuid = $(this).closest('tr').data('uuid');
+    let uuid = $(this).closest('tr').data('uuid');
     rosterGuiHandler.cloneTroop(uuid);
   });
 
   $(document).on('mouseenter', '.infoPopOver', function() {
-    var key = $(this).attr('title');
-    var type = $(this).data('type');
+    let key = $(this).attr('title');
+    let type = $(this).data('type');
     $(this).removeClass('infoPopOver');
-    var el = $(this);
+    let el = $(this);
     rosterGuiHandler.getPopoverData(type, key, function(data) {
       el.popover({content: data, html: true, trigger: 'hover', placement: 'auto'}).popover('show');
     });
