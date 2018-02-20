@@ -16,6 +16,7 @@ troop.tbl.items=Items
 troop.tbl.reconArmySpecial=REC/Special
 troop.tbl.allowedWeaponTypes=Allowed Weapon Types
 troop.tbl.amount=Amount
+troop.tbl.hardPoints=HP
 
 weapon.headline=Weapons:
 weapon.name=Name
@@ -26,6 +27,7 @@ weapon.armorPircing=AP
 weapon.abilities=Abilities
 weapon.free=Free
 weapon.linkedName=Linked Name
+weapon.hardPoints=HP
 
 item.headline=Items:
 item.name=Name
@@ -58,6 +60,7 @@ validate.troopsToMuchItems=Only one item per troop allowed.
 validate.toMuchItemsPerRarity=For the rarity: {0} only {1} items are allowed.
 validate.toMuchFightWeapons=The troop: {0} has {1} fight weapons only one is allowed.
 validate.toMuchShootWeapons=The troop: {0} has {1} shoot weapons only one is allowed.
+validate.notEnoughHardPoints=The troop: {0} has: {1} hardpoints the weapons it carries have in total: {2} 
 
 validate.modal.headline=Validation Result
 validate.btn=Validate

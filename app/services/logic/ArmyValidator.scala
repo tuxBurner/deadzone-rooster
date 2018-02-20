@@ -28,7 +28,7 @@ class ArmyValidator(messages: Messages) {
   def validateArmy(army: ArmyDto): List[String] = {
     army.troopsWithAmount.length match {
       case 0 => List()
-      case _ => checkSingleFaction(army) ++ checkIfOneLeader(army) ++ validateSpecialist(army) ++ validateVehicle(army) ++ validateCharacters(army) ++ validateItems(army) ++ validateWeaponTypesPerTroop(army)
+      case _ => checkSingleFaction(army) ++ checkIfOneLeader(army) ++ validateSpecialist(army) ++ validateVehicle(army) ++ validateCharacters(army) ++ validateItems(army) ++ validateWeaponTypesPerTroop(army) ++ validateHardPoints(army)
     }
   }
 
@@ -224,7 +224,27 @@ class ArmyValidator(messages: Messages) {
     })
 
     result.toList
+  }
 
+  /**
+    * Checks if a troop has hard points and if so if there are enough for the weapon loadout
+    * @param army the army which contains the troops
+    * @return
+    */
+  private def validateHardPoints(army: ArmyDto) : List[String] = {
+    val result: ListBuffer[String] = ListBuffer()
+
+    army.troopsWithAmount.foreach(amountTroop => {
+      // we have to check if there are enough hardpoints
+      if(amountTroop.troop.baseStats.hardPoints != 0) {
+        val weaponTotalHp = amountTroop.troop.weapons.map(_.hardPoints).sum
+        if(weaponTotalHp > amountTroop.troop.baseStats.hardPoints) {
+          result += messages("validate.notEnoughHardPoints", amountTroop.troop.name, amountTroop.troop.baseStats.hardPoints , weaponTotalHp)
+        }
+      }
+    })
+
+    result.toList
   }
 
 }

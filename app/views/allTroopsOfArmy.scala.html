@@ -37,7 +37,7 @@
           <table class="table table-bordered">
             <thead>
               <tr class="danger">
-                <th colspan="@if(troopType == ModelType.Leader.toString) {13} else {12}">
+                <th colspan="@if(troopType == ModelType.Leader.toString) {14} else {13}">
                   <h4>@troopType</h4>
                 </th>
               </tr>
@@ -53,6 +53,7 @@
                 <th>@Messages("troop.tbl.victoryPoints")</th>
                 <th>@Messages("troop.tbl.abilities")</th>
                 <th>@Messages("troop.tbl.allowedWeaponTypes")</th>
+                <th>@Messages("troop.tbl.hardPoints")</th>
                 <th>@Messages("troop.tbl.weapons")</th>
                 @if(troopType == ModelType.Leader.toString) {
                   <th>@Messages("troop.tbl.reconArmySpecial")</th>
@@ -64,14 +65,14 @@
             @for(troop <- troopsByType.get(troopType).get.sortBy(_.troopDto.name)) {
               <tr>
                 <td>@troop.troopDto.name</td>
-                <td>@troop.troopDto.speed - @troop.troopDto.sprint</td>
-                <td>@troop.troopDto.shoot+</td>
-                <td>@troop.troopDto.fight+</td>
-                <td>@troop.troopDto.survive+</td>
-                <td>@troop.troopDto.armour</td>
-                <td>@troop.troopDto.size</td>
-                <td>@troop.troopDto.basePoints</td>
-                <td>@troop.troopDto.baseVictoryPoints</td>
+                <td>@troop.troopDto.baseStats.speed - @troop.troopDto.baseStats.sprint</td>
+                <td>@troop.troopDto.baseStats.shoot+</td>
+                <td>@troop.troopDto.baseStats.fight+</td>
+                <td>@troop.troopDto.baseStats.survive+</td>
+                <td>@troop.troopDto.baseStats.armour</td>
+                <td>@troop.troopDto.baseStats.size</td>
+                <td>@troop.troopDto.baseStats.basePoints</td>
+                <td>@troop.troopDto.baseStats.baseVictoryPoints</td>
                 <td>
                   @includes.abilitiesDisplay(troop.troopDto.abilities)
                 </td>
@@ -84,6 +85,7 @@
                   }
                   </ul>
                 </td>
+                <td>@troop.troopDto.baseStats.hardPoints</td>
                 <td>
                   <table class="table table-bordered">
                     <thead>
@@ -94,6 +96,7 @@
                         <th>@Messages("weapon.points")</th>
                         <th>@Messages("weapon.victoryPoints")</th>
                         <th>@Messages("weapon.abilities")</th>
+                        <th>@Messages("weapon.hardPoints")</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -102,7 +105,7 @@
                       @if(troop.allowedWeaponsDto.get(weaponType).get.isEmpty == false) {
 
                         <tr class="danger">
-                          <th colspan="6">@weaponType</th>
+                          <th colspan="7">@weaponType</th>
                         </tr>
 
                         @for(weapon <- troop.allowedWeaponsDto.get(weaponType).get.sortBy(_.name)) {
@@ -116,6 +119,7 @@
                             <td>
                               @includes.abilitiesDisplay(weapon.abilities)
                             </td>
+                            <td>@weapon.hardPoints</td>
                           </tr>
                         }
                       }
@@ -141,7 +145,7 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th colspan="8" class="danger">
+              <th colspan="9" class="danger">
                 <h4>@Messages("troop.tbl.weapons")</h4>
               </th>
             </tr>
@@ -152,6 +156,7 @@
               <th>@Messages("weapon.points")</th>
               <th>@Messages("weapon.victoryPoints")</th>
               <th>@Messages("weapon.abilities")</th>
+              <th>@Messages("weapon.hardPoints")</th>
               <th>@Messages("weapon.free")</th>
               <th>@Messages("weapon.linkedName")</th>
             </tr>
@@ -159,7 +164,7 @@
           <tbody>
           @for(weaponType <- factionWeapons.keySet.toList.sortWith(_ < _)) {
             <tr>
-              <th class="danger" colspan="8" id="weaponType_@weaponType">@weaponType</th>
+              <th class="danger" colspan="9" id="weaponType_@weaponType">@weaponType</th>
             </tr>
             @for(weapon <- factionWeapons.get(weaponType).get.sortBy(_.name)) {
               <tr>
@@ -171,6 +176,7 @@
                 <td>
                   @includes.abilitiesDisplay(weapon.abilities)
                 </td>
+                <td>@weapon.hardPoints</td>
                 <td>@weapon.free</td>
                 <td>@weapon.linkedName</td>
               </tr>

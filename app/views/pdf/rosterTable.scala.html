@@ -92,12 +92,12 @@
         <tr>
           <td>@amountTroop.troop.name</td>
           <td>@amountTroop.troop.modelType.charAt(0)</td>
-          <td>@amountTroop.troop.speed-@amountTroop.troop.sprint</td>
-          <td>@amountTroop.troop.shoot+</td>
-          <td>@amountTroop.troop.fight+</td>
-          <td>@amountTroop.troop.survive+</td>
-          <td>@amountTroop.troop.armour</td>
-          <td>@amountTroop.troop.size</td>
+          <td>@amountTroop.troop.baseStats.speed-@amountTroop.troop.baseStats.sprint</td>
+          <td>@amountTroop.troop.baseStats.shoot+</td>
+          <td>@amountTroop.troop.baseStats.fight+</td>
+          <td>@amountTroop.troop.baseStats.survive+</td>
+          <td>@amountTroop.troop.baseStats.armour</td>
+          <td>@amountTroop.troop.baseStats.size</td>
           <td>
           @for(ability <- amountTroop.troop.abilities) {
             @ability.name @if(ability.defaultVal != 0) { (@ability.defaultVal) } <br />
@@ -121,9 +121,9 @@
             @item.name <br />
           }
           </td>
-          <td>@amountTroop.troop.points</td>
-          <td>@amountTroop.troop.victoryPoints</td>
-          <td>@amountTroop.amount = @(amountTroop.amount*amountTroop.troop.points) @Messages("troop.tbl.points")</td>
+          <td>@amountTroop.troop.baseStats.points</td>
+          <td>@amountTroop.troop.baseStats.victoryPoints</td>
+          <td>@amountTroop.amount = @(amountTroop.amount*amountTroop.troop.baseStats.points) @Messages("troop.tbl.points")</td>
         </tr>
       }
       </tbody>

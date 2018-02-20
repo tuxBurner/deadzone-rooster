@@ -120,15 +120,19 @@ object ArmyLogic {
     })
 
 
-    val points = currentTroop.troop.basePoints + newWeapons.map(_.points).sum + newItems.map(_.points).sum
-    val victoryPoints = currentTroop.troop.baseVictoryPoints + newWeapons.map(_.victoryPoints).sum
+    val points = currentTroop.troop.baseStats.basePoints + newWeapons.map(_.points).sum + newItems.map(_.points).sum
+    val victoryPoints = currentTroop.troop.baseStats.baseVictoryPoints + newWeapons.map(_.victoryPoints).sum
 
     val newTroops = army.troopsWithAmount.map(amountTroop => {
       if (amountTroop.troop.uuid != uuid) amountTroop else {
         // add all items which are in the old troop and no upgrade item
         val itemsToSet = newItems ++ amountTroop.troop.items.filter(_.noUpdate == true)
-        amountTroop.copy(troop = amountTroop.troop.copy(points = points,
-          victoryPoints = victoryPoints,
+        amountTroop.copy(troop = amountTroop.troop.copy(
+
+          baseStats = amountTroop.troop.baseStats.copy(
+            points = points,
+            victoryPoints = victoryPoints
+          ),
           weapons = newWeapons,
           items = itemsToSet))
 
@@ -171,7 +175,7 @@ object ArmyLogic {
     * @return
     */
   def calculateArmyPoints(troops: List[ArmyAmountTroopDto]): Int = {
-    troops.map(amountTroop => amountTroop.troop.points * amountTroop.amount).sum
+    troops.map(amountTroop => amountTroop.troop.baseStats.points * amountTroop.amount).sum
   }
 
   /**
@@ -203,11 +207,7 @@ object ArmyLogic {
     val items = troopDo.defaultItems.map(itemDoToItemDto(_))
 
 
-    ArmyTroopDto(
-      uuid = UUID.randomUUID().toString,
-      faction = troopDo.faction.name,
-      name = troopDo.soldierDto.name,
-      modelType = troopDo.soldierDto.soldierType.toString,
+    val baseStats = ArmyTroopBaseStatsDto(
       basePoints = troopDo.soldierDto.points,
       points = points,
       baseVictoryPoints = troopDo.soldierDto.victoryPoints,
@@ -219,6 +219,15 @@ object ArmyLogic {
       shoot = troopDo.soldierDto.shoot,
       fight = troopDo.soldierDto.fight,
       survive = troopDo.soldierDto.survive,
+      hardPoints = troopDo.soldierDto.hardPoints
+    )
+
+    ArmyTroopDto(
+      uuid = UUID.randomUUID().toString,
+      faction = troopDo.faction.name,
+      name = troopDo.soldierDto.name,
+      modelType = troopDo.soldierDto.soldierType.toString,
+      baseStats = baseStats,
       abilities = troopAbilities,
       weapons = weapons,
       items = items,
@@ -226,7 +235,6 @@ object ArmyLogic {
       recon = troopDo.soldierDto.recon,
       armySpecial = troopDo.soldierDto.armySpecial,
       defaultWeapons = weapons)
-
   }
 
   /**
@@ -306,7 +314,16 @@ object ArmyLogic {
     */
   def weaponDoToWeaponDto(weaponDo: WeaponDO): ArmyWeaponDto = {
     val abilities = weaponDo.defaultWeaponAbilities.map(abilityDo => ArmyAbilityDto(abilityDo.abilityDO.name, abilityDo.defaultValue))
-    ArmyWeaponDto(weaponDo.name, weaponDo.points, weaponDo.shootRange, weaponDo.armorPircing, weaponDo.victoryPoints, abilities, weaponDo.free, weaponDo.linkedName)
+
+    ArmyWeaponDto(name = weaponDo.name,
+      points = weaponDo.points,
+      shootRange = weaponDo.shootRange,
+      armorPircing = weaponDo.armorPircing,
+      victoryPoints = weaponDo.victoryPoints,
+      abilities = abilities,
+      free = weaponDo.free,
+      linkedName = weaponDo.linkedName,
+      hardPoints = weaponDo.hartPoints)
   }
 
   /**
@@ -358,17 +375,7 @@ case class ArmyTroopDto(uuid: String,
                         faction: String,
                         name: String,
                         modelType: String,
-                        basePoints: Int,
-                        points: Int,
-                        baseVictoryPoints: Int,
-                        victoryPoints: Int,
-                        speed: Int,
-                        sprint: Int,
-                        armour: Int,
-                        size: Int,
-                        shoot: Int,
-                        fight: Int,
-                        survive: Int,
+                        baseStats: ArmyTroopBaseStatsDto,
                         abilities: List[ArmyAbilityDto],
                         weapons: List[ArmyWeaponDto],
                         items: List[ArmyItemDto],
@@ -377,11 +384,25 @@ case class ArmyTroopDto(uuid: String,
                         armySpecial: String,
                         defaultWeapons: List[ArmyWeaponDto])
 
+case class ArmyTroopBaseStatsDto(basePoints: Int,
+                                 points: Int,
+                                 baseVictoryPoints: Int,
+                                 victoryPoints: Int,
+                                 speed: Int,
+                                 sprint: Int,
+                                 armour: Int,
+                                 size: Int,
+                                 shoot: Int,
+                                 fight: Int,
+                                 survive: Int,
+                                 hardPoints: Int)
+
 case class ArmyWeaponDto(name: String,
                          points: Int,
                          shootRange: Int,
                          armorPircing: Int,
                          victoryPoints: Int,
+                         hardPoints: Int,
                          abilities: List[ArmyAbilityDto],
                          free: Boolean,
                          linkedName: String)

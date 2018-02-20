@@ -11,7 +11,7 @@ import play.api.i18n.I18nSupport
 import play.api.libs.json._
 import play.api.mvc._
 import services.logic.ArmyImExpLogic.{ArmyImpExpDto, TroopImExpDto}
-import services.logic._
+import services.logic.{ArmyTroopBaseStatsDto, _}
 
 import scala.concurrent.duration._
 import scala.io.Source
@@ -25,6 +25,7 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
   implicit val armyAbilityDtoFormat: OFormat[ArmyAbilityDto] = Json.format[ArmyAbilityDto]
   implicit val armyWeaponDtoFormat: OFormat[ArmyWeaponDto] = Json.format[ArmyWeaponDto]
   implicit val armyItemDtoFormat: OFormat[ArmyItemDto] = Json.format[ArmyItemDto]
+  implicit val armyTroopBaseStatsDtoFormat: OFormat[ArmyTroopBaseStatsDto] = Json.format[ArmyTroopBaseStatsDto]
   implicit val armyTroopDtoFormat: OFormat[ArmyTroopDto] = Json.format[ArmyTroopDto]
   implicit val armyAmountTroopDtoFormat: OFormat[ArmyAmountTroopDto] = Json.format[ArmyAmountTroopDto]
   implicit val armyDtoFormat: OFormat[ArmyDto] = Json.format[ArmyDto]
