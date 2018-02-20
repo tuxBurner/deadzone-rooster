@@ -1,0 +1,10 @@
+@import services.logic.ArmyAbilityDto
+@(abilities: List[ArmyAbilityDto])
+
+@if(abilities.isEmpty == false) {
+  <ul>
+  @for(ability <- abilities.sortBy(_.name)) {
+    <li>@ability.name @if(ability.defaultVal != 0) { (@ability.defaultVal) }</li>
+  }
+  </ul>
+}

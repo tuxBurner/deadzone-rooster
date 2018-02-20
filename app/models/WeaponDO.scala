@@ -56,6 +56,17 @@ object WeaponDAO {
   }
 
   /**
+    * Finds all weapons by the given faction
+    * @param factionName the name of the faction
+    * @return
+    */
+  def findByFaction(factionName: String): List[WeaponDO] = {
+    weapons
+      .filter(_.faction.name == factionName)
+      .toList
+  }
+
+  /**
     * Adds a weapon to a faction.
     *
     * @param csvWeaponDto the information about the weapon from the csv entry.
@@ -102,16 +113,17 @@ object WeaponDAO {
 
 /**
   * Class for the weapon
-  * @param name the name of the weapon
-  * @param faction the faction the weapon belongs to
-  * @param weaponTypes the types the weapon belongs to like Small Arms
-  * @param victoryPoints how many vps does the weapon have
-  * @param points how many points does this weapon cost
-  * @param shootRange how far can this weapon shoot
-  * @param armorPircing the armor pircing of this weapon
-  * @param hartPoints how many hart points are used when this weapon is equipped
-  * @param free is this weapon for free ?
-  * @param linkedName when set those weapons must be used together
+  *
+  * @param name                   the name of the weapon
+  * @param faction                the faction the weapon belongs to
+  * @param weaponTypes            the types the weapon belongs to like Small Arms
+  * @param victoryPoints          how many vps does the weapon have
+  * @param points                 how many points does this weapon cost
+  * @param shootRange             how far can this weapon shoot
+  * @param armorPircing           the armor pircing of this weapon
+  * @param hartPoints             how many hart points are used when this weapon is equipped
+  * @param free                   is this weapon for free ?
+  * @param linkedName             when set those weapons must be used together
   * @param defaultWeaponAbilities the abilities this weapon brings initially.
   */
 case class WeaponDO(name: String,

@@ -23,6 +23,8 @@ weapon.victoryPoints=VPS
 weapon.range=Range
 weapon.armorPircing=AP
 weapon.abilities=Abilities
+weapon.free=Free
+weapon.linkedName=Linked Name
 
 item.headline=Items:
 item.name=Name

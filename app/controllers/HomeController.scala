@@ -3,12 +3,12 @@ package controllers
 import javax.inject._
 
 import com.github.tuxBurner.jsAnnotations.{JSRoute, JsRoutesComponent}
-import models.{AbilityDAO, FactionDAO, ItemDAO, TroopDAO}
+import models.{AbilityDAO, ItemDAO, TroopDAO}
 import play.api.i18n.I18nSupport
 import play.api.mvc._
 import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
 import play.i18n.Langs
-import services.logic.{ArmyLogic, FactionLogic, TroopLogic}
+import services.logic.{FactionLogic, TroopLogic, WeaponsLogic}
 
 import scala.collection.JavaConverters._
 
@@ -34,7 +34,7 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
   /**
     * Change the language of the current user
     *
-    * @param language
+    * @param language the language to set 
     * @return
     */
   def changeLanguage(language: String) = Action {
@@ -92,8 +92,10 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
 
       val factions = FactionLogic.getAllFactions()
       val troopsForSelectedFaction = TroopLogic.getAllTroopsForFaction(faction)
+      val factionWeapons = WeaponsLogic.getAllWeaponsOfFaction(faction)
+      
 
-      Ok(views.html.allTroopsOfArmy(troopsForSelectedFaction, factions,faction))
+      Ok(views.html.allTroopsOfArmy(troopsForSelectedFaction, factions,faction, factionWeapons))
   }
 
 
