@@ -26,6 +26,7 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
   implicit val armyWeaponDtoFormat: OFormat[ArmyWeaponDto] = Json.format[ArmyWeaponDto]
   implicit val armyItemDtoFormat: OFormat[ArmyItemDto] = Json.format[ArmyItemDto]
   implicit val armyTroopDtoFormat: OFormat[ArmyTroopDto] = Json.format[ArmyTroopDto]
+  implicit val armyAmountTroopDtoFormat: OFormat[ArmyAmountTroopDto] = Json.format[ArmyAmountTroopDto]
   implicit val armyDtoFormat: OFormat[ArmyDto] = Json.format[ArmyDto]
   implicit val factionDtoFormat: OFormat[FactionDto] = Json.format[FactionDto]
   implicit val armyTroopWeaponsItemsFormat: OFormat[ArmyTroopWeaponsItemsDto] = Json.format[ArmyTroopWeaponsItemsDto]
@@ -98,7 +99,7 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
   /**
     * Removes a troop from the army
     *
-    * @param uuid
+    * @param uuid the uuid od the troop
     * @return
     */
   @JSRoute def removeTroopFromArmy(uuid: String) = Action { request =>

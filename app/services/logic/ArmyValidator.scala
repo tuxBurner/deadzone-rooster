@@ -16,10 +16,10 @@ class ArmyValidator(messages: Messages) {
   /**
     * Validates the army if it is conform with the rules
     *
-    * @param army
+    * @param army the army with the troops in it
     */
   def validateArmy(army: ArmyDto): List[String] = {
-    army.troops.length match {
+    army.troopsWithAmount.length match {
       case 0 => List()
       case _ => checkSingleFaction(army) ++ checkIfOneLeader(army) ++ validateSpecialist(army) ++ validateVehicle(army) ++ validateCharacters(army) ++ validateItems(army) ++ validateWeaponTypesPerTroop(army)
     }
@@ -28,11 +28,11 @@ class ArmyValidator(messages: Messages) {
   /**
     * Checks if the army is a single faction army
     *
-    * @param army
+    * @param army the army with the troops in it
     * @return
     */
   private def checkSingleFaction(army: ArmyDto): List[String] = {
-    army.troops.map(_.faction).distinct.length match {
+    army.troopsWithAmount.map(_.troop.faction).distinct.length match {
       case 1 => List()
       case _ => List(messages("validate.noSingleFaction"));
     }
@@ -41,11 +41,11 @@ class ArmyValidator(messages: Messages) {
   /**
     * Validates if the army contains one leader
     *
-    * @param army
+    * @param army the army with the troops in it
     * @return
     */
   private def checkIfOneLeader(army: ArmyDto): List[String] = {
-    army.troops.count(_.recon != 0) match {
+    army.troopsWithAmount.count(_.troop.recon != 0) match {
       case 0 => List(messages("validate.noLeaderSelected"))
       case 1 => List()
       case _ => List(messages("validate.moreThanOneLeaderSelected"))
@@ -55,12 +55,12 @@ class ArmyValidator(messages: Messages) {
   /**
     * Checks if there are enough troops for the amount of specialists.
     *
-    * @param army
+    * @param army the army with the troops in it
     * @return
     */
   private def validateSpecialist(army: ArmyDto): List[String] = {
-    val troopCount = army.troops.count(_.modelType == "Troop")
-    val specialistCount = army.troops.count(_.modelType == "Specialist")
+    val troopCount = army.troopsWithAmount.count(_.troop.modelType == "Troop")
+    val specialistCount = army.troopsWithAmount.count(_.troop.modelType == "Specialist")
 
     if (specialistCount > troopCount) {
       List(messages("validate.toMuchSpecialistSelected"))
@@ -72,12 +72,12 @@ class ArmyValidator(messages: Messages) {
   /**
     * Checks if there are enough troops for the amount of vehicles
     *
-    * @param army
+    * @param army  the army with the troops in it
     * @return
     */
   private def validateVehicle(army: ArmyDto): List[String] = {
-    val troopCount = army.troops.count(_.modelType == "Troop")
-    val vehicleCount = army.troops.count(_.modelType == "Vehicle")
+    val troopCount = army.troopsWithAmount.count(_.troop.modelType == "Troop")
+    val vehicleCount = army.troopsWithAmount.count(_.troop.modelType == "Vehicle")
 
     val allowedAmountOfVehicles: Int = troopCount / 3;
 
@@ -95,7 +95,7 @@ class ArmyValidator(messages: Messages) {
     * @return
     */
   private def validateCharacters(army: ArmyDto): List[String] = {
-    army.troops.count(_.modelType == "Character") match {
+    army.troopsWithAmount.count(_.troop.modelType == "Character") match {
       case 0 => List()
       case 1 => List()
       case _ => List(messages("validate.onlyOneCharacterAllowed"))
@@ -105,19 +105,19 @@ class ArmyValidator(messages: Messages) {
   /**
     * Checks if the items the army contains are valid
     *
-    * @param army
+    * @param army  the army with the troops in it
     * @return
     */
   private def validateItems(army: ArmyDto): List[String] = {
     val result: ListBuffer[String] = ListBuffer()
 
     // check if there are troops with more than one item
-    val troopsWithToMuchItems = army.troops.count(_.items.filter(_.noUpdate == false).length > 1)
+    val troopsWithToMuchItems = army.troopsWithAmount.count(_.troop.items.filter(_.noUpdate == false).length > 1)
     if (troopsWithToMuchItems > 0) result += messages("validate.troopsToMuchItems")
 
 
     // check if the rarity is okay for the items
-    val itemsInArmy = army.troops.flatten(_.items.filter(_.noUpdate == false))
+    val itemsInArmy = army.troopsWithAmount.flatten(_.troop.items.filter(_.noUpdate == false))
 
 
     result ++= validateItemsPerRarity(itemsInArmy, "Common", army.points)
@@ -125,15 +125,15 @@ class ArmyValidator(messages: Messages) {
     result ++= validateItemsPerRarity(itemsInArmy, "Rare", army.points)
 
 
-    return result.toList
+    result.toList
   }
 
   /**
     * Checks if the items in the army are matching the allowed amount of items of this rarity by army points
     *
-    * @param itemsInArmy
-    * @param rarity
-    * @param armyTotalPoints
+    * @param itemsInArmy all items in the army
+    * @param rarity the rarity to check
+    * @param armyTotalPoints the total amount of points in this army
     * @return
     */
   private def validateItemsPerRarity(itemsInArmy: List[ArmyItemDto], rarity: String, armyTotalPoints: Int): List[String] = {
@@ -141,7 +141,7 @@ class ArmyValidator(messages: Messages) {
     val rarityItems = itemsInArmy.filter(_.rarity == rarity)
     // no items ?
     if (rarityItems.length == 0) {
-      return List();
+      return List()
     }
 
 
@@ -173,31 +173,32 @@ class ArmyValidator(messages: Messages) {
 
   /**
     * Checks if the weapon types ranged, fight are single
-    * @param army
+    *
+    * @param army the army with the troops in it
     * @return
     */
-  private def validateWeaponTypesPerTroop(army: ArmyDto) : List[String] = {
+  private def validateWeaponTypesPerTroop(army: ArmyDto): List[String] = {
 
     val result: ListBuffer[String] = ListBuffer()
 
-    army.troops.foreach(troop => {
-      val fightWeapons = troop.weapons.filter(weapon => weapon.shootRange == 0 && weapon.free == false)
+    army.troopsWithAmount.foreach(amountTroop => {
+      val fightWeapons = amountTroop.troop.weapons.filter(weapon => weapon.shootRange == 0 && weapon.free == false)
 
-      val mappedDefaultWeapons = troop.defaultWeapons.count(defaultWeapon => troop.weapons.find(_.name == defaultWeapon.name).isDefined)
+      val mappedDefaultWeapons = amountTroop.troop.defaultWeapons.count(defaultWeapon => amountTroop.troop.weapons.find(_.name == defaultWeapon.name).isDefined)
 
-      if(mappedDefaultWeapons != troop.weapons.length) {
+      if (mappedDefaultWeapons != amountTroop.troop.weapons.length) {
         if (fightWeapons.length > 1) {
-          result += messages("validate.toMuchFightWeapons", troop.name, fightWeapons.length)
+          result += messages("validate.toMuchFightWeapons", amountTroop.troop.name, fightWeapons.length)
         }
 
-        val shootWeapons = troop.weapons.filter(weapon => weapon.shootRange != 0 && weapon.free == false)
+        val shootWeapons = amountTroop.troop.weapons.filter(weapon => weapon.shootRange != 0 && weapon.free == false)
         if (shootWeapons.length > 1) {
-          result += messages("validate.toMuchShootWeapons", troop.name, shootWeapons.length)
+          result += messages("validate.toMuchShootWeapons", amountTroop.troop.name, shootWeapons.length)
         }
       }
     })
 
-    return result.toList
+    result.toList
 
   }
 

@@ -258,7 +258,7 @@ var rosterGuiHandler = {
    */
   displayCurrentArmyData: function(armyData) {
 
-    var disableBtns = armyData.troops.length === 0;
+    var disableBtns = armyData.troopsWithAmount.length === 0;
     $('.roster_action_btn').prop('disabled', disableBtns);
 
     $('#roster_army_points').text(armyData.points);
@@ -268,7 +268,9 @@ var rosterGuiHandler = {
 
     $('#roster_troop_tbody').html('');
     var tableContent = '';
-    $.each(armyData.troops, function(idx, troop) {
+    $.each(armyData.troopsWithAmount, function(idx, amountTroop) {
+
+      var troop = amountTroop.troop;
 
       var weaponsContent = rosterGuiHandler._displayTroopWeapons(troop);
 
@@ -298,6 +300,7 @@ var rosterGuiHandler = {
       tableContent += '<td>' + weaponsContent + '</td>';
       tableContent += '<td>' + itemsContent + '</td>';
       tableContent += '<td>' + reconArmySpecialContent + '</td>';
+      tableContent += '<td><input class="form-control" type="number" value="'+amountTroop.amount+'" min="1" style="width: 80px;"/></td>';
       tableContent += '<td>';
       tableContent += '<div class="btn-group btn-group-xs">';
       tableContent += '<button class="btn btn-info roster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button>';

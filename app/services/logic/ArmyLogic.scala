@@ -16,7 +16,7 @@ object ArmyLogic {
     * Changes the name of the given army
     *
     * @param armyName the name of the army to set
-    * @param army the army itself
+    * @param army     the army itself
     * @return
     */
   def changeNameOfArmy(armyName: String, army: ArmyDto): ArmyDto = {
@@ -27,21 +27,21 @@ object ArmyLogic {
     * Adds a new troop to the army
     *
     * @param factionName the name of the faction
-    * @param troopName the name of the troop to add
-    * @param army the army where to add the troop to
+    * @param troopName   the name of the troop to add
+    * @param army        the army where to add the troop to
     * @return
     */
   def addTroopToArmy(factionName: String, troopName: String, army: ArmyDto): ArmyDto = {
     val troopDo = TroopDAO.findByFactionAndName(factionName, troopName)
 
-    val newTroop = troopDoToArmyTroopDto(troopDo.get)
+    val newTroop = troopDoToArmyAmountTroopDto(troopDo.get)
 
-    val newTroops: List[ArmyTroopDto] = army.troops :+ newTroop
-    val armyPoints = newTroops.map(_.points).sum
+    val newTroops: List[ArmyAmountTroopDto] = army.troopsWithAmount :+ newTroop
+    val armyPoints = newTroops.map(_.troop.points).sum
 
     val factions = getFactionsFromArmy(newTroops)
 
-    army.copy(troops = newTroops, faction = factions, points = armyPoints)
+    army.copy(troopsWithAmount = newTroops, faction = factions, points = armyPoints)
   }
 
   /**
@@ -50,8 +50,8 @@ object ArmyLogic {
     * @param troops get all factions from the given troops
     * @return
     */
-  def getFactionsFromArmy(troops: List[ArmyTroopDto]): String = {
-    troops.map(_.faction).distinct.mkString(",")
+  def getFactionsFromArmy(troops: List[ArmyAmountTroopDto]): String = {
+    troops.map(_.troop.faction).distinct.mkString(",")
   }
 
   /**
@@ -62,10 +62,10 @@ object ArmyLogic {
     * @return
     */
   def removeTroopFromArmy(uuid: String, army: ArmyDto): ArmyDto = {
-    val newTroops = army.troops.filter(_.uuid != uuid)
-    val armyPoints = newTroops.map(_.points).sum
+    val newTroops = army.troopsWithAmount.filter(_.troop.uuid != uuid)
+    val armyPoints = newTroops.map(_.troop.points).sum
     val faction = if (newTroops.isEmpty) "" else getFactionsFromArmy(newTroops)
-    army.copy(troops = newTroops, faction = faction, points = armyPoints)
+    army.copy(troopsWithAmount = newTroops, faction = faction, points = armyPoints)
   }
 
   /**
@@ -78,11 +78,11 @@ object ArmyLogic {
   def cloneTroop(uuid: String, army: ArmyDto): ArmyDto = {
     val troopToClone = getTroopFromArmy(uuid, army)
 
-    val newTroops = army.troops :+ troopToClone.copy(uuid = UUID.randomUUID().toString)
+    val newTroops = army.troopsWithAmount :+ troopToClone.copy(troop = troopToClone.troop.copy(uuid = UUID.randomUUID().toString))
 
-    val armyPoints = newTroops.map(_.points).sum
+    val armyPoints = newTroops.map(_.troop.points).sum
 
-    army.copy(troops = newTroops, points = armyPoints)
+    army.copy(troopsWithAmount = newTroops, points = armyPoints)
   }
 
   /**
@@ -97,36 +97,50 @@ object ArmyLogic {
   def updateTroop(uuid: String, army: ArmyDto, weapons: List[String], items: List[String]): ArmyDto = {
     val currentTroop = getTroopFromArmy(uuid, army)
     val newWeapons = weapons.map(weaponName => {
-      val weaponDo = WeaponDAO.findByNameAndFactionNameAndAllowedTypes(weaponName, currentTroop.faction, currentTroop.allowedWeaponTypes)
+      val weaponDo = WeaponDAO.findByNameAndFactionNameAndAllowedTypes(weaponName, currentTroop.troop.faction, currentTroop.troop.allowedWeaponTypes)
       weaponDoToWeaponDto(weaponDo.get)
     })
 
     val newItems = items.map(itemName => {
-      val itemDo = ItemDAO.findByNameAndFactionName(itemName, currentTroop.faction)
+      val itemDo = ItemDAO.findByNameAndFactionName(itemName, currentTroop.troop.faction)
       itemDoToItemDto(itemDo.get)
     })
 
 
-    val points = currentTroop.basePoints + newWeapons.map(_.points).sum + newItems.map(_.points).sum
-    val victoryPoints = currentTroop.baseVictoryPoints + newWeapons.map(_.victoryPoints).sum
+    val points = currentTroop.troop.basePoints + newWeapons.map(_.points).sum + newItems.map(_.points).sum
+    val victoryPoints = currentTroop.troop.baseVictoryPoints + newWeapons.map(_.victoryPoints).sum
 
-    val newTroops = army.troops.map(troop => {
-      if (troop.uuid != uuid) troop else {
+    val newTroops = army.troopsWithAmount.map(amountTroop => {
+      if (amountTroop.troop.uuid != uuid) amountTroop else {
         // add all items which are in the old troop and no upgrade item
-        val itemsToSet = newItems ++ troop.items.filter(_.noUpdate == true)
-        troop.copy(points = points, victoryPoints = victoryPoints, weapons = newWeapons, items = itemsToSet)
+        val itemsToSet = newItems ++ amountTroop.troop.items.filter(_.noUpdate == true)
+        amountTroop.copy(troop = amountTroop.troop.copy(points = points,
+          victoryPoints = victoryPoints,
+          weapons = newWeapons,
+          items = itemsToSet))
+
+
       }
     })
 
-    val armyPoints = newTroops.map(_.points).sum
+    val armyPoints = newTroops.map(_.troop.points).sum
+    army.copy(points = armyPoints, troopsWithAmount = newTroops)
+  }
 
-    army.copy(points = armyPoints, troops = newTroops)
+  /**
+    * Converts the given troopDo to a [[ArmyAmountTroopDto]]
+    *
+    * @param troopDo the troop do to convert
+    * @return
+    */
+  def troopDoToArmyAmountTroopDto(troopDo: TroopDO): ArmyAmountTroopDto = {
+    ArmyAmountTroopDto(troopDoToArmyTroopDto(troopDo), 1)
   }
 
   /**
     * Converts the troop database object to the dto
     *
-    * @param troopDo
+    * @param troopDo the troop to convert to the dto
     * @return
     */
   def troopDoToArmyTroopDto(troopDo: TroopDO): ArmyTroopDto = {
@@ -178,11 +192,11 @@ object ArmyLogic {
     */
   def getWeaponsAndItemsForTroop(uuid: String, army: ArmyDto): ArmyTroopWeaponsItemsDto = {
 
-    val troopDto = getTroopFromArmy(uuid, army)
-    val weapons = getWeaponsForTroop(troopDto)
-    val items = getItemsForTroop(troopDto)
+    val amountTroopDto = getTroopFromArmy(uuid, army)
+    val weapons = getWeaponsForTroop(amountTroopDto.troop)
+    val items = getItemsForTroop(amountTroopDto.troop)
 
-    ArmyTroopWeaponsItemsDto(weapons, items, troopDto)
+    ArmyTroopWeaponsItemsDto(weapons, items, amountTroopDto.troop)
   }
 
 
@@ -207,11 +221,11 @@ object ArmyLogic {
   /**
     * Gets the troop from the given army by its uuid
     *
-    * @param uuid
-    * @param army
+    * @param uuid the uuid of the troop to find in the current army
+    * @param army the army where the troop is located at
     */
-  private def getTroopFromArmy(uuid: String, army: ArmyDto): ArmyTroopDto = {
-    army.troops.find(_.uuid == uuid).get
+  private def getTroopFromArmy(uuid: String, army: ArmyDto): ArmyAmountTroopDto = {
+    army.troopsWithAmount.find(_.troop.uuid == uuid).get
   }
 
   /**
@@ -257,16 +271,17 @@ object ArmyLogic {
   def extractPdfArmyInfos(army: ArmyDto): ArmyPdfInfos = {
     val abilitiesBuffer = ListBuffer[String]()
     val itemsBuffer = ListBuffer[String]()
-    army.troops.foreach(troop => {
-      troop.abilities.foreach(ability => {
+
+    army.troopsWithAmount.foreach(amountTroop => {
+      amountTroop.troop.abilities.foreach(ability => {
         abilitiesBuffer += ability.name
       })
 
-      troop.items.foreach(item => {
+      amountTroop.troop.items.foreach(item => {
         itemsBuffer += item.name
       })
 
-      troop.weapons.foreach(weapon => {
+      amountTroop.troop.weapons.foreach(weapon => {
         weapon.abilities.foreach(ability => abilitiesBuffer += ability.name)
       })
     })
@@ -274,7 +289,7 @@ object ArmyLogic {
 
     val items = itemsBuffer.toList.distinct.sortWith(_ < _)
 
-    val reconVals = army.troops.filter(_.recon != 0).map(troop => (troop.name, troop.recon, troop.armySpecial)).distinct.sortWith(_._3 < _._3)
+    val reconVals = army.troopsWithAmount.filter(_.troop.recon != 0).map(amountTroop => (amountTroop.troop.name, amountTroop.troop.recon, amountTroop.troop.armySpecial)).distinct.sortWith(_._3 < _._3)
 
     ArmyPdfInfos(abilities, items, reconVals)
   }
@@ -284,9 +299,13 @@ object ArmyLogic {
 case class ArmyDto(name: String,
                    faction: String = "",
                    points: Int = 0,
-                   troops: List[ArmyTroopDto] = List())
+                   troopsWithAmount: List[ArmyAmountTroopDto] = List())
 
 case class ArmyAbilityDto(name: String, defaultVal: Int)
+
+
+case class ArmyAmountTroopDto(troop: ArmyTroopDto,
+                              amount: Int = 1)
 
 case class ArmyTroopDto(uuid: String,
                         faction: String,

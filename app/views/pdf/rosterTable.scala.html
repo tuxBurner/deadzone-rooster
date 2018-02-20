@@ -10,48 +10,49 @@
     <style>
 
 
-    @@page {
-      size: A4 landscape;
-    }
+        @@page {
+          size: A4 landscape;
+        }
 
-    body {
-      font-size: 0.8em;
-    }
+        body {
+          font-size: 0.8em;
+        }
 
-    table.pdf {
-      width: 100%;
-      border-spacing: 0;
-    }
+        table.pdf {
+          width: 100%;
+          border-spacing: 0;
+        }
 
-    table.pdf td, table.pdf th {
-      border: solid 1px #000000;
-      padding: 2pt;
-    }
+        table.pdf td, table.pdf th {
+          border: solid 1px #000000;
+          padding: 2pt;
+        }
 
-    table.pdf td, table.pdf tbody th  {
-      border-top: none 0px;
-    }
+        table.pdf td, table.pdf tbody th {
+          border-top: none 0px;
+        }
 
-    table.pdf th {
-      background-color: #ababab;
-    }
+        table.pdf th {
+          background-color: #ababab;
+        }
 
-    table.pdf td {
-      vertical-align: top;
-    }
+        table.pdf td {
+          vertical-align: top;
+        }
 
+        @@page {
 
-    @@page {
-      @@bottom-right {
-        content: "Page " counter(page) " of " counter(pages);
-      }
+        @@bottom-right {
+          content: "Page " counter(page) " of " counter(pages);
+        }
 
-      @if(army.name.isEmpty == false) {
+        @if(army.name.isEmpty == false) {
         @@bottom-left {
           content: "@army.name"
         }
-      }
-    }
+
+        }
+        }
 
     </style>
   </head>
@@ -69,38 +70,40 @@
 
     <table class="pdf">
       <thead>
-        <th>@Messages("troop.tbl.name")</th>
-        <th>@Messages("troop.tbl.type")</th>
-        <th>@Messages("troop.tbl.speed")</th>
-        <th>@Messages("troop.tbl.shoot")</th>
-        <th>@Messages("troop.tbl.fight")</th>
-        <th>@Messages("troop.tbl.survive")</th>
-        <th>@Messages("troop.tbl.armour")</th>
-        <th>@Messages("troop.tbl.size")</th>
-        <th>@Messages("troop.tbl.abilities")</th>
-        <th>@Messages("troop.tbl.weapons")</th>
-        <th>@Messages("troop.tbl.items")</th>
-        <th>@Messages("troop.tbl.points")</th>
-        <th>@Messages("troop.tbl.victoryPoints")</th>
+        <tr>
+          <th>@Messages("troop.tbl.name")</th>
+          <th>@Messages("troop.tbl.type")</th>
+          <th>@Messages("troop.tbl.speed")</th>
+          <th>@Messages("troop.tbl.shoot")</th>
+          <th>@Messages("troop.tbl.fight")</th>
+          <th>@Messages("troop.tbl.survive")</th>
+          <th>@Messages("troop.tbl.armour")</th>
+          <th>@Messages("troop.tbl.size")</th>
+          <th>@Messages("troop.tbl.abilities")</th>
+          <th>@Messages("troop.tbl.weapons")</th>
+          <th>@Messages("troop.tbl.items")</th>
+          <th>@Messages("troop.tbl.points")</th>
+          <th>@Messages("troop.tbl.victoryPoints")</th>
+        </tr>
       </thead>
       <tbody>
-      @for(troop <- army.troops) {
+      @for(amountTroop <- army.troopsWithAmount) {
         <tr>
-          <td>@troop.name</td>
-          <td>@troop.modelType.charAt(0)</td>
-          <td>@troop.speed-@troop.sprint</td>
-          <td>@troop.shoot+</td>
-          <td>@troop.fight+</td>
-          <td>@troop.survive+</td>
-          <td>@troop.armour</td>
-          <td>@troop.size</td>
+          <td>@amountTroop.troop.name</td>
+          <td>@amountTroop.troop.modelType.charAt(0)</td>
+          <td>@amountTroop.troop.speed-@amountTroop.troop.sprint</td>
+          <td>@amountTroop.troop.shoot+</td>
+          <td>@amountTroop.troop.fight+</td>
+          <td>@amountTroop.troop.survive+</td>
+          <td>@amountTroop.troop.armour</td>
+          <td>@amountTroop.troop.size</td>
           <td>
-          @for(ability <- troop.abilities) {
+          @for(ability <- amountTroop.troop.abilities) {
             @ability.name @if(ability.defaultVal != 0) { (@ability.defaultVal) } <br />
           }
           </td>
           <td>
-          @for(weapon <- troop.weapons) {
+          @for(weapon <- amountTroop.troop.weapons) {
             @weapon.name
 
             @if(weapon.shootRange == 0) {RF} else {R@weapon.shootRange}
@@ -113,12 +116,12 @@
           }
           </td>
           <td>
-          @for(item <- troop.items) {
+          @for(item <- amountTroop.troop.items) {
             @item.name <br />
           }
           </td>
-          <td>@troop.points</td>
-          <td>@troop.victoryPoints</td>
+          <td>@amountTroop.troop.points</td>
+          <td>@amountTroop.troop.victoryPoints</td>
         </tr>
       }
       </tbody>
