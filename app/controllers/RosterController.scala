@@ -110,6 +110,23 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
   }
 
   /**
+    * Change the amount of the given troop in the army
+    * @param uuid the uuid of the troop where to change the army
+    * @return
+    */
+  @JSRoute def changeAmountOfTroop(uuid: String) = Action(parse.tolerantJson) { request =>
+    val newAmount = (request.body \ "amount").as[String].toInt
+    if(newAmount < 1) {
+      InternalServerError("The new amount cannot be lesser 1")
+    } else {
+      val armyFromCache = getArmyFromCache(request)
+      val newArmy = ArmyLogic.setNewAmountOnTroop(uuid, newAmount,armyFromCache)
+      writeArmyToCache(request, newArmy)
+      withCacheId(Ok(Json.toJson(newArmy)).as(JSON), request)
+    }
+  }
+
+  /**
     * Gets the avaible weapons and items for the given troop
     *
     * @param uuid

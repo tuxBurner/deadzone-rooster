@@ -33,15 +33,10 @@ object ArmyLogic {
     */
   def addTroopToArmy(factionName: String, troopName: String, army: ArmyDto): ArmyDto = {
     val troopDo = TroopDAO.findByFactionAndName(factionName, troopName)
-
     val newTroop = troopDoToArmyAmountTroopDto(troopDo.get)
-
     val newTroops: List[ArmyAmountTroopDto] = army.troopsWithAmount :+ newTroop
-    val armyPoints = newTroops.map(_.troop.points).sum
-
     val factions = getFactionsFromArmy(newTroops)
-
-    army.copy(troopsWithAmount = newTroops, faction = factions, points = armyPoints)
+    setNewTroopsAndFactionAtArmy(army, newTroops, factions)
   }
 
   /**
@@ -63,9 +58,31 @@ object ArmyLogic {
     */
   def removeTroopFromArmy(uuid: String, army: ArmyDto): ArmyDto = {
     val newTroops = army.troopsWithAmount.filter(_.troop.uuid != uuid)
-    val armyPoints = newTroops.map(_.troop.points).sum
     val faction = if (newTroops.isEmpty) "" else getFactionsFromArmy(newTroops)
-    army.copy(troopsWithAmount = newTroops, faction = faction, points = armyPoints)
+    setNewTroopsAndFactionAtArmy(army, newTroops, faction)
+  }
+
+
+  /**
+    * Updates the amount of troops in the army by the troop with the uuid
+    *
+    * @param uuid      the uuid of the troop where to change the amount
+    * @param newAmount the new amount to set at the troop
+    * @param army      the army containing the troop
+    * @return
+    */
+  def setNewAmountOnTroop(uuid: String, newAmount: Int, army: ArmyDto): ArmyDto = {
+    val newTroops = army.troopsWithAmount.map(amountTropp => {
+      // it is the troop where to update the amount
+      if (amountTropp.troop.uuid == uuid) {
+        amountTropp.copy(amount = newAmount)
+      } else {
+        // dont touch it
+        amountTropp
+      }
+    })
+
+    setNewTroopsAtArmy(army, newTroops)
   }
 
   /**
@@ -77,12 +94,8 @@ object ArmyLogic {
     */
   def cloneTroop(uuid: String, army: ArmyDto): ArmyDto = {
     val troopToClone = getTroopFromArmy(uuid, army)
-
     val newTroops = army.troopsWithAmount :+ troopToClone.copy(troop = troopToClone.troop.copy(uuid = UUID.randomUUID().toString))
-
-    val armyPoints = newTroops.map(_.troop.points).sum
-
-    army.copy(troopsWithAmount = newTroops, points = armyPoints)
+    setNewTroopsAtArmy(army, newTroops)
   }
 
   /**
@@ -123,8 +136,42 @@ object ArmyLogic {
       }
     })
 
-    val armyPoints = newTroops.map(_.troop.points).sum
-    army.copy(points = armyPoints, troopsWithAmount = newTroops)
+    setNewTroopsAtArmy(army, newTroops)
+  }
+
+  /**
+    * Copies the given army and calculates the points for this army and sets the new faction at the army
+    *
+    * @param origArmy   the original army
+    * @param newTroops  the new troops to seat at the army
+    * @param newFaction the name of the new faction of the army
+    * @return
+    */
+  private def setNewTroopsAndFactionAtArmy(origArmy: ArmyDto, newTroops: List[ArmyAmountTroopDto], newFaction: String): ArmyDto = {
+    setNewTroopsAtArmy(origArmy, newTroops)
+      .copy(faction = newFaction);
+  }
+
+  /**
+    * Copies the given army and calculates the points for this army
+    *
+    * @param origArmy  the original army
+    * @param newTroops the new troops to seat at the army
+    * @return
+    */
+  private def setNewTroopsAtArmy(origArmy: ArmyDto, newTroops: List[ArmyAmountTroopDto]): ArmyDto = {
+    val armyPoints = calculateArmyPoints(newTroops)
+    origArmy.copy(points = armyPoints, troopsWithAmount = newTroops)
+  }
+
+  /**
+    * Calculates the total sum of the troops for the army
+    *
+    * @param troops the troops where to calculate the sum on
+    * @return
+    */
+  def calculateArmyPoints(troops: List[ArmyAmountTroopDto]): Int = {
+    troops.map(amountTroop => amountTroop.troop.points * amountTroop.amount).sum
   }
 
   /**

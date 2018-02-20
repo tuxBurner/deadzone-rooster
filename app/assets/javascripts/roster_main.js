@@ -73,7 +73,7 @@ var rosterGuiHandler = {
 
     $('#roster_addTroop_select').html('');
     $.each(troops, function(idx, troop) {
-      $('#roster_addTroop_select').append('<option value="' + troop.name + '" data-image-url="'+troop.imageUrl+'">' + troop.name + ' (' + troop.points + ')</option>');
+      $('#roster_addTroop_select').append('<option value="' + troop.name + '" data-image-url="' + troop.imageUrl + '">' + troop.name + ' (' + troop.points + ')</option>');
     });
 
     rosterGuiHandler.displaySelectedTroopImage();
@@ -86,9 +86,9 @@ var rosterGuiHandler = {
     var imgUrl = $('#roster_addTroop_select :selected').data('imageUrl');
 
     if(imgUrl !== '') {
-      $('#roster_troop_img').attr('src',imgUrl).show();
+      $('#roster_troop_img').attr('src', imgUrl).show();
     } else {
-      $('#roster_troop_img').attr('src','').hide();
+      $('#roster_troop_img').attr('src', '').hide();
     }
   },
 
@@ -282,7 +282,7 @@ var rosterGuiHandler = {
 
       var itemsContent = '';
       $.each(troop.items, function(idx, item) {
-        itemsContent +=  '<u class="infoPopOver helpMouse" data-type="item" title="' + item.name+ '">' + item.name+ '</u><br />';
+        itemsContent += '<u class="infoPopOver helpMouse" data-type="item" title="' + item.name + '">' + item.name + '</u><br />';
       });
 
       tableContent += '<tr data-uuid="' + troop.uuid + '" data-troopname="' + troop.name + '">';
@@ -300,7 +300,7 @@ var rosterGuiHandler = {
       tableContent += '<td>' + weaponsContent + '</td>';
       tableContent += '<td>' + itemsContent + '</td>';
       tableContent += '<td>' + reconArmySpecialContent + '</td>';
-      tableContent += '<td><input class="form-control" type="number" value="'+amountTroop.amount+'" min="1" style="width: 80px;"/></td>';
+      tableContent += '<td><input class="form-control roster_amount_input" type="number" value="' + amountTroop.amount + '" min="1" style="width: 80px;"/></td>';
       tableContent += '<td>';
       tableContent += '<div class="btn-group btn-group-xs">';
       tableContent += '<button class="btn btn-info roster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button>';
@@ -324,7 +324,7 @@ var rosterGuiHandler = {
     var weaponsContent = '';
 
     $.each(troop.weapons, function(idx, weapon) {
-      weaponsContent += '<b>'+weapon.name+'</b>';
+      weaponsContent += '<b>' + weapon.name + '</b>';
       weaponsContent += ' ,' + rosterGuiHandler._weaponRangeForDisplay(weapon);
       if(weapon.armorPircing !== 0) {
         weaponsContent += ', AP' + weapon.armorPircing;
@@ -335,7 +335,7 @@ var rosterGuiHandler = {
       weaponsContent += rosterGuiHandler._abilitiesForDisplay(weapon.abilities, ',');
       weaponsContent += '<br />';
     });
-    
+
     return weaponsContent;
   },
 
@@ -464,7 +464,22 @@ var rosterGuiHandler = {
    */
   changeArmyName: function(newArmyName) {
     jsRoutes.controllers.RosterController.changeArmyName().ajax({
-      data: JSON.stringify({'armyName': newArmyName}),
+      data: JSON.stringify({armyName: newArmyName}),
+      contentType: "application/json; charset=utf-8",
+      success: function(data) {
+        rosterGuiHandler.displayCurrentArmyData(data);
+      }
+    });
+  },
+
+  /**
+   * Changes the amount of a troop
+   * @param uuid the uuid of the troop
+   * @param newAmount the amount to set on the troop
+   */
+  changeTroopAmount: function(uuid, newAmount) {
+    jsRoutes.controllers.RosterController.changeAmountOfTroop(uuid).ajax({
+      data: JSON.stringify({amount: newAmount}),
       contentType: "application/json; charset=utf-8",
       success: function(data) {
         rosterGuiHandler.displayCurrentArmyData(data);
@@ -486,8 +501,8 @@ $(function() {
     rosterGuiHandler.fillTroopSelectForType();
   });
 
-  $('#roster_addTroop_select').on('change',function(){
-     rosterGuiHandler.displaySelectedTroopImage();
+  $('#roster_addTroop_select').on('change', function() {
+    rosterGuiHandler.displaySelectedTroopImage();
   });
 
   $('#roster_addTroop_btn').on('click', function() {
@@ -521,6 +536,12 @@ $(function() {
     rosterGuiHandler.removeTroopFromArmy(uuid);
   });
 
+  $(document).on('change', '.roster_amount_input', function() {
+    var uuid = $(this).closest('tr').data('uuid');
+    var amount = $(this).val();
+    rosterGuiHandler.changeTroopAmount(uuid, amount);
+
+  });
 
   $(document).on('click', '.roster_edit_btn', function() {
     var uuid = $(this).closest('tr').data('uuid');
@@ -550,7 +571,7 @@ $(function() {
     $(this).removeClass('infoPopOver');
     var el = $(this);
     rosterGuiHandler.getPopoverData(type, key, function(data) {
-      el.popover({content: data, html: true, trigger: 'hover',placement: 'auto'}).popover('show');
+      el.popover({content: data, html: true, trigger: 'hover', placement: 'auto'}).popover('show');
     });
   });
 

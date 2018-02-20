@@ -35,7 +35,7 @@ object ArmyImExpLogic {
   def importArmy(armyToImport: ArmyImpExpDto): ArmyDto = {
 
     val troops = armyToImport.troops.flatMap(createTroopFromImport)
-    val points = troops.map(_.troop.points).sum
+    val points = ArmyLogic.calculateArmyPoints(troops)
     val factions = ArmyLogic.getFactionsFromArmy(troops)
     ArmyDto(armyToImport.name, factions, points, troops)
   }

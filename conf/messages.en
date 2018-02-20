@@ -15,6 +15,7 @@ troop.tbl.weapons=Weapons
 troop.tbl.items=Items
 troop.tbl.reconArmySpecial=REC/Special
 troop.tbl.allowedWeaponTypes=Allowed Weapon Types
+troop.tbl.amount=Amount
 
 weapon.headline=Weapons:
 weapon.name=Name

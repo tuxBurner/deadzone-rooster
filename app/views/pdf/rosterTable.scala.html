@@ -84,6 +84,7 @@
           <th>@Messages("troop.tbl.items")</th>
           <th>@Messages("troop.tbl.points")</th>
           <th>@Messages("troop.tbl.victoryPoints")</th>
+          <th>@Messages("troop.tbl.amount")</th>
         </tr>
       </thead>
       <tbody>
@@ -122,6 +123,7 @@
           </td>
           <td>@amountTroop.troop.points</td>
           <td>@amountTroop.troop.victoryPoints</td>
+          <td>@amountTroop.amount = @(amountTroop.amount*amountTroop.troop.points) @Messages("troop.tbl.points")</td>
         </tr>
       }
       </tbody>
