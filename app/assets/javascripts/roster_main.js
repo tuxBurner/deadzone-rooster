@@ -259,6 +259,7 @@ let rosterGuiHandler = {
                       <td>${rosterGuiHandler._weaponRangeForDisplay(weapon)}</td>
                       <td>${weapon.armorPircing}</td>
                       <td>${rosterGuiHandler._abilitiesForDisplay(weapon.abilities, ',')}</td>
+                      <td>${weapon.hardPoints}</td>
                     </tr>`;
 
 
@@ -298,7 +299,7 @@ let rosterGuiHandler = {
 
     Object.keys(troopsByType).forEach(modelType => {
 
-      tableContent += `<tr class="info"><th colspan="16"><h5>${modelType}</h5></th></tr>`;
+      tableContent += `<tr class="info"><th colspan="17"><h5>${modelType}</h5></th></tr>`;
 
       // sort the troops by name
       troopsByType[modelType].sort((a, b) => {
@@ -327,16 +328,17 @@ let rosterGuiHandler = {
         tableContent += `<tr  data-uuid="${troop.uuid}" data-troopname="${troop.name}">
                            <td>${troop.name}</td>
                            <td>${troop.modelType.charAt(0)}</td>
-                           <td>${troop.points}</td>
-                           <td>${troop.victoryPoints}</td>
-                           <td>${troop.armour}</td>
-                           <td>${troop.size}</td>
-                           <td>${troop.speed}-${troop.sprint}</td>
-                           <td>${rosterGuiHandler._displayStatsValue(troop.shoot)}</td>
-                           <td>${rosterGuiHandler._displayStatsValue(troop.fight)}</td>
-                           <td>${rosterGuiHandler._displayStatsValue(troop.survive)}</td>
+                           <td>${troop.baseStats.points}</td>
+                           <td>${troop.baseStats.victoryPoints}</td>
+                           <td>${troop.baseStats.armour}</td>
+                           <td>${troop.baseStats.size}</td>
+                           <td>${troop.baseStats.speed}-${troop.baseStats.sprint}</td>
+                           <td>${rosterGuiHandler._displayStatsValue(troop.baseStats.shoot)}</td>
+                           <td>${rosterGuiHandler._displayStatsValue(troop.baseStats.fight)}</td>
+                           <td>${rosterGuiHandler._displayStatsValue(troop.baseStats.survive)}</td>
                            <td>${rosterGuiHandler._abilitiesForDisplay(troop.abilities, '<br />')}</td>
                            <td>${rosterGuiHandler._displayTroopWeapons(troop)}</td>
+                           <td>${troop.baseStats.hardPoints}</td>
                            <td>${itemsContent}</td>
                            <td>${reconArmySpecialContent}</td>
                            <td>
@@ -371,8 +373,9 @@ let rosterGuiHandler = {
 
     troop.weapons.forEach(weapon => {
       let apContent = (weapon.armorPircing !== 0) ? `, AP ${weapon.armorPircing}` : '';
+      let hpContent = (weapon.hardPoints !== 0) ? `, HP ${weapon.hardPoints}` : '';
       let abSep = (weapon.abilities.length !== 0) ? ' ,' : '';
-      weaponsContent += `<b>${weapon.name}</b>, ${rosterGuiHandler._weaponRangeForDisplay(weapon)} ${apContent} ${abSep} ${rosterGuiHandler._abilitiesForDisplay(weapon.abilities, ',')} <br />`;
+      weaponsContent += `<b>${weapon.name}</b>, ${rosterGuiHandler._weaponRangeForDisplay(weapon)} ${apContent} ${hpContent} ${abSep} ${rosterGuiHandler._abilitiesForDisplay(weapon.abilities, ',')} <br />`;
     });
 
     return weaponsContent;

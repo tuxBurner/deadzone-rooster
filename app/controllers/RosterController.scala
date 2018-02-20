@@ -11,8 +11,7 @@ import play.api.i18n.I18nSupport
 import play.api.libs.json._
 import play.api.mvc._
 import services.logic.ArmyImExpLogic.{ArmyImpExpDto, TroopImExpDto}
-import services.logic.FigureManagerLogic.{ManagedFigureDto, ManagedFiguresHolderDto}
-import services.logic._
+import services.logic.{ArmyTroopBaseStatsDto, _}
 
 import scala.concurrent.duration._
 import scala.io.Source
@@ -26,6 +25,7 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
   implicit val armyAbilityDtoFormat: OFormat[ArmyAbilityDto] = Json.format[ArmyAbilityDto]
   implicit val armyWeaponDtoFormat: OFormat[ArmyWeaponDto] = Json.format[ArmyWeaponDto]
   implicit val armyItemDtoFormat: OFormat[ArmyItemDto] = Json.format[ArmyItemDto]
+  implicit val armyTroopBaseStatsDtoFormat: OFormat[ArmyTroopBaseStatsDto] = Json.format[ArmyTroopBaseStatsDto]
   implicit val armyTroopDtoFormat: OFormat[ArmyTroopDto] = Json.format[ArmyTroopDto]
   implicit val armyAmountTroopDtoFormat: OFormat[ArmyAmountTroopDto] = Json.format[ArmyAmountTroopDto]
   implicit val armyDtoFormat: OFormat[ArmyDto] = Json.format[ArmyDto]
@@ -33,8 +33,6 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
   implicit val armyTroopWeaponsItemsFormat: OFormat[ArmyTroopWeaponsItemsDto] = Json.format[ArmyTroopWeaponsItemsDto]
   implicit val troopExportDtoFormat: OFormat[TroopImExpDto] = Json.format[TroopImExpDto]
   implicit val armyExpImpDtoFormat: OFormat[ArmyImpExpDto] = Json.format[ArmyImpExpDto]
-  implicit val managedFigureDtoFormat: OFormat[ManagedFigureDto] = Json.format[ManagedFigureDto]
-  implicit val managedFiguresHolderDtoFormat: OFormat[ManagedFiguresHolderDto] = Json.format[ManagedFiguresHolderDto]
 
   /**
     * The name of the army cache id in the session
@@ -114,27 +112,19 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
 
   /**
     * Change the amount of the given troop in the army
-    *
     * @param uuid the uuid of the troop where to change the army
     * @return
     */
   @JSRoute def changeAmountOfTroop(uuid: String) = Action(parse.tolerantJson) { request =>
     val newAmount = (request.body \ "amount").as[String].toInt
-    if (newAmount < 1) {
+    if(newAmount < 1) {
       InternalServerError("The new amount cannot be lesser 1")
     } else {
       val armyFromCache = getArmyFromCache(request)
-      val newArmy = ArmyLogic.setNewAmountOnTroop(uuid, newAmount, armyFromCache)
+      val newArmy = ArmyLogic.setNewAmountOnTroop(uuid, newAmount,armyFromCache)
       writeArmyToCache(request, newArmy)
       withCacheId(Ok(Json.toJson(newArmy)).as(JSON), request)
     }
-  }
-
-  @JSRoute def exportAsManagedFigures() = Action { request =>
-    val armyFromCache = renewArmyInCache(request)
-    val result = FigureManagerLogic.exportCurrentArmyAsFigureList(armyFromCache)
-    val headerContent = "attachement; filename=figures.json";
-    withCacheId(Ok(Json.toJson(result)).as(JSON), request).as(JSON).withHeaders("Content-Disposition" -> headerContent)
   }
 
   /**
@@ -228,7 +218,7 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
     val exportData = ArmyImExpLogic.armyForExport(army)
     val jsonData = Json.prettyPrint(Json.toJson(exportData))
     val fileName = if (army.name.isEmpty) "army" else army.name
-    val headerContent = "attachement; filename=" + fileName + ".json"
+    val headerContent = "attachement; filename=" + fileName + ".json";
     withCacheId(Ok(jsonData).as(JSON), request).as(JSON).withHeaders("Content-Disposition" -> headerContent)
   }
 
