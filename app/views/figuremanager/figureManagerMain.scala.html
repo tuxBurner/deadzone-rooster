@@ -1,0 +1,18 @@
+@()(implicit messages: Messages)
+
+@scripts = {
+  <script type="text/javascript" src="@routes.Assets.versioned("lib/react/umd/react.production.min.js")"> </script>
+  <script type="text/javascript" src="@routes.Assets.versioned("lib/react-dom/umd/react-dom.production.min.js")"> </script>
+  <script type="text/javascript" src="@routes.Assets.versioned("javascripts/figuremanager/reactTest.js")"> </script>
+}
+
+
+@main("Figuremanager", scripts) {
+  <div id="reactContainer">
+
+  </div>
+}
+
+
+
+

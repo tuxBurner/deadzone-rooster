@@ -28,8 +28,9 @@ GET           /roster/army/validate                               controllers.Ro
 
 GET           /roster/army/export                                 controllers.RosterController.exportArmy()
 POST          /roster/army/import                                 controllers.RosterController.importArmy()
-GET           /roster/figures/export                              controllers.RosterController.exportAsManagedFigures()
 GET           /roster/pdf/table                                   controllers.RosterController.getTablePdf()
+
+GET           /figuremanager                                      controllers.FigureManagerController.displayFigureManagerPage()
 
 
 # Map static resources from the /public folder to the /assets URL path
