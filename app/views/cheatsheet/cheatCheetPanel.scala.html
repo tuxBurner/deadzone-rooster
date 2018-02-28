@@ -1,0 +1,10 @@
+@(titleKey: String, panelClass: String = "panel-default")(panelContent: Html)(implicit messages: Messages)
+
+<div class="panel @panelClass">
+  <div class="panel-heading">
+    <h3 class="panel-title">@Messages(titleKey)</h3>
+  </div>
+  <div class="panel-body">
+    @panelContent
+  </div>
+</div>

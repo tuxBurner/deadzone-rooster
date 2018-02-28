@@ -83,6 +83,15 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
   }
 
   /**
+    * Displays the cheat sheet
+    * @return
+    */
+  def displayCheatSheet() = Action {
+    implicit request =>
+      Ok(views.html.cheatsheet.cheatSheet())
+  }
+
+  /**
     * Displays all troops of an army
     * @return
     */

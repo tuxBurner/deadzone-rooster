@@ -24,8 +24,6 @@ object WeaponsLogic {
       val weaponDto = ArmyLogic.weaponDoToWeaponDto(weapon)
 
       weapon.weaponTypes.foreach(weaponType => {
-        Logger.error(weaponType.name)
-
         if(!weaponsByTypes.isDefinedAt(weaponType.name)) {
           weaponsByTypes.put(weaponType.name, ListBuffer())
         }

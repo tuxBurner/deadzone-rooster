@@ -78,6 +78,7 @@ mainmenu.armyTroops=Army Troops
 mainmenu.abilities=Abilities
 mainmenu.items=Items
 mainmenu.armyspecials=Army Specials
+mainmenu.cheatsheet=Cheat Sheet
 
 armyspecial.headline=Army Specials and Recon
 armyspecial.name=Name
@@ -267,3 +268,6 @@ item.desc.StunGrenade=<p>Stun Grenades are One-Use, R3, Grenades</p>\
   <p>(see page 30) that disorient those nearby. No Damage is caused to models in the target cube. All models in the affected cube are marked as activated.</p>
 item.desc.ThermalMines=<p>Thermal mines are One-Use, RF, AP3 weapons.</p>
 item.desc.MonoWheelScoutBike=<p>For game purposes, riding this bike counts as carrying it as an item. While the Scout Bike is being ridden, the model has the Vehicle ability and their Speed changes to 1-5.</p>
+
+cheatSheet.title=Cheat Sheet
+cheatSheet.setupGame.title=Setup Game
