@@ -23,6 +23,7 @@ libraryDependencies ++= Seq(
 
   "org.webjars.npm" % "react" % "16.2.0",
   "org.webjars.npm" % "react-dom" % "16.2.0",
+  "org.webjars.npm" % "react-redux" % "5.0.6",
 
   "com.github.tuxBurner" %% "play-jsannotations" % "2.6.0",
 
