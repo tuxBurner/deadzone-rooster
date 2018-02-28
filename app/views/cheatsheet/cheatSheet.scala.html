@@ -9,26 +9,60 @@
     <div class="col-md-6">
 
 
+      @cheatsheet.cheatSheetPanel("cheatSheet.setupGame.title") {
+        <ul>
+        @Html(Messages("cheatSheet.setupGame.content"))
+        </ul>
+      }
 
+      @cheatsheet.cheatSheetPanel("cheatSheet.actions.title") {
+        <ul>
+        @Html(Messages("cheatSheet.actions.content"))
+        </ul>
+      }
 
-      <div class="row">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">@Messages("cheatSheet.setupGame.title")</h3>
-          </div>
-          <div class="panel-body">
+      @cheatsheet.cheatSheetPanel("cheatSheet.shootmodifiers.title") {
+        <ul>
+        @Html(Messages("cheatSheet.shootmodifiers.content"))
+        </ul>
+      }
 
-          </div>
-        </div>
-
-      </div>
+      @cheatsheet.cheatSheetPanel("cheatSheet.damage.title") {
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>@Messages("cheatSheet.damage.content.col1")</th>
+              <th>@Messages("cheatSheet.damage.content.col2")</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>@Messages("cheatSheet.damage.content.table.damage0.title")</td>
+              <td>@Messages("cheatSheet.damage.content.table.damage0.content")</td>
+            </tr>
+            <tr>
+              <td>@Messages("cheatSheet.damage.content.table.damage1Plus.title")</td>
+              <td>@Messages("cheatSheet.damage.content.table.damage1Plus.content")</td>
+            </tr>
+            <tr>
+              <td>@Messages("cheatSheet.damage.content.table.damagebiggersize.title")</td>
+              <td>@Messages("cheatSheet.damage.content.table.damagebiggersize.content")</td>
+            </tr>
+          </tbody>
+        </table>
+      }
 
     </div>
     @* EO LEFT SIDE *@
 
     @* RIGHT SIDE *@
     <div class="col-md-6">
-
+    @cheatsheet.cheatSheetPanel(Messages("cheatSheet.fightmodifiers.title")) {
+      @Html(Messages("cheatSheet.fightmodifiers.content1"))
+      <ul>
+      @Html(Messages("cheatSheet.fightmodifiers.content2"))
+      </ul>
+    }
     </div>
     @* EO RIGHT SIDE *@
 

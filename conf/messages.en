@@ -270,4 +270,50 @@ item.desc.ThermalMines=<p>Thermal mines are One-Use, RF, AP3 weapons.</p>
 item.desc.MonoWheelScoutBike=<p>For game purposes, riding this bike counts as carrying it as an item. While the Scout Bike is being ridden, the model has the Vehicle ability and their Speed changes to 1-5.</p>
 
 cheatSheet.title=Cheat Sheet
+
 cheatSheet.setupGame.title=Setup Game
+cheatSheet.setupGame.content=<li>place terrain on map</li>\
+  <li>roll to rotate map</li>\
+  <li>roll for scenario</li>\
+  <li>place 8 equipment markers (depending on scenario)</li>\
+  <li>roll recon test 5 on rec val of leader dice for initiative</li>\
+  <li>setup all miniatures, initiative lost first</li>\
+  <li>move all miniatures with scout ability, initiative won first</li>\
+  <li>roll Command Dices</li>\
+  <li>start first turn, initiative won first</li>\
+  <li>activate miniatures</li>\
+  <li>player that activates his last miniature first, starts next turn</li>
+
+cheatSheet.actions.title=Actions
+cheatSheet.actions.content=<li>Move (short)</li>\
+  <li>Sprint (long)</li>\
+  <li>Stand up (short)</li>\
+  <li>Shoot (short)</li>\
+  <li>Fight (long)</li>\
+  <li>Special Action (short or long)</li>
+
+cheatSheet.shootmodifiers.title=Shoot modifiers
+cheatSheet.shootmodifiers.content=<li><b><u>Clear shot</u>, +2 Dice:</b> If you have a completely unobstructed view to the whole of the target model</li>\
+  <li><b><u>Friendly Fire</u>, -2 Dice:</b> If there are any friednly models in the target cube (models from the same strike team)</li>\
+  <li><b><u>High ground</u>, +1 Dice:</b> If you are on a higher level than the target.</li>\
+  <li><b><u>Firing for Effect</u>, +1 Dice:</b> If you are Firing for Effect with a Rapid Fire Weapon</li>
+
+cheatSheet.damage.title=Damge
+cheatSheet.damage.content.col1=Damage
+cheatSheet.damage.content.col2=Effect
+cheatSheet.damage.content.table.damage0.title=0
+cheatSheet.damage.content.table.damage0.content=The model is undamaged
+cheatSheet.damage.content.table.damage1Plus.title=1+
+cheatSheet.damage.content.table.damage1Plus.content=The model is injured. Mark the model with damage counters equal to the actual damage caused.
+cheatSheet.damage.content.table.damagebiggersize.title=> Size
+cheatSheet.damage.content.table.damagebiggersize.content=The model is removed from the game.
+
+cheatSheet.fightmodifiers.title=Fight Modifiers
+cheatSheet.fightmodifiers.content1=<p>These dice modifiers are the same  for both <b>Fight</b> and <b>Survive</b> tests.</p>\
+   <p><b>Pinned models</b> stand up for free, but can only make <b>Survive</b> tests.</p>
+cheatSheet.fightmodifiers.content2=<li>+1 Dice if the model moved into this cube in this action</li>\
+  <li>+1 Dice if any friendly models are in the same cube (mqx +1 dice, not +1 dice per friendly model)</li>\
+  <li>+1 dice if opponent is injured</li>\
+  <li>+1 dice if the model is larger size than its openent</li>\
+  <li>+1 dice if the opposing model is pinned</li>\
+  <li>for Horde models +1 dice per model, that also has Horde</li>
