@@ -7,43 +7,10 @@
     <title>@Messages("application.title") - @army.name</title>
     <meta charset="utf-8"/>
 
+    <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/pdf.css")">
     <style>
 
         @@page {
-          size: A4 landscape;
-        }
-
-        body {
-          font-size: 0.8em;
-        }
-
-        table.pdf {
-          width: 100%;
-          border-spacing: 0;
-        }
-
-        table.pdf td, table.pdf th {
-          border: solid 1px #000000;
-          padding: 2pt;
-        }
-
-        table.pdf td, table.pdf tbody th {
-          border-top: none 0px;
-        }
-
-        table.pdf th {
-          background-color: #ababab;
-        }
-
-        table.pdf td {
-          vertical-align: top;
-        }
-
-        @@page {
-
-        @@bottom-right {
-          content: "Page " counter(page) " of " counter(pages);
-        }
 
         @if(army.name.isEmpty == false) {
         @@bottom-left {

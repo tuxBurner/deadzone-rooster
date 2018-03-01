@@ -1,7 +1,33 @@
 @page {
   size: A4 landscape;
+
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+  }
 }
 
 body {
+  font-size: 0.8em;
+}
+
+table.pdf {
+  width: 100%;
+  border-spacing: 0;
+}
+
+table.pdf td, table.pdf th {
+  border: solid 1px #000000;
+  padding: 2pt;
+}
+
+table.pdf td, table.pdf tbody th {
+  border-top: none 0px;
+}
+
+table.pdf th {
   background-color: #ababab;
+}
+
+table.pdf td {
+  vertical-align: top;
 }
