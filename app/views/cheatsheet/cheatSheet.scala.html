@@ -1,92 +1,96 @@
 @()(implicit messages: Messages)
-<h4>@Messages("cheatSheet.title")</h4>
 
-<div class="row">
 
-  @* LEFT SIDE *@
-<div class="col-md-6">
+<table class="table cheatSheetTable">
+  <tbody>
+    <tr>
 
-  @cheatsheet.cheatSheetPanel("cheatSheet.setupGame.title") {
-    <ul>
-    @Html(Messages("cheatSheet.setupGame.content"))
-    </ul>
-  }
+      @* LEFT SIDE *@
+      <td>
 
-  @cheatsheet.cheatSheetPanel("cheatSheet.actions.title") {
-    <ul>
-    @Html(Messages("cheatSheet.actions.content"))
-    </ul>
-  }
+        @cheatsheet.cheatSheetPanel("cheatSheet.setupGame.title") {
+          <ul>
+          @Html(Messages("cheatSheet.setupGame.content"))
+          </ul>
+        }
 
-  @cheatsheet.cheatSheetPanel("cheatSheet.shootmodifiers.title") {
-    <ul>
-    @Html(Messages("cheatSheet.shootmodifiers.content"))
-    </ul>
-  }
+        @cheatsheet.cheatSheetPanel("cheatSheet.actions.title") {
+          <ul>
+          @Html(Messages("cheatSheet.actions.content"))
+          </ul>
+        }
 
-  @cheatsheet.cheatSheetPanel("cheatSheet.damage.title") {
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>@Messages("cheatSheet.damage.content.col1")</th>
-          <th>@Messages("cheatSheet.damage.content.col2")</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>@Messages("cheatSheet.damage.content.table.damage0.title")</td>
-          <td>@Messages("cheatSheet.damage.content.table.damage0.content")</td>
-        </tr>
-        <tr>
-          <td>@Messages("cheatSheet.damage.content.table.damage1Plus.title")</td>
-          <td>@Messages("cheatSheet.damage.content.table.damage1Plus.content")</td>
-        </tr>
-        <tr>
-          <td>@Messages("cheatSheet.damage.content.table.damagebiggersize.title")</td>
-          <td>@Messages("cheatSheet.damage.content.table.damagebiggersize.content")</td>
-        </tr>
-      </tbody>
-    </table>
-  }
+        @cheatsheet.cheatSheetPanel("cheatSheet.shootmodifiers.title") {
+          <ul>
+          @Html(Messages("cheatSheet.shootmodifiers.content"))
+          </ul>
+        }
 
-</div>
-  @* EO LEFT SIDE *@
+        @cheatsheet.cheatSheetPanel("cheatSheet.damage.title") {
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>@Messages("cheatSheet.damage.content.col1")</th>
+                <th>@Messages("cheatSheet.damage.content.col2")</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>@Messages("cheatSheet.damage.content.table.damage0.title")</td>
+                <td>@Messages("cheatSheet.damage.content.table.damage0.content")</td>
+              </tr>
+              <tr>
+                <td>@Messages("cheatSheet.damage.content.table.damage1Plus.title")</td>
+                <td>@Messages("cheatSheet.damage.content.table.damage1Plus.content")</td>
+              </tr>
+              <tr>
+                <td>@Messages("cheatSheet.damage.content.table.damagebiggersize.title")</td>
+                <td>@Messages("cheatSheet.damage.content.table.damagebiggersize.content")</td>
+              </tr>
+            </tbody>
+          </table>
+        }
 
-  @* RIGHT SIDE *@
-<div class="col-md-6">
-  @cheatsheet.cheatSheetPanel(Messages("cheatSheet.fightmodifiers.title")) {
-    @Html(Messages("cheatSheet.fightmodifiers.content1"))
-    <ul>
-    @Html(Messages("cheatSheet.fightmodifiers.content2"))
-    </ul>
-  }
+      </td>
+      @* EO LEFT SIDE *@
 
-  @cheatsheet.cheatSheetPanel(Messages("cheatSheet.slammedIntoWall.title")) {
-    @Html(Messages("cheatSheet.slammedIntoWall.content1"))
-    <ul>
-    @Html(Messages("cheatSheet.slammedIntoWall.content2"))
-    </ul>
-  }
+      @* RIGHT SIDE *@
+      <td>
+        @cheatsheet.cheatSheetPanel(Messages("cheatSheet.fightmodifiers.title")) {
+          @Html(Messages("cheatSheet.fightmodifiers.content1"))
+          <ul>
+          @Html(Messages("cheatSheet.fightmodifiers.content2"))
+          </ul>
+        }
 
-  @cheatsheet.cheatSheetPanel(Messages("cheatSheet.falling.title")) {
-    @Html(Messages("cheatSheet.falling.content1"))
-    <ul>
-    @Html(Messages("cheatSheet.falling.content2"))
-    </ul>
-  }
+        @cheatsheet.cheatSheetPanel(Messages("cheatSheet.slammedIntoWall.title")) {
+          @Html(Messages("cheatSheet.slammedIntoWall.content1"))
+          <ul>
+          @Html(Messages("cheatSheet.slammedIntoWall.content2"))
+          </ul>
+        }
 
-  @cheatsheet.cheatSheetPanel(Messages("cheatSheet.knockback.title")) {
-    @Messages("cheatSheet.knockback.content")
-  }
+        @cheatsheet.cheatSheetPanel(Messages("cheatSheet.falling.title")) {
+          @Html(Messages("cheatSheet.falling.content1"))
+          <ul>
+          @Html(Messages("cheatSheet.falling.content2"))
+          </ul>
+        }
 
-  @cheatsheet.cheatSheetPanel(Messages("cheatSheet.frag.title")) {
-    @Html(Messages("cheatSheet.frag.content1"))
-    <ul>
-    @Html(Messages("cheatSheet.frag.content2"))
-    </ul>
-  }
+        @cheatsheet.cheatSheetPanel(Messages("cheatSheet.knockback.title")) {
+          @Messages("cheatSheet.knockback.content")
+        }
 
-</div>
-  @* EO RIGHT SIDE *@
+        @cheatsheet.cheatSheetPanel(Messages("cheatSheet.frag.title")) {
+          @Html(Messages("cheatSheet.frag.content1"))
+          <ul>
+          @Html(Messages("cheatSheet.frag.content2"))
+          </ul>
+        }
 
-</div>
+      </td>
+      @* EO RIGHT SIDE *@
+
+    </tr>
+  </tbody>
+</table>

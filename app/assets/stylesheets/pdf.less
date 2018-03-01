@@ -1,13 +1,50 @@
 @page {
   size: A4 landscape;
+  margin: 5mm;
 
   @bottom-right {
     content: "Page " counter(page) " of " counter(pages);
   }
 }
 
+@greyBackground: #ababab;
+
 body {
   font-size: 0.8em;
+}
+
+// handle panels
+.panel {
+
+  .panel-body {
+    padding-top: 1mm;
+
+    font-size: 1.1em;
+
+    ul {
+      padding-left: 2mm;
+      margin-bottom: 0mm;
+    }
+  }
+
+  .panel-heading {
+    background-color: @greyBackground !important;
+
+    h3.panel-title {
+      font-size: 1.2em;
+    }
+  }
+}
+
+// remove borders from the table
+table.cheatSheetTable {
+  td {
+    border: none 0px !important;
+  }
+
+  p {
+    margin-bottom: 1mm;
+  }
 }
 
 table.pdf {
@@ -25,7 +62,7 @@ table.pdf td, table.pdf tbody th {
 }
 
 table.pdf th {
-  background-color: #ababab;
+  background-color: @greyBackground;
 }
 
 table.pdf td {
