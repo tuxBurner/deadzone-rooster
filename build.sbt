@@ -28,6 +28,8 @@ libraryDependencies ++= Seq(
 // encapsulates the launching of the app in an empty jar. This is needed because the classpath var will be to long under windows.
 enablePlugins(LauncherJarPlugin)
 
+// compile all less files
+includeFilter in (Assets, LessKeys.less) := "*.less"
 
 
 
@@ -45,7 +47,6 @@ dockerExposedVolumes in Docker := Seq("/data")
 dockerCommands ++= Seq(
   ExecCmd("CMD", "-Dconfig.file=/opt/docker/conf/deadzone-roster.conf")
 )
-
 
 
 dockerUpdateLatest in Docker := true

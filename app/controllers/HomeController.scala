@@ -99,7 +99,7 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
     */
   def exportCheatSheetAsPdf() = Action {
     implicit request =>
-      val pdfBytes = pdfGenerator.toBytes(views.html.cheatsheet.cheatSheet(), "http://localhost:9000")
+      val pdfBytes = pdfGenerator.toBytes(views.html.cheatsheet.cheatSheetPdf(), "http://localhost:9000")
       Ok(pdfBytes).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=cheat_sheet.pdf")
   }
 

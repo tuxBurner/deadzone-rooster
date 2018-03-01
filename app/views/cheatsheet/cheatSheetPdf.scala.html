@@ -1,0 +1,12 @@
+@()(implicit messages: Messages)
+<html>
+  <head>
+    <title>@Messages("application.title") - @Messages("cheatSheet.title")</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/pdf.css")">
+    
+  </head>
+  <body>
+  @cheatsheet.cheatSheet()
+  </body>
+</html>
