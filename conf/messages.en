@@ -270,6 +270,7 @@ item.desc.ThermalMines=<p>Thermal mines are One-Use, RF, AP3 weapons.</p>
 item.desc.MonoWheelScoutBike=<p>For game purposes, riding this bike counts as carrying it as an item. While the Scout Bike is being ridden, the model has the Vehicle ability and their Speed changes to 1-5.</p>
 
 cheatSheet.title=Cheat Sheet
+cheatSheet.openAsPdf=Open as PDF
 
 cheatSheet.setupGame.title=Setup Game
 cheatSheet.setupGame.content=<li>place terrain on map</li>\
