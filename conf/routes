@@ -9,7 +9,8 @@ GET           /abilities                                          controllers.Ho
 GET           /armyspecials                                       controllers.HomeController.displayAllArmySpecials()
 GET           /items                                              controllers.HomeController.displayAllItems()
 GET           /army/:faction/troops                               controllers.HomeController.displayTroopsOfFaction(faction: String)
-GET           /cheatshheet                                        controllers.HomeController.displayCheatSheet()
+GET           /cheatsheet                                         controllers.HomeController.displayCheatSheet()
+GET           /cheatsheet/pdf                                     controllers.HomeController.exportCheatSheetAsPdf()
 
 GET           /changeLang/:language                               controllers.HomeController.changeLanguage(language: String)
 

@@ -3,6 +3,7 @@ package controllers
 import javax.inject._
 
 import com.github.tuxBurner.jsAnnotations.{JSRoute, JsRoutesComponent}
+import it.innove.play.pdf.PdfGenerator
 import models.{AbilityDAO, ItemDAO, TroopDAO}
 import play.api.i18n.I18nSupport
 import play.api.mvc._
@@ -18,7 +19,7 @@ import scala.collection.JavaConverters._
   * application's home page.
   */
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRoutesComponent, langs: Langs) extends AbstractController(cc) with I18nSupport {
+class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRoutesComponent, pdfGenerator: PdfGenerator, langs: Langs) extends AbstractController(cc) with I18nSupport {
 
 
   /**
@@ -84,15 +85,27 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
 
   /**
     * Displays the cheat sheet
+    *
     * @return
     */
   def displayCheatSheet() = Action {
     implicit request =>
-      Ok(views.html.cheatsheet.cheatSheet())
+      Ok(views.html.cheatsheet.cheatSheetHtml())
+  }
+
+  /**
+    * Exports the cheat sheet as a pdf
+    * @return
+    */
+  def exportCheatSheetAsPdf() = Action {
+    implicit request =>
+      val pdfBytes = pdfGenerator.toBytes(views.html.cheatsheet.cheatSheet(), "http://localhost:9000")
+      Ok(pdfBytes).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=cheat_sheet.pdf")
   }
 
   /**
     * Displays all troops of an army
+    *
     * @return
     */
   @JSRoute
@@ -102,9 +115,9 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
       val factions = FactionLogic.getAllFactions()
       val troopsForSelectedFaction = TroopLogic.getAllTroopsForFaction(faction)
       val factionWeapons = WeaponsLogic.getAllWeaponsOfFaction(faction)
-      
 
-      Ok(views.html.allTroopsOfArmy(troopsForSelectedFaction, factions,faction, factionWeapons))
+
+      Ok(views.html.allTroopsOfArmy(troopsForSelectedFaction, factions, faction, factionWeapons))
   }
 
 
