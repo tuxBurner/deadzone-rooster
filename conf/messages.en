@@ -317,3 +317,22 @@ cheatSheet.fightmodifiers.content2=<li>+1 Dice if the model moved into this cube
   <li>+1 dice if the model is larger size than its openent</li>\
   <li>+1 dice if the opposing model is pinned</li>\
   <li>for Horde models +1 dice per model, that also has Horde</li>
+
+cheatSheet.slammedIntoWall.title=Slammed into wall
+cheatSheet.slammedIntoWall.content1=<p>The wall rolls 3 dice 5+ test (X)</p>
+cheatSheet.slammedIntoWall.content2=<li><b>Draw or Survivor wins:</b> The model is unharmed</li>\
+  <li><b>Wall wins:</b> The model is Pinned, and the difference in number of successes is the potential damage.</li>
+
+cheatSheet.falling.title=Falling
+cheatSheet.falling.content1=<p>Gravity rolls 3 dice 5+ test (X) with +1 dice per cube the model falls.</p>
+cheatSheet.falling.content2=<li><b>Draw or Survivor wins:</b> The model is Pinned.</li>\
+  <li><b>Gravity wins:</b> The model is Pinned, and the difference in number of successes is the potential damage.</li>
+
+cheatSheet.knockback.title=Knockback
+cheatSheet.knockback.content=Apply Knockback only when the attack causes potential damage.
+
+cheatSheet.frag.title=Frag (X)
+cheatSheet.frag.content1=<p>Roll a variable dice 4+ test (X) for the strength of the attack, where the number of dice rolled is the number in brackets after Frag.</p>
+cheatSheet.frag.content2=<li>Whatever the results of the explosion is, all surviving models in the target cube are thrown on cube in a random direction and are then Pinned.</li>\
+  <li><b>Draw or target wins:</b> The model is unharmed.</li>\
+  <li><b>Frag wins:</b> The difference in number of successes is the potential damage.</li>

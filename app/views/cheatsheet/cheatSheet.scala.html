@@ -57,12 +57,38 @@
 
     @* RIGHT SIDE *@
     <div class="col-md-6">
-    @cheatsheet.cheatSheetPanel(Messages("cheatSheet.fightmodifiers.title")) {
-      @Html(Messages("cheatSheet.fightmodifiers.content1"))
-      <ul>
-      @Html(Messages("cheatSheet.fightmodifiers.content2"))
-      </ul>
-    }
+      @cheatsheet.cheatSheetPanel(Messages("cheatSheet.fightmodifiers.title")) {
+        @Html(Messages("cheatSheet.fightmodifiers.content1"))
+        <ul>
+        @Html(Messages("cheatSheet.fightmodifiers.content2"))
+        </ul>
+      }
+
+      @cheatsheet.cheatSheetPanel(Messages("cheatSheet.slammedIntoWall.title")) {
+        @Html(Messages("cheatSheet.slammedIntoWall.content1"))
+        <ul>
+        @Html(Messages("cheatSheet.slammedIntoWall.content2"))
+        </ul>
+      }
+
+      @cheatsheet.cheatSheetPanel(Messages("cheatSheet.falling.title")) {
+        @Html(Messages("cheatSheet.falling.content1"))
+        <ul>
+        @Html(Messages("cheatSheet.falling.content2"))
+        </ul>
+      }
+
+      @cheatsheet.cheatSheetPanel(Messages("cheatSheet.knockback.title")) {
+        @Messages("cheatSheet.knockback.content")
+      }
+
+      @cheatsheet.cheatSheetPanel(Messages("cheatSheet.frag.title")) {
+        @Html(Messages("cheatSheet.frag.content1"))
+        <ul>
+        @Html(Messages("cheatSheet.frag.content2"))
+        </ul>
+      }
+
     </div>
     @* EO RIGHT SIDE *@
 
