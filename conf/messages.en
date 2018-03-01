@@ -318,6 +318,7 @@ cheatSheet.fightmodifiers.content2=<li>+1 Dice if the model moved into this cube
   <li>+1 dice if the opposing model is pinned</li>\
   <li>for Horde models +1 dice per model, that also has Horde</li>
 
+
 cheatSheet.slammedIntoWall.title=Slammed into wall
 cheatSheet.slammedIntoWall.content1=<p>The wall rolls 3 dice 5+ test (X)</p>
 cheatSheet.slammedIntoWall.content2=<li><b>Draw or Survivor wins:</b> The model is unharmed</li>\
@@ -336,3 +337,31 @@ cheatSheet.frag.content1=<p>Roll a variable dice 4+ test (X) for the strength of
 cheatSheet.frag.content2=<li>Whatever the results of the explosion is, all surviving models in the target cube are thrown on cube in a random direction and are then Pinned.</li>\
   <li><b>Draw or target wins:</b> The model is unharmed.</li>\
   <li><b>Frag wins:</b> The difference in number of successes is the potential damage.</li>
+
+cheatSheet.commandDice.table.result=Dice result
+cheatSheet.commandDice.table.command=Command
+cheatSheet.commandDice.table.description=Description
+
+cheatSheet.commandDice.modelActivation=+1 model activation
+cheatSheet.commandDice.modelActivation.desc=At the end of your model's activation, you may activate a second model
+
+cheatSheet.commandDice.plusDice=+1 dice to any Shoot, Fight or Survive test
+cheatSheet.commandDice.plusDice.desc=Add 1 dice to any Shoot, Fight or Survive test before rolling
+
+cheatSheet.commandDice.additionalMove=Additional Move action
+cheatSheet.commandDice.additionalMove.desc=The active model takes a free Move action. \
+  This Move is restricted to one cube, regardless of the model's Speed stat, but otherwise follows the normal movement rules. \
+  Can be used on models that have already taken a Move or Sprint action
+
+cheatSheet.commandDice.additionalShoot=Additional Shoot action
+cheatSheet.commandDice.additionalShoot.desc=The active model takes a free Shoot action. \
+  Can be used on model that have already taken a Shoot action
+
+cheatSheet.commandDice.additionalFight=Additional Fight action
+cheatSheet.commandDice.additionalFight.desc=The active model takes a free Fight action. \
+  May be used on models that have already taken a Fight action.
+
+cheatSheet.commandDice.armySpecial=Army Special
+cheatSheet.commandDice.armySpecial.desc=Activate your army's special ability. \
+  The effect is different for each army and explained by the army list. \
+  Army special effect do not count towards any other restriction on number of actions per turn unless specifically mentioned otherwise.

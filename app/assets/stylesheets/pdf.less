@@ -8,6 +8,7 @@
 }
 
 @greyBackground: #ababab;
+@lightGreyBackground: #C3C3C3;
 
 body {
   font-size: 0.8em;
@@ -28,7 +29,7 @@ body {
   }
 
   .panel-heading {
-    background-color: @greyBackground !important;
+    background-color: @lightGreyBackground !important;
 
     h3.panel-title {
       font-size: 1.2em;
@@ -50,21 +51,38 @@ table.cheatSheetTable {
 table.pdf {
   width: 100%;
   border-spacing: 0;
+
+  td, th {
+    border: solid 1px #000000;
+    padding: 2pt;
+  }
+
+  td, tbody th {
+    border-top: none 0px;
+  }
+
+  th {
+    background-color: @greyBackground !important;
+  }
+
+  td {
+    vertical-align: top;
+  }
 }
 
-table.pdf td, table.pdf th {
-  border: solid 1px #000000;
-  padding: 2pt;
+table.cheatSheetCommand {
+
+  font-size: 1.2em;
+
+  th.firstCol {
+    width: 5cm !important;
+  }
+
+  tbody tr {
+    min-height: 3cm;
+  }
 }
 
-table.pdf td, table.pdf tbody th {
-  border-top: none 0px;
-}
 
-table.pdf th {
-  background-color: @greyBackground;
-}
 
-table.pdf td {
-  vertical-align: top;
-}
+
