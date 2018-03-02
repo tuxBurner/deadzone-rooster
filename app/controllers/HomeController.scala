@@ -29,7 +29,7 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
     */
   def rosterMain = Action {
     implicit request =>
-      Ok(views.html.roster())
+      Ok(views.html.roster.roster())
   }
 
   /**
