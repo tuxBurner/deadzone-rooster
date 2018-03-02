@@ -101,10 +101,10 @@ object ArmyLogic {
   /**
     * Updates the troop with the given items and weapons
     *
-    * @param uuid
-    * @param army
-    * @param weapons
-    * @param items
+    * @param uuid the uuid of the troop
+    * @param army the army where to update the troop at
+    * @param weapons thr weapons the troop has
+    * @param items the items the troop has
     * @return
     */
   def updateTroop(uuid: String, army: ArmyDto, weapons: List[String], items: List[String]): ArmyDto = {
@@ -153,7 +153,7 @@ object ArmyLogic {
     */
   private def setNewTroopsAndFactionAtArmy(origArmy: ArmyDto, newTroops: List[ArmyAmountTroopDto], newFaction: String): ArmyDto = {
     setNewTroopsAtArmy(origArmy, newTroops)
-      .copy(faction = newFaction);
+      .copy(faction = newFaction)
   }
 
   /**
@@ -197,14 +197,14 @@ object ArmyLogic {
   def troopDoToArmyTroopDto(troopDo: TroopDO): ArmyTroopDto = {
 
     val troopAbilities = troopDo.defaultTroopAbilities.map(abilityDo => ArmyAbilityDto(abilityDo.ability.name, abilityDo.defaultValue))
-    val weapons = troopDo.defaultWeapons.map(weaponDoToWeaponDto(_))
+    val weapons = troopDo.defaultWeapons.map(weaponDoToWeaponDto)
 
     val points = troopDo.soldierDto.points + troopDo.defaultWeapons.map(_.points).sum + troopDo.defaultItems.map(_.points).sum
     val victoryPoints = troopDo.soldierDto.victoryPoints + troopDo.defaultWeapons.map(_.victoryPoints).sum
 
     val weaponTypes = troopDo.allowedWeaponTypes.map(_.name)
 
-    val items = troopDo.defaultItems.map(itemDoToItemDto(_))
+    val items = troopDo.defaultItems.map(itemDoToItemDto)
 
 
     val baseStats = ArmyTroopBaseStatsDto(
@@ -241,8 +241,8 @@ object ArmyLogic {
     * Gets the weapons and items which are allowed for the given uui troop
     * Also returns the currently selected items and weapons
     *
-    * @param uuid
-    * @param army
+    * @param uuid the uuid of the troop
+    * @param army the army where the troop is in
     * @return
     */
   def getWeaponsAndItemsForTroop(uuid: String, army: ArmyDto): ArmyTroopWeaponsItemsDto = {
@@ -286,7 +286,7 @@ object ArmyLogic {
   /**
     * Gets the items for the given troop
     *
-    * @param troop
+    * @param troop the troop we want the the items from
     * @return
     */
   def getItemsForTroop(troop: ArmyTroopDto): List[ArmyItemDto] = {
@@ -309,7 +309,7 @@ object ArmyLogic {
   /**
     * Transforms a weapon database object to a weapon dto
     *
-    * @param weaponDo
+    * @param weaponDo the do which is to be converted to the dto
     * @return
     */
   def weaponDoToWeaponDto(weaponDo: WeaponDO): ArmyWeaponDto = {
@@ -327,12 +327,12 @@ object ArmyLogic {
   }
 
   /**
-    * Extracts informations about the army from it for pdf informations
+    * Extracts informations about the army from it for pdf information's
     *
-    * @param army
+    * @param army the army which is exported to the pdf
     * @return
     */
-  def extractPdfArmyInfos(army: ArmyDto): ArmyPdfInfos = {
+  def extractPdfArmyInfos(army: ArmyDto): ArmyPdfInfosDto = {
     val abilitiesBuffer = ListBuffer[String]()
     val itemsBuffer = ListBuffer[String]()
 
@@ -355,7 +355,7 @@ object ArmyLogic {
 
     val reconVals = army.troopsWithAmount.filter(_.troop.recon != 0).map(amountTroop => (amountTroop.troop.name, amountTroop.troop.recon, amountTroop.troop.armySpecial)).distinct.sortWith(_._3 < _._3)
 
-    ArmyPdfInfos(abilities, items, reconVals)
+    ArmyPdfInfosDto(abilities, items, reconVals)
   }
 
 }
@@ -411,4 +411,6 @@ case class ArmyItemDto(name: String, points: Int, rarity: String, noUpdate: Bool
 
 case class ArmyTroopWeaponsItemsDto(weapons: Map[String, List[ArmyWeaponDto]], items: List[ArmyItemDto], troop: ArmyTroopDto)
 
-case class ArmyPdfInfos(abilities: List[String], items: List[String], reconVals: List[(String, Int, String)])
+case class ArmyPdfInfosDto(abilities: List[String],
+                        items: List[String],
+                        reconVals: List[(String, Int, String)])

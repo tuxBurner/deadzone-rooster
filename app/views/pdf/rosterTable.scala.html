@@ -1,13 +1,12 @@
-@import services.logic.ArmyDto
-@import services.logic.ArmyPdfInfos
-@(army: ArmyDto, armyPdfInfos: ArmyPdfInfos)(implicit messages: Messages)
+@import services.logic.{ArmyDto, ArmyPdfInfosDto}
+@(army: ArmyDto, armyPdfInfos: ArmyPdfInfosDto)(implicit messages: Messages)
 
 <html>
   <head>
     <title>@Messages("application.title") - @army.name</title>
     <meta charset="utf-8"/>
 
-    <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/pdf.css")">
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/pdf.css")">
     <style>
 
         @@page {
@@ -89,60 +88,91 @@
           </td>
           <td>@amountTroop.troop.baseStats.points</td>
           <td>@amountTroop.troop.baseStats.victoryPoints</td>
-          <td>@amountTroop.amount = @(amountTroop.amount*amountTroop.troop.baseStats.points) @Messages("troop.tbl.points")</td>
+          <td>@amountTroop.amount
+            = @(amountTroop.amount * amountTroop.troop.baseStats.points) @Messages("troop.tbl.points")</td>
         </tr>
       }
       </tbody>
     </table>
 
 
-    <div style="-fs-page-sequence: start;
-      page-break-before: always">
-      <h3>@Messages("armyspecial.headline")</h3>
+    @if(armyPdfInfos.reconVals.nonEmpty) {
+      <div style="-fs-page-sequence: start;
+        page-break-before: always">
+        <h3>@Messages("armyspecial.headline")</h3>
 
-      <table class="pdf">
-        <thead>
-          <tr>
-            <th>@Messages("armyspecial.troop")</th>
-            <th>@Messages("army.recon")</th>
-            <th>@Messages("armyspecial.name")</th>
-            <th>@Messages("armyspecial.desc")</th>
-          </tr>
-        </thead>
-        <tbody>
-        @for(recon <- armyPdfInfos.reconVals) {
-          <tr>
-            <th>@recon._1</th>
-            <td>@recon._2+</td>
-            <td>@recon._3</td>
-            <td>@displayArmySpecialDescr(recon._3)</td>
-          </tr>
-        }
-        </tbody>
-      </table>
-    </div>
+        <table class="pdf">
+          <thead>
+            <tr>
+              <th>@Messages("armyspecial.troop")</th>
+              <th>@Messages("army.recon")</th>
+              <th>@Messages("armyspecial.name")</th>
+              <th>@Messages("armyspecial.desc")</th>
+            </tr>
+          </thead>
+          <tbody>
+          @for(recon <- armyPdfInfos.reconVals) {
+            <tr>
+              <th>@recon._1</th>
+              <td>@recon._2+</td>
+              <td>@recon._3</td>
+              <td>@displayArmySpecialDescr(recon._3)</td>
+            </tr>
+          }
+          </tbody>
+        </table>
+      </div>
+    }
 
-    <div style="-fs-page-sequence: start;
-      page-break-before: always">
+    @if(armyPdfInfos.abilities.nonEmpty) {
+      <div style="-fs-page-sequence: start;
+        page-break-before: always">
 
-      <h3>@Messages("army.abilities")</h3>
+        <h3>@Messages("army.abilities")</h3>
 
-      <table class="pdf">
-        <thead>
-          <tr>
-            <th>@Messages("ability.name")</th>
-            <th>@Messages("ability.desc")</th>
-          </tr>
-        </thead>
-        <tbody>
-        @for(ability <- armyPdfInfos.abilities) {
-          <tr>
-            <th>@ability</th>
-            <td>@displayAbiltityDescr(ability)</td>
-          </tr>
-        }
-        </tbody>
-      </table>
-    </div>
+        <table class="pdf">
+          <thead>
+            <tr>
+              <th>@Messages("ability.name")</th>
+              <th>@Messages("ability.desc")</th>
+            </tr>
+          </thead>
+          <tbody>
+          @for(ability <- armyPdfInfos.abilities) {
+            <tr>
+              <th>@ability</th>
+              <td>@displayAbiltityDescr(ability)</td>
+            </tr>
+          }
+          </tbody>
+        </table>
+      </div>
+    }
+
+    @if(armyPdfInfos.items.nonEmpty) {
+      <div style="-fs-page-sequence: start;
+        page-break-before: always">
+
+        <h3>@Messages("item.headline")</h3>
+
+        <table class="pdf">
+          <thead>
+            <tr>
+              <th>@Messages("item.name")</th>
+              <th>@Messages("item.desc")</th>
+            </tr>
+          </thead>
+          <tbody>
+          @for(item <- armyPdfInfos.items) {
+            <tr>
+              <th>@item</th>
+              <td>@displayItemDescr(item)</td>
+            </tr>
+          }
+          </tbody>
+        </table>
+      </div>
+    }
+
   </body>
 </html>
