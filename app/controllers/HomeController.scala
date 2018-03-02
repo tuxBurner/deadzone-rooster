@@ -19,7 +19,10 @@ import scala.collection.JavaConverters._
   * application's home page.
   */
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRoutesComponent, pdfGenerator: PdfGenerator, langs: Langs) extends AbstractController(cc) with I18nSupport {
+class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRoutesComponent, pdfGenerator: PdfGenerator, langs: Langs,mainTpl: views.html.main) extends AbstractController(cc) with I18nSupport {
+
+
+  implicit val mainTplImpl = mainTpl
 
 
   /**
@@ -95,6 +98,7 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
 
   /**
     * Exports the cheat sheet as a pdf
+    *
     * @return
     */
   def exportCheatSheetAsPdf() = Action {

@@ -1,10 +1,10 @@
-@()(implicit messages: Messages)
+@()(implicit messages: Messages, mainTpl: views.html.main)
 
-@main(Messages("mainmenu.cheatsheet")) {
+  @mainTpl(Messages("mainmenu.cheatsheet")) {
 
-  <div class="row pull-right">
-    <a class="btn btn-sm btn-info" href="@routes.HomeController.exportCheatSheetAsPdf()" target="_blank"><span class="glyphicon glyphicon-print"></span>  @Messages("cheatSheet.openAsPdf")</a>
-  </div>
+    <div class="row pull-right">
+      <a class="btn btn-sm btn-info" href="@routes.HomeController.exportCheatSheetAsPdf()" target="_blank"><span class="glyphicon glyphicon-print"></span>  @Messages("cheatSheet.openAsPdf")</a>
+    </div>
 
-  @cheatsheet.cheatSheet()
-}
+    @cheatsheet.cheatSheet()
+  }

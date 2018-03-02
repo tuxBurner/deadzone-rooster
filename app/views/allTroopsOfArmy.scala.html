@@ -1,12 +1,12 @@
 @import deadzone.models.ModelType
 @import services.logic.{ArmyWeaponDto, FactionDto, TroopWithAllowedWeaponsDto}
-@(troopsByType: Map[String, List[TroopWithAllowedWeaponsDto]], factions: List[FactionDto], currentFaction: String, factionWeapons: Map[String, List[ArmyWeaponDto]])(implicit messages: Messages)
+@(troopsByType: Map[String, List[TroopWithAllowedWeaponsDto]], factions: List[FactionDto], currentFaction: String, factionWeapons: Map[String, List[ArmyWeaponDto]])(implicit messages: Messages, mainTpl: views.html.main)
 
   @scripts = {
     <script type="text/javascript" src="@routes.Assets.versioned("javascripts/all_troops.js")"> </script>
   }
 
-  @main(Messages("mainmenu.armyTroops"), scripts) {
+  @mainTpl(Messages("mainmenu.armyTroops"), scripts) {
 
     <div class="well">
       <label>@Messages("faction.select")</label>
@@ -22,9 +22,9 @@
     <hr />
 
     <div class="well text-center">
-    @for(troopType <- troopsByType.keySet.toList.sortWith(_ < _)) {
-      <a href="#@troopType">@troopType</a>
-    }
+      @for(troopType <- troopsByType.keySet.toList.sortWith(_ < _)) {
+        <a href="#@troopType">@troopType</a>
+      }
       <a href="#factionWeapons">@Messages("troop.tbl.weapons")</a>
     </div>
 
@@ -74,11 +74,11 @@
                 <td>@troop.troopDto.baseStats.basePoints</td>
                 <td>@troop.troopDto.baseStats.baseVictoryPoints</td>
                 <td>
-                  @includes.abilitiesDisplay(troop.troopDto.abilities)
+                @includes.abilitiesDisplay(troop.troopDto.abilities)
                 </td>
                 <td>
                   <ul>
-                  @for(weaponType <- troop.troopDto.allowedWeaponTypes.sortWith(_<_)) {
+                  @for(weaponType <- troop.troopDto.allowedWeaponTypes.sortWith(_ < _)) {
                     <li>
                       <a href="#weaponType_@weaponType">@weaponType</a>
                     </li>
@@ -117,7 +117,7 @@
                             <td>@weapon.points</td>
                             <td>@weapon.victoryPoints</td>
                             <td>
-                              @includes.abilitiesDisplay(weapon.abilities)
+                            @includes.abilitiesDisplay(weapon.abilities)
                             </td>
                             <td>@weapon.hardPoints</td>
                           </tr>
@@ -174,7 +174,7 @@
                 <td>@weapon.points</td>
                 <td>@weapon.victoryPoints</td>
                 <td>
-                  @includes.abilitiesDisplay(weapon.abilities)
+                @includes.abilitiesDisplay(weapon.abilities)
                 </td>
                 <td>@weapon.hardPoints</td>
                 <td>@weapon.free</td>
