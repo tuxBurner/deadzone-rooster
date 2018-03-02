@@ -1,5 +1,8 @@
 application.title=Deadzone-Roster
 
+lang.en=English
+lang.de=German
+
 troop.tbl.name=Name
 troop.tbl.type=Type
 troop.tbl.points=PTS

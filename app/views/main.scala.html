@@ -33,7 +33,14 @@
             <li><a href="@routes.HomeController.displayAllArmySpecials()">@Messages("mainmenu.armyspecials")</a></li>
             <li><a href="@routes.HomeController.displayCheatSheet()">@Messages("mainmenu.cheatsheet")</a></li>
           </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+          @for(selectLang <- langs.availables.filterNot(p => p.locale == messages.lang.locale)) {
+            <li><a href="@routes.HomeController.changeLanguage(selectLang.code)">@Messages(s"lang.${selectLang.code}")</a></li>
+          }
+          </ul>
         </div><!--/.nav-collapse -->
+
       </div>
     </nav>
 
