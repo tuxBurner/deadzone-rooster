@@ -397,6 +397,18 @@ case class ArmyTroopBaseStatsDto(basePoints: Int,
                                  survive: Int,
                                  hardPoints: Int)
 
+/**
+  * A Weapon in the army
+  * @param name the name of the weapon in the army
+  * @param points how many points is the weapon worth in the army
+  * @param shootRange how far can this weapon shoot
+  * @param armorPircing how many armor pircing does this weapon have
+  * @param victoryPoints how many victory points does this weapon adds to the troop
+  * @param hardPoints how many hardpoints does this weapon require
+  * @param abilities abilities this weapon has
+  * @param free when true this weapon can be added free
+  * @param linkedName when set the weapon must be used with the other weapons with the same linked name
+  */
 case class ArmyWeaponDto(name: String,
                          points: Int,
                          shootRange: Int,
@@ -407,7 +419,17 @@ case class ArmyWeaponDto(name: String,
                          free: Boolean,
                          linkedName: String)
 
-case class ArmyItemDto(name: String, points: Int, rarity: String, noUpdate: Boolean)
+/**
+  * This is the dto for holding an army item
+  * @param name the name of the item
+  * @param points how many points this item is worth
+  * @param rarity how rare is this item
+  * @param noUpdate when true this item cannot be added or removed from a troop
+  */
+case class ArmyItemDto(name: String,
+                       points: Int,
+                       rarity: String,
+                       noUpdate: Boolean)
 
 case class ArmyTroopWeaponsItemsDto(weapons: Map[String, List[ArmyWeaponDto]], items: List[ArmyItemDto], troop: ArmyTroopDto)
 
