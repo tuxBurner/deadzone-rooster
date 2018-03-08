@@ -53,7 +53,8 @@ object TroopLogic {
   * @param troopDto the troop
   * @param allowedWeaponsDto all weapons sorted by type
   */
-case class TroopWithAllowedWeaponsDto(troopDto: ArmyTroopDto,allowedWeaponsDto: Map[String, List[ArmyWeaponDto]])
+case class TroopWithAllowedWeaponsDto(troopDto: ArmyTroopDto,
+                                      allowedWeaponsDto: Map[String, List[ArmyWeaponDto]])
 
 
 /**

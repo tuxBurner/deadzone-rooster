@@ -234,7 +234,8 @@ object ArmyLogic {
       allowedWeaponTypes = weaponTypes,
       recon = troopDo.soldierDto.recon,
       armySpecial = troopDo.soldierDto.armySpecial,
-      defaultWeapons = weapons)
+      defaultWeapons = weapons,
+      imageUrl = troopDo.soldierDto.imageUrl)
   }
 
   /**
@@ -365,12 +366,40 @@ case class ArmyDto(name: String,
                    points: Int = 0,
                    troopsWithAmount: List[ArmyAmountTroopDto] = List())
 
-case class ArmyAbilityDto(name: String, defaultVal: Int)
+
+/**
+  * An abilitiy
+  * @param name name of the ability
+  * @param defaultVal the default value the ability has
+  */
+case class ArmyAbilityDto(name: String,
+                          defaultVal: Int)
 
 
+/**
+  * Dto for holding a troop and how many of this troop are in the army
+  * @param troop the troop itself
+  * @param amount how many are in the army
+  */
 case class ArmyAmountTroopDto(troop: ArmyTroopDto,
                               amount: Int = 1)
 
+/**
+  * This is the Dto fo a  troop in an army
+  * @param uuid the uuid of the troop in the army
+  * @param faction the faction the troop belongs to
+  * @param name the name of the troop
+  * @param modelType the type of the model
+  * @param baseStats the basic stats of the model
+  * @param abilities the abilities the model has
+  * @param weapons the weapons the troop is equipped with
+  * @param items the items the troop is equipped with
+  * @param allowedWeaponTypes the allowed weapon types the troop may select
+  * @param recon the recon value of the troop
+  * @param armySpecial the army special of the troop
+  * @param defaultWeapons the default weapons load out of the troop
+  * @param imageUrl the url of the image of the troop
+  */
 case class ArmyTroopDto(uuid: String,
                         faction: String,
                         name: String,
@@ -382,7 +411,8 @@ case class ArmyTroopDto(uuid: String,
                         allowedWeaponTypes: List[String],
                         recon: Int,
                         armySpecial: String,
-                        defaultWeapons: List[ArmyWeaponDto])
+                        defaultWeapons: List[ArmyWeaponDto],
+                        imageUrl: String)
 
 case class ArmyTroopBaseStatsDto(basePoints: Int,
                                  points: Int,

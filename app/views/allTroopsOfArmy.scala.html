@@ -64,7 +64,13 @@
             <tbody>
             @for(troop <- troopsByType.get(troopType).get.sortBy(_.troopDto.name)) {
               <tr>
-                <td>@troop.troopDto.name</td>
+                <td>
+                  @troop.troopDto.name
+
+                  @if(troop.troopDto.imageUrl.isEmpty == false) {
+                    <img src="@troop.troopDto.imageUrl" />
+                  }
+                </td>
                 <td>@troop.troopDto.baseStats.speed - @troop.troopDto.baseStats.sprint</td>
                 <td>@troop.troopDto.baseStats.shoot+</td>
                 <td>@troop.troopDto.baseStats.fight+</td>
