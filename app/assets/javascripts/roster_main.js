@@ -83,7 +83,7 @@ let rosterGuiHandler = {
    * Displays when available the image of the currently selected troop
    */
   displaySelectedTroopImage: function() {
-    let imgUrl = $('#roster_addTroop_select :selected').data('imageUrl');
+    let imgUrl = $('#roster_addTroop_select').find(':selected').data('imageUrl');
 
     if(imgUrl !== '') {
       $('#roster_troop_img').attr('src', imgUrl).show();
@@ -142,8 +142,10 @@ let rosterGuiHandler = {
     jsRoutes.controllers.RosterController.getWeaponsAndItemsForTroop(uuid).ajax({
       success: function(data) {
 
+        const troopEditModal = $('#roster_troop_edit_modal');
+
         $('#roster_troop_edit_name').text(troopName);
-        $('#roster_troop_edit_modal').data('troopuuid', uuid);
+        troopEditModal.data('troopuuid', uuid);
 
 
         let weaponsContent = rosterGuiHandler._displayEditWeaponType('Free', 'free', data);
@@ -156,7 +158,7 @@ let rosterGuiHandler = {
 
         data.items.forEach(item => {
           let checked = '';
-          for(var iidx in data.troop.items) {
+          for(let iidx in data.troop.items) {
             if(data.troop.items[iidx].name === item.name) {
               checked = 'checked';
               break;
@@ -180,7 +182,7 @@ let rosterGuiHandler = {
 
         $('#roster_troop_edit_items').html(itemsContent);
 
-        $('#roster_troop_edit_modal').modal('show');
+        troopEditModal.modal('show');
       }
     });
   },
@@ -283,7 +285,9 @@ let rosterGuiHandler = {
 
     $('#roster_army_name').val(armyData.name);
 
-    $('#roster_troop_tbody').html('');
+    const rosterTroopTbody = $('#roster_troop_tbody');
+
+    rosterTroopTbody.html('');
     let tableContent = '';
 
     let troopsByType = {};
@@ -360,7 +364,7 @@ let rosterGuiHandler = {
     });
 
 
-    $('#roster_troop_tbody').html(tableContent);
+    rosterTroopTbody.html(tableContent);
   },
 
   /**
