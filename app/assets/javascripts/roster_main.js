@@ -11,13 +11,13 @@ let rosterGuiHandler = {
   troopTypeSort: ["Leader", "Troop", "Specialist", "Vehicle", "Character"],
 
   /**
-   * Stores the already loaded popover infos vor caching purpose
+   * Stores the already loaded popover info's vor caching purpose
    */
   popOverInfos: {},
 
 
   /**
-   * Gets the avaible factions from the backend and fills them into the select
+   * Gets the available factions from the backend and fills them into the select
    */
   getAndFillFactions: function() {
     jsRoutes.controllers.RosterController.getFactions().ajax({
@@ -25,7 +25,7 @@ let rosterGuiHandler = {
         $('#roster_faction_select').html('');
 
         $.each(data, function(idx, faction) {
-          $('#roster_faction_select').append('<option value="' + faction.name + '">' + faction.name + '</option>');
+          $('#roster_faction_select').append(`<option value="${faction.name}">${faction.name}</option>`);
         });
 
         rosterGuiHandler.getAndFillFactionTroopSelect();
@@ -35,7 +35,7 @@ let rosterGuiHandler = {
   },
 
   /**
-   * Gets the avaible troops for the selected faction from the backend and displays them in the add troop drop down
+   * Gets the available troops for the selected faction from the backend and displays them in the add troop drop down
    */
   getAndFillFactionTroopSelect: function() {
     let selectedFaction = $('#roster_faction_select').val();
@@ -56,7 +56,7 @@ let rosterGuiHandler = {
 
         $('#roster_troop_type_select').html('');
         $.each(troopTypes, function(idx, troopType) {
-          $('#roster_troop_type_select').append('<option value="' + troopType + '">' + troopType + '</option>');
+          $('#roster_troop_type_select').append(`<option value="${troopType}">${troopType}</option>`);
         });
 
         rosterGuiHandler.fillTroopSelectForType();
@@ -80,7 +80,7 @@ let rosterGuiHandler = {
   },
 
   /**
-   * Displays when avaible the image of the currently selected troop
+   * Displays when available the image of the currently selected troop
    */
   displaySelectedTroopImage: function() {
     let imgUrl = $('#roster_addTroop_select :selected').data('imageUrl');
@@ -134,8 +134,9 @@ let rosterGuiHandler = {
 
 
   /**
-   * Gets needed weapon/item informations from the backend and displays the edit popup
-   * @param uuid
+   * Gets needed weapon/item information's from the backend and displays the edit popup
+   * @param uuid the uuid of the troop
+   * @param troopName the name of the troop
    */
   displayEditPopup: function(uuid, troopName) {
     jsRoutes.controllers.RosterController.getWeaponsAndItemsForTroop(uuid).ajax({
