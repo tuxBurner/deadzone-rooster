@@ -2,7 +2,7 @@ version: '2'
 
 services:
   deadzoneroster:
-    image: "tuxburner/deadzoneroster:1.1-SNAPSHOT"
+    image: "tuxburner/deadzoneroster:1.2-SNAPSHOT"
     volumes:
       - ./deadzone-roster.conf:/opt/docker/conf/deadzone-roster.conf:ro
     ports:
