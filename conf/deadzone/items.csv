@@ -1,24 +1,27 @@
 Faction;Item;Points;Rarity;No Upgrade
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Enforcers (Nexus-Psi), Plague (Nexus-Psi);Ammo;2;Common;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Enforcers (Nexus-Psi), Plague (Nexus-Psi);AP Ammo;4;Rare;
-Enforcers, Enforcers (Nexus-Psi);Defender Shield;5;Rare;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS;Energy Shield(1);0;Common;x
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Enforcers (Nexus-Psi), Plague (Nexus-Psi), Veer-Myn 2.0, Veer-Myn (Exham IV), Enforcers (Exham IV), Forge Fathers (Exham IV), Rebs (Exham IV), Marauders (Exham IV), Asterians (Exham IV);Ammo;2;Common;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Enforcers (Nexus-Psi), Plague (Nexus-Psi), Veer-Myn 2.0, Veer-Myn (Exham IV), Enforcers (Exham IV), Forge Fathers (Exham IV), Rebs (Exham IV), Marauders (Exham IV), Asterians (Exham IV);AP Ammo;4;Rare;
+GCPS;Commlink;4;Rare;
+Enforcers, Enforcers (Nexus-Psi), Rebs (Exham IV);Defender Shield;5;Rare;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Energy Shield(1);0;Common;x
 Asterians, Asterians 2.0;Energy Shield(2);5;Unique;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS;Energy Shield(2);0;Common;x
+Asterians (Exham IV);Energy Shield(2);5;Rare;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Energy Shield(2);0;Common;x
 Plague, Rebs, Plague (Nexus-Psi);Energy Shield(3);12;Unique;
-Asterians, Asterians 2.0;Energy Shield(3);7;Unique;
+Asterians, Asterians 2.0, Asterians (Exham IV);Energy Shield(3);7;Unique;
 Asterians 2.0;Energy Shield(3);0;Common;x
 Asterians 2.0;Energy Shield(4);0;Common;x
-Asterians, Asterians 2.0;Energy Shield(4);9;Unique;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Enforcers (Nexus-Psi), Plague (Nexus-Psi);Frag Grenade;6;Common;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Rebs, Asterians 2.0, Plague (Nexus-Psi);Holo Sight;8;Rare;
-Enforcers, Plague, Asterians, Marauders, Asterians 2.0, GCPS;Jump Pack;0;Common;x
-Asterians, Enforcers, Forge Fathers, Marauders, Rebs, Asterians 2.0, GCPS, Enforcers (Nexus-Psi), Plague (Nexus-Psi);Medi-Pack;5;Common;
-Enforcers, Enforcers (Nexus-Psi);Mono-Wheel Scout Bike;12;Unique;
+Asterians, Asterians 2.0, Asterians (Exham IV);Energy Shield(4);9;Unique;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Enforcers (Nexus-Psi), Plague (Nexus-Psi), Veer-Myn 2.0, Veer-Myn (Exham IV), Enforcers (Exham IV), Forge Fathers (Exham IV), Rebs (Exham IV), Marauders (Exham IV), Asterians (Exham IV);Frag Grenade;6;Common;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Rebs, Asterians 2.0, Plague (Nexus-Psi), Enforcers (Exham IV), Forge Fathers (Exham IV), Rebs (Exham IV), Marauders (Exham IV), Asterians (Exham IV);Holo Sight;8;Rare;
+Enforcers (Nexus-Psi), GCPS;Holo Sight;0;Common;x
+Enforcers, Enforcers (Nexus-Psi), Plague, Plague (Nexus-Psi), Asterians, Marauders, Asterians 2.0, GCPS, Enforcers (Exham IV), Marauders (Exham IV), Asterians (Exham IV);Jump Pack;0;Common;x
+Asterians, Enforcers, Forge Fathers, Marauders, Rebs, Asterians 2.0, GCPS, Enforcers (Nexus-Psi), Plague (Nexus-Psi), Veer-Myn (Exham IV), Enforcers (Exham IV), Forge Fathers (Exham IV), Rebs (Exham IV), Marauders (Exham IV);Medi-Pack;5;Common;
+Enforcers, Enforcers (Nexus-Psi), Enforcers (Exham IV);Mono-Wheel Scout Bike;12;Unique;
 Enforcers, GCPS, Enforcers (Nexus-Psi);Sentry Gun;8;Rare;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Enforcers (Nexus-Psi), Plague (Nexus-Psi);Smoke Grenade;3;Common;
-Asterians, Rebs, Asterians 2.0;Stun Grenade;4;Rare;
-Enforcers, Forge Fathers, GCPS, Enforcers (Nexus-Psi);Thermal Mines;4;Rare;
-GCPS;Commlink;4;Rare;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Enforcers (Nexus-Psi), Plague (Nexus-Psi), Veer-Myn 2.0, Veer-Myn (Exham IV), Enforcers (Exham IV), Forge Fathers (Exham IV), Rebs (Exham IV), Marauders (Exham IV), Asterians (Exham IV);Smoke Grenade;3;Common;
+Asterians, Rebs, Asterians 2.0, Veer-Myn 2.0, Rebs (Exham IV), Asterians (Exham IV);Stun Grenade;4;Rare;
 GCPS;Stun Grenade;6;Rare;
+Enforcers, Forge Fathers, GCPS, Enforcers (Nexus-Psi), Enforcers (Exham IV), Forge Fathers (Exham IV);Thermal Mines;4;Rare;
+Veer-Myn 2.0;Toxic Grenade;8;Rare;
 GCPS;Tripmine;6;Rare;
