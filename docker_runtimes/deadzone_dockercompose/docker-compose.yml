@@ -6,4 +6,4 @@ services:
     volumes:
       - ./deadzone-roster.conf:/opt/docker/conf/deadzone-roster.conf:ro
     ports:
-      - 9000:9000        
+      - 9010:9000
