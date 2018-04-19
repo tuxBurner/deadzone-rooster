@@ -3,7 +3,8 @@ Plague;Aberration;40;S;1-2;0;3;4;4;1;4;Talons Aberration;;Rampage;Talons Aberrat
 Rebs (Exham IV);Adrienne Nikolovski;28;L;1-2;4;5;4;1;1;4;Dual Needle Pistols, Magma Lance;;Tactician(1);Adrienne Nikolovski;;;4;Special Delivery;
 Rebs;Adrienne Nikolovski;28;C;1-2;4;5;4;1;1;4;Dual Needle Pistols, Magma Lance;;Tactician(1);Adrienne Nikolovski;;;;;
 Plague;Aqissiaq;16;C;1-2;0;3;5;1;0;2;Nuka;;Tough, Frenzy(1), Rampage;Aqissiaq;;;;;
-Enforcers, Enforcers (Nexus-Psi);Assault Enforcer;14;T;1-2;5+;5+;4+;1;1;1;Pistol, Wristblade;Jump Pack;Frenzy(1);Small Arms, Light Melee;Melee;;;;
+Enforcers;Assault Enforcer;14;T;1-2;5+;5+;4+;1;1;1;Pistol, Wristblade;Jump Pack;Frenzy(1);Small Arms, Light Melee;Melee;;;;
+Enforcers (Nexus-Psi);Assault Enforcer;14;S;1-2;5+;5+;4+;1;1;1;Pistol, Wristblade;Jump Pack;Frenzy(1);Small Arms, Light Melee;Melee;;;;
 Forge Fathers (Exham IV);Bjorn Starnfall;30;L;1-2;4;6;3;1;1;4;Mining Laser;;Tough, Hammerfist Orbital Drop Armour;Bjorn Starnfall;;;5;Fist of an angry God;
 Forge Fathers;Bjorn Starnfall;30;C;1-2;4;6;3;1;1;4;Mining Laser;;Tough, Hammerfist Orbital Drop Armour;Bjorn Starnfall;;;;;
 Asterians, Asterians 2.0, Asterians (Exham IV);Black Talon;20;S;1-2;3;5;5;1;1;2;Noh Rifle;Energy Shield(2), Jump Pack;Construct, Vulnerable, Glide;Small Arms, Light Melee;Ranged, Specialist;;;;
@@ -160,7 +161,7 @@ Forge Fathers;Steel Warrior Specialist (Stormrage Veteran);18;S;1-2;4;5;4;1;1;2;
 Marauders;Stuntbot;26;V;1-2;5;6;5;4;3;3;;;Solid, Beast, Construct, Frenzy(1);Walker Assault, Walker Melee;Ranged;3;;;
 Asterians 2.0;Support Drone;9;S;1-2;5;0;6;1;0;1;;;Construct, Beast;Platform Camouflage, Platform Communications, Platform Automatic;;;;;
 Rebs, Rebs (Exham IV);Survey Drone;7;S;2-3;0;0;4;1;0;0;;;Construct, Agile;;;;;;
-Veer-Myn;Tangle;25;V;1-1;5;6;5;4;1;3;Visions of Glory, Visions of Death;;Psychic, Vehicle;Tangle;Command;;;;
+Veer-Myn, Veer-Myn 2.0;Tangle;25;V;1-1;5;6;5;4;1;3;Visions of Glory, Visions of Death;;Psychic, Vehicle;Tangle;Command;;;;
 Asterians, Enforcers, Forge Fathers, Marauders, Asterians 2.0, GCPS;Teraton Shock Trooper;20;C;1-2;5;5;4;2;1;2;ARC Launcher, Mace;;Teleport;Teraton Shock Trooper;;;;;http://www.manticgames.com/ImageCache/Products/4956.1.87.87.FFFFFF.0.jpeg
 Rebs;Teraton Shock Trooper;20;S;1-2;5;5;4;2;1;2;ARC Launcher, Mace;;Teleport;Teraton Shock Trooper;;;;;http://www.manticgames.com/ImageCache/Products/4956.1.87.87.FFFFFF.0.jpeg
 Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;The Helfather;22;C;1-2;5;6;5;1;2;2;Xerxes Cannon;;;The Helfather;;;;;

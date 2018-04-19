@@ -38,17 +38,17 @@
         <tr>
           <th>@Messages("troop.tbl.name")</th>
           <th>@Messages("troop.tbl.type")</th>
+          <th>@Messages("troop.tbl.points")</th>
           <th>@Messages("troop.tbl.speed")</th>
           <th>@Messages("troop.tbl.shoot")</th>
           <th>@Messages("troop.tbl.fight")</th>
           <th>@Messages("troop.tbl.survive")</th>
           <th>@Messages("troop.tbl.armour")</th>
           <th>@Messages("troop.tbl.size")</th>
+          <th>@Messages("troop.tbl.victoryPoints")</th>
           <th>@Messages("troop.tbl.abilities")</th>
           <th>@Messages("troop.tbl.weapons")</th>
           <th>@Messages("troop.tbl.items")</th>
-          <th>@Messages("troop.tbl.points")</th>
-          <th>@Messages("troop.tbl.victoryPoints")</th>
           <th>@Messages("troop.tbl.amount")</th>
         </tr>
       </thead>
@@ -57,12 +57,14 @@
         <tr>
           <td>@amountTroop.troop.name</td>
           <td>@amountTroop.troop.modelType.charAt(0)</td>
+          <td>@amountTroop.troop.baseStats.points</td>
           <td>@amountTroop.troop.baseStats.speed-@amountTroop.troop.baseStats.sprint</td>
           <td>@amountTroop.troop.baseStats.shoot+</td>
           <td>@amountTroop.troop.baseStats.fight+</td>
           <td>@amountTroop.troop.baseStats.survive+</td>
           <td>@amountTroop.troop.baseStats.armour</td>
           <td>@amountTroop.troop.baseStats.size</td>
+          <td>@amountTroop.troop.baseStats.victoryPoints</td>
           <td>
           @for(ability <- amountTroop.troop.abilities) {
             @ability.name @if(ability.defaultVal != 0) { (@ability.defaultVal) } <br />
@@ -86,8 +88,6 @@
             @item.name <br />
           }
           </td>
-          <td>@amountTroop.troop.baseStats.points</td>
-          <td>@amountTroop.troop.baseStats.victoryPoints</td>
           <td>@amountTroop.amount
             = @(amountTroop.amount * amountTroop.troop.baseStats.points) @Messages("troop.tbl.points")</td>
         </tr>

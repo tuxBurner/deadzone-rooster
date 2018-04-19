@@ -17,20 +17,20 @@ troop.tbl.abilities=Abilities
 troop.tbl.weapons=Weapons
 troop.tbl.items=Items
 troop.tbl.reconArmySpecial=REC/Special
-troop.tbl.allowedWeaponTypes=Allowed Weapon Types
-troop.tbl.amount=Amount
-troop.tbl.hardPoints=HP
+troop.tbl.hardPoints=H-Pts
+troop.tbl.amount=#
+troop.tbl.allowedWeaponTypes=Weapon Upgrades
 
 weapon.headline=Weapons:
 weapon.name=Name
 weapon.points=PTS
 weapon.victoryPoints=VPS
-weapon.range=R
+weapon.range=Range
 weapon.armorPircing=AP
 weapon.abilities=Abilities
+weapon.hardPoints=W-H-Pts
 weapon.free=Free
-weapon.linkedName=Linked Name
-weapon.hardPoints=HP
+weapon.linkedName=One Weapon
 
 item.headline=Items:
 item.name=Name
@@ -77,7 +77,7 @@ import.open.btn=Import army
 import.modal.headline=Import your army
 
 mainmenu.roster=Roster
-mainmenu.armyTroops=Army Troops
+mainmenu.armyTroops=Army Lists
 mainmenu.abilities=Abilities
 mainmenu.items=Items
 mainmenu.armyspecials=Army Specials
@@ -89,7 +89,7 @@ armyspecial.faction=Faction
 armyspecial.troop=Troop
 armyspecial.desc=Description
 armyspecial.desc.DroneStrike=<p>Spend an Army Special result. The active model may take a Special Action to perform an R8, Indirect (2) attack.</p>
-armyspecial.desc.Overwatch=<p>Spend an Army Special result when an enemy model moves into a cube containing an unactivated friendly model equipped with a weapon with the Rapid Fire ability. The friendly model may make a free Shoot action with that weapon after the enemy model has moved, but prior to resolving the Fight action initiated as part of the enemy’s Move action. This shoot action is not modified for Clear Shot, High Ground or Friendly Fire (Deadzone Rulebook page 20) but is still modified by other bonuses or penalties (eg, Holo-sight or Sniper Scope). This Army Special cannot be played on a friendly model that is in the same cube as an enemy model (other than the model moving into the cube), and the free Shoot action cannot be used to Fire for Effect.</p>
+armyspecial.desc.DroneStrike=<p>Spend an Army Special result when an enemy model moves into a cube containing an unactivated friendly model equipped with a weapon with the Rapid Fire ability. The friendly model may make a free Shoot action with that weapon after the enemy model has moved, but prior to resolving the Fight action initiated as part of the enemy’s Move action. This shoot action is not modified for Clear Shot, High Ground or Friendly Fire (Deadzone Rulebook page 20) but is still modified by other bonuses or penalties (eg, Holo-sight or Sniper Scope). This Army Special cannot be played on a friendly model that is in the same cube as an enemy model (other than the model moving into the cube), and the free Shoot action cannot be used to Fire for Effect.</p>
 armyspecial.desc.EyeintheSky=<p>Spend an Army Special result to reroll any number of dice when rolling to hit the target cube with an Indirect weapon or grenade during a Shoot action. You may only use 1 Army Special result per Shoot action.</p>
 armyspecial.desc.Stealth=<p>Spend an Army Special result on a model with Cypher or Black Talon in their type name, who is the target of a Shoot action, to give a +1 dice to a Survive roll. You may spend more than one Army Special Result on the same dice roll but must declare how many before rolling.</p>
 armyspecial.desc.DanceofDeath=<p>After the active model performs a Fight action use an Army Special Result on a Command Dice to allow the model to move as if it had a Move Command Dice played on it, with the exception that the model does not need to make a Break Away test to leave a cube containing an enemy model. Maximum once per activation.</p>
@@ -130,10 +130,10 @@ armyspecial.desc.FistofanangryGod=<p>Spend an Army Special result to call in a m
 armyspecial.desc.SpecialDelivery=<p>Spend an Army Special result at the beginning of one of your Survey Drone’s activations. The Survey Drone gains the BOOM! (3) ability until the end of the round. This does not count as an action.</p>
 armyspecial.desc.MoveitMoveitMoveit=<p>Spend an Army Special result at the start of your model’s activation. Increase the active model’s speed by +1/+1 until the end of its activation. This does not count as an action.</p>
 armyspecial.desc.TheBalanceisAll=<p>Spend an Army Special result to re-roll any number of your remaining command dice.</p>
+armyspecial.desc.Overwatch=<p>Spend an Army Special result when an enemy model moves into a cube containing an unactivated friendly model equipped with a weapon with the Rapid Fire ability. The friendly model may make a free Shoot action with that weapon after the enemy model has moved, but prior to resolving the Fight action initiated as part of the enemy’s Move action. This shoot action is not modified for Clear Shot, High Ground or Friendly Fire (Deadzone Rulebook page 20) but is still modified by other bonuses or penalties (eg, H olo-sight or Sniper Scope). This Army Special cannot be played on a friendly model that is in the same cube as an enemy model (other than the model moving into the cube), and the free Shoot action cannot be used to Fire for Effect.</p>
 
 ability.name=Name
 ability.desc=Description
-ability.desc.Commlink=A model with a commlink is able to act as a spotter for their comrades. The model may use a special action to call in the co-ordinates of a target. Place a token in a cube within the model’s line of sight. Models throwing Grenades or using Indirect weapons treat this cube as being within their line of sight. Note that this does not allow models to target cubes outside of their weapon’s range, or to otherwise target cubes that are not valid targets.
 ability.desc.AerialDeployment=This model may choose to make an aerial deployment. If it does so, do not deploy it with the rest of your Strike Team. Once both players have deployed their teams, but before any Scout or Recon moves, a model using aerial deployment may be deployed in any cube not containing an objective and provided it is at least two cubes away from the nearest enemy model. If there are multiple cubes in a stack, it must deploy on the top level cube in that stack. A model may always aerially deploy into the owning player’s deployment zone (cube size limits willing) but may never aerially deploy in the enemy’s deployment zone. If both players have models with aerial deployment then alternate aerial deployments starting with the player with the initiative. If this means that a model cannot be deployed due to lack of a 2 cube distance then that model will have to instead be deployed within your deployment zone.
 ability.desc.WeaponsTeam=<p>Models with this rule are typically armed with a mortar, laser cannon, or other man-portable support weapon, and consist of two or more models mounted on a single base.</p>\
   <p>Treat these models as a single model with the listed size for purposes of movement, cube size limits, and damage it can take before being removed as a casualty. Models with this rule must be equipped with a crew-served weapon when added to your army list; they cannot be deployed unarmed.</p>\
@@ -141,7 +141,7 @@ ability.desc.WeaponsTeam=<p>Models with this rule are typically armed with a mor
   <p>Weapons Teams should be based on a 60mm base. As an alternative models based on 25mm bases can be used as long as each model (weapon, specialist and loader) are placed in base-to-base contact at all times. They cannot be moved, targeted, or removed individually, and are treated as a weapons team as above.</p>
 ability.desc.Trap=When a weapon with the Trap rule is used, place a Trap token in the targeted cube. Whenever an enemy model enters a cube with a Trap token, the player who placed the token may choose to detonate it; if they do so, immediately resolve the effect in parentheses following the Trap ability (i.e. If a weapon is listed as Trap [Frag(3)], resolve a Frag (3) attack in the cube.) This ends the active model’s activation, and the token is removed from play. The only exception to this rule is if the enemy model entering the cube has the Engineer ability. In this case, the owner of the Trap token may not detonate it, as the Engineer knows how to avoid its triggering mechanism. A Trap token may be disarmed by any model with the Engineer ability by spending a Special action to do so, then remove the Trap token from play.
 ability.desc.CloakingDevice=This device disrupts the visual appearance of troops. All models (friend or foe) in a cube or adjacent to a cube containing a model with a Cloaking Device will suffer a -1 dice modifier to target them with Shoot or Fire for Effect actions. No additional effect will be gained from smoke or another Cloaking Device. You may still gain the +2 dice for a clear shot, although with the additional -1 modifier mentioned above.
-ability.desc.CommuncationsRelay=A model with this ability grants a free extra activation Command Dice per round. You may not reroll this Command Dice and if the model granting Communications Relay is killed you lose the extra activation from all subsequent rounds.
+ability.desc.CommunicationRelay=A model with this ability grants a free extra activation Command Dice per round. You may not reroll this Command Dice and if the model granting Communications Relay is killed you lose the extra activation from all subsequent rounds.
 ability.desc.RapidFire=A model using a weapon with the Rapid Fire special rule may elect to Fire for Effect when making a Shoot action
 ability.desc.Agile=After a model takes a Move or Sprint action it may additionally choose to move up or down one level in the same stack for free. This change in level follows the normal movement rules.
 ability.desc.Beast=The model cannot pick up, carry or use items. All of its weapons and equipment are either natural or have been grafted on permanently by skilled bio-technicians. This ability can also apply to models that are already so burdened by their normal combat load that they have no room to carry more.
@@ -250,13 +250,18 @@ ability.desc.Vulnerable=<p>A model with this ability is never Injured. Any actua
 ability.desc.WalkerShield=<p>A model equipped with this gains +1 Armour</p>
 ability.desc.WeightofFire=<p>A weapon with this ability throws so much firepower at the target that something’s bound to happen. Weight of Fire will always be expressed with a value in the place of the (n), e.g.Weight of Fire (1) or Weight of Fire (2). That number of Shoot dice that fail may be re-rolled <strong>once</strong>. This also applies to any additional dice gained by rolling an 8.</p>\
   <p>Weight of Fire is cumulative. If more than one Weight of Fire modifier applies to an attack then add together the (n) value from each source; this is the total number of failed dice the model may be re-rolled for that Shoot test.</p>
-ability.desc.SwarmLord=<p>When deploying your models, in addition to your strike force, deploy up to two vermin swarm bases in your deployment zone. If there are fewer than two vermin swarms in play, The Piper may use a Special action to 'call' a new swarm. Place a single vermin swarm in The Piper’s cube. The target cube must have enough available room to fit the vermin swarm. If no such cube exists, The Piper may not call a vermin swarm. Vermin Swarms are not part of the Army List, gain no experience, and are not added to a player’s roster.</p>
+ability.desc.SwarmLord=<p>When deploying your models, in addition to your strike force, deploy up to two vermin swarm bases in your deployment zone. If there are fewer than two vermin swarms in play, The Piper may use a Special action to “call” a new swarm. Place a single vermin swarm in The Piper’s cube. The target cube must have enough available room to fit the vermin swarm. If no such cube exists, The Piper may not call a vermin swarm. Vermin Swarms are not part of the Army List, gain no experience, and are not added to a player’s roster.</p>
 ability.desc.HammerfistOrbitalDropArmour=<p>A model with Hammerfist Drop Armour starts the battle off the table. It is called in using a Special action by a model in the same Strike Team already on the table. When called in, place the Hammerfist model in any empty cube on the table. If there is a stack, place it at the top  level. The force of the model’s entry may send nearby models flying - the Hammerfist model rolls a 3 dice 4+ test (X) for the strength of the attack. Models in all adjacent cubes must roll a 3 dice Survive test (X).</p>\
   <p>Roll once for the attack and separately for each target model’s survival roll.</p>\
   <p>Draw or Survive has more successes: Attack misses or fails to cause any harm.</p>\
   <p>Hammerfist has more successes: The target model is thrown one cube directly away from the Hammerfist model and is Pinned.</p>\
   <p>The Hammerfist model is then marked as activated. </p>\
   <p>For the rest of the game, the model equipped with Hammerfist Drop Armour counts as having a Jump Pack.</p>
+ability.desc.SmokeGrenade=<p>Smoke Grenades are One-Use, R3, Grenades</p>\
+  <p>(See page 30) that generate a thick cloud of smoke when they detonate. No Damage is caused to models in the target cube. The smokefilled cube blocks all LOS, including to and from models inside it. Note, however, that it does not block LOS to the cube itself. Any Shoot attacks that trace a LOS through a cube that is adjacent to a smoke-filled cube suffer a -1 dice modifier (regardless of how many such cubes they cross). At the end of each Round roll one dice per smokefilled cube. On a 1-4 the smoke in that cube remains in place. On a 5-8 the smoke dissipates and is removed.</p>
+ability.desc.HoloSight=<p>A model that is equipped with a Holo-Sight adds a +1 modifier to their Shoot actions. A Holo-Sight cannot be used with Indirect weapons. Also, a weapon with Sniper Scope may not benefit from the +1 Dice from a Holo-Sight.</p>
+ability.desc.Smoke=<p>This weapon follows the normal rules for weapons except that a smokescreen is placed in the target cube as if a smoke grenade had been used (page 39 of the Deadzone 2.0 rulebook).</p>
+
 
 item.desc.Ammo=<p>Ammo is One-Use.</p>\
   <p>A model that is carrying Ammo may choose to use it when it makes a normal Shoot action. It adds a +1 dice modifier for that Shoot action</p>
@@ -271,7 +276,6 @@ item.desc.EnergyShield=<p>Energy shields are designed to absorb the energy of in
   <p>For each success you roll, one Potential Damage is absorbed by the shield. However, the shields are new technology and somewhat unreliable. If you roll more 1s than successes then the incoming energy overwhelms the shield’s ability to buffer the surge of power and it is destroyed. Any successes in that roll will still reduce the Potential Damage as normal, but the shield will not work again during this game.</p>\
   <p>If a model is protected by more than one Energy Shield/Shield Generator then all apply. Roll for each separately and reduce the Potential Damage by the total number of successes.</p>
 item.desc.FragGrenade=<p>A Frag Grenade is a One-Use, R3, Frag (3),Grenade. See page 30.</p>
-item.desc.HoloSight=<p>A model that is equipped with a Holo-Sight adds a +1 modifier to their Shoot actions. A Holo-Sight cannot be used with Indirect weapons. Also, a weapon with Sniper Scope may not benefit from the +1 Dice from a Holo-Sight.</p>
 item.desc.Intel=<p>When an Intel item is picked up by a model, immediately exchange it for a 1VP counter and add it to the player’s total. The Intel item is then discarded.</p>\
   <p>The item is not being carried by the model. Instead, the data has been transmitted back to High Command where it can be properly analysed.</p>
 item.desc.JumpPack=<p>A model that is equipped with a jump pack is notPinned by falling and takes no Damage if it falls.In addition, a model with a jump pack can:</p>\
@@ -293,13 +297,16 @@ item.desc.SentryGun=<p>The Sentry Gun is both an item and a model. As an item it
   <p>A Sentry Gun gets one Shoot action in every Round. It cannot have any Command Dice spent on it</p>\
   <p>If a Sentry Gun is destroyed, its on-board AI packs itself, ready for repairs at home base. The model reverts to an item, and may not be emplaced again this game.</p>
 item.desc.Tripmine=<p>Tripmines are Grenade, One Use, Trap, Frag(3)</p>
-item.desc.SmokeGrenade=<p>Smoke Grenades are One-Use, R3, Grenades</p>\
-  <p>(See page 30) that generate a thick cloud of smoke when they detonate. No Damage is caused to models in the target cube. The smokefilled cube blocks all LOS, including to and from models inside it. Note, however, that it does not block LOS to the cube itself. Any Shoot attacks that trace a LOS through a cube that is adjacent to a smoke-filled cube suffer a -1 dice modifier (regardless of how many such cubes they cross). At the end of each Round roll one dice per smokefilled cube. On a 1-4 the smoke in that cube remains in place. On a 5-8 the smoke dissipates and is removed.</p>
 item.desc.StunGrenade=<p>Stun Grenades are One-Use, R3, Grenades</p>\
   <p>(see page 30) that disorient those nearby. No Damage is caused to models in the target cube. All models in the affected cube are marked as activated.</p>
 item.desc.ThermalMines=<p>Thermal mines are One-Use, RF, AP3 weapons.</p>
 item.desc.MonoWheelScoutBike=<p>For game purposes, riding this bike counts as carrying it as an item. While the Scout Bike is being ridden, the model has the Vehicle ability and their Speed changes to 1-5.</p>
 item.desc.ToxicGrenade=<p>Toxic Grenades are R3, Grenade, Toxic Smokescreen. This item follows the rules for grenades (page 30 of the Deadzone 2.0 rulebook), except that a toxic smokescreen is placed in the target cube (page 35 of the Deadzone 2.0 rulebook).</p>
+
+item.desc.Commlink=A model with a commlink is able to act as a spotter for their comrades. The model may use a special action to call in the co-ordinates of a target. Place a token in a cube within the model’s line of sight. Models throwing Grenades or using Indirect weapons treat this cube as being within their line of sight. Note that this does not allow models to target cubes outside of their weapon’s range, or to otherwise target cubes that are not valid targets.</p>
+item.desc.HoloSight=<p>A model that is equipped with a Holo-Sight adds a +1 modifier to their Shoot actions. A Holo-Sight cannot be used with Indirect weapons. Also, a weapon with Sniper Scope may not benefit from the +1 Dice from a Holo-Sight.</p>
+item.desc.SmokeGrenade=<p>Smoke Grenades are One-Use, R3, Grenades</p>\
+  <p>(See page 30) that generate a thick cloud of smoke when they detonate. No Damage is caused to models in the target cube. The smokefilled cube blocks all LOS, including to and from models inside it. Note, however, that it does not block LOS to the cube itself. Any Shoot attacks that trace a LOS through a cube that is adjacent to a smoke-filled cube suffer a -1 dice modifier (regardless of how many such cubes they cross). At the end of each Round roll one dice per smokefilled cube. On a 1-4 the smoke in that cube remains in place. On a 5-8 the smoke dissipates and is removed.</p>
 
 cheatSheet.title=Cheat Sheet
 cheatSheet.openAsPdf=Open as PDF

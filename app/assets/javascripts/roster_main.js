@@ -334,18 +334,18 @@ let rosterGuiHandler = {
                            <td>${troop.name}</td>
                            <td>${troop.modelType.charAt(0)}</td>
                            <td>${troop.baseStats.points}</td>
-                           <td>${troop.baseStats.victoryPoints}</td>
-                           <td>${troop.baseStats.armour}</td>
-                           <td>${troop.baseStats.size}</td>
                            <td>${troop.baseStats.speed}-${troop.baseStats.sprint}</td>
                            <td>${rosterGuiHandler._displayStatsValue(troop.baseStats.shoot)}</td>
                            <td>${rosterGuiHandler._displayStatsValue(troop.baseStats.fight)}</td>
                            <td>${rosterGuiHandler._displayStatsValue(troop.baseStats.survive)}</td>
+                           <td>${troop.baseStats.armour}</td>
+                           <td>${troop.baseStats.size}</td>
+                           <td>${troop.baseStats.victoryPoints}</td>
                            <td>${rosterGuiHandler._abilitiesForDisplay(troop.abilities, '<br />')}</td>
                            <td>${rosterGuiHandler._displayTroopWeapons(troop)}</td>
-                           <td>${troop.baseStats.hardPoints}</td>
                            <td>${itemsContent}</td>
                            <td>${reconArmySpecialContent}</td>
+                           <td>${troop.baseStats.hardPoints}</td>
                            <td>
                              <input class="form-control roster_amount_input" type="number" value="${amountTroop.amount}" min="1" style="width: 80px;"/>
                            </td>

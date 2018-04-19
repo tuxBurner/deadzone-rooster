@@ -6,7 +6,7 @@ Enforcers, Rebs, Plague, GCPS, Plague (Nexus-Psi), Enforcers (Exham IV);Assault 
 GCPS;Autocannon;4;0;R6;0;Suppression, Weight of Fire(1), Heavy;Heavy Crew Served Weapon;;;
 Marauders;Auxiliary Flamer;4;0;R2;0;One Use, It Burns!;Walker Assault;;;
 Veer-Myn;Big Drill;5;0;RF;1;;Heavy Melee;;;
-Veer-Myn 2.0, Veer-Myn (Exham IV);Big Drill;3;0;RF;1;;Heavy Melee, Light Melee;;;
+Veer-Myn 2.0, Veer-Myn (Exham IV);Big Drill;3;0;RF;1;;Heavy Melee, Light Melee;1;;
 Asterians, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, Veer-Myn 2.0;Blade of the Seven;0;0;RF;1;;Wrath;;;
 Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Blank;0;0;R4;0;Stun, Psychic;Chovar Psychic;;;
 Rebs, Rebs (Exham IV);Blaster;3;0;R4;0;Blast;Light Automatic;;;
@@ -20,7 +20,7 @@ Asterians, Asterians 2.0, Asterians (Exham IV);Charge Glove;3;0;RF;0;Knockback;S
 Asterians, Asterians 2.0, Asterians (Exham IV);Charge Glove (Energy Pulse);1;0;R1;0;Knockback;Small Arms, Nem-Rath;;;
 Veer-Myn, Veer-Myn 2.0;Chem Spitter;9;1;R6;2;Rapid Fire;Light Automatic;;;
 Veer-Myn, Veer-Myn 2.0;Chem Staff;5;1;R1;1;It Burns!;Leader;;;
-Veer-Myn, Veer-Myn 2.0, Veer-Myn (Exham IV);Chem Thrower;4;0;R1;1;Volatile, It Burns!;Light Assault;;;
+Veer-Myn, Veer-Myn 2.0, Veer-Myn (Exham IV);Chem Thrower;4;0;R1;1;Volatile, It Burns!;Light Assault;1;;
 Veer-Myn, Veer-Myn 2.0;Chemical Grenade Launcher;12;1;R5;0;Indirect(4);Light Explosive;;;
 Marauders, Marauders (Exham IV);Claw;5;0;RF;1;;Light Melee;;;
 Enforcers, GCPS;Claws;0;0;RF;2;;Sergeant Howlett;;;
