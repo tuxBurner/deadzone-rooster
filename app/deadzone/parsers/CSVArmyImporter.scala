@@ -163,9 +163,12 @@ class CSVArmyImporter @Inject()(configuration: Configuration, csvWeaponImporter:
           val trimmedWeaponName = weaponInfo.trim
           factionWeapons.find(_.name.equals(trimmedWeaponName))
             .map(matchedWeapon => {
-              points -= matchedWeapon.points
-              victoryPoints -= matchedWeapon.victoryPoints
-              defaultWeaponNames += matchedWeapon.name
+
+              if(defaultWeaponNames.contains(matchedWeapon.name) == false) {
+                points -= matchedWeapon.points
+                victoryPoints -= matchedWeapon.victoryPoints
+                defaultWeaponNames += matchedWeapon.name
+              }
             })
             .getOrElse(
               Logger.error(s"Weapon: ${trimmedWeaponName} not found for troop: ${name} faction: ${faction}")
