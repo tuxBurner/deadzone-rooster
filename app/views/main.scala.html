@@ -5,44 +5,42 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@Messages("application.title") - @title</title>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/bootstrap/css/bootstrap.min.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
   </head>
-  <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="@routes.HomeController.rosterMain()">@Messages("application.title")</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="@routes.HomeController.rosterMain()">@Messages("mainmenu.roster")</a></li>
-            <li><a href="@routes.HomeController.displayTroopsOfFaction(FactionLogic.getAllFactions()(0).name)">@Messages("mainmenu.armyTroops")</a></li>
-            <li><a href="@routes.HomeController.displayAllAbilities()">@Messages("mainmenu.abilities")</a></li>
-            <li><a href="@routes.HomeController.displayAllItems()">@Messages("mainmenu.items")</a></li>
-            <li><a href="@routes.HomeController.displayAllArmySpecials()">@Messages("mainmenu.armyspecials")</a></li>
-            <li><a href="@routes.HomeController.displayCheatSheet()">@Messages("mainmenu.cheatsheet")</a></li>
-          </ul>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="@routes.HomeController.rosterMain()">@Messages("application.title")</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-          <ul class="nav navbar-nav navbar-right">
-          @for(selectLang <- langs.availables.filterNot(p => p.locale == messages.lang.locale)) {
-            <li><a href="@routes.HomeController.changeLanguage(selectLang.code)">@Messages(s"lang.${selectLang.code}")</a></li>
-          }
-          </ul>
-        </div><!--/.nav-collapse -->
+      @* nav which is hidden when to small *@
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.rosterMain()">@Messages("mainmenu.roster")</a></li>
+          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayTroopsOfFaction(FactionLogic.getAllFactions()(0).name)">@Messages("mainmenu.armyTroops")</a></li>
+          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllAbilities()">@Messages("mainmenu.abilities")</a></li>
+          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllItems()">@Messages("mainmenu.items")</a></li>
+          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllArmySpecials()">@Messages("mainmenu.armyspecials")</a></li>
+          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayCheatSheet()">@Messages("mainmenu.cheatsheet")</a></li>
+        </ul>
 
+        <ul class="navbar-nav navbar-right">
+        @for(selectLang <- langs.availables.filterNot(p => p.locale == messages.lang.locale)) {
+          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.changeLanguage(selectLang.code)">@Messages(s"lang.${selectLang.code}")</a></li>
+        }
+        </ul>
       </div>
+      @* eo nav which is hidden when to small *@
     </nav>
+  </header>
+  <body>
 
     @* MAIN CONTENT *@
     <div class="container">

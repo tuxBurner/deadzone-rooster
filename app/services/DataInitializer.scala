@@ -52,7 +52,7 @@ import play.api.Configuration
     }
 
     /**
-      * IS called when a file changed
+      * Is called when a file changed
       *
       * @param msg the message to print before reloading the factions data
       */
