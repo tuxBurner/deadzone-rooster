@@ -12,40 +12,40 @@
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
   </head>
-
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="@routes.HomeController.rosterMain()">@Messages("application.title")</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      @* nav which is hidden when to small *@
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.rosterMain()">@Messages("mainmenu.roster")</a></li>
-          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayTroopsOfFaction(FactionLogic.getAllFactions()(0).name)">@Messages("mainmenu.armyTroops")</a></li>
-          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllAbilities()">@Messages("mainmenu.abilities")</a></li>
-          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllItems()">@Messages("mainmenu.items")</a></li>
-          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllArmySpecials()">@Messages("mainmenu.armyspecials")</a></li>
-          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayCheatSheet()">@Messages("mainmenu.cheatsheet")</a></li>
-        </ul>
-
-        <ul class="navbar-nav navbar-right">
-        @for(selectLang <- langs.availables.filterNot(p => p.locale == messages.lang.locale)) {
-          <li class="nav-item"><a class="nav-link" href="@routes.HomeController.changeLanguage(selectLang.code)">@Messages(s"lang.${selectLang.code}")</a></li>
-        }
-        </ul>
-      </div>
-      @* eo nav which is hidden when to small *@
-    </nav>
-  </header>
   <body>
 
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="@routes.HomeController.rosterMain()">@Messages("application.title")</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        @* nav which is hidden when to small *@
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.rosterMain()">@Messages("mainmenu.roster")</a></li>
+            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayTroopsOfFaction(FactionLogic.getAllFactions()(0).name)">@Messages("mainmenu.armyTroops")</a></li>
+            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllAbilities()">@Messages("mainmenu.abilities")</a></li>
+            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllItems()">@Messages("mainmenu.items")</a></li>
+            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllArmySpecials()">@Messages("mainmenu.armyspecials")</a></li>
+            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayCheatSheet()">@Messages("mainmenu.cheatsheet")</a></li>
+          </ul>
+
+          <ul class="navbar-nav navbar-right">
+          @for(selectLang <- langs.availables.filterNot(p => p.locale == messages.lang.locale)) {
+            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.changeLanguage(selectLang.code)">@Messages(s"lang.${selectLang.code}")</a></li>
+          }
+          </ul>
+        </div>
+        @* eo nav which is hidden when to small *@
+      </nav>
+    </header>
+
     @* MAIN CONTENT *@
-    <div class="container">
+    <main role="main" class="container">
     @content
-    </div>
+    </main>
     @* EO MAIN CONTENT *@
 
   </body>

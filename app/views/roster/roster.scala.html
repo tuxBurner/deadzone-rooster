@@ -5,29 +5,30 @@
   }
 
   @mainTpl(Messages("mainmenu.roster"), scripts) {
+
     <div class="row">
-      <div class="col-xs-3">
-        <div class="input-group">
-          <label for="roster_faction_select" class="input-group-addon">@Messages("faction.select")</label>
-          <select class="form-control input-sm" id="roster_faction_select"></select>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="roster_faction_select">@Messages("faction.select")</label>
+          <select class="form-control form-control-sm" id="roster_faction_select"></select>
         </div>
       </div>
-      <div class="col-xs-2">
-        <div class="input-group">
-          <label for="roster_troop_type_select" class="input-group-addon">@Messages("type.select")</label>
-          <select class="form-control input-sm" id="roster_troop_type_select"></select>
+      <div class="col-2">
+        <div class="form-group">
+          <label for="roster_troop_type_select">@Messages("type.select")</label>
+          <select class="form-control form-control-sm" id="roster_troop_type_select"></select>
         </div>
       </div>
-      <div class="col-xs-3">
-        <div class="input-group">
-          <label for="roster_addTroop_select" class="input-group-addon">@Messages("troop.select")</label>
-          <select class="form-control input-sm" id="roster_addTroop_select"></select>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="roster_addTroop_select">@Messages("troop.select")</label>
+          <select class="form-control form-control-sm" id="roster_addTroop_select"></select>
         </div>
       </div>
-      <div class="col-xs-2">
+      <div class="col-2">
         <button class="btn btn-sm btn-info" id="roster_addTroop_btn"><span class="glyphicon glyphicon-plus"></span> @Messages("troop.addBtn")</button>
       </div>
-      <div class="col-xs-1">
+      <div class="col-1">
         <img src="" id="roster_troop_img" style="display: none;" />
       </div>
     </div>
@@ -35,13 +36,13 @@
     <hr />
 
     <div class="row">
-      <div class="col-xs-6">
-        <div class="input-group">
-          <label for="roster_army_name" class="input-group-addon">@Messages("army.name")</label>
-          <input type="text" class="form-control input-sm" id="roster_army_name" />
+      <div class="col-6">
+        <div class="form-group">
+          <label for="roster_army_name">@Messages("army.name")</label>
+          <input type="text" class="form-control form-controlt-sm" id="roster_army_name" />
         </div>
       </div>
-      <div class="col-xs-6">
+      <div class="col-6">
       @rosterActions()
       </div>
     </div>
