@@ -304,7 +304,7 @@ let rosterGuiHandler = {
 
     Object.keys(troopsByType).forEach(modelType => {
 
-      tableContent += `<tr class="info"><th colspan="17"><h5>${modelType}</h5></th></tr>`;
+      tableContent += `<tr class="bg-info text-white"><th colspan="17"><h6>${modelType}</h6></th></tr>`;
 
       // sort the troops by name
       troopsByType[modelType].sort((a, b) => {
@@ -350,10 +350,10 @@ let rosterGuiHandler = {
                              <input class="form-control roster_amount_input" type="number" value="${amountTroop.amount}" min="1" style="width: 80px;"/>
                            </td>
                            <td>
-                             <div class="btn-group btn-group-xs">
-                                <button class="btn btn-info roster_edit_btn"><span class="glyphicon glyphicon-pencil"></span></button>
-                                <button class="btn btn-info roster_clone_btn"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                                <button class="btn btn-danger roster_del_btn"><span class="glyphicon glyphicon-trash"></span></button>
+                             <div class="btn-group btn-group-sm" role="group"> 
+                                <button class="btn btn-info btn-sm roster_edit_btn"><i class="fas fa-edit fa-xs"></i></button>
+                                <button class="btn btn-warning roster_clone_btn"><i class="fas fa-clone fa-xs"></i></button>
+                                <button class="btn btn-danger roster_del_btn"><i class="fas fa-trash fa-xs"></i></button>
                              </div> 
                            </td>
                          </tr>`;
