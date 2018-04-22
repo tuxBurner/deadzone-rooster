@@ -1,0 +1,2 @@
+@(route: Call, titleMsgKey: String, currentActive: String)(implicit messages: Messages)
+<li class="nav-item @if(titleMsgKey == currentActive) {active}"><a class="nav-link" href="@route">@Messages(titleMsgKey)</a></li>

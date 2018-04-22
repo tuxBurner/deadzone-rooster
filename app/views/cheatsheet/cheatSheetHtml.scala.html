@@ -1,6 +1,6 @@
 @()(implicit messages: Messages, mainTpl: views.html.main)
 
-  @mainTpl(Messages("mainmenu.cheatsheet")) {
+  @mainTpl("mainmenu.cheatsheet") {
 
     <div class="row pull-right">
       <a class="btn btn-sm btn-info" href="@routes.HomeController.exportCheatSheetAsPdf()" target="_blank"><span class="glyphicon glyphicon-print"></span>  @Messages("cheatSheet.openAsPdf")</a>

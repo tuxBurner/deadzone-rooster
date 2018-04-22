@@ -1,13 +1,13 @@
 @import services.logic.FactionLogic
 @this(langs: Langs)
-@(title: String, scripts: Html = Html(""))(content: Html)(implicit messages: Messages)
+@(currentActiveNav: String, scripts: Html = Html(""))(content: Html)(implicit messages: Messages)
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@Messages("application.title") - @title</title>
+    <title>@Messages("application.title") - @Messages("currentActiveNav")</title>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/bootstrap/css/bootstrap.min.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
@@ -21,16 +21,15 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         @* nav which is hidden when to small *@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.rosterMain()">@Messages("mainmenu.roster")</a></li>
-            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayTroopsOfFaction(FactionLogic.getAllFactions()(0).name)">@Messages("mainmenu.armyTroops")</a></li>
-            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllAbilities()">@Messages("mainmenu.abilities")</a></li>
-            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllItems()">@Messages("mainmenu.items")</a></li>
-            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayAllArmySpecials()">@Messages("mainmenu.armyspecials")</a></li>
-            <li class="nav-item"><a class="nav-link" href="@routes.HomeController.displayCheatSheet()">@Messages("mainmenu.cheatsheet")</a></li>
+            @views.html.mainNav(routes.HomeController.rosterMain(), "mainmenu.roster", currentActiveNav)
+            @views.html.mainNav(routes.HomeController.displayTroopsOfFaction(FactionLogic.getAllFactions()(0).name), "mainmenu.armyTroops", currentActiveNav)
+            @views.html.mainNav(routes.HomeController.displayAllAbilities(), "mainmenu.abilities", currentActiveNav)
+            @views.html.mainNav(routes.HomeController.displayAllItems(), "mainmenu.items", currentActiveNav)
+            @views.html.mainNav(routes.HomeController.displayAllArmySpecials(), "mainmenu.armyspecials", currentActiveNav)
+            @views.html.mainNav(routes.HomeController.displayCheatSheet(), "mainmenu.cheatsheet", currentActiveNav)
           </ul>
 
           <ul class="navbar-nav navbar-right">
@@ -42,7 +41,6 @@
         @* eo nav which is hidden when to small *@
       </nav>
     </header>
-
     @* MAIN CONTENT *@
     <main role="main" class="container">
     @content
