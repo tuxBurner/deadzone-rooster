@@ -227,7 +227,7 @@ let rosterGuiHandler = {
 
     if (data.weapons[type].length !== 0) {
 
-      content = `<tr class="info">
+      content = `<tr class="bg-info text-white">
                    <th colspan="7">${headline}</th>
                  </tr>`;
 
@@ -244,7 +244,7 @@ let rosterGuiHandler = {
         let tableRowClass = '';
         for (let wdidx in data.troop.defaultWeapons) {
           if (data.troop.defaultWeapons[wdidx].name === weapon.name) {
-            tableRowClass = 'warning';
+            tableRowClass = 'bg-warning';
             break;
           }
         }
