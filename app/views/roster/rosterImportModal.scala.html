@@ -3,29 +3,27 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title">@Messages("import.modal.headline")</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">@Messages("import.modal.headline")</h4>
       </div>
       <div class="modal-body">
 
         <form class="form-inline">
-          <div class="row">
-            <div class="col-xs-9">
-              <div class="input-group">
-                <label for="roster_upload_file" class="input-group-addon">@Messages("import.label")</label>
-                <input type="file" class="form-control input-sm" id="roster_upload_file" accept="application/json" />
-              </div>
-            </div>
-            <div class="col-xs-3">
-              <button type="button" id="roster_import_army_btn" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-upload"></span> @Messages("import.btn")</button>
-            </div>
-          </div>
+
+
+          <label for="roster_upload_file"  class="sr-only">@Messages("import.label")</label>
+          <input type="file" class="form-control form-control-sm mb-2 mr-sm-2" id="roster_upload_file" accept="application/json" />
+
+
+           <button type="button" id="roster_import_army_btn" class="btn btn-sm btn-primary mb-2"><i class="fas fa-upload fa-xs"></i> @Messages("import.btn")</button>
+
+
         </form>
 
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
