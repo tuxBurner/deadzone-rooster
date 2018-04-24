@@ -1,8 +1,8 @@
 @(items: List[ItemDO])(implicit messages: Messages,mainTpl: views.html.main)
 
 @mainTpl("mainmenu.items") {
-  <table class="table table-bordered">
-    <thead>
+  <table class="table table-sm table-bordered">
+    <thead class="thead-dark">
       <tr>
         <th>@Messages("item.name")</th>
         <th>@Messages("item.desc")</th>

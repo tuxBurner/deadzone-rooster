@@ -1,6 +1,7 @@
 @()(implicit messages: Messages)
 
 
+
 <table class="table cheatSheetTable">
   <tbody>
     <tr>
@@ -27,8 +28,8 @@
         }
 
         @cheatsheet.cheatSheetPanel("cheatSheet.damage.title") {
-          <table class="table table-bordered">
-            <thead>
+          <table class="table table-sm table-bordered">
+            <thead class="thead-dark">
               <tr>
                 <th>@Messages("cheatSheet.damage.content.col1")</th>
                 <th>@Messages("cheatSheet.damage.content.col2")</th>

@@ -1,10 +1,10 @@
-@(titleKey: String, panelClass: String = "panel-default")(panelContent: Html)(implicit messages: Messages)
+@(titleKey: String, panelClass: String = "border-dark")(panelContent: Html)(implicit messages: Messages)
 
-<div class="panel @panelClass">
-  <div class="panel-heading">
-    <h3 class="panel-title">@Messages(titleKey)</h3>
+<div class="card @panelClass">
+  <div class="card-header">
+    <h6 class="card-title">@Messages(titleKey)</h6>
   </div>
-  <div class="panel-body">
+  <div class="card-body">
     @panelContent
   </div>
 </div>

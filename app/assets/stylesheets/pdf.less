@@ -15,9 +15,9 @@ body {
 }
 
 // handle panels
-.panel {
+/*.card {
 
-  .panel-body {
+  .card-body {
     padding-top: 1mm;
 
     font-size: 1.1em;
@@ -28,12 +28,33 @@ body {
     }
   }
 
-  .panel-heading {
+  .card-header {
     background-color: @lightGreyBackground !important;
 
-    h3.panel-title {
+    h6.card-title {
       font-size: 1.2em;
     }
+  }
+} */
+
+.card {
+  border: solid 1px @greyBackground;
+
+  margin-bottom: 1mm;
+  margin-right: 1mm;
+
+  .card-body {
+    padding-top: 1mm;
+  }
+
+  ul {
+    margin-bottom: 1mm;
+  }
+
+  .card-header {
+    //margin-bottom: 1mm;
+    padding-bottom: 0mm;
+    background-color: @lightGreyBackground !important;
   }
 }
 
@@ -45,6 +66,12 @@ table.cheatSheetTable {
 
   p {
     margin-bottom: 1mm;
+  }
+}
+
+table {
+  thead.thead-dark {
+    background-color: @greyBackground !important;
   }
 }
 

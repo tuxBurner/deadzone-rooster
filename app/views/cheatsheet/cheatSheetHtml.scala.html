@@ -2,8 +2,8 @@
 
   @mainTpl("mainmenu.cheatsheet") {
 
-    <div class="row pull-right">
-      <a class="btn btn-sm btn-info" href="@routes.HomeController.exportCheatSheetAsPdf()" target="_blank"><span class="glyphicon glyphicon-print"></span>  @Messages("cheatSheet.openAsPdf")</a>
+    <div class="row float-right">
+      <a class="btn btn-info btn-sm" href="@routes.HomeController.exportCheatSheetAsPdf()" target="_blank"><i class="fas fa-file-pdf fa-xs"></i> @Messages("cheatSheet.openAsPdf")</a>
     </div>
 
     @cheatsheet.cheatSheet()

@@ -1,8 +1,8 @@
 @(abilities: List[AbilityDO])(implicit messages: Messages,mainTpl: views.html.main)
 
 @mainTpl("mainmenu.abilities") {
-  <table class="table table-bordered">
-    <thead>
+  <table class="table table-sm table-bordered">
+    <thead class="thead-dark">
       <tr>
         <th>@Messages("ability.name")</th>
         <th>@Messages("ability.desc")</th>
