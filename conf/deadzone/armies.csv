@@ -24,11 +24,11 @@ Marauders (Exham IV);Chief Mauhulakh;28;L;1-3;4;4;4;1;1;4;Twin Heavy Pistols;Jum
 Marauders;Chief Mauhulakh;28;C;1-3;4;4;4;1;1;4;Twin Heavy Pistols;Jump Pack;Tactician(2), Tough;Chief Mauhulakh;;;;;
 Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Chief Radgrad;40;C;1-2;5;4;4;3;1;5;Decapitator, Twin Blasters;;Tough, Frenzy(1), Solid, Tactician(1);Chief Radgrad;;;;;
 Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Chovar Psychic;20;C;1-2;5;0;6;3;0;2;Mind Storm, Blank, Passion;Energy Shield(2);Psychic;Chovar Psychic;;;;;
-Marauders, Marauders (Exham IV);Commando;12;T;1-2;5;5;4;1;0;1;Rifle;;;Small Arms, Light Melee;Melee;;;;
-Marauders;Commando Captain;22;L;1-2;6;6;4;1;0;3;Pistol;;Tactician(2);Leader, Small Arms;Ranged, Command, Specialist;;3;Tactical Genius;
-Marauders;Commando Sergeant;18;L;1-2;5;4;4;1;0;1;Pistol;;Tactician(1);Leader, Small Arms, Light Melee;Ranged, Melee, Command;;4;By the Numbers;
-Marauders (Exham IV);Commando Specialist;12;T;1-2;5;5;4;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Assault;Ranged;;;;
-Marauders;Commando Specialist;12;S;1-2;5;5;4;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Assault;Ranged;;;;
+Marauders, Marauders (Exham IV);Commando;12;T;1-2;5;5;4;1;0;1;Rifle;;;Small Arms, Light Melee;Melee;;;;http://www.manticgames.com/ImageCache/Products/5098.1.87.87.FFFFFF.0.jpeg
+Marauders;Commando Captain;22;L;1-2;6;6;4;1;0;3;Pistol;;Tactician(2);Leader, Small Arms;Ranged, Command, Specialist;;3;Tactical Genius;http://www.manticgames.com/ImageCache/Products/5099.1.87.87.FFFFFF.0.jpeg
+Marauders;Commando Sergeant;18;L;1-2;5;4;4;1;0;1;Pistol;;Tactician(1);Leader, Small Arms, Light Melee;Ranged, Melee, Command;;4;By the Numbers;http://www.manticgames.com/ImageCache/Products/5113.1.87.87.FFFFFF.0.jpeg
+Marauders (Exham IV);Commando Specialist;12;T;1-2;5;5;4;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Assault;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5104.1.87.87.FFFFFF.0.jpeg
+Marauders;Commando Specialist;12;S;1-2;5;5;4;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Assault;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5104.1.87.87.FFFFFF.0.jpeg
 GCPS;Corporation Engineer;13;S;1-2;5;6;5;1;0;1;Laser Rifle (Accutek LR-45);;Engineer;Small Arms;Ranged, Specialist;;;;
 GCPS;Corporation Marine;8;T;1-2;5;6;5;1;0;1;Laser Rifle (Accutek LR-45);;;Small Arms;Ranged;;;;
 GCPS;Corporation Marine Sergeant;22;L;1-2;5;5;4;1;1;3;Pistol, Energy Gauntlet;;Tactician(1);Leader, Small Arms, Light Assault;Command, Ranged, Specialist;;6+;Overwatch;
@@ -64,11 +64,11 @@ Enforcers, Enforcers (Exham IV);Enforcer Strider;30;V;1-2;4+;5+;4+;4;3;3;;;Solid
 Forge Fathers, Forge Fathers (Exham IV);Forge Guard;30;S;1-1;4;5;4;1;2;3;Hailstorm Rifle, Forge Hammer;;Life Support, Solid;Heavy Automatic, Heavy Assault, Light Explosive, Forge Guard;Ranged;1;;;http://www.manticgames.com/ImageCache/Products/5437.1.87.87.FFFFFF.0.jpeg
 Forge Fathers;Forge Guard Huscarl;41;L;1-2;3;4;4;1;2;3;Hailstorm Rifle, Forge Hammer;;Tactician(2), Life Support, Solid;Leader, Heavy Automatic, Light Melee, Forge Guard Huscarl;Ranged, Melee, Command;;4;Starforged Armour;
 Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Freya;16;C;1-2;5;5;4;1;0;1;Hailstorm Pistol;;Engineer;Freya;;;;;
-Marauders, Marauders (Exham IV);Goblin Sniper;14;S;1-2;5;7;5;1;0;2;Heavy Rifle;;;Small Arms, Light Sniper;Ranged;;;;
-Marauders;Guntrack;13;V;1-1;5;0;6;4;1;2;;;Vehicle;Vehicle Lance, Vehicle Arillery;Ranged;1;;;
+Marauders, Marauders (Exham IV);Goblin Sniper;14;S;1-2;5;7;5;1;0;2;Heavy Rifle;;;Small Arms, Light Sniper;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5105.1.87.87.FFFFFF.0.jpeg
+Marauders;Guntrack;13;V;1-1;5;0;6;4;1;2;;;Vehicle;Vehicle Lance, Vehicle Arillery;Ranged;1;;;http://www.manticgames.com/ImageCache/Products/5116.1.87.87.FFFFFF.0.jpeg
 Forge Fathers (Exham IV);Hammerfist Drop trooper;28;S;1-2;4;5;4;1;1;2;Inferno Drills, Forge Hammer;;Hammerfist Orbital Drop Armour;Small Arms, Hammerfist Drop Armour;Ranged, Melee;;;;
 GCPS;Heavy Weapons Squad;12;S;1-2;5;6;5;3;0;1;Laser Rifle (Accutek LR-45);;Weapons Team;Heavy Crew Served Weapon, Heavy Weapons Squad;Ranged, Specialist;;;;
-Marauders;Hulk;30;S;1-2;4;6;4;3;1;3;HEW Cannon;;Tough;Heavy Melee, Heavy Automatic, Heavy Lance, Heavy Explosive, Hulk;Ranged, Melee;;;;
+Marauders;Hulk;30;S;1-2;4;6;4;3;1;3;HEW Cannon;;Tough;Heavy Melee, Heavy Automatic, Heavy Lance, Heavy Explosive, Hulk;Ranged, Melee;;;;http://www.manticgames.com/ImageCache/Products/5117.1.87.87.FFFFFF.0.jpeg
 Asterians, Enforcers, Forge Fathers, Marauders, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Hund Rebel Bounty Hunter;27;C;1-2;3;5;3;1;1;3;Twin Pistols, Sniper Rifle;;Fire Control;Hund Rebel Bounty Hunter;;;;;http://www.manticgames.com/ImageCache/Products/4954.1.87.87.FFFFFF.0.jpeg
 Forge Fathers;Inferno Drill;16;V;1-2;4;;;2;1;2;Mining Laser;;Vehicle, Remote, Construct;Inferno Drill;;;;;
 Forge Fathers;Iron Ancestor;44;V;1-2;4;5;4;4;4;3;;;Solid, Beast, Construct, Fire Control;Walker Lance, Walker Assault, Walker Automatic, Walker Melee;Ranged, Melee;2;;;http://www.manticgames.com/ImageCache/Products/5443.1.87.87.FFFFFF.0.jpeg
@@ -87,8 +87,8 @@ Asterians, Asterians 2.0;Marionette Specialist;10;S;1-2;5;6;5;1;0;1;Noh Rifle;;C
 Asterians (Exham IV);Marionettes;10;T;1-2;5;6;5;1;0;1;Noh Rifle;;Construct;Small Arms;Ranged;;;;
 Asterians, Asterians 2.0;Marionettes;10;T;1-2;5;6;5;1;0;1;Noh Rifle;;Construct;Small Arms, Light Automatic, Light Assault, Light Melee;Ranged;;;;
 Veer-Myn 2.0;Master Creep;20;L;2-3;5;5;5;1;0;2;Ray Pistol, Det Packs (Mag Lock), Det Packs (Prox Fuse);;Tactician(1), Scout;Leader, Small Arms, Light Assault, Light Automatic, Light Explosive, Light Sniper;Melee, Command, Specialist;;3;Bomb Expert;
-Marauders;Mawbeast;12;T;2-3;0;4;5;1;0;1;Chainmaw;;Beast;Light Beast;;;;;
-Marauders;Mawbeast Bomber;14;S;2-3;0;4;5;1;0;1;Chainmaw;;Beast, BOOM!(4);Light Beast;;;;;
+Marauders;Mawbeast;12;T;2-3;0;4;5;1;0;1;Chainmaw;;Beast;Light Beast;;;;;http://www.manticgames.com/ImageCache/Products/5102.1.87.87.FFFFFF.0.jpeg
+Marauders;Mawbeast Bomber;14;S;2-3;0;4;5;1;0;1;Chainmaw;;Beast, BOOM!(4);Light Beast;;;;;http://www.manticgames.com/ImageCache/Products/5100.1.87.87.FFFFFF.0.jpeg
 Forge Fathers, Forge Fathers (Exham IV);Militia;14;T;1-2;5;5;4;1;0;1;Hailstorm Rifle;;;Small Arms;Ranged;;;;
 Plague;Murder Birds;19;S;2-3;0;4;5;2;0;2;;;Tough, Beast, Flight, Scout;;;;;;
 Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Nastanza;25;C;1-2;3;6;5;1;0;2;Sniper Rifle;Energy Shield(1);;Nastanza;;;;;
@@ -134,12 +134,12 @@ Enforcers (Nexus-Psi);Recon Drone;0;T;2-3;5;6;4;1;0;0;Electro-Shock, Rangefinder
 Enforcers, GCPS;Recon Unit N32-19;30;C;1-2;4;6;3;1;0;3;Tag Rifle;Holo Sight;Tactician(1), Recon Drone;Recon;;;;;
 Enforcers (Nexus-Psi);Recon Unit N32-19;30;L;1-2;4;6;3;1;0;3;Tag Rifle;Holo Sight;Tactician(1), Recon Drone;Recon;;;3;Rope-a-dope;
 Rebs, Rebs (Exham IV);Rin Nomad;17;S;1-2;4;5;5;1;1;2;Twin Pistols, Twin Knives;;;Small Arms, Light Sniper, Light Automatic, Light Melee, Rin Nomad;Ranged, Melee;;;;
-Marauders;Ripper Mauler;25;S;1-2;0;4;4;3;1;3;Buzzsaw, Ram;;Tactician(1), Solid;Heavy Melee;Melee, Command;;;;
-Marauders;Ripper Rainmaker;25;S;1-2;5;6;4;3;1;3;Rotary Cannon, HEW Beamer, Frag Launchers, Rocket Salvo;;Solid;Heavy Explosive, Heavy Lance, Heavy Automatic;Ranged, Specialist;;;;
+Marauders;Ripper Mauler;25;S;1-2;0;4;4;3;1;3;Buzzsaw, Ram;;Tactician(1), Solid;Heavy Melee;Melee, Command;;;;http://www.manticgames.com/ImageCache/Products/5107.1.87.87.FFFFFF.0.jpeg
+Marauders;Ripper Rainmaker;25;S;1-2;5;6;4;3;1;3;Rotary Cannon, HEW Beamer, Frag Launchers, Rocket Salvo;;Solid;Heavy Explosive, Heavy Lance, Heavy Automatic;Ranged, Specialist;;;;http://www.manticgames.com/ImageCache/Products/5108.1.87.87.FFFFFF.0.jpeg
 Veer-Myn, Veer-Myn 2.0;Rumbler Weapon Platform;16;V;1-2;5;0;5;4;0;2;;;Vehicle;Vehicle Assault, Vehicle Automatic;Ranged;1;;;http://www.manticgames.com/ImageCache/Products/5370.1.87.87.FFFFFF.0.jpeg
 Enforcers, GCPS;Sergeant Howlett;27;C;1-2;5;4;3;1;1;3;Claws, Pistol;Jump Pack;Tough, Frenzy(1), Rampage;Sergeant Howlett, Mercs;;;;;
 Asterians, Asterians 2.0, Asterians (Exham IV);Sky Razor;20;V;2-4;4;0;5;2;0;2;Twin Noh Rifles;;Vehicle, Flight;Bike Automatic;Ranged;;;;
-Marauders, Marauders (Exham IV);Sky Scraper;17;S;1-3;5;5;4;1;0;2;Rifle;Jump Pack;;Small Arms, Light Automatic, Light Melee;Ranged, Melee;;;;
+Marauders, Marauders (Exham IV);Sky Scraper;17;S;1-3;5;5;4;1;0;2;Rifle;Jump Pack;;Small Arms, Light Automatic, Light Melee;Ranged, Melee;;;;http://www.manticgames.com/ImageCache/Products/4955.1.87.87.FFFFFF.0.jpeg
 Rebs;Sorak Swordspawn;12;S;1-2;-;6+;5+;1;0;1;Combat Blades;;Frenzy(1);Light Melee;Melee, Specialist;;;;
 Rebs;Sphyr Lancer;18;S;1-2;4;6;5;1;0;2;Mata Magma Lance;;;Small Arms, Light Assault, Light Automatic, Sphyr Lancer;Ranged;;;;
 Rebs (Exham IV);Sphyr Lancer;18;T;1-2;4;6;5;1;0;2;Mata Magma Lance;;;Small Arms, Light Assault, Light Automatic, Sphyr Lancer;Ranged;;;;
