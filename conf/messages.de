@@ -12,252 +12,168 @@ troop.tbl.size=GR
 troop.tbl.speed=GES
 troop.tbl.shoot=SH
 troop.tbl.fight=KPF
-troop.tbl.survive=SV
+troop.tbl.survive=RW
 troop.tbl.abilities=Fähigkeiten
 troop.tbl.weapons=Waffen
 troop.tbl.items=Gegenstände
-troop.tbl.reconArmySpecial=REC/Special
+troop.tbl.reconArmySpecial=AUF/Spezial
+troop.addBtn=Trupp hinzufügen
+troop.tbl.hardPoints=H-Pts
+troop.tbl.amount=#
+troop.tbl.allowedWeaponTypes=Waffen Upgrades
+troop.select=Truppe:
 
-weapon.headline=Weapons:
+mainmenu.roster=Roster
+mainmenu.armyTroops=Armee Listen
+mainmenu.abilities=Fähigkeiten
+mainmenu.items=Gegenstände
+mainmenu.armyspecials=Armee spezial Fähigkeiten
+mainmenu.cheatsheet=Cheat Sheet
+
+
+weapon.headline=Waffen:
 weapon.name=Name
-weapon.points=PTS
-weapon.victoryPoints=VPS
-weapon.range=Range
-weapon.armorPircing=AP
+weapon.points=PKT
+weapon.victoryPoints=SPKT
+weapon.range=Reichweite
+weapon.armorPircing=RD
 weapon.abilities=Fähigkeiten
 
 item.headline=Gegenstände:
 item.name=Name
 item.desc=Beschreibung
 item.points=PTS
-item.rarity=Rarity
+item.rarity=Seltenheit
 
-troop.addBtn=Trupp hinzufügen
 
-faction.select=Faction:
-troop.select=Troop:
-type.select=Type:
+faction.select=Fraktion:
 
-army.name=Army Name:
-army.points=Total Points:
-army.faction=Faction:
-army.troops=Troops:
-army.abilities=Abilities:
-army.recon=Recon
+army.name=Armee Name:
+army.points=Punkte:
+army.faction=Fraktion:
+army.troops=Truppen:
+army.abilities=Fähigkeiten:
+army.recon=Aufklärung:
 
-edit.headline=Edit:
+type.select=Typ
 
-validate.noSingleFaction=No single faction army.
-validate.noLeaderSelected=No leader selected.
-validate.moreThanOneLeaderSelected=More than one leader selected.
-validate.toMuchSpecialistSelected=More specialists than troops selected.
-validate.toMuchVehiclesSelected=Not enough troops for vehicles. 3 troops per vehicle required.
-validate.onlyOneCharacterAllowed=Only one character per army allowed.
-validate.troopsToMuchItems=Only one item per troop allowed.
-validate.toMuchItemsPerRarity=For the rarity: {0} only {1} items are allowed.
+edit.headline=
+
+print.all.btn=Alles drucken
+export.btn=
+
+validate.noSingleFaction=Die Armee besteht aus mehreren Fraktionen.
+validate.noLeaderSelected=Keinen Anführer ausgewählt.
+validate.moreThanOneLeaderSelected=Mehr als ein Anführer ausgewählt.
+validate.toMuchSpecialistSelected=Mehr Spezial Einheiten als Truppen ausgewählt.
+validate.toMuchVehiclesSelected=Nicht genügen Truppen für Fahrzeuge ausgewählt. 3 Truppen pro Fahrzeug benötigt.
+validate.onlyOneCharacterAllowed=Es ist nur eun Charakter pro Armee erlaubt.
+validate.troopsToMuchItems=Nur ein Gegenstand pro Model erlaubt.
+validate.toMuchItemsPerRarity=Es sind nur: {1} für die Seltenheit: {0} erlaubt.
 validate.toMuchFightWeapons=The troop: {0} has {1} fight weapons only one is allowed.
 validate.toMuchShootWeapons=The troop: {0} has {1} shoot weapons only one is allowed.
+validate.notEnoughHardPoints=The troop: {0} has: {1} hardpoints the weapons it carries have in total: {2} 
 
 validate.modal.headline=Validation Result
 validate.btn=Validate
-print.all.btn=Print All
-export.btn=Exportieren
 
-import.label=Select file to import
-import.btn=Import
-import.open.btn=Import army
-import.modal.headline=Import your army
-
-mainmenu.roster=Roster
-mainmenu.abilities=Fähigkeiten
-mainmenu.items=Gegenstände
-mainmenu.armyspecials=Armee Specials
-
-armyspecial.headline=Army Specials and Recon
-armyspecial.name=Name
-armyspecial.faction=Faction
-armyspecial.troop=Troop
-armyspecial.desc=Description
-armyspecial.desc.Overcharge=<p>Spend an Army Special result at the start of the model's activation. Target model's Noh Rifle gains Rapid Fire, Weight of fire(2) until the end of its activation</p>
-armyspecial.desc.WheelsWithinWheels=<p>You may spend an Army Special result on your Command Dice to discard any one of your opponent's Command Dice. This does not count as an action.</p>
-armyspecial.desc.Bastion=<p>You may spend a Special result on your Command Dice to add +1 Armour to a model for a single attack. You must decide to spend this Command Dice before the attack is rolled, and only one dice can be spent per attack.</p>
-armyspecial.desc.MobileInfantry=<p>Spend an Army Special result at the beginning of a model’s activation. If the active model is equipped with a Jump Pack, and does not have the Vehicle ability, it may make a free Sprint action. The model may not take a second Sprint action or a Move action this activation.</p>
-armyspecial.desc.Ropeadope=<p>Spend an Army Special result when an enemy model moves into a cube containing one of your unactivated models. Move an unactivated model in that cube one cube, as it had a Move Command Dice played on it; it does not need to make a test to leave an enemy occupied cube. This model remains unactivated.</p>
-armyspecial.desc.Stalwart=<p>Enforcers are famed for their resilience and stubbornness. You may spend a Special result on your Command Dice to immediately reroll any number of your dice on a Survive test.</p>
-armyspecial.desc.TargetAcquisition=<p>Spend an Army Special result on your Command Dice to mark an enemy model as a target for the rest of the Round. The model is treated as though it had been marked as a target by a model using the Tag ability. This does not require Line of Sight and does not count as an action.</p>
-armyspecial.desc.StarforgedArmour=<p>Spend an Army Special result when you are resolving Potential Damage of an attack against one of your models.. You may reduce the AP value of the attack by 1 for every Army Special result you spend in this manner. This does not count as an action.</p>
-armyspecial.desc.StrikeItLucky=<p>Spend an Army Special result after a friendly model picks up an item to discard that item. This does not count as an action. Pick a new item at random from the unused Item tokens; the model has found this item instead. This ability cannot be used if a model activates a booby trap.</p>
-armyspecial.desc.TooStubbornToDie=<p>You can spend an Army Special result on your Command Dice to try and remove a point of Damage on the active model. Roll a 3 dice Survive test (3). Success removes one Damage token. Failure has no effect. This does not count as an action.</p>
-armyspecial.desc.BytheNumbers=<p>You may spend an Army Special result on your Command Dice to re-roll any normal test made by a model with Commando in their type name</p>
-armyspecial.desc.GreenRage=<p>Spend an Army Special result tp give Frenzy(4) to a model for the rest of the round. You may spend this dice before taking any Fight test. If the model already has Frenzy the higher of the two values is used.</p>
-armyspecial.desc.TacticalGenius=<p>Spend an Army Special result during a model's activation. The active model may immediately use and discard one of the opponent's Move, Shoot or Fight Command Dice results. This result may only be played once per activation, and the active model may not also use a Move,Shoot or Fight Command Dice result from the owning player's Command Dice pool.</p>
-armyspecial.desc.Infection=<p>When an enemy model is killed you may spend an Army Special result on your Command Dice to spread the infection and raise it again as a Zombie. Swap the Dead enemy model for a Pinned Zombie in the same cube. The Zombie is marked as activated for this Round. The original model is dead and the Zombie is counted as part of the Plague Strike Team.</p>
-armyspecial.desc.Mutation=<p>Spend an Army Special result at the start of the model's activation. That model manifests a random mutation for the rest of the Round.</p>\
-  <p><strong>1-2:</strong> Agile</p>\
-  <p><strong>3-4:</strong> Frenzy(+1)</p>\
-  <p><strong>5-6:</strong> Increase AP of one RF weapon by +1</p>\
-  <p><strong>7-8:</strong> Increase Armour of model +1</p>
-armyspecial.desc.UndertheKnife=<p>Spend an Army Special result to activate the bio-modifications Dr Simmonds has implanted within her troops. The non-vehicle active model gains an effect of the player's choice from the following list:</p>\
-  <ul>\
-  <li>Claws: Gain a RF,AP2 weapon until the end of the round.</li>\
-  <li>Adrenal Burst Gain: Gain +1/+0 speed until the end of the round.</li>\
-  <li>Grav-Pods: Gain Jump Pack and Glide until the end of the round.</li>\
-  </ul>
-armyspecial.desc.AlwaysShort=<p>You can spend an Army Special result on your Command Dice to place a new random item, face down, in an unoccupied cube thata is adjacent to the active model. This does not count as an action.</p>
-armyspecial.desc.HideinShadows=<p>Spend an Army Special result at the end of a model's activation. The active model slinks into hiding. For the rest of the Round, this model cannot be targeted by Shoot actions, and cannot have Line of Sight drawn to it. The model is still affected by abilities that target every model in the cube (such as Frag, Indirect, It Burns or Blast) and can still be the target of Fight actions.</p>
-armyspecial.desc.Bodyguard=<p>When Brood Mother is the target of a Shooting attack, you may spend a Special result on your Command Dice to move a Crawler or Stalker one cube into the path of the attack, anywhere along the Line of Sight. Resolve the Shoot action as if it had targeted this model instead.</p>
-armyspecial.desc.Surge=<p>A Veer-Myn model that was already marked as activated at the start of this Turn may make a Move action of up to 1 cube. This may trigger Fights as normal.</p>
+weapon.hardPoints=W-H-Pts
+weapon.free=Frei
+weapon.linkedName=Eine Waffen
 
 
+cheatSheet.title=Cheat Sheet
+cheatSheet.openAsPdf=Als PDF öffnen
+cheatSheet.setupGame.title=Spiel vorbereiten
+cheatSheet.setupGame.content=<li>Spielfeld aufbauen</li>\
+<li>Würfeln und Spielfeld drehen</li>\
+<li>Würfeln für  Szenario</li>\
+<li>8 Ausrüstungs-Marker plazieren (hängt vom Szenario ab)</li>\
+<li>Test mit 5 Würfeln auf den aufklärungs Wert vom Anführer für die Initiative</li>\
+<li>Figuren aufstellen, Initiative verloren fängt an</li>\
+<li>Alle Modelle mit Scout Fähigkeiten bewegen, Initiative gewonnen als erstes</li>\
+<li>Kommando Würfel würfeln</li>\
+<li>Erste Runde anfangen, Initiative gewonnen als erstes.</li>\
+<li>Miniaturen aktivieren</li>\
+<li>Spieler der als erstes seine letzte Figur aktivert hat, startet nächste Runde</li>
+cheatSheet.actions.title=Aktionen
+cheatSheet.actions.content=<li>Bewegen (kurz)</li>\
+  <li>Sprinten (lang)</li>\
+  <li>Aufstehe (kurz)</li>\
+  <li>Schiessen (kurz)</li>\
+  <li>Fight (long)</li>\
+  <li>Special Action (short or long)</li>
+cheatSheet.shootmodifiers.title=Schuss Modifikationen
+cheatSheet.shootmodifiers.content=<li><b><u>Klare Sicht</u>, +2 Würfel:</b> Wenn dein Model das gegnerische Model komplett sehen kann.</li>\
+  <li><b><u>Freundlicher Beschuss </u>, -2 Würfel:</b> Wenn irgendein freundliches Model in dem Zielfeld stehen.</li>\
+  <li><b><u>Erhöhter Stand</u>, +1 Würfel:</b> Wenn dein Model höher steht als das gegnerische.</li>\
+  <li><b><u>Wirkungsfeuer</u>, +1 Würfel:</b> Wenn du mit Wirkungsfeuer mit einer Schnellschuss-Waffe schießt.</li>
 
-ability.name=Name
-ability.desc=Description
-ability.desc.RapidFire=A model using a weapon with the Rapid Fire special rule may elect to Fire for Effect when making a Shoot action
-ability.desc.Agile=After a model takes a Move or Sprint action it may additionally choose to move up or down one level in the same stack for free. This change in level follows the normal movement rules.
-ability.desc.Beast=The model cannot pick up, carry or use items. All of its weapons and equipment are either natural or have been grafted on permanently by skilled bio-technicians. This ability can also apply to models that are already so burdened by their normal combat load that they have no room to carry more.
-ability.desc.Blast=<p>The weapon does no direct Damage, though the force of the blast may push models off buildings or slam them into walls.</p>\
-  <p>If the attack is a HIT then all models in the cube except the target are thrown one cube directly away from the target model and then Pinned. The target model is thrown one cube in a random direction (see Scatter, page 26) and then Pinned.\
-  <p>If the attack is a MISS then all models in the target cube are Pinned.</p>
-ability.desc.BOOM=<p>When a model with this ability is killed, they explode.</p>\
-  <p>In addition, the model may choose to trigger the explosion as a Special action.</p>\
-  <p>Regardless of the cause, when the model explodes, treat it as a Frag (n) explosion (page 29) in that cube, where (n) is the value of BOOM!</p>
-ability.desc.Construct=This model is an artificial creature and as such is immune to certain abilities. Additionally, the model can never be Pinned. If hit by an attack that has effects in addition to pinning, such as Blast, the additional effects still apply.
-ability.desc.Engineer=<p>The model is experienced with tripwires and mines. If they reveal a Booby Trap item then the Engineer’s activation ends immediately. However, the Booby Trap does not explode. Instead it is defused and discarded.</p>\
-  <p>In addition, some items can only be used by Engineers.</p>
-ability.desc.Experimental=<p>This weapon is an unstable prototype, and as such, no-one is quite sure what it will do until the trigger is pulled. When the weapon is used to make a Shoot action, roll a dice on the following table and apply the listed ability to the attack:</p>\
-  <p><strong>1-2:</strong> Blast</p>\
-  <p><strong>3-4:</strong> Knockback</p>\
-  <p><strong>5-6:</strong> Weight of Fire (2)</p>\
-  <p><strong>7:</strong> AP3</p>\
-  <p><strong>8:</strong> Ominous Hum: The owning model gains the BOOM! (1) ability until the end of the game, and rolls again on this table. This effect is cumulative: The value of BOOM! increases by 1 each time an 8 is rolled.</p>
-ability.desc.Flight=<p>A model with this ability does not require a wall or ramp to change levels. It may move over gaps of any size on the same level. The model must end its move in a cube (and position) that allows it to be physically placed on the gaming table</p>
-ability.desc.FireControl=When the model takes a Shoot action it can use two weapons instead of one. Each weapon may choose the same or a different target. Declare the targets of both weapons before rolling any attack dice.
-ability.desc.Frag=<p>When a Frag explodes it may injure or kill models in the target cube and the force of the explosion will throw survivors to the ground. Frag will always be listed with a number after it in place of the (n), e.g. Frag (3), Frag (5), etc.</p>\
-  <p>Roll a variable dice 4+ test (X) for the strength of the attack, where the number of dice rolled is the number in brackets after Frag. For example, a Frag (5) weapon would roll 5 dice for the test. Models in the target cube must roll a 3 dice Survive test (X). Roll once for the attack and separately for each target model’s survival roll.</p>\
-  <p><strong>Draw or target has more successes:</strong><br />Attack misses or fails to cause any harm.</p>\
-  <p><strong>Frag has more successses:</strong><br />The difference in number of successes is the Potential Damage.</p>\
-  <p>Whatever the results of the explosion, all surviving models in the target cube are thrown one cube in a random direction (see Scatter,page 26) and then Pinned.</p>
-ability.desc.Frenzy=<p>A model with this ability attacks so ferociously that it’s hard to defend against it. Frenzy will always be expressed with a value in the place of the (n), e.g. Frenzy (1) or Frenzy (2). Up to that number of Fight dice that fail during a test may be re-rolled once. This also applies to any additional dice gained by rolling an 8.</p>\
-  <p>Frenzy is cumulative. If more than one Frenzy modifier applies to an attack then add together the (n) value from each source; this is the total number of failed dice the model may re-roll for the Fight test.</p>
-ability.desc.Glide=<p>The model may drop any number of levels without harm. This may be done by choice or as the result of being blasted out of a position. In either case they glide to the ground unharmed by the drop and land on their feet. In addition, for every level they drop they may move one cube sideways, relative to their original position.</p>
-ability.desc.Grenade=<p>All Grenades are thrown the same way, using a Shoot action. Choose a target cube. You do not need LOS to an enemy model, though if you do not have LOS then both the shooting model and the target cube must be visible when viewed by the throwing player from directly above. </p>\
-  <p>Roll a 3 dice Shoot test (1), with no modifiers. Success means that the Grenade has landed in that cube. Failure requires a scatter roll (page 26) to determine which cube the Grenade detonates in. An inaccurate Grenade will scatter onto the same or lower level (never up).</p>\
-  <p>A Grenade that would scatter into a wall or other solid object will bounce off that object and stay in the original target cube.</p>\
-  <p>The effect the Grenade has varies by type.</p>
-ability.desc.Heavy=<p>The weapon is cumbersome and takes time to set up and sight in, so Shoot counts as a long action. In addition, all Fight rolls for a model carrying a Heavy weapon are at an additional -1 dice.</p>
-ability.desc.Horde=<p>Most models in Deadzones fight as highly trained individuals. However, a few shun individual talent and rely instead on simply piling into their opponents en masse to drag them down by sheer weight of numbers. The best example of this is the Plague Zombies.</p>\
-  <p>When a model with Horde is in a Fight it gets the +1 modifier for having friendly models in the cube as usual. In addition, it receives an extra +1 for each friendly model in the same cube (not counting itself) that also has Horde.</p>
-ability.desc.Indirect=<p>Indirect weapons are typically Mortars or Grenade Launchers, capable of lobbing an explosive projectile at an area where the enemy is suspected to be.</p>\
-  <p>Indirect weapons can Shoot at models within Line of Sight, or they can choose to Shoot at targets they cannot see. In both cases, use the following rules:</p>\
-  <p>Indirect will always be listed with a number after it in place of the (n), e.g. Indirect (3), Indirect (5), etc.</p>\
-  <p>If using an Indirect weapon, Shoot becomes a long action. </p>\
-  <p>To shoot, choose a target cube. Due to its arcing trajectory the weapon cannot target anything within 2 cubes of the shooter, regardless of its normal Range.</p>\
-  <p>You do not need LOS to an enemy model, though both the shooting model and the target cube must be visible when viewed by the shooting player from directly above.</p>\
-  <p>If the firing model has LOS to an enemy model in the target cube, roll a 3 dice Shoot test (1), with no modifiers permitted (not even from Command Dice).</p>\
-  <p>If the firing model does not have LOS to an enemy model within the target cube, roll a 3 dice Shoot test (2), with no modifiers permitted (not even from Command Dice).</p>\
-  <p>Success for either test means that the shot has landed in the target cube. Failure requires a scatter roll to determine which cube the shot explodes in. An inaccurate shot will scatter (page 26) onto the highest level of the stack it scatters onto.</p>\
-  <p>When an Indirect shot explodes it may injure or kill models in the same cube. Roll a variable dice 4+ test (X) for the strength of the attack, where the number of dice rolled is the number in brackets after Indirect. For example, an Indirect (5) weapon would roll 5 dice for the test. Models in the cube must roll a 3 dice Survive test (X). Roll once for the attack and separately for each target model’s survival roll.</p>\
-  <p><strong>Draw or Survive has more successes:</strong><br />Attack misses or fails to cause any harm.</p>\
-  <p><strong>Indirect has more successes:</strong><br />The difference in number of successes is the Potential Damage.</p>\
-  <p>Whatever the results of the explosion, all surviving models in the target cube are thrown one cube in a random direction (page 26) and then Pinned.</p>
-ability.desc.Invigorate=<p>Weapons with this ability deliver a jolt of energy to their target, whether through a cocktail of combat drugs or through a Psychic unleashing a soldier’s hidden potential. Weapons with Invigorate may target friendly units, and units in the same cube as the active model. The firing model rolls a 3 dice Shoot test (2) with no modifiers. If successful, the target model removes an activation token.</p>
-ability.desc.ItBurns=<p>The weapon unleashes indiscriminate sheets of flame, acid, or similar lethal concoctions.</p>\
-  <p>It Burns! weapons attack every model in same cube as the primary target, regardless of which side they are on or whether they are visible to the Shooter.</p>\
-  <p>Choose one visible model as the primary target and roll for the attack with no modifiers.Roll Survive separately for each model in the target cube and compare each individually to the attack roll see the results.</p>\
-  <p>Whatever the result of the attack (even if it misses) all models in the target cube are set on fire (mark them with a Flame counter). In reality, the weapon fires great gouts of flame that fill the cube, and even near-misses set things alight.</p>\
-  <p>If a model is on fire when it is activated, then its first action must be to attempt to put out the fire. This is a free Special action that the model must take but will not count towards its normal action limit this activation. It is worked out as follows: </p>\
-  <p>The fire/flames roll a 3 dice 4+ test (X).</p>\
-  <p>The target rolls a 3 dice Survival test (X).</p>\
-  <p><strong>Draw or Survive has more successes:</strong><br />The target puts out the flames before they do any real Damage. The model may continue with any remaining actions as normal.</p>\
-  <p><strong>Fire/flames has more successes:</strong><br />The target manages to put out the flames and is no longer on fire, but suffers Damage in the process. The Potential Damage is equal to the difference in total successes and is resolved at AP1. The model’s activation ends immediately.</p>
-ability.desc.Knockback=<p>Wenn ein Model mit dieser Fähigkeit When a weapon or model with this ability hits its target it will knock it back into a different cube. Resolve the attack as normal, then move the target one cube directly away from the attacker (see page 27). If the knocked-back model’s route is blocked by a wall, the model is slammed into it (see page 27).</p>
-ability.desc.LifeSupport=<p>The individual has an in-built automated life support system designed to keep them alive even when gravely wounded. If the model is Injured, but not killed, by an attack then the Life Support automatically kicks into overdrive. The model is immediately returned to an Undamaged state. This happens automatically and does not cost an action. This only works once per game.</p>\
-  <p>Life Support cannot be used to resurrect models that have been killed outright by a single attack. Also note that Life Support only works on the model itself and cannot be used on nearby models (unlike a Medi-Pack item).</p>
-ability.desc.Loader=<p>If a model with this ability is in the same cube as a friendly model, then the Loader can remove a Reload counter from that model by taking a Special action.</p>
-ability.desc.Medic=<p>A Medic can heal a single Injured model in the same cube (which could be the Medic himself) by taking a Special action. No test is required. One Damage counter is removed per use of this ability.</p>\
-  <p>This ability only heals living models, and cannot repair Constructs or Vehicles.</p>
-ability.desc.Noncombatant=<p>This model cannot or will not hurt their enemies. They may not use any weapon and must choose to use Survive if targeted by a Fight.</p>
-ability.desc.NonLethal=<p>The weapon does no direct damage. If the attack is a hit, other effects of the weapon occur as normal.</p>
-ability.desc.OneUse=<p>This item or weapon may be used only once during a game.</p>
-ability.desc.Psychic=<p>This model possesses mental abilities that allow it to influence objects and creatures in its environment. Whether these abilities are natural, such as those possessed by the Chovar, or the product of forbidden scientific research, they are all represented in-game in the same way.</p>\
-  <p>A model with the Psychic ability will have one or more weapons listed with the Psychic weapon characteristic. These abilities are, in effect, another weapon that the model can use: They will have a Range characteristic, are used in Shoot or Fight tests just like other weapons, and receive the same modifiers as standard Shoot or Fight tests.</p>\
-  <p>The only exception is that a Psychic weapon does not need Line of Sight to its target</p>
-ability.desc.Rampage=<p>When a model with this ability is Damaged, but not killed, it goes crazy. In this state of blood frenzy it may even attack its friends. For the remainder of the game, whenever the model’s owner chooses to activate it they must roll one dice and consult the following list:</p>\
-  <p><strong>1-2:</strong> The opposing player may control the model’s actions for <strong>this Turn</strong>.  This can include attacking the active model’s friends. In the confusion, neither side may claim the +1 modifier for additional friends in a Fight. This model’s actions count as an activation for the active model’s side, not for the side that actually controlled it.</p>\
-  <p><strong>3-6:</strong>The owner of the active model may act with the model as normal.</p>\
-  <p><strong>7-8:</strong>The owner of the active model may act with the model as normal. In addition, as the model is so frantic that it may move 1 cube before it takes its normal actions, as if the owner had played a Command Dice Move result on it.</p>\
-  <p>While under the effect of result 1-2, the model does not count as a member of any Strike Team in play for purposes of the maximum Size count of a cube, and as such may move into cubes containing members of its Strike Team (and initiate Fights against them). The model may still have items and abilities played on it by members of its original Strike Team (such as Medic or Medkits).</p>\
-  <p>This may result in a cube becoming more crowded than it is normally allowed. This is called being overstacked. Whenever a model starts their activation in an overstacked cube and is free to choose their action, they must use move out of that cube before they do anything else.</p>
-ability.desc.ReconDrone=<p>When deploying your models, in addition to your Strike Team, deploy one Recon Drone model in your deployment zone. For the purposes of Campaigns, the Recon Drone is not considered to be party of the Army List, gains no experience and is never added to the player's Army Roster.</p>
-ability.desc.Remote=<p>A model with this ability acts under remote control. As long as a friendly Engineer is within 3 cubes when the model is activated, the Remote model acts normally. If this is not the case then the Remote simply idles on the spot.</p>
-ability.desc.Scavenger=<p>The model may carry up to 3 items instead of the normal limit of 1. In addition, the model is an experienced explorer of rubbish tips and debris fields and will never set off a Booby Trap. If they reveal a Booby Trap item then the Scavenger’s activation ends immediately. However, the Booby Trap does not explode. Instead it is dismantled and discarded.</p>
-ability.desc.Scout=<p>After deployment, before the first Turn of the first Round, a Scout model may make one free Sprint action. If both sides have Scouts then the player with Initiative moves all his Scouts first. A Scout may not enter a cube containing another model during this pre-battle movement.</p>
-ability.desc.ShieldGenerator=<p>This is a larger version of the Energy Shield (n) item (see page 37) and works the same way. The only difference is the area it protects. Instead of covering a single model, a Shield Generator provides protection for every model, friend or foe, in the same cube.</p>\
-  <p>If a model is protected by more than one Energy Shield/Shield Generator then all apply. Roll for each separately and reduce the Potential Damage by the total number of successes.</p>
-ability.desc.SlowReload=<p>When this weapon fires the model is marked with a Reload counter. That weapon cannot Shoot again until this counter is removed. Removing the counter requires a Special action by the model carrying it (or by a model with the Loader ability (see page 32). If a model has other weapons then this penalty only applies when using the weapon with Slow Reload.</p>
-ability.desc.SniperScope=<p>The weapon gains +2 dice to Shoot actions in addition to any other modifiers that apply. A weapon with Sniper Scope may not benefit from the +1 Dice of a Holo-Sight (page 37).</p>
-ability.desc.Solid=<p>A model with this ability is not affected by weapon effects that move their target to a new cube, such as the Blast of a Grenade or a Knockback. In addition, the model is never Pinned.</p>
-ability.desc.Stun=<p>A weapon with this ability does not cause actual Damage. If this weapon scores any Potential Damage however, the target model is immediately marked as activated.</p>
-ability.desc.Suppression=<p>A weapon with this ability Shoots as normal. Then, in addition, any models (from either side) in the target cube are Pinned, regardless of whether any Damage was done by the shot.</p>
-ability.desc.Tactician=<p>The model is a great leader and intuitively understands how to get the most out of a combat situation. Tactician will always be listed with a number after it in place of the (n), e.g.Tactician (1), Tactician (2), etc. When Rolling Command at the start of a Round, add (n) Command Dice to the roll if the Tactician is still on the battlefield.</p>\
-  <p>Note you can only apply the Tactician ability of one model in your Strike Team. Having more than one Tactician in a Strike Team provides no benefit beyond having a replacement if the first one is killed.</p>
-ability.desc.Tag=<p>A model with a Tag rifle can spend a Special action to mark an enemy model as a target. For the remainder of this Round, all shots made against that target by any models with Tag rifles receive +1 dice. Note this effect is not cumulative. A model may only receive a maximum of +1 dice from a target being tagged. There is no benefit to tagging a model multiple times in a single Round.</p>
-ability.desc.Teleport=<p>A model with this ability may Teleport as a Special action.</p>\
-  <p>Teleport moves the model up to 2 cubes in any direction without the need for there to be an unobstructed route between them. If the teleporting model ends this move in the same cube as an enemy model then they will Fight as if it had moved into the cube normally.</p>
-ability.desc.Tough=<p>The model ignores 1 point of Potential Damage per attack (including from events such as falling or slamming into walls). This is calculated before Armour is taken into account and cannot be countered by any AP value of the attack.</p>
-ability.desc.Toxic=<p>A model struck by a Toxic weapon is never Injured, any actual Damage the model takes will kill it. Toxic never affects models with either the Construct or Vehicle ability</p>
-ability.desc.ToxicSmokescreen=<p>The model can generate clouds of poisonous smoke to hide itself. Once during a game, at the start of any one of its Turns, the model may fill its cube with Toxic smoke. The effect is identical to a Smoke Grenade going off in the model’s cube with the added bonus of the smoke being Toxic. As long as a model remains in the smoke-filled cube it is treated as having the Vulnerable ability. Models that are immune to Toxic are immune to the Toxic effects of a Toxic Smokescreen. Models that are already Vulnerable suffer no additional effects. Adjacent cubes are not affected by this Toxic effect.</p>\
-  <p>Placing a Toxic Smokescreen is not an action and may be done even if there are enemy models in the same cube.</p>\
-  <p>If the model moves away, the Toxic Smokescreen remains in the cube it was deployed in. It disperses in the same way as a Smoke Grenade.</p>
-ability.desc.Vehicle=<p>The model is a Vehicle. If the model comes with separate crew figures then you can choose to either attach them to the main chassis, or leave them loose so the main vehicle can be used as a wreck (or scenery in battles where it is not used in the Strike Team). They have no specific game function beyond looking good and showing that the Vehicle is still in the battle. Vehicles are large and cumbersome so cannot move about the battlefield with the same ease as smaller models. A Vehicle can only change level by moving up or down a ramp. They may not climb up or down walls.</p>\
-  <p>A Vehicle cannot pick up, carry, or use items. </p>\
-  <p>Vehicles have an amount of Damage they can sustain based on their Size, just like other models.</p>\
-  <p>A Vehicle is not affected by the movement effects of explosions or attacks such as Knockback or Blast. It cannot be moved into another cube by any attack. However, it still suffers Damage from these types of attack as normal.</p>\
-  <p>When a Vehicle is destroyed it is left in place on the battlefield. It is now treated as part of the battlefield’s terrain. For the sake of appearance you might like to remove any crew models and add a small piece of cotton wool to make it look like a smoking wreck.</p> 
-ability.desc.Volatile=<p>A weapon with this ability includes a tank of highly Volatile fuel.</p>\
-  <p>If a model carrying a weapon with this ability takes Damage or is saved from injury by its Armour, roll a dice. On a roll of 2-8 the Volatile fuel is safe. On a roll of 1 the fuel tank ruptures and sets the model on fire. See It Burns! on page 31. The Volatile weapon may not be fired for the rest of the game.</p>
-ability.desc.Vulnerable=<p>A model with this ability is never Injured. Any actual Damage the model takes will kill it instantly.</p>
-ability.desc.WalkerShield=<p>A model equipped with this gains +1 Armour</p>
-ability.desc.WeightofFire=<p>A weapon with this ability throws so much firepower at the target that something’s bound to happen. Weight of Fire will always be expressed with a value in the place of the (n), e.g.Weight of Fire (1) or Weight of Fire (2). That number of Shoot dice that fail may be re-rolled <strong>once</strong>. This also applies to any additional dice gained by rolling an 8.</p>\
-  <p>Weight of Fire is cumulative. If more than one Weight of Fire modifier applies to an attack then add together the (n) value from each source; this is the total number of failed dice the model may be re-rolled for that Shoot test.</p>
+cheatSheet.damage.title=Schaden
+cheatSheet.damage.content.col1=Shaden
+cheatSheet.damage.content.col2=Effekt
+cheatSheet.damage.content.table.damage0.title=0
+cheatSheet.damage.content.table.damage0.content=Das Model nimmt keinen Schaden
+cheatSheet.damage.content.table.damage1Plus.title=1+
+cheatSheet.damage.content.table.damage1Plus.content=Das Model ist verwundet. Markiere das Model mit so vielen Schadensmarkern wie Schaden verursacht wurde.
+cheatSheet.damage.content.table.damagebiggersize.title = > Größe des Models
+cheatSheet.damage.content.table.damagebiggersize.content=Das Model wird vom Spiel entfernt. Der Sieger bekommt SPKT des getöteten Models.
 
-item.desc.Ammo=<p>Ammo is One-Use.</p>\
-  <p>A model that is carrying Ammo may choose to use it when it makes a normal Shoot action. It adds a +1 dice modifier for that Shoot action</p>
-item.desc.APAmmo=<p>AP Ammo is One-Use</p>\
-  <p>A model that is carrying AP Ammo may choose to use it when it takes a normal Shoot action. It adds a +1 dice modifier for that Shoot action, and any Actual Damage is resolved witht he AP1 characteristic (cumulative with any other AP that applies to the attack).</p>
-item.desc.BoobyTraps=<p>A Deadzone is a hostile place, riddled with traps rigged to punish the unwary. If a model reveals the Booby Trap icon when picking up an item, treat it as though a Frag (3) explosion (page 29) has detonated in the model’s cube.</p>
-item.desc.DefenderShield=<p>The model carrying the Defender Shield uses it to form a moving barricade behind which he and his comrades can advance safely.</p>\
-  <p>The model with this item gains +1 Armour. In addition, all Size 1 or 2 friendly models in the same cube also gain +1 Armour. </p>\
-  <p>Each model can only benefit from a single Defender Shield bonus at a time. </p>
-item.desc.EnergyShield=<p>Energy shields are designed to absorb the energy of incoming attacks, whether this is from particle weapons or kinetic energy devices. </p>\
-  <p>When a model wearing this item suffers Potential Damage, make an (n) dice 6+ test.</p>\
-  <p>For each success you roll, one Potential Damage is absorbed by the shield. However, the shields are new technology and somewhat unreliable. If you roll more 1s than successes then the incoming energy overwhelms the shield’s ability to buffer the surge of power and it is destroyed. Any successes in that roll will still reduce the Potential Damage as normal, but the shield will not work again during this game.</p>\
-  <p>If a model is protected by more than one Energy Shield/Shield Generator then all apply. Roll for each separately and reduce the Potential Damage by the total number of successes.</p>
-item.desc.FragGrenade=<p>A Frag Grenade is a One-Use, R3, Frag (3),Grenade. See page 30.</p>
-item.desc.HoloSight=<p>A model that is equipped with a Holo-Sight adds a +1 modifier to their Shoot actions. A Holo-Sight cannot be used with Indirect weapons. Also, a weapon with Sniper Scope may not benefit from the +1 Dice from a Holo-Sight.</p>
-item.desc.Intel=<p>When an Intel item is picked up by a model, immediately exchange it for a 1VP counter and add it to the player’s total. The Intel item is then discarded.</p>\
-  <p>The item is not being carried by the model. Instead, the data has been transmitted back to High Command where it can be properly analysed.</p>
-item.desc.JumpPack=<p>A model that is equipped with a jump pack is notPinned by falling and takes no Damage if it falls.In addition, a model with a jump pack can:</p>\
-  <ul>\
-  <li>Move up or down levels without needing a wall to climb.</li>\
-  <li>Jump over solid walls on the same level.</li>\
-  <li>Jump over gaps in the floor of the same level (up to one cube wide), provided it has enough cubes of movement to do so.</li>\
-  <ul>
-item.desc.MediPack=<p>A Medi-Pack is One-Use.</p>\
-  <p>Medi-Packs are used to heal Injured models. They may only be used on living models, and cannot repair Constructs or Vehicles</p>\
-  <p>A model with a Medi-Pack may use it either on themselves or any other single living model in the same cube as long as no enemy models are in that cube.</p>\
-  <p>Using a Medi-Pack is a Special action for the model carrying it. It does not require a dice roll and works automatically. The effect of using a Medi-Pack is to completely heal the target model (remove all Damage counters from it). The Medi-Pack is then discarded.</p>
-item.desc.SentryGun=<p>The Sentry Gun is both an item and a model. As an item it can be carried by any model, just like any other item.</p>\
-  <p>Only an Engineer can change the Sentry Gun from an item to a model (emplacing), and back again (packing). The Engineer doesn’t necessarily need to be carrying the Sentry Gun item to emplace it.</p>\
-  <p>Emplacing or packing up a Sentry Gun is a Special action. Emplacing a Sentry Gun does not count as the gun’s action for that Round. Once emplaced, a Sentry Gun cannot move or be moved in any way until an Engineer packs it again</p>\
-  <p>As a model it has the following profile:</p>\
-  <p><b>S:</b> 4+ <b>F:</b> - <b>SV:</b> 5+ <b>Armour: </b> - <b>Size: </b> 1 <b>Speed: </b> -\
-  <br /><b>Heavy Rifle: R8, Weight of Fire (1) | Construct | Vulnerable</b></p>\
-  <p>A Sentry Gun gets one Shoot action in every Round. It cannot have any Command Dice spent on it</p>\
-  <p>If a Sentry Gun is destroyed, its on-board AI packs itself, ready for repairs at home base. The model reverts to an item, and may not be emplaced again this game.</p>
-item.desc.SmokeGrenade=<p>Smoke Grenades are One-Use, R3, Grenades</p>\
-  <p>(See page 30) that generate a thick cloud of smoke when they detonate. No Damage is caused to models in the target cube. The smokefilled cube blocks all LOS, including to and from models inside it. Note, however, that it does not block LOS to the cube itself. Any Shoot attacks that trace a LOS through a cube that is adjacent to a smoke-filled cube suffer a -1 dice modifier (regardless of how many such cubes they cross). At the end of each Round roll one dice per smokefilled cube. On a 1-4 the smoke in that cube remains in place. On a 5-8 the smoke dissipates and is removed.</p>
-item.desc.StunGrenade=<p>Stun Grenades are One-Use, R3, Grenades</p>\
-  <p>(see page 30) that disorient those nearby. No Damage is caused to models in the target cube. All models in the affected cube are marked as activated.</p>
-item.desc.ThermalMines=<p>Thermal mines are One-Use, RF, AP3 weapons.</p>
-item.desc.MonoWheelScoutBike=<p>For game purposes, riding this bike counts as carrying it as an item. While the Scout Bike is being ridden, the model has the Vehicle ability and their Speed changes to 1-5.</p>
+cheatSheet.fightmodifiers.title=Kampf Modifizierungen
+cheatSheet.fightmodifiers.content1=<p>Diese Würfel Modifizierungen gelten für <b>Kampf</b> und <b>Überlebens</b> Tests.</p>\
+   <p><b>Gebundene Modelle</b> stehen umsonst auf, können aber nur <b>Überlebens</b> Tests ablegen.</p>
+cheatSheet.fightmodifiers.content2=<li>+1 Würfel wenn das Model das Feld in dieser Aktion betreten hat.</li>\
+  <li>+1 Würfel wenn sich freundliche Modelle im Feld befinden (max +1 Würfel, nicht +1 Würfel pro freundliches Model)</li>\
+  <li>+1 Würfel wenn der Gegner verwundet ist.</li>\
+  <li>+1 Würfel wenn das Model größer als das gegnerische ist.</li>\
+  <li>+1 Würfel wenn das gegnerische Model gebunden ist.</li>\
+  <li>für Horde Modelle +1 Würfel pro Model, das auch Horde hat.</li>
+
+
+cheatSheet.slammedIntoWall.title=In die Wand knallen
+cheatSheet.slammedIntoWall.content1=<p>Die Wand führt einen 3 Würfel 5+ Test durch (X)</p>
+cheatSheet.slammedIntoWall.content2=<li><b>Gleichstand oder Model gewinnt:</b> Das Model ist unbeschädigt.</li>\
+  <li><b>Wand gewinnt:</b> Das Model is gebunden und der Unterschied von Erfolgen ist potentieller Schaden.</li>
+
+cheatSheet.falling.title=Fallen
+cheatSheet.falling.content1=<p>Schwerkraft führt einen 3 Würfel 5+ Test (X), mit +1 Würfel pro Kubus die das Model fällt, durch.</p>
+cheatSheet.falling.content2=<li><b>Gleichstand oder Model gewinnt:</b> Das Model ist gebunden.</li>\
+  <li><b>Schwerkraft gewinnt:</b> Das Model is gebunden und der Unterschied von Erfolgen ist potentieller Schaden.</li>
+
+cheatSheet.knockback.title=Rückstoß
+cheatSheet.knockback.content=Rückstoß ist nur dann anwendbar wenn die Attacke Schaden zufügt.
+
+cheatSheet.frag.title=Granate (X)
+cheatSheet.frag.content1=<p>Würfel einen variablen 4+ Würfel (X) für die Stärke der Attacke, wobei die Anzahl der Würfel durch die Nummern in den Klammern nach Granate bestimmt wird.</p>
+cheatSheet.frag.content2=<li>Was immer auch das Ergebniss ist, alle überlebenden Modelle im Ziel Kubus werden in eine zufällig Richtung geschoben und sind gebunden.</li>\
+  <li><b>Gleichstand oder Model gewinnt:</b> Dem Model passiert nichts.</li>\
+  <li><b>Grnata gewinnt:</b> Der Unterschied von Erfolgen ist potentieller Schaden.</li>
+
+cheatSheet.commandDice.table.result=Würfel Ergebnis
+cheatSheet.commandDice.table.command=Befehl
+cheatSheet.commandDice.table.description=Beschreibung
+
+cheatSheet.commandDice.modelActivation=+1 Model Aktivierung
+cheatSheet.commandDice.modelActivation.desc=Am Ende der Aktivierung deines Models, darfst du ein weiteres Model aktivieren.
+
+cheatSheet.commandDice.plusDice=+1 Würfel zu einem Schuss, Kampf oder Rettungswurf Test.
+cheatSheet.commandDice.plusDice.desc=Füge 1 Würfel hinzu vor einem  Schuss, Kampf oder Rettungswurf Test.
+
+cheatSheet.commandDice.additionalMove=Zusätzliche Bewegungs Aktion
+cheatSheet.commandDice.additionalMove.desc=Das aktive Model bekommt eine freie Bewegungs Aktion. \
+  Diese Bewegung ist auf einen Kubus beschränkt, egal was die Geschwindigkeit des Models besagt. \
+  Kann benutzt werden wenn das Model schon eine Bewegung oder Sprint Aktion durchgeführt hat.
+
+cheatSheet.commandDice.additionalShoot=Zusätzliche Schuss Aktion
+cheatSheet.commandDice.additionalShoot.desc=Das aktive Model bekommt eine freie Schuss Aktion. \
+  Kann benutzt werden wenn das Model schon eine Schuss Aktion durchgeführt hat.
+
+cheatSheet.commandDice.additionalFight=Zusätzliche Kampf Aktion
+cheatSheet.commandDice.additionalFight.desc=Das aktive Model bekommt eine freie Kampf Aktion. \
+  Kann benutzt werden wenn das Model schon eine Kampf Aktion durchgeführt hat.
+
+cheatSheet.commandDice.armySpecial=Armee spezial Fähigkeit
+cheatSheet.commandDice.armySpecial.desc=Aktiviere deine Armee spezial Fähigkeit. \
+  Der Effekt ist unterschiedlich bei jeder Armee und wird in deiner Armee Liste beschrieben. \
+  Armee spezial Fähigkeiten haben keine Einschränkung auf die Anzahl der Aktionen pro Runde, ausser es ist anders beschrieben.
+
