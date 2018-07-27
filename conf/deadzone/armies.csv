@@ -1,176 +1,217 @@
 Faction;Name;Points;Type;Speed;Shoot;Fight;Survive;Size;Armour;VPs;Weapons;Equipment;Abilities;Weapon Upgrades;Skill Tables;Hardpoints;Recon;Army Special;Img
-Plague;Aberration;40;S;1-2;0;3;4;4;1;4;Talons Aberration;;Rampage;Talons Aberration;Melee;;;;http://www.manticgames.com/ImageCache/Products/5645.1.87.87.FFFFFF.0.jpeg
-Rebs (Exham IV);Adrienne Nikolovski;28;L;1-2;4;5;4;1;1;4;Dual Needle Pistols, Magma Lance;;Tactician(1);Adrienne Nikolovski;;;4;Special Delivery;
-Rebs;Adrienne Nikolovski;28;C;1-2;4;5;4;1;1;4;Dual Needle Pistols, Magma Lance;;Tactician(1);Adrienne Nikolovski;;;;;
-Plague;Aqissiaq;16;C;1-2;0;3;5;1;0;2;Nuka;;Tough, Frenzy(1), Rampage;Aqissiaq;;;;;
+Plague, Plague (Outbreak);Aberration;40;S;1-2;0;3+;4+;4;1;4;Talons Aberration;;Rampage, Tough, Beast;Talons Aberration;Melee;;;;http://www.manticgames.com/ImageCache/Products/5645.1.87.87.FFFFFF.0.jpeg
+Mazon Labs;Aberration Specimen;40;S;1-2;0;3+;4+;4;1;4;Talons Aberration;;Rampage, Tough, Beast;Talons Aberration;Melee;;;;
+Rebs (Exham IV);Adrienne Nikolovski;28;L;1-2;4+;5+;4+;1;1;4;Dual Needle Pistols, Magma Lance;;Tactician(1);Adrienne Nikolovski;;;4+;Special Delivery;
+Rebs;Adrienne Nikolovski;28;C;1-2;4+;5+;4+;1;1;4;Dual Needle Pistols, Magma Lance;;Tactician(1);Adrienne Nikolovski;;;;;
+Plague;Aqissiaq;16;C;1-2;0;3+;5+;1;0;2;Nuka;;Tough, Frenzy(1), Rampage;Aqissiaq;;;;;
+Nameless, Nameless (Outbreak);Assassin;17;S;2-3;0;5+;5+;1;1;2;Razor Claws;Jump Pack;Beast, Stealthy;Assassin;Melee, Specialist;;;;
 Enforcers;Assault Enforcer;14;T;1-2;5+;5+;4+;1;1;1;Pistol, Wristblade;Jump Pack;Frenzy(1);Small Arms, Light Melee;Melee;;;;
 Enforcers (Nexus-Psi);Assault Enforcer;14;S;1-2;5+;5+;4+;1;1;1;Pistol, Wristblade;Jump Pack;Frenzy(1);Small Arms, Light Melee;Melee;;;;
-Forge Fathers (Exham IV);Bjorn Starnfall;30;L;1-2;4;6;3;1;1;4;Mining Laser;;Tough, Hammerfist Orbital Drop Armour;Bjorn Starnfall;;;5;Fist of an angry God;
-Forge Fathers;Bjorn Starnfall;30;C;1-2;4;6;3;1;1;4;Mining Laser;;Tough, Hammerfist Orbital Drop Armour;Bjorn Starnfall;;;;;
-Asterians, Asterians 2.0, Asterians (Exham IV);Black Talon;20;S;1-2;3;5;5;1;1;2;Noh Rifle;Energy Shield(2), Jump Pack;Construct, Vulnerable, Glide;Small Arms, Light Melee;Ranged, Specialist;;;;
-Asterians 2.0;Black Talon Prime;28;L;1-2;3;4;5;1;1;3;Noh Pistol, Lightblade;Energy Shield(4), Jump Pack;Tactician(1), Construct, Vulnerable, Glide;Small Arms, Light Melee;Ranged, Command, Specialist;;4+;Stealth;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Blaine;30;C;1-2;6;3;4;1;1;3;Raskan Punch-Blade, Pistol;;Tough, Scout, Frenzy(1);Blaine, Mercs;;;;;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Blaine on Jetbike;34;C;1-5;5;3;4;2;1;4;Wicked Blades, Pistol;;Tough, Frenzy(1), Vehicle, Flight;Blaine on Jetbike, Mercs;;;;;
-Forge Fathers;Bomb Bot;8;S;1-2;;;5;1;0;0;;;Vehicle, Remote, Construct, BOOM!(5);;;;;;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Boomer, Grenadier;18;C;1-2;4;6;6;1;0;2;Pistol, Frag Grenades, Smoke Grenades, Stun Grenades;;Engineer, Volatile, Tough, BOOM!(3);Boomer Grenadier, Mercs;;;;;
-Forge Fathers;Brokkr;15;T;1-2;5;4;4;1;0;1;Burst Pistol, Forge Hammer;;Frenzy(1);Small Arms, Light Melee;Melee;;;;
-Forge Fathers;Brokkr Bike;23;V;1-4;5;5;4;2;1;2;Twin Hailstorm Rifles;;Vehicle;Bike Automatic;Ranged, Melee;;;;
-Forge Fathers;Brokkr Engineer;14;S;1-2;6;5;4;1;0;1;Burst Pistol;;Engineer;Small Arms;Ranged Specialist;;;;
-Forge Fathers;Brokkr Specialist;15;S;1-2;5;4;4;1;0;1;Burst Pistol, Forge Hammer;;Frenzy(1);Small Arms, Light Assault, Light Melee;Ranged;;;;
-Veer-Myn;Brood Mother;34;L;1-2;5;5;4;2;2;4;Chem Staff, Claws;;Tactician(2);Leader, Small Arms, Light Assault, Light Automatic, Light Explosive, Brood Mother;Ranged, Melee, Command;;4;Bodyguard;http://www.manticgames.com/ImageCache/Products/5365.1.87.87.FFFFFF.0.jpeg
-Veer-Myn 2.0;Brood Mother;38;L;1-2;5;5;4;2;2;4;Chem Staff, Claws;;Tactician(2);Leader, Small Arms, Light Assault, Light Automatic, Light Explosive, Brood Mother, Light Sniper;Ranged, Melee, Command;;4;Feral Inspiration;http://www.manticgames.com/ImageCache/Products/5365.1.87.87.FFFFFF.0.jpeg
-Forge Fathers;Chief Brokkr;26;L;1-2;5;3;4;1;0;2;Burst Pistol, Forge Hammer;;Tactician(1), Frenzy(1), Tough, Engineer;Leader, Small Arms, Light Melee;Ranged, Melee, Command;;5;Strike It Lucky;
-Marauders (Exham IV);Chief Mauhulakh;28;L;1-3;4;4;4;1;1;4;Twin Heavy Pistols;Jump Pack;Tactician(2), Tough;Chief Mauhulakh;;;4;Move it! Move it! Move it!;
-Marauders;Chief Mauhulakh;28;C;1-3;4;4;4;1;1;4;Twin Heavy Pistols;Jump Pack;Tactician(2), Tough;Chief Mauhulakh;;;;;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Chief Radgrad;40;C;1-2;5;4;4;3;1;5;Decapitator, Twin Blasters;;Tough, Frenzy(1), Solid, Tactician(1);Chief Radgrad;;;;;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Chovar Psychic;20;C;1-2;5;0;6;3;0;2;Mind Storm, Blank, Passion;Energy Shield(2);Psychic;Chovar Psychic;;;;;
-Marauders, Marauders (Exham IV);Commando;12;T;1-2;5;5;4;1;0;1;Rifle;;;Small Arms, Light Melee;Melee;;;;http://www.manticgames.com/ImageCache/Products/5098.1.87.87.FFFFFF.0.jpeg
-Marauders;Commando Captain;22;L;1-2;6;6;4;1;0;3;Pistol;;Tactician(2);Leader, Small Arms;Ranged, Command, Specialist;;3;Tactical Genius;http://www.manticgames.com/ImageCache/Products/5099.1.87.87.FFFFFF.0.jpeg
-Marauders;Commando Sergeant;18;L;1-2;5;4;4;1;0;1;Pistol;;Tactician(1);Leader, Small Arms, Light Melee;Ranged, Melee, Command;;4;By the Numbers;http://www.manticgames.com/ImageCache/Products/5113.1.87.87.FFFFFF.0.jpeg
-Marauders (Exham IV);Commando Specialist;12;T;1-2;5;5;4;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Assault;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5104.1.87.87.FFFFFF.0.jpeg
-Marauders;Commando Specialist;12;S;1-2;5;5;4;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Assault;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5104.1.87.87.FFFFFF.0.jpeg
-GCPS;Corporation Engineer;13;S;1-2;5;6;5;1;0;1;Laser Rifle (Accutek LR-45);;Engineer;Small Arms;Ranged, Specialist;;;;
-GCPS;Corporation Marine;8;T;1-2;5;6;5;1;0;1;Laser Rifle (Accutek LR-45);;;Small Arms;Ranged;;;;
-GCPS;Corporation Marine Sergeant;22;L;1-2;5;5;4;1;1;3;Pistol, Energy Gauntlet;;Tactician(1);Leader, Small Arms, Light Assault;Command, Ranged, Specialist;;6+;Overwatch;
-GCPS;Corporation Medic;13;S;1-2;5;6;5;1;0;1;Laser Rifle (Accutek LR-45);;Medic;Small Arms;Ranged, Specialist;;;;
-GCPS;Corporation Recruit;6;T;1-2;6;7;5;1;0;1;Laser Rifle (Accutek LR-45);;;Corporation Recruit;Ranged;;;;
-GCPS;Corporation Strider;30;V;1-2;5;5;4;4;3;3;;;Solid, Beast, Construct;Walker Assault, Walker Melee, Walker Automatic,  Walker Lance;Ranged;2;;;
-GCPS;Corporation Veteran;11;T;1-2;5;5;5;1;0;1;Laser Carbine (Accutek LR-32);;;Small Arms, Corporation Veteran;Ranged;;;;
-Veer-Myn;Crawler;12;T;2-3;6;5;5;1;0;1;Ray Gun;;;Small Arms;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5292.1.87.87.FFFFFF.0.jpeg
-Veer-Myn 2.0, Veer-Myn (Exham IV);Crawler;10;T;2-3;6;5;5;1;0;1;Ray Gun;;;Small Arms;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5292.1.87.87.FFFFFF.0.jpeg
-Veer-Myn;Creeper;12;S;2-3;6;5;5;1;0;1;Ray Pistol, Det Packs (Mag Lock), Det Packs (Prox Fuse);;Engineer;Small Arms, Light Melee, Light Explosive;Melee, Ranged;;;;
-Veer-Myn 2.0;Creeper;14;S;2-3;6;5;5;1;0;1;Ray Pistol, Det Packs (Mag Lock), Det Packs (Prox Fuse);;Engineer, Scout;Small Arms, Light Melee, Creeper;Ranged, Specialist;;;;
-Asterians;Cypher;15;T;1-2;3;5;5;1;1;2;Noh Rifle;;Construct, Vulnerable, Toxic Smokescreen;Small Arms, Light Automatic, Light Assault, Light Melee;Ranged;;;;
-Asterians 2.0, Asterians (Exham IV);Cypher;15;T;1-2;3;5;5;1;1;2;Noh Rifle;;Construct, Vulnerable, Toxic Smokescreen;Small Arms;Ranged;;;;
-Asterians;Cypher Prime;24;L;1-2;0;4;5;1;1;2;Lightblade;Energy Shield(4);Tactician(1), Construct, Vulnerable, Toxic Smokescreen;Leader, Small Arms, Light Melee;Melee, Command, Specialist;;5;Overcharge;
-Asterians (Exham IV);Cypher Specialist;15;T;1-2;3;5;5;1;1;2;Noh Rifle;;Construct, Vulnerable, Toxic Smokescreen;Small Arms, Light Automatic, Light Explosive, Heavy Lance, Cypher Specialist;Ranged, Specialist;;;;
-Asterians, Asterians 2.0;Cypher Specialist;15;S;1-2;3;5;5;1;1;2;Noh Rifle;;Construct, Vulnerable, Toxic Smokescreen;Light Automatic, Light Explosive, Heavy Lance, Cypher Specialist;Ranged, Specialist;;;;
-Asterians 2.0;Cypher Warden;12;T;1-2;4;4;5;1;1;1;Charge Glove (Energy Pulse), Charge Glove;;Construct, Vulnerable, Toxic Smokescreen;Small Arms, Light Melee;Specialist, Melee;;;;
-Enforcers, Enforcers (Nexus-Psi);D.O.G Drone;12;S;2-4;6+;-;6+;1;0;1;Burst Laser;;Construct, Beast;D.O.G Drone;;;;;http://www.manticgames.com/ImageCache/Products/5303.1.87.87.FFFFFF.0.jpeg
-Plague;Dr Simmonds;18;C;2-3;6;5;3;1;0;2;Rifle;;Tough, Tactician(1), Medic;Dr Simmonds;;;;;http://www.manticgames.com/ImageCache/Products/5539.1.87.87.FFFFFF.0.jpeg
-Plague (Nexus-Psi);Dr Simmonds;18;L;2-3;6;5;3;1;0;2;Rifle;;Tough, Tactician(1), Medic;Dr Simmonds;;;4;Under the Knife;http://www.manticgames.com/ImageCache/Products/5539.1.87.87.FFFFFF.0.jpeg
-Asterians;Drone;12;S;1-2;6;0;6;2;0;2;;;Construct, Beast;Platform Lance, Platform Explosive, Platform Artillery, Platform Shield;Specialist;;;;
-Rebs;Eddak P'Mera;30;C;2-3;4;5;5;1;0;3;Crossbow;;Agile, Tough, Scout, Tactician(1);Eddak P'Mera;;;;;
+Nameless;Bathomite;27;V;1-2;5+;5+;5+;4;3;3;;;Solid, Beast, Tenacious, Psychic;Light Melee, Heavy Assault, Heavy Explosive, Heavy Lance, Heavy Melee;Melee, Ranged;2;;;
+Forge Fathers (Exham IV);Bjorn Starnfall;30;L;1-2;4+;6+;3+;1;1;4;Mining Laser;;Tough, Hammerfist Orbital Drop Armour;Bjorn Starnfall;;;5+;Fist of an angry God;
+Forge Fathers;Bjorn Starnfall;30;C;1-2;4+;6+;3+;1;1;4;Mining Laser;;Tough, Hammerfist Orbital Drop Armour;Bjorn Starnfall;;;;;
+Asterians, Asterians (Exham IV);Black Talon;20;S;1-2;3+;5+;5+;1;1;2;Noh Rifle;Energy Shield(2), Jump Pack;Construct, Vulnerable, Glide;Small Arms, Light Melee;Ranged, Specialist;;;;
+Asterians (Outbreak);Black Talon;20;T;1-2;3+;5+;5+;1;1;2;Noh Rifle;Energy Shield(2), Jump Pack;Construct, Vulnerable, Glide;Small Arms, Light Melee;Ranged, Specialist;;;;
+Asterians;Black Talon Prime;28;L;1-2;3+;4+;5+;1;1;3;Noh Pistol, Lightblade;Energy Shield(4), Jump Pack;Tactician(1), Construct, Vulnerable, Glide;Small Arms, Light Melee;Ranged, Command, Specialist;;4+;Stealth;
+Mazon Labs;Black Wing Strider;30;V;1-2;5+;5+;4+;4;3;3;;;Beast, Construct, Solid;Walker Assault, Walker Melee, Walker Automatic,  Walker Lance;Ranged;2;;;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, GCPS, Nameless, Mazon Labs;Blaine;30;C;1-2;6+;3+;4+;1;1;3;Raskan Punch-Blade, Pistol;;Tough, Scout, Frenzy(1);Blaine, Mercs;;;;;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, GCPS, Nameless, Mazon Labs;Blaine on Jetbike;34;C;1-5;5+;3+;4+;2;1;4;Wicked Blades, Pistol;;Tough, Frenzy(1), Vehicle, Flight;Blaine on Jetbike, Mercs;;;;;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, GCPS, Nameless, Mazon Labs;Boomer, Grenadier;18;C;1-2;4+;6+;6+;1;0;2;Pistol, Frag Grenades, Smoke Grenades, Stun Grenades;;Engineer, Volatile, Tough, BOOM!(3);Boomer Grenadier, Mercs;;;;;
+Forge Fathers;Brokkr;15;T;1-2;5+;4+;4+;1;0;1;Burst Pistol, Forge Hammer;;Frenzy(1);Small Arms, Light Melee;Melee;;;;
+Forge Fathers;Brokkr Bike;20;V;2-4;5+;5+;4+;2;1;2;Twin Hailstorm Rifles;;Vehicle, Evade;Brokkr Bike;Ranged, Melee;;;;
+Forge Fathers;Brokkr Engineer;14;S;1-2;6+;5+;4+;1;0;1;Burst Pistol;;Engineer;Small Arms;Ranged Specialist;;;;
+Forge Fathers;Brokkr Specialist;15;S;1-2;5+;4+;4+;1;0;1;Burst Pistol, Forge Hammer;;Frenzy(1);Small Arms, Light Assault, Light Melee;Ranged;;;;
+Veer-Myn;Brood Mother;38;L;1-2;5+;5+;4+;2;2;4;Chem Staff, Claws;;Tactician(2), Tough;Leader, Small Arms, Light Assault, Light Automatic, Light Explosive, Brood Mother, Light Sniper;Ranged, Melee, Command;;4+;Feral Inspiration;http://www.manticgames.com/ImageCache/Products/5365.1.87.87.FFFFFF.0.jpeg
+Nameless, Nameless (Outbreak);Caratid;9;T;2-3;0;5+;5+;1;0;1;Claws;;Frenzy(1), Beast;Caratid, Light Melee;Melee;;;;
+Forge Fathers;Chief Brokkr;26;L;1-2;5+;3+;4+;1;0;2;Burst Pistol, Forge Hammer;;Tactician(1), Frenzy(1), Tough, Engineer, Dismantle;Leader, Small Arms, Light Melee;Ranged, Melee, Command;;5+;Strike It Lucky;
+Marauders (Exham IV);Chief Mauhulakh;28;L;1-3;4+;4+;4+;1;1;4;Twin Heavy Pistols;Jump Pack;Tactician(2), Tough;Chief Mauhulakh;;;4+;Move it! Move it! Move it!;
+Marauders;Chief Mauhulakh;28;C;1-3;4+;4+;4+;1;1;4;Twin Heavy Pistols;Jump Pack;Tactician(2), Tough;Chief Mauhulakh;;;;;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, GCPS, Nameless, Mazon Labs;Chief Radgrad;40;C;1-2;5+;4+;4+;3;1;4;Decapitator, Twin Blasters;;Tough, Frenzy(1), Solid, Tactician(1);Chief Radgrad;;;;;
+Marauders (Outbreak);Chief Radgrad;40;L;1-2;5+;4+;4+;3;1;4;Decapitator, Twin Blasters;;Tough, Frenzy(1), Solid, Tactician(1);Chief Radgrad;;;5+;Make it to Payday;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, GCPS;Chovar Psychic;20;C;1-2;5+;0;6+;3;0;2;Mind Storm, Blank, Passion;Energy Shield(2);Psychic;Chovar Psychic;;;;;
+Marauders, Marauders (Exham IV), Marauders (Outbreak);Commando;12;T;1-2;5+;5+;4+;1;0;1;Rifle;;;Small Arms, Light Melee;Melee;;;;http://www.manticgames.com/ImageCache/Products/5098.1.87.87.FFFFFF.0.jpeg
+Marauders;Commando Captain;28;L;1-2;6+;6+;4+;1;0;3;Pistol;;Tactician(2), Combat Team Training;Leader, Small Arms;Ranged, Command, Specialist;;3+;Tactical Genius;http://www.manticgames.com/ImageCache/Products/5099.1.87.87.FFFFFF.0.jpeg
+Marauders;Commando Sergeant;18;L;1-2;5+;4+;4+;1;0;2;Pistol;;Tactician(1);Leader, Small Arms, Light Melee;Ranged, Melee, Command;;4+;By the Numbers;http://www.manticgames.com/ImageCache/Products/5113.1.87.87.FFFFFF.0.jpeg
+Marauders (Exham IV);Commando Specialist;12;T;1-2;5+;5+;4+;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Assault;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5104.1.87.87.FFFFFF.0.jpeg
+Marauders, Marauders (Outbreak);Commando Specialist;12;S;1-2;5+;5+;4+;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Assault;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5104.1.87.87.FFFFFF.0.jpeg
+GCPS;Corporation Engineer;13;S;1-2;5+;6+;5+;1;0;1;Laser Rifle (Accutek LR-45);;Engineer;Small Arms;Ranged, Specialist;;;;
+GCPS, Enforcers (Outbreak);Corporation Marine;8;T;1-2;5+;6+;5+;1;0;1;Laser Rifle (Accutek LR-45);;;Small Arms;Ranged;;;;
+GCPS;Corporation Marine Sergeant;22;L;1-2;5+;5+;4+;1;1;2;Pistol, Energy Gauntlet;;Tactician(1);Leader, Small Arms, Light Assault;Command, Ranged, Specialist;;6+;Overwatch;
+GCPS, GCPS (Outbreak);Corporation Medic;13;S;1-2;5+;6+;5+;1;0;1;Laser Rifle (Accutek LR-45);;Medic;Small Arms;Ranged, Specialist;;;;
+GCPS, GCPS (Outbreak);Corporation Recruit;6;T;1-2;6+;7+;5+;1;0;1;Laser Rifle (Accutek LR-45);;;Corporation Recruit;Ranged;;;;
+GCPS;Corporation Strider;30;V;1-2;5+;5+;4+;4;3;3;;;Solid, Beast, Construct;Walker Assault, Walker Melee, Walker Automatic,  Walker Lance;Ranged;2;;;
+GCPS, GCPS (Outbreak);Corporation Veteran;11;T;1-2;5+;5+;5+;1;0;1;Laser Carbine (Accutek LR-32);;;Small Arms, Corporation Veteran;Ranged;;;;
+Veer-Myn, Veer-Myn (Exham IV), Veer-Myn (Outbreak);Crawler;10;T;2-3;6+;5+;5+;1;0;1;Ray Gun;;;Small Arms;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5292.1.87.87.FFFFFF.0.jpeg
+Veer-Myn;Creeper;14;S;2-3;6+;5+;5+;1;0;1;Ray Pistol, Det Packs (Mag Lock), Det Packs (Prox Fuse);;Engineer, Scout;Small Arms, Light Melee, Creeper;Ranged, Specialist;;;;
+Asterians, Asterians (Exham IV), Asterians (Outbreak);Cypher;15;T;1-2;3+;5+;5+;1;1;2;Noh Rifle;;Construct, Vulnerable, Toxic Smokescreen;Small Arms;Ranged;;;;
+Asterians;Cypher Prime;22;L;1-2;0;4+;5+;1;1;2;Lightblade;Energy Shield(4);Tactician(1), Construct, Vulnerable, Toxic Smokescreen;Small Arms, Light Melee;Melee, Command, Specialist;;5+;Overcharge;
+Asterians (Exham IV);Cypher Specialist;15;T;1-2;3+;5+;5+;1;1;2;Noh Rifle;;Construct, Vulnerable, Toxic Smokescreen;Light Automatic, Light Explosive, Heavy Lance, Cypher Specialist;Ranged, Specialist;;;;
+Asterians, Asterians (Outbreak);Cypher Specialist;15;S;1-2;3+;5+;5+;1;1;2;Noh Rifle;;Construct, Vulnerable, Toxic Smokescreen;Light Automatic, Light Explosive, Heavy Lance, Cypher Specialist;Ranged, Specialist;;;;
+Asterians;Cypher Warden;12;T;1-2;4+;4+;5+;1;1;1;Energy Pulse, Charge Glove;;Construct, Vulnerable, Toxic Smokescreen;Small Arms, Light Melee;Specialist, Melee;;;;
+Enforcers, Enforcers (Nexus-Psi), Enforcers (Outbreak);D.O.G Drone;12;S;2-4;6+;7+;6+;1;0;1;Burst Laser;;Construct, Beast;D.O.G Drone;;;;;http://www.manticgames.com/ImageCache/Products/5303.1.87.87.FFFFFF.0.jpeg
+Plague;Dr Simmonds;18;C;2-3;6+;5+;3+;1;0;2;Rifle;;Tough, Tactician(1), Medic;Dr Simmonds;;;;;http://www.manticgames.com/ImageCache/Products/5539.1.87.87.FFFFFF.0.jpeg
+Plague (Nexus-Psi);Dr Simmonds;18;L;2-3;6+;5+;3+;1;0;2;Rifle;;Tough, Tactician(1), Medic;Dr Simmonds;;;4+;Under the Knife;http://www.manticgames.com/ImageCache/Products/5539.1.87.87.FFFFFF.0.jpeg
+Mazon Labs;Dr. Lukas Koyner;26;L;1-2;5+;5+;4+;1;0;3;Anaesthetic Injectors, Laser Cutter;;Tactician(2), Frenzy(1), Medic;Leader, Small Arms, DrKoyner;Command, Ranged, Specialist;;6+;Fast Acting Serum;
+Rebs;Eddak P'Mera;30;C;2-3;4+;5+;5+;1;0;3;Crossbow;;Agile, Tough, Scout, Tactician(1), Stealthy;Eddak P'Mera;;;;;
+Rebs (Outbreak);Eddak P'Mera;30;L;2-3;4+;5+;5+;1;0;3;Crossbow;;Agile, Tough, Scout, Tactician(1), Stealthy;Eddak P'Mera;;;3+;He who stalks the Ghosts;
 Enforcers;Enforcer;16;T;1-2;4+;6+;4+;1;1;2;Laser Rifle;Jump Pack;;Small Arms;Ranged;;;;
 Enforcers (Exham IV);Enforcer;16;S;1-2;4+;6+;4+;1;1;2;Laser Rifle;Jump Pack;;Small Arms;Melee;;;;
-Enforcers;Enforcer Captain;34;L;1-2;4+;5+;4+;1;1;4;Pistol, Energy Gauntlet;Jump Pack;Tactician(2);Leader, Small Arms, Light Melee;Ranged, Melee, Command;;4;Stalwart;
-Enforcers, Enforcers (Nexus-Psi);Enforcer Engineer;14;S;1-2;5+;6+;4+;1;1;2;Laser Rifle;Jump Pack;Engineer;Small Arms;Ranged, Specialist;;;;http://www.manticgames.com/ImageCache/Products/5305.1.87.87.FFFFFF.0.jpeg
-Enforcers, Enforcers (Nexus-Psi);Enforcer Jet Bike;24;V;1-5;4+;6+;4+;2;1;2;DB Laser Rifle;;Vehicle, Flight;Heavy Automatic, Light Explosive;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5434.1.87.87.FFFFFF.0.jpeg
+Enforcers;Enforcer Captain;34;L;1-2;4+;5+;4+;1;1;4;Pistol, Energy Gauntlet;Jump Pack;Tactician(2);Leader, Small Arms, Light Melee;Ranged, Melee, Command;;4+;Stalwart;
+Enforcers, Enforcers (Nexus-Psi);Enforcer Engineer;14;S;1-2;5+;6+;4+;1;1;1;Laser Rifle;Jump Pack;Engineer;Small Arms;Ranged, Specialist;;;;http://www.manticgames.com/ImageCache/Products/5305.1.87.87.FFFFFF.0.jpeg
+Enforcers, Enforcers (Nexus-Psi);Enforcer Jet Bike;24;V;1-5;4+;6+;4+;2;1;2;DB Laser Rifle;;Vehicle, Flight, Evade;Heavy Automatic, Light Explosive, Support Bike;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5434.1.87.87.FFFFFF.0.jpeg
 Enforcers;Enforcer Medic;20;S;1-2;5+;6+;4+;1;1;2;Pistol;Jump Pack;Medic;Small Arms;Ranged, Specialist;;;;
 Enforcers (Exham IV);Enforcer Medic;20;S;1-2;5+;6+;4+;1;1;2;Laser Rifle;Jump Pack;Medic;Small Arms;Ranged, Specialist;;;;
-Enforcers;Enforcer Sergeant;28;L;1-2;4+;5+;4+;1;1;3;Pistol, Energy Gauntlet;Jump Pack;Tactician(1);Leader, Small Arms, Light Melee;Ranged, Melee, Command;;4;Mobile Infantry;
+Enforcers;Enforcer Sergeant;28;L;1-2;4+;5+;4+;1;1;3;Pistol, Energy Gauntlet;Jump Pack;Tactician(1);Leader, Small Arms, Light Melee;Ranged, Melee, Command;;4+;Mobile Infantry;
 Enforcers, Enforcers (Exham IV);Enforcer Specialist;16;S;1-2;4+;6+;4+;1;1;2;Laser Rifle;Jump Pack;;Small Arms, Light Automatic, Light Explosive, Light Sniper, Light Assault;Ranged;;;;
-Enforcers, Enforcers (Exham IV);Enforcer Strider;30;V;1-2;4+;5+;4+;4;3;3;;;Solid, Beast, Construct;Walker Lance, Walker Assault, Walker Melee, Walker Shield, Walker Explosive;Ranged, Melee;2;;;http://www.manticgames.com/ImageCache/Products/5272.1.87.87.FFFFFF.0.jpeg
-Forge Fathers, Forge Fathers (Exham IV);Forge Guard;30;S;1-1;4;5;4;1;2;3;Hailstorm Rifle, Forge Hammer;;Life Support, Solid;Heavy Automatic, Heavy Assault, Light Explosive, Forge Guard;Ranged;1;;;http://www.manticgames.com/ImageCache/Products/5437.1.87.87.FFFFFF.0.jpeg
-Forge Fathers;Forge Guard Huscarl;41;L;1-2;3;4;4;1;2;3;Hailstorm Rifle, Forge Hammer;;Tactician(2), Life Support, Solid;Leader, Heavy Automatic, Light Melee, Forge Guard Huscarl;Ranged, Melee, Command;;4;Starforged Armour;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Freya;16;C;1-2;5;5;4;1;0;1;Hailstorm Pistol;;Engineer;Freya;;;;;
-Marauders, Marauders (Exham IV);Goblin Sniper;14;S;1-2;5;7;5;1;0;2;Heavy Rifle;;;Small Arms, Light Sniper;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5105.1.87.87.FFFFFF.0.jpeg
-Marauders;Guntrack;13;V;1-1;5;0;6;4;1;2;;;Vehicle;Vehicle Lance, Vehicle Arillery;Ranged;1;;;http://www.manticgames.com/ImageCache/Products/5116.1.87.87.FFFFFF.0.jpeg
-Forge Fathers (Exham IV);Hammerfist Drop trooper;28;S;1-2;4;5;4;1;1;2;Inferno Drills, Forge Hammer;;Hammerfist Orbital Drop Armour;Small Arms, Hammerfist Drop Armour;Ranged, Melee;;;;
-GCPS;Heavy Weapons Squad;12;S;1-2;5;6;5;3;0;1;Laser Rifle (Accutek LR-45);;Weapons Team;Heavy Crew Served Weapon, Heavy Weapons Squad;Ranged, Specialist;;;;
-Marauders;Hulk;30;S;1-2;4;6;4;3;1;3;HEW Cannon;;Tough;Heavy Melee, Heavy Automatic, Heavy Lance, Heavy Explosive, Hulk;Ranged, Melee;;;;http://www.manticgames.com/ImageCache/Products/5117.1.87.87.FFFFFF.0.jpeg
-Asterians, Enforcers, Forge Fathers, Marauders, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Hund Rebel Bounty Hunter;27;C;1-2;3;5;3;1;1;3;Twin Pistols, Sniper Rifle;;Fire Control;Hund Rebel Bounty Hunter;;;;;http://www.manticgames.com/ImageCache/Products/4954.1.87.87.FFFFFF.0.jpeg
-Forge Fathers;Inferno Drill;16;V;1-2;4;;;2;1;2;Mining Laser;;Vehicle, Remote, Construct;Inferno Drill;;;;;
-Forge Fathers;Iron Ancestor;44;V;1-2;4;5;4;4;4;3;;;Solid, Beast, Construct, Fire Control;Walker Lance, Walker Assault, Walker Automatic, Walker Melee;Ranged, Melee;2;;;http://www.manticgames.com/ImageCache/Products/5443.1.87.87.FFFFFF.0.jpeg
-Rebs;Judwan Medic;10;S;1-2;0;0;6;1;0;1;;Energy Shield(3);Medic, Non-combatant;;Specialist, Command;;;;
-Asterians, Asterians 2.0;Kalyshi;15;T;2-3;5;3;5;1;0;2;Energy Bow, Glaive;;;Kalyshi;Melee;;;;
-Asterians 2.0;Kalyshi Dervish;22;L;2-3;5;3;5;1;0;2;Energy Bow, Razor Flails;;Tactician(1);Small Arms, Light Melee, Kalyshi;Melee, Command, Specialist;;5+;Dance of Death;
-Rebs;Kraaw Warrior;10;S;1-2;6;4;6;1;0;1;Wrist Blaster;;Glide, Scout;Small Arms, Light Assault, Light Melee;Melee;;;;
+Enforcers, Enforcers (Exham IV);Enforcer Strider;35;V;1-2;4+;5+;4+;4;3;3;;;Solid, Beast, Construct;Walker Lance, Walker Assault, Walker Melee, Walker Shield, Walker Explosive;Ranged, Melee;2;;;http://www.manticgames.com/ImageCache/Products/5272.1.87.87.FFFFFF.0.jpeg
+Forge Fathers, Forge Fathers (Exham IV);Forge Guard;28;S;1-1;4+;5+;4+;1;2;3;Hailstorm Rifle, Forge Hammer;;Life Support, Solid;Heavy Automatic, Heavy Assault, Light Explosive, Forge Guard;Ranged;1;;;http://www.manticgames.com/ImageCache/Products/5437.1.87.87.FFFFFF.0.jpeg
+Forge Fathers (Outbreak);Forge Guard;28;T;1-1;4+;5+;4+;1;2;3;Hailstorm Rifle, Forge Hammer;;Life Support, Solid;Heavy Automatic, Heavy Assault, Light Explosive, Forge Guard;Ranged;1;;;
+Forge Fathers;Forge Guard Huscarl;41;L;1-2;3+;4+;4+;1;2;4;Hailstorm Rifle, Forge Hammer;;Tactician(2), Life Support, Solid;Leader, Heavy Automatic, Light Melee, Forge Guard Huscarl;Ranged, Melee, Command;;4+;Starforged Armour;
+Forge Fathers;Forge Lord;42;L;1-2;4+;3+;4+;1;2;4;Hailstorm Rifle, Forge Hammer;;Tactician(2), Life Support, Solid, Strategist;Leader, Small Arms, Light Melee, Light Assault;Ranged, Melee, Command;;4+;Defender of the Star Realm;
+Forge Fathers;Forge Lord Ingulf Krestuersson;45;C;1-2;3+;3+;4+;1;2;5;Dragon Breath, Forge Hammer;;Tactician(3), Life Support, Solid, Combat Team Training;ForgeLordIKres;;;;;
+Forge Fathers (Outbreak);Forge Lord Ingulf Krestuersson;45;L;1-2;3+;3+;4+;1;2;5;Dragon Breath, Forge Hammer;;Tactician(3), Life Support, Solid, Combat Team Training;ForgeLordIKres;;;4+;Wings of the Dragon;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, GCPS, Nameless, Mazon Labs;Freya;16;C;1-2;5+;5+;4+;1;0;1;Hailstorm Pistol;;Engineer;Freya;;;;;
+Marauders, Marauders (Exham IV), Marauders (Outbreak);Goblin Sniper;14;S;1-2;5+;7+;5+;1;0;2;Heavy Rifle;;;Small Arms, Light Sniper;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5105.1.87.87.FFFFFF.0.jpeg
+Nameless;Goliath;48;V;1-2;5+;3+;4+;4;2;5;Crushing Maw, Lashing Tentacles;;Solid, Beast, Tenacious, Tough;Goliath;Melee;;;;
+Marauders;Goran Auxiliary;10;T;1-2;6+;5+;4+;1;0;0;Heavy Pistol;;;Small Arms, Light Melee;Melee;;;;
+Marauders;Goran Saboteur;17;S;1-2;6+;5+;4+;1;0;2;Heavy Pistol, Hrunka, Stun Grenades;;Scout;Small Arms, Light Melee, Goran Saboteur;Melee, Specialist;;;;
+Mazon Labs;Guard Commander Graves;22;L;1-2;4+;5+;5+;1;1;2;Laser Pistol, Bionic Arm;;Tactician(1), Strategist;Leader, Small Arms, Light Assault, Light Explosive, Light Marksman, Light Melee, Graves;Command, Melee, Ranged;;5+;Head of Security;
+Nameless;Gunslinger;15;S;1-2;5+;5+;5+;1;1;2;Twin Crystal Pistols;;;Small Arms, Light Assault;Ranged, Specialist;;;;
+Nameless (Outbreak);Gunslinger;15;T;1-2;5+;5+;5+;1;1;2;Twin Crystal Pistols;;;Small Arms, Light Assault;Ranged, Specialist;;;;
+Marauders;Guntrack;13;V;1-1;5+;0;6+;4;1;2;;;Vehicle;Vehicle Lance, Vehicle Arillery;Ranged;1;;;http://www.manticgames.com/ImageCache/Products/5116.1.87.87.FFFFFF.0.jpeg
+Veer-Myn (Outbreak);Hacker Half-Tail;26;L;2-3;5+;6+;3+;1;0;3;Ray Pistol, Det Packs (Mag Lock), Det Packs (Prox Fuse);;Dismantle, Tactician(1), Engineer;Hacker;;;5+;The second Mouse;
+Forge Fathers, Forge Fathers (Exham IV);Hammerfist Drop Trooper;28;S;1-2;4+;5+;4+;1;1;3;Inferno Drills, Forge Hammer;;Hammerfist Orbital Drop Armour, Life Support;Hammerfist Drop Armour;Ranged, Melee;;;;
+GCPS, GCPS (Outbreak);Heavy Weapons Squad;12;S;1-2;5+;6+;5+;3;0;1;Laser Rifle (Accutek LR-45);;Weapons Team;Heavy Crew Served Weapon, Heavy Weapons Squad;Ranged, Specialist;;;;
+Marauders;Hulk;30;S;1-2;4+;6+;4+;3;1;3;HEW Cannon;;Tough;Heavy Melee, Heavy Automatic, Heavy Lance, Heavy Explosive, Hulk;Ranged, Melee;;;;http://www.manticgames.com/ImageCache/Products/5117.1.87.87.FFFFFF.0.jpeg
+Rebs;Human Rebel Cell Leader;20;L;1-2;4+;5+;5+;1;0;2;Rifle;;Tactician(1), Logistics;Leader, Small Arms, Light Sniper, Light Melee, Light Automatic, Light Explosive;Melee, Command, Specialist;;5+;Jack of all Trades;
+Asterians, Enforcers, Forge Fathers, Marauders, Veer-Myn, Rebs, GCPS, Nameless;Hund Rebel Bounty Hunter;27;C;1-2;3+;5+;3+;1;1;3;Twin Pistols, Sniper Rifle;;Fire Control;Hund Rebel Bounty Hunter;;;;;http://www.manticgames.com/ImageCache/Products/4954.1.87.87.FFFFFF.0.jpeg
+Forge Fathers;Inferno Drill;16;V;1-2;4+;0;3+;2;1;2;Mining Laser;;Vehicle, Remote, Construct;Inferno Drill;;;;;
+Nameless;Inker;8;T;1-2;0;6+;6+;1;0;1;Teeth;;Ink Sac;Inker;;;;;
+Forge Fathers, Forge Fathers (Outbreak);Iron Ancestor;44;V;1-2;4+;5+;4+;4;4;3;;;Solid, Beast, Construct, Fire Control;Walker Lance, Walker Assault, Walker Automatic, Walker Melee;Ranged, Melee;2;;;http://www.manticgames.com/ImageCache/Products/5443.1.87.87.FFFFFF.0.jpeg
+Rebs;Judwan Medic;10;S;1-2;0;0;6+;1;0;1;;Energy Shield(3);Medic, Non-combatant;;Specialist, Command;;;;
+Asterians;Kalyshi;15;T;2-3;5+;3+;5+;1;0;2;Energy Bow, Glaive;;;Kalyshi;Melee;;;;
+Asterians;Kalyshi Dervish;22;L;2-3;5+;3+;5+;1;0;2;Energy Bow, Razor Flails;;Tactician(1);Small Arms, Light Melee, Kalyshi;Melee, Command, Specialist;;5+;Dance of Death;
+Rebs;Kraaw Rebel Cell Leader;20;L;1-2;5+;4+;6+;1;0;2;Rifle;;Tactician(1), Glide, Scout;Leader, Small Arms, Light Sniper, Light Melee, Light Automatic, Light Explosive;Melee, Command, Specialist;;5+;Jack of all Trades;
+Rebs, Rebs (Outbreak);Kraaw Warrior;10;S;1-2;6+;4+;6+;1;0;1;Wrist Blaster;;Glide, Scout;Small Arms, Light Assault, Light Melee;Melee;;;;
 Enforcers (Exham IV);Long-Range Observer N7-117;34;L;1-2;4+;6+;3+;1;1;5;Laser Rifle, Grenade Launcher, Energy Gauntlet;;Tactician(1);Long-Range Observer N7-117;;;3+;On my Mark;
 Enforcers;Long-Range Observer N7-117;34;C;1-2;4+;6+;3+;1;1;5;Laser Rifle, Grenade Launcher, Energy Gauntlet;;Tactician(1);Long-Range Observer N7-117;;;;;
-GCPS;Major-General;30;L;1-2;4;5;5;1;1;3;Pistol, Officer's Sword;;Tactician(2);Leader, Small Arms, Light Assault, Light Explosive, Light Marksman, Light Sniper;Command, Melee, Ranged;;5+;Drone Strike;
-Veer-Myn;Malignus;12;S;2-3;5;6;5;1;0;2;Ray Gun;;;Small Arms, Light Assault, Light Automatic, Light Explosive;Ranged, Specialist;;;;
-Veer-Myn 2.0;Malignus;12;S;2-3;5;6;5;1;0;2;Ray Gun;;;Small Arms, Light Assault, Light Automatic, Light Explosive, Light Sniper;Ranged, Specialist;;;;
-Marauders;Marauder Warlord;26;L;1-2;5;3;4;2;0;3;Heavy Pistol;;Tactician(1), Tough;Leader, Small Arms, Light Melee;Ranged, Melee, Command;;5;Green Rage;
-GCPS;Marine Specialist;8;S;1-2;5;6;5;1;0;1;Laser Rifle (Accutek LR-45);;;Small Arms, Light Assault, Light Explosive, Light Marksman, Light Sniper;Ranged, Specialist;;;;
-Asterians, Asterians 2.0;Marionette Specialist;10;S;1-2;5;6;5;1;0;1;Noh Rifle;;Construct;Small Arms, Light Sniper, Light Assault, Light Explosive;Ranged;;;;
-Asterians (Exham IV);Marionettes;10;T;1-2;5;6;5;1;0;1;Noh Rifle;;Construct;Small Arms;Ranged;;;;
-Asterians, Asterians 2.0;Marionettes;10;T;1-2;5;6;5;1;0;1;Noh Rifle;;Construct;Small Arms, Light Automatic, Light Assault, Light Melee;Ranged;;;;
-Veer-Myn 2.0;Master Creep;20;L;2-3;5;5;5;1;0;2;Ray Pistol, Det Packs (Mag Lock), Det Packs (Prox Fuse);;Tactician(1), Scout;Leader, Small Arms, Light Assault, Light Automatic, Light Explosive, Light Sniper;Melee, Command, Specialist;;3;Bomb Expert;
-Marauders;Mawbeast;12;T;2-3;0;4;5;1;0;1;Chainmaw;;Beast;Light Beast;;;;;http://www.manticgames.com/ImageCache/Products/5102.1.87.87.FFFFFF.0.jpeg
-Marauders;Mawbeast Bomber;14;S;2-3;0;4;5;1;0;1;Chainmaw;;Beast, BOOM!(4);Light Beast;;;;;http://www.manticgames.com/ImageCache/Products/5100.1.87.87.FFFFFF.0.jpeg
-Forge Fathers, Forge Fathers (Exham IV);Militia;14;T;1-2;5;5;4;1;0;1;Hailstorm Rifle;;;Small Arms;Ranged;;;;
-Plague;Murder Birds;19;S;2-3;0;4;5;2;0;2;;;Tough, Beast, Flight, Scout;;;;;;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Nastanza;25;C;1-2;3;6;5;1;0;2;Sniper Rifle;Energy Shield(1);;Nastanza;;;;;
-Asterians (Exham IV);Nem-Rath;30;L;1-2;4;6;5;1;1;3;Noh Pistol, Charge Glove (Energy Pulse), Charge Glove;;Tactician(1);Nem-Rath;;;3;The Balance is All;
-Asterians, Asterians 2.0;Nem-Rath;30;C;1-2;4;6;5;1;1;3;Noh Pistol, Charge Glove (Energy Pulse), Charge Glove;;Tactician(1);Nem-Rath;;;;;
-Veer-Myn;Night Terror with Scythes;26;S;2-3;0;4;5;2;0;3;Scythes;;Rampage, Beast;Beast Melee;;;;;http://www.manticgames.com/ImageCache/Products/5453.1.87.87.FFFFFF.0.jpeg
-Veer-Myn 2.0, Veer-Myn (Exham IV);Night Terror with Scythes;26;S;2-3;0;4;5;3;0;3;Scythes;;Rampage, Beast, Tough;Beast Melee;;;;;http://www.manticgames.com/ImageCache/Products/5453.1.87.87.FFFFFF.0.jpeg
-Veer-Myn;Night Terror with Spitter;26;S;2-3;5;5;5;2;0;3;Heavy Chem Spitter;;Rampage, Beast;Beast Ranged;;;;;http://www.manticgames.com/ImageCache/Products/5454.1.87.87.FFFFFF.0.jpeg
-Veer-Myn 2.0, Veer-Myn (Exham IV);Night Terror with Spitter;26;S;2-3;5;5;5;3;0;3;Heavy Chem Spitter;;Rampage, Beast, Tough;Beast Ranged;;;;;http://www.manticgames.com/ImageCache/Products/5454.1.87.87.FFFFFF.0.jpeg
-Veer-Myn;Nightmare;23;S;1-2;6;4;4;2;0;2;;;;Small Arms, Light Melee, Light Assault, Heavy Assault, Heavy Melee;Melee, Ranged;2;;;http://www.manticgames.com/ImageCache/Products/5450.1.87.87.FFFFFF.0.jpeg
-Veer-Myn 2.0, Veer-Myn (Exham IV);Nightmare;17;S;1-2;6;4;4;2;1;2;;;;Small Arms, Light Melee, Light Assault, Heavy Assault, Heavy Melee;Melee, Ranged;2;;;http://www.manticgames.com/ImageCache/Products/5450.1.87.87.FFFFFF.0.jpeg
-Asterians, Enforcers, Forge Fathers, Marauders, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Ogre Terminator;28;C;1-2;5;6;4;3;1;3;Mini-Gun, Shank Bayonet;;Solid;Ogre Terminator;;;;;
-Asterians;Overseer;30;L;1-2;5;5;5;1;1;3;Charge Glove (Energy Pulse), Charge Glove, Staff of Command;Energy Shield(3);Tactician(2);Leader, Small Arms, Light Melee, Overseer;Ranged, Melee, Command;;4;Wheels Within Wheels;
-Asterians 2.0;Overseer;30;L;1-2;5;5;5;1;1;3;Charge Glove (Energy Pulse), Charge Glove, Staff of Command;Energy Shield(3);Tactician(2);Leader, Small Arms, Light Melee, Overseer;Ranged, Melee, Command;;4;Wheels Within Wheels;
-Enforcers, Enforcers (Nexus-Psi), Enforcers (Exham IV);Pathfinder;15;T;1-2;4+;6+;4+;1;0;2;Tag Rifle;;Scout;Small Arms, Recon;Ranged;;;;
-Enforcers;Pathfinder Sergeant;22;L;1-2;4+;5+;4+;1;0;3;Pistol, Tag Rifle;;Tactician(1);Leader, Light Melee, Heavy Melee, Pathfinder Sergeant;Ranged, Melee, Command;;3;Target Acquisition;
-Enforcers, Enforcers (Nexus-Psi), Enforcers (Exham IV);Pathfinder Specialist;15;S;1-2;4+;6+;4+;1;0;2;Tag Rifle;;Scout;Small Arms, Recon, Light Sniper;Ranged, Specialist;;;;
+Enforcers, GCPS;Lt. Commander Roca;43;C;1-2;4+;5+;4+;1;1;4;LSX Sniper Rifle, Pistol, Energy Gauntlet;Jump Pack;Tactician(2), Scout;LtComRoca;;;;;
+Enforcers (Outbreak);Lt. Commander Roca;43;L;1-2;4+;5+;4+;1;1;4;LSX Sniper Rifle, Pistol, Energy Gauntlet;Jump Pack;Tactician(2), Scout;LtComRoca;;;3+;Precision Shot;
+GCPS;Major Loren Chard;30;C;1-2;4+;5+;5+;1;1;3;Genling 340 Frontiersman;;Tactician(1);MajLoChard;;;;;
+GCPS (Outbreak);Major Loren Chard;30;L;1-2;4+;5+;5+;1;1;3;Genling 340 Frontiersman;;Tactician(1);MajLoChard;;;5+;Five Rounds Rapid;
+GCPS;Major-General;30;L;1-2;4+;5+;5+;1;1;3;Pistol, Officer's Sword;;Tactician(2);Leader, Small Arms, Light Assault, Light Explosive, Light Marksman, Light Sniper;Command, Melee, Ranged;;5+;Drone Strike;
+Veer-Myn, Veer-Myn (Outbreak);Malignus;12;S;2-3;5+;6+;5+;1;0;1;Ray Gun;;;Small Arms, Light Assault, Light Automatic, Light Explosive, Light Melee, Light Sniper;Ranged, Specialist;;;;
+Marauders;Marauder Warlord;26;L;1-2;5+;3+;4+;2;0;3;Heavy Pistol;;Tactician(1), Tough, Frenzy(1);Leader, Small Arms, Light Melee;Ranged, Melee, Command;;5+;Green Rage;
+GCPS, Enforcers (Outbreak), GCPS (Outbreak);Marine Specialist;8;S;1-2;5+;6+;5+;1;0;1;Laser Rifle (Accutek LR-45);;;Small Arms, Light Assault, Light Explosive, Light Marksman, Light Sniper;Ranged, Specialist;;;;
+Asterians;Marionette Specialist;10;S;1-2;5+;6+;5+;1;0;1;Noh Rifle;;Construct;Light Sniper, Light Assault, Light Explosive, Marionette Specialist;Ranged;;;;
+Asterians, Asterians (Exham IV);Marionettes;10;T;1-2;6+;6+;5+;1;0;1;Noh Rifle;;Construct;Small Arms, Light Melee;Ranged;;;;
+Veer-Myn;Master Creep;20;L;2-3;5+;5+;5+;1;0;2;Ray Pistol, Det Packs (Mag Lock), Det Packs (Prox Fuse);;Tactician(1), Scout;Leader, Small Arms, Light Assault, Light Automatic, Light Explosive, Light Sniper;Melee, Command, Specialist;;3+;Bomb Expert;
+Marauders, Marauders (Outbreak);Mawbeast;12;T;2-3;0;4+;5+;1;0;1;Chainmaw;;Beast;Light Beast;;;;;http://www.manticgames.com/ImageCache/Products/5102.1.87.87.FFFFFF.0.jpeg
+Marauders;Mawbeast Bomber;14;S;2-3;0;4+;5+;1;0;1;Chainmaw;;Beast, BOOM!(4);Light Beast;;;;;http://www.manticgames.com/ImageCache/Products/5100.1.87.87.FFFFFF.0.jpeg
+Mazon Labs;Mazon Lab Technician;6;T;1-2;6+;5+;6+;1;0;1;Shock Baton;;;MLabTech;Melee, Specialist;;;;
+Mazon Labs;Mazon Security Guard;8;T;1-2;5+;6+;5+;1;0;1;Laser Rifle;;;Small Arms;Ranged;;;;
+Forge Fathers, Forge Fathers (Exham IV);Militia;14;T;1-2;5+;5+;4+;1;0;1;Hailstorm Rifle;;;Small Arms;Ranged;;;;
+Plague;Murder Birds;19;S;2-3;0;4+;5+;2;0;2;;;Tough, Beast, Flight, Scout;;;;;;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, GCPS, Nameless, Mazon Labs;Nastanza;25;C;1-2;3+;6+;5+;1;0;2;Sniper Rifle;Energy Shield(1);;Nastanza;;;;;
+Nameless;Needle Drones;10;S;2-3;6+;0;5+;1;0;1;Psychic Charge;;Beast, Stealthy, Agile, Psychic;NeedleDrone;Specialist;;;;
+Asterians (Exham IV);Nem-Rath;30;L;1-2;4+;6+;5+;1;1;3;Noh Pistol, Energy Pulse, Charge Glove;;Tactician(1);Nem-Rath;;;3+;The Balance is All;
+Asterians;Nem-Rath;30;C;1-2;4+;6+;5+;1;1;3;Noh Pistol, Energy Pulse, Charge Glove;;Tactician(1);Nem-Rath;;;;;
+Veer-Myn, Veer-Myn (Exham IV);Night Terror with Scythes;26;S;2-3;0;4+;3+;3;0;3;Scythes;;Rampage, Beast, Tough;Beast Melee;;;;;http://www.manticgames.com/ImageCache/Products/5453.1.87.87.FFFFFF.0.jpeg
+Veer-Myn, Veer-Myn (Exham IV);Night Terror with Spitter;26;S;2-3;5+;5+;5+;3;0;3;Heavy Chem Spitter;;Rampage, Beast, Tough;Beast Ranged;;;;;http://www.manticgames.com/ImageCache/Products/5454.1.87.87.FFFFFF.0.jpeg
+Veer-Myn, Veer-Myn (Exham IV), Veer-Myn (Outbreak);Nightmare;17;S;1-2;6+;4+;4+;2;1;2;;;;Small Arms, Light Melee, Light Assault, Heavy Assault, Heavy Melee;Melee, Ranged;2;;;http://www.manticgames.com/ImageCache/Products/5450.1.87.87.FFFFFF.0.jpeg
+Nameless, Nameless (Outbreak);Ogre;35;S;1-2;0;3+;4+;3;2;3;Massive Claws;Defender Shield;Solid, Beast, Tenacious;Ogre;Melee;;;;
+Asterians, Enforcers, Forge Fathers, Marauders, Veer-Myn, Rebs, GCPS, Nameless;Ogre Terminator;28;C;1-2;5+;6+;4+;3;1;3;Mini-Gun, Shank Bayonet;;Solid;Ogre Terminator;;;;;
+Mazon Labs;Organic Data Storage Unit;24;S;1-2;5+;5+;6+;3;0;2;Mind Blast, Mind Terror, Hyperkinesis, Electrical Discharge;Energy Shield(2);Psychic, Frenzy(1);DataStorage;Specialist;;;;
+Asterians;Overseer;30;L;1-2;5+;5+;5+;1;1;3;Energy Pulse, Charge Glove, Staff of Command;Energy Shield(3);Tactician(2);Leader, Small Arms, Light Melee, Overseer;Ranged, Melee, Command;;4+;Wheels Within Wheels;
+Forge Fathers (Outbreak);Padd;7;T;2-3;0;4+;6+;1;0;1;Teeth;;Tenacious, Faithful Companion;Padd;;;;;
+Enforcers, Enforcers (Nexus-Psi), Enforcers (Exham IV), Enforcers (Outbreak);Pathfinder;15;T;1-2;4+;6+;4+;1;0;2;Tag Rifle;;Scout;Small Arms, Recon;Ranged;;;;
+Enforcers;Pathfinder Sergeant;22;L;1-2;4+;5+;4+;1;0;3;Pistol, Tag Rifle;;Tactician(1);Leader, Light Melee, Recon, Pathfinder Sergeant;Ranged, Melee, Command;;3+;Target Acquisition;
+Enforcers, Enforcers (Nexus-Psi), Enforcers (Exham IV), Enforcers (Outbreak);Pathfinder Specialist;15;S;1-2;4+;6+;4+;1;0;2;Tag Rifle;;Scout;Small Arms, Recon, Light Sniper;Ranged, Specialist;;;;
 Enforcers;Peacekeeper;30;S;1-2;4+;5+;4+;2;2;3;DB Laser Rifle, Energy Gauntlet;Jump Pack;;Light Melee, Heavy Assault,  Heavy Automatic;Ranged, Melee;;;;
-Enforcers;Peacekeeper Captain;44;L;1-2;4+;5+;3+;2;2;4;DB Laser Rifle, Wristblade;Jump Pack;Tactician(2);Leader, Light Melee, Heavy Melee, Peacekeeper Captain;Ranged, Melee, Command;;4;Bastion;http://www.manticgames.com/ImageCache/Products/5299.1.87.87.FFFFFF.0.jpeg
-Plague, Plague (Nexus-Psi);Plague Enforcer;20;S;1-2;5;5;5;1;1;2;Experimental Weapon;Jump Pack;;Heavy Automatic, Heavy Assault, Heavy Explosive;Ranged, Melee;;;;
-Plague, Plague (Nexus-Psi);Plague Strider;30;V;1-2;6;4;4;4;3;3;;;Solid, Beast, Construct;Walker Automatic, Walker Melee, Walker Lance;Ranged, Melee;2;;;http://www.manticgames.com/ImageCache/Products/5273.1.87.87.FFFFFF.0.jpeg
-Plague;Plague Swarm;20;S;1-2;0;3;5;2;0;2;Acid Bite;;Agile, Tough, Beast;Acid Bite Swarm;;;;;
-Plague, Plague (Nexus-Psi);Plague Teraton;24;S;1-2;0;4;5;3;1;3;Claws;;Teleport, Tough;Claws Teraton;Melee, Specialist;;;;http://www.manticgames.com/ImageCache/Products/5590.1.87.87.FFFFFF.0.jpeg
-Plague;Plague Weapons Team;12;T;1-2;5+;6+;5+;3;0;1;Rifle;;Weapons Team;Heavy Crew Served Weapon, Plague Weapons Team;Ranged, Specialist;;;;
-Veer-Myn;Progenitor;30;L;2-3;5;5;4;1;0;3;Ray Gun;;Tactician(1);Leader, Small Arms, Light Assault, Light Automatic, Light Explosive;Melee, Command, Specialist;;3;Surge;
-Veer-Myn 2.0;Progenitor;20;L;2-3;5;5;4;1;0;2;Ray Gun;;Tactician(1);Leader, Small Arms, Light Assault, Light Automatic, Light Explosive, Light Sniper;Melee, Command, Specialist;;4;Surge;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;Project Oberon;28;C;1-2;4;4;4;1;0;3;Needler, Toxic Shards;Energy Shield(1);Scout, Weight of Fire(1);Project Oberon;;;;;
-GCPS;Ranger;16;S;1-2;5;5;5;1;1;2;Laser Rifle (Accutek LR-45);;Aerial Deployment;Small Arms, Light Assault, Light Marksman, Light Sniper;Ranged, Specialist;;;;
-GCPS;Ranger Sergeant;30;L;1-2;4;5;4;1;1;3;Pistol, Energy Gauntlet;;Tactician(1), Aerial Deployment;Leader, Small Arms, Light Assault;Command, Ranged, Specialist;;5+;Eye in the Sky;
-Veer-Myn, Veer-Myn 2.0, Veer-Myn (Exham IV);Rat Swarm;14;S;2-3;0;5;5;2;0;2;Teeth and Claws;;Agile, Beast, Tough;Rat Swarm;;;;;
-Rebs;Rebel Commander;28;L;1-2;3;5;5;1;0;3;Long Rifle;;Tactician(2);Leader, Small Arms, Light Sniper, Light Melee, Light Automatic;Ranged, Command, Melee;;4;Always Short;
-Rebs;Rebel Grogan;12;S;1-2;5;5;4;1;0;1;Rifle;;;Small Arms, Heavy Automatic, Heavy Lance;Ranged, Melee;;;;
-Rebs;Rebel Sniper;16;S;1-2;4;6;6;1;0;2;Sniper Rifle;;;Small Arms, Light Sniper;Ranged, Specialist;;;;
-Rebs (Exham IV);Rebel Sniper;16;S;1-2;4;6;6;1;0;2;Sniper Rifle;;;Small Arms, Light Sniper;Ranged, Specialist;;;;
-Rebs;Rebel Sorak;10;T;1-2;5;6;5;1;0;1;Blaster;;;Small Arms, Light Melee, Light Automatic;Ranged, Specialist;;;;
-Rebs;Rebel Specialist;7;S;1-2;5;6;6;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Assault, Light Explosive, Light Artillery;Ranged, Specialist;;;;
-Rebs;Rebel Strider;30;V;1-2;5;5;4;4;3;3;;;Solid, Beast, Construct;Walker Assault, Walker Melee, Walker Automatic,  Walker Lance;Ranged, Melee;2;;;
-Rebs, Rebs (Exham IV);Rebel Teraton;30;S;1-2;6;4;5;3;1;3;Ceremonial Blades, Light Grenade Launcher, Hand Flamer;;Teleport, Tough;Small Arms, Light Melee, Light Assault, Rebel Teraton;Melee, Command;;;;
-Rebs, Rebs (Exham IV);Rebel Trooper;7;T;1-2;5;6;6;1;0;1;Rifle;;;Small Arms, Light Melee;Ranged;;;;
-Rebs;Rebel Yndij;12;T;1-2;5;5;6;1;0;1;Rifle;;Agile, Scout;Small Arms, Light Melee;Melee;;;;
-Rebs;Rebs Weapons Team;11;T;1-2;5+;6+;6+;3;0;1;Rifle;;Weapons Team;Heavy Crew Served Weapon, Rebs Weapons Team;Ranged, Specialist;;;;
-Enforcers (Nexus-Psi);Recon Drone;0;T;2-3;5;6;4;1;0;0;Electro-Shock, Rangefinder;;Scout, Beast, Construct;Recon Drone;;;;;
-Enforcers, GCPS;Recon Unit N32-19;30;C;1-2;4;6;3;1;0;3;Tag Rifle;Holo Sight;Tactician(1), Recon Drone;Recon;;;;;
-Enforcers (Nexus-Psi);Recon Unit N32-19;30;L;1-2;4;6;3;1;0;3;Tag Rifle;Holo Sight;Tactician(1), Recon Drone;Recon;;;3;Rope-a-dope;
-Rebs, Rebs (Exham IV);Rin Nomad;17;S;1-2;4;5;5;1;1;2;Twin Pistols, Twin Knives;;;Small Arms, Light Sniper, Light Automatic, Light Melee, Rin Nomad;Ranged, Melee;;;;
-Marauders;Ripper Mauler;25;S;1-2;0;4;4;3;1;3;Buzzsaw, Ram;;Tactician(1), Solid;Heavy Melee;Melee, Command;;;;http://www.manticgames.com/ImageCache/Products/5107.1.87.87.FFFFFF.0.jpeg
-Marauders;Ripper Rainmaker;25;S;1-2;5;6;4;3;1;3;Rotary Cannon, HEW Beamer, Frag Launchers, Rocket Salvo;;Solid;Heavy Explosive, Heavy Lance, Heavy Automatic;Ranged, Specialist;;;;http://www.manticgames.com/ImageCache/Products/5108.1.87.87.FFFFFF.0.jpeg
-Veer-Myn, Veer-Myn 2.0;Rumbler Weapon Platform;16;V;1-2;5;0;5;4;0;2;;;Vehicle;Vehicle Assault, Vehicle Automatic;Ranged;1;;;http://www.manticgames.com/ImageCache/Products/5370.1.87.87.FFFFFF.0.jpeg
-Enforcers, GCPS;Sergeant Howlett;27;C;1-2;5;4;3;1;1;3;Claws, Pistol;Jump Pack;Tough, Frenzy(1), Rampage;Sergeant Howlett, Mercs;;;;;
-Asterians, Asterians 2.0, Asterians (Exham IV);Sky Razor;20;V;2-4;4;0;5;2;0;2;Twin Noh Rifles;;Vehicle, Flight;Bike Automatic;Ranged;;;;
-Marauders, Marauders (Exham IV);Sky Scraper;17;S;1-3;5;5;4;1;0;2;Rifle;Jump Pack;;Small Arms, Light Automatic, Light Melee;Ranged, Melee;;;;http://www.manticgames.com/ImageCache/Products/4955.1.87.87.FFFFFF.0.jpeg
-Rebs;Sorak Swordspawn;12;S;1-2;-;6+;5+;1;0;1;Combat Blades;;Frenzy(1);Light Melee;Melee, Specialist;;;;
-Rebs;Sphyr Lancer;18;S;1-2;4;6;5;1;0;2;Mata Magma Lance;;;Small Arms, Light Assault, Light Automatic, Sphyr Lancer;Ranged;;;;
-Rebs (Exham IV);Sphyr Lancer;18;T;1-2;4;6;5;1;0;2;Mata Magma Lance;;;Small Arms, Light Assault, Light Automatic, Sphyr Lancer;Ranged;;;;
-Plague;Stage 1A;36;L;1-1;0;3;4;3;2;4;Talons;;Tactician(2), Tough;Talons ;Melee, Command;;5;Mutation;http://www.manticgames.com/ImageCache/Products/5547.1.87.87.FFFFFF.0.jpeg
-Plague;Stage 2A;16;T;1-2;0;4;4;2;1;2;;;Rampage;;Melee;;;;http://www.manticgames.com/ImageCache/Products/5555.1.87.87.FFFFFF.0.jpeg
-Plague (Nexus-Psi);Stage 2A;16;S;1-2;0;4;4;2;1;2;;;Rampage;;Melee;;;;http://www.manticgames.com/ImageCache/Products/5555.1.87.87.FFFFFF.0.jpeg
-Plague;Stage 2B Burster;11;S;1-2;0;5;4;2;1;1;;;BOOM!(4);;;;;;
-Plague, Plague (Nexus-Psi);Stage 3A;10;T;2-3;6;5;5;1;0;1;Rifle;;;Small Arms;Melee;;;;http://www.manticgames.com/ImageCache/Products/5593.1.87.87.FFFFFF.0.jpeg
-Plague;Stage 3A 'General';16;L;2-3;6;5;5;1;0;2;Rifle;;Tactician(1);Leader, Small Arms;Ranged, Melee, Command;;4;Infection;http://www.manticgames.com/ImageCache/Products/5559.1.87.87.FFFFFF.0.jpeg
-Plague, Plague (Nexus-Psi);Stage 3A 'Specialist';10;S;2-3;5;6;5;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Explosive, Light Artillery;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5558.1.87.87.FFFFFF.0.jpeg
-Plague;Stage 3D 'Hellhound';6;T;2-3;0;5;5;1;0;1;;;Beast;;;;;;http://www.manticgames.com/ImageCache/Products/5563.1.87.87.FFFFFF.0.jpeg
-Plague, Plague (Nexus-Psi);Stage 3Z 'Zombie';6;T;1-2;0;5;6;1;0;0;;;Horde,  Vulnerable;;;;;;http://www.manticgames.com/ImageCache/Products/5566.1.87.87.FFFFFF.0.jpeg
-Veer-Myn;Stalker;10;T;2-3;7;4;5;1;0;1;Ray Pistol;;;Small Arms, Light Melee;Melee;;;;
-Veer-Myn 2.0, Veer-Myn (Exham IV);Stalker;8;T;2-3;7;4;5;1;0;1;Ray Pistol;;;Small Arms, Light Melee;Melee;;;;
-Forge Fathers, Forge Fathers (Exham IV);Steel Warrior;18;T;1-2;4;5;4;1;1;2;Hailstorm Rifle;;;Small Arms;Ranged;;;;
-Forge Fathers;Steel Warrior Huscarl;32;L;1-2;3;4;4;1;1;3;Hailstorm Pistol, Forge Hammer;;Tactician(1);Leader, Small Arms, Light Mele, Steel Warrior Huscarl;Ranged, Melee, Command;;4;Too Stubborn To Die;
-Forge Fathers (Exham IV);Steel Warrior Specialist;18;S;1-2;4;5;4;1;1;2;Hailstorm Rifle;;;Small Arms, Light Automatic, Light Explosive, Light Assault, Heavy Automatic;Ranged;;;;
-Forge Fathers;Steel Warrior Specialist (Stormrage Veteran);18;S;1-2;4;5;4;1;1;2;Hailstorm Rifle;;;Small Arms, Light Automatic, Light Explosive, Light Assault, Heavy Automatic, Heavy Assault;Ranged;;;;
-Marauders;Stuntbot;26;V;1-2;5;6;5;4;3;3;;;Solid, Beast, Construct, Frenzy(1);Walker Assault, Walker Melee;Ranged;3;;;
-Asterians 2.0;Support Drone;9;S;1-2;5;0;6;1;0;1;;;Construct, Beast;Platform Camouflage, Platform Communications, Platform Automatic;;;;;
-Rebs, Rebs (Exham IV);Survey Drone;7;S;2-3;0;0;4;1;0;0;;;Construct, Agile;;;;;;
-Veer-Myn, Veer-Myn 2.0;Tangle;25;V;1-1;5;6;5;4;1;3;Visions of Glory, Visions of Death;;Psychic, Vehicle;Tangle;Command;;;;
-Asterians, Enforcers, Forge Fathers, Marauders, Asterians 2.0, GCPS;Teraton Shock Trooper;20;C;1-2;5;5;4;2;1;2;ARC Launcher, Mace;;Teleport;Teraton Shock Trooper;;;;;http://www.manticgames.com/ImageCache/Products/4956.1.87.87.FFFFFF.0.jpeg
-Rebs;Teraton Shock Trooper;20;S;1-2;5;5;4;2;1;2;ARC Launcher, Mace;;Teleport;Teraton Shock Trooper;;;;;http://www.manticgames.com/ImageCache/Products/4956.1.87.87.FFFFFF.0.jpeg
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;The Helfather;22;C;1-2;5;6;5;1;2;2;Xerxes Cannon;;;The Helfather;;;;;
-Veer-Myn (Exham IV);The Piper;34;L;2-3;6;5;4;1;1;3;Shock Baton;;Agile, Tough, Swarm Lord;The Piper;;;4;Tide of Vermin;
-Veer-Myn, Veer-Myn 2.0;The Piper;34;C;2-3;6;5;4;1;1;3;Shock Baton;;Agile, Tough, Swarm Lord;The Piper;;;;;
-Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, GCPS, Veer-Myn 2.0;The Survivor;22;C;1-2;5;5;3;1;1;2;Sawn-Off, Pistol;;Tough, Weight of Fire(1), Frenzy(1);The Survivor, Mercs;;;;;
-Forge Fathers;Thor Pattern Iron Ancestor;55;V;1-2;0;5;4;4;4;5;Twin Forge Hammers;;Solid, Beast, Construct, Frenzy(2);Thor Pattern Iron Ancestor;Melee;;;;
-Veer-Myn 2.0;Tunnel Runner;30;V;1-4;5;5;5;4;1;3;Twin Chem Spitter, Scythes;;Vehicle;Vehicle Automatic, Tunnel Runner;Ranged;;;;
-Asterians 2.0;Weapons Drone;12;S;1-2;5;0;6;2;0;2;;;Construct, Beast;Platform Lance, Platform Explosive, Platform Artillery, Platform Shield;Specialist;;;;
-Asterians, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Asterians 2.0, Veer-Myn 2.0;Wrath;32;C;1-2;3;3;3;1;1;3;Fusion Gauntlet, Praetorian Pistol, Blade of the Seven;;Rampage, Tough;Wrath;;;;;
-Rebs;Yindij Infiltrator Commander;20;L;1-2;5;4;5;1;0;2;Rifle;;Tactician(1), Agile, Scout;Leader, Small Arms, Light Sniper, Light Melee, Light Automatic;Melee, Command, Specialist;;5;Hide in Shadows;
-Rebs, Rebs (Exham IV);Zee Scavenger;6;S;1-2;7;7;6;1;0;0;Pistol;;Scavenger;Small Arms;Specialist;;;;
+Enforcers;Peacekeeper Captain;44;L;1-2;4+;5+;3+;2;2;4;DB Laser Rifle, Wristblade;Jump Pack;Tactician(2);Leader, Light Melee, Heavy Melee, Peacekeeper Captain;Ranged, Melee, Command;;4+;Bastion;http://www.manticgames.com/ImageCache/Products/5299.1.87.87.FFFFFF.0.jpeg
+Plague, Plague (Nexus-Psi);Plague Enforcer;20;S;1-2;5+;5+;5+;1;1;2;Experimental Weapon;Jump Pack;;Heavy Automatic;Ranged, Melee;;;;
+Plague, Plague (Nexus-Psi);Plague Strider;30;V;1-2;6+;4+;4+;4;3;3;;;Solid, Beast, Construct;Walker Automatic, Walker Melee, Walker Lance;Ranged, Melee;2;;;http://www.manticgames.com/ImageCache/Products/5273.1.87.87.FFFFFF.0.jpeg
+Plague, Plague (Outbreak);Plague Swarm;20;S;1-2;0;3+;5+;2;0;2;Acid Bite;;Agile, Tough, Beast;Acid Bite Swarm;;;;;
+Plague, Plague (Nexus-Psi);Plague Teraton;24;S;1-2;0;4+;5+;3;1;3;Claws;;Teleport, Tough;Claws Teraton;Melee, Specialist;;;;http://www.manticgames.com/ImageCache/Products/5590.1.87.87.FFFFFF.0.jpeg
+Mazon Labs, Plague (Outbreak);Plague Victim;11;S;2-3;0;4+;5+;1;0;1;;;Beast, Frenzy(1), Rampage;;Melee;;;;
+Veer-Myn;Progenitor;20;L;2-3;5+;5+;4+;1;0;2;Ray Gun;;Tactician(1);Leader, Small Arms, Light Assault, Light Automatic, Light Explosive, Light Sniper;Melee, Command, Specialist;;4+;Surge;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, GCPS, Nameless, Mazon Labs;Project Oberon;28;C;1-2;4+;4+;4+;1;0;3;Needler, Toxic Shards;Energy Shield(1);Scout;Project Oberon;;;;;
+Nameless (Outbreak);Project Oberon;28;L;1-2;4+;4+;4+;1;0;3;Needler, Toxic Shards;Energy Shield(1);Scout;Project Oberon;;;5+;Toxic Slime;
+Nameless;Psychotroid;36;L;1-2;5+;6+;5+;2;1;4;Psychic Subjugation, Psychic Surge, Psychic Stunning;;Resilient(2), Beast, Tenacious, Psychic, Tactician(2);Psychotroid;Ranged, Command;;4+;Aura of Dread;
+GCPS;Ranger;16;S;1-2;5+;5+;5+;1;1;2;Laser Rifle (Accutek LR-45);;Aerial Deployment;Small Arms, Light Assault, Light Marksman, Light Sniper;Ranged, Specialist;;;;
+GCPS;Ranger Sergeant;30;L;1-2;4+;5+;4+;1;1;3;Pistol, Energy Gauntlet;;Tactician(1), Aerial Deployment;Leader, Small Arms, Light Assault;Command, Ranged, Specialist;;5+;Eye in the Sky;
+Veer-Myn, Veer-Myn (Exham IV), Veer-Myn (Outbreak);Rat Swarm;14;S;2-3;0;5+;5+;2;0;2;Teeth and Claws;;Agile, Beast, Tough;Rat Swarm;;;;;
+Rebs;Rebel Commander;28;L;1-2;3+;5+;5+;1;0;3;Long Rifle;;Tactician(2);Leader, Small Arms, Light Sniper, Light Melee, Light Automatic;Ranged, Command, Melee;;4+;Always Short;
+Rebs;Rebel Grogan;13;S;1-2;5+;5+;4+;1;0;1;Rifle;;Resilient(1);Small Arms, Heavy Automatic, Heavy Lance;Ranged, Melee;;;;
+Rebs, Rebs (Exham IV), Rebs (Outbreak);Rebel Sniper;16;S;1-2;4+;6+;6+;1;0;2;Sniper Rifle;;;Small Arms, Light Sniper;Ranged, Specialist;;;;
+Rebs;Rebel Sorak;10;T;1-2;5+;6+;5+;1;0;1;Blaster;;;Small Arms, Light Melee, Light Automatic;Ranged, Specialist;;;;
+Rebs, Rebs (Outbreak);Rebel Specialist;7;S;1-2;5+;6+;6+;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Assault, Light Explosive;Ranged, Specialist;;;;
+Rebs;Rebel Strider;30;V;1-2;5+;5+;4+;4;3;3;;;Solid, Beast, Construct;Walker Assault, Walker Melee, Walker Automatic,  Walker Lance;Ranged, Melee;2;;;
+Rebs, Rebs (Exham IV);Rebel Teraton;30;S;1-2;6+;4+;5+;3;1;3;Ceremonial Blades, Light Grenade Launcher, Hand Flamer;;Teleport, Tough;Small Arms, Light Melee, Light Assault, Rebel Teraton, Light Assault;Melee, Command;;;;
+Rebs, Rebs (Exham IV), Rebs (Outbreak);Rebel Trooper;7;T;1-2;5+;6+;6+;1;0;1;Rifle;;;Small Arms, Light Melee;Ranged;;;;
+Rebs, Rebs (Outbreak);Rebel Yndij;12;T;1-2;5+;5+;6+;1;0;1;Rifle;;Agile, Scout;Small Arms, Light Melee;Melee;;;;
+Rebs;Rebs Weapons Team;11;S;1-2;5+;6+;6+;3;0;1;Rifle;;Weapons Team;Heavy Crew Served Weapon, Rebs Weapons Team;Ranged, Specialist;;;;
+Enforcers (Nexus-Psi);Recon Drone;0;T;2-3;5+;6+;4+;1;0;0;Electro-Shock, Rangefinder;;Scout, Beast, Construct;Recon Drone;;;;;
+Enforcers (Nexus-Psi);Recon Unit N32-19;30;L;1-2;4+;6+;3+;1;0;3;Tag Rifle;Holo Sight;Tactician(1), Recon Drone;Recon;;;3+;Rope-a-dope;
+Enforcers, GCPS;Recon Unit N32-19;30;C;1-2;4+;6+;3+;1;0;3;Tag Rifle;Holo Sight;Tactician(1), Recon Drone;Recon;;;;;
+Nameless, Nameless (Outbreak);Rifleman;15;S;1-2;5+;6+;5+;1;1;2;Crystal Rifle;;Resilient(1);Small Arms, Light Sniper;Ranged;;;;
+Rebs, Rebs (Exham IV), Rebs (Outbreak);Rin Nomad;17;S;1-2;4+;5+;5+;1;1;2;Twin Pistols, Twin Knives;;;Small Arms, Light Sniper, Light Automatic, Light Melee, Rin Nomad;Ranged, Melee;;;;
+Rebs;Rin Rebel Cell Leader;20;L;1-2;4+;5+;5+;1;1;2;Rifle;;Tactician(1);Leader, Small Arms, Light Sniper, Light Melee, Light Automatic, Light Explosive;Melee, Command, Specialist;;5+;Jack of all Trades;
+Marauders, Marauders (Outbreak);Ripper Mauler;25;S;1-2;0;4+;4+;3;1;3;Buzzsaw, Ram;;Tactician(1), Solid;Heavy Melee;Melee, Command;;;;http://www.manticgames.com/ImageCache/Products/5107.1.87.87.FFFFFF.0.jpeg
+Marauders, Marauders (Outbreak);Ripper Rainmaker;27;S;1-2;5+;6+;4+;3;1;3;Rotary Cannon, HEW Beamer, Frag Launchers, Rocket Salvo;;Solid;Heavy Explosive, Heavy Lance, Heavy Automatic;Ranged, Specialist;;;;http://www.manticgames.com/ImageCache/Products/5108.1.87.87.FFFFFF.0.jpeg
+Veer-Myn;Rumbler Weapon Platform;16;V;1-2;5+;0;5+;4;0;2;;;Vehicle;Vehicle Assault, Vehicle Automatic;Ranged;1;;;http://www.manticgames.com/ImageCache/Products/5370.1.87.87.FFFFFF.0.jpeg
+Nameless, Nameless (Outbreak);Scuttler;8;T;1-2;0;5+;6+;1;0;1;Claws;;Beast, Horde, Agile, Evade;Scuttler;;;;;
+Enforcers, GCPS;Sergeant Howlett;27;C;1-2;5+;4+;3+;1;1;3;Claws, Pistol;Jump Pack;Tough, Frenzy(1), Rampage;Sergeant Howlett, Mercs;;;;;
+Asterians, Asterians (Exham IV), Asterians (Outbreak);Sky Razor;22;V;2-4;4+;6+;5+;2;1;2;Twin Noh Rifles;;Vehicle, Flight, Evade;Bike Automatic;Ranged;;;;
+Marauders, Marauders (Exham IV);Sky Scraper;15;S;1-3;5+;5+;4+;1;0;2;Rifle;Jump Pack;;Small Arms, Light Automatic, Light Melee;Ranged, Melee;;;;http://www.manticgames.com/ImageCache/Products/4955.1.87.87.FFFFFF.0.jpeg
+Rebs, Rebs (Outbreak);Sorak Swordspawn;13;S;1-2;0;5+;5+;1;0;1;Combat Blades;;Frenzy(1);Light Melee;Melee, Specialist;;;;
+Rebs;Sphyr Lancer;18;S;1-2;4+;6+;5+;1;0;2;Mata Magma Lance;;;Small Arms, Light Assault, Light Automatic, Sphyr Lancer;Ranged;;;;
+Rebs (Exham IV);Sphyr Lancer;18;T;1-2;4+;6+;5+;1;0;2;Mata Magma Lance;;;Small Arms, Light Assault, Light Automatic, Sphyr Lancer;Ranged;;;;
+Rebs;Sphyr Rebel Cell Leader;20;L;1-2;4+;6+;5+;1;0;2;Mata Magma Lance;;Tactician(1);Leader, Small Arms, Light Sniper, Light Melee, Light Automatic, Light Explosive, SphyrRCL;Melee, Command, Specialist;;5+;Jack of all Trades;
+Plague;Stage 1A 'Lord';36;L;1-1;0;3+;4+;3;2;4;Talons;;Tactician(2), Tough;Talons ;Melee, Command;;5+;Mutation;http://www.manticgames.com/ImageCache/Products/5547.1.87.87.FFFFFF.0.jpeg
+Plague (Nexus-Psi);Stage 2A;16;S;1-2;0;4+;4+;2;1;2;;;Rampage, Frenzy(1);;Melee;;;;http://www.manticgames.com/ImageCache/Products/5555.1.87.87.FFFFFF.0.jpeg
+Plague, Plague (Outbreak);Stage 2A 'Leaper';16;T;1-2;0;4+;4+;2;1;2;;;Rampage, Frenzy(1);;Melee;;;;http://www.manticgames.com/ImageCache/Products/5555.1.87.87.FFFFFF.0.jpeg
+Plague;Stage 2B Burster;11;S;1-2;0;5+;4+;2;1;1;;;BOOM!(4);;;;;;
+Plague (Outbreak);Stage 2B Burster;11;T;1-2;0;5+;4+;2;1;1;;;BOOM!(4);;;;;;
+Plague;Stage 3A 'General';16;L;2-3;6+;5+;5+;1;0;2;Rifle;;Tactician(1);Leader, Small Arms;Ranged, Melee, Command;;4+;Infection;http://www.manticgames.com/ImageCache/Products/5559.1.87.87.FFFFFF.0.jpeg
+Plague, Plague (Nexus-Psi);Stage 3A 'Ghoul';10;T;2-3;6+;5+;5+;1;0;1;Rifle;;;Small Arms;Melee;;;;http://www.manticgames.com/ImageCache/Products/5593.1.87.87.FFFFFF.0.jpeg
+Plague;Stage 3A 'Lieutenant';18;L;2-3;5+;5+;5+;1;0;2;Rifle;;Tactician(1);Leader, Small Arms;Ranged, Melee, Command;;5+;Thirst for Blood;
+Plague, Plague (Nexus-Psi);Stage 3A 'Specialist';10;S;2-3;5+;6+;5+;1;0;1;Rifle;;;Small Arms, Light Automatic, Light Explosive, Light Artillery;Ranged;;;;http://www.manticgames.com/ImageCache/Products/5558.1.87.87.FFFFFF.0.jpeg
+Plague;Stage 3A Weapon Team;12;S;1-2;5+;6+;5+;3;0;1;Rifle;;Weapons Team;Heavy Crew Served Weapon, Plague Weapons Team;Ranged, Specialist;;;;
+Plague, Plague (Outbreak);Stage 3D 'Hellhound';6;T;2-3;0;5+;5+;1;0;1;;;Beast;;;;;;http://www.manticgames.com/ImageCache/Products/5563.1.87.87.FFFFFF.0.jpeg
+Plague, Plague (Nexus-Psi);Stage 3Z 'Zombie';6;T;1-2;0;5+;6+;1;0;0;;;Horde,  Vulnerable, Beast;;;;;;http://www.manticgames.com/ImageCache/Products/5566.1.87.87.FFFFFF.0.jpeg
+Veer-Myn, Veer-Myn (Exham IV), Veer-Myn (Outbreak);Stalker;8;T;2-3;7+;4+;5+;1;0;1;Ray Pistol;;;Stalker;;;;;
+Forge Fathers, Forge Fathers (Exham IV), Forge Fathers (Outbreak);Steel Warrior;18;T;1-2;4+;5+;4+;1;1;2;Hailstorm Rifle;;;Small Arms;Ranged;;;;
+Forge Fathers;Steel Warrior Huscarl;32;L;1-2;3+;4+;4+;1;1;3;Hailstorm Pistol, Forge Hammer;;Tactician(1);Leader, Small Arms, Light Mele, Steel Warrior Huscarl;Ranged, Melee, Command;;4+;Too Stubborn To Die;
+Forge Fathers (Exham IV), Forge Fathers (Outbreak);Steel Warrior Specialist;18;S;1-2;4+;5+;4+;1;1;2;Hailstorm Rifle;;;Small Arms, Light Automatic, Light Explosive, Light Assault, Heavy Automatic;Ranged;;;;
+Forge Fathers;Steel Warrior Specialist (Stormrage Veteran);18;S;1-2;4+;5+;4+;1;1;2;Hailstorm Rifle;;;Small Arms, Light Automatic, Light Explosive, Light Assault, Heavy Automatic, Heavy Assault;Ranged;;;;
+Marauders;Stuntbot;26;V;1-2;5+;5+;5+;4;3;3;;;Solid, Beast, Construct, Frenzy(1);Walker Assault, Walker Melee;Ranged;3;;;
+Plague;Subject 901;24;C;1-2;0;4+;4+;2;1;3;Teeth and Claws;;Rampage, Tactician(1), Frenzy(1);Sub901;;;;;
+Plague (Outbreak);Subject 901;24;L;1-2;0;4+;4+;2;1;3;Teeth and Claws;;Rampage, Tactician(1), Frenzy(1);Sub901;;;5+;Active Strain;
+Asterians;Support Drone;9;S;1-2;5+;0;6+;1;0;1;;;Construct, Beast;Platform Camouflage, Platform Communications, Platform Automatic;;;;;
+Rebs, Rebs (Exham IV);Survey Drone;7;S;2-3;0;0;4+;1;0;0;;;Construct, Agile, Evade;;;;;;
+Veer-Myn;Tangle;25;V;1-1;5+;6+;5+;4;1;3;Visions of Glory, Visions of Death, Hysteria;;Psychic, Vehicle;Tangle;Command;;;;
+Asterians;Ten 'Ur-Go;35;C;1-2;3+;4+;4+;1;1;4;Noh Pistol, Singing Blade;Energy Shield(4), Jump Pack;Constuct Vulnerable, Glide, Frenzy(2);TenUrGo;;;;;
+Asterians (Outbreak);Ten 'Ur-Go;35;L;1-2;3+;4+;4+;1;1;4;Noh Pistol, Singing Blade;Energy Shield(4), Jump Pack;Constuct Vulnerable, Glide, Frenzy(2);TenUrGo;;;4+;Memories of the Clade;
+Rebs;Teraton Shock Trooper;20;S;1-2;5+;5+;4+;2;1;2;ARC Launcher, Mace;;Teleport;Teraton Shock Trooper;Ranged, Melee;;;;http://www.manticgames.com/ImageCache/Products/4956.1.87.87.FFFFFF.0.jpeg
+Asterians, Enforcers, Forge Fathers, Marauders, GCPS, Nameless;Teraton Shock Trooper;20;C;1-2;5+;5+;4+;2;1;2;ARC Launcher, Mace;;Teleport;Teraton Shock Trooper;;;;;http://www.manticgames.com/ImageCache/Products/4956.1.87.87.FFFFFF.0.jpeg
+Nameless;The Blight;30;L;1-2;5+;4+;4+;2;1;3;Ravenous Maw, Corrosive Blast;;Tactician(1), Resilient(1), Tough;Light Melee, Light Assault, Heavy Assault;Command, Ranged, Melee;;5+;Caustic Spittle;
+Nameless;The Fear;30;L;1-2;4+;5+;4+;1;1;3;Shoulder-mounted Phaser, Ripping Tentacles;;Tactician(1), Resilient(1);Small Arms, Light Melee, TheFear;Command, Ranged, Melee;;5+;Creeping Fear;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, GCPS, Nameless, Mazon Labs;The Helfather;22;C;1-2;5+;6+;5+;1;2;2;Xerxes Cannon;;;The Helfather;;;;;
+Veer-Myn (Exham IV);The Piper;34;L;2-3;6+;5+;4+;1;1;3;Shock Baton;;Agile, Tough, Swarm Lord;The Piper;;;4+;Tide of Vermin;
+Veer-Myn;The Piper;34;C;2-3;6+;5+;4+;1;1;3;Shock Baton;;Agile, Tough, Swarm Lord;The Piper;;;;;
+Asterians, Enforcers, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, GCPS, Nameless, Mazon Labs;The Survivor;22;C;1-2;5+;5+;3+;1;1;2;Sawn-Off, Pistol;;Tough, Weight of Fire(1), Frenzy(1);The Survivor, Mercs;;;;;
+Nameless;The Terror;24;S;2-3;0;4+;5+;2;1;3;Ravenous Maw;;Resilient(1), Agile, Stealthy;TheTerror;Melee;;;;
+Forge Fathers, Forge Fathers (Outbreak);Thor Pattern Iron Ancestor;55;V;1-2;0;5+;4+;4;4;5;Twin Forge Hammers;;Solid, Beast, Construct, Frenzy(2);Thor Pattern Iron Ancestor;Melee;;;;
+Forge Fathers, Forge Fathers (Outbreak);Thorgarim;17;T;1-2;5+;4+;4+;1;1;2;2-handed Heat Hammer;;;Light Melee;Melee, Specialist;;;;
+Forge Fathers;Thorgarim Huscarl;30;L;1-2;4+;3+;4+;1;1;3;Hailstorm Rifle, 2-handed Heat Hammer;;Tactician(1);Small Arms, Light Melee;Melee, Command, Specialist;;5+;Thunder Strike;
+Veer-Myn;Tunnel Runner;30;V;1-4;5+;5+;5+;4;1;3;Twin Chem Spitter, Scythes;;Vehicle;Vehicle Automatic, Tunnel Runner;Ranged;;;;
+Mazon Labs;Urbana Black Wing Engineer;12;S;1-2;5+;6+;5+;1;0;1;Pistol;;Engineer;Small Arms;Ranged, Specialist;;;;
+Mazon Labs;Urbana Black Wing Marine;11;T;1-2;5+;5+;5+;1;0;1;Laser Carbine;;;UBWingMarine;Ranged;;;;
+Mazon Labs;Urbana Black Wing Medic;12;S;1-2;5+;6+;5+;1;0;1;Pistol;;Medic;Small Arms;Ranged, Specialist;;;;
+Mazon Labs;Urbana Black Wing Ranger;16;S;1-2;5+;5+;5+;1;1;2;Laser Carbine;;;UBWingMarine;Ranged, Specialist;;;;
+Mazon Labs;Urbana Black Wing Specialist;11;S;1-2;5+;5+;5+;1;1;1;Laser Carbine;;;Small Arms, Light Assault, Light Explosive, Light Marksman;Ranged, Specialist;;;;
+Asterians, Asterians (Outbreak);Weapons Drone;12;S;1-2;5+;0;6+;2;0;1;;;Construct, Beast;Platform Lance, Platform Explosive, Platform Artillery, Platform Shield;;;;;
+Asterians, Forge Fathers, Marauders, Plague, Veer-Myn, Rebs, Nameless;Wrath;32;C;1-2;3+;3+;3+;1;1;3;Fusion Gauntlet, Praetorian Pistol, Blade of the Seven;;Rampage, Tough;Wrath;;;;;
+Rebs;Yindij Infiltrator Commander;20;L;1-2;5+;4+;5+;1;0;2;Rifle;;Tactician(1), Agile, Scout;Leader, Small Arms, Light Sniper, Light Melee, Light Automatic;Melee, Command, Specialist;;5+;Hide in Shadows;
+Rebs, Rebs (Exham IV);Zee Scavenger;6;S;1-2;7+;7+;6+;1;0;0;Pistol;;Scavenger;Small Arms;Specialist;;;;
