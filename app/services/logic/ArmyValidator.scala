@@ -212,12 +212,12 @@ class ArmyValidator(messages: Messages) {
       val mappedDefaultWeapons = amountTroop.troop.defaultWeapons.count(defaultWeapon => amountTroop.troop.weapons.find(_.name == defaultWeapon.name).isDefined)
 
       if (mappedDefaultWeapons != amountTroop.troop.weapons.length) {
-        if (fightWeapons.length > 1) {
+        if (fightWeapons.length > 1 && amountTroop.troop.baseStats.hardPoints == 0) {
           result += messages("validate.toMuchFightWeapons", amountTroop.troop.name, fightWeapons.length)
         }
 
         val shootWeapons = amountTroop.troop.weapons.filter(weapon => weapon.shootRange != 0 && weapon.free == false)
-        if (shootWeapons.length > 1) {
+        if (shootWeapons.length > 1 && amountTroop.troop.baseStats.hardPoints == 0) {
           result += messages("validate.toMuchShootWeapons", amountTroop.troop.name, shootWeapons.length)
         }
       }
