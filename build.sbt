@@ -3,7 +3,7 @@ import sbt.Path
 
 name := """deadzone-roster"""
 
-version := "1.5-SNAPSHOT"
+version := "1.5"
 
 maintainer := "Sebastian Hardt"
 
