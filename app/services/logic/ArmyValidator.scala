@@ -207,10 +207,14 @@ class ArmyValidator(messages: Messages) {
     val result: ListBuffer[String] = ListBuffer()
 
     army.troopsWithAmount.foreach(amountTroop => {
+
+      // get all fight weapons which are not free
       val fightWeapons = amountTroop.troop.weapons.filter(weapon => weapon.shootRange == 0 && weapon.free == false)
 
+      // check if the weapons are the default weapons and count them,
       val mappedDefaultWeapons = amountTroop.troop.defaultWeapons.count(defaultWeapon => amountTroop.troop.weapons.find(_.name == defaultWeapon.name).isDefined)
 
+      // only validate when not the default weapons
       if (mappedDefaultWeapons != amountTroop.troop.weapons.length) {
         if (fightWeapons.length > 1 && amountTroop.troop.baseStats.hardPoints == 0) {
           result += messages("validate.toMuchFightWeapons", amountTroop.troop.name, fightWeapons.length)

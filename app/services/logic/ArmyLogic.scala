@@ -101,18 +101,29 @@ object ArmyLogic {
   /**
     * Updates the troop with the given items and weapons
     *
-    * @param uuid the uuid of the troop
-    * @param army the army where to update the troop at
+    * @param uuid    the uuid of the troop
+    * @param army    the army where to update the troop at
     * @param weapons thr weapons the troop has
-    * @param items the items the troop has
+    * @param items   the items the troop has
     * @return
     */
   def updateTroop(uuid: String, army: ArmyDto, weapons: List[String], items: List[String]): ArmyDto = {
     val currentTroop = getTroopFromArmy(uuid, army)
-    val newWeapons = weapons.map(weaponName => {
-      val weaponDo = WeaponDAO.findByNameAndFactionNameAndAllowedTypes(weaponName, currentTroop.troop.faction, currentTroop.troop.allowedWeaponTypes)
-      weaponDoToWeaponDto(weaponDo.get)
-    })
+
+    // find the weapons
+    val newWeapons = weapons
+      .map(weaponName => {
+        val weaponDo = WeaponDAO.findByNameAndFactionNameAndAllowedTypes(weaponName, currentTroop.troop.faction, currentTroop.troop.allowedWeaponTypes)
+        weaponDoToWeaponDto(weaponDo.get)
+      })
+      // remove weapons which ared multiple times send by the frontend but have a linkedname
+      // For example: Dr. Lukas Koyner has two Anaesthetic Injectors when submitting the fronted edit modal we get two og those
+      .groupBy(weapon => {
+        weapon.name + weapon.linkedName
+      }).
+      map(_._2.head)
+      .toList
+
 
     val newItems = items.map(itemName => {
       val itemDo = ItemDAO.findByNameAndFactionName(itemName, currentTroop.troop.faction)
@@ -369,7 +380,8 @@ case class ArmyDto(name: String,
 
 /**
   * An abilitiy
-  * @param name name of the ability
+  *
+  * @param name       name of the ability
   * @param defaultVal the default value the ability has
   */
 case class ArmyAbilityDto(name: String,
@@ -378,7 +390,8 @@ case class ArmyAbilityDto(name: String,
 
 /**
   * Dto for holding a troop and how many of this troop are in the army
-  * @param troop the troop itself
+  *
+  * @param troop  the troop itself
   * @param amount how many are in the army
   */
 case class ArmyAmountTroopDto(troop: ArmyTroopDto,
@@ -386,19 +399,20 @@ case class ArmyAmountTroopDto(troop: ArmyTroopDto,
 
 /**
   * This is the Dto fo a  troop in an army
-  * @param uuid the uuid of the troop in the army
-  * @param faction the faction the troop belongs to
-  * @param name the name of the troop
-  * @param modelType the type of the model
-  * @param baseStats the basic stats of the model
-  * @param abilities the abilities the model has
-  * @param weapons the weapons the troop is equipped with
-  * @param items the items the troop is equipped with
+  *
+  * @param uuid               the uuid of the troop in the army
+  * @param faction            the faction the troop belongs to
+  * @param name               the name of the troop
+  * @param modelType          the type of the model
+  * @param baseStats          the basic stats of the model
+  * @param abilities          the abilities the model has
+  * @param weapons            the weapons the troop is equipped with
+  * @param items              the items the troop is equipped with
   * @param allowedWeaponTypes the allowed weapon types the troop may select
-  * @param recon the recon value of the troop
-  * @param armySpecial the army special of the troop
-  * @param defaultWeapons the default weapons load out of the troop
-  * @param imageUrl the url of the image of the troop
+  * @param recon              the recon value of the troop
+  * @param armySpecial        the army special of the troop
+  * @param defaultWeapons     the default weapons load out of the troop
+  * @param imageUrl           the url of the image of the troop
   */
 case class ArmyTroopDto(uuid: String,
                         faction: String,
@@ -429,15 +443,16 @@ case class ArmyTroopBaseStatsDto(basePoints: Int,
 
 /**
   * A Weapon in the army
-  * @param name the name of the weapon in the army
-  * @param points how many points is the weapon worth in the army
-  * @param shootRange how far can this weapon shoot
-  * @param armorPircing how many armor pircing does this weapon have
+  *
+  * @param name          the name of the weapon in the army
+  * @param points        how many points is the weapon worth in the army
+  * @param shootRange    how far can this weapon shoot
+  * @param armorPircing  how many armor pircing does this weapon have
   * @param victoryPoints how many victory points does this weapon adds to the troop
-  * @param hardPoints how many hardpoints does this weapon require
-  * @param abilities abilities this weapon has
-  * @param free when true this weapon can be added free
-  * @param linkedName when set the weapon must be used with the other weapons with the same linked name
+  * @param hardPoints    how many hardpoints does this weapon require
+  * @param abilities     abilities this weapon has
+  * @param free          when true this weapon can be added free
+  * @param linkedName    when set the weapon must be used with the other weapons with the same linked name
   */
 case class ArmyWeaponDto(name: String,
                          points: Int,
@@ -451,9 +466,10 @@ case class ArmyWeaponDto(name: String,
 
 /**
   * This is the dto for holding an army item
-  * @param name the name of the item
-  * @param points how many points this item is worth
-  * @param rarity how rare is this item
+  *
+  * @param name     the name of the item
+  * @param points   how many points this item is worth
+  * @param rarity   how rare is this item
   * @param noUpdate when true this item cannot be added or removed from a troop
   */
 case class ArmyItemDto(name: String,
@@ -464,5 +480,5 @@ case class ArmyItemDto(name: String,
 case class ArmyTroopWeaponsItemsDto(weapons: Map[String, List[ArmyWeaponDto]], items: List[ArmyItemDto], troop: ArmyTroopDto)
 
 case class ArmyPdfInfosDto(abilities: List[String],
-                        items: List[String],
-                        reconVals: List[(String, Int, String)])
+                           items: List[String],
+                           reconVals: List[(String, Int, String)])
