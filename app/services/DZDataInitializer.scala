@@ -15,10 +15,10 @@ import play.api.Configuration
   * @author Sebastian Hardt (s.hardt@micromata.de)
   */
 @Singleton
-class DataInitializer @Inject()(configuration: Configuration,
-                                           csvFactionsImporter: CSVArmyImporter,
-                                           csvWeaponImporter: CSVWeaponImporter,
-                                           csvItemsImporter: CSVItemsImporter) {
+class DZDataInitializer @Inject()(configuration: Configuration,
+                                  csvFactionsImporter: CSVArmyImporter,
+                                  csvWeaponImporter: CSVWeaponImporter,
+                                  csvItemsImporter: CSVItemsImporter) {
 
 
   startImportingData()
@@ -68,6 +68,10 @@ class DataInitializer @Inject()(configuration: Configuration,
     * Imports all factions and its troops, weapons, abilities and items.
     */
   def importFactions(): Unit = {
+
+    Logger.info("#######################################")
+    Logger.info("### Start Parsing the DeadZone data ###")
+    Logger.info("#######################################")
 
     FactionDAO.clearAll()
     AbilityDAO.clearAll()

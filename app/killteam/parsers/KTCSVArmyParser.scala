@@ -1,6 +1,6 @@
 package killteam.parsers
 
-import deadzone.parsers.{CSVDataEmptyException, CSVDataParser, CSVWeaponImporter}
+import deadzone.parsers.{CSVDataEmptyException, CSVDataParser}
 import javax.inject.{Inject, Singleton}
 import play.api.Configuration
 
@@ -9,7 +9,7 @@ import play.api.Configuration
   * Parses the armies.csv from the killteam csv and generates the data from it
   */
 @Singleton
-class KTCSVArmyParser @Inject()(configuration: Configuration, csvWeaponImporter: CSVWeaponImporter) extends CSVDataParser(configuration) {
+class KTCSVArmyParser @Inject()(configuration: Configuration) extends CSVDataParser(configuration) {
 
 
   /**

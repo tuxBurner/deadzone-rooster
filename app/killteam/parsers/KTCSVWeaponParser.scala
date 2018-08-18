@@ -51,7 +51,7 @@ class KTCSVWeaponParser @Inject()(configuration: Configuration, csvWeaponImporte
   }
 
   /**
-    * Parse a single line of the csv to a KTCsvTroopDto
+    * Parse a single line of the csv to a [[KTCsvWeaponDto]]
     *
     * @param lineData the data of the csv in a map
     * @return
@@ -59,7 +59,7 @@ class KTCSVWeaponParser @Inject()(configuration: Configuration, csvWeaponImporte
   private def parseLineMap(lineData: Map[String, String]): Option[KTCsvWeaponDto] = {
 
     try {
-      val parsedTroop = KTCsvWeaponDto(faction = getDataFromLine(CSV_HEADER_FRACTION, lineData),
+      val parsedWeapon = KTCsvWeaponDto(faction = getDataFromLine(CSV_HEADER_FRACTION, lineData),
         name = getDataFromLine(CSV_HEADER_NAME, lineData),
         points = getIntFromLine(CSV_HEADER_POINTS, lineData),
         range = getIntFromLine(CSV_HEADER_RANGE, lineData),
@@ -70,7 +70,7 @@ class KTCSVWeaponParser @Inject()(configuration: Configuration, csvWeaponImporte
         linkedWeapon = getDataFromLine(CSV_HEADER_LINKED_WEAPON, lineData, true)
       )
       //Logger.info(s"Parsed troop: $parsedTroop from line $lineData")
-      Some(parsedTroop)
+      Some(parsedWeapon)
 
     } catch {
       case c: CSVDataEmptyException => None

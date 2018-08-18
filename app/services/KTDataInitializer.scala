@@ -4,7 +4,7 @@ import better.files
 import deadzone.parsers.CSVDataParser
 import io.methvin.better.files.RecursiveFileMonitor
 import javax.inject.{Inject, Singleton}
-import killteam.parsers.{KTCSVArmyParser, KTCSVWeaponParser}
+import killteam.parsers.{KTCSVArmyParser, KTCSVItemParser, KTCSVLoadoutParser}
 import play.Logger
 import play.api.Configuration
 
@@ -16,7 +16,9 @@ import play.api.Configuration
 @Singleton
 class KTDataInitializer @Inject()(configuration: Configuration,
                                   armyParser: KTCSVArmyParser,
-                                  weaponParser: KTCSVWeaponParser) {
+                                  weaponParser: KTCSVItemParser,
+                                  itemParser: KTCSVItemParser,
+                                  loadoutParser: KTCSVLoadoutParser) {
 
 
   startImportingData()
@@ -39,9 +41,8 @@ class KTDataInitializer @Inject()(configuration: Configuration,
       val watcher = new RecursiveFileMonitor(better.files.File(externalCfgFolder.get.getAbsolutePath)) {
 
 
-
         override def onModify(file: files.File, count: Int): Unit = {
-          if(file.name.endsWith(".csv")) {
+          if (file.name.endsWith(".csv")) {
             logAndReload(s"$file got changed reloading factions")
           }
         }
@@ -66,6 +67,10 @@ class KTDataInitializer @Inject()(configuration: Configuration,
     * Imports all factions and its troops, weapons, abilities and items.
     */
   def importData(): Unit = {
+
+    Logger.info("#######################################")
+    Logger.info("### Start Parsing the Killteam data ###")
+    Logger.info("#######################################")
 
     /*FactionDAO.clearAll()
     AbilityDAO.clearAll()
@@ -99,6 +104,9 @@ class KTDataInitializer @Inject()(configuration: Configuration,
 
     armyParser.refresh()
     weaponParser.refresh()
+    itemParser.refresh()
+    loadoutParser.refresh()
+
 
     Logger.info("Done parsing and importing csv data files")
   }
