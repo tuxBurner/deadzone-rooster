@@ -103,7 +103,9 @@ class DZDataInitializer @Inject()(configuration: Configuration,
       })
     })
 
-    Logger.info("Done parsing and importing csv data files")
+    Logger.info("--------------------------------------")
+    Logger.info("--- Done Parsing the DeadZone data ---")
+    Logger.info("--------------------------------------")
   }
 
 }

@@ -5,6 +5,7 @@ import deadzone.parsers.CSVDataParser
 import io.methvin.better.files.RecursiveFileMonitor
 import javax.inject.{Inject, Singleton}
 import killteam.parsers.{KTCSVArmyParser, KTCSVItemParser, KTCSVLoadoutParser, KTCSVSpecialistsParser}
+import models.killteam.KTFactionDao
 import play.Logger
 import play.api.Configuration
 
@@ -101,16 +102,31 @@ class KTDataInitializer @Inject()(configuration: Configuration,
       soldierDtos.foreach(soldierDto => {
         TroopDAO.addFromCSVSoldierDto(soldierDto, factionDo)
       })
-    })                                                      */
+    })
 
+                                 */
+
+    // clear the database
+    KTFactionDao.deleteAll()
+
+    // read all data from the csvs
     armyParser.refresh()
     weaponParser.refresh()
     itemParser.refresh()
     loadoutParser.refresh()
     specialistsParser.refresh()
 
+    // repopulate the data
+    armyParser.getFactions.foreach(factionName => {
+      // add the faction to the database
+      KTFactionDao.findOrAddFaction(factionName)
+    })
 
-    Logger.info("Done parsing and importing csv data files")
+
+    Logger.info("--------------------------------------")
+    Logger.info("--- Done Parsing the Killteam data ---")
+    Logger.info("--------------------------------------")
+
   }
 
 }

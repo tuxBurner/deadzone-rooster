@@ -52,6 +52,18 @@ class KTCSVArmyParser @Inject()(configuration: Configuration) extends CSVDataPar
   private val CSV_HEADER_KEY_WORDS = "Schlüsselwörter"
 
 
+  /**
+    * Gets all factions from the troops
+    * @return
+    */
+  def getFactions() : Set[String] = {
+    troops.map(_.faction).toSet
+  }
+
+
+  /**
+    * Refreshs the data
+    */
   def refresh(): Unit = {
     troops = importTroopsFromCsvs()
   }

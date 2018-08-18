@@ -20,7 +20,7 @@ object FactionDAO {
     * Clears all factions from this 
     */
   def clearAll(): Unit = {
-    factions.clear();
+    factions.clear()
   }
 
 
