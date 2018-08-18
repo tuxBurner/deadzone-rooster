@@ -4,7 +4,7 @@ import better.files
 import deadzone.parsers.CSVDataParser
 import io.methvin.better.files.RecursiveFileMonitor
 import javax.inject.{Inject, Singleton}
-import killteam.parsers.{KTCSVArmyParser, KTCSVItemParser, KTCSVLoadoutParser}
+import killteam.parsers.{KTCSVArmyParser, KTCSVItemParser, KTCSVLoadoutParser, KTCSVSpecialistsParser}
 import play.Logger
 import play.api.Configuration
 
@@ -18,7 +18,8 @@ class KTDataInitializer @Inject()(configuration: Configuration,
                                   armyParser: KTCSVArmyParser,
                                   weaponParser: KTCSVItemParser,
                                   itemParser: KTCSVItemParser,
-                                  loadoutParser: KTCSVLoadoutParser) {
+                                  loadoutParser: KTCSVLoadoutParser,
+                                  specialistsParser: KTCSVSpecialistsParser) {
 
 
   startImportingData()
@@ -106,6 +107,7 @@ class KTDataInitializer @Inject()(configuration: Configuration,
     weaponParser.refresh()
     itemParser.refresh()
     loadoutParser.refresh()
+    specialistsParser.refresh()
 
 
     Logger.info("Done parsing and importing csv data files")

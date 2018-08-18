@@ -1,6 +1,6 @@
 import com.google.inject.AbstractModule
 import deadzone.parsers.{CSVArmyImporter, CSVItemsImporter, CSVWeaponImporter}
-import killteam.parsers.{KTCSVArmyParser, KTCSVItemParser, KTCSVLoadoutParser}
+import killteam.parsers.{KTCSVArmyParser, KTCSVItemParser, KTCSVLoadoutParser, KTCSVSpecialistsParser}
 import services.{DZDataInitializer, KTDataInitializer}
 
 /**
@@ -25,6 +25,7 @@ class Module extends AbstractModule {
     bind(classOf[KTCSVItemParser]).asEagerSingleton()
     bind(classOf[KTCSVItemParser]).asEagerSingleton()
     bind(classOf[KTCSVLoadoutParser]).asEagerSingleton()
+    bind(classOf[KTCSVSpecialistsParser]).asEagerSingleton()
     bind(classOf[KTDataInitializer]).asEagerSingleton()
   }
 
