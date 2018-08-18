@@ -1,5 +1,4 @@
 import com.typesafe.sbt.packager.docker.ExecCmd
-import sbt.Path
 
 name := """deadzone-roster"""
 
@@ -10,7 +9,7 @@ maintainer := "Sebastian Hardt"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-scalaVersion := "2.12.4"
+scalaVersion := "2.12.6"
 
 libraryDependencies ++= Seq(
   ehcache,

@@ -1,11 +1,10 @@
 package services
 
-import javax.inject.{Inject, Singleton}
-
 import better.files
-import deadzone.parsers.{CSVDataParser, CSVArmyImporter, CSVItemsImporter, CSVWeaponImporter}
+import deadzone.parsers.CSVDataParser
 import io.methvin.better.files.RecursiveFileMonitor
-import models._
+import javax.inject.{Inject, Singleton}
+import killteam.parsers.{KTCSVArmyParser, KTCSVWeaponParser}
 import play.Logger
 import play.api.Configuration
 
@@ -15,10 +14,9 @@ import play.api.Configuration
   * @author Sebastian Hardt (s.hardt@micromata.de)
   */
 @Singleton
-class DataInitializer @Inject()(configuration: Configuration,
-                                           csvFactionsImporter: CSVArmyImporter,
-                                           csvWeaponImporter: CSVWeaponImporter,
-                                           csvItemsImporter: CSVItemsImporter) {
+class KTDataInitializer @Inject()(configuration: Configuration,
+                                  armyParser: KTCSVArmyParser,
+                                  weaponParser: KTCSVWeaponParser) {
 
 
   startImportingData()
@@ -31,7 +29,7 @@ class DataInitializer @Inject()(configuration: Configuration,
     */
   private def startImportingData(): Unit = {
 
-    importFactions()
+    importData()
 
     val externalCfgFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration)
 
@@ -59,7 +57,7 @@ class DataInitializer @Inject()(configuration: Configuration,
       */
     def logAndReload(msg: String): Unit = synchronized {
       Logger.info(msg)
-      importFactions()
+      importData()
     }
   }
 
@@ -67,9 +65,9 @@ class DataInitializer @Inject()(configuration: Configuration,
   /**
     * Imports all factions and its troops, weapons, abilities and items.
     */
-  def importFactions(): Unit = {
+  def importData(): Unit = {
 
-    FactionDAO.clearAll()
+    /*FactionDAO.clearAll()
     AbilityDAO.clearAll()
     WeaponDAO.clearAll()
     ItemDAO.clearAll()
@@ -97,7 +95,10 @@ class DataInitializer @Inject()(configuration: Configuration,
       soldierDtos.foreach(soldierDto => {
         TroopDAO.addFromCSVSoldierDto(soldierDto, factionDo)
       })
-    })
+    })                                                      */
+
+    armyParser.refresh()
+    weaponParser.refresh()
 
     Logger.info("Done parsing and importing csv data files")
   }

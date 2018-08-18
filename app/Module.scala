@@ -1,6 +1,7 @@
 import com.google.inject.AbstractModule
 import deadzone.parsers.{CSVArmyImporter, CSVItemsImporter, CSVWeaponImporter}
-import services.DataInitializer
+import killteam.parsers.{KTCSVArmyParser, KTCSVWeaponParser}
+import services.{DataInitializer, KTDataInitializer}
 
 /**
   * This class is a Guice module that tells Guice how to bind several
@@ -19,6 +20,10 @@ class Module extends AbstractModule {
     bind(classOf[CSVArmyImporter]).asEagerSingleton()
     bind(classOf[CSVWeaponImporter]).asEagerSingleton()
     bind(classOf[DataInitializer]).asEagerSingleton()
+
+    bind(classOf[KTCSVArmyParser]).asEagerSingleton()
+    bind(classOf[KTCSVWeaponParser]).asEagerSingleton()
+    bind(classOf[KTDataInitializer]).asEagerSingleton()
   }
 
 }

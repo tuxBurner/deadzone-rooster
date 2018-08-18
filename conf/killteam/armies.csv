@@ -1,0 +1,22 @@
+Fraktion;Name;Punkte;B;KG;BF;S;W;LP;A;MW;RW;Max;Ausrüstungsoption;Fähigkeiten;Spezialisten;Schlüsselwörter
+Adeptus Astartes;Scout;10;"6""";3+;3+;4;4;1;1;7;4+;;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Aufklärer, Scharfschütze;Imperium, Infantrie, Scout
+Adeptus Astartes;Scout Gunner;11;"6""";3+;3+;4;4;1;1;7;4+;2;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Aufklärer, Scharfschütze, Schwerer Schütze;Imperium, Infantrie, Scout
+Adeptus Astartes;Scout Sergeant;11;"6""";3+;3+;4;4;1;2;8;4+;1;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Aufklärer, Scharfschütze, Anführer;Imperium, Infantrie, Scout
+Adeptus Astartes;Tactical Marine;12;"6""";3+;3+;4;4;1;1;7;3+;;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Scharfschütze, Veteran;Imperium, Infantrie, Tactical Marine
+Adeptus Astartes;Tactical Marine Gunner;13;"6""";3+;3+;4;4;1;1;7;3+;2;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Scharfschütze, Veteran, Schwerer Schütze;Imperium, Infantrie, Tactical Marine
+Adeptus Astartes;Tactical Marine Sergeant;13;"6""";3+;3+;4;4;1;2;8;3+;1;Auspex;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Scharfschütze, Veteran, Anführer;Imperium, Infantrie, Tactical Marine
+Adeptus Astartes;Reiver;16;"6""";3+;3+;4;4;2;2;7;3+;;Greifhakenwerfer, Gravschirm;Die keine Furcht kennen, Transhumane Physiologie, Terrortruppen;Nahkampfspezialist, Funker, Sprengstoffspezialist, Aufklärer, Veteran;Imperium, Infantrie, Primaris, Reiver
+Adeptus Astartes;Reiver Sergeant;17;"6""";3+;3+;4;4;2;3;8;3+;1;Greifhakenwerfer, Gravschirm;Die keine Furcht kennen, Transhumane Physiologie, Terrortruppen;Nahkampfspezialist, Funker, Sprengstoffspezialist, Aufklärer, Veteran, Anführer;Imperium, Infantrie, Primaris, Reiver
+Adeptus Astartes;Intercessor;15;"6""";3+;3+;4;4;2;2;7;3+;;;Die keine Furcht kennen, Transhumane Physiologie;Nahkampfspezialist, Funker, Scharfschütze, Veteran;Imperium, Infantrie, Primaris, Intercessor
+Adeptus Astartes;Intercessor Gunner;16;"6""";3+;3+;4;4;2;2;7;3+;2;Unterlauf Granatwerfer;Die keine Furcht kennen, Transhumane Physiologie;Nahkampfspezialist, Funker, Scharfschütze, Veteran, Sprengstoffspezialist;Imperium, Infantrie, Primaris, Intercessor
+Adeptus Astartes;Intercessor Sergeant;16;"6""";3+;3+;4;4;2;3;8;3+;1;;Die keine Furcht kennen, Transhumane Physiologie;Nahkampfspezialist, Funker, Scharfschütze, Veteran, Anführer;Imperium, Infantrie, Primaris, Intercessor
+Orks;Ork Boy;6;"5""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!;Nahkampfspezialist, Sprengstoffspezialist, Veteran;Infantrie, Ork Boy
+Orks;Ork Boy Gunner;7;"5""";3+;5+;4;4;1;2;6;6+;2;;Jetz' geht'z los!;Nahkampfspezialist, Sprengstoffspezialist, Veteran, Schwerer Schütze;Infantrie, Ork Boy
+Orks;Boss Nob;10;"5""";3+;5+;5;4;2;3;7;6+;1;;Jetz' geht'z los!;Nahkampfspezialist, Sprengstoffspezialist, Veteran;Infantrie, Ork Boy
+Orks;Gretchin;3;"5""";5+;4+;2;2;1;1;4;6+;;;;Anführer, Aufklärer;Infantrie, Gretchin
+Orks;Kommando;8;"6""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!, Verstohlene Gits;Nahkampfspezialist, Sprengstoffspezialist, Aufklärer, Veteran;Infantrie, Kommando
+Orks;Kommando Boss Nob;12;"6""";3+;5+;5;4;2;3;7;6+;1;;Jetz' geht'z los!, Verstohlene Gits;Nahkampfspezialist, Sprengstoffspezialist, Aufklärer, Veteran, Anführer;Infantrie, Kommando
+Orks;Burna Boy;12;"5""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Veteran, Zelot;Infantrie, Burna Boy
+Orks;Burna Spanner;10;"5""";3+;5+;4;4;1;2;6;6+;3;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Veteran, Zelot, Funker;Infantrie, Burna Boy
+Orks;Loota;12;"5""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Schwerer Schütze, Veteran;Infantrie, Loota
+Orks;Loota Spanner;10;"5""";3+;5+;4;4;1;2;6;6+;3;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Schwerer Schütze, Veteran, Funker;Infantrie, Loota
