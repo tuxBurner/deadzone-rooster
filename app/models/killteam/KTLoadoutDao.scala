@@ -1,61 +1,80 @@
 package models.killteam
 
+import killteam.parsers.KTCsvLoadoutDto
+import play.api.Logger
+
+import scala.collection.mutable.ListBuffer
+
 /**
   * Handles all data access to the weapons database
   */
 object KTLoadoutDao {
+
   /**
-    * All killteam weapons
+    * All killteam loadouts
     */
-  /*val loadOuts: ListBuffer[KTWeaponDo] = ListBuffer()
+  val loadOuts: ListBuffer[KTLoadoutDo] = ListBuffer()
 
   /**
     * Adds a weapon to the given faction
     *
-    * @param csvWeaponDto the weapon information's from the csv
-    * @param factionDo    the faction the weapon belongs to
+    * @param csvLoadoutDto the loadout information's from the csv
+    * @param factionDo     the faction the loadout belongs to
+    * @param troopDo       the troop the loadout belongs to
     * @return
     */
-  def addWeaponToFaction(csvWeaponDto: KTCsvWeaponDto, factionDo: KTFactionDo): KTWeaponDo = {
-    Logger.info(s"KT adding weapon: ${csvWeaponDto.name} to faction: ${factionDo.name}")
-    
-    val weaponDo = KTWeaponDo(name = csvWeaponDto.name,
+  def addLoadoutToFactionAndTroop(csvLoadoutDto: KTCsvLoadoutDto, factionDo: KTFactionDo, troopDo: KTTroopDo): KTLoadoutDo = {
+
+    Logger.info(s"KT adding Loadout: ${csvLoadoutDto.name} to troop: ${troopDo.name} and faction: ${factionDo.name}")
+
+    val weapons: ListBuffer[KTWeaponDo] = ListBuffer()
+    csvLoadoutDto.weapons.foreach(weaponName => {
+      val weaponDo = KTWeaponDao.getWeaponByNameAndFaction(weaponName, factionDo)
+      if (weaponDo.isEmpty) {
+        Logger.error(s"KT cannot find weapon: $weaponName for faction: ${factionDo.name} in loadout: ${csvLoadoutDto.name}")
+      } else {
+        weapons += weaponDo.get
+      }
+    })
+
+    val items: ListBuffer[KTItemDo] = ListBuffer()
+    csvLoadoutDto.items.foreach(itemName => {
+      val itemDo = KTItemsDao.getItemByNameAndFaction(itemName, factionDo)
+      if (itemDo.isEmpty) {
+        Logger.error(s"KT cannot find item: $itemName for faction: ${factionDo.name} in loadout: ${csvLoadoutDto.name}")
+      } else {
+        items += itemDo.get
+      }
+    })
+
+    val loadout = KTLoadoutDo(name = csvLoadoutDto.name,
+      troop = troopDo,
       faction = factionDo,
-      points = csvWeaponDto.points,
-      range = csvWeaponDto.range,
-      weaponType = csvWeaponDto.weaponType,
-      strength = csvWeaponDto.strength,
-      puncture = csvWeaponDto.puncture,
-      damage = csvWeaponDto.damage,
-      linkedWeapon = csvWeaponDto.linkedWeapon)
+      weapons = weapons.toSet,
+      items = items.toSet
+    )
 
-    weapons += weaponDo
+    loadOuts += loadout
 
-    weaponDo
-  } */
+    loadout
+  }
 }
 
+
 /**
-  * Represents a weapon
+  * Represents a loadout
   *
-  * @param name         the name of the weapon
-  * @param faction      the faction the weapon belongs to
-  * @param points       how many points the weapon is worth
-  * @param range        th range of the weapon
-  * @param weaponType   the type of the weapon
-  * @param strength     the strength of the weapon
-  * @param puncture     the puncture damage of the weapon
-  * @param damage       the damage the weapon causes
-  * @param linkedWeapon when set this is a linked weapon
+  * @param faction the faction the loadout belongs to
+  * @param troop   the troop of the loadout
+  * @param name    the name of the loadout
+  * @param weapons the weapons in the loadout
+  * @param items   the items in the loadout
   */
-/*case class KTWeaponDo(name: String,
-                      faction: KTFactionDo,
-                      points: Int,
-                      range: Int,
-                      weaponType: String,
-                      strength: String,
-                      puncture: Int,
-                      damage: String,
-                      linkedWeapon: String)*/
+case class KTLoadoutDo(faction: KTFactionDo,
+                       troop: KTTroopDo,
+                       name: String,
+                       weapons: Set[KTWeaponDo],
+                       items: Set[KTItemDo])
+
 
 

@@ -38,6 +38,10 @@ object KTWeaponDao {
 
     weaponDo
   }
+
+  def getWeaponByNameAndFaction(name: String, factionDo: KTFactionDo) : Option[KTWeaponDo] = {
+    weapons.find(weaponDo => weaponDo.name == name && weaponDo.faction == factionDo.name)
+  }
 }
 
 /**
