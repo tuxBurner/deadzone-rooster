@@ -28,8 +28,22 @@ class KTCSVLoadoutParser @Inject()(configuration: Configuration) extends CSVData
   private val CSV_HEADER_ITEMS = "Ausrüstung"
 
 
+  /**
+    * Refreshs all loadouts from the csv
+    */
   def refresh(): Unit = {
     loadouts = importLoadoutFromCsvs()
+  }
+
+  /**
+    * Gets all loadouts for the given troop and faction
+    *
+    * @param troopName   the name of the troop
+    * @param factionName the name of the faction
+    * @return
+    */
+  def getLoadoutsForTroopAndFaction(troopName: String, factionName: String): Set[KTCsvLoadoutDto] = {
+    loadouts.filter(loadoutDto => loadoutDto.troop == troopName && loadoutDto.faction == factionName).toSet
   }
 
   /**

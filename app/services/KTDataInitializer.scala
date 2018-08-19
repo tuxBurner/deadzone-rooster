@@ -104,7 +104,13 @@ class KTDataInitializer @Inject()(configuration: Configuration,
 
       // adds all troops to the faction
       armyParser.getTroopsForFaction(factionName).foreach(troopDto => {
-        KTTroopDao.addTroopToFaction(troopDto, factionDo)
+        val troopDo = KTTroopDao.addTroopToFaction(troopDto, factionDo)
+
+        // add the loadouts for the troop
+        loadoutParser.getLoadoutsForTroopAndFaction(troopName = troopDo.name, factionName = factionDo.name)
+          .foreach(loadOutDto => {
+            KTLoadoutDao.addLoadoutToFactionAndTroop(csvLoadoutDto = loadOutDto, factionDo = factionDo, troopDo = troopDo)
+          })
       })
 
 
