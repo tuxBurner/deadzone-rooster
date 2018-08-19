@@ -13,7 +13,7 @@ object WeaponDAO {
     * Clears all weapons from this dao.
     */
   def clearAll(): Unit = {
-    weapons.clear();
+    weapons.clear()
   }
 
   /**

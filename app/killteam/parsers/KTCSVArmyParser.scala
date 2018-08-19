@@ -2,7 +2,7 @@ package killteam.parsers
 
 import deadzone.parsers.{CSVDataEmptyException, CSVDataParser}
 import javax.inject.{Inject, Singleton}
-import play.api.Configuration
+import play.api.{Configuration, Logger}
 
 
 /**
@@ -51,12 +51,26 @@ class KTCSVArmyParser @Inject()(configuration: Configuration) extends CSVDataPar
 
   private val CSV_HEADER_KEY_WORDS = "Schlüsselwörter"
 
+  /**
+    * Gets all troops for the given faction
+    *
+    * @param faction the name of the faction
+    * @return
+    */
+  def getTroopsForFaction(faction: String): List[KTCsvTroopDto] = {
+    troops.groupBy(_.faction).getOrElse(faction, {
+      Logger.error(s"Could not find any troops for faction: $faction")
+      List()
+    })
+  }
+
 
   /**
     * Gets all factions from the troops
+    *
     * @return
     */
-  def getFactions() : Set[String] = {
+  def getFactions(): Set[String] = {
     troops.map(_.faction).toSet
   }
 

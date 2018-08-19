@@ -2,7 +2,7 @@ package killteam.parsers
 
 import deadzone.parsers.{CSVDataEmptyException, CSVDataParser}
 import javax.inject.{Inject, Singleton}
-import play.api.Configuration
+import play.api.{Configuration, Logger}
 
 
 /**
@@ -23,9 +23,23 @@ class KTCSVItemParser @Inject()(configuration: Configuration) extends CSVDataPar
 
   private val CSV_HEADER_POINTS = "Punkte"
 
+  /**
+    * Gets all items for the given faction
+    *
+    * @param faction the name of the faction
+    * @return
+    */
+  def getItemsForFaction(faction: String): List[KTCsvItemDto] = {
+    items.groupBy(_.faction).getOrElse(faction, {
+      Logger.warn(s"KT Could not find any item for faction: $faction")
+      List()
+    })
+  }
 
 
-
+  /**
+    * Refresh all the data
+    */
   def refresh(): Unit = {
     items = importItemsromCsvs()
   }
@@ -65,12 +79,12 @@ class KTCSVItemParser @Inject()(configuration: Configuration) extends CSVDataPar
 /**
   * Represents a item from the items.csv
   *
-  * @param faction      the faction the item belongs to
-  * @param name         the name of the item
-  * @param points       how many points is the item worth
+  * @param faction the faction the item belongs to
+  * @param name    the name of the item
+  * @param points  how many points is the item worth
   */
 case class KTCsvItemDto(faction: String,
-                          name: String,
-                          points: Int)
+                        name: String,
+                        points: Int)
 
 

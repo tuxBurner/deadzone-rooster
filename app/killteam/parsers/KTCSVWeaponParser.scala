@@ -2,7 +2,7 @@ package killteam.parsers
 
 import deadzone.parsers.{CSVDataEmptyException, CSVDataParser, CSVWeaponImporter}
 import javax.inject.{Inject, Singleton}
-import play.api.Configuration
+import play.api.{Configuration, Logger}
 
 
 /**
@@ -36,6 +36,23 @@ class KTCSVWeaponParser @Inject()(configuration: Configuration, csvWeaponImporte
   private val CSV_HEADER_LINKED_WEAPON = "Kombiwaffe"
 
 
+  /**
+    * Gets all weapons for the given faction
+    *
+    * @param faction the name of the faction
+    * @return
+    */
+  def getWeaponsForFaction(faction: String): List[KTCsvWeaponDto] = {
+    weapons.groupBy(_.faction).getOrElse(faction, {
+      Logger.error(s"Could not find any weapon for faction: $faction")
+      List()
+    })
+  }
+
+
+  /**
+    * Refresh all the data
+    */
   def refresh(): Unit = {
     weapons = importWeaonsFromCsvs()
   }
@@ -99,7 +116,6 @@ case class KTCsvWeaponDto(faction: String,
                           strength: String,
                           puncture: Int,
                           damage: String,
-                          linkedWeapon: String
-                         )
+                          linkedWeapon: String)
 
 

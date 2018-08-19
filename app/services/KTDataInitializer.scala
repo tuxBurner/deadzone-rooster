@@ -4,8 +4,8 @@ import better.files
 import deadzone.parsers.CSVDataParser
 import io.methvin.better.files.RecursiveFileMonitor
 import javax.inject.{Inject, Singleton}
-import killteam.parsers.{KTCSVArmyParser, KTCSVItemParser, KTCSVLoadoutParser, KTCSVSpecialistsParser}
-import models.killteam.KTFactionDao
+import killteam.parsers._
+import models.killteam.{KTFactionDao, KTItemsDao, KTTroopDao, KTWeaponDao}
 import play.Logger
 import play.api.Configuration
 
@@ -17,7 +17,7 @@ import play.api.Configuration
 @Singleton
 class KTDataInitializer @Inject()(configuration: Configuration,
                                   armyParser: KTCSVArmyParser,
-                                  weaponParser: KTCSVItemParser,
+                                  weaponParser: KTCSVWeaponParser,
                                   itemParser: KTCSVItemParser,
                                   loadoutParser: KTCSVLoadoutParser,
                                   specialistsParser: KTCSVSpecialistsParser) {
@@ -119,7 +119,24 @@ class KTDataInitializer @Inject()(configuration: Configuration,
     // repopulate the data
     armyParser.getFactions.foreach(factionName => {
       // add the faction to the database
-      KTFactionDao.findOrAddFaction(factionName)
+      val factionDo = KTFactionDao.findOrAddFaction(factionName)
+
+      // gets all weapons for the faction from the csv
+      weaponParser.getWeaponsForFaction(factionName).foreach(weaponDto => {
+        KTWeaponDao.addWeaponToFaction(weaponDto, factionDo)
+      })
+
+      // adds all items to the faction
+      itemParser.getItemsForFaction(factionName).foreach(itemDto => {
+        KTItemsDao.addItemToFaction(itemDto, factionDo)
+      })
+
+      // adds all troops to the faction
+      armyParser.getTroopsForFaction(factionName).foreach(troopDto => {
+        KTTroopDao.addTroopToFaction(troopDto, factionDo)
+      })
+
+
     })
 
 
