@@ -58,6 +58,7 @@ class CSVDataParser(configuration: Configuration) {
     getDataFromLine(columnName, lineData, emptyOkay)
       .split(',')
       .map(_.trim)
+      .filter(StringUtils.isNotBlank(_))
       .toSet
   }
 

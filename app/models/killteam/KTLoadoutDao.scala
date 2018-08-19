@@ -27,11 +27,20 @@ object KTLoadoutDao {
 
     Logger.info(s"KT adding Loadout: ${csvLoadoutDto.name} to troop: ${troopDo.name} and faction: ${factionDo.name}")
 
+
     val weapons: ListBuffer[KTWeaponDo] = ListBuffer()
     csvLoadoutDto.weapons.foreach(weaponName => {
       val weaponDo = KTWeaponDao.getWeaponByNameAndFaction(weaponName, factionDo)
       if (weaponDo.isEmpty) {
-        Logger.error(s"KT cannot find weapon: $weaponName for faction: ${factionDo.name} in loadout: ${csvLoadoutDto.name}")
+
+        //  check if the name is a linked weapon name
+        val linkedWeapons = KTWeaponDao.getWeaponsByLinkedNameAndFaction(linkedName = weaponName, factionDo)
+        if (linkedWeapons.isEmpty == false) {
+          Logger.info(s"Found weapons by linkedname: $weaponName for faction: ${factionDo.name} for loadout: ${csvLoadoutDto.name}")
+          weapons ++= linkedWeapons
+        } else {
+          Logger.error(s"KT cannot find weapon: $weaponName for faction: ${factionDo.name} in loadout: ${csvLoadoutDto.name}")
+        }
       } else {
         weapons += weaponDo.get
       }
