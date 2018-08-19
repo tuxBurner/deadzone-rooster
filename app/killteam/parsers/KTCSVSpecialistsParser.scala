@@ -15,7 +15,7 @@ class KTCSVSpecialistsParser @Inject()(configuration: Configuration) extends CSV
   /**
     * The parsed specialists
     */
-  private var specialists = List[KTCsvSpceialistDto]()
+  var specialists = List[KTCsvSpecialistDto]()
 
   private val CSV_HEADER_SPECIALIST = "Spezialist"
 
@@ -35,7 +35,7 @@ class KTCSVSpecialistsParser @Inject()(configuration: Configuration) extends CSV
     *
     * @return
     */
-  private def importSpecialistsFromCsvs(): List[KTCsvSpceialistDto] = {
+  private def importSpecialistsFromCsvs(): List[KTCsvSpecialistDto] = {
     val dataWithHeaders = readCsvFile("killteam/specialists.csv")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
@@ -46,10 +46,10 @@ class KTCSVSpecialistsParser @Inject()(configuration: Configuration) extends CSV
     * @param lineData the data of the csv in a map
     * @return
     */
-  private def parseLineMap(lineData: Map[String, String]): Option[KTCsvSpceialistDto] = {
+  private def parseLineMap(lineData: Map[String, String]): Option[KTCsvSpecialistDto] = {
 
     try {
-      val parsedSpecialist = KTCsvSpceialistDto(specialist = getDataFromLine(CSV_HEADER_SPECIALIST, lineData),
+      val parsedSpecialist = KTCsvSpecialistDto(specialist = getDataFromLine(CSV_HEADER_SPECIALIST, lineData),
         level = getIntFromLine(CSV_HEADER_LEVEL, lineData),
         require = getDataFromLine(CSV_HEADER_REQUIRE, lineData, true),
         name = getDataFromLine(CSV_HEADER_NAME, lineData)
@@ -72,7 +72,7 @@ class KTCSVSpecialistsParser @Inject()(configuration: Configuration) extends CSV
   * @param require    the name of the reacquired special to acquire this one
   * @param level      the level of the special
   */
-case class KTCsvSpceialistDto(specialist: String,
+case class KTCsvSpecialistDto(specialist: String,
                               name: String,
                               require: String,
                               level: Int)

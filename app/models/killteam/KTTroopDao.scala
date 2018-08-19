@@ -45,6 +45,18 @@ object KTTroopDao {
         abilities += abilityDo
       }
     })
+
+    val specialists: ListBuffer[KTSpecialistDo] = ListBuffer()
+    csvTroopDo.specialist.foreach(specialistName => {
+      if(StringUtils.isNotBlank(specialistName )) {
+        val specialistDo = KTSpecialistDao.findSpecialistByName(specialistName)
+        if (specialistDo.isEmpty) {
+          Logger.error(s"KT cannot add specialist: $specialistName to troop: ${csvTroopDo.name} faction: ${factionDo.name} because it was not found")
+        } else {
+          specialists += specialistDo.get
+        }
+      }
+    })
                       
     val troopDo = KTTroopDo(factionDo = factionDo,
       name = csvTroopDo.name,
@@ -61,7 +73,7 @@ object KTTroopDao {
       maxInArmy = csvTroopDo.maxInArmy,
       items = items.toSet,
       abilities = abilities.toSet,
-      specialist = csvTroopDo.specialist,
+      specialist = specialists.toSet,
       keyWords = csvTroopDo.keyWords
     )
 
@@ -107,7 +119,7 @@ case class KTTroopDo(factionDo: KTFactionDo,
                      maxInArmy: Int,
                      items: Set[KTItemDo],
                      abilities: Set[KTAbilityDo],
-                     specialist: Set[String],
+                     specialist: Set[KTSpecialistDo],
                      keyWords: Set[String]
                     )
 

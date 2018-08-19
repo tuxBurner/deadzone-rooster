@@ -5,7 +5,7 @@ import deadzone.parsers.CSVDataParser
 import io.methvin.better.files.RecursiveFileMonitor
 import javax.inject.{Inject, Singleton}
 import killteam.parsers._
-import models.killteam.{KTFactionDao, KTItemsDao, KTTroopDao, KTWeaponDao}
+import models.killteam._
 import play.Logger
 import play.api.Configuration
 
@@ -74,38 +74,6 @@ class KTDataInitializer @Inject()(configuration: Configuration,
     Logger.info("### Start Parsing the Killteam data ###")
     Logger.info("#######################################")
 
-    /*FactionDAO.clearAll()
-    AbilityDAO.clearAll()
-    WeaponDAO.clearAll()
-    ItemDAO.clearAll()
-    TroopDAO.clearAll()
-
-    csvFactionsImporter.refresh()
-    csvItemsImporter.refresh()
-    csvWeaponImporter.refresh()
-
-    val factions = csvFactionsImporter.getAllAvaibleFactions
-    factions.foreach(factionName => {
-      val factionDo = FactionDAO.findOrAddFaction(factionName)
-
-      val weaponsDto = csvWeaponImporter.getWeaponsForFaction(factionName)
-      weaponsDto.foreach(weaponDto => {
-        WeaponDAO.addWeaponToFaction(weaponDto, factionDo)
-      })
-
-      val itemsDto = csvItemsImporter.getItemsForFaction(factionName)
-      itemsDto.foreach(itemDto => {
-        ItemDAO.addItemToFaction(itemDto, factionDo)
-      })
-
-      val soldierDtos = csvFactionsImporter.getSoldierForFaction(factionName)
-      soldierDtos.foreach(soldierDto => {
-        TroopDAO.addFromCSVSoldierDto(soldierDto, factionDo)
-      })
-    })
-
-                                 */
-
     // clear the database
     KTFactionDao.deleteAll()
 
@@ -115,6 +83,9 @@ class KTDataInitializer @Inject()(configuration: Configuration,
     itemParser.refresh()
     loadoutParser.refresh()
     specialistsParser.refresh()
+
+    // populate specialists
+    KTSpecialistDao.addSpecialists(specialistsParser.specialists)
 
     // repopulate the data
     armyParser.getFactions.foreach(factionName => {
