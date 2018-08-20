@@ -10,8 +10,7 @@ import play.api.cache.SyncCacheApi
 import play.api.i18n.I18nSupport
 import play.api.libs.json._
 import play.api.mvc._
-import services.logic._
-import services.logic.killteam.{KTFactionDto, KTFactionLogic, KTTroopLogic, KTTroopNameDto}
+import services.logic.killteam._
 
 import scala.concurrent.duration._
 
@@ -19,11 +18,11 @@ import scala.concurrent.duration._
   * Controller which handles all the endpoints for the killteam roster editor
   */
 @Singleton
-class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, pdfGenerator: PdfGenerator, config: Configuration) extends AbstractController(cc) with I18nSupport {
+class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, pdfGenerator: PdfGenerator, config: Configuration, mainTpl: views.html.killteam.main) extends AbstractController(cc) with I18nSupport {
 
 
   implicit val ktFactionDtoWriter = Json.writes[KTFactionDto]
-  implicit val ktTroopNameDtoWriter = Json.writes[KTTroopNameDto]
+  implicit val ktTroopNameDtoWriter = Json.writes[KTTroopSelectDto]
 
 
   /**
@@ -34,13 +33,28 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
 
   val cachetimeOut: Int = config.getOptional[Int]("deadzone.cacheTimeOut").getOrElse(15)
 
+  implicit val mainTplImpl = mainTpl
+
+
+  /**
+    * Display the main view
+    *
+    * @return
+    */
+  def rosterMain = Action {
+    implicit request =>
+      Ok(views.html.killteam.roster.roster(getArmyFromCache(request)))
+  }
+
   /**
     * Returns all the available factions as a json array
     *
     * @return
     */
-  @JSRoute def getFactions = Action {
-    Ok(Json.toJson(KTFactionLogic.getAllFactions()))
+  @JSRoute
+  def getFactions = Action {
+    implicit request =>
+      Ok(Json.toJson(KTFactionLogic.getAllOrTheOneFromTheArmyFactions(getArmyFromCache(request))))
   }
 
   @JSRoute def getPopOverData(popoverType: String, key: String) = Action {
@@ -54,12 +68,29 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     * @param factionName the name of the faction
     * @return
     */
-  @JSRoute def getSelectTroopsForFaction(factionName: String) = Action {
-
-    val troopsForFaction = KTTroopLogic.getAllTroppsForFaction(faction = factionName)
+  @JSRoute
+  def getSelectTroopsForFaction(factionName: String) = Action {
+    val troopsForFaction = KTTroopLogic.getAllSelectTroopsForFaction(faction = factionName)
     Ok(Json.toJson(troopsForFaction))
   }
 
+  /**
+    * Adds a troop to the army
+    *
+    * @return
+    */
+  @JSRoute
+  def addTroopToArmy() = Action(parse.tolerantJson) { request =>
+
+    val factionName = (request.body \ "faction").as[String]
+    val troopName = (request.body \ "troop").as[String]
+
+    val armyFromCache = getArmyFromCache(request)
+    val armyWithNewTroop = KTArmyLogic.addTroopToArmy(factionName, troopName, armyFromCache)
+
+    writeArmyToCache(request, armyWithNewTroop)
+    Ok("")
+  }
 
 
   /**
@@ -68,7 +99,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     * @param request
     * @return
     */
-  private def renewArmyInCache(request: Request[Any]): ArmyDto = {
+  private def renewArmyInCache(request: Request[Any]): KTArmyDto = {
     val armyFromCache = getArmyFromCache(request)
     writeArmyToCache(request, armyFromCache)
     armyFromCache
@@ -94,7 +125,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   private def getArmyFromCache(request: Request[Any]) = {
     val cacheId = getCacheIdFromSession(request)
-    cache.get[ArmyDto](cacheId).getOrElse(ArmyDto(""))
+    cache.get[KTArmyDto](cacheId).getOrElse(KTArmyDto(""))
   }
 
   /**
@@ -103,7 +134,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     * @param request
     * @param army
     */
-  private def writeArmyToCache(request: Request[Any], army: ArmyDto): Unit = {
+  private def writeArmyToCache(request: Request[Any], army: KTArmyDto): Unit = {
     val cacheId = getCacheIdFromSession(request)
     cache.set(cacheId, army, cachetimeOut.minutes)
   }

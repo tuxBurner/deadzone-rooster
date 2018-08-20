@@ -8,11 +8,16 @@ object KTFactionLogic {
     * Gets all faction known for killteam
     * @return
     */
-  def getAllFactions() : List[KTFactionDto] = {
-    KTFactionDao.factions
-      .sortBy(_.name)
-      .map(factionDo => KTFactionDto(name = factionDo.name))
-      .toList
+  def getAllOrTheOneFromTheArmyFactions(armyDto: KTArmyDto) : List[KTFactionDto] = {
+
+    if(armyDto.faction.isEmpty) {
+      KTFactionDao.factions
+        .sortBy(_.name)
+        .map(factionDo => KTFactionDto(name = factionDo.name))
+        .toList
+    } else {
+      List(KTFactionDto(name = armyDto.faction))
+    }
   }
 
 }

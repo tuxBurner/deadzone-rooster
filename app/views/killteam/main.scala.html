@@ -17,14 +17,14 @@
 
     <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="@routes.KTHomeController.rosterMain()">@Messages("kt.application.title")</a>
+        <a class="navbar-brand" href="@routes.KTRosterController.rosterMain()">@Messages("kt.application.title")</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         @* nav which is hidden when to small *@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            @views.html.mainNav(routes.HomeController.rosterMain(), "mainmenu.roster", currentActiveNav)
+            @views.html.mainNav(routes.KTRosterController.rosterMain(), "kt.mainmenu.roster", currentActiveNav)
             @* @views.html.mainNav(routes.HomeController.displayTroopsOfFaction(FactionLogic.getAllFactions()(0).name), "mainmenu.armyTroops", currentActiveNav)
             @views.html.mainNav(routes.HomeController.displayAllAbilities(), "mainmenu.abilities", currentActiveNav)
             @views.html.mainNav(routes.HomeController.displayAllItems(), "mainmenu.items", currentActiveNav)

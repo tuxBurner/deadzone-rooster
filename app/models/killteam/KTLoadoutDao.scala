@@ -15,6 +15,31 @@ object KTLoadoutDao {
     */
   val loadOuts: ListBuffer[KTLoadoutDo] = ListBuffer()
 
+
+  /**
+    * Gets the default loadout for the troop in the faction
+    *
+    * @param troopName   the name of the troop
+    * @param factionName the name of the faction
+    * @return
+    */
+  def getDefaultLoadout(troopName: String, factionName: String): Option[KTLoadoutDo] = {
+    getLoadoutByTroopAndName(troopName, factionName, "Basis")
+  }
+
+
+  /**
+    * Get the loadout by the given toop/faction and name
+    *
+    * @param troopName   the name of the troop
+    * @param factionName the name of the faction
+    * @param loadoutName the name of the loadout
+    * @return
+    */
+  def getLoadoutByTroopAndName(troopName: String, factionName: String, loadoutName: String): Option[KTLoadoutDo] = {
+    loadOuts.find(loadout => loadout.troop.name == troopName && loadout.faction.name == factionName && loadout.name == loadoutName)
+  }
+
   /**
     * Adds a weapon to the given faction
     *

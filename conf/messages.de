@@ -184,3 +184,29 @@ cheatSheet.commandDice.armySpecial.desc=Aktiviere deine Armee spezial Fähigkeit
 #########################################################################################################################
 
 kt.application.title=Killteam-Roster
+kt.mainmenu.roster=Roster
+kt.troop.tbl.name=Name
+kt.troop.tbl.movement=B
+kt.troop.tbl.fightStat=KG
+kt.troop.tbl.shootStat=BF
+kt.troop.tbl.strength=S
+kt.troop.tbl.resistance=W
+kt.troop.tbl.lifePoints=LP
+kt.troop.tbl.attacks=A
+kt.troop.tbl.moral=MW
+kt.troop.tbl.armor=RW
+kt.troop.tbl.points=Punkte
+
+kt.weapon.tbl.title=Waffen
+kt.weapon.tbl.name=Name
+kt.weapon.tbl.range=Reichw.
+kt.weapon.tbl.type=Typ
+kt.weapon.tbl.strength=S
+kt.weapon.tbl.puncture=DS
+kt.weapon.tbl.damage=SW
+kt.weapon.tbl.linkedWeapon=Verknüfte Waffe
+kt.weapon.tbl.points=Punke
+kt.weapon.tbl.description=Beschreibung
+
+kt.troops.normal.title=Normale Truppen
+kt.troops.normal.noTroops=Keine normalen Truppen gefunden

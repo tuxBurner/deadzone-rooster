@@ -1,0 +1,89 @@
+@import services.logic.killteam.KTArmyTroopDto
+@import org.jboss.logging.Message
+@(troops: List[KTArmyTroopDto], troopType: String)(implicit messages: Messages)
+
+
+<h3>@Messages("kt.troops." + troopType + ".title")</h3>
+
+@if(troops.isEmpty) {
+  <div class="alert alert-primary" role="alert">
+  @Messages("kt.troops." + troopType + ".noTroops")
+  </div>
+} else {
+
+  @for(troop <- troops) {
+    <div class=" table-responsive-sm">
+      <table class="table table-sm table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>@Messages("kt.troop.tbl.name")</th>
+            <th>@Messages("kt.troop.tbl.movement")</th>
+            <th>@Messages("kt.troop.tbl.fightStat")</th>
+            <th>@Messages("kt.troop.tbl.shootStat")</th>
+            <th>@Messages("kt.troop.tbl.strength")</th>
+            <th>@Messages("kt.troop.tbl.resistance")</th>
+            <th>@Messages("kt.troop.tbl.lifePoints")</th>
+            <th>@Messages("kt.troop.tbl.attacks")</th>
+            <th>@Messages("kt.troop.tbl.moral")</th>
+            <th>@Messages("kt.troop.tbl.armor")</th>
+            <th>@Messages("kt.troop.tbl.points")</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@troop.name</td>
+            <td>@troop.stats.movement</td>
+            <td>@troop.stats.fightStat</td>
+            <td>@troop.stats.shootStat</td>
+            <td>@troop.stats.strength</td>
+            <td>@troop.stats.resistance</td>
+            <td>@troop.stats.lifePoints</td>
+            <td>@troop.stats.attacks</td>
+            <td>@troop.stats.moral</td>
+            <td>@troop.stats.armor</td>
+            <td>@troop.totalPoints</td>
+            <th></th>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td colspan="11">
+              <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                  <th colspan="9">@Messages("kt.weapon.tbl.title")</th>
+                  <tr>
+                    <th>@Messages("kt.weapon.tbl.name")</th>
+                    <th>@Messages("kt.weapon.tbl.range")</th>
+                    <th>@Messages("kt.weapon.tbl.type")</th>
+                    <th>@Messages("kt.weapon.tbl.strength")</th>
+                    <th>@Messages("kt.weapon.tbl.puncture")</th>
+                    <th>@Messages("kt.weapon.tbl.damage")</th>
+                    <th>@Messages("kt.weapon.tbl.linkedWeapon")</th>
+                    <th>@Messages("kt.weapon.tbl.points")</th>
+                    <th>@Messages("kt.weapon.tbl.description")</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for(weapon <- troop.weapons) {
+                    <tr>
+                      <td>@weapon.name</td>
+                      <td>@weapon.range</td>
+                      <td>@weapon.weaponType</td>
+                      <td>@weapon.strength</td>
+                      <td>@weapon.puncture</td>
+                      <td>@weapon.damage</td>
+                      <td>@weapon.linkedWeapon</td>
+                      <td>@weapon.points</td>
+                      <td>TODO</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  }
+}

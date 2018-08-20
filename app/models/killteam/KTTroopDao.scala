@@ -26,6 +26,16 @@ object KTTroopDao {
   }
 
   /**
+    * Gets the troop by the faction and its name
+    * @param factionName the name of the faction
+    * @param troopName the name of the troop
+    * @return
+    */
+  def getTroopByFactionAndName(factionName: String, troopName: String) : Option[KTTroopDo] = {
+    troops.find(troopDo => troopDo.factionDo.name == factionName && troopDo.name == troopName)
+  }
+
+  /**
     * Adds a troop to the given faction
     *
     * @param csvWeaponDto the weapon information's from the csv

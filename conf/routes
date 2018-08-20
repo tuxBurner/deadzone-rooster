@@ -34,7 +34,10 @@ GET           /roster/pdf/table                                   controllers.Ro
 
 
 # KILLTEAM
-GET           /killteam                                           controllers.KTHomeController.rosterMain
+GET           /killteam                                           controllers.KTRosterController.rosterMain
+GET           /killteam/roster/factions                           controllers.KTRosterController.getFactions
+GET           /killteam/roster/:faction/troops                    controllers.KTRosterController.getSelectTroopsForFaction(faction: String)
+POST          /killteam/roster/troop                              controllers.KTRosterController.addTroopToArmy()
 
 
 # Map static resources from the /public folder to the /assets URL path

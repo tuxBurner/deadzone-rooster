@@ -4,18 +4,27 @@ import models.killteam.KTTroopDao
 
 object KTTroopLogic {
 
-  def getAllTroppsForFaction(faction: String): List[KTTroopNameDto] = {
+
+  /**
+    * Gets all select troops dto for the given faction
+    * @param faction the faction to get the troops for
+    * @return
+    */
+  def getAllSelectTroopsForFaction(faction: String): List[KTTroopSelectDto] = {
     KTTroopDao.getAllTroopsOfFaction(factionName = faction)
       .toList
       .sortBy(_.name)
-      .map(troopDo => KTTroopNameDto(name = troopDo.name))
+      .map(troopDo => KTTroopSelectDto(name = troopDo.name, points = troopDo.points))
   }
 
 }
 
 /**
-  * Represents a troop by its name
+  * Represents a troop for the drop down select in the frontend
   *
-  * @param name the name of the troop
+  * @param name   the name of the troop
+  * @param points the troop points
   */
-case class KTTroopNameDto(name: String)
+case class KTTroopSelectDto(name: String,
+                            points: Int,
+                            imageUrl: String = "")

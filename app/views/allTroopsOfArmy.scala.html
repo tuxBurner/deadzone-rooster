@@ -3,7 +3,7 @@
 @(troopsByType: Map[String, List[TroopWithAllowedWeaponsDto]], factions: List[FactionDto], currentFaction: String, factionWeapons: Map[String, List[ArmyWeaponDto]])(implicit messages: Messages, mainTpl: views.html.main)
 
 @scripts = {
-  <script type="text/javascript" src="@routes.Assets.versioned("javascripts/all_troops.js")"> </script>
+  <script type="text/javascript" src="@routes.Assets.versioned("javascripts/deadzone/all_troops.js")"> </script>
 }
 
 @mainTpl("mainmenu.armyTroops", scripts) {

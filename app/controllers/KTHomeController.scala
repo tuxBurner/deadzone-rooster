@@ -15,18 +15,7 @@ import play.i18n.Langs
 class KTHomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRoutesComponent, pdfGenerator: PdfGenerator, langs: Langs, mainTpl: views.html.killteam.main) extends AbstractController(cc) with I18nSupport {
 
 
-  implicit val mainTplImpl = mainTpl
 
-
-  /**
-    * Display the main view
-    *
-    * @return
-    */
-  def rosterMain = Action {
-    implicit request =>
-      Ok(views.html.killteam.roster())
-  }
 
   
 
