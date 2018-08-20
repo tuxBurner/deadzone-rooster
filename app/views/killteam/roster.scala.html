@@ -1,0 +1,111 @@
+@()(implicit messages: Messages, mainTpl: views.html.killteam.main)
+
+@scripts = {
+  @*<script type="text/javascript" src="@routes.Assets.versioned("javascripts/roster_main.js")"> </script>*@
+}
+
+@mainTpl("mainmenu.roster", scripts) {
+
+  <div class="row">
+
+    <div class="col-sm-3">
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">@Messages("faction.select")</span>
+        </div>
+        <select class="form-control" id="roster_faction_select"></select>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">@Messages("type.select")</span>
+        </div>
+        <select class="form-control" id="roster_troop_type_select"></select>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">@Messages("troop.select")</span>
+        </div>
+        <select class="form-control " id="roster_addTroop_select"></select>
+      </div>
+    </div>
+
+    <div class="col-sm-1">
+      <button class="btn btn-sm btn-info" id="roster_addTroop_btn"><i class="fas fa-plus-square"></i> <small>@Messages("troop.addBtn")</small></button>
+    </div>
+    <div class="col-sm-3">
+      <img src="" id="roster_troop_img" style="display: none;" />
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+
+    <div class="col-sm-6">
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">@Messages("army.name")</span>
+        </div>
+        <input type="text" class="form-control" id="roster_army_name" />
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      @views.html.roster.rosterActions()
+    </div>
+  </div>
+
+
+  <hr />
+
+  <h6>
+    <span><strong>@Messages("army.points") </strong></span>
+    <span class="badge badge-pill badge-primary" id="roster_army_points"></span>
+
+    <span><strong>@Messages("army.faction") </strong></span>
+    <span id="roster_army_faction"></span>
+  </h6>
+
+  <hr />
+
+
+  <div class=" table-responsive-sm">
+    <table class="table table-sm table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>@Messages("troop.tbl.name")</th>
+          <th>@Messages("troop.tbl.type")</th>
+          <th>@Messages("troop.tbl.points")</th>
+          <th>@Messages("troop.tbl.speed")</th>
+          <th>@Messages("troop.tbl.shoot")</th>
+          <th>@Messages("troop.tbl.fight")</th>
+          <th>@Messages("troop.tbl.survive")</th>
+          <th>@Messages("troop.tbl.armour")</th>
+          <th>@Messages("troop.tbl.size")</th>
+          <th>@Messages("troop.tbl.victoryPoints")</th>
+          <th>@Messages("troop.tbl.abilities")</th>
+          <th>@Messages("troop.tbl.weapons")</th>
+          <th>@Messages("troop.tbl.items")</th>
+          <th>@Messages("troop.tbl.reconArmySpecial")</th>
+          <th>@Messages("troop.tbl.hardPoints")</th>
+          <th>@Messages("troop.tbl.amount")</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="roster_troop_tbody">
+        @* FILLED VIA roster_main.js *@
+      </tbody>
+    </table>
+  </div>
+
+  @views.html.roster.rosterTroopEditModal()
+  @views.html.roster.rosterValidateModal()
+  @views.html.roster.rosterImportModal()
+
+}

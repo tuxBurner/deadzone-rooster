@@ -15,6 +15,16 @@ object KTTroopDao {
     */
   val troops: ListBuffer[KTTroopDo] = ListBuffer()
 
+
+  /**
+    * Returns all troops of a faction
+    * @param factionName the name of the faction
+    * @return
+    */
+  def getAllTroopsOfFaction(factionName: String) : Set[KTTroopDo] = {
+    troops.filter(_.factionDo.name == factionName).toSet
+  }
+
   /**
     * Adds a troop to the given faction
     *

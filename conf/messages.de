@@ -177,3 +177,10 @@ cheatSheet.commandDice.armySpecial.desc=Aktiviere deine Armee spezial Fähigkeit
   Der Effekt ist unterschiedlich bei jeder Armee und wird in deiner Armee Liste beschrieben. \
   Armee spezial Fähigkeiten haben keine Einschränkung auf die Anzahl der Aktionen pro Runde, ausser es ist anders beschrieben.
 
+
+
+########################################################################################################################
+#################################################### KILL TEAM KEYS ####################################################
+#########################################################################################################################
+
+kt.application.title=Killteam-Roster

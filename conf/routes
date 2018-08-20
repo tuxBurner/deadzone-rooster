@@ -33,6 +33,10 @@ POST          /roster/army/import                                 controllers.Ro
 GET           /roster/pdf/table                                   controllers.RosterController.getTablePdf()
 
 
+# KILLTEAM
+GET           /killteam                                           controllers.KTHomeController.rosterMain
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET           /assets/*file                                       controllers.Assets.versioned(path="/public", file: Asset)
 
