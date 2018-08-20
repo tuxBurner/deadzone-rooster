@@ -27,28 +27,35 @@
             <th>@Messages("kt.troop.tbl.moral")</th>
             <th>@Messages("kt.troop.tbl.armor")</th>
             <th>@Messages("kt.troop.tbl.points")</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>@troop.name</td>
-            <td>@troop.stats.movement</td>
-            <td>@troop.stats.fightStat</td>
-            <td>@troop.stats.shootStat</td>
+            <td>@troop.stats.movement"</td>
+            <td>@troop.stats.fightStat+</td>
+            <td>@troop.stats.shootStat+</td>
             <td>@troop.stats.strength</td>
             <td>@troop.stats.resistance</td>
             <td>@troop.stats.lifePoints</td>
             <td>@troop.stats.attacks</td>
             <td>@troop.stats.moral</td>
-            <td>@troop.stats.armor</td>
+            <td>@troop.stats.armor+</td>
             <td>@troop.totalPoints</td>
-            <th></th>
           </tr>
 
+
           <tr>
-            <td></td>
-            <td colspan="11">
+            <td>
+              <div class="btn-group btn-group-sm" role="group">
+                <button class="btn btn-info btn-sm roster_edit_btn"><i class="fas fa-edit fa-xs"></i></button>
+                <button class="btn btn-warning roster_clone_btn"><i class="fas fa-clone fa-xs"></i></button>
+                <a class="btn btn-danger roster_del_btn" href="@routes.KTRosterController.removeTroopFromArmy(troop.uuid)"><i class="fas fa-trash fa-xs"></i></a>
+              </div>
+            </td>
+            <td colspan="10">
+
+              @* weapons *@
               <table class="table table-sm table-bordered">
                 <thead class="thead-dark">
                   <th colspan="9">@Messages("kt.weapon.tbl.title")</th>
@@ -59,7 +66,6 @@
                     <th>@Messages("kt.weapon.tbl.strength")</th>
                     <th>@Messages("kt.weapon.tbl.puncture")</th>
                     <th>@Messages("kt.weapon.tbl.damage")</th>
-                    <th>@Messages("kt.weapon.tbl.linkedWeapon")</th>
                     <th>@Messages("kt.weapon.tbl.points")</th>
                     <th>@Messages("kt.weapon.tbl.description")</th>
                   </tr>
@@ -68,20 +74,45 @@
                   @for(weapon <- troop.weapons) {
                     <tr>
                       <td>@weapon.name</td>
-                      <td>@weapon.range</td>
+                      <td>@weapon.range" </td>
                       <td>@weapon.weaponType</td>
                       <td>@weapon.strength</td>
                       <td>@weapon.puncture</td>
                       <td>@weapon.damage</td>
-                      <td>@weapon.linkedWeapon</td>
                       <td>@weapon.points</td>
                       <td>TODO</td>
                     </tr>
                   }
                 </tbody>
               </table>
+              @* eo weapons *@
+
+              @* items *@
+              @if(troop.allItems.isEmpty == false) {
+                <table class="table table-sm table-bordered">
+                  <thead class="thead-dark">
+                    <th colspan="9">@Messages("kt.item.tbl.title")</th>
+                    <tr>
+                      <th>@Messages("kt.item.tbl.name")</th>
+                      <th>@Messages("kt.item.tbl.points")</th>
+                      <th>@Messages("kt.item.tbl.description")</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  @for(item <- troop.allItems) {
+                    <tr>
+                      <td>@item.name</td>
+                      <td>@item.points</td>
+                      <td>TODO</td>
+                    </tr>
+                  }
+                  </tbody>
+                </table>
+              }
+
             </td>
           </tr>
+
         </tbody>
       </table>
     </div>

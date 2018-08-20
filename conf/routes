@@ -38,6 +38,7 @@ GET           /killteam                                           controllers.KT
 GET           /killteam/roster/factions                           controllers.KTRosterController.getFactions
 GET           /killteam/roster/:faction/troops                    controllers.KTRosterController.getSelectTroopsForFaction(faction: String)
 POST          /killteam/roster/troop                              controllers.KTRosterController.addTroopToArmy()
+GET           /killteam/roster/troop/:uuid/remove                 controllers.KTRosterController.removeTroopFromArmy(uuid:String)
 
 
 # Map static resources from the /public folder to the /assets URL path

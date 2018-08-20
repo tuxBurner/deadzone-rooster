@@ -80,7 +80,8 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     * @return
     */
   @JSRoute
-  def addTroopToArmy() = Action(parse.tolerantJson) { request =>
+  def addTroopToArmy() = Action(parse.tolerantJson) {
+    request =>
 
     val factionName = (request.body \ "faction").as[String]
     val troopName = (request.body \ "troop").as[String]
@@ -90,6 +91,21 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
 
     writeArmyToCache(request, armyWithNewTroop)
     Ok("")
+  }
+
+  /**
+    * Removes the given troop from the army
+    * @param uuid
+    * @return
+    */
+  def removeTroopFromArmy(uuid: String) = Action {
+    implicit request =>
+
+      val armyFromCache = getArmyFromCache(request)
+      val armyWithNewTroop = KTArmyLogic.removeTroopFromArmy(uuid, armyFromCache)
+      writeArmyToCache(request, armyWithNewTroop)
+
+    Redirect(routes.KTRosterController.rosterMain())
   }
 
 

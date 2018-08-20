@@ -65,30 +65,68 @@ object KTArmyLogic {
         stats = troopStats,
         loadoutName = defaultLoadOut.get.name,
         points = troop.points,
-        totalPoints = calculateTroopPoints(troop.points, itemsFromLoadout, List(), weapons),
+        totalPoints = calculateTroopPoints(troop.points, itemsFromLoadout, weapons),
         amount = 1,
         itemsFromLoadout = itemsFromLoadout,
-        items = List(),
+        additionalItems = itemsFromLoadout,
+        allItems = itemsFromLoadout,
         weapons = weapons
       )
 
-      armyDto.copy(faction = factionName, points = calculateArmyPoints(armyDto), troops = armyDto.troops :+ newTroop)
+      val newTroops = armyDto.troops :+ newTroop
+
+      armyDto.copy(faction = factionName, points = calculateArmyPoints(newTroops), troops = newTroops)
     }).getOrElse({
       Logger.warn(s"Could not add troop: $troopName from faction: $factionName it was not found")
       armyDto
     })
   }
 
-  def calculateArmyPoints(armyDto: KTArmyDto): Int = {
-    armyDto.troops.map(troop => troop.totalPoints * troop.amount).sum
+  /**
+    * Removes the given troop from the army
+    * @param uuid the uuid of the troop to remove from the army
+    * @param armyDto the army from which to remove the troop
+    * @return
+    */
+  def removeTroopFromArmy(uuid: String, armyDto: KTArmyDto) : KTArmyDto = {
+    Logger.info(s"Removing troop: $uuid from army")
+
+    val newTroops = armyDto.troops.filter(_.uuid != uuid)
+
+    val newFaction = if(newTroops.isEmpty) {
+      Logger.info("No more troops in the army removing the faction")
+      StringUtils.EMPTY
+    } else {
+      armyDto.faction
+    }
+
+    armyDto.copy(faction = newFaction, points = calculateArmyPoints(newTroops), troops = newTroops)
   }
 
-  def calculateTroopPoints(basePoints: Int, itemsByLoadout: List[KTItemDto], items: List[KTItemDto], weapons: List[KTWeaponDto]): Int = {
-    val loadutItemsPoints = itemsByLoadout.map(_.points).sum
+
+  /**
+    * Calculates all points for an army
+    *
+    * @param troops the troops in the army where to calculate the points for
+    * @return
+    */
+  def calculateArmyPoints(troops: List[KTArmyTroopDto]): Int = {
+    troops.map(troop => troop.totalPoints * troop.amount).sum
+  }
+
+  /**
+    * Calculates the points of a troop
+    *
+    * @param basePoints the base points the troop has
+    * @param items      the items the troop has equiped
+    * @param weapons    the weapons the troop has equiped
+    * @return
+    */
+  def calculateTroopPoints(basePoints: Int, items: List[KTItemDto], weapons: List[KTWeaponDto]): Int = {
     val itemsPoints = items.map(_.points).sum
     val weaponPoints = weapons.map(_.points).sum
 
-    basePoints + loadutItemsPoints + itemsPoints + weaponPoints
+    basePoints + itemsPoints + weaponPoints
   }
 
   /**
@@ -137,7 +175,8 @@ case class KTArmyTroopDto(uuid: String,
                           points: Int,
                           totalPoints: Int,
                           itemsFromLoadout: List[KTItemDto],
-                          items: List[KTItemDto],
+                          additionalItems: List[KTItemDto],
+                          allItems: List[KTItemDto],
                           weapons: List[KTWeaponDto],
                           specialist: String = "")
 
