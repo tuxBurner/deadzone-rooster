@@ -3,6 +3,7 @@
   <thead class="thead-dark">
     <th colspan="9">@Messages("kt.weapon.tbl.title")</th>
     <tr>
+      <th></th>
       <th>@Messages("kt.weapon.tbl.name")</th>
       <th>@Messages("kt.weapon.tbl.range")</th>
       <th>@Messages("kt.weapon.tbl.type")</th>
@@ -16,6 +17,7 @@
   <tbody>
   @for(weapon <- weapons) {
     <tr>
+      <th><input type="checkbox" /></th>
       <th scope="row">@weapon.name</th>
       <td>
         @if(weapon.range != 0) {

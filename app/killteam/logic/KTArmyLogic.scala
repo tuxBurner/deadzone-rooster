@@ -104,8 +104,12 @@ object KTArmyLogic {
         troopDo.specialists.map(specialistDo => {
           // check if the specialist is currently selected by the troop
           val selected = troopDto.specialist.exists(_.name == specialistDo.name)
+
+          val baseSpecical = specialistDo.specials.find(_.level == 1).get
+
           KTSpecialistOptionDto(selected = selected,
-            name = specialistDo.name)
+            name = specialistDo.name,
+            baseSpecial = KTSpecialOptionDto(name = baseSpecical.name, selected = true, level = 1))
         })
           .toList
           .sortBy(_.name)
@@ -355,11 +359,13 @@ case class KTItemDto(name: String,
                      points: Int)
 
 case class KTSpecialistOptionDto(selected: Boolean,
-                                 name: String)
+                                 name: String,
+                                 baseSpecial: KTSpecialOptionDto)
 
 case class KTSpecialOptionDto(selected: Boolean,
                               name: String,
-                              level: Int)
+                              level: Int,
+                              subSpecials: List[KTSpecialOptionDto] = List())
 
 /**
   * Represents a specialist of a troop
