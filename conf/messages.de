@@ -207,6 +207,11 @@ kt.weapon.tbl.damage=SW
 kt.weapon.tbl.linkedWeapon=Verknüfte Waffe
 kt.weapon.tbl.points=Punke
 kt.weapon.tbl.description=Beschreibung
+kt.troop.tbl.abilities=Fähigkeiten
 
 kt.troops.normal.title=Normale Truppen
 kt.troops.normal.noTroops=Keine normalen Truppen gefunden
+kt.troops.leader.title=Anführer
+kt.troops.leader.noTroops=Kein Anführer vorhanden
+kt.troops.specialist.title=Spezialisten
+kt.troops.specialist.noTroops=Keine Spezialisten vorhanden

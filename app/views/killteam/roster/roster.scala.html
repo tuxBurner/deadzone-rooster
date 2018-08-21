@@ -68,9 +68,17 @@
 
   <hr />
 
-  @* normal Troops *@
+  @* leader troop *@
+  @views.html.killteam.roster.displayTroopTypeTable(KTArmyLogic.getLeadersFromArmy(armyDto),"leader")
+  @* eo leader troop *@
+
+  @* special troops *@
+  @views.html.killteam.roster.displayTroopTypeTable(KTArmyLogic.getSpecialistsFromArmy(armyDto),"specialist")
+  @* eo special troops *@
+
+  @* normal troops *@
   @views.html.killteam.roster.displayTroopTypeTable(KTArmyLogic.getNormalTroopsFromArmy(armyDto),"normal")
-  @* eo normal Troops *@
+  @* eo normal troops *@
 
 
 

@@ -58,6 +58,10 @@ object KTArmyLogic {
         moral = troop.moral,
         armor = troop.armor)
 
+      val abilities = troop.abilities.map(ability => KTAbilityDto(ability.name))
+        .toList
+        .sortBy(_.name)
+
 
       val newTroop = KTArmyTroopDto(uuid = UUID.randomUUID().toString,
         name = troopName,
@@ -70,7 +74,8 @@ object KTArmyLogic {
         itemsFromLoadout = itemsFromLoadout,
         additionalItems = itemsFromLoadout,
         allItems = itemsFromLoadout,
-        weapons = weapons
+        weapons = weapons,
+        abilities = abilities
       )
 
       val newTroops = armyDto.troops :+ newTroop
@@ -174,6 +179,7 @@ case class KTArmyTroopDto(uuid: String,
                           amount: Int,
                           points: Int,
                           totalPoints: Int,
+                          abilities: List[KTAbilityDto],
                           itemsFromLoadout: List[KTItemDto],
                           additionalItems: List[KTItemDto],
                           allItems: List[KTItemDto],
@@ -202,3 +208,5 @@ case class KTWeaponDto(name: String,
                        puncture: Int,
                        damage: String,
                        linkedWeapon: String)
+
+case class KTAbilityDto(name: String)

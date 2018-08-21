@@ -3,7 +3,7 @@
 @(troops: List[KTArmyTroopDto], troopType: String)(implicit messages: Messages)
 
 
-<h3>@Messages("kt.troops." + troopType + ".title")</h3>
+<h5>@Messages("kt.troops." + troopType + ".title")</h5>
 
 @if(troops.isEmpty) {
   <div class="alert alert-primary" role="alert">
@@ -27,6 +27,7 @@
             <th>@Messages("kt.troop.tbl.moral")</th>
             <th>@Messages("kt.troop.tbl.armor")</th>
             <th>@Messages("kt.troop.tbl.points")</th>
+            <th>@Messages("kt.troop.tbl.abilities")</th>
           </tr>
         </thead>
         <tbody>
@@ -42,6 +43,15 @@
             <td>@troop.stats.moral</td>
             <td>@troop.stats.armor+</td>
             <td>@troop.totalPoints</td>
+            <td>
+              @if(troop.abilities.isEmpty == false) {
+                <ul>
+                  @for(ability <- troop.abilities) {
+                    <li>@ability.name</li>
+                  }
+                </ul>
+              }
+            </td>
           </tr>
 
 
@@ -53,7 +63,7 @@
                 <a class="btn btn-danger roster_del_btn" href="@routes.KTRosterController.removeTroopFromArmy(troop.uuid)"><i class="fas fa-trash fa-xs"></i></a>
               </div>
             </td>
-            <td colspan="10">
+            <td colspan="11">
 
               @* weapons *@
               <table class="table table-sm table-bordered">
