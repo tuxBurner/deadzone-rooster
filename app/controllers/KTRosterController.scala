@@ -31,7 +31,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   val SESSION_ARMY_CACHE_ID_NAME = "kt_army_cache_id"
 
 
-  val cachetimeOut: Int = config.getOptional[Int]("deadzone.cacheTimeOut").getOrElse(15)
+  val cachetimeOut: Int = config.getOptional[Int]("killteam.cacheTimeOut").getOrElse(15)
 
   implicit val mainTplImpl = mainTpl
 

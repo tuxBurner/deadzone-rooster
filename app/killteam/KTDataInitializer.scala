@@ -35,7 +35,7 @@ class KTDataInitializer @Inject()(configuration: Configuration,
 
     importData()
 
-    val externalCfgFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration)
+    val externalCfgFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration,"killteam")
 
     // when an external cfg folder is found start a watcher for reloading.
     if (externalCfgFolder.isDefined) {

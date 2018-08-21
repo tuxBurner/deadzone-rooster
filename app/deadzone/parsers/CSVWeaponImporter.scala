@@ -55,7 +55,7 @@ import scala.util.matching.Regex
     * @return
     */
   private def importWeaponFromCsv(): List[CSVWeaponDto] = {
-    val dataWithHeaders = readCsvFile("deadzone/weapons.csv")
+    val dataWithHeaders = readCsvFile("weapons.csv","deadzone")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 

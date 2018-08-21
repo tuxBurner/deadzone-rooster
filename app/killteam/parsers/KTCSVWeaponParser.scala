@@ -63,7 +63,7 @@ class KTCSVWeaponParser @Inject()(configuration: Configuration, csvWeaponImporte
     * @return
     */
   private def importWeaonsFromCsvs(): List[KTCsvWeaponDto] = {
-    val dataWithHeaders = readCsvFile("killteam/weapons.csv")
+    val dataWithHeaders = readCsvFile("weapons.csv","killteam")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 

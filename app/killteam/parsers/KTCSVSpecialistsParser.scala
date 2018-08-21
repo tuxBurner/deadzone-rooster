@@ -36,7 +36,7 @@ class KTCSVSpecialistsParser @Inject()(configuration: Configuration) extends CSV
     * @return
     */
   private def importSpecialistsFromCsvs(): List[KTCsvSpecialistDto] = {
-    val dataWithHeaders = readCsvFile("killteam/specialists.csv")
+    val dataWithHeaders = readCsvFile("specialists.csv","killteam")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 

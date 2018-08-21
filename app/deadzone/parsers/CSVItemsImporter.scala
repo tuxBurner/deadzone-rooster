@@ -39,7 +39,7 @@ class CSVItemsImporter @Inject()(configuration: Configuration) extends CSVDataPa
   }
 
   private def importItemsFromCsv(): List[CSVItemDto] = {
-    val dataWithHeaders = readCsvFile("deadzone/items.csv")
+    val dataWithHeaders = readCsvFile("items.csv","deadzone")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 

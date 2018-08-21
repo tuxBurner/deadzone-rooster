@@ -32,7 +32,7 @@ class DZDataInitializer @Inject()(configuration: Configuration,
 
     importFactions()
 
-    val externalCfgFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration)
+    val externalCfgFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration,"deadzone")
 
     // when an external cfg folder is found start a watcher for reloading.
     if (externalCfgFolder.isDefined) {

@@ -52,7 +52,7 @@ class KTCSVLoadoutParser @Inject()(configuration: Configuration) extends CSVData
     * @return
     */
   private def importLoadoutFromCsvs(): List[KTCsvLoadoutDto] = {
-    val dataWithHeaders = readCsvFile("killteam/loadout.csv")
+    val dataWithHeaders = readCsvFile("loadout.csv","killteam")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 

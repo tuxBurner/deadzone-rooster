@@ -19,12 +19,13 @@ class CSVDataParser(configuration: Configuration) {
   /**
     * Reads the csv from the given path in the classpath
     *
-    * @param path of the csv to read
+    * @param path       of the csv to read
+    * @param rosterType the type of the roster
     * @return the parsed csv file as a List 
     */
-  def readCsvFile(path: String): List[Map[String, String]] = {
+  def readCsvFile(path: String, rosterType: String): List[Map[String, String]] = {
 
-    val configuredExternalFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration)
+    val configuredExternalFolder = CSVDataParser.checkAndGetExternalConfigFolder(configuration, rosterType)
 
     implicit object MyFormat extends DefaultCSVFormat {
       override val delimiter = ';'
@@ -99,8 +100,8 @@ object CSVDataParser {
     *
     * @return
     */
-  def checkAndGetExternalConfigFolder(configuration: Configuration): Option[File] = {
-    configuration.getOptional[String]("deadzone.externalConfigFolder")
+  def checkAndGetExternalConfigFolder(configuration: Configuration, rosterType: String): Option[File] = {
+    configuration.getOptional[String](f"$rosterType.externalConfigFolder")
       .map(path => {
 
         if (StringUtils.isBlank(path)) {

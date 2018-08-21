@@ -88,7 +88,7 @@ class KTCSVArmyParser @Inject()(configuration: Configuration) extends CSVDataPar
     * @return
     */
   private def importTroopsFromCsvs(): List[KTCsvTroopDto] = {
-    val dataWithHeaders = readCsvFile("killteam/armies.csv")
+    val dataWithHeaders = readCsvFile("armies.csv","killteam")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 

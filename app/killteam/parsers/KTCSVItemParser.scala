@@ -50,7 +50,7 @@ class KTCSVItemParser @Inject()(configuration: Configuration) extends CSVDataPar
     * @return
     */
   private def importItemsromCsvs(): List[KTCsvItemDto] = {
-    val dataWithHeaders = readCsvFile("killteam/items.csv")
+    val dataWithHeaders = readCsvFile("items.csv","killteam")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 

@@ -68,7 +68,7 @@ class CSVArmyImporter @Inject()(configuration: Configuration, csvWeaponImporter:
 
 
   private def importSoldiersFromCsvs(): List[CSVTroopDto] = {
-    val dataWithHeaders = readCsvFile("deadzone/armies.csv")
+    val dataWithHeaders = readCsvFile("armies.csv","deadzone")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 
