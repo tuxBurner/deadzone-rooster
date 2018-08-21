@@ -31,7 +31,6 @@ object KTArmyLogic {
 
       Logger.info(s"Adding toop: $troopName from faction: $factionName to the army")
 
-
       val loadout = loadoutDoToDto(defaultLoadOut.get)
 
       val troopStats = KTTroopStats(movement = troop.movement,
@@ -357,6 +356,10 @@ case class KTItemDto(name: String,
 
 case class KTSpecialistOptionDto(selected: Boolean,
                                  name: String)
+
+case class KTSpecialOptionDto(selected: Boolean,
+                              name: String,
+                              level: Int)
 
 /**
   * Represents a specialist of a troop

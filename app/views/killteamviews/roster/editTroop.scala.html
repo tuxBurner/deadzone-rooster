@@ -28,5 +28,28 @@
 
   @views.html.killteamviews.roster.displayItems(troopConfigOptions.get.items)
 
+  @if(troopConfigOptions.get.specialists.isEmpty == false) {
+    <table class="table table-sm table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="2">@Messages("kt.troop.specialists.title")</th>
+        </tr>
+      </thead>
+      <tbody>
+      @for(specialist <- troopConfigOptions.get.specialists) {
+        <tr>
+          <td colspan="2" class="@if(specialist.selected) {bg-success} else {bg-info} text-white">@specialist.name</td>
+        </tr>
+        <tr>
+          <td>SELECTME</td>
+          <td>
+            
+          </td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  }
+
 </div>
 

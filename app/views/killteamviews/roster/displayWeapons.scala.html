@@ -17,7 +17,13 @@
   @for(weapon <- weapons) {
     <tr>
       <th scope="row">@weapon.name</th>
-      <td>@weapon.range" </td>
+      <td>
+        @if(weapon.range != 0) {
+          @weapon.range"
+        } else {
+          -
+        }
+      </td>
       <td>@weapon.weaponType</td>
       <td>@weapon.strength</td>
       <td>@weapon.puncture</td>
