@@ -1,7 +1,8 @@
 import com.google.inject.AbstractModule
+import deadzone.DZDataInitializer
 import deadzone.parsers.{CSVArmyImporter, CSVItemsImporter, CSVWeaponImporter}
 import killteam.parsers.{KTCSVArmyParser, KTCSVItemParser, KTCSVLoadoutParser, KTCSVSpecialistsParser}
-import services.{DZDataInitializer, KTDataInitializer}
+import services.KTDataInitializer
 
 /**
   * This class is a Guice module that tells Guice how to bind several

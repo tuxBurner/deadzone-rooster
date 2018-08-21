@@ -1,11 +1,10 @@
-package services
-
-import javax.inject.{Inject, Singleton}
+package deadzone
 
 import better.files
-import deadzone.parsers.{CSVDataParser, CSVArmyImporter, CSVItemsImporter, CSVWeaponImporter}
+import deadzone.models._
+import deadzone.parsers.{CSVArmyImporter, CSVDataParser, CSVItemsImporter, CSVWeaponImporter}
 import io.methvin.better.files.RecursiveFileMonitor
-import models._
+import javax.inject.{Inject, Singleton}
 import play.Logger
 import play.api.Configuration
 

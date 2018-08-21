@@ -1,4 +1,4 @@
-package models
+package deadzone.models
 
 import deadzone.models.CSVModels.CSVItemDto
 import deadzone.parsers.CSVWeaponImporter.NUMBER_REGEX

@@ -1,6 +1,6 @@
 package deadzone.logic
 
-import models.FactionDAO
+import deadzone.models.FactionDAO
 
 /**
   * @author Sebastian Hardt (s.hardt@micromata.de)

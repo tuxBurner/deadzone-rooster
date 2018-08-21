@@ -1,4 +1,4 @@
-package models
+package deadzone.models
 
 import play.api.Logger
 

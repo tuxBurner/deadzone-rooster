@@ -1,6 +1,6 @@
 package deadzone.logic
 
-import models.WeaponDAO
+import deadzone.models.WeaponDAO
 
 import scala.collection.mutable.ListBuffer
 

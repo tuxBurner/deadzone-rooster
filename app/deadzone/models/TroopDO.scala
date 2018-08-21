@@ -1,4 +1,4 @@
-package models
+package deadzone.models
 
 import deadzone.models.CSVModels.CSVTroopDto
 import org.apache.commons.lang3.StringUtils

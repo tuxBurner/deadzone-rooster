@@ -2,7 +2,7 @@ package deadzone.logic
 
 import java.util.UUID
 
-import models._
+import deadzone.models._
 import org.apache.commons.lang3.StringUtils
 
 import scala.collection.mutable.ListBuffer

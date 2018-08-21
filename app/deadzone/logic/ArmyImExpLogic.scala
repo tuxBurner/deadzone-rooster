@@ -1,6 +1,6 @@
 package deadzone.logic
 
-import models.{ItemDAO, TroopDAO, WeaponDAO}
+import deadzone.models.{ItemDAO, TroopDAO, WeaponDAO}
 import org.apache.commons.lang3.StringUtils
 
 /**

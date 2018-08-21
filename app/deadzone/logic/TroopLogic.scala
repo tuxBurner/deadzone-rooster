@@ -1,6 +1,6 @@
 package deadzone.logic
 
-import models.TroopDAO
+import deadzone.models.TroopDAO
 
 
 /**
