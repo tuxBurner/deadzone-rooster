@@ -52,7 +52,7 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
 
   @JSRoute def getPopOverData(popoverType: String, key: String) = Action {
     implicit request =>
-      Ok(views.html.displayDescription(popoverType, key))
+      Ok(views.html.deadzoneviews.displayDescription(popoverType, key))
   }
 
   /**

@@ -116,7 +116,7 @@
               <th>@recon._1</th>
               <td>@recon._2+</td>
               <td>@recon._3</td>
-              <td>@displayArmySpecialDescr(recon._3)</td>
+              <td>@views.html.deadzoneviews.displayArmySpecialDescr(recon._3)</td>
             </tr>
           }
           </tbody>
@@ -141,7 +141,7 @@
           @for(ability <- armyPdfInfos.abilities) {
             <tr>
               <th>@ability</th>
-              <td>@displayAbiltityDescr(ability)</td>
+              <td>@views.html.deadzoneviews.displayAbiltityDescr(ability)</td>
             </tr>
           }
           </tbody>
@@ -166,7 +166,7 @@
           @for(item <- armyPdfInfos.items) {
             <tr>
               <th>@item</th>
-              <td>@displayItemDescr(item)</td>
+              <td>@views.html.deadzoneviews.displayItemDescr(item)</td>
             </tr>
           }
           </tbody>

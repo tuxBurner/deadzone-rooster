@@ -1,6 +1,6 @@
 @import deadzone.models.ModelType
 @import deadzone.logic.{ArmyWeaponDto, FactionDto, TroopWithAllowedWeaponsDto}
-@(troopsByType: Map[String, List[TroopWithAllowedWeaponsDto]], factions: List[FactionDto], currentFaction: String, factionWeapons: Map[String, List[ArmyWeaponDto]])(implicit messages: Messages, mainTpl: views.html.main)
+@(troopsByType: Map[String, List[TroopWithAllowedWeaponsDto]], factions: List[FactionDto], currentFaction: String, factionWeapons: Map[String, List[ArmyWeaponDto]])(implicit messages: Messages, mainTpl: views.html.deadzoneviews.main)
 
 @scripts = {
   <script type="text/javascript" src="@routes.Assets.versioned("javascripts/deadzone/all_troops.js")"> </script>

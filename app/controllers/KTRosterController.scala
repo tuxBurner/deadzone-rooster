@@ -57,10 +57,6 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
       Ok(Json.toJson(KTFactionLogic.getAllOrTheOneFromTheArmyFactions(getArmyFromCache(request))))
   }
 
-  @JSRoute def getPopOverData(popoverType: String, key: String) = Action {
-    implicit request =>
-      Ok(views.html.displayDescription(popoverType, key))
-  }
 
   /**
     * Returns all troops of the given faction for selection

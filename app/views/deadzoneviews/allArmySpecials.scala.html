@@ -1,5 +1,5 @@
 @import deadzone.models.TroopDO
-@(troops: List[TroopDO])(implicit messages: Messages, main: views.html.main)
+@(troops: List[TroopDO])(implicit messages: Messages, main: views.html.deadzoneviews.main)
 
 @main("mainmenu.armyspecials") {
   <table class="table table-sm table-bordered">
@@ -19,7 +19,7 @@
         <td>@troop.soldierDto.name</td>
         <td>@troop.soldierDto.armySpecial</td>
         <td>@troop.soldierDto.recon+</td>
-        <td>@displayArmySpecialDescr(troop.soldierDto.armySpecial)</td>
+        <td>@views.html.deadzoneviews.displayArmySpecialDescr(troop.soldierDto.armySpecial)</td>
       </tr>
     }
     </tbody>

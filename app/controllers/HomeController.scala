@@ -18,7 +18,7 @@ import scala.collection.JavaConverters._
   * application's home page.
   */
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRoutesComponent, pdfGenerator: PdfGenerator, langs: Langs,mainTpl: views.html.main) extends AbstractController(cc) with I18nSupport {
+class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRoutesComponent, pdfGenerator: PdfGenerator, langs: Langs,mainTpl: views.html.deadzoneviews.main) extends AbstractController(cc) with I18nSupport {
 
 
   implicit val mainTplImpl = mainTpl
@@ -31,7 +31,7 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
     */
   def rosterMain = Action {
     implicit request =>
-      Ok(views.html.roster.roster())
+      Ok(views.html.deadzoneviews.roster.roster())
   }
 
   /**
@@ -60,7 +60,7 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
   def displayAllAbilities() = Action {
     implicit request =>
       val abilities = AbilityDAO.findAll()
-      Ok(views.html.allAbilities(abilities))
+      Ok(views.html.deadzoneviews.allAbilities(abilities))
   }
 
   /**
@@ -71,7 +71,7 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
   def displayAllArmySpecials() = Action {
     implicit request =>
       val troopsWithArmySpecials = TroopDAO.findAllWithArmySpecials()
-      Ok(views.html.allArmySpecials(troopsWithArmySpecials))
+      Ok(views.html.deadzoneviews.allArmySpecials(troopsWithArmySpecials))
   }
 
   /**
@@ -82,7 +82,7 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
   def displayAllItems() = Action {
     implicit request =>
       val items = ItemDAO.findAllItems()
-      Ok(views.html.allItems(items))
+      Ok(views.html.deadzoneviews.allItems(items))
   }
 
   /**
@@ -120,7 +120,7 @@ class HomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRo
       val factionWeapons = WeaponsLogic.getAllWeaponsOfFaction(faction)
 
 
-      Ok(views.html.allTroopsOfArmy(troopsForSelectedFaction, factions, faction, factionWeapons))
+      Ok(views.html.deadzoneviews.allTroopsOfArmy(troopsForSelectedFaction, factions, faction, factionWeapons))
   }
 
 

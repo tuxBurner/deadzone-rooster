@@ -1,5 +1,5 @@
 @import deadzone.models.ItemDO
-@(items: List[ItemDO])(implicit messages: Messages,mainTpl: views.html.main)
+@(items: List[ItemDO])(implicit messages: Messages,mainTpl: views.html.deadzoneviews.main)
 
 @mainTpl("mainmenu.items") {
   <table class="table table-sm table-bordered">
@@ -13,7 +13,7 @@
     @for(item <- items) {
       <tr>
         <th>@item.name</th>
-        <td>@displayItemDescr(item.name)</td>
+        <td>@views.html.deadzoneviews.displayItemDescr(item.name)</td>
       </tr>
     }
     </tbody>

@@ -1,5 +1,5 @@
 @import deadzone.models.AbilityDO
-@(abilities: List[AbilityDO])(implicit messages: Messages,mainTpl: views.html.main)
+@(abilities: List[AbilityDO])(implicit messages: Messages,mainTpl: views.html.deadzoneviews.main)
 
 @mainTpl("mainmenu.abilities") {
   <table class="table table-sm table-bordered">
@@ -13,7 +13,7 @@
     @for(ability <- abilities) {
       <tr>
         <th>@ability.name</th>
-        <td>@displayAbiltityDescr(ability.name)</td>
+        <td>@views.html.deadzoneviews.displayAbiltityDescr(ability.name)</td>
       </tr>
     }
     </tbody>
