@@ -25,6 +25,7 @@ object KTItemsDao {
     items.find(itemDo => itemDo.faction.name == factionDo.name && itemDo.name == itemName)
   }
 
+  
   /**
     * Adds an item to the given faction
     *

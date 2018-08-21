@@ -9,6 +9,14 @@ import play.api.Logger
 object KTArmyLogic {
 
 
+  /**
+    * Adds a troop to the given army
+    *
+    * @param factionName the faction name of the troop to add
+    * @param troopName   the name of the troop to add
+    * @param armyDto     the army wher to add the troop
+    * @return
+    */
   def addTroopToArmy(factionName: String, troopName: String, armyDto: KTArmyDto): KTArmyDto = {
 
     val troopDo = KTTroopDao.getTroopByFactionAndName(factionName, troopName)
@@ -60,15 +68,54 @@ object KTArmyLogic {
   }
 
   /**
+    * Gathers all possible config options for the troop
+    *
+    * @param uuid    the uuid of the troop
+    * @param armyDto the army where the troop is in
+    * @return
+    */
+  def getPossibleConfigurationOptionsForTroop(uuid: String, armyDto: KTArmyDto): Option[KTTroopOptionsDto] = {
+    getTroopFromArmyByUUID(uuid, armyDto)
+      .map(troopDto => {
+        val loadOutsForTroop = getPossibleLoadoutsForTroop(troopDto.name, troopDto.faction)
+        val itemsForTroop = getPossibleItemsForTroop(troopDto.name, troopDto.faction)
+        Some(KTTroopOptionsDto(loadouts = loadOutsForTroop,
+          items = itemsForTroop))
+      })
+      .getOrElse({
+        Logger.error(s"Troop $uuid not found in army")
+        None
+      })
+  }
+
+  /**
     * Gets all possible loadout for the troop
     *
     * @param troopName  the name of the troop
     * @param factioName the name of the faction of the troop
     * @return
     */
-  def getPossibleLoadoutsForTroop(troopName: String, factioName: String): List[KTLoadoutDto] = {
+  private def getPossibleLoadoutsForTroop(troopName: String, factioName: String): List[KTLoadoutDto] = {
     KTLoadoutDao.getLoadoutsByTroopAndName(troopName, factioName)
       .map(loadoutDoToDto(_))
+      .sortBy(_.name)
+  }
+
+  /**
+    * Gets all possible items from the troop
+    *
+    * @param troopName   the name of the troop
+    * @param factionName the name of the faction
+    * @return
+    */
+  private def getPossibleItemsForTroop(troopName: String, factionName: String): List[KTItemDto] = {
+    KTTroopDao.getTroopByFactionAndName(troopName = troopName, factionName = factionName)
+      .map(troopDo => itemDosToSortedDtos(troopDo.items))
+      .getOrElse({
+        Logger.error(s"Troop: $troopName not found in faction: $factionName")
+        List()
+      })
+
   }
 
   /**
@@ -133,8 +180,13 @@ object KTArmyLogic {
     */
   private def loadoutDoToDto(loadoutDo: KTLoadoutDo): KTLoadoutDto = {
     val weapons = weaponDosToSortedDtos(loadoutDo.weapons)
+    val weaponPoints = weapons.map(_.points).sum
+
     val items = itemDosToSortedDtos(loadoutDo.items)
+    val itemsPoints = items.map(_.points).sum
+
     KTLoadoutDto(name = loadoutDo.name,
+      points = weaponPoints + itemsPoints,
       weapons = weapons,
       items = items)
   }
@@ -164,6 +216,18 @@ object KTArmyLogic {
 
 
   /**
+    * Finds a troop in the army by its uuid
+    *
+    * @param uuid    the uuid to find the troop
+    * @param armyDto the army to search for the troop
+    * @return
+    */
+  private def getTroopFromArmyByUUID(uuid: String, armyDto: KTArmyDto): Option[KTArmyTroopDto] = {
+    armyDto.troops.find(_.uuid == uuid)
+  }
+
+
+  /**
     * Calculates all points for an army
     *
     * @param troops the troops in the army where to calculate the points for
@@ -178,16 +242,12 @@ object KTArmyLogic {
     *
     * @param basePoints the base points the troop has
     * @param items      the items the troop has equiped
-    * @param weapons    the weapons the troop has equiped
+    * @param loadout    the current loadout of the troop
     * @return
     */
   def calculateTroopPoints(basePoints: Int, items: List[KTItemDto], loadout: KTLoadoutDto): Int = {
     val itemsPoints = items.map(_.points).sum
-    val loadoutItemsPoints = loadout.items.map(_.points).sum
-
-    val weaponPoints = loadout.weapons.map(_.points).sum
-
-    basePoints + itemsPoints + loadoutItemsPoints + weaponPoints
+    basePoints + itemsPoints + loadout.points
   }
 
   /**
@@ -265,12 +325,23 @@ case class KTWeaponDto(name: String,
 case class KTAbilityDto(name: String)
 
 /**
+  * Contains all options a troop can have
+  *
+  * @param loadouts all possible loadouts of the troop
+  * @param items    all possible items the troop can equipe
+  */
+case class KTTroopOptionsDto(loadouts: List[KTLoadoutDto],
+                             items: List[KTItemDto])
+
+/**
   * Loadout a troop can get
   *
   * @param name    the name of the loadout
   * @param weapons the weapons of the loadout
   * @param items   the items of the loadout
+  * @param points  how many points is the loadout worth
   */
 case class KTLoadoutDto(name: String,
+                        points: Int,
                         weapons: List[KTWeaponDto],
                         items: List[KTItemDto])

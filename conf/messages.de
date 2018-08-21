@@ -215,3 +215,12 @@ kt.troops.leader.title=Anführer
 kt.troops.leader.noTroops=Kein Anführer vorhanden
 kt.troops.specialist.title=Spezialisten
 kt.troops.specialist.noTroops=Keine Spezialisten vorhanden
+
+kt.item.tbl.title=Ausrüstung
+kt.item.tbl.name=Name
+kt.item.tbl.points=Punkte
+kt.item.tbl.description=Beschreibung
+
+kt.troop.loadouts.title=Loadouts
+kt.troop.loadouts.points=Punkte
+

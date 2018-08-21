@@ -1,2 +1,32 @@
-@(uuid: String)(implicit messages: Messages)
+@(troopConfigOptions: Option[killteam.logic.KTTroopOptionsDto])(implicit messages: Messages)
+
+<div class=" table-responsive-sm">
+
+  <h4>EEEEDIITTTIITIITIT</h4>
+
+  <table class="table table-sm table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th colspan="2">@Messages("kt.troop.loadouts.title")</th>
+      </tr>
+    </thead>
+    <tbody>
+    @for(loadout <- troopConfigOptions.get.loadouts) {
+      <tr>
+        <td colspan="2">@loadout.name (@Messages("kt.troop.loadouts.points") @loadout.points)</td>
+      </tr>
+      <tr>
+        <td>adasasdasd</td>
+        <td>
+          @views.html.killteamviews.roster.displayWeapons(loadout.weapons)
+          @views.html.killteamviews.roster.displayItems(loadout.items)
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+
+  @views.html.killteamviews.roster.displayItems(troopConfigOptions.get.items)
+
+</div>
 
