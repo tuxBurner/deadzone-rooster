@@ -6,5 +6,5 @@
       <a class="btn btn-info btn-sm" href="@routes.HomeController.exportCheatSheetAsPdf()" target="_blank"><i class="fas fa-file-pdf fa-xs"></i> @Messages("cheatSheet.openAsPdf")</a>
     </div>
 
-    @cheatsheet.cheatSheet()
+    @views.html.deadzoneviews.cheatsheet.cheatSheet()
   }

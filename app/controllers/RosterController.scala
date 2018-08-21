@@ -178,7 +178,7 @@ class RosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, 
 
     val armyPdfInfos = ArmyLogic.extractPdfArmyInfos(army)
 
-    val pdfBytes = pdfGenerator.toBytes(views.html.pdf.rosterTable.render(army, armyPdfInfos, messagesApi.preferred(request)), "http://localhost:9000")
+    val pdfBytes = pdfGenerator.toBytes(views.html.deadzoneviews.pdf.rosterTable.render(army, armyPdfInfos, messagesApi.preferred(request)), "http://localhost:9000")
     withCacheId(Ok(pdfBytes), request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
   }
 

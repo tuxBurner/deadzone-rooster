@@ -12,7 +12,7 @@ import play.i18n.Langs
   *The home controller for the Killteam Roster
   */
 @Singleton
-class KTHomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRoutesComponent, pdfGenerator: PdfGenerator, langs: Langs, mainTpl: views.html.killteamv.main) extends AbstractController(cc) with I18nSupport {
+class KTHomeController @Inject()(cc: ControllerComponents, jsRoutesComponent: JsRoutesComponent, pdfGenerator: PdfGenerator, langs: Langs, mainTpl: views.html.killteamviews.main) extends AbstractController(cc) with I18nSupport {
 
 
 

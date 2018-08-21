@@ -94,7 +94,7 @@
               <td>@troop.troopDto.baseStats.basePoints</td>
               <td>@troop.troopDto.baseStats.baseVictoryPoints</td>
               <td>
-              @includes.abilitiesDisplay(troop.troopDto.abilities)
+              @views.html.deadzoneviews.includes.abilitiesDisplay(troop.troopDto.abilities)
               </td>
               <td>
                 <ul>
@@ -137,7 +137,7 @@
                           <td>@weapon.points</td>
                           <td>@weapon.victoryPoints</td>
                           <td>
-                          @includes.abilitiesDisplay(weapon.abilities)
+                          @views.html.deadzoneviews.includes.abilitiesDisplay(weapon.abilities)
                           </td>
                           <td>@weapon.hardPoints</td>
                         </tr>
@@ -194,7 +194,7 @@
               <td>@weapon.points</td>
               <td>@weapon.victoryPoints</td>
               <td>
-              @includes.abilitiesDisplay(weapon.abilities)
+              @views.html.deadzoneviews.includes.abilitiesDisplay(weapon.abilities)
               </td>
               <td>@weapon.hardPoints</td>
               <td>@weapon.free</td>

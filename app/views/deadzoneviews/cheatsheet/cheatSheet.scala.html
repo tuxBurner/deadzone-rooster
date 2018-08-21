@@ -9,25 +9,25 @@
       @* LEFT SIDE *@
       <td>
 
-        @cheatsheet.cheatSheetPanel("cheatSheet.setupGame.title") {
+        @views.html.deadzoneviews.cheatsheet.cheatSheetPanel("cheatSheet.setupGame.title") {
           <ul>
           @Html(Messages("cheatSheet.setupGame.content"))
           </ul>
         }
 
-        @cheatsheet.cheatSheetPanel("cheatSheet.actions.title") {
+        @views.html.deadzoneviews.cheatsheet.cheatSheetPanel("cheatSheet.actions.title") {
           <ul>
           @Html(Messages("cheatSheet.actions.content"))
           </ul>
         }
 
-        @cheatsheet.cheatSheetPanel("cheatSheet.shootmodifiers.title") {
+        @views.html.deadzoneviews.cheatsheet.cheatSheetPanel("cheatSheet.shootmodifiers.title") {
           <ul>
           @Html(Messages("cheatSheet.shootmodifiers.content"))
           </ul>
         }
 
-        @cheatsheet.cheatSheetPanel("cheatSheet.damage.title") {
+        @views.html.deadzoneviews.cheatsheet.cheatSheetPanel("cheatSheet.damage.title") {
           <table class="table table-sm table-bordered">
             <thead class="thead-dark">
               <tr>
@@ -57,32 +57,32 @@
 
       @* RIGHT SIDE *@
       <td>
-        @cheatsheet.cheatSheetPanel(Messages("cheatSheet.fightmodifiers.title")) {
+        @views.html.deadzoneviews.cheatsheet.cheatSheetPanel(Messages("cheatSheet.fightmodifiers.title")) {
           @Html(Messages("cheatSheet.fightmodifiers.content1"))
           <ul>
           @Html(Messages("cheatSheet.fightmodifiers.content2"))
           </ul>
         }
 
-        @cheatsheet.cheatSheetPanel(Messages("cheatSheet.slammedIntoWall.title")) {
+        @views.html.deadzoneviews.cheatsheet.cheatSheetPanel(Messages("cheatSheet.slammedIntoWall.title")) {
           @Html(Messages("cheatSheet.slammedIntoWall.content1"))
           <ul>
           @Html(Messages("cheatSheet.slammedIntoWall.content2"))
           </ul>
         }
 
-        @cheatsheet.cheatSheetPanel(Messages("cheatSheet.falling.title")) {
+        @views.html.deadzoneviews.cheatsheet.cheatSheetPanel(Messages("cheatSheet.falling.title")) {
           @Html(Messages("cheatSheet.falling.content1"))
           <ul>
           @Html(Messages("cheatSheet.falling.content2"))
           </ul>
         }
 
-        @cheatsheet.cheatSheetPanel(Messages("cheatSheet.knockback.title")) {
+        @views.html.deadzoneviews.cheatsheet.cheatSheetPanel(Messages("cheatSheet.knockback.title")) {
           @Messages("cheatSheet.knockback.content")
         }
 
-        @cheatsheet.cheatSheetPanel(Messages("cheatSheet.frag.title")) {
+        @views.html.deadzoneviews.cheatsheet.cheatSheetPanel(Messages("cheatSheet.frag.title")) {
           @Html(Messages("cheatSheet.frag.content1"))
           <ul>
           @Html(Messages("cheatSheet.frag.content2"))
