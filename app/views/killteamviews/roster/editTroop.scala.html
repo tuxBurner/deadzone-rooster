@@ -11,15 +11,15 @@
       </tr>
     </thead>
     <tbody>
-    @for(loadout <- troopConfigOptions.get.loadouts) {
+    @for(loadoutOption <- troopConfigOptions.get.loadoutOptions) {
       <tr>
-        <td colspan="2">@loadout.name (@Messages("kt.troop.loadouts.points") @loadout.points)</td>
+        <td colspan="2" class="@if(loadoutOption.selected) {bg-success} else {bg-info} text-white">@loadoutOption.loadout.name (@Messages("kt.troop.loadouts.points") @loadoutOption.loadout.points)</td>
       </tr>
       <tr>
         <td>adasasdasd</td>
         <td>
-          @views.html.killteamviews.roster.displayWeapons(loadout.weapons)
-          @views.html.killteamviews.roster.displayItems(loadout.items)
+          @views.html.killteamviews.roster.displayWeapons(loadoutOption.loadout.weapons)
+          @views.html.killteamviews.roster.displayItems(loadoutOption.loadout.items)
         </td>
       </tr>
     }

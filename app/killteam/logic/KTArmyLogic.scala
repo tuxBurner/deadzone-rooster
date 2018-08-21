@@ -78,8 +78,14 @@ object KTArmyLogic {
     getTroopFromArmyByUUID(uuid, armyDto)
       .map(troopDto => {
         val loadOutsForTroop = getPossibleLoadoutsForTroop(troopDto.name, troopDto.faction)
+          .map(loadout => {
+            val selected = loadout.name == troopDto.loadout.name
+            KTOptionLoadout(selected = selected, loadout = loadout)
+          })
+
+
         val itemsForTroop = getPossibleItemsForTroop(troopDto.name, troopDto.faction)
-        Some(KTTroopOptionsDto(loadouts = loadOutsForTroop,
+        Some(KTTroopOptionsDto(loadoutOptions = loadOutsForTroop,
           items = itemsForTroop))
       })
       .getOrElse({
@@ -327,11 +333,14 @@ case class KTAbilityDto(name: String)
 /**
   * Contains all options a troop can have
   *
-  * @param loadouts all possible loadouts of the troop
-  * @param items    all possible items the troop can equipe
+  * @param loadoutOptions all possible loadouts options for the troop
+  * @param items          all possible items the troop can equipe
   */
-case class KTTroopOptionsDto(loadouts: List[KTLoadoutDto],
+case class KTTroopOptionsDto(loadoutOptions: List[KTOptionLoadout],
                              items: List[KTItemDto])
+
+case class KTOptionLoadout(selected: Boolean,
+                           loadout: KTLoadoutDto)
 
 /**
   * Loadout a troop can get
