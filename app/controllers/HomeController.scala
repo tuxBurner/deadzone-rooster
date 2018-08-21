@@ -1,15 +1,14 @@
 package controllers
 
-import javax.inject._
-
 import com.github.tuxBurner.jsAnnotations.{JSRoute, JsRoutesComponent}
+import deadzone.logic.{FactionLogic, TroopLogic, WeaponsLogic}
 import it.innove.play.pdf.PdfGenerator
+import javax.inject._
 import models.{AbilityDAO, ItemDAO, TroopDAO}
 import play.api.i18n.I18nSupport
 import play.api.mvc._
 import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
 import play.i18n.Langs
-import services.logic.{FactionLogic, TroopLogic, WeaponsLogic}
 
 import scala.collection.JavaConverters._
 

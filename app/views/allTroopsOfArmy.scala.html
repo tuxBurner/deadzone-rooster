@@ -1,5 +1,5 @@
 @import deadzone.models.ModelType
-@import services.logic.{ArmyWeaponDto, FactionDto, TroopWithAllowedWeaponsDto}
+@import deadzone.logic.{ArmyWeaponDto, FactionDto, TroopWithAllowedWeaponsDto}
 @(troopsByType: Map[String, List[TroopWithAllowedWeaponsDto]], factions: List[FactionDto], currentFaction: String, factionWeapons: Map[String, List[ArmyWeaponDto]])(implicit messages: Messages, mainTpl: views.html.main)
 
 @scripts = {

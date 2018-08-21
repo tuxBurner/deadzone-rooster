@@ -1,4 +1,4 @@
-package services.logic
+package deadzone.logic
 
 import models.FactionDAO
 

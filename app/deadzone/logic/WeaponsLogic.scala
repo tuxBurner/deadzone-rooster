@@ -1,7 +1,6 @@
-package services.logic
+package deadzone.logic
 
 import models.WeaponDAO
-import play.Logger
 
 import scala.collection.mutable.ListBuffer
 
@@ -27,7 +26,7 @@ object WeaponsLogic {
         if(!weaponsByTypes.isDefinedAt(weaponType.name)) {
           weaponsByTypes.put(weaponType.name, ListBuffer())
         }
-        
+
         weaponsByTypes(weaponType.name).append(weaponDto)
       })
     })

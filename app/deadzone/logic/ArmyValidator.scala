@@ -1,4 +1,4 @@
-package services.logic
+package deadzone.logic
 
 import deadzone.models.{ItemRarity, ModelType}
 import play.api.i18n.Messages

@@ -1,9 +1,7 @@
-package services.logic
+package deadzone.logic
 
 import models.{ItemDAO, TroopDAO, WeaponDAO}
 import org.apache.commons.lang3.StringUtils
-import services.logic.ArmyLogic.{itemDoToItemDto, weaponDoToWeaponDto}
-
 
 /**
   * Does the im exp of an army
@@ -61,18 +59,18 @@ object ArmyImExpLogic {
 
     val newWeapons = troop.weapons.map(weaponName => {
       val weaponDo = WeaponDAO.findByNameAndFactionNameAndAllowedTypes(weaponName, troop.faction, troopDo.allowedWeaponTypes.map(_.name))
-      weaponDoToWeaponDto(weaponDo.get)
+      ArmyLogic.weaponDoToWeaponDto(weaponDo.get)
     })
 
     val newItems = troop.items.map(itemName => {
       val itemDo = ItemDAO.findByNameAndFactionName(itemName, troop.faction)
-      itemDoToItemDto(itemDo.get)
+      ArmyLogic.itemDoToItemDto(itemDo.get)
     })
 
     val points = troopDo.soldierDto.points + newWeapons.map(_.points).sum + newItems.map(_.points).sum
     val victoryPoints = troopDo.soldierDto.victoryPoints + newWeapons.map(_.victoryPoints).sum
 
-    val newTroop = ArmyLogic.troopDoToArmyTroopDto(troopDo);
+    val newTroop = ArmyLogic.troopDoToArmyTroopDto(troopDo)
     val troopForAmry = newTroop.copy(
       baseStats = newTroop.baseStats.copy(
         points = points,
