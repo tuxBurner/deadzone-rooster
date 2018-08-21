@@ -41,6 +41,18 @@ object KTLoadoutDao {
   }
 
   /**
+    * Gets all loadouts fot the given troop and faction
+    *
+    * @param troopName   the name of the troop
+    * @param factionName the name of the faction
+    * @return
+    */
+  def getLoadoutsByTroopAndName(troopName: String, factionName: String): List[KTLoadoutDo] = {
+    loadOuts.filter(loadOut => loadOut.faction.name == factionName && loadOut.troop.name == troopName).toList
+  }
+
+
+  /**
     * Adds a weapon to the given faction
     *
     * @param csvLoadoutDto the loadout information's from the csv

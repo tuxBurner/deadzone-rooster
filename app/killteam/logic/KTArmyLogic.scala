@@ -2,7 +2,7 @@ package killteam.logic
 
 import java.util.UUID
 
-import killteam.models.{KTLoadoutDao, KTTroopDao}
+import killteam.models._
 import org.apache.commons.lang3.StringUtils
 import play.api.Logger
 
@@ -23,30 +23,8 @@ object KTArmyLogic {
 
       Logger.info(s"Adding toop: $troopName from faction: $factionName to the army")
 
-      // get all items from the loadout
-      val itemsFromLoadout = defaultLoadOut.get.items
-        .map(itemDo => {
-          KTItemDto(name = itemDo.name,
-            points = itemDo.points)
-        })
-        .toList
-        .sortBy(_.name)
 
-
-      // gets all weapons from the loadout
-      val weapons = defaultLoadOut.get.weapons
-        .map(weaponDo => {
-          KTWeaponDto(name = weaponDo.name,
-            points = weaponDo.points,
-            range = weaponDo.range,
-            weaponType = weaponDo.weaponType,
-            strength = weaponDo.strength,
-            puncture = weaponDo.puncture,
-            damage = weaponDo.damage,
-            linkedWeapon = weaponDo.linkedWeapon)
-        })
-        .toList
-        .sortBy(_.name)
+      val loadout = loadoutDoToDto(defaultLoadOut.get)
 
       val troopStats = KTTroopStats(movement = troop.movement,
         fightStat = troop.fightStat,
@@ -62,21 +40,15 @@ object KTArmyLogic {
         .toList
         .sortBy(_.name)
 
-
       val newTroop = KTArmyTroopDto(uuid = UUID.randomUUID().toString,
         name = troopName,
         faction = factionName,
         stats = troopStats,
-        loadoutName = defaultLoadOut.get.name,
-        points = troop.points,
-        totalPoints = calculateTroopPoints(troop.points, itemsFromLoadout, weapons),
+        loadout = loadout,
         amount = 1,
-        itemsFromLoadout = itemsFromLoadout,
-        additionalItems = itemsFromLoadout,
-        allItems = itemsFromLoadout,
-        weapons = weapons,
-        abilities = abilities
-      )
+        points = troop.points,
+        totalPoints = calculateTroopPoints(troop.points, List(), loadout),
+        abilities = abilities)
 
       val newTroops = armyDto.troops :+ newTroop
 
@@ -88,17 +60,99 @@ object KTArmyLogic {
   }
 
   /**
+    * Gets all possible loadout for the troop
+    *
+    * @param troopName  the name of the troop
+    * @param factioName the name of the faction of the troop
+    * @return
+    */
+  def getPossibleLoadoutsForTroop(troopName: String, factioName: String): List[KTLoadoutDto] = {
+    KTLoadoutDao.getLoadoutsByTroopAndName(troopName, factioName)
+      .map(loadoutDoToDto(_))
+  }
+
+  /**
+    * Transforms the given [[KTWeaponDo]] to a [[List]] of [[KTWeaponDto]] and sorts them by there name
+    *
+    * @param weaponDos the dos to convert
+    * @return
+    */
+  private def weaponDosToSortedDtos(weaponDos: Set[KTWeaponDo]): List[KTWeaponDto] = {
+    weaponDos
+      .map(weaponDoToDto(_))
+      .toList
+      .sortBy(_.name)
+  }
+
+  /**
+    * Converts a [[KTWeaponDo]] to its corresponding [[KTWeaponDto]]
+    *
+    * @param weaponDo the weapon do to convert
+    * @return
+    */
+  private def weaponDoToDto(weaponDo: KTWeaponDo): KTWeaponDto = {
+    KTWeaponDto(name = weaponDo.name,
+      points = weaponDo.points,
+      range = weaponDo.range,
+      weaponType = weaponDo.weaponType,
+      strength = weaponDo.strength,
+      puncture = weaponDo.puncture,
+      damage = weaponDo.damage,
+      linkedWeapon = weaponDo.linkedWeapon)
+  }
+
+  /**
+    * Transforms the given [[KTItemDo]]s to a [[List]] of [[KTItemDto]] and sorts them by there name
+    *
+    * @param itemDos the dos to convert
+    * @return
+    */
+  private def itemDosToSortedDtos(itemDos: Set[KTItemDo]): List[KTItemDto] = {
+    itemDos
+      .map(itemDoToDto(_))
+      .toList
+      .sortBy(_.name)
+  }
+
+  /**
+    * Converts a [[KTItemDo]] to its corresponding [[KTItemDto]]
+    *
+    * @param itemDo the item to convert
+    * @return
+    */
+  private def itemDoToDto(itemDo: KTItemDo): KTItemDto = {
+    KTItemDto(name = itemDo.name,
+      points = itemDo.points)
+  }
+
+  /**
+    * Converts a [[KTLoadoutDo]] to its corresponding [[KTLoadoutDto]]
+    *
+    * @param loadoutDo the loadout to convert
+    * @return
+    */
+  private def loadoutDoToDto(loadoutDo: KTLoadoutDo): KTLoadoutDto = {
+    val weapons = weaponDosToSortedDtos(loadoutDo.weapons)
+    val items = itemDosToSortedDtos(loadoutDo.items)
+    KTLoadoutDto(name = loadoutDo.name,
+      weapons = weapons,
+      items = items)
+  }
+
+
+  /**
     * Removes the given troop from the army
-    * @param uuid the uuid of the troop to remove from the army
+    *
+    * @param uuid    the uuid of the troop to remove from the army
     * @param armyDto the army from which to remove the troop
     * @return
     */
-  def removeTroopFromArmy(uuid: String, armyDto: KTArmyDto) : KTArmyDto = {
+  def removeTroopFromArmy(uuid: String, armyDto: KTArmyDto): KTArmyDto = {
     Logger.info(s"Removing troop: $uuid from army")
 
     val newTroops = armyDto.troops.filter(_.uuid != uuid)
 
-    val newFaction = if(newTroops.isEmpty) {
+    val newFaction = if (newTroops.isEmpty) {
       Logger.info("No more troops in the army removing the faction")
       StringUtils.EMPTY
     } else {
@@ -127,11 +181,13 @@ object KTArmyLogic {
     * @param weapons    the weapons the troop has equiped
     * @return
     */
-  def calculateTroopPoints(basePoints: Int, items: List[KTItemDto], weapons: List[KTWeaponDto]): Int = {
+  def calculateTroopPoints(basePoints: Int, items: List[KTItemDto], loadout: KTLoadoutDto): Int = {
     val itemsPoints = items.map(_.points).sum
-    val weaponPoints = weapons.map(_.points).sum
+    val loadoutItemsPoints = loadout.items.map(_.points).sum
 
-    basePoints + itemsPoints + weaponPoints
+    val weaponPoints = loadout.weapons.map(_.points).sum
+
+    basePoints + itemsPoints + loadoutItemsPoints + weaponPoints
   }
 
   /**
@@ -175,15 +231,12 @@ case class KTArmyTroopDto(uuid: String,
                           name: String,
                           faction: String,
                           stats: KTTroopStats,
-                          loadoutName: String,
+                          loadout: KTLoadoutDto,
                           amount: Int,
                           points: Int,
                           totalPoints: Int,
                           abilities: List[KTAbilityDto],
-                          itemsFromLoadout: List[KTItemDto],
-                          additionalItems: List[KTItemDto],
-                          allItems: List[KTItemDto],
-                          weapons: List[KTWeaponDto],
+                          items: List[KTItemDto] = List(),
                           specialist: String = "")
 
 case class KTTroopStats(movement: Int,
@@ -210,3 +263,14 @@ case class KTWeaponDto(name: String,
                        linkedWeapon: String)
 
 case class KTAbilityDto(name: String)
+
+/**
+  * Loadout a troop can get
+  *
+  * @param name    the name of the loadout
+  * @param weapons the weapons of the loadout
+  * @param items   the items of the loadout
+  */
+case class KTLoadoutDto(name: String,
+                        weapons: List[KTWeaponDto],
+                        items: List[KTItemDto])

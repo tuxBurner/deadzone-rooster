@@ -44,13 +44,13 @@
             <td>@troop.stats.armor+</td>
             <td>@troop.totalPoints</td>
             <td>
-              @if(troop.abilities.isEmpty == false) {
-                <ul>
-                  @for(ability <- troop.abilities) {
-                    <li>@ability.name</li>
-                  }
-                </ul>
+            @if(troop.abilities.isEmpty == false) {
+              <ul>
+              @for(ability <- troop.abilities) {
+                <li>@ability.name</li>
               }
+              </ul>
+            }
             </td>
           </tr>
 
@@ -66,39 +66,39 @@
             <td colspan="11">
 
               @* weapons *@
-              <table class="table table-sm table-bordered">
-                <thead class="thead-dark">
-                  <th colspan="9">@Messages("kt.weapon.tbl.title")</th>
-                  <tr>
-                    <th>@Messages("kt.weapon.tbl.name")</th>
-                    <th>@Messages("kt.weapon.tbl.range")</th>
-                    <th>@Messages("kt.weapon.tbl.type")</th>
-                    <th>@Messages("kt.weapon.tbl.strength")</th>
-                    <th>@Messages("kt.weapon.tbl.puncture")</th>
-                    <th>@Messages("kt.weapon.tbl.damage")</th>
-                    <th>@Messages("kt.weapon.tbl.points")</th>
-                    <th>@Messages("kt.weapon.tbl.description")</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @for(weapon <- troop.weapons) {
-                    <tr>
-                      <td>@weapon.name</td>
-                      <td>@weapon.range" </td>
-                      <td>@weapon.weaponType</td>
-                      <td>@weapon.strength</td>
-                      <td>@weapon.puncture</td>
-                      <td>@weapon.damage</td>
-                      <td>@weapon.points</td>
-                      <td>TODO</td>
-                    </tr>
-                  }
-                </tbody>
-              </table>
+            <table class="table table-sm table-bordered">
+              <thead class="thead-dark">
+                <th colspan="9">@Messages("kt.weapon.tbl.title")</th>
+                <tr>
+                  <th>@Messages("kt.weapon.tbl.name")</th>
+                  <th>@Messages("kt.weapon.tbl.range")</th>
+                  <th>@Messages("kt.weapon.tbl.type")</th>
+                  <th>@Messages("kt.weapon.tbl.strength")</th>
+                  <th>@Messages("kt.weapon.tbl.puncture")</th>
+                  <th>@Messages("kt.weapon.tbl.damage")</th>
+                  <th>@Messages("kt.weapon.tbl.points")</th>
+                  <th>@Messages("kt.weapon.tbl.description")</th>
+                </tr>
+              </thead>
+              <tbody>
+              @for(weapon <- troop.loadout.weapons) {
+                <tr>
+                  <td>@weapon.name</td>
+                  <td>@weapon.range" </td>
+                  <td>@weapon.weaponType</td>
+                  <td>@weapon.strength</td>
+                  <td>@weapon.puncture</td>
+                  <td>@weapon.damage</td>
+                  <td>@weapon.points</td>
+                  <td>TODO</td>
+                </tr>
+              }
+              </tbody>
+            </table>
               @* eo weapons *@
 
               @* items *@
-              @if(troop.allItems.isEmpty == false) {
+              @if(troop.loadout.items.isEmpty == false || troop.items.isEmpty == false) {
                 <table class="table table-sm table-bordered">
                   <thead class="thead-dark">
                     <th colspan="9">@Messages("kt.item.tbl.title")</th>
@@ -109,13 +109,21 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @for(item <- troop.allItems) {
-                    <tr>
-                      <td>@item.name</td>
-                      <td>@item.points</td>
-                      <td>TODO</td>
-                    </tr>
-                  }
+                    @for(item <- troop.loadout.items) {
+                      <tr>
+                        <td>@item.name</td>
+                        <td>@item.points</td>
+                        <td>TODO</td>
+                      </tr>
+                    }
+
+                    @for(item <- troop.items) {
+                      <tr>
+                        <td>@item.name</td>
+                        <td>@item.points</td>
+                        <td>TODO</td>
+                      </tr>
+                    }
                   </tbody>
                 </table>
               }
