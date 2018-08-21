@@ -93,7 +93,7 @@ object KTTroopDao {
       maxInArmy = csvTroopDo.maxInArmy,
       items = items.toSet,
       abilities = abilities.toSet,
-      specialist = specialists.toSet,
+      specialists = specialists.toSet,
       keyWords = csvTroopDo.keyWords
     )
 
@@ -121,7 +121,7 @@ object KTTroopDao {
   * @param maxInArmy  maximum in an army
   * @param items      the items the troop may use
   * @param abilities  the abilities the troop has
-  * @param specialist what kind of specialist can the troop be
+  * @param specialists what kind of specialist can the troop be
   * @param keyWords   the key words which belong to the troop
   */
 case class KTTroopDo(factionDo: KTFactionDo,
@@ -139,7 +139,7 @@ case class KTTroopDo(factionDo: KTFactionDo,
                      maxInArmy: Int,
                      items: Set[KTItemDo],
                      abilities: Set[KTAbilityDo],
-                     specialist: Set[KTSpecialistDo],
+                     specialists: Set[KTSpecialistDo],
                      keyWords: Set[String]
                     )
 

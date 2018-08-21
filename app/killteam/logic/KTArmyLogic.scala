@@ -55,6 +55,7 @@ object KTArmyLogic {
         loadout = loadout,
         amount = 1,
         points = troop.points,
+        level = 1,
         totalPoints = calculateTroopPoints(troop.points, List(), loadout),
         abilities = abilities)
 
@@ -77,16 +78,20 @@ object KTArmyLogic {
   def getPossibleConfigurationOptionsForTroop(uuid: String, armyDto: KTArmyDto): Option[KTTroopOptionsDto] = {
     getTroopFromArmyByUUID(uuid, armyDto)
       .map(troopDto => {
-        val loadOutsForTroop = getPossibleLoadoutsForTroop(troopDto.name, troopDto.faction)
+        val loadOutsForTroop = getPossibleLoadoutsForTroop(troopDto)
           .map(loadout => {
             val selected = loadout.name == troopDto.loadout.name
             KTOptionLoadout(selected = selected, loadout = loadout)
           })
 
 
-        val itemsForTroop = getPossibleItemsForTroop(troopDto.name, troopDto.faction)
+        val itemsForTroop = getPossibleItemsForTroop(troopDto)
+
+        val specialists = getPossibleSpecialistsForTroop(troopDto)
+
         Some(KTTroopOptionsDto(loadoutOptions = loadOutsForTroop,
-          items = itemsForTroop))
+          items = itemsForTroop,
+          specialists = specialists))
       })
       .getOrElse({
         Logger.error(s"Troop $uuid not found in army")
@@ -94,15 +99,32 @@ object KTArmyLogic {
       })
   }
 
+  def getPossibleSpecialistsForTroop(troopDto: KTArmyTroopDto): List[KTSpecialistOptionDto] = {
+    KTTroopDao.getTroopByFactionAndName(troopName = troopDto.name, factionName = troopDto.faction)
+      .map(troopDo => {
+        troopDo.specialists.map(specialistDo => {
+          // check if the specialist is currently selected by the troop
+          val selected = troopDto.specialist.exists(_.name == specialistDo.name)
+          KTSpecialistOptionDto(selected = selected,
+            name = specialistDo.name)
+        })
+          .toList
+          .sortBy(_.name)
+      })
+      .getOrElse({
+        Logger.error(s"Troop: ${troopDto.name} not found in faction: ${troopDto.faction}")
+        List()
+      })
+  }
+
   /**
     * Gets all possible loadout for the troop
     *
-    * @param troopName  the name of the troop
-    * @param factioName the name of the faction of the troop
+    * @param troopDto the  troop to get loadout for
     * @return
     */
-  private def getPossibleLoadoutsForTroop(troopName: String, factioName: String): List[KTLoadoutDto] = {
-    KTLoadoutDao.getLoadoutsByTroopAndName(troopName, factioName)
+  private def getPossibleLoadoutsForTroop(troopDto: KTArmyTroopDto): List[KTLoadoutDto] = {
+    KTLoadoutDao.getLoadoutsByTroopAndName(troopName = troopDto.name, factionName = troopDto.faction)
       .map(loadoutDoToDto(_))
       .sortBy(_.name)
   }
@@ -110,15 +132,14 @@ object KTArmyLogic {
   /**
     * Gets all possible items from the troop
     *
-    * @param troopName   the name of the troop
-    * @param factionName the name of the faction
+    * @param troopDto the troop to get the items for
     * @return
     */
-  private def getPossibleItemsForTroop(troopName: String, factionName: String): List[KTItemDto] = {
-    KTTroopDao.getTroopByFactionAndName(troopName = troopName, factionName = factionName)
+  private def getPossibleItemsForTroop(troopDto: KTArmyTroopDto): List[KTItemDto] = {
+    KTTroopDao.getTroopByFactionAndName(troopName = troopDto.name, factionName = troopDto.faction)
       .map(troopDo => itemDosToSortedDtos(troopDo.items))
       .getOrElse({
-        Logger.error(s"Troop: $troopName not found in faction: $factionName")
+        Logger.error(s"Troop: ${troopDto.name} not found in faction: ${troopDto.faction}")
         List()
       })
 
@@ -263,7 +284,7 @@ object KTArmyLogic {
     * @return
     */
   def getLeadersFromArmy(armyDto: KTArmyDto): List[KTArmyTroopDto] = {
-    armyDto.troops.filter(_.specialist == "Anführer")
+    armyDto.troops.filter(troop => troop.specialist.isDefined && troop.specialist.get.name == "Anführer")
   }
 
   /**
@@ -273,7 +294,7 @@ object KTArmyLogic {
     * @return
     */
   def getSpecialistsFromArmy(armyDto: KTArmyDto): List[KTArmyTroopDto] = {
-    armyDto.troops.filter(troop => StringUtils.isNotBlank(troop.specialist) && troop.specialist != "Anführer")
+    armyDto.troops.filter(troop => troop.specialist.isDefined && troop.specialist.get.name != "Anführer")
   }
 
   /**
@@ -283,15 +304,24 @@ object KTArmyLogic {
     * @return
     */
   def getNormalTroopsFromArmy(armyDto: KTArmyDto): List[KTArmyTroopDto] = {
-    armyDto.troops.filter(troop => StringUtils.isBlank(troop.specialist))
+    armyDto.troops.filter(_.specialist.isEmpty)
   }
 
 }
 
+/**
+  * Represents a killteam army
+  *
+  * @param name    the name of the army
+  * @param faction the faction of the army
+  * @param points  how many points is the army worth
+  * @param troops  the troops in the army
+  */
 case class KTArmyDto(name: String,
                      faction: String = "",
                      points: Int = 0,
                      troops: List[KTArmyTroopDto] = List())
+
 
 case class KTArmyTroopDto(uuid: String,
                           name: String,
@@ -300,10 +330,11 @@ case class KTArmyTroopDto(uuid: String,
                           loadout: KTLoadoutDto,
                           amount: Int,
                           points: Int,
+                          level: Int,
                           totalPoints: Int,
                           abilities: List[KTAbilityDto],
                           items: List[KTItemDto] = List(),
-                          specialist: String = "")
+                          specialist: Option[KTSpecialistDo] = None)
 
 case class KTTroopStats(movement: Int,
                         fightStat: Int,
@@ -315,10 +346,49 @@ case class KTTroopStats(movement: Int,
                         moral: Int,
                         armor: Int)
 
+/**
+  * Represents an item
+  *
+  * @param name   the name of the item
+  * @param points how many points id the item worth
+  */
 case class KTItemDto(name: String,
                      points: Int)
 
+case class KTSpecialistOptionDto(selected: Boolean,
+                                 name: String)
 
+/**
+  * Represents a specialist of a troop
+  *
+  * @param name     the name of the specialist
+  * @param specials the specials the specialist currently has
+  */
+case class KTSpecialistDto(name: String,
+                           specials: List[KTSpecialDto])
+
+/**
+  * Represents a special a troop can have
+  *
+  * @param name  the name of the special
+  * @param level the level when this special was aquired
+  */
+case class KTSpecialDto(name: String,
+                        level: Int)
+
+
+/**
+  * Represents a weapon
+  *
+  * @param name         the name of the weapon
+  * @param points       how many points is the weapon worth
+  * @param range        the range of the weapon
+  * @param weaponType   the type of the weapon
+  * @param strength     the strength of the weapon
+  * @param puncture     the puncture of the weapon
+  * @param damage       the damage of the weapon
+  * @param linkedWeapon when the weapon is linked weapon this is set
+  */
 case class KTWeaponDto(name: String,
                        points: Int,
                        range: Int,
@@ -328,17 +398,30 @@ case class KTWeaponDto(name: String,
                        damage: String,
                        linkedWeapon: String)
 
+/**
+  * An ability a troop can have
+  *
+  * @param name the name of the ability
+  */
 case class KTAbilityDto(name: String)
 
 /**
   * Contains all options a troop can have
   *
   * @param loadoutOptions all possible loadouts options for the troop
-  * @param items          all possible items the troop can equipe
+  * @param items          all possible items the troop can equip
+  * @param specialists    the specialists this troop can be
   */
 case class KTTroopOptionsDto(loadoutOptions: List[KTOptionLoadout],
-                             items: List[KTItemDto])
+                             items: List[KTItemDto],
+                             specialists: List[KTSpecialistOptionDto])
 
+/**
+  * Loadout option
+  *
+  * @param selected true when the loadout is currently selected in the troop
+  * @param loadout  the loadout itself
+  */
 case class KTOptionLoadout(selected: Boolean,
                            loadout: KTLoadoutDto)
 
