@@ -1,6 +1,6 @@
-package services.logic.killteam
+package killteam.logic
 
-import models.killteam.KTFactionDao
+import killteam.models.KTFactionDao
 
 object KTFactionLogic {
 

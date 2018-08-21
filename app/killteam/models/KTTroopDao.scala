@@ -1,4 +1,4 @@
-package models.killteam
+package killteam.models
 
 import killteam.parsers.KTCsvTroopDto
 import org.apache.commons.lang3.StringUtils

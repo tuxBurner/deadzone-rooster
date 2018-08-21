@@ -1,8 +1,8 @@
-package services.logic.killteam
+package killteam.logic
 
 import java.util.UUID
 
-import models.killteam.{KTLoadoutDao, KTTroopDao}
+import killteam.models.{KTLoadoutDao, KTTroopDao}
 import org.apache.commons.lang3.StringUtils
 import play.api.Logger
 

@@ -1,6 +1,6 @@
-package services.logic.killteam
+package killteam.logic
 
-import models.killteam.KTTroopDao
+import killteam.models.KTTroopDao
 
 object KTTroopLogic {
 

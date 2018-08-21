@@ -1,6 +1,4 @@
-@import services.logic.killteam.KTArmyDto
-@import services.logic.killteam.KTArmyLogic
-@(armyDto: KTArmyDto)(implicit messages: Messages, mainTpl: views.html.killteam.main)
+@(armyDto: killteam.logic.KTArmyDto)(implicit messages: Messages, mainTpl: views.html.killteamv.main)
 
 @scripts = {
   <script type="text/javascript" src="@routes.Assets.versioned("javascripts/killteam/roster_main.js")"> </script>
@@ -69,15 +67,15 @@
   <hr />
 
   @* leader troop *@
-  @views.html.killteam.roster.displayTroopTypeTable(KTArmyLogic.getLeadersFromArmy(armyDto),"leader")
+  @views.html.killteamv.roster.displayTroopTypeTable(killteam.logic.KTArmyLogic.getLeadersFromArmy(armyDto),"leader")
   @* eo leader troop *@
 
   @* special troops *@
-  @views.html.killteam.roster.displayTroopTypeTable(KTArmyLogic.getSpecialistsFromArmy(armyDto),"specialist")
+  @views.html.killteamv.roster.displayTroopTypeTable(killteam.logic.KTArmyLogic.getSpecialistsFromArmy(armyDto),"specialist")
   @* eo special troops *@
 
   @* normal troops *@
-  @views.html.killteam.roster.displayTroopTypeTable(KTArmyLogic.getNormalTroopsFromArmy(armyDto),"normal")
+  @views.html.killteamv.roster.displayTroopTypeTable(killteam.logic.KTArmyLogic.getNormalTroopsFromArmy(armyDto),"normal")
   @* eo normal troops *@
 
 

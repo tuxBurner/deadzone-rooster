@@ -1,11 +1,11 @@
-package services
+package killteam
 
 import better.files
 import deadzone.parsers.CSVDataParser
 import io.methvin.better.files.RecursiveFileMonitor
 import javax.inject.{Inject, Singleton}
+import killteam.models._
 import killteam.parsers._
-import models.killteam._
 import play.Logger
 import play.api.Configuration
 

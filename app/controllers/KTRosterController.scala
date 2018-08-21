@@ -10,7 +10,7 @@ import play.api.cache.SyncCacheApi
 import play.api.i18n.I18nSupport
 import play.api.libs.json._
 import play.api.mvc._
-import services.logic.killteam._
+import killteam.logic._
 
 import scala.concurrent.duration._
 
@@ -18,7 +18,7 @@ import scala.concurrent.duration._
   * Controller which handles all the endpoints for the killteam roster editor
   */
 @Singleton
-class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, pdfGenerator: PdfGenerator, config: Configuration, mainTpl: views.html.killteam.main) extends AbstractController(cc) with I18nSupport {
+class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, pdfGenerator: PdfGenerator, config: Configuration, mainTpl: views.html.killteamv.main) extends AbstractController(cc) with I18nSupport {
 
 
   implicit val ktFactionDtoWriter = Json.writes[KTFactionDto]
@@ -43,7 +43,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def rosterMain = Action {
     implicit request =>
-      Ok(views.html.killteam.roster.roster(getArmyFromCache(request)))
+      Ok(views.html.killteamv.roster.roster(getArmyFromCache(request)))
   }
 
   /**

@@ -1,4 +1,4 @@
-package models.killteam
+package killteam.models
 
 import killteam.parsers.KTCsvLoadoutDto
 import play.api.Logger
