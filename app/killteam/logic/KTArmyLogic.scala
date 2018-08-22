@@ -104,12 +104,8 @@ object KTArmyLogic {
         troopDo.specialists.map(specialistDo => {
           // check if the specialist is currently selected by the troop
           val selected = troopDto.specialist.exists(_.name == specialistDo.name)
-
-          val baseSpecical = specialistDo.specials.find(_.level == 1).get
-
-          KTSpecialistOptionDto(selected = selected,
-            name = specialistDo.name,
-            baseSpecial = KTSpecialOptionDto(name = baseSpecical.name, selected = true, level = 1))
+          val specialTree = findSpecialByLevel(specialistDo,1,StringUtils.EMPTY)
+          KTSpecialistOptionDto(name = specialistDo.name, selected = selected, baseSpecial = specialTree(0))
         })
           .toList
           .sortBy(_.name)
@@ -118,6 +114,28 @@ object KTArmyLogic {
         Logger.error(s"Troop: ${troopDto.name} not found in faction: ${troopDto.faction}")
         List()
       })
+  }
+
+  private def findSpecialByLevel(specialistDo: KTSpecialistDo, level: Int, requireSpecialName: String): List[KTSpecialOptionDto] = {
+    specialistDo.specials.filter(specialDo => specialDo.level == level && specialDo.require == requireSpecialName)
+      .map(specialDo => {
+        // find sub specials for the special
+        val subSpecials = if(level == 3) {
+          List()
+        } else {
+          findSpecialByLevel(specialistDo,level+1,specialDo.name)
+        }
+
+        val selected = level == 1
+        val selectable = level != 1
+
+        KTSpecialOptionDto(selectable = selectable,
+          selected = selected,
+          level = level,
+          name = specialDo.name, 
+          subSpecials = subSpecials)
+      })
+      .toList
   }
 
   /**
@@ -362,7 +380,8 @@ case class KTSpecialistOptionDto(selected: Boolean,
                                  name: String,
                                  baseSpecial: KTSpecialOptionDto)
 
-case class KTSpecialOptionDto(selected: Boolean,
+case class KTSpecialOptionDto(selectable: Boolean,
+                              selected: Boolean,
                               name: String,
                               level: Int,
                               subSpecials: List[KTSpecialOptionDto] = List())

@@ -1,0 +1,25 @@
+@import killteam.logic.KTSpecialOptionDto
+@(specialOption: KTSpecialOptionDto)
+
+<div class="row">
+  <div class="col-sm-12">
+  <div class="card">
+    <div class="card-header @if(specialOption.selected) { bg-success }">
+      @specialOption.name (@specialOption.level) @if(specialOption.selectable) { <input type="checkbox" /> }
+    </div>
+    <div class="card-body">
+      Her comes the text
+    </div>
+  </div>
+  </div>
+</div>
+
+@if(specialOption.subSpecials.isEmpty == false && specialOption.selected) {
+  <div class="row">
+    @for(subSpecial <- specialOption.subSpecials) {
+      <div class="col-sm-6">
+        @views.html.killteamviews.roster.displaySpecial(subSpecial)
+      </div>
+    }
+  </div>
+}
