@@ -28,7 +28,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   /**
     * The name of the army cache id in the session
     */
-  val SESSION_ARMY_CACHE_ID_NAME = "kt_army_cache_id"
+  val KT_SESSION_ARMY_CACHE_ID_NAME = "kt_army_cache_id"
 
 
   val cachetimeOut: Int = config.getOptional[Int]("killteam.cacheTimeOut").getOrElse(15)
@@ -43,7 +43,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def rosterMain = Action {
     implicit request =>
-      Ok(views.html.killteamviews.roster.roster(getArmyFromCache(request)))
+      withCacheId(Ok(views.html.killteamviews.roster.roster(getArmyFromCache(request))), request)
   }
 
   /**
@@ -77,7 +77,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   @JSRoute
   def addTroopToArmy() = Action(parse.tolerantJson) {
-    request =>
+    implicit request =>
 
     val factionName = (request.body \ "faction").as[String]
     val troopName = (request.body \ "troop").as[String]
@@ -86,7 +86,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     val armyWithNewTroop = KTArmyLogic.addTroopToArmy(factionName, troopName, armyFromCache)
 
     writeArmyToCache(request, armyWithNewTroop)
-    Ok("")
+    withCacheId(Ok(""), request)
   }
 
   /**
@@ -126,7 +126,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   private def withCacheId(result: Result, request: Request[Any]): Result = {
     val cacheId = getCacheIdFromSession(request)
-    result.withSession(request.session + (SESSION_ARMY_CACHE_ID_NAME -> cacheId))
+    result.withSession(request.session + (KT_SESSION_ARMY_CACHE_ID_NAME -> cacheId))
   }
 
   /**
@@ -158,7 +158,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     * @return
     */
   private def getCacheIdFromSession(request: Request[Any]): String = {
-    request.session.get(SESSION_ARMY_CACHE_ID_NAME).getOrElse(UUID.randomUUID.toString)
+    request.session.get(KT_SESSION_ARMY_CACHE_ID_NAME).getOrElse(UUID.randomUUID.toString)
   }
 
 }
