@@ -15,6 +15,11 @@ object KTSpecialistDao {
   val specialists: ListBuffer[KTSpecialistDo] = ListBuffer()
 
 
+  /**
+    * Finds the specialists by its name
+    * @param name the name of the specialist
+    * @return
+    */
   def findSpecialistByName(name: String) : Option[KTSpecialistDo] = {
     specialists.find(_.name == name)
   }

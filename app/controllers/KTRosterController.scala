@@ -11,6 +11,7 @@ import play.api.i18n.I18nSupport
 import play.api.libs.json._
 import play.api.mvc._
 import killteam.logic._
+import views.html.killteamviews.main
 
 import scala.concurrent.duration._
 
@@ -21,8 +22,9 @@ import scala.concurrent.duration._
 class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi, pdfGenerator: PdfGenerator, config: Configuration, mainTpl: views.html.killteamviews.main) extends AbstractController(cc) with I18nSupport {
 
 
-  implicit val ktFactionDtoWriter = Json.writes[KTFactionDto]
-  implicit val ktTroopNameDtoWriter = Json.writes[KTTroopSelectDto]
+  implicit val ktFactionDtoWriter: OWrites[KTFactionDto] = Json.writes[KTFactionDto]
+  implicit val ktTroopNameDtoWriter: OWrites[KTTroopSelectDto] = Json.writes[KTTroopSelectDto]
+  implicit val mainTplImpl: main = mainTpl
 
 
   /**
@@ -32,8 +34,6 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
 
 
   val cachetimeOut: Int = config.getOptional[Int]("killteam.cacheTimeOut").getOrElse(15)
-
-  implicit val mainTplImpl = mainTpl
 
 
   /**
@@ -79,19 +79,20 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   def addTroopToArmy() = Action(parse.tolerantJson) {
     implicit request =>
 
-    val factionName = (request.body \ "faction").as[String]
-    val troopName = (request.body \ "troop").as[String]
+      val factionName = (request.body \ "faction").as[String]
+      val troopName = (request.body \ "troop").as[String]
 
-    val armyFromCache = getArmyFromCache(request)
-    val armyWithNewTroop = KTArmyLogic.addTroopToArmy(factionName, troopName, armyFromCache)
+      val armyFromCache = getArmyFromCache(request)
+      val armyWithNewTroop = KTArmyLogic.addTroopToArmy(factionName, troopName, armyFromCache)
 
-    writeArmyToCache(request, armyWithNewTroop)
-    withCacheId(Ok(""), request)
+      writeArmyToCache(request, armyWithNewTroop)
+      withCacheId(Ok(""), request)
   }
 
   /**
     * Removes the given troop from the army
-    * @param uuid
+    *
+    * @param uuid the uuid of the troop to remove
     * @return
     */
   def removeTroopFromArmy(uuid: String) = Action {
@@ -101,7 +102,25 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
       val armyWithNewTroop = KTArmyLogic.removeTroopFromArmy(uuid, armyFromCache)
       writeArmyToCache(request, armyWithNewTroop)
 
-    Redirect(routes.KTRosterController.rosterMain())
+      Redirect(routes.KTRosterController.rosterMain())
+  }
+
+  /**
+    * Sets the given specialist at the troop
+    *
+    * @param uuid           the uuid of the troop
+    * @param specialistName the name of the specialist
+    * @return
+    */
+  def setSpecialistOnTroop(uuid: String, specialistName: String) = Action {
+    implicit request =>
+
+      val armyFromCache = getArmyFromCache(request)
+      val updatedArmy = KTArmyLogic.setSpecialistOnTroop(uuid = uuid,
+        specialistName = specialistName,
+        armyDto = armyFromCache)
+      writeArmyToCache(request, updatedArmy)
+      Redirect(routes.KTRosterController.rosterMain())
   }
 
 

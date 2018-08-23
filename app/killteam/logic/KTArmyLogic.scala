@@ -68,6 +68,39 @@ object KTArmyLogic {
   }
 
   /**
+    * Sets the new specialist at the troop
+    *
+    * @param uuid           the uuid of the troop
+    * @param specialistName the name of the specialist to set at the troop
+    * @param armyDto        the army
+    * @return
+    */
+  def setSpecialistOnTroop(uuid: String, specialistName: String, armyDto: KTArmyDto): KTArmyDto = {
+    getTroopFromArmyByUUID(uuid, armyDto)
+      .map(troopDto => {
+
+        val specialistOption = KTSpecialistLogic.getSpecialistOptionByName(specialistName)
+        specialistOption.map(specialist => {
+
+          val updatedTroop = troopDto.copy(level = 1, specialist = Some(KTSpecialistDto(name = specialist.name, specials = List())))
+
+
+          val troopIndex = armyDto.troops.indexOf(troopDto)
+          val updatedArmyTroops =  armyDto.troops.updated(troopIndex,updatedTroop)
+
+          armyDto.copy(troops = updatedArmyTroops, points = calculateArmyPoints(updatedArmyTroops))
+
+        })
+          .getOrElse(armyDto)
+
+      })
+      .getOrElse({
+        Logger.error(s"Troop $uuid not found in army")
+        armyDto
+      })
+  }
+
+  /**
     * Gathers all possible config options for the troop
     *
     * @param uuid    the uuid of the troop
@@ -86,7 +119,7 @@ object KTArmyLogic {
 
         val itemsForTroop = getPossibleItemsForTroop(troopDto)
 
-        val specialistsOption = getPossibleSpecialistsForTroop(troopDto)
+        val specialistsOption = KTSpecialistLogic.getPossibleSpecialistsForTroop(troopDto)
 
         Some(KTTroopOptionsDto(loadoutOptions = loadOutsForTroop,
           items = itemsForTroop,
@@ -98,55 +131,6 @@ object KTArmyLogic {
       })
   }
 
-  def getPossibleSpecialistsForTroop(troopDto: KTArmyTroopDto): KTSpecialistListOption = {
-    val specialistsForTroop = KTTroopDao.getTroopByFactionAndName(troopName = troopDto.name, factionName = troopDto.faction)
-      .map(troopDo => {
-        troopDo.specialists.map(specialistDo => {
-          // check if the specialist is currently selected by the troop
-          val selected = troopDto.specialist.exists(_.name == specialistDo.name)
-
-          // we only need to calculate the tree when the special is selected
-          val specialTree = if (selected) {
-            Some(findSpecialByLevel(specialistDo, 1, StringUtils.EMPTY)(0))
-          } else {
-            None
-          }
-          KTSpecialistOptionDto(name = specialistDo.name, selected = selected, baseSpecial = specialTree)
-        })
-          .toList
-          .sortBy(_.name)
-      })
-      .getOrElse({
-        Logger.error(s"Troop: ${troopDto.name} not found in faction: ${troopDto.faction}")
-        List()
-      })
-
-
-    KTSpecialistListOption(noneSelected = troopDto.specialist.isEmpty,
-      specialists = specialistsForTroop)
-  }
-
-  private def findSpecialByLevel(specialistDo: KTSpecialistDo, level: Int, requireSpecialName: String): List[KTSpecialOptionDto] = {
-    specialistDo.specials.filter(specialDo => specialDo.level == level && specialDo.require == requireSpecialName)
-      .map(specialDo => {
-        // find sub specials for the special
-        val subSpecials = if (level == 3) {
-          List()
-        } else {
-          findSpecialByLevel(specialistDo, level + 1, specialDo.name)
-        }
-
-        val selected = level == 1
-        val selectable = level != 1
-
-        KTSpecialOptionDto(selectable = selectable,
-          selected = selected,
-          level = level,
-          name = specialDo.name,
-          subSpecials = subSpecials)
-      })
-      .toList
-  }
 
   /**
     * Gets all possible loadout for the troop
@@ -281,7 +265,9 @@ object KTArmyLogic {
     * @return
     */
   private def getTroopFromArmyByUUID(uuid: String, armyDto: KTArmyDto): Option[KTArmyTroopDto] = {
-    armyDto.troops.find(_.uuid == uuid)
+    armyDto
+      .troops
+      .find(_.uuid == uuid)
   }
 
 
@@ -365,7 +351,7 @@ case class KTArmyTroopDto(uuid: String,
                           totalPoints: Int,
                           abilities: List[KTAbilityDto],
                           items: List[KTItemDto] = List(),
-                          specialist: Option[KTSpecialistDo] = None)
+                          specialist: Option[KTSpecialistDto] = None)
 
 case class KTTroopStats(movement: Int,
                         fightStat: Int,
@@ -385,37 +371,6 @@ case class KTTroopStats(movement: Int,
   */
 case class KTItemDto(name: String,
                      points: Int)
-
-case class KTSpecialistListOption(noneSelected: Boolean,
-                                  specialists: List[KTSpecialistOptionDto])
-
-case class KTSpecialistOptionDto(selected: Boolean,
-                                 name: String,
-                                 baseSpecial: Option[KTSpecialOptionDto])
-
-case class KTSpecialOptionDto(selectable: Boolean,
-                              selected: Boolean,
-                              name: String,
-                              level: Int,
-                              subSpecials: List[KTSpecialOptionDto] = List())
-
-/**
-  * Represents a specialist of a troop
-  *
-  * @param name     the name of the specialist
-  * @param specials the specials the specialist currently has
-  */
-case class KTSpecialistDto(name: String,
-                           specials: List[KTSpecialDto])
-
-/**
-  * Represents a special a troop can have
-  *
-  * @param name  the name of the special
-  * @param level the level when this special was aquired
-  */
-case class KTSpecialDto(name: String,
-                        level: Int)
 
 
 /**

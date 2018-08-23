@@ -1,11 +1,12 @@
-@(troopConfigOptions: Option[killteam.logic.KTTroopOptionsDto])(implicit messages: Messages)
+@import killteam.logic.KTArmyTroopDto
+@(troopConfigOptions: Option[killteam.logic.KTTroopOptionsDto], troop: KTArmyTroopDto)(implicit messages: Messages)
 
 <div class=" table-responsive-sm">
 
   <h4>EEEEDIITTTIITIITIT</h4>
 
 
-  @views.html.killteamviews.roster.displaySpecialists(troopConfigOptions.get.specialistsOption)
+  @views.html.killteamviews.roster.displaySpecialists(troopConfigOptions.get.specialistsOption, troop)
 
   <table class="table table-sm table-bordered">
     <thead class="thead-dark">
