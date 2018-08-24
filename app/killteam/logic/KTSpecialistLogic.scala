@@ -10,6 +10,27 @@ import play.api.Logger
   */
 object KTSpecialistLogic {
 
+
+  /**
+    * Gets the possible specialist options for the given troop type and army
+    *
+    * @param troopName   the name of the troop to get the specials for
+    * @param factionName the name of the faction
+    * @param armyDto     the army where to check for which specials are avaible
+    * @return
+    */
+  def getAvaibleSpecialistSelectOptions(troopName: String, factionName: String, armyDto: KTArmyDto): List[String] = {
+    val specialistsForTroop = KTTroopDao.getTroopByFactionAndName(troopName = troopName, factionName = factionName)
+      .map(_.specialists.map(_.name).toList)
+      .getOrElse(List())
+
+    if(armyDto.troops.isEmpty) {
+      specialistsForTroop
+    } else {
+      specialistsForTroop.filterNot(specialistName => armyDto.troops.exists(troop => troop.specialist.isDefined && troop.specialist.get.name == specialistName))
+    }
+  }
+
   /**
     * Gets the specialist option by the name of the specialist
     *
@@ -27,6 +48,8 @@ object KTSpecialistLogic {
         None
       })
   }
+
+
 
 
   /**

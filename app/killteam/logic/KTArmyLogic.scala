@@ -9,6 +9,7 @@ import play.api.Logger
 object KTArmyLogic {
 
 
+
   /**
     * Adds a troop to the given army
     *
