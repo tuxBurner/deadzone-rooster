@@ -36,10 +36,10 @@ GET           /roster/pdf/table                                              con
 # KILLTEAM
 GET           /killteam                                                      controllers.KTRosterController.rosterMain
 GET           /killteam/roster/factions                                      controllers.KTRosterController.getFactions
-GET           /killteam/roster/:faction/troops                               controllers.KTRosterController.getSelectTroopsForFaction(faction: String)
+GET           /killteam/roster/:factionName/troops                           controllers.KTRosterController.getSelectTroopsForFaction(factionName: String)
+GET           /killteam/roster/:factionName/specialist/:troopName            controllers.KTRosterController.getSelectSpecialistsForTroop(troopName: String, factionName: String)
 POST          /killteam/roster/troop                                         controllers.KTRosterController.addTroopToArmy()
 GET           /killteam/roster/troop/:uuid/remove                            controllers.KTRosterController.removeTroopFromArmy(uuid:String)
-GET           /killteam/roster/troop/:uuid/specialist/:specialistName        controllers.KTRosterController.setSpecialistOnTroop(uuid:String, specialistName: String)
 
 
 # Map static resources from the /public folder to the /assets URL path

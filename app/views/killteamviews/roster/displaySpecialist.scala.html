@@ -1,0 +1,25 @@
+@import killteam.logic.KTArmyTroopDto
+@import killteam.logic.KTSpecialistOptionDto
+@(specialistOption: Option[KTSpecialistOptionDto], troop: KTArmyTroopDto)(implicit messages: Messages)
+
+@if(specialistOption.isEmpty == false) {
+  <table class="table table-sm table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th colspan="2">@Messages("kt.troop.specialists.title")</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-white">
+        @specialistOption.get.name
+        </td>
+      </tr>
+      <tr>
+        <td>
+        @views.html.killteamviews.roster.displaySpecial(specialistOption.get.baseSpecial.get)
+        </td>
+      </tr>
+    </tbody>
+  </table>
+}

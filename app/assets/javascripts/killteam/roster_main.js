@@ -25,7 +25,6 @@ let rosterGuiHandler = {
         });
 
         rosterGuiHandler.getAndFillFactionTroopSelect();
-        rosterGuiHandler.getCurrentArmy();
       }
     });
   },
@@ -37,33 +36,40 @@ let rosterGuiHandler = {
     let selectedFaction = $('#roster_faction_select').val();
     jsRoutes.controllers.KTRosterController.getSelectTroopsForFaction(selectedFaction).ajax({
       success: function (data) {
-
         // store the troops for the faction in the var
         rosterGuiHandler.factionTroops = data;
-
-
         $('#roster_addTroop_select').html('');
         $.each(rosterGuiHandler.factionTroops , function (idx, troop) {
-          $('#roster_addTroop_select').append('<option value="' + troop.name + '" data-image-url="' + troop.imageUrl + '">' + troop.name + ' (' + troop.points + ')</option>');
+          $('#roster_addTroop_select').append(`<option value="${troop.name}">${troop.name} (${troop.points})</option>`);
         });
 
-        rosterGuiHandler.displaySelectedTroopImage();
-
+        rosterGuiHandler.getAndFillSpecialistsSelect();
       }
     });
   },
 
-  /**
-   * Displays when available the image of the currently selected troop
-   */
-  displaySelectedTroopImage: function () {
-    let imgUrl = $('#roster_addTroop_select').find(':selected').data('imageUrl');
 
-    if (imgUrl !== '') {
-      $('#roster_troop_img').attr('src', imgUrl).show();
-    } else {
-      $('#roster_troop_img').attr('src', '').hide();
-    }
+  /**
+   * Gets all specialists the troop can have
+   */
+  getAndFillSpecialistsSelect :  function() {
+    let selectedFaction = $('#roster_faction_select').val();
+    let selectedTroop = $('#roster_addTroop_select').val();
+    jsRoutes.controllers.KTRosterController.getSelectSpecialistsForTroop(selectedTroop,selectedFaction).ajax({
+      success: function (data) {
+        if(data.length == 1) {
+          $('#roster_specialists_select_wrapper').hide();
+        } else {
+          $('#roster_specialists_select_wrapper').show();
+        }
+
+        $('#roster_specialists_select').html('');
+        $.each(data , function (idx, specialist) {
+          $('#roster_specialists_select').append(`<option value="${specialist}">${specialist}</option>`);
+        });
+      }
+    });
+
   },
 
   /**
@@ -72,7 +78,8 @@ let rosterGuiHandler = {
   addSelectedTroopToArmy: function () {
     let troopToAdd = {
       faction: $('#roster_faction_select').val(),
-      troop: $('#roster_addTroop_select').val()
+      troop: $('#roster_addTroop_select').val(),
+      specialist: $('#roster_specialists_select').val()
     };
     jsRoutes.controllers.KTRosterController.addTroopToArmy().ajax({
       data: JSON.stringify(troopToAdd),
@@ -83,16 +90,6 @@ let rosterGuiHandler = {
     });
   },
 
-  /**
-   * Gets the current army as json
-   */
-  getCurrentArmy: function () {
-    jsRoutes.controllers.RosterController.getArmy().ajax({
-      success: function (data) {
-        rosterGuiHandler.displayCurrentArmyData(data);
-      }
-    });
-  },
 
   /**
    * Removes the selected troop from the army
@@ -495,22 +492,8 @@ let rosterGuiHandler = {
         rosterGuiHandler.displayCurrentArmyData(data);
       }
     });
-  },
-
-  /**
-   * Changes the amount of a troop
-   * @param uuid the uuid of the troop
-   * @param newAmount the amount to set on the troop
-   */
-  changeTroopAmount: function (uuid, newAmount) {
-    jsRoutes.controllers.RosterController.changeAmountOfTroop(uuid).ajax({
-      data: JSON.stringify({amount: newAmount}),
-      contentType: "application/json; charset=utf-8",
-      success: (data) => {
-        rosterGuiHandler.displayCurrentArmyData(data);
-      }
-    });
   }
+
 };
 
 
@@ -522,7 +505,7 @@ $(function () {
 
   $('#roster_troop_type_select').on('change', () => rosterGuiHandler.fillTroopSelectForType());
 
-  $('#roster_addTroop_select').on('change', () => rosterGuiHandler.displaySelectedTroopImage());
+  $('#roster_addTroop_select').on('change', () => rosterGuiHandler.getAndFillSpecialistsSelect());
 
   $('#roster_addTroop_btn').on('click', () => rosterGuiHandler.addSelectedTroopToArmy());
 

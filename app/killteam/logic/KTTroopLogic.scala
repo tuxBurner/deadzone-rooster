@@ -26,5 +26,4 @@ object KTTroopLogic {
   * @param points the troop points
   */
 case class KTTroopSelectDto(name: String,
-                            points: Int,
-                            imageUrl: String = "")
+                            points: Int)

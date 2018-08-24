@@ -22,12 +22,14 @@ object KTSpecialistLogic {
   def getAvaibleSpecialistSelectOptions(troopName: String, factionName: String, armyDto: KTArmyDto): List[String] = {
     val specialistsForTroop = KTTroopDao.getTroopByFactionAndName(troopName = troopName, factionName = factionName)
       .map(_.specialists.map(_.name).toList)
-      .getOrElse(List())
+      .getOrElse(List("None"))
+
+    val returnList = "" :: specialistsForTroop
 
     if(armyDto.troops.isEmpty) {
-      specialistsForTroop
+      returnList
     } else {
-      specialistsForTroop.filterNot(specialistName => armyDto.troops.exists(troop => troop.specialist.isDefined && troop.specialist.get.name == specialistName))
+      returnList.filterNot(specialistName => armyDto.troops.exists(troop => troop.specialist.isDefined && troop.specialist.get.name == specialistName))
     }
   }
 
@@ -41,7 +43,7 @@ object KTSpecialistLogic {
     KTSpecialistDao.findSpecialistByName(name)
       .map(specialistDo => {
         val specialTree = Some(findSpecialByLevel(specialistDo, 1, StringUtils.EMPTY).head)
-        Some(KTSpecialistOptionDto(name = specialistDo.name, selected = false, baseSpecial = specialTree))
+        Some(KTSpecialistOptionDto(name = specialistDo.name,  baseSpecial = specialTree))
       })
       .getOrElse({
         Logger.error(s"Cannot find specialist: $name")
@@ -49,41 +51,42 @@ object KTSpecialistLogic {
       })
   }
 
-
-
-
   /**
-    * Gets all possible selectable specialists for the given troop
+    * Gets the possible specialist option for the troop when set
     *
     * @param troopDto the troop for which to get the specialist
     * @return
     */
-  def getPossibleSpecialistsForTroop(troopDto: KTArmyTroopDto): KTSpecialistListOption = {
-    val specialistsForTroop = KTTroopDao.getTroopByFactionAndName(troopName = troopDto.name, factionName = troopDto.faction)
-      .map(troopDo => {
-        troopDo.specialists.map(specialistDo => {
-          // check if the specialist is currently selected by the troop
-          val selected = troopDto.specialist.exists(_.name == specialistDo.name)
+  def getSpecialistOptionForTroop(troopDto: KTArmyTroopDto): Option[KTSpecialistOptionDto] = {
 
-          // we only need to calculate the tree when the special is selected
-          val specialTree = if (selected) {
-            Some(findSpecialByLevel(specialistDo, 1, StringUtils.EMPTY).head)
-          } else {
-            None
-          }
-          KTSpecialistOptionDto(name = specialistDo.name, selected = selected, baseSpecial = specialTree)
-        })
-          .toList
-          .sortBy(_.name)
+    if(troopDto.specialist.isEmpty) {
+      return None
+    }
+
+    getSpecialistOptionByName(troopDto.specialist.get.name)
+  }
+
+  /**
+    * Gets the specialist for setting it at the troop
+    * @param specialistName the name of the specialist to set
+    * @return
+    */
+  def getSpecialistForTroop(specialistName: String) : Option[KTSpecialistTroopDto] = {
+    KTSpecialistDao.findSpecialistByName(specialistName)
+      .map(specialistDo => {
+
+        val baseSpecial = specialistDo.specials.find(_.level == 1)
+          .map(specialDo => {
+            List(KTSpecialTroopDto(name = specialDo.name, level = specialDo.level))
+          })
+          .getOrElse(List())
+
+        Some(KTSpecialistTroopDto(name = specialistName, selectedSpecials = baseSpecial))
       })
       .getOrElse({
-        Logger.error(s"Troop: ${troopDto.name} not found in faction: ${troopDto.faction}")
-        List()
+        Logger.error(s"Cannot find specialist: $specialistName")
+        None
       })
-
-
-    KTSpecialistListOption(noneSelected = troopDto.specialist.isEmpty,
-      specialists = specialistsForTroop)
   }
 
 
@@ -119,11 +122,8 @@ object KTSpecialistLogic {
 
 }
 
-case class KTSpecialistListOption(noneSelected: Boolean,
-                                  specialists: List[KTSpecialistOptionDto])
 
-case class KTSpecialistOptionDto(selected: Boolean,
-                                 name: String,
+case class KTSpecialistOptionDto(name: String,
                                  baseSpecial: Option[KTSpecialOptionDto])
 
 case class KTSpecialOptionDto(selectable: Boolean,
@@ -136,10 +136,10 @@ case class KTSpecialOptionDto(selectable: Boolean,
   * Represents a specialist of a troop
   *
   * @param name     the name of the specialist
-  * @param specials the specials the specialist currently has
+  * @param selectedSpecials the specials the specialist currently has
   */
-case class KTSpecialistDto(name: String,
-                           specials: List[KTSpecialDto])
+case class KTSpecialistTroopDto(name: String,
+                                selectedSpecials: List[KTSpecialTroopDto])
 
 /**
   * Represents a special a troop can have
@@ -147,5 +147,5 @@ case class KTSpecialistDto(name: String,
   * @param name  the name of the special
   * @param level the level when this special was aquired
   */
-case class KTSpecialDto(name: String,
-                        level: Int)
+case class KTSpecialTroopDto(name: String,
+                             level: Int)

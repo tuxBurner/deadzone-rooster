@@ -71,6 +71,20 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   }
 
   /**
+    * Gets a list of specialists this troop can have
+    *
+    * @param troopName   the name of the tropp
+    * @param factionName the name of the faction the troop belongs to
+    * @return
+    */
+  @JSRoute
+  def getSelectSpecialistsForTroop(troopName: String, factionName: String) = Action {
+    request =>
+      val specialists = KTSpecialistLogic.getAvaibleSpecialistSelectOptions(troopName = troopName, factionName = factionName, getArmyFromCache(request))
+      Ok(Json.toJson(specialists))
+  }
+
+  /**
     * Adds a troop to the army
     *
     * @return
@@ -81,9 +95,13 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
 
       val factionName = (request.body \ "faction").as[String]
       val troopName = (request.body \ "troop").as[String]
+      val specialistName = (request.body \ "specialist").as[String]
 
       val armyFromCache = getArmyFromCache(request)
-      val armyWithNewTroop = KTArmyLogic.addTroopToArmy(factionName, troopName, armyFromCache)
+      val armyWithNewTroop = KTArmyLogic.addTroopToArmy(factionName =  factionName,
+        troopName =  troopName,
+        specialistName = specialistName,
+        armyDto = armyFromCache)
 
       writeArmyToCache(request, armyWithNewTroop)
       withCacheId(Ok(""), request)
@@ -102,24 +120,6 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
       val armyWithNewTroop = KTArmyLogic.removeTroopFromArmy(uuid, armyFromCache)
       writeArmyToCache(request, armyWithNewTroop)
 
-      Redirect(routes.KTRosterController.rosterMain())
-  }
-
-  /**
-    * Sets the given specialist at the troop
-    *
-    * @param uuid           the uuid of the troop
-    * @param specialistName the name of the specialist
-    * @return
-    */
-  def setSpecialistOnTroop(uuid: String, specialistName: String) = Action {
-    implicit request =>
-
-      val armyFromCache = getArmyFromCache(request)
-      val updatedArmy = KTArmyLogic.setSpecialistOnTroop(uuid = uuid,
-        specialistName = specialistName,
-        armyDto = armyFromCache)
-      writeArmyToCache(request, updatedArmy)
       Redirect(routes.KTRosterController.rosterMain())
   }
 
