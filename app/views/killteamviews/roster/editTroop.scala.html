@@ -8,30 +8,11 @@
 
   @views.html.killteamviews.roster.displaySpecialists(troopConfigOptions.get.specialistsOption, troop)
 
-  <table class="table table-sm table-bordered">
-    <thead class="thead-dark">
-      <tr>
-        <th colspan="2">@Messages("kt.troop.loadouts.title")</th>
-      </tr>
-    </thead>
-    <tbody>
-    @for(loadoutOption <- troopConfigOptions.get.loadoutOptions) {
-      <tr>
-        <td colspan="2" class="@if(loadoutOption.selected) {bg-success} else {bg-info} text-white">@loadoutOption.loadout.name (@Messages("kt.troop.loadouts.points") @loadoutOption.loadout.points)</td>
-      </tr>
-      <tr>
-        <td>adasasdasd</td>
-        <td>
-          @views.html.killteamviews.roster.displayWeapons(loadoutOption.loadout.weapons)
-          @views.html.killteamviews.roster.displayItems(loadoutOption.loadout.items)
-        </td>
-      </tr>
-    }
-    </tbody>
-  </table>
+
+  @views.html.killteamviews.roster.loadoutsDisplay(troopConfigOptions.get.loadoutOptions)
+
 
   @views.html.killteamviews.roster.displayItems(troopConfigOptions.get.items)
-
 
 
 </div>

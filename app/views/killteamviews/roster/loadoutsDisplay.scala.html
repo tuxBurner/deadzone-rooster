@@ -1,0 +1,35 @@
+@import killteam.logic.KTOptionLoadout
+@(loadoutOptions: List[KTOptionLoadout])(implicit messages: Messages)
+<h6>@Messages("kt.troop.loadouts.title")</h6>
+
+<div class="accordion" id="toopLoadoutAccordion">
+
+@for((loadoutOption,loadoutIndex) <- loadoutOptions.zipWithIndex) {
+  <div class="card">
+    <div class="card-header @if(loadoutOption.selected) {bg-success}" id="headingOne">
+
+      <div class="row">
+        <div class="col-sm-3">
+          <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse@loadoutIndex">
+          @loadoutOption.loadout.name
+          </button>
+        </div>
+        <div class="col-sm-8">
+          @loadoutOption.loadout.weapons.map(_.name).mkString(" / ")
+          @loadoutOption.loadout.items.map(_.name).mkString(" / ")
+        </div>
+        <div class="col-sm-1">
+          @loadoutOption.loadout.points
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div id="collapse@loadoutIndex" class="collapse">
+    <div class="card-body">
+      @views.html.killteamviews.roster.displayWeapons(loadoutOption.loadout.weapons)
+      @views.html.killteamviews.roster.displayItems(loadoutOption.loadout.items)
+    </div>
+  </div>
+}
+</div>
