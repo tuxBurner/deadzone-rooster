@@ -98,8 +98,8 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
       val specialistName = (request.body \ "specialist").as[String]
 
       val armyFromCache = getArmyFromCache(request)
-      val armyWithNewTroop = KTArmyLogic.addTroopToArmy(factionName =  factionName,
-        troopName =  troopName,
+      val armyWithNewTroop = KTArmyLogic.addTroopToArmy(factionName = factionName,
+        troopName = troopName,
         specialistName = specialistName,
         armyDto = armyFromCache)
 
@@ -115,11 +115,24 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def removeTroopFromArmy(uuid: String) = Action {
     implicit request =>
-
       val armyFromCache = getArmyFromCache(request)
       val armyWithNewTroop = KTArmyLogic.removeTroopFromArmy(uuid, armyFromCache)
       writeArmyToCache(request, armyWithNewTroop)
+      Redirect(routes.KTRosterController.rosterMain())
+  }
 
+  /**
+    * Sets a new loadout at the given troop
+    *
+    * @param uuid        the uuid of the troop
+    * @param loadoutName the name of the loadout to set
+    * @return
+    */
+  def setNewLoadoutAtTroop(uuid: String, loadoutName: String) = Action {
+    implicit request =>
+      val armyFromCache = getArmyFromCache(request)
+      val updatedArmy = KTArmyLogic.setLoadoutAtTroop(loadoutName = loadoutName, uuid = uuid, armyDto = armyFromCache)
+      writeArmyToCache(request, updatedArmy)
       Redirect(routes.KTRosterController.rosterMain())
   }
 

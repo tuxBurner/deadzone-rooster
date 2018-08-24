@@ -1,5 +1,6 @@
 @import killteam.logic.KTOptionLoadout
-@(loadoutOptions: List[KTOptionLoadout])(implicit messages: Messages)
+@import killteam.logic.KTArmyTroopDto
+@(loadoutOptions: List[KTOptionLoadout], troop: KTArmyTroopDto)(implicit messages: Messages)
 <h6>@Messages("kt.troop.loadouts.title")</h6>
 
 <div class="accordion" id="toopLoadoutAccordion">
@@ -9,7 +10,12 @@
     <div class="card-header @if(loadoutOption.selected) {bg-success}" id="headingOne">
 
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-1">
+          <a class="btn btn-sm btn-dark" href="@routes.KTRosterController.setNewLoadoutAtTroop(troop.uuid, loadoutOption.loadout.name)">
+            SETME
+          </a>
+        </div>
+        <div class="col-sm-2">
           <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse@loadoutIndex">
           @loadoutOption.loadout.name
           </button>

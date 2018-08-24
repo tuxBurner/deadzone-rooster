@@ -108,6 +108,49 @@ object KTArmyLogic {
 
 
   /**
+    * Sets the given loadout at the troop
+    *
+    * @param loadoutName the name of the loadout to set
+    * @param uuid        the uuid of the troop to set the loadout
+    * @param armyDto     the army containing the troop
+    * @return
+    */
+  def setLoadoutAtTroop(loadoutName: String, uuid: String, armyDto: KTArmyDto): KTArmyDto = {
+    getTroopFromArmyByUUID(uuid = uuid, armyDto = armyDto)
+      .map(troopDto => {
+        KTLoadoutDao.getLoadoutByTroopAndName(troopName = troopDto.name, factionName = troopDto.faction, loadoutName)
+          .map(loadoutDo => {
+
+            val newLoadout = loadoutDoToDto(loadoutDo)
+            val troopDtoWithNewLoadout = troopDto.copy(loadout = newLoadout, totalPoints = calculateTroopPoints(troopDto.points, List(), newLoadout))
+            updateArmyWithTroop(troopDtoWithNewLoadout, armyDto)
+          })
+          .getOrElse({
+            Logger.error(s"Cannot find loadout: $loadoutName for troop: ${troopDto.name} faction: ${troopDto.faction}")
+            armyDto
+          })
+      })
+      .getOrElse({
+        Logger.error(s"Troop $uuid not found in army")
+        armyDto
+      })
+  }
+
+  /**
+    * Replaces the current troop with the new one and recalculates the points of the army
+    *
+    * @param updatedTroop the troop which to replace
+    * @param armyDto      the army containing the troop
+    * @return
+    */
+  def updateArmyWithTroop(updatedTroop: KTArmyTroopDto, armyDto: KTArmyDto): KTArmyDto = {
+    val troopIndex = armyDto.troops.indexWhere(_.uuid == updatedTroop.uuid)
+    val updatedArmyTroops = armyDto.troops.updated(troopIndex, updatedTroop)
+    armyDto.copy(troops = updatedArmyTroops, points = calculateArmyPoints(updatedArmyTroops))
+  }
+
+
+  /**
     * Gets all possible loadout for the troop
     *
     * @param troopDto the  troop to get loadout for
