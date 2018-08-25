@@ -12,6 +12,22 @@ object KTSpecialistLogic {
 
 
   /**
+    * Sets a special at the given troop
+    *
+    * @param specialName  the name of the special to set
+    * @param specialLevel the level of the special to set
+    * @param uuid         the uuid of the troop where to set the special on
+    * @param armyDto      the army containing the troop
+    * @return
+    */
+  def setSpecialAtTroop(specialName: String, specialLevel: Int, uuid: String, armyDto: KTArmyDto): KTArmyDto = {
+    KTArmyLogic.getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto =  armyDto, (troopDto) => {
+      None
+    })
+  }
+
+
+  /**
     * Gets the possible specialist options for the given troop type and army
     *
     * @param troopName   the name of the troop to get the specials for
@@ -26,7 +42,7 @@ object KTSpecialistLogic {
 
     val returnList = "" :: specialistsForTroop
 
-    if(armyDto.troops.isEmpty) {
+    if (armyDto.troops.isEmpty) {
       returnList
     } else {
       returnList.filterNot(specialistName => armyDto.troops.exists(troop => troop.specialist.isDefined && troop.specialist.get.name == specialistName))
@@ -43,7 +59,7 @@ object KTSpecialistLogic {
     KTSpecialistDao.findSpecialistByName(name)
       .map(specialistDo => {
         val specialTree = Some(findSpecialByLevel(specialistDo, 1, StringUtils.EMPTY).head)
-        Some(KTSpecialistOptionDto(name = specialistDo.name,  baseSpecial = specialTree))
+        Some(KTSpecialistOptionDto(name = specialistDo.name, baseSpecial = specialTree))
       })
       .getOrElse({
         Logger.error(s"Cannot find specialist: $name")
@@ -59,7 +75,7 @@ object KTSpecialistLogic {
     */
   def getSpecialistOptionForTroop(troopDto: KTArmyTroopDto): Option[KTSpecialistOptionDto] = {
 
-    if(troopDto.specialist.isEmpty) {
+    if (troopDto.specialist.isEmpty) {
       return None
     }
 
@@ -68,10 +84,11 @@ object KTSpecialistLogic {
 
   /**
     * Gets the specialist for setting it at the troop
+    *
     * @param specialistName the name of the specialist to set
     * @return
     */
-  def getSpecialistForTroop(specialistName: String) : Option[KTSpecialistTroopDto] = {
+  def getSpecialistForTroop(specialistName: String): Option[KTSpecialistTroopDto] = {
     KTSpecialistDao.findSpecialistByName(specialistName)
       .map(specialistDo => {
 
@@ -135,7 +152,7 @@ case class KTSpecialOptionDto(selectable: Boolean,
 /**
   * Represents a specialist of a troop
   *
-  * @param name     the name of the specialist
+  * @param name             the name of the specialist
   * @param selectedSpecials the specials the specialist currently has
   */
 case class KTSpecialistTroopDto(name: String,

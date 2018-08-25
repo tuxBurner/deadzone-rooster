@@ -116,24 +116,20 @@ object KTArmyLogic {
     * @return
     */
   def setLoadoutAtTroop(loadoutName: String, uuid: String, armyDto: KTArmyDto): KTArmyDto = {
-    getTroopFromArmyByUUID(uuid = uuid, armyDto = armyDto)
-      .map(troopDto => {
-        KTLoadoutDao.getLoadoutByTroopAndName(troopName = troopDto.name, factionName = troopDto.faction, loadoutName)
-          .map(loadoutDo => {
 
-            val newLoadout = loadoutDoToDto(loadoutDo)
-            val troopDtoWithNewLoadout = troopDto.copy(loadout = newLoadout, totalPoints = calculateTroopPoints(troopDto.points, List(), newLoadout))
-            updateArmyWithTroop(troopDtoWithNewLoadout, armyDto)
-          })
-          .getOrElse({
-            Logger.error(s"Cannot find loadout: $loadoutName for troop: ${troopDto.name} faction: ${troopDto.faction}")
-            armyDto
-          })
-      })
-      .getOrElse({
-        Logger.error(s"Troop $uuid not found in army")
-        armyDto
-      })
+    getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, (troopDto) => {
+      KTLoadoutDao.getLoadoutByTroopAndName(troopName = troopDto.name, factionName = troopDto.faction, loadoutName)
+        .map(loadoutDo => {
+
+          val newLoadout = loadoutDoToDto(loadoutDo)
+          val troopDtoWithNewLoadout = troopDto.copy(loadout = newLoadout, totalPoints = calculateTroopPoints(troopDto.points, List(), newLoadout))
+          Some(troopDtoWithNewLoadout)
+        })
+        .getOrElse({
+          Logger.error(s"Cannot find loadout: $loadoutName for troop: ${troopDto.name} faction: ${troopDto.faction}")
+          None
+        })
+    })
   }
 
   /**
@@ -274,15 +270,37 @@ object KTArmyLogic {
     armyDto.copy(faction = newFaction, points = calculateArmyPoints(newTroops), troops = newTroops)
   }
 
+  /**
+    * Use this to get a troop by its uuid and perform changes and get an updated army by it
+    *
+    * @param uuid           the uuid of the troop to change some data on it
+    * @param armyDto        the army containing the troop
+    * @param successHandler what todo when the troop was found in the army
+    * @return
+    */
+  def getTroopFromArmyByUUIDAndPerformChanges(uuid: String, armyDto: KTArmyDto, successHandler: (KTArmyTroopDto) => Option[KTArmyTroopDto]): KTArmyDto = {
+    getTroopFromArmyByUUID(uuid = uuid, armyDto = armyDto)
+      .map(troopDto => {
+        successHandler(troopDto)
+            .map(updatedTroop => updateArmyWithTroop(updatedTroop = updatedTroop, armyDto = armyDto))
+            .getOrElse(armyDto)
+      })
+      .getOrElse({
+        Logger.error(s"Troop $uuid not found in army")
+        armyDto
+      })
+
+  }
+
 
   /**
-    * Finds a troop in the army by its uuid
+    * Finds a troop in the army by its uuid and handles changes int the successHandler when found
     *
     * @param uuid    the uuid to find the troop
     * @param armyDto the army to search for the troop
     * @return
     */
-  private def getTroopFromArmyByUUID(uuid: String, armyDto: KTArmyDto): Option[KTArmyTroopDto] = {
+  def getTroopFromArmyByUUID(uuid: String, armyDto: KTArmyDto): Option[KTArmyTroopDto] = {
     armyDto
       .troops
       .find(_.uuid == uuid)
