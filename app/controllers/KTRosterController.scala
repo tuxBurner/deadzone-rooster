@@ -115,9 +115,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def removeTroopFromArmy(uuid: String) = Action {
     implicit request =>
-      val armyFromCache = getArmyFromCache(request)
-      val armyWithNewTroop = KTArmyLogic.removeTroopFromArmy(uuid, armyFromCache)
-      writeArmyToCache(request, armyWithNewTroop)
+      getArmyFromCacheAndUpdateIt((armyFromCache) => KTArmyLogic.removeTroopFromArmy(uuid = uuid, armyDto = armyFromCache))
       Redirect(routes.KTRosterController.rosterMain())
   }
 
@@ -130,9 +128,21 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def setNewLoadoutAtTroop(uuid: String, loadoutName: String) = Action {
     implicit request =>
-      val armyFromCache = getArmyFromCache(request)
-      val updatedArmy = KTArmyLogic.setLoadoutAtTroop(loadoutName = loadoutName, uuid = uuid, armyDto = armyFromCache)
-      writeArmyToCache(request, updatedArmy)
+      getArmyFromCacheAndUpdateIt((armyFromCache) => KTArmyLogic.setLoadoutAtTroop(loadoutName = loadoutName, uuid = uuid, armyDto = armyFromCache))
+      Redirect(routes.KTRosterController.rosterMain())
+  }
+
+  /**
+    * Adds a special to the given troop at the given level
+    *
+    * @param uuid         the uuid of the troop
+    * @param specialName  the name of the special to add
+    * @param specialLevel the level of the special to set
+    * @return
+    */
+  def addSpecialToTroop(uuid: String, specialName: String, specialLevel: Int) = Action {
+    implicit request =>
+      getArmyFromCacheAndUpdateIt((armyFromCache) => KTSpecialistLogic.setSpecialAtTroop(specialName = specialName, specialLevel = specialLevel, uuid = uuid, armyFromCache))
       Redirect(routes.KTRosterController.rosterMain())
   }
 
@@ -191,6 +201,20 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   private def getCacheIdFromSession(request: Request[Any]): String = {
     request.session.get(KT_SESSION_ARMY_CACHE_ID_NAME).getOrElse(UUID.randomUUID.toString)
+  }
+
+  /**
+    * Gets the army from the cache and performs a change operation on it
+    *
+    * @param changeArmyFunction the function changing the army
+    * @param request            the request which holds the session  informations
+    * @return
+    */
+  private def getArmyFromCacheAndUpdateIt(changeArmyFunction: (KTArmyDto) => KTArmyDto)(implicit request: Request[Any]): KTArmyDto = {
+    val armyFromCache = getArmyFromCache(request)
+    val updatedArmy = changeArmyFunction(armyFromCache)
+    writeArmyToCache(request, updatedArmy)
+    armyFromCache
   }
 
 }

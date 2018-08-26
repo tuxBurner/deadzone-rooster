@@ -117,10 +117,11 @@ object KTArmyLogic {
     */
   def setLoadoutAtTroop(loadoutName: String, uuid: String, armyDto: KTArmyDto): KTArmyDto = {
 
-    getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, (troopDto) => {
+    Logger.info(s"Setting loadout: $loadoutName at troop: $uuid")
+
+    getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, troopDto => {
       KTLoadoutDao.getLoadoutByTroopAndName(troopName = troopDto.name, factionName = troopDto.faction, loadoutName)
         .map(loadoutDo => {
-
           val newLoadout = loadoutDoToDto(loadoutDo)
           val troopDtoWithNewLoadout = troopDto.copy(loadout = newLoadout, totalPoints = calculateTroopPoints(troopDto.points, List(), newLoadout))
           Some(troopDtoWithNewLoadout)

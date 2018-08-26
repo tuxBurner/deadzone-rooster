@@ -3,48 +3,49 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET           /                                                           controllers.HomeController.rosterMain
+GET           /                                                                          controllers.HomeController.rosterMain
 
-GET           /abilities                                                  controllers.HomeController.displayAllAbilities()
-GET           /armyspecials                                               controllers.HomeController.displayAllArmySpecials()
-GET           /items                                                      controllers.HomeController.displayAllItems()
-GET           /army/:faction/troops                                       controllers.HomeController.displayTroopsOfFaction(faction: String)
-GET           /cheatsheet                                                 controllers.HomeController.displayCheatSheet()
-GET           /cheatsheet/pdf                                             controllers.HomeController.exportCheatSheetAsPdf()
+GET           /abilities                                                                 controllers.HomeController.displayAllAbilities()
+GET           /armyspecials                                                              controllers.HomeController.displayAllArmySpecials()
+GET           /items                                                                     controllers.HomeController.displayAllItems()
+GET           /army/:faction/troops                                                      controllers.HomeController.displayTroopsOfFaction(faction: String)
+GET           /cheatsheet                                                                controllers.HomeController.displayCheatSheet()
+GET           /cheatsheet/pdf                                                            controllers.HomeController.exportCheatSheetAsPdf()
 
-GET           /changeLang/:language                                       controllers.HomeController.changeLanguage(language: String)
+GET           /changeLang/:language                                                      controllers.HomeController.changeLanguage(language: String)
 
-GET           /popover/:popoverType/:key                                  controllers.RosterController.getPopOverData(popoverType:String, key:String)
+GET           /popover/:popoverType/:key                                                 controllers.RosterController.getPopOverData(popoverType:String, key:String)
 
-GET           /roster/factions                                            controllers.RosterController.getFactions()
-GET           /roster/faction/:factionName/troopsForSelect                controllers.RosterController.getSelectTroopsForFaction(factionName : String)
-POST          /roster/army/addTroop                                       controllers.RosterController.addTroopToArmy()
-GET           /roster/army                                                controllers.RosterController.getArmy()
-POST          /roster/army/name                                           controllers.RosterController.changeArmyName()
-DELETE        /roster/army/troop/:uuid                                    controllers.RosterController.removeTroopFromArmy(uuid:String)
-GET           /roster/army/troop/:uuid/weapons                            controllers.RosterController.getWeaponsAndItemsForTroop(uuid:String)
-PUT           /roster/army/troop/:uuid/weapons                            controllers.RosterController.updateTroopWeaponsAndItems(uuid:String)
-PUT           /roster/army/troop/:uuid/amount                             controllers.RosterController.changeAmountOfTroop(uuid:String)
-PUT           /roster/army/clone/:uuid                                    controllers.RosterController.cloneTroop(uuid: String)
-GET           /roster/army/validate                                       controllers.RosterController.validateArmy()
+GET           /roster/factions                                                           controllers.RosterController.getFactions()
+GET           /roster/faction/:factionName/troopsForSelect                               controllers.RosterController.getSelectTroopsForFaction(factionName : String)
+POST          /roster/army/addTroop                                                      controllers.RosterController.addTroopToArmy()
+GET           /roster/army                                                               controllers.RosterController.getArmy()
+POST          /roster/army/name                                                          controllers.RosterController.changeArmyName()
+DELETE        /roster/army/troop/:uuid                                                   controllers.RosterController.removeTroopFromArmy(uuid:String)
+GET           /roster/army/troop/:uuid/weapons                                           controllers.RosterController.getWeaponsAndItemsForTroop(uuid:String)
+PUT           /roster/army/troop/:uuid/weapons                                           controllers.RosterController.updateTroopWeaponsAndItems(uuid:String)
+PUT           /roster/army/troop/:uuid/amount                                            controllers.RosterController.changeAmountOfTroop(uuid:String)
+PUT           /roster/army/clone/:uuid                                                   controllers.RosterController.cloneTroop(uuid: String)
+GET           /roster/army/validate                                                      controllers.RosterController.validateArmy()
 
-GET           /roster/army/export                                         controllers.RosterController.exportArmy()
-POST          /roster/army/import                                         controllers.RosterController.importArmy()
-GET           /roster/pdf/table                                           controllers.RosterController.getTablePdf()
+GET           /roster/army/export                                                        controllers.RosterController.exportArmy()
+POST          /roster/army/import                                                        controllers.RosterController.importArmy()
+GET           /roster/pdf/table                                                          controllers.RosterController.getTablePdf()
 
 
 # KILLTEAM
-GET           /killteam                                                   controllers.KTRosterController.rosterMain
-GET           /killteam/roster/factions                                   controllers.KTRosterController.getFactions
-GET           /killteam/roster/:factionName/troops                        controllers.KTRosterController.getSelectTroopsForFaction(factionName: String)
-GET           /killteam/roster/:factionName/specialist/:troopName         controllers.KTRosterController.getSelectSpecialistsForTroop(troopName: String, factionName: String)
-POST          /killteam/roster/troop                                      controllers.KTRosterController.addTroopToArmy()
-GET           /killteam/roster/troop/:uuid/remove                         controllers.KTRosterController.removeTroopFromArmy(uuid:String)
-GET           /killteam/roster/troop/:uuid/setLoadout/:loadoutName        controllers.KTRosterController.setNewLoadoutAtTroop(uuid:String, loadoutName: String)
+GET           /killteam                                                                  controllers.KTRosterController.rosterMain
+GET           /killteam/roster/factions                                                  controllers.KTRosterController.getFactions
+GET           /killteam/roster/:factionName/troops                                       controllers.KTRosterController.getSelectTroopsForFaction(factionName: String)
+GET           /killteam/roster/:factionName/specialist/:troopName                        controllers.KTRosterController.getSelectSpecialistsForTroop(troopName: String, factionName: String)
+POST          /killteam/roster/troop                                                     controllers.KTRosterController.addTroopToArmy()
+GET           /killteam/roster/troop/:uuid/remove                                        controllers.KTRosterController.removeTroopFromArmy(uuid:String)
+GET           /killteam/roster/troop/:uuid/setLoadout/:loadoutName                       controllers.KTRosterController.setNewLoadoutAtTroop(uuid:String, loadoutName: String)
+GET           /killteam/roster/troop/:uuid/setSpeciale/:specialName/:specialLevel        controllers.KTRosterController.addSpecialToTroop(uuid:String, specialName: String, specialLevel: Int)
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET           /assets/*file                                               controllers.Assets.versioned(path="/public", file: Asset)
+GET           /assets/*file                                                              controllers.Assets.versioned(path="/public", file: Asset)
 
 # The routes which are reachablllle via java script
-GET           /javascripts/routes                                         controllers.HomeController.jsRoutes()
+GET           /javascripts/routes                                                        controllers.HomeController.jsRoutes()

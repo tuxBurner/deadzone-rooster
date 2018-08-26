@@ -21,8 +21,43 @@ object KTSpecialistLogic {
     * @return
     */
   def setSpecialAtTroop(specialName: String, specialLevel: Int, uuid: String, armyDto: KTArmyDto): KTArmyDto = {
-    KTArmyLogic.getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto =  armyDto, (troopDto) => {
-      None
+
+    Logger.info(s"Setting special: $specialName level: $specialLevel troop: $uuid")
+
+    KTArmyLogic.getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, troopDto => {
+
+      // check if the troop has a specialist
+      troopDto.specialist.map(specialist => {
+
+        // check if the level is okay to set
+        if (troopDto.level != specialLevel - 1 && specialLevel > 4) {
+          None
+        } else {
+          // get the special and the set it at the troop
+          KTSpecialistDao.findSpecialistByName(troopDto.specialist.get.name)
+            .map(specialistDo => {
+
+              // find the spcial in the specialist
+              specialistDo.specials.find(special => special.name == specialName && special.level == specialLevel)
+                .map(specialDo => {
+                  // recreate the troop and add the new special to the list
+                  Some(troopDto.copy(specialist = Some(troopDto.specialist.get.copy(selectedSpecials = troopDto.specialist.get.selectedSpecials :+ KTSpecialTroopDto(name = specialDo.name, level = specialDo.level)))))
+                })
+                .getOrElse({
+                  Logger.error(s"Cannot find special: $specialName level: $specialLevel for specialist: ${specialistDo.name}")
+                  None
+                })
+              None
+            })
+            .getOrElse({
+              Logger.error(s"Could not find sepcialist: ${troopDto.specialist}")
+              None
+            })
+        }
+      }).getOrElse({
+        Logger.error(s"Troop: ${troopDto.uuid} has no specialist set so cannot set any specail at it")
+        None
+      })
     })
   }
 
