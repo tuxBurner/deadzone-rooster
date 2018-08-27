@@ -35,6 +35,7 @@ GET           /roster/pdf/table                                                 
 
 # KILLTEAM
 GET           /killteam                                                                  controllers.KTRosterController.rosterMain
+GET           /killteam/roster/troop/:uuid/edit                                          controllers.KTRosterController.displayEditOptions(uuid: String)
 GET           /killteam/roster/factions                                                  controllers.KTRosterController.getFactions
 GET           /killteam/roster/:factionName/troops                                       controllers.KTRosterController.getSelectTroopsForFaction(factionName: String)
 GET           /killteam/roster/:factionName/specialist/:troopName                        controllers.KTRosterController.getSelectSpecialistsForTroop(troopName: String, factionName: String)

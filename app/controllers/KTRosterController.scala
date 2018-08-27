@@ -46,6 +46,18 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
       withCacheId(Ok(views.html.killteamviews.roster.roster(getArmyFromCache(request))), request)
   }
 
+
+  /**
+    * Displays the edit options for the given troop
+    *
+    * @param uuid the troop to edit
+    * @return
+    */
+  def displayEditOptions(uuid: String) = Action {
+    implicit request =>
+      withCacheId(Ok(views.html.killteamviews.roster.roster(getArmyFromCache(request), uuid)), request)
+  }
+
   /**
     * Returns all the available factions as a json array
     *

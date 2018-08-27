@@ -1,86 +1,94 @@
 @import killteam.logic.KTArmyTroopDto
 @import org.jboss.logging.Message
 @import killteam.logic.KTArmyDto
-@(troops: List[KTArmyTroopDto], troopType: String, army: KTArmyDto)(implicit messages: Messages)
+@(troops: List[KTArmyTroopDto], troopType: String, army: KTArmyDto, editTroopUuid: String)(implicit messages: Messages)
 
 
 <h5>@Messages("kt.troops." + troopType + ".title")</h5>
 
-@if(troops.isEmpty) {
-  <div class="alert alert-primary" role="alert">
-  @Messages("kt.troops." + troopType + ".noTroops")
-  </div>
-} else {
+  @if(troops.isEmpty) {
+    <div class="alert alert-primary" role="alert">
+    @Messages("kt.troops." + troopType + ".noTroops")
+    </div>
+  } else {
 
-  @for(troop <- troops) {
-    <div class=" table-responsive-sm">
-      <table class="table table-sm table-bordered">
-        <thead class="thead-dark">
-          <tr>
-            <th>@Messages("kt.troop.tbl.name")</th>
-            <th>@Messages("kt.troop.tbl.movement")</th>
-            <th>@Messages("kt.troop.tbl.fightStat")</th>
-            <th>@Messages("kt.troop.tbl.shootStat")</th>
-            <th>@Messages("kt.troop.tbl.strength")</th>
-            <th>@Messages("kt.troop.tbl.resistance")</th>
-            <th>@Messages("kt.troop.tbl.lifePoints")</th>
-            <th>@Messages("kt.troop.tbl.attacks")</th>
-            <th>@Messages("kt.troop.tbl.moral")</th>
-            <th>@Messages("kt.troop.tbl.armor")</th>
-            <th>@Messages("kt.troop.tbl.points")</th>
-            <th>@Messages("kt.troop.tbl.abilities")</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">@troop.name</th>
-            <td>@troop.stats.movement"</td>
-            <td>@troop.stats.fightStat+</td>
-            <td>@troop.stats.shootStat+</td>
-            <td>@troop.stats.strength</td>
-            <td>@troop.stats.resistance</td>
-            <td>@troop.stats.lifePoints</td>
-            <td>@troop.stats.attacks</td>
-            <td>@troop.stats.moral</td>
-            <td>@troop.stats.armor+</td>
-            <td>@troop.totalPoints</td>
-            <td>
-            @if(troop.abilities.isEmpty == false) {
-              <ul>
-              @for(ability <- troop.abilities) {
-                <li>@ability.name</li>
+    @for(troop <- troops) {
+      <div class=" table-responsive-sm">
+        <table class="table table-sm table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th>@Messages("kt.troop.tbl.name")</th>
+              <th>@Messages("kt.troop.tbl.movement")</th>
+              <th>@Messages("kt.troop.tbl.fightStat")</th>
+              <th>@Messages("kt.troop.tbl.shootStat")</th>
+              <th>@Messages("kt.troop.tbl.strength")</th>
+              <th>@Messages("kt.troop.tbl.resistance")</th>
+              <th>@Messages("kt.troop.tbl.lifePoints")</th>
+              <th>@Messages("kt.troop.tbl.attacks")</th>
+              <th>@Messages("kt.troop.tbl.moral")</th>
+              <th>@Messages("kt.troop.tbl.armor")</th>
+              <th>@Messages("kt.troop.tbl.points")</th>
+              <th>@Messages("kt.troop.tbl.abilities")</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">@troop.name</th>
+              <td>@troop.stats.movement"</td>
+              <td>@troop.stats.fightStat+</td>
+              <td>@troop.stats.shootStat+</td>
+              <td>@troop.stats.strength</td>
+              <td>@troop.stats.resistance</td>
+              <td>@troop.stats.lifePoints</td>
+              <td>@troop.stats.attacks</td>
+              <td>@troop.stats.moral</td>
+              <td>@troop.stats.armor+</td>
+              <td>@troop.totalPoints</td>
+              <td>
+              @if(troop.abilities.isEmpty == false) {
+                <ul>
+                @for(ability <- troop.abilities) {
+                  <li>@ability.name</li>
+                }
+                </ul>
               }
-              </ul>
-            }
-            </td>
-          </tr>
+              </td>
+            </tr>
 
 
-          <tr>
-            <td>
-              <div class="btn-group btn-group-sm" role="group">
-                <button class="btn btn-info btn-sm roster_edit_btn"><i class="fas fa-edit fa-xs"></i></button>
+            <tr>
+              <td>
+                <div class="btn-group btn-group-sm" role="group">
+                  @if(editTroopUuid != troop.uuid) {
+                    <a href="@routes.KTRosterController.displayEditOptions(troop.uuid)" class="btn btn-info btn-sm roster_edit_btn"><i class="fas fa-edit fa-xs"></i></a>
+                  } else {
+                    <a href="@routes.KTRosterController.rosterMain()" class="btn btn-info btn-sm roster_edit_btn"><i class="fas fa-edit fa-xs"></i></a>
+                  }
                 <button class="btn btn-warning roster_clone_btn"><i class="fas fa-clone fa-xs"></i></button>
                 <a class="btn btn-danger roster_del_btn" href="@routes.KTRosterController.removeTroopFromArmy(troop.uuid)"><i class="fas fa-trash fa-xs"></i></a>
-              </div>
-            </td>
-            <td colspan="11">
+                </div>
+              </td>
+              <td colspan="11">
 
-              @* weapons *@
-              @views.html.killteamviews.roster.displayWeapons(troop.loadout.weapons)
-              @* eo weapons *@
+                @* weapons *@
+                @views.html.killteamviews.roster.displayWeapons(troop.loadout.weapons)
+                @* eo weapons *@
 
-              @* items *@
-              @views.html.killteamviews.roster.displayItems(troop.loadout.items ++ troop.items)
-              @* eo items *@
+                @* items *@
+                @views.html.killteamviews.roster.displayItems(troop.loadout.items ++ troop.items)
+                @* eo items *@
 
-              @views.html.killteamviews.roster.editTroop(killteam.logic.KTArmyLogic.getPossibleConfigurationOptionsForTroop(troop.uuid, army), troop)
+                @* possible configuration *@
+                @if(editTroopUuid == troop.uuid) {
+                  @views.html.killteamviews.roster.editTroop(killteam.logic.KTArmyLogic.getPossibleConfigurationOptionsForTroop(troop.uuid, army), troop)
+                }
+                @* eo possible configuration *@
 
-            </td>
-          </tr>
+              </td>
+            </tr>
 
-        </tbody>
-      </table>
-    </div>
+          </tbody>
+        </table>
+      </div>
+    }
   }
-}
