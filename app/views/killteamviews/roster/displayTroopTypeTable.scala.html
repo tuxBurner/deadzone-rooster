@@ -78,6 +78,16 @@
                 @views.html.killteamviews.roster.displayItems(troop.loadout.items ++ troop.items)
                 @* eo items *@
 
+                @if(troop.specialist.isDefined) {
+                  @troop.specialist.get.name
+
+                  <ul>
+                    @for(special <- troop.specialist.get.selectedSpecials) {
+                      <li>@special.name (@special.level)</li>
+                    }
+                  </ul>
+                }
+
                 @* possible configuration *@
                 @if(editTroopUuid == troop.uuid) {
                   @views.html.killteamviews.roster.editTroop(killteam.logic.KTArmyLogic.getPossibleConfigurationOptionsForTroop(troop.uuid, army), troop)
