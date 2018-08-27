@@ -31,23 +31,37 @@ object KTSpecialistLogic {
 
         // check if the level is okay to set
         if (troopDto.level != specialLevel - 1 && specialLevel > 4) {
+          Logger.error(s"Level troop: ${troopDto.level} does not fit the required level: $specialLevel")
           None
         } else {
           // get the special and the set it at the troop
           KTSpecialistDao.findSpecialistByName(troopDto.specialist.get.name)
             .map(specialistDo => {
 
-              // find the spcial in the specialist
+              // check if the special is already set at the troop
+              if (specialist.selectedSpecials.find(special => special.level == specialLevel && special.name == specialName).isDefined) {
+                Logger.warn(s"Special: $specialName level: $specialLevel already set at troop: $uuid")
+                return armyDto
+              }
+
+              // find the special in the specialist
               specialistDo.specials.find(special => special.name == specialName && special.level == specialLevel)
                 .map(specialDo => {
+
+                  // the newspecials list remove all the specials which are higher than the new one and add the new one
+                  val newSpecials = specialist.selectedSpecials.filter(_.level <= specialLevel) :+ KTSpecialTroopDto(name = specialDo.name, level = specialDo.level)
+
+                  // filter out all speciales which are on the same level and dont have the same name
+                  val cleanedSpecials = newSpecials.filter(special => special.level != specialLevel || (special.level == specialLevel && special.name == specialName))
+
                   // recreate the troop and add the new special to the list
-                  Some(troopDto.copy(specialist = Some(troopDto.specialist.get.copy(selectedSpecials = troopDto.specialist.get.selectedSpecials :+ KTSpecialTroopDto(name = specialDo.name, level = specialDo.level)))))
+                  val newTroop = troopDto.copy(level = specialLevel, specialist = Some(specialist.copy(selectedSpecials = cleanedSpecials)))
+                  Some(newTroop)
                 })
                 .getOrElse({
                   Logger.error(s"Cannot find special: $specialName level: $specialLevel for specialist: ${specialistDo.name}")
                   None
                 })
-              None
             })
             .getOrElse({
               Logger.error(s"Could not find sepcialist: ${troopDto.specialist}")
@@ -87,13 +101,14 @@ object KTSpecialistLogic {
   /**
     * Gets the specialist option by the name of the specialist
     *
-    * @param name the name of the specialist
+    * @param name                  the name of the specialist
+    * @param troopSelectedSpecials the specials selected by the troop
     * @return
     */
-  def getSpecialistOptionByName(name: String): Option[KTSpecialistOptionDto] = {
+  def getSpecialistOptionByName(name: String, troopSelectedSpecials: List[KTSpecialTroopDto]): Option[KTSpecialistOptionDto] = {
     KTSpecialistDao.findSpecialistByName(name)
       .map(specialistDo => {
-        val specialTree = Some(findSpecialByLevel(specialistDo, 1, StringUtils.EMPTY).head)
+        val specialTree = Some(findSpecialByLevel(specialistDo, 1, StringUtils.EMPTY, troopSelectedSpecials).head)
         Some(KTSpecialistOptionDto(name = specialistDo.name, baseSpecial = specialTree))
       })
       .getOrElse({
@@ -114,7 +129,7 @@ object KTSpecialistLogic {
       return None
     }
 
-    getSpecialistOptionByName(troopDto.specialist.get.name)
+    getSpecialistOptionByName(troopDto.specialist.get.name, troopDto.specialist.get.selectedSpecials)
   }
 
   /**
@@ -145,22 +160,23 @@ object KTSpecialistLogic {
   /**
     * Goes through the specials of the specialists and traverse them level by level
     *
-    * @param specialistDo       the specialist to traverse the specials from
-    * @param level              the level to get the specials for
-    * @param requireSpecialName the parent special
+    * @param specialistDo          the specialist to traverse the specials from
+    * @param level                 the level to get the specials for
+    * @param requireSpecialName    the parent special
+    * @param troopSelectedSpecials the specials which are selected by the troop
     * @return
     */
-  private def findSpecialByLevel(specialistDo: KTSpecialistDo, level: Int, requireSpecialName: String): List[KTSpecialOptionDto] = {
+  private def findSpecialByLevel(specialistDo: KTSpecialistDo, level: Int, requireSpecialName: String, troopSelectedSpecials: List[KTSpecialTroopDto]): List[KTSpecialOptionDto] = {
     specialistDo.specials.filter(specialDo => specialDo.level == level && specialDo.require == requireSpecialName)
       .map(specialDo => {
         // find sub specials for the special
         val subSpecials = if (level == 3) {
           List()
         } else {
-          findSpecialByLevel(specialistDo, level + 1, specialDo.name)
+          findSpecialByLevel(specialistDo, level + 1, specialDo.name, troopSelectedSpecials)
         }
 
-        val selected = level == 1
+        val selected = troopSelectedSpecials.find(troopSpecial => troopSpecial.name == specialDo.name && troopSpecial.level == level).isDefined //level == 1
         val selectable = level != 1
 
         KTSpecialOptionDto(selectable = selectable,
@@ -170,6 +186,7 @@ object KTSpecialistLogic {
           subSpecials = subSpecials)
       })
       .toList
+      .sortBy(_.name)
   }
 
 }

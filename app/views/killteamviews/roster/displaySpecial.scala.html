@@ -1,25 +1,28 @@
 @import killteam.logic.KTSpecialOptionDto
-@(specialOption: KTSpecialOptionDto)
+@import killteam.logic.KTArmyTroopDto
+@(specialOption: KTSpecialOptionDto, troop: KTArmyTroopDto)
 
 <div class="row">
   <div class="col-sm-12">
-  <div class="card">
-    <div class="card-header @if(specialOption.selected) { bg-success }">
-      @specialOption.name (@specialOption.level) @if(specialOption.selectable) { <input type="checkbox" /> }
+    <div class="card">
+      <div class="card-header @if(specialOption.selected) { bg-success }">
+        @specialOption.name (@specialOption.level) @if(specialOption.selectable) {
+        <a class="btn btn-sm btn-primary" href="@routes.KTRosterController.addSpecialToTroop(troop.uuid, specialOption.name, specialOption.level)">SET MET</a>
+      }
+      </div>
+      <div class="card-body">
+        Her comes the text
+      </div>
     </div>
-    <div class="card-body">
-      Her comes the text
-    </div>
-  </div>
   </div>
 </div>
 
 @if(specialOption.subSpecials.isEmpty == false && specialOption.selected) {
   <div class="row">
-    @for(subSpecial <- specialOption.subSpecials) {
-      <div class="col-sm-6">
-        @views.html.killteamviews.roster.displaySpecial(subSpecial)
-      </div>
-    }
+  @for(subSpecial <- specialOption.subSpecials) {
+    <div class="col-sm-6">
+    @views.html.killteamviews.roster.displaySpecial(subSpecial, troop)
+    </div>
+  }
   </div>
 }

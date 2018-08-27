@@ -146,19 +146,6 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
       Redirect(routes.KTRosterController.rosterMain())
   }
 
-
-  /**
-    * Renews the army in the cache and returns it.
-    *
-    * @param request
-    * @return
-    */
-  private def renewArmyInCache(request: Request[Any]): KTArmyDto = {
-    val armyFromCache = getArmyFromCache(request)
-    writeArmyToCache(request, armyFromCache)
-    armyFromCache
-  }
-
   /**
     * Returns a response with the cacheid in the seeion
     *
@@ -207,7 +194,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     * Gets the army from the cache and performs a change operation on it
     *
     * @param changeArmyFunction the function changing the army
-    * @param request            the request which holds the session  informations
+    * @param request            the request which holds the session information's
     * @return
     */
   private def getArmyFromCacheAndUpdateIt(changeArmyFunction: (KTArmyDto) => KTArmyDto)(implicit request: Request[Any]): KTArmyDto = {
