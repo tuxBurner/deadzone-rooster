@@ -141,7 +141,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   def setNewLoadoutAtTroop(uuid: String, loadoutName: String) = Action {
     implicit request =>
       getArmyFromCacheAndUpdateIt((armyFromCache) => KTArmyLogic.setLoadoutAtTroop(loadoutName = loadoutName, uuid = uuid, armyDto = armyFromCache))
-      Redirect(routes.KTRosterController.rosterMain())
+      Redirect(routes.KTRosterController.displayEditOptions(uuid))
   }
 
   /**
@@ -155,7 +155,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   def addSpecialToTroop(uuid: String, specialName: String, specialLevel: Int) = Action {
     implicit request =>
       getArmyFromCacheAndUpdateIt((armyFromCache) => KTSpecialistLogic.setSpecialAtTroop(specialName = specialName, specialLevel = specialLevel, uuid = uuid, armyFromCache))
-      Redirect(routes.KTRosterController.rosterMain())
+      Redirect(routes.KTRosterController.displayEditOptions(uuid))
   }
 
   /**
