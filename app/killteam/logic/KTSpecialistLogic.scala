@@ -39,7 +39,7 @@ object KTSpecialistLogic {
             .map(specialistDo => {
 
               // check if the special is already set at the troop
-              if (specialist.selectedSpecials.find(special => special.level == specialLevel && special.name == specialName).isDefined) {
+              if (specialist.selectedSpecials.exists(special => special.level == specialLevel && special.name == specialName)) {
                 Logger.warn(s"Special: $specialName level: $specialLevel already set at troop: $uuid")
                 return armyDto
               }
@@ -47,7 +47,6 @@ object KTSpecialistLogic {
               // find the special in the specialist
               specialistDo.specials.find(special => special.name == specialName && special.level == specialLevel)
                 .map(specialDo => {
-
                   // the newspecials list remove all the specials which are higher than the new one and add the new one
                   val newSpecials = specialist.selectedSpecials.filter(_.level <= specialLevel) :+ KTSpecialTroopDto(name = specialDo.name, level = specialDo.level)
 
@@ -170,13 +169,26 @@ object KTSpecialistLogic {
     specialistDo.specials.filter(specialDo => specialDo.level == level && specialDo.require == requireSpecialName)
       .map(specialDo => {
         // find sub specials for the special
-        val subSpecials = if (level == 3) {
+        val subSpecials = if (level == 4) {
           List()
+        } else if (level == 3) {
+          // get all specials which are not selected for level 4
+          specialistDo.specials
+            .filterNot(specialDo => troopSelectedSpecials.exists(troopSpecial => troopSpecial.name == specialDo.name))
+            .map(specialDo => {
+              KTSpecialOptionDto(selectable = true,
+                selected = false,
+                level = 4,
+                name = specialDo.name,
+                subSpecials = List())
+            })
+            .toList
+            .sortBy(_.name)
         } else {
           findSpecialByLevel(specialistDo, level + 1, specialDo.name, troopSelectedSpecials)
         }
 
-        val selected = troopSelectedSpecials.find(troopSpecial => troopSpecial.name == specialDo.name && troopSpecial.level == level).isDefined //level == 1
+        val selected = troopSelectedSpecials.exists(troopSpecial => troopSpecial.name == specialDo.name && troopSpecial.level == level)
         val selectable = level != 1
 
         KTSpecialOptionDto(selectable = selectable,
