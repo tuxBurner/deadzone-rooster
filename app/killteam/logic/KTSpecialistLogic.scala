@@ -96,12 +96,7 @@ object KTSpecialistLogic {
       .getOrElse(List("None"))
 
     val returnList = "" :: specialistsForTroop
-
-    if (armyDto.troops.isEmpty) {
-      returnList
-    } else {
-      returnList.filterNot(specialistName => armyDto.troops.exists(troop => troop.specialist.isDefined && troop.specialist.get.name == specialistName))
-    }
+    returnList
   }
 
   /**
