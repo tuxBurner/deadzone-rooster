@@ -6,7 +6,7 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-header @if(specialOption.selected) { bg-success }">
-        @specialOption.name (@specialOption.level) @if(specialOption.selectable) {
+        @specialOption.name (@specialOption.level) @if(specialOption.selected == false) {
         <a class="btn btn-sm btn-primary" href="@routes.KTRosterController.addSpecialToTroop(troop.uuid, specialOption.name, specialOption.level)">SET MET</a>
       }
       </div>

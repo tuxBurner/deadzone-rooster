@@ -184,8 +184,7 @@ object KTSpecialistLogic {
             .filterNot(specialDo => troopSelectedSpecials.exists(troopSpecial => troopSpecial.name == specialDo.name && troopSpecial.level != 4))
             .map(specialDo => {
               val selected = troopSelectedSpecials.exists(troopSpecial => troopSpecial.name == specialDo.name && troopSpecial.level == 4)
-              KTSpecialOptionDto(selectable = true,
-                selected = selected,
+              KTSpecialOptionDto(selected = selected,
                 level = 4,
                 name = specialDo.name,
                 subSpecials = List())
@@ -199,8 +198,7 @@ object KTSpecialistLogic {
         val selected = troopSelectedSpecials.exists(troopSpecial => troopSpecial.name == specialDo.name && troopSpecial.level == level)
         val selectable = level != 1
 
-        KTSpecialOptionDto(selectable = selectable,
-          selected = selected,
+        KTSpecialOptionDto(selected = selected,
           level = level,
           name = specialDo.name,
           subSpecials = subSpecials)
@@ -215,8 +213,7 @@ object KTSpecialistLogic {
 case class KTSpecialistOptionDto(name: String,
                                  baseSpecial: Option[KTSpecialOptionDto])
 
-case class KTSpecialOptionDto(selectable: Boolean,
-                              selected: Boolean,
+case class KTSpecialOptionDto(selected: Boolean,
                               name: String,
                               level: Int,
                               subSpecials: List[KTSpecialOptionDto] = List())

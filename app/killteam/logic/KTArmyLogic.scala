@@ -62,7 +62,7 @@ object KTArmyLogic {
         amount = 1,
         points = troop.points,
         level = 1,
-        totalPoints = calculateTroopPoints(troop.points, List(), loadout),
+        totalPoints = calculateTroopPoints(troop.points, List(), loadout, 1),
         abilities = abilities,
         specialist = specialist)
 
@@ -123,7 +123,7 @@ object KTArmyLogic {
       KTLoadoutDao.getLoadoutByTroopAndName(troopName = troopDto.name, factionName = troopDto.faction, loadoutName)
         .map(loadoutDo => {
           val newLoadout = loadoutDoToDto(loadoutDo)
-          val troopDtoWithNewLoadout = troopDto.copy(loadout = newLoadout, totalPoints = calculateTroopPoints(troopDto.points, List(), newLoadout))
+          val troopDtoWithNewLoadout = troopDto.copy(loadout = newLoadout)
           Some(troopDtoWithNewLoadout)
         })
         .getOrElse({
@@ -283,8 +283,8 @@ object KTArmyLogic {
     getTroopFromArmyByUUID(uuid = uuid, armyDto = armyDto)
       .map(troopDto => {
         successHandler(troopDto)
-            .map(updatedTroop => updateArmyWithTroop(updatedTroop = updatedTroop, armyDto = armyDto))
-            .getOrElse(armyDto)
+          .map(updatedTroop => updateArmyWithTroop(updatedTroop = updatedTroop.copy(totalPoints = calculateTroopPoints(updatedTroop.points, updatedTroop.items, updatedTroop.loadout, updatedTroop.level)), armyDto = armyDto))
+          .getOrElse(armyDto)
       })
       .getOrElse({
         Logger.error(s"Troop $uuid not found in army")
@@ -324,11 +324,18 @@ object KTArmyLogic {
     * @param basePoints the base points the troop has
     * @param items      the items the troop has equiped
     * @param loadout    the current loadout of the troop
+    * @param level      the level of the troop
     * @return
     */
-  def calculateTroopPoints(basePoints: Int, items: List[KTItemDto], loadout: KTLoadoutDto): Int = {
+  def calculateTroopPoints(basePoints: Int, items: List[KTItemDto], loadout: KTLoadoutDto, level: Int): Int = {
     val itemsPoints = items.map(_.points).sum
-    basePoints + itemsPoints + loadout.points
+    val levelPoints = level match {
+      case 2 => 4
+      case 3 => 8
+      case 4 => 12
+      case _ => 0
+    }
+    basePoints + itemsPoints + loadout.points + levelPoints
   }
 
   /**
@@ -377,6 +384,22 @@ case class KTArmyDto(name: String,
                      troops: List[KTArmyTroopDto] = List())
 
 
+/**
+  * Represents a troop in the army
+  *
+  * @param uuid        the uuid of the troop
+  * @param name        the name of the troop
+  * @param faction     the faction of the troop
+  * @param stats       the stats the troop has
+  * @param loadout     the loadout the tropp is equiped with
+  * @param amount      how many of the troop are in the army
+  * @param points      the base points of the troop
+  * @param level       the level of the troop
+  * @param totalPoints the total points the troop cost
+  * @param abilities   the abilities the troop has
+  * @param items       the items the troop is equiped with
+  * @param specialist  when set the troop is a specialist
+  */
 case class KTArmyTroopDto(uuid: String,
                           name: String,
                           faction: String,
@@ -390,6 +413,19 @@ case class KTArmyTroopDto(uuid: String,
                           items: List[KTItemDto] = List(),
                           specialist: Option[KTSpecialistTroopDto] = None)
 
+/**
+  * The stats of a troop
+  *
+  * @param movement   how far can the troop move
+  * @param fightStat  the fight stat of the troop
+  * @param shootStat  the shoot stat of the troop
+  * @param strength   the strength of the troop
+  * @param resistance the resistance of the troop
+  * @param lifePoints how many lifepoints does the troop have
+  * @param attacks    how many attacks does the troop have
+  * @param moral      the moral of the troop
+  * @param armor      the armor  of the troop
+  */
 case class KTTroopStats(movement: Int,
                         fightStat: Int,
                         shootStat: Int,
