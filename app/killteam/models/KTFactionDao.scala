@@ -15,8 +15,19 @@ object KTFactionDao {
   /**
     * Deletes all factions
     */
-  def deleteAll():Unit = {
+  def deleteAll(): Unit = {
     factions.clear()
+  }
+
+  /**
+    * Finds the given faction by its name
+    *
+    * @param name the name of the faction to find
+    * @return
+    */
+  def findFaction(name: String): Option[KTFactionDo] = {
+    factions
+      .find(_.name.equals(name))
   }
 
   /**
@@ -28,8 +39,7 @@ object KTFactionDao {
   def findOrAddFaction(name: String): KTFactionDo = {
     Logger.info("KT adding Faction: " + name + " to database")
 
-    factions
-      .find(_.name.equals(name))
+    findFaction(name)
       .getOrElse({
         val factionDo = KTFactionDo(name)
         factions += factionDo

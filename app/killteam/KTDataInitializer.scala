@@ -20,7 +20,8 @@ class KTDataInitializer @Inject()(configuration: Configuration,
                                   weaponParser: KTCSVWeaponParser,
                                   itemParser: KTCSVItemParser,
                                   loadoutParser: KTCSVLoadoutParser,
-                                  specialistsParser: KTCSVSpecialistsParser) {
+                                  specialistsParser: KTCSVSpecialistsParser,
+                                  tacticsParser: KTCSVTacticsParser) {
 
 
   startImportingData()
@@ -83,6 +84,7 @@ class KTDataInitializer @Inject()(configuration: Configuration,
     itemParser.refresh()
     loadoutParser.refresh()
     specialistsParser.refresh()
+    tacticsParser.refresh()
 
     // populate specialists
     KTSpecialistDao.addSpecialists(specialistsParser.specialists)
@@ -102,6 +104,8 @@ class KTDataInitializer @Inject()(configuration: Configuration,
         KTItemsDao.addItemToFaction(itemDto, factionDo)
       })
 
+
+
       // adds all troops to the faction
       armyParser.getTroopsForFaction(factionName).foreach(troopDto => {
         val troopDo = KTTroopDao.addTroopToFaction(troopDto, factionDo)
@@ -116,6 +120,8 @@ class KTDataInitializer @Inject()(configuration: Configuration,
 
     })
 
+    // populate the tactics
+    tacticsParser.getAllTactics().foreach(csvTactic => KTTacticsDao.addTactic(csvTactic))
 
     Logger.info("--------------------------------------")
     Logger.info("--- Done Parsing the Killteam data ---")
