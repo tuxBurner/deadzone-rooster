@@ -15,7 +15,7 @@ object KTTacticsLogic {
     * @param armyDto
     * @return
     */
-  def getTacticsForArmy(armyDto: KTArmyDto): List[KTTacticDto] = {
+  def getTacticsForArmy(armyDto: KTArmyDto): Map[ETacticType, List[KTTacticDto]] = {
     Logger.info(s"Collecting tactics for the army")
 
     val generalTactics = KTTacticsDao
@@ -37,9 +37,10 @@ object KTTacticsLogic {
       .groupBy(_.specialist.get.name) // group the troops by the specialists name
       .map(entry => entry._2.maxBy(_.level)).flatMap(troopWithSpecial => KTTacticsDao.getSpecialistTactics(troopWithSpecial.specialist.get.name, troopWithSpecial.level))
       .map(tacticDoToDto)
+      .toList
 
 
-    generalTactics ++ factionTactics ++ specialistTactics
+    Map(ETacticType.GENERAL -> generalTactics, ETacticType.FACTION -> factionTactics, ETacticType.SPECIALIST -> specialistTactics)
   }
 
 

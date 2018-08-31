@@ -385,7 +385,7 @@ case class KTArmyDto(name: String = "",
                      faction: String = "",
                      points: Int = 0,
                      troops: List[KTArmyTroopDto] = List(),
-                     tactics: List[KTTacticDto] = List())
+                     tactics: Map[ETacticType, List[KTTacticDto]] = Map())
 
 
 /**
