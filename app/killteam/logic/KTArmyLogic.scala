@@ -68,7 +68,8 @@ object KTArmyLogic {
 
       val newTroops = armyDto.troops :+ newTroop
 
-      armyDto.copy(faction = factionName, points = calculateArmyPoints(newTroops), troops = newTroops)
+      val newArmy = armyDto.copy(faction = factionName, points = calculateArmyPoints(newTroops), troops = newTroops)
+      newArmy.copy(tactics = KTTacticsLogic.getTacticsForArmy(newArmy))
     }).getOrElse({
       Logger.warn(s"Could not add troop: $troopName from faction: $factionName it was not found")
       armyDto
@@ -143,7 +144,8 @@ object KTArmyLogic {
   def updateArmyWithTroop(updatedTroop: KTArmyTroopDto, armyDto: KTArmyDto): KTArmyDto = {
     val troopIndex = armyDto.troops.indexWhere(_.uuid == updatedTroop.uuid)
     val updatedArmyTroops = armyDto.troops.updated(troopIndex, updatedTroop)
-    armyDto.copy(troops = updatedArmyTroops, points = calculateArmyPoints(updatedArmyTroops))
+    val armyWithNewTroops = armyDto.copy(troops = updatedArmyTroops, points = calculateArmyPoints(updatedArmyTroops))
+    armyWithNewTroops.copy(tactics = KTTacticsLogic.getTacticsForArmy(armyWithNewTroops))
   }
 
 
@@ -377,11 +379,13 @@ object KTArmyLogic {
   * @param faction the faction of the army
   * @param points  how many points is the army worth
   * @param troops  the troops in the army
+  * @param tactics all the tactics the army has
   */
-case class KTArmyDto(name: String,
+case class KTArmyDto(name: String = "",
                      faction: String = "",
                      points: Int = 0,
-                     troops: List[KTArmyTroopDto] = List())
+                     troops: List[KTArmyTroopDto] = List(),
+                     tactics: List[KTTacticDto] = List())
 
 
 /**

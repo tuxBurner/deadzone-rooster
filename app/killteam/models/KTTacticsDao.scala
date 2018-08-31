@@ -58,6 +58,40 @@ object KTTacticsDao {
       specialistLevel = csvTacticDto.specialistLevel,
       commandPoints = csvTacticDto.commandPoints)
   }
+
+  /**
+    * Gets all the general tactics which don't need a specialist or faction
+    * @return
+    */
+  def getGeneralTactics() : List[KTTacticDo] = {
+    tactics
+      .filter(tacticDo => StringUtils.isBlank(tacticDo.faction) && StringUtils.isBlank(tacticDo.specialist))
+      .toList
+  }
+
+  /**
+    * Gets all tactics for the given faction
+    * @param factionName the name of the faction to get the tactics for
+    * @return
+    */
+  def getFactionTactics(factionName: String) : List[KTTacticDo] = {
+    tactics
+      .filter(_.faction == factionName)
+      .toList
+  }
+
+  /**
+    * Gets all the tactics for the given specialist and the maxLevel
+    * @param specialistName the name of the specialist
+    * @param maxLevel the max level
+    * @return
+    */
+  def getSpecialistTactics(specialistName: String, maxLevel: Int) : List[KTTacticDo] = {
+    tactics
+      .filter(tacticDo => tacticDo.specialist == specialistName && tacticDo.specialistLevel <= maxLevel)
+      .sortBy(_.name)
+      .toList
+  }
 }
 
 /**

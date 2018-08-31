@@ -1,0 +1,24 @@
+@import killteam.logic.KTArmyTroopDto
+@import org.jboss.logging.Message
+@import killteam.logic.KTArmyDto
+@(army: KTArmyDto)(implicit messages: Messages)
+
+
+<h5>@Messages("kt.tactics.title")</h5>
+
+  @if(army.tactics.isEmpty) {
+    <div class="alert alert-primary" role="alert">
+    @Messages("kt.tactics.notactics")
+    </div>
+  } else {
+
+    @for(tactic <- army.tactics) {
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">@tactic.name</h5>
+
+        </div>
+      </div>
+    }
+
+  }

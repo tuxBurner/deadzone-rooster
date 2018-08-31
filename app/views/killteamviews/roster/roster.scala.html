@@ -84,10 +84,7 @@
   @views.html.killteamviews.roster.displayTroopTypeTable(killteam.logic.KTArmyLogic.getNormalTroopsFromArmy(armyDto),"normal",armyDto,editTroopUuid)
   @* eo normal troops *@
 
-
-
-  @views.html.deadzoneviews.roster.rosterTroopEditModal()
-  @views.html.deadzoneviews.roster.rosterValidateModal()
-  @views.html.deadzoneviews.roster.rosterImportModal()
-
+  @* tactics *@
+  @views.html.killteamviews.roster.displayTactics(armyDto)
+  @* eo tactics *@
 }

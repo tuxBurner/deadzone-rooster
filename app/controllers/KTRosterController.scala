@@ -176,9 +176,9 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     * @param request
     * @return
     */
-  private def getArmyFromCache(request: Request[Any]) = {
+  private def getArmyFromCache(request: Request[Any]): KTArmyDto = {
     val cacheId = getCacheIdFromSession(request)
-    cache.get[KTArmyDto](cacheId).getOrElse(KTArmyDto(""))
+    cache.get[KTArmyDto](cacheId).getOrElse(KTArmyDto())
   }
 
   /**
