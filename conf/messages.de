@@ -196,6 +196,7 @@ kt.troop.tbl.attacks=A
 kt.troop.tbl.moral=MW
 kt.troop.tbl.armor=RW
 kt.troop.tbl.points=Punkte
+kt.troop.tbl.level=Level
 
 kt.weapon.tbl.title=Waffen
 kt.weapon.tbl.name=Name
@@ -226,5 +227,23 @@ kt.troop.loadouts.points=Punkte
 
 kt.troop.specialists.title=Spezialist
 specialists.select=Spezialist
+
+kt.tactics.GENERAL.title=Allgemeine Taktiken
+kt.tactics.GENERAL.noTactics=Keine Allgemeine Taktiken vorhanden
+
+kt.tactics.FACTION.title=Fraktion Taktiken
+kt.tactics.FACTION.noTactics=Keine Fraktion Taktiken vorhanden
+
+kt.tactics.SPECIALIST.title=Spezialisten Taktiken
+kt.tactics.SPECIALIST.noTactics=Keine Spezialisten Taktiken vorhanden
+
+kt.tactics.name=Name
+kt.tactics.commandPoints=BP
+kt.tactics.specialist=Spezialist
+kt.tactics.level=Spezialist Level
+
+
+
+
 
 

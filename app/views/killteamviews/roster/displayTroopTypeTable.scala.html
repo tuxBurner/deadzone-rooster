@@ -28,6 +28,7 @@
               <th>@Messages("kt.troop.tbl.moral")</th>
               <th>@Messages("kt.troop.tbl.armor")</th>
               <th>@Messages("kt.troop.tbl.points")</th>
+              <th>@Messages("kt.troop.tbl.level")</th>
               <th>@Messages("kt.troop.tbl.abilities")</th>
             </tr>
           </thead>
@@ -44,6 +45,7 @@
               <td>@troop.stats.moral</td>
               <td>@troop.stats.armor+</td>
               <td>@troop.totalPoints</td>
+              <td>@troop.level</td>
               <td>
               @if(troop.abilities.isEmpty == false) {
                 <ul>
@@ -68,7 +70,7 @@
                 <a class="btn btn-danger roster_del_btn" href="@routes.KTRosterController.removeTroopFromArmy(troop.uuid)"><i class="fas fa-trash fa-xs"></i></a>
                 </div>
               </td>
-              <td colspan="11">
+              <td colspan="12">
 
                 @* weapons *@
                 @views.html.killteamviews.roster.displayWeapons(troop.loadout.weapons)

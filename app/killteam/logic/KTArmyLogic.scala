@@ -270,7 +270,8 @@ object KTArmyLogic {
       armyDto.faction
     }
 
-    armyDto.copy(faction = newFaction, points = calculateArmyPoints(newTroops), troops = newTroops)
+    val newArmy = armyDto.copy(faction = newFaction, points = calculateArmyPoints(newTroops), troops = newTroops)
+    newArmy.copy(tactics = KTTacticsLogic.getTacticsForArmy(newArmy))
   }
 
   /**
