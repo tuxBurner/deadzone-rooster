@@ -80,15 +80,11 @@
                 @views.html.killteamviews.roster.displayItems(troop.loadout.items ++ troop.items)
                 @* eo items *@
 
-                @if(troop.specialist.isDefined) {
-                  @troop.specialist.get.name
 
-                  <ul>
-                    @for(special <- troop.specialist.get.selectedSpecials) {
-                      <li>@special.name (@special.level)</li>
-                    }
-                  </ul>
-                }
+                @* specilist *@
+                @views.html.killteamviews.roster.displayTroopSpecialist(troop.specialist)
+                @* eo specilist *@
+
 
                 @* possible configuration *@
                 @if(editTroopUuid == troop.uuid) {

@@ -247,6 +247,10 @@ kt.loadout.weapons=Waffen
 kt.loadout.items=Ausrüstung
 kt.loadout.points=Punkte
 
+kt.specialist.tbl.title=Spezialist
+kt.special.tbl.name=Spezial Name
+kt.special.tbl.level=Spezial Level
+
 
 
 
