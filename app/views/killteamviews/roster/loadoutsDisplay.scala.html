@@ -1,43 +1,47 @@
 @import killteam.logic.KTOptionLoadout
 @import killteam.logic.KTArmyTroopDto
 @(loadoutOptions: List[KTOptionLoadout], troop: KTArmyTroopDto)(implicit messages: Messages)
-<h6>@Messages("kt.troop.loadouts.title")</h6>
 
-<div class="accordion" id="toopLoadoutAccordion">
+<table class="table table-sm table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th colspan="5">@Messages("kt.troop.loadouts.title")</th>
+    </tr>
+    <tr>
+      <th>@Messages("kt.loadout.name")</th>
+      <th>@Messages("kt.loadout.weapons")</th>
+      <th>@Messages("kt.loadout.items")</th>
+      <th>@Messages("kt.loadout.points")</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  @for((loadoutOption, loadoutIndex) <- loadoutOptions.zipWithIndex) {
+    <tr class="@if(loadoutOption.selected) {bg-success}">
+      <th scope="row">
+        <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse@loadoutIndex">
+        @loadoutOption.loadout.name
+        </button>
+      </th>
+      <td>@loadoutOption.loadout.weapons.map(_.name).mkString(" / ")</td>
+      <td>@loadoutOption.loadout.items.map(_.name).mkString(" / ")</td>
+      <td>@loadoutOption.loadout.points</td>
+      <td>
+      @if(loadoutOption.selected == false) {
+        <a class="btn btn-sm btn-dark" href="@routes.KTRosterController.setNewLoadoutAtTroop(troop.uuid, loadoutOption.loadout.name)">
+          SETME
+        </a>
+      }
+      </td>
+    </tr>
+    <tr id="collapse@loadoutIndex" class="collapse">
+      <td></td>
+      <td colspan="4">
+        @views.html.killteamviews.roster.displayWeapons(loadoutOption.loadout.weapons)
+        @views.html.killteamviews.roster.displayItems(loadoutOption.loadout.items)
+      </td>
+    </tr>
 
-@for((loadoutOption,loadoutIndex) <- loadoutOptions.zipWithIndex) {
-  <div class="card">
-    <div class="card-header @if(loadoutOption.selected) {bg-success}" id="headingOne">
-
-      <div class="row">
-        <div class="col-sm-2">
-          <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse@loadoutIndex">
-          @loadoutOption.loadout.name
-          </button>
-        </div>
-        <div class="col-sm-8">
-          @loadoutOption.loadout.weapons.map(_.name).mkString(" / ")
-          @loadoutOption.loadout.items.map(_.name).mkString(" / ")
-        </div>
-        <div class="col-sm-1">
-          @loadoutOption.loadout.points
-        </div>
-        <div class="col-sm-1">
-        @if(loadoutOption.selected == false) {
-          <a class="btn btn-sm btn-dark" href="@routes.KTRosterController.setNewLoadoutAtTroop(troop.uuid, loadoutOption.loadout.name)">
-            SETME
-          </a>
-        }
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <div id="collapse@loadoutIndex" class="collapse">
-    <div class="card-body">
-      @views.html.killteamviews.roster.displayWeapons(loadoutOption.loadout.weapons)
-      @views.html.killteamviews.roster.displayItems(loadoutOption.loadout.items)
-    </div>
-  </div>
-}
-</div>
+  }
+  </tbody>
+</table>

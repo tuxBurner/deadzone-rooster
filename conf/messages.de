@@ -242,6 +242,11 @@ kt.tactics.commandPoints=BP
 kt.tactics.specialist=Spezialist
 kt.tactics.level=Spezialist Level
 
+kt.loadout.name=Name
+kt.loadout.weapons=Waffen
+kt.loadout.items=Ausrüstung
+kt.loadout.points=Punkte
+
 
 
 

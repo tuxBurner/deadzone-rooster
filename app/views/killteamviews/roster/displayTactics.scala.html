@@ -18,22 +18,22 @@
         <thead class="thead-dark">
           <tr>
             <th>@Messages("kt.tactics.name")</th>
-            <th>@Messages("kt.tactics.commandPoints")</th>
             @if(tacticType == ETacticType.SPECIALIST) {
               <th>@Messages("kt.tactics.specialist")</th>
               <th>@Messages("kt.tactics.level")</th>
             }
+            <th>@Messages("kt.tactics.commandPoints")</th>
           </tr>
       </thead>
         <tbody>
           @for(tactic <- tactics) {
            <tr>
              <td>@tactic.name</td>
-             <td>@tactic.commandPoints</td>
              @if(tacticType == ETacticType.SPECIALIST) {
                <td>@tactic.specialist</td>
                <td>@tactic.specialistLevel</td>
              }
+             <td>@tactic.commandPoints</td>
            </tr>
           }
         </tbody>
