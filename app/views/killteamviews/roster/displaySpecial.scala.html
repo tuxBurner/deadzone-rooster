@@ -1,36 +1,50 @@
 @import killteam.logic.KTSpecialOptionDto
+@import killteam.logic.KTSpecialistOptionDto
 @import killteam.logic.KTArmyTroopDto
-@(specialOption: KTSpecialOptionDto, troop: KTArmyTroopDto)
+@(specialOption: KTSpecialOptionDto, troop: KTArmyTroopDto, specialist: KTSpecialistOptionDto)(implicit messages: Messages)
 
 <table class="table table-sm ">
   <thead class="thead-dark @if(specialOption.selected) { bg-success }">
     <tr>
       <th>@specialOption.name </th>
-      <th>@specialOption.level</th>
       <th>
       @if(specialOption.selected == false) {
-        <a href="@routes.KTRosterController.addSpecialToTroop(troop.uuid, specialOption.name, specialOption.level)">SET MET</a>
+        <a href="@routes.KTRosterController.addSpecialToTroop(troop.uuid, specialOption.name, specialOption.level)">
+          SET MET</a>
       }
       </th>
     </tr>
-  </thead>
-  <tbody>
-  @if(specialOption.subSpecials.isEmpty == false && specialOption.selected) {
+
     <tr>
-      <td colspan="3">
-        <table class="table table-sm">
-          <tbody>
-            <tr>
-            @for(subSpecial <- specialOption.subSpecials) {
-              <td>
-              @views.html.killteamviews.roster.displaySpecial(subSpecial, troop)
-              </td>
-            }
-            </tr>
-          </tbody>
-        </table>
+      <td colspan="2">
+         @Messages(FixMessagesKey.fixKey(s"kt.special.${specialist.name}.${specialOption.name}.descr"))
       </td>
     </tr>
+
+    @if(specialOption.subSpecials.isEmpty == false && specialOption.selected) {
+      <tr>
+        <th colspan="2">@(specialOption.level + 1)</th>
+      </tr>
+    }
+
+  </thead>
+  @if(specialOption.subSpecials.isEmpty == false && specialOption.selected) {
+    <tbody>
+      <tr>
+        <td colspan="2">
+          <table class="table table-sm">
+            <tbody>
+              <tr>
+              @for(subSpecial <- specialOption.subSpecials) {
+                <td>
+                @views.html.killteamviews.roster.displaySpecial(subSpecial, troop, specialist)
+                </td>
+              }
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
   }
-  </tbody>
 </table>

@@ -263,6 +263,13 @@ kt.weapon.type.FIGHT=Nahkampf
 kt.weapon.type.Heavy=Schwer
 kt.weapon.type.GRANADE=Granate
 
+kt.special.anfuehrer.listenreich.descr=Solange sich dieses Modell auf dem Schlachtfeld befindet und nicht erschüttert ist, erhälst du zu Begin der Schlachtrunde einen zusätzlichen Befehlspunkt.
+kt.special.anfuehrer.kuehn.descr=Diese Modell besteht Nerventests automatisch.
+kt.special.anfuehrer.inspirierend.descr=Befreundete Modelle innerhalb von 3" um dieses Modell bestehen - solange es nicht erschüttert ist - Nerventests automatisch.
+kt.special.anfuehrer.vorbild.descr=Wiederhole Trefferwürfe von 1 für befreundete Modelle innerhalb von 3" um dieses Modell, solange es nicht erschüttert ist.
+kt.special.anfuehrer.tyrann.descr=Dein(e) Gegner muss/müssen 1 zu Nerventests für alle feindlichen Modelle innerhalb von 6" um dieses Modell addieren, solange es nicht erschüttert ist.
+kt.special.anfuehrer.taktiker.descr=Wirf jedesmla einen W6, wenn du eine Taktik einsetzt, solange sich dieses Model auf dem Schlachtfeld befindet und nicht erschüttert ist. Bei 5+ erhälst du einen Befehlspunkt.
+kt.special.anfuehrer.mentor.descr=Wenn dieses Model nicht erschüttert ist, darfst du einmal pro Schlachtrunde, wenn du in der Fernkampfphase ein befreundetes Modell innerhalb von 3" um dieses Modell wählst, um zu schießen, für das gewählte Modell bis zum Ende der Phase misslungene Trefferwürfe wiederholen.
 
 
 

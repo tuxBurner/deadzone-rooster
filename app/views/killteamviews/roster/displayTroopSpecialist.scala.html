@@ -15,7 +15,9 @@
       <tr>
         <th scope="row">@special.name</th>
         <td>@special.level</td>
-        <td>TODO</td>
+        <td>
+          @Messages(FixMessagesKey.fixKey(s"kt.special.${troopSpecialist.get.name}.${special.name}.descr"))
+        </td>
       </tr>
     }
     </tbody>
