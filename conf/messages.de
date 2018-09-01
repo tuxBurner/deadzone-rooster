@@ -256,6 +256,13 @@ kt.army.points=Armee Punkte
 kt.army.troops=Truppen
 kt.army.name=Armee Name
 
+kt.weapon.type.RAPIDFIRE=Schnellfeuer
+kt.weapon.type.STORM=Sturm
+kt.weapon.type.PISTOL=Pistole
+kt.weapon.type.FIGHT=Nahkampf
+kt.weapon.type.Heavy=Schwer
+kt.weapon.type.GRANADE=Granate
+
 
 
 

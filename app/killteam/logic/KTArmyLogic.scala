@@ -248,6 +248,7 @@ object KTArmyLogic {
       points = weaponDo.points,
       range = weaponDo.range,
       weaponType = weaponDo.weaponType,
+      weaponTypeModifier= weaponDo.weaponTypeModifier,
       strength = weaponDo.strength,
       puncture = weaponDo.puncture,
       damage = weaponDo.damage,
@@ -511,19 +512,21 @@ case class KTItemOptionDto(selected: Boolean,
 /**
   * Represents a weapon
   *
-  * @param name         the name of the weapon
-  * @param points       how many points is the weapon worth
-  * @param range        the range of the weapon
-  * @param weaponType   the type of the weapon
-  * @param strength     the strength of the weapon
-  * @param puncture     the puncture of the weapon
-  * @param damage       the damage of the weapon
-  * @param linkedWeapon when the weapon is linked weapon this is set
+  * @param name               the name of the weapon
+  * @param points             how many points is the weapon worth
+  * @param range              the range of the weapon
+  * @param weaponType         the type of the weapon
+  * @param weaponTypeModifier the modifier of the weapon type
+  * @param strength           the strength of the weapon
+  * @param puncture           the puncture of the weapon
+  * @param damage             the damage of the weapon
+  * @param linkedWeapon       when the weapon is linked weapon this is set
   */
 case class KTWeaponDto(name: String,
                        points: Int,
                        range: Int,
-                       weaponType: String,
+                       weaponType: EWeaponType,
+                       weaponTypeModifier: String,
                        strength: String,
                        puncture: Int,
                        damage: String,
