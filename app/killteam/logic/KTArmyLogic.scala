@@ -112,6 +112,31 @@ object KTArmyLogic {
       })
   }
 
+  /**
+    * Adds an item to the given troop
+    *
+    * @param itemName the name of the item to add
+    * @param uuid     the uuid of the troop where to add the item
+    * @param armyDto  the army containing the troop
+    * @return
+    */
+  def setItemAtTroop(itemName: String, uuid: String, armyDto: KTArmyDto): KTArmyDto = {
+    Logger.info(s"Setting item: $itemName at troop: $uuid")
+    getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, troopDto => {
+      KTItemsDao.getItemByNameAndFaction(itemName = itemName, factionName = troopDto.faction)
+        .map(itemDo => {
+          val itemDto = itemDoToDto(itemDo)
+          val newTroopItems = (itemDto :: troopDto.items).sortBy(_.name)
+          val troopWitNewItem = troopDto.copy(items = newTroopItems)
+          Some(troopWitNewItem)
+        })
+        .getOrElse({
+          Logger.error(s"Cannot find item: $itemName for faction: ${troopDto.faction}")
+          None
+        })
+    })
+  }
+
 
   /**
     * Sets the given loadout at the troop

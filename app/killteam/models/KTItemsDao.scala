@@ -22,10 +22,21 @@ object KTItemsDao {
     * @return
     */
   def getItemByNameAndFaction(itemName: String, factionDo: KTFactionDo): Option[KTItemDo] = {
-    items.find(itemDo => itemDo.faction.name == factionDo.name && itemDo.name == itemName)
+    getItemByNameAndFaction(itemName = itemName, factionName = factionDo.name)
   }
 
-  
+  /**
+    * Gets the item by its name and faction name
+    *
+    * @param itemName    the name  of the item
+    * @param factionName the name of the faction the item belongs to
+    * @return
+    */
+  def getItemByNameAndFaction(itemName: String, factionName: String): Option[KTItemDo] = {
+    items.find(itemDo => itemDo.faction.name == factionName && itemDo.name == itemName)
+  }
+
+
   /**
     * Adds an item to the given faction
     *

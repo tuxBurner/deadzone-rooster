@@ -144,6 +144,20 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
       Redirect(routes.KTRosterController.displayEditOptions(uuid))
   }
 
+
+  /**
+    * Adds a new item to the troop
+    *
+    * @param uuid     the uuid of the troop
+    * @param itemName the name of the item to add
+    * @return
+    */
+  def addItemToTroop(uuid: String, itemName: String) = Action {
+    implicit request =>
+      getArmyFromCacheAndUpdateIt((armyFromCache) => KTArmyLogic.setItemAtTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache))
+      Redirect(routes.KTRosterController.displayEditOptions(uuid))
+  }
+
   /**
     * Adds a special to the given troop at the given level
     *
