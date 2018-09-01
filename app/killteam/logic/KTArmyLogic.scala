@@ -94,11 +94,16 @@ object KTArmyLogic {
 
 
         val itemsForTroop = getPossibleItemsForTroop(troopDto)
+          .map(item => {
+            val selected = troopDto.items.exists(_.name == item.name)
+            KTItemOptionDto(selected = selected, item = item)
+          })
+
 
         val specialistsOption = KTSpecialistLogic.getSpecialistOptionForTroop(troopDto)
 
         Some(KTTroopOptionsDto(loadoutOptions = loadOutsForTroop,
-          items = itemsForTroop,
+          itemOptions = itemsForTroop,
           specialistsOption = specialistsOption))
       })
       .getOrElse({
@@ -452,6 +457,16 @@ case class KTItemDto(name: String,
 
 
 /**
+  * Option if an item is selected by the troop or not
+  *
+  * @param selected true when the item is selected false when not
+  * @param item     the item itself
+  */
+case class KTItemOptionDto(selected: Boolean,
+                           item: KTItemDto)
+
+
+/**
   * Represents a weapon
   *
   * @param name         the name of the weapon
@@ -487,7 +502,7 @@ case class KTAbilityDto(name: String)
   * @param specialistsOption the specialist this troop has and which specials can or are be selected
   */
 case class KTTroopOptionsDto(loadoutOptions: List[KTOptionLoadout],
-                             items: List[KTItemDto],
+                             itemOptions: List[KTItemOptionDto],
                              specialistsOption: Option[KTSpecialistOptionDto])
 
 /**
