@@ -137,6 +137,23 @@ object KTArmyLogic {
     })
   }
 
+  /**
+    * Removes an item to the given troop
+    *
+    * @param itemName the name of the item to remove
+    * @param uuid     the uuid of the troop where to remove the item
+    * @param armyDto  the army containing the troop
+    * @return
+    */
+  def removeItemFromTroop(itemName: String, uuid: String, armyDto: KTArmyDto): KTArmyDto = {
+    Logger.info(s"Removing item: $itemName from troop: $uuid")
+    getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, troopDto => {
+      val newTroopItems = troopDto.items.filterNot(_.name == itemName)
+      val troopWitNewItem = troopDto.copy(items = newTroopItems)
+      Some(troopWitNewItem)
+    })
+  }
+
 
   /**
     * Sets the given loadout at the troop

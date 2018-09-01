@@ -44,6 +44,7 @@ GET           /killteam/roster/troop/:uuid/remove                               
 GET           /killteam/roster/troop/:uuid/setLoadout/:loadoutName                       controllers.KTRosterController.setNewLoadoutAtTroop(uuid:String, loadoutName: String)
 GET           /killteam/roster/troop/:uuid/setSpeciale/:specialName/:specialLevel        controllers.KTRosterController.addSpecialToTroop(uuid:String, specialName: String, specialLevel: Int)
 GET           /killteam/roster/troop/:uuid/item/:itemName/add                            controllers.KTRosterController.addItemToTroop(uuid:String, itemName: String)
+GET           /killteam/roster/troop/:uuid/item/:itemName/remove                         controllers.KTRosterController.removeItemFromTroop(uuid:String, itemName: String)
 
 
 # Map static resources from the /public folder to the /assets URL path

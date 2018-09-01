@@ -159,6 +159,20 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   }
 
   /**
+    * Adds a new item to the troop
+    *
+    * @param uuid     the uuid of the troop
+    * @param itemName the name of the item to remove
+    * @return
+    */
+  def removeItemFromTroop(uuid: String, itemName: String) = Action {
+    implicit request =>
+      getArmyFromCacheAndUpdateIt((armyFromCache) => KTArmyLogic.removeItemFromTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache))
+      Redirect(routes.KTRosterController.displayEditOptions(uuid))
+  }
+
+
+  /**
     * Adds a special to the given troop at the given level
     *
     * @param uuid         the uuid of the troop

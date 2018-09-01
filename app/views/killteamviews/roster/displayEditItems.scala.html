@@ -12,18 +12,23 @@
       </tr>
     </thead>
     <tbody>
-      @for(itemOption <- itemOptions) {
-        <tr @if(itemOption.selected) {class="bg-success"}>
-          <th scope="row">@itemOption.item.name</th>
-          <td>@itemOption.item.points</td>
-          <td>TODO</td>
-          <td>
-            @if(itemOption.selected == false) {
-              <a href="@routes.KTRosterController.addItemToTroop(troop.uuid, itemOption.item.name)" class="btn btn-sm btn-primary">Set</a>
-            }
-          </td>
-        </tr>
-      }
+    @for(itemOption <- itemOptions) {
+      <tr @if(itemOption.selected) {
+        class="bg-success"}>
+        <th scope="row">@itemOption.item.name</th>
+        <td>@itemOption.item.points</td>
+        <td>TODO</td>
+        <td>
+        @if(itemOption.selected == false) {
+          <a href="@routes.KTRosterController.addItemToTroop(troop.uuid, itemOption.item.name)" class="btn btn-sm btn-primary">
+            Set</a>
+        } else {
+          <a href="@routes.KTRosterController.removeItemFromTroop(troop.uuid, itemOption.item.name)" class="btn btn-sm btn-primary">
+            Rem</a>
+        }
+        </td>
+      </tr>
+    }
     </tbody>
   </table>
 }
