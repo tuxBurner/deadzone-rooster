@@ -4,85 +4,72 @@
 @(troops: List[KTArmyTroopDto], troopType: String, army: KTArmyDto)(implicit messages: Messages)
 
 
-<h5>@Messages("kt.troops." + troopType + ".title")</h5>
+@if(troops.isEmpty == false) {
+  <h5>@Messages("kt.troops." + troopType + ".title")</h5>
 
-  @if(troops.isEmpty) {
-    <div class="alert alert-primary" role="alert">
-    @Messages("kt.troops." + troopType + ".noTroops")
-    </div>
-  } else {
-
-    @for(troop <- troops) {
-      <div class=" table-responsive-sm">
-        <table class="pdf">
-          <thead>
-            <tr>
-              <th>@Messages("kt.troop.tbl.name")</th>
-              <th>@Messages("kt.troop.tbl.movement")</th>
-              <th>@Messages("kt.troop.tbl.fightStat")</th>
-              <th>@Messages("kt.troop.tbl.shootStat")</th>
-              <th>@Messages("kt.troop.tbl.strength")</th>
-              <th>@Messages("kt.troop.tbl.resistance")</th>
-              <th>@Messages("kt.troop.tbl.lifePoints")</th>
-              <th>@Messages("kt.troop.tbl.attacks")</th>
-              <th>@Messages("kt.troop.tbl.moral")</th>
-              <th>@Messages("kt.troop.tbl.armor")</th>
-              <th>@Messages("kt.troop.tbl.points")</th>
-              <th>@Messages("kt.troop.tbl.level")</th>
-              <th>@Messages("kt.troop.tbl.abilities")</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">@troop.name</th>
-              <td>@troop.stats.movement"</td>
-              <td>@troop.stats.fightStat+</td>
-              <td>@troop.stats.shootStat+</td>
-              <td>@troop.stats.strength</td>
-              <td>@troop.stats.resistance</td>
-              <td>@troop.stats.lifePoints</td>
-              <td>@troop.stats.attacks</td>
-              <td>@troop.stats.moral</td>
-              <td>@troop.stats.armor+</td>
-              <td>@troop.totalPoints</td>
-              <td>@troop.level</td>
-              <td>
-              @if(troop.abilities.isEmpty == false) {
-                <ul>
-                @for(ability <- troop.abilities) {
-                  <li>@ability.name</li>
-                }
-                </ul>
-              }
-              </td>
-            </tr>
+  @for(troop <- troops) {
+    <table class="pdf">
+      <thead>
+        <tr>
+          <th>@Messages("kt.troop.tbl.name")</th>
+          <th>@Messages("kt.troop.tbl.movement")</th>
+          <th>@Messages("kt.troop.tbl.fightStat")</th>
+          <th>@Messages("kt.troop.tbl.shootStat")</th>
+          <th>@Messages("kt.troop.tbl.strength")</th>
+          <th>@Messages("kt.troop.tbl.resistance")</th>
+          <th>@Messages("kt.troop.tbl.lifePoints")</th>
+          <th>@Messages("kt.troop.tbl.attacks")</th>
+          <th>@Messages("kt.troop.tbl.moral")</th>
+          <th>@Messages("kt.troop.tbl.armor")</th>
+          <th>@Messages("kt.troop.tbl.points")</th>
+          <th>@Messages("kt.troop.tbl.level")</th>
+          <th>@Messages("kt.troop.tbl.abilities")</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">@troop.name</th>
+          <td>@troop.stats.movement"</td>
+          <td>@troop.stats.fightStat+</td>
+          <td>@troop.stats.shootStat+</td>
+          <td>@troop.stats.strength</td>
+          <td>@troop.stats.resistance</td>
+          <td>@troop.stats.lifePoints</td>
+          <td>@troop.stats.attacks</td>
+          <td>@troop.stats.moral</td>
+          <td>@troop.stats.armor+</td>
+          <td>@troop.totalPoints</td>
+          <td>@troop.level</td>
+          <td>
+          @if(troop.abilities.isEmpty == false) {
+            <ul>
+            @for(ability <- troop.abilities) {
+              <li>@ability.name</li>
+            }
+            </ul>
+          }
+          </td>
+        </tr>
 
 
-            <tr>
-              <td colspan="13">
+        <tr>
+          <td colspan="13">
 
-                @* weapons *@
-                @views.html.killteamviews.roster.displayWeapons(troop.loadout.weapons)
-                @* eo weapons *@
+            @* weapons *@
+            @views.html.killteamviews.pdf.displayWeapons(troop.loadout.weapons)
+            @* eo weapons *@
 
-                @* items *@
-                @views.html.killteamviews.roster.displayItems(troop.loadout.items ++ troop.items)
-                @* eo items *@
+            @* items *@
+            @views.html.killteamviews.roster.displayItems(troop.loadout.items ++ troop.items)
+            @* eo items *@
 
-                @if(troop.specialist.isDefined) {
-                  @troop.specialist.get.name
+            @* specialist *@
+            @views.html.killteamviews.pdf.displayTroopSpecialist(troop.specialist)
+            @* eo specialist *@
+          </td>
+        </tr>
 
-                  <ul>
-                    @for(special <- troop.specialist.get.selectedSpecials) {
-                      <li>@special.name (@special.level)</li>
-                    }
-                  </ul>
-                }
-              </td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-    }
+      </tbody>
+    </table>
   }
+}

@@ -1,0 +1,23 @@
+@import killteam.logic.KTSpecialistTroopDto
+@(troopSpecialist:Option[KTSpecialistTroopDto])(implicit messages: Messages)
+@if(troopSpecialist.isDefined) {
+  <table class="pdf">
+    <thead class="thead-dark">
+      <th colspan="3">@Messages("kt.specialist.tbl.title"): @troopSpecialist.get.name</th>
+      <tr>
+        <th>@Messages("kt.special.tbl.name")</th>
+        <th>@Messages("kt.special.tbl.level")</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    @for(special <- troopSpecialist.get.selectedSpecials) {
+      <tr>
+        <td>@special.name</td>
+        <td>@special.level</td>
+        <td>TODO</td>
+      </tr>
+    }
+    </tbody>
+  </table>
+}

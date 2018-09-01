@@ -1,0 +1,36 @@
+@(weapons: List[killteam.logic.KTWeaponDto])(implicit messages: Messages)
+<table class="pdf">
+  <thead class="thead-dark">
+    <th colspan="9">@Messages("kt.weapon.tbl.title")</th>
+    <tr>
+      <th>@Messages("kt.weapon.tbl.name")</th>
+      <th>@Messages("kt.weapon.tbl.range")</th>
+      <th>@Messages("kt.weapon.tbl.type")</th>
+      <th>@Messages("kt.weapon.tbl.strength")</th>
+      <th>@Messages("kt.weapon.tbl.puncture")</th>
+      <th>@Messages("kt.weapon.tbl.damage")</th>
+      <th>@Messages("kt.weapon.tbl.points")</th>
+      <th>@Messages("kt.weapon.tbl.description")</th>
+    </tr>
+  </thead>
+  <tbody>
+  @for(weapon <- weapons) {
+    <tr>
+      <td>@weapon.name</td>
+      <td>
+        @if(weapon.range != 0) {
+          @weapon.range"
+        } else {
+          -
+        }
+      </td>
+      <td>@weapon.weaponType</td>
+      <td>@weapon.strength</td>
+      <td>@weapon.puncture</td>
+      <td>@weapon.damage</td>
+      <td>@weapon.points</td>
+      <td>TODO</td>
+    </tr>
+  }
+  </tbody>
+</table>

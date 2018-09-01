@@ -251,6 +251,11 @@ kt.specialist.tbl.title=Spezialist
 kt.special.tbl.name=Spezial Name
 kt.special.tbl.level=Spezial Level
 
+kt.army.faction=Fraktion
+kt.army.points=Armee Punkte
+kt.army.troops=Truppen
+kt.army.name=Armee Name
+
 
 
 

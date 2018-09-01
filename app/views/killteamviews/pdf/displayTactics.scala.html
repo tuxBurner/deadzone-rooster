@@ -1,0 +1,40 @@
+@import killteam.logic.KTArmyDto
+@import killteam.logic.ETacticType
+@(army: KTArmyDto)(implicit messages: Messages)
+
+@for((tacticType, tactics) <- army.tactics) {
+  @if(tactics.isEmpty == false) {
+    <h5>@Messages(s"kt.tactics.$tacticType.title")</h5>
+
+    <table class="pdf">
+      <thead class="thead-dark">
+        <tr>
+          <th>@Messages("kt.tactics.name")</th>
+          @if(tacticType == ETacticType.SPECIALIST) {
+            <th>@Messages("kt.tactics.specialist")</th>
+            <th>@Messages("kt.tactics.level")</th>
+          }
+          <th>@Messages("kt.tactics.commandPoints")</th>
+        </tr>
+      </thead>
+      <tbody>
+      @for(tactic <- tactics) {
+        <tr>
+          <td>@tactic.name</td>
+          @if(tacticType == ETacticType.SPECIALIST) {
+            <td>@tactic.specialist</td>
+            <td>@tactic.specialistLevel</td>
+          }
+          <td>@tactic.commandPoints</td>
+        </tr>
+      }
+      </tbody>
+    </table>
+
+  }
+
+}
+
+
+
+
