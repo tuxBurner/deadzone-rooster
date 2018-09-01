@@ -1,0 +1,50 @@
+@import killteam.logic.KTArmyDto
+@(armyDto:KTArmyDto)(implicit messages: Messages)
+
+<html>
+  <head>
+    <title>@Messages("application.title") - @armyDto.name</title>
+    <meta charset="utf-8"/>
+
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/pdf.css")">
+    <style>
+
+        @@page {
+
+        @if(armyDto.name.isEmpty == false) {
+        @@bottom-left {
+          content: "@armyDto.name"
+        }
+
+        }
+        }
+
+    </style>
+  </head>
+  <body>
+
+    @if(armyDto.name.isEmpty == false) {
+      <h1>@Messages("kt.army.name") @armyDto.name</h1>
+    }
+    <h2>@Messages("kt.army.faction") @armyDto.faction</h2>
+    <h2>@Messages("kt.army.points") @armyDto.points</h2>
+
+    <hr />
+
+    <h3>@Messages("kt.army.troops")</h3>
+
+
+    @* leader troop *@
+    @views.html.killteamviews.pdf.displayTroopTypeTable(killteam.logic.KTArmyLogic.getLeadersFromArmy(armyDto),"leader",armyDto)
+    @* eo leader troop *@
+
+    @* special troops *@
+    @views.html.killteamviews.pdf.displayTroopTypeTable(killteam.logic.KTArmyLogic.getSpecialistsFromArmy(armyDto),"specialist",armyDto)
+    @* eo special troops *@
+
+    @* normal troops *@
+    @views.html.killteamviews.pdf.displayTroopTypeTable(killteam.logic.KTArmyLogic.getNormalTroopsFromArmy(armyDto),"normal",armyDto)
+    @* eo normal troops *@
+
+  </body>
+</html>

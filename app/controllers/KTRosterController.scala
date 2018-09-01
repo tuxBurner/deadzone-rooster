@@ -5,12 +5,12 @@ import java.util.UUID
 import com.github.tuxBurner.jsAnnotations.JSRoute
 import it.innove.play.pdf.PdfGenerator
 import javax.inject._
+import killteam.logic._
 import play.api.Configuration
 import play.api.cache.SyncCacheApi
 import play.api.i18n.I18nSupport
 import play.api.libs.json._
 import play.api.mvc._
-import killteam.logic._
 import views.html.killteamviews.main
 
 import scala.concurrent.duration._
@@ -184,6 +184,18 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     implicit request =>
       getArmyFromCacheAndUpdateIt((armyFromCache) => KTSpecialistLogic.setSpecialAtTroop(specialName = specialName, specialLevel = specialLevel, uuid = uuid, armyFromCache))
       Redirect(routes.KTRosterController.displayEditOptions(uuid))
+  }
+
+  /**
+    * Gets the table pdf
+    *
+    * @return
+    */
+  def getTablePdf() = Action {
+    request =>
+    val army = getArmyFromCache(request)
+    val pdfBytes = pdfGenerator.toBytes(views.html.killteamviews.pdf.rosterTable.render(army,messagesApi.preferred(request)), "http://localhost:9000")
+    withCacheId(Ok(pdfBytes), request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
   }
 
   /**

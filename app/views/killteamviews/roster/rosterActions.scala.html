@@ -1,0 +1,11 @@
+@()(implicit messages: Messages)
+@* ACTION BUTTONS *@
+<form target="_blank" class="float-right">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-info btn-sm roster_action_btn" id="roster_validate_army_btn"><i class="fas fa-check-square fa-xs"></i> <small>@Messages("validate.btn")</small></button>
+    <button formaction="@routes.KTRosterController.getTablePdf()" class="btn btn-sm btn-info roster_action_btn"><i class="fas fa-print fa-xs"></i> <small>@Messages("print.all.btn")</small></button>
+    <button formaction="@routes.RosterController.exportArmy()" class="btn btn-info btn-sm roster_action_btn"><i class="fas fa-download fa-xs"></i> <small>@Messages("export.btn")</small></button>
+    <button type="button" class="btn btn-info btn-sm" id="roster_open_import_army_btn"><i class="fas fa-upload fa-xs"></i> <small>@Messages("import.open.btn")</small></button>
+  </div>
+</form>
+@* ACTION BUTTONS *@
