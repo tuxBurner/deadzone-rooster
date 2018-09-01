@@ -5,13 +5,16 @@
 
 
 @if(troops.isEmpty == false) {
-  <h5>@Messages("kt.troops." + troopType + ".title")</h5>
+  <h2>@Messages("kt.troops." + troopType + ".title")</h2>
 
   @for(troop <- troops) {
+
+    <h3>@Messages("kt.troop.tbl.name") @troop.name</h3>
+    <hr />
+
     <table class="pdf">
       <thead>
         <tr>
-          <th>@Messages("kt.troop.tbl.name")</th>
           <th>@Messages("kt.troop.tbl.movement")</th>
           <th>@Messages("kt.troop.tbl.fightStat")</th>
           <th>@Messages("kt.troop.tbl.shootStat")</th>
@@ -28,7 +31,6 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row">@troop.name</th>
           <td>@troop.stats.movement"</td>
           <td>@troop.stats.fightStat+</td>
           <td>@troop.stats.shootStat+</td>
@@ -53,7 +55,7 @@
 
 
         <tr>
-          <td colspan="13">
+          <td colspan="12">
 
             @* weapons *@
             @views.html.killteamviews.pdf.displayWeapons(troop.loadout.weapons)
@@ -71,5 +73,6 @@
 
       </tbody>
     </table>
+    <hr />
   }
 }

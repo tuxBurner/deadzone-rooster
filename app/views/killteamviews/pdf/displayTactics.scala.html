@@ -4,7 +4,8 @@
 
 @for((tacticType, tactics) <- army.tactics) {
   @if(tactics.isEmpty == false) {
-    <h5>@Messages(s"kt.tactics.$tacticType.title")</h5>
+    <h3>@Messages(s"kt.tactics.$tacticType.title")</h3>
+    <hr />
 
     <table class="pdf">
       <thead class="thead-dark">
@@ -30,7 +31,7 @@
       }
       </tbody>
     </table>
-
+    <hr />
   }
 
 }
