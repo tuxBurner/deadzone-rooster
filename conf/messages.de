@@ -186,7 +186,7 @@ cheatSheet.commandDice.armySpecial.desc=Aktiviere deine Armee spezial Fähigkeit
 
 kt.application.title=Killteam-Roster
 kt.mainmenu.roster=Roster
-kt.mainmenu.allWeapons=Alle Waffen
+kt.mainmenu.factionsOverview=Fraktionen
 kt.troop.tbl.name=Name
 kt.troop.tbl.movement=B
 kt.troop.tbl.fightStat=KG

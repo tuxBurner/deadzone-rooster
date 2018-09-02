@@ -46,7 +46,8 @@ GET           /killteam/roster/troop/:uuid/setSpeciale/:specialName/:specialLeve
 GET           /killteam/roster/troop/:uuid/item/:itemName/add                            controllers.KTRosterController.addItemToTroop(uuid:String, itemName: String)
 GET           /killteam/roster/troop/:uuid/item/:itemName/remove                         controllers.KTRosterController.removeItemFromTroop(uuid:String, itemName: String)
 GET           /killteam/roster/pdf                                                       controllers.KTRosterController.getTablePdf()
-GET           /killteam/allWeapons                                                       controllers.KTHomeController.displayAllWeapons()
+GET           /killteam/faction                                                          controllers.KTHomeController.displayFirstFactionOverview()
+GET           /killteam/faction/:factionName                                             controllers.KTHomeController.displayFactionOverview(factionName: String)
 
 
 

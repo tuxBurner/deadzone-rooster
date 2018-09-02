@@ -1,0 +1,19 @@
+@import killteam.logic.KTWeaponDto
+@import killteam.logic.KTFactionDto
+@(allWeaponsByFaction: List[KTWeaponDto], factionName: String, allFactions: List[KTFactionDto])(implicit messages: Messages, mainTpl: views.html.killteamviews.main)
+
+@mainTpl("kt.mainmenu.factionOverview") {
+
+  <ul class="nav justify-content-center">
+    @for(faction <- allFactions) {
+      <li class="nav-item">
+        <a class="nav-link @if(faction.name == factionName) {disabled}" href="@routes.KTHomeController.displayFactionOverview(faction.name)">@faction.name</a>
+      </li>
+    }
+  </ul>
+
+  <h2>@factionName</h2>
+
+  @views.html.killteamviews.roster.displayWeapons(allWeaponsByFaction)
+
+}

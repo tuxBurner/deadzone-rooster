@@ -18,10 +18,12 @@ object KTWeaponDao {
 
   /**
     * Gets all weapons grouped by faction
+    *
+    * @param fractionName the name of the fraction to get the weapons for
     * @return
     */
-  def getWeaponsGroupedByFactions() : Map[String, List[KTWeaponDo]] = {
-    weapons.groupBy(_.faction.name).map(entry => (entry._1,entry._2.toList.sortBy(_.name)))
+  def getWeaponsByFactionName(fractionName: String) : List[KTWeaponDo] = {
+    weapons.filter(_.faction.name == fractionName).sortBy(_.name).toList
   }
 
   /**
