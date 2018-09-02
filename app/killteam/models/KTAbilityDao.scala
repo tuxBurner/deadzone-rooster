@@ -32,10 +32,19 @@ object KTAbilityDao {
         abilityDo
       })
   }
+
+  /**
+    * Gets all abilities by the given faction name
+    * @param factionName the name of the faction to get the abilities for
+    * @return
+    */
+  def getAllAbilitiesByFaction(factionName: String) : List[KTAbilityDo] = {
+    abbilities.filter(_.faction.name == factionName).sortBy(_.name).toList
+  }
 }
 
 /**
-  * Represents an abilitiy
+  * Represents an ability
   *
   * @param faction the faction the ability belongs to
   * @param name    the name of the ability

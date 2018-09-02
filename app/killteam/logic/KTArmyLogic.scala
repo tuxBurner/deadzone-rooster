@@ -44,7 +44,7 @@ object KTArmyLogic {
         moral = troop.moral,
         armor = troop.armor)
 
-      val abilities = troop.abilities.map(ability => KTAbilityDto(ability.name))
+      val abilities = troop.abilities.map(ability => KTAbilityLogic.abilityDoToDto(ability))
         .toList
         .sortBy(_.name)
 
@@ -391,12 +391,7 @@ case class KTItemOptionDto(selected: Boolean,
 
 
 
-/**
-  * An ability a troop can have
-  *
-  * @param name the name of the ability
-  */
-case class KTAbilityDto(name: String)
+
 
 /**
   * Contains all options a troop can have

@@ -1,7 +1,7 @@
 package controllers
 
 import javax.inject._
-import killteam.logic.{KTFactionLogic, KTItemLogic, KTWeaponLogic}
+import killteam.logic.{KTAbilityLogic, KTFactionLogic, KTItemLogic, KTWeaponLogic}
 import play.api.i18n.I18nSupport
 import play.api.mvc._
 import play.i18n.Langs
@@ -31,7 +31,8 @@ class KTHomeController @Inject()(cc: ControllerComponents, langs: Langs, mainTpl
       val allFactions = KTFactionLogic.getAllFactions()
       val allFactionWeapons = KTWeaponLogic.getAllWeaponsByFactionName(factionName = factionName)
       val allFactionItems = KTItemLogic.getAllItemsForFaction(factionName = factionName)
-      Ok(views.html.killteamviews.displayFactionOverview(allFactionWeapons, allFactionItems, factionName, allFactions))
+      val allFactionAbilities = KTAbilityLogic.getAllAbilitiesForFaction(factionName = factionName)
+      Ok(views.html.killteamviews.displayFactionOverview(allFactionWeapons, allFactionItems,allFactionAbilities, factionName, allFactions))
   }
 
 

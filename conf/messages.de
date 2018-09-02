@@ -266,6 +266,10 @@ kt.weapon.type.FIGHT=Nahkampf
 kt.weapon.type.Heavy=Schwer
 kt.weapon.type.GRANADE=Granate
 
+kt.ability.tbl.title=Fähigkeiten
+kt.ability.tbl.name=Name
+kt.ability.tbl.description=Beschreibung
+
 # specials
 kt.special.anfuehrer.listenreich.descr=Solange sich dieses Modell auf dem Schlachtfeld befindet und nicht erschüttert ist, erhälst du zu Begin der Schlachtrunde einen zusätzlichen Befehlspunkt.
 kt.special.anfuehrer.kuehn.descr=Diese Modell besteht Nerventests automatisch.
@@ -356,6 +360,12 @@ kt.item.adeptusastartes.tarnmantel.descr=Wenn ein Gegner einen Trefferwurf für 
 kt.item.adeptusastartes.unterlaufgranatwerfer.descr=Erhöhe die Reichweite aller Granaten, die ein mit einem Unterlauf-Granatwerfer bewaffnetes Modell besitzt, auf 30".
 # eo items adeptusastartes
 
+# abilities adeptusastartes
+kt.ability.adeptusastartes.diekeinefurchtkennen.descr=Du darfst für dieses Modell misslungene Nerventests wiederholen.
+kt.ability.adeptusastartes.terrortruppen.descr=Feindliche Modelle müssen 1 von ihrem Moralwert abziehen, wenn sie sich innerhalb von 3" um Reiver- oder Reiver-Sergeant-Modelle befinden.
+kt.ability.adeptusastartes.transhumanephysiologie.descr=Ignoriere den Abzug auf Trefferwürfe diese Modells durch erlittene Fleischwunden.
+# eo abilities adeptusastartes
+
 # weapons orks
 kt.weapon.orks.aufgemotztamegablasta.descr=Bei einem unmodifizierten Trefferwurf von 1 erleidet der Träger eine tödliche Verwundung.
 kt.weapon.orks.bazzukka.descr=
@@ -375,5 +385,11 @@ kt.weapon.orks.spalta.descr=Jedes mal, wenn der Träger kämpft, kann er mit die
 kt.weapon.orks.stikkbomb.descr=
 kt.weapon.orks.wumme.descr=
 # eo weapons orks
+
+# abilities orks
+kt.ability.orks.jetzgehtzlos.descr=Wiederhole misslungene Angriffswürfe für ein Modell mit dieser Fähigkeit.
+kt.ability.orks.verstohlenegits.descr=Wenn ein Gegner einen Trefferwurf für ein Fernkampfattacke gegen dieses Modell ausführt und diese Modell verdeckt ist, wird der Trefferwurf zusätzlich um -1 modifiziert.
+# eo abilities orks
+
 
 

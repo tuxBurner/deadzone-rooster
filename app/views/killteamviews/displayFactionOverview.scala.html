@@ -1,7 +1,8 @@
 @import killteam.logic.KTWeaponDto
 @import killteam.logic.KTFactionDto
 @import killteam.logic.KTItemDto
-@(allWeaponsByFaction: List[KTWeaponDto], allFactionItems: List[KTItemDto] ,factionName: String, allFactions: List[KTFactionDto])(implicit messages: Messages, mainTpl: views.html.killteamviews.main)
+@import killteam.logic.KTAbilityDto
+@(allWeaponsByFaction: List[KTWeaponDto], allFactionItems: List[KTItemDto], allFactionAbilities: List[KTAbilityDto] ,factionName: String, allFactions: List[KTFactionDto])(implicit messages: Messages, mainTpl: views.html.killteamviews.main)
 
 @mainTpl("kt.mainmenu.factionOverview") {
 
@@ -18,5 +19,7 @@
   @views.html.killteamviews.roster.displayWeapons(allWeaponsByFaction)
 
   @views.html.killteamviews.roster.displayItems(allFactionItems)
+
+  @views.html.killteamviews.roster.displayAbilities(allFactionAbilities)
 
 }
