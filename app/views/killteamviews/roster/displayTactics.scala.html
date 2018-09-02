@@ -22,6 +22,7 @@
               <th>@Messages("kt.tactics.specialist")</th>
               <th>@Messages("kt.tactics.level")</th>
             }
+            <th>@Messages("kt.tactics.description")</th>
             <th>@Messages("kt.tactics.commandPoints")</th>
           </tr>
       </thead>
@@ -33,6 +34,19 @@
                <td>@tactic.specialist</td>
                <td>@tactic.specialistLevel</td>
              }
+             <td>
+               @if(tacticType == ETacticType.SPECIALIST) {
+                 @Messages(FixMessagesKey.fixKey(s"kt.tactic.${tacticType}.${tactic.specialist}.${tactic.name}.descr"))
+               }
+
+               @if(tacticType == ETacticType.GENERAL) {
+                 @Messages(FixMessagesKey.fixKey(s"kt.tactic.${tacticType}.${tactic.name}.descr"))
+               }
+
+               @if(tacticType == ETacticType.FACTION) {
+                 @Messages(FixMessagesKey.fixKey(s"kt.tactic.${tacticType}.${tactic.faction}.${tactic.name}.descr"))
+               }
+             </td>
              <td>@tactic.commandPoints</td>
            </tr>
           }

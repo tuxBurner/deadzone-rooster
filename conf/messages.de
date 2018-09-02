@@ -241,6 +241,7 @@ kt.tactics.name=Name
 kt.tactics.commandPoints=BP
 kt.tactics.specialist=Spezialist
 kt.tactics.level=Spezialist Level
+kt.tactics.description=Beschreibung
 
 kt.loadout.name=Name
 kt.loadout.weapons=Waffen
@@ -263,6 +264,7 @@ kt.weapon.type.FIGHT=Nahkampf
 kt.weapon.type.Heavy=Schwer
 kt.weapon.type.GRANADE=Granate
 
+# specials
 kt.special.anfuehrer.listenreich.descr=Solange sich dieses Modell auf dem Schlachtfeld befindet und nicht erschüttert ist, erhälst du zu Begin der Schlachtrunde einen zusätzlichen Befehlspunkt.
 kt.special.anfuehrer.kuehn.descr=Diese Modell besteht Nerventests automatisch.
 kt.special.anfuehrer.inspirierend.descr=Befreundete Modelle innerhalb von 3" um dieses Modell bestehen - solange es nicht erschüttert ist - Nerventests automatisch.
@@ -270,8 +272,39 @@ kt.special.anfuehrer.vorbild.descr=Wiederhole Trefferwürfe von 1 für befreunde
 kt.special.anfuehrer.tyrann.descr=Dein(e) Gegner muss/müssen 1 zu Nerventests für alle feindlichen Modelle innerhalb von 6" um dieses Modell addieren, solange es nicht erschüttert ist.
 kt.special.anfuehrer.taktiker.descr=Wirf jedesmla einen W6, wenn du eine Taktik einsetzt, solange sich dieses Model auf dem Schlachtfeld befindet und nicht erschüttert ist. Bei 5+ erhälst du einen Befehlspunkt.
 kt.special.anfuehrer.mentor.descr=Wenn dieses Model nicht erschüttert ist, darfst du einmal pro Schlachtrunde, wenn du in der Fernkampfphase ein befreundetes Modell innerhalb von 3" um dieses Modell wählst, um zu schießen, für das gewählte Modell bis zum Ende der Phase misslungene Trefferwürfe wiederholen.
+# eo specials
 
+# general tactics
+kt.tactic.general.zaehnezusammenbeissen.descr=Setze diese Taktik ein, wenn du ein Modell mit einer oder mehreren Fleischwunden in der Fernkampfphase  wählst, um zu schießen, oder in der Nahkampfphase um zu kämpfen. Bis zum Ende der jeweiligen Phase erleidet das Modell durch seine Fleischwunde(n) keinen Abzug auf seine Trefferwürfe.
+kt.tactic.general.wahnsinnigermut.descr=Setze diese Taktik ein, bevor du in der Moralphase Nerventests ablegst. Du darfst einen einzelnen Nerventest für ein Modell in deinem Kill team automatisch bestehen.
+kt.tactic.general.entscheidendebewegung.descr=Setze diese Taktik zu Beginn der Bewegungsphase ein. Wähle ein Modell deines Kill Teams und führe mit ihm vor allen anderen Modellen eine Bewegung aus (dies darf eine Vorrücken-Bewegung, Rückzugsbewegung, oder ein Angriffsversuch sein). Wenn auch ein anderer Spieler diese Taktik einsetzt, würfelt gegeneinander: der Gewinner ist zuerst an der Reihe.
+kt.tactic.general.taktischerwiederholungswurf.descr=Wiederhole einen einzigen Vorrücken-Wurf, Angriffswurf, Psitest, Psibanntest, Trefferwurf, Verwundungswurf, Schutzwurf, Verletzungswurf oder Nerventest.
+kt.tactic.general.entscheidenderhieb.descr=Setze diese Taktik zu Beginn der Nahkampfphase ein. Wähle ein Modell aus deinem Kill Team, das kämpfen darf, und kämpfe mit ihm vor allen anderen Modellen. Wenn auch ein anderer Spieler diese Taktik einsetzt, würfelt gegeneinander: der Gewinner ist zuerst an der Reihe.
+kt.tactic.general.entscheidenderschuss.descr=Setze diese Taktik zu Beginn der Fernkampfphase ein. Wähle ein Modell aus deinem Kill Team, das schießen darf, und schieße mit ihm vor allen anderen Modellen. Wenn auch ein anderer Spieler diese Taktik einsetzt, würfelt gegeneinander: der Gewinner ist zuerst an der Reihe.
+# eo general tactics
 
+#  adeptusastartes tactics
+kt.tactic.faction.adeptusastartes.toddenverraetern.descr=Setze diese taktik ein, wenn du ein Modell deines Kill Teams wählst, um zu kämpfen. Bis zum Ende dieser Phase kannst du jedes mal, wenn du einen Trefferwurf von 6+ für dieses Modell erzielst und das Ziel ein Modell der HERETIC ASTARTES ist, mit derselben Waffe eine zusätzliche Attacke gegen dasselbe Ziel ausführen. Diese Zusatzattacken können keine weiteren Attacken erzeugen.
+kt.tactic.faction.adeptusastartes.ruestungderverachtung.descr=Setze diese Taktik ein, wenn ein Mitglied deines Kill Teams eine tödliche Verwundung erleidet. Wirf einen W6 für diese tödliche Verwundung und jede andere tödliche Verwundung, die das Modell bis zum Ende dieser Phase erleidet; bei 5+ wird die jeweilige tödliche Verwundung verhindert und hat keinen Effekt.
+kt.tactic.faction.adeptusastartes.meisterhaftpraezision.descr=Setze diese Taktik in der Fernkampfphase ein, wenn du einen INTERCESSOR deines Kill Teams dazu auswählst, mit einem Stalker-Boltgewehr zu schießen. Bis zum Ende dieser Phase kannst du 1 zu Treffer- und Verwundungswürfen dieses Modells addieren.
+kt.tactic.faction.adeptusastartes.ehredenorden.descr=Setze diese Taktik am Ende der Nahkampfphase ein. Wähle ein Modell deines Kill Teams. Dieses Modell darf sofort noch einmal kämpfen.
+kt.tactic.faction.adeptusastartes.hoellenfeuergeschosse.descr=Setze diese Taktik ein, wenn du ein Modell deines Kill teams dazu auswählst, mit einem schweren Bolter zu schießen. Du kannst in dieser Phase für diese Waffe nur einen einzigen trefferwurf ablegen, wenn dieser jedoch trifft, erleidet das Ziel W3 tödliche Verwundungen anstelle des normalen Schadens.
+kt.tactic.faction.adeptusastartes.schockwirkung.descr=Setze diese Taktik ein, wenn du ansagst, dass ein REAVER deines Kill Teams angreifen wird. Bevor Abwehrfeuerattacken abgehandelt werden, kannst du mit den Schockgranaten dieses Modells eine Fernkampfattacke gegen das Ziel des Angriffsausführen. Ist diese Attacke erfolgreich, darf dieses Ziel zusätzlich zu den normalen Auswirkungen der Granate in dieser Phase kein Abwehrfeuer abgeben.
+# eo adeptusastartes tactics
 
+# orks tactics
+kt.tactic.faction.orks.zerquetschtse.descr=Setze diese Taktik ein, wenn du ein Modell deines Kill Teams in der Nahkampfphase wählst, um zu kämpfen. Erhöhe den Stärkewert des Modells bis zum Ende der Phase um 1.
+kt.tactic.faction.orks.dakkadakkadakka.descr=Setze diese Taktik ein, nachdem ein Modell deines Kill Teams in der Fernkampfphase geschossen hat. Du darfst sofort ein weiteres Mal mit diesem Modell schießen.
+kt.tactic.faction.orks.grotschild.descr=Setze diese Taktik zu Beginn der Fernkampfphase ein. Wähle ein Modell aus deines Kill Teams, das sichh innerhalb von 2" um ein GRETCHIN Modell befindet. Bis zum Ende der Phase werden alle Attacken, die sich gegen das gewählte Modell richten, stattdessen gegen das GRETCHIN Modell abgehandelt, solange es sich auf dem Schlachtfeld befindet.
+kt.tactic.faction.orks.beissasquig.descr=Setze diese Taktik zu Begeinn der Nahkampfphase ein. Wähle ein feindliches Modell, das sich innerhalb von 1" um ein beliebiges deiner Modelle befinet, und wirf einen W6. Bei 4+ erleidet das gewählte Modell 1 tödliche Verwundung.
+kt.tactic.faction.orks.nurnefleischwundae.descr=Setze diese Taktik ein, wenn ein Modell deines Kill teams ausgeschaltet wird. Wirf einen W6. Bei 4+ erleidet das Modell stattdessen nur eine Fleischwunde.
+kt.tactic.faction.orks.mekspezialstikkbomb.descr=Setze diese Taktik ein, wenn due ein Modell deines Kill Teams wählst, um mit einer Stikkbomb zu attackieren. Bis zum Ende dieser Phase änderst du den Typ der Waffe zu Granate W3 und addierst 1 jeweils zu ihrem Stärke- und Schadenswert.
+#eo orks tactics
+
+# specialist leader tactics
+kt.tactic.specialist.anfuehrer.vorbildlichesverhalten.descr=Setze diese Taktik ein, wenn du einen Anführer deines Kill Teams in der Nahkampf wählst, um zu kämpfen. Wähle ein weiteres befreundetes Modell innerhalb von 3" um ihn, das kämpfen darf. Du darfst mit jedem dieser Modelle in beliebiger reihenfolge kämpfen, bevor der nächste Spieler am Zug ist.
+kt.tactic.specialist.anfuehrer.schiessaufmeinziel.descr=Setze diese Taktik ein, wenn du in der Fernkampfphase einen Anführer der Stufe 2 oder höher deines Kill Teams wählst, um mit ihm zu schießen. Wähle ein weiteres befreundetes Modell innerhalb von 3" um ihn, das schießen darf. Du darfst mit jedem dieser Modelle in beliebiger Reihenfolge eine Fernkampfattacke durchführen, bevor der nächste Spieler am Zug ist.
+kt.tactic.specialist.anfuehrer.willenskraft.descr=Setze diese Taktik zum Begin der Schlachtrunde ein, wenn sich ein Anführer Stufe 3 oder höher aus deinem Kill Team auf dem Schlachtfeld befindet und nicht erschüttert ist. In dieser Runde erleidet dein Kill Team keine Abzüge dafür, dass es aufgerieben ist.
+# eo specialist leader tactics
 
 
