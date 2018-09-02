@@ -13,7 +13,16 @@ object KTWeaponDao {
   /**
     * All killteam weapons
     */
-  val weapons: ListBuffer[KTWeaponDo] = ListBuffer()
+  private val weapons: ListBuffer[KTWeaponDo] = ListBuffer()
+
+
+  /**
+    * Gets all weapons grouped by faction
+    * @return
+    */
+  def getWeaponsGroupedByFactions() : Map[String, List[KTWeaponDo]] = {
+    weapons.groupBy(_.faction.name).map(entry => (entry._1,entry._2.toList.sortBy(_.name)))
+  }
 
   /**
     * Adds a weapon to the given faction

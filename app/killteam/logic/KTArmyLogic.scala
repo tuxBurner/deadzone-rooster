@@ -243,12 +243,13 @@ object KTArmyLogic {
     * @param weaponDo the weapon do to convert
     * @return
     */
-  private def weaponDoToDto(weaponDo: KTWeaponDo): KTWeaponDto = {
+  def weaponDoToDto(weaponDo: KTWeaponDo): KTWeaponDto = {
     KTWeaponDto(name = weaponDo.name,
+      faction = weaponDo.faction.name,
       points = weaponDo.points,
       range = weaponDo.range,
       weaponType = weaponDo.weaponType,
-      weaponTypeModifier= weaponDo.weaponTypeModifier,
+      weaponTypeModifier = weaponDo.weaponTypeModifier,
       strength = weaponDo.strength,
       puncture = weaponDo.puncture,
       damage = weaponDo.damage,
@@ -513,6 +514,7 @@ case class KTItemOptionDto(selected: Boolean,
   * Represents a weapon
   *
   * @param name               the name of the weapon
+  * @param faction            the faction the weapon belongs to
   * @param points             how many points is the weapon worth
   * @param range              the range of the weapon
   * @param weaponType         the type of the weapon
@@ -523,6 +525,7 @@ case class KTItemOptionDto(selected: Boolean,
   * @param linkedWeapon       when the weapon is linked weapon this is set
   */
 case class KTWeaponDto(name: String,
+                       faction: String,
                        points: Int,
                        range: Int,
                        weaponType: EWeaponType,

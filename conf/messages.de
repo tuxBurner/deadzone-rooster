@@ -183,8 +183,10 @@ cheatSheet.commandDice.armySpecial.desc=Aktiviere deine Armee spezial Fähigkeit
 #################################################### KILL TEAM KEYS ####################################################
 #########################################################################################################################
 
+
 kt.application.title=Killteam-Roster
 kt.mainmenu.roster=Roster
+kt.mainmenu.allWeapons=Alle Waffen
 kt.troop.tbl.name=Name
 kt.troop.tbl.movement=B
 kt.troop.tbl.fightStat=KG
@@ -306,5 +308,64 @@ kt.tactic.specialist.anfuehrer.vorbildlichesverhalten.descr=Setze diese Taktik e
 kt.tactic.specialist.anfuehrer.schiessaufmeinziel.descr=Setze diese Taktik ein, wenn du in der Fernkampfphase einen Anführer der Stufe 2 oder höher deines Kill Teams wählst, um mit ihm zu schießen. Wähle ein weiteres befreundetes Modell innerhalb von 3" um ihn, das schießen darf. Du darfst mit jedem dieser Modelle in beliebiger Reihenfolge eine Fernkampfattacke durchführen, bevor der nächste Spieler am Zug ist.
 kt.tactic.specialist.anfuehrer.willenskraft.descr=Setze diese Taktik zum Begin der Schlachtrunde ein, wenn sich ein Anführer Stufe 3 oder höher aus deinem Kill Team auf dem Schlachtfeld befindet und nicht erschüttert ist. In dieser Runde erleidet dein Kill Team keine Abzüge dafür, dass es aufgerieben ist.
 # eo specialist leader tactics
+
+# weapons adeptusastartes
+kt.weapon.adeptusastartes.astartesschrotflinte.descr=Wenn sich das Ziel innerhalb der halben Reichweite befindet, addiere 1 zur Stärke dieser Waffe.
+kt.weapon.adeptusastartes.bolter.descr=
+kt.weapon.adeptusastartes.boltgewehr.descr=
+kt.weapon.adeptusastartes.boltkarabiner.descr=
+kt.weapon.adeptusastartes.boltpistole.descr=
+kt.weapon.adeptusastartes.energiefaust.descr=Wenn du mit dieser Waffe attackierst, musst du 1 von den Trefferwürfen abziehen.
+kt.weapon.adeptusastartes.energieschwert.descr=
+kt.weapon.adeptusastartes.flammenwerfer.descr=Diese Waffe trifft ihr Ziel automatisch.
+kt.weapon.adeptusastartes.fragmentgranaten.descr=
+kt.weapon.adeptusastartes.gravpistole.descr=Wenn das Ziel einen Rüstungswurf-Profilwert von 3+ oder besser hat, hat diese Waffe einen Schadenswert von W3.
+kt.weapon.adeptusastartes.gravstrahler.descr=Wenn das Ziel einen Rüstungswurf-Profilwert von 3+ oder besser hat, hat diese Waffe einen Schadenswert von W3.
+kt.weapon.adeptusastartes.kampfmesser.descr=Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.
+kt.weapon.adeptusastartes.kettenschwert.descr=Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.
+kt.weapon.adeptusastartes.kombiflammenwerferbolter.descr=Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.
+kt.weapon.adeptusastartes.kombiflammenwerferflammenwerfer.descr=Diese Waffe trifft ihr Ziel automatisch
+kt.weapon.adeptusastartes.kombigravstrahlerbolter.descr=Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.
+kt.weapon.adeptusastartes.kombigravstrahlergravstrahler.descr=Wenn das Ziel einen Rüstungswurf-Profilwert von 3+ oder besser hat, hat diese Waffe einen Schadenswert von W3.
+kt.weapon.adeptusastartes.kombimelterbolter.descr=Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.
+kt.weapon.adeptusastartes.kombimeltermelter.descr=Wenn das Ziel innerhalb der halben Reichweite dieser Waffe ist, wirf bei der Ermittlung ihres Schadens zwei Würfel und lege das niedrigere Ergebnis ab.
+kt.weapon.adeptusastartes.kombiplasmawerferbolter.descr=Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.
+kt.weapon.adeptusastartes.kombiplasmawerferstandard.descr=
+kt.weapon.adeptusastartes.kombiplasmawerferueberladung.descr=Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet, nachdem alle Schüße dieser Waffe abgehandelt wurden.
+kt.weapon.adeptusastartes.melter.descr=Wenn das Ziel innerhalb der halben Reichweite dieser Waffe ist, wirf bei der Ermittlung ihres Schadens zwei Würfel und lege das niedrigere Ergebnis ab.
+kt.weapon.adeptusastartes.plasmapistolestandard.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile.
+kt.weapon.adeptusastartes.plasmapistoleueberladung.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile. Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet.
+kt.weapon.adeptusastartes.plasmawerferstandard.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile.
+kt.weapon.adeptusastartes.plasmawerferueberladung.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile. Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet, nachdem alle Schüße dieser Waffe abgehandelt wurden.
+kt.weapon.adeptusastartes.raketenwerferfragmentrakete.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile.
+kt.weapon.adeptusastartes.raketenwerfersprengrakete.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile.
+kt.weapon.adeptusastartes.scharfschuetzengewehr.descr=Ein Modell, das ein Scharfschützengewer abfeuert, erleidet keinen Malus auf seinen Trefferwurf für ein Ziel in langer Reichweite. Für jeden Verwundungswurf von 6+ mit dieser Waffe erleidet erleidet das Ziel zusätzlich zu allem anderen Schaden eine tödliche Verletzung.
+kt.weapon.adeptusastartes.schockgranate.descr=Diese Waffe verursacht keinen Schaden. Wenn ein feindliches INFANTRIE Modell von Schockgranten getroffen wird, ist das getroffene Modell bis zum Ende des Zuges betäubt - es kann weder Abwehrfeuer abgeben noch in Feuerbereitschaft versetzt werden und dein Gegner muss von allen Trefferwürfen des Modells 1 abziehen.
+kt.weapon.adeptusastartes.schwereboltpistole.descr=
+kt.weapon.adeptusastartes.schwererbolter.descr=
+kt.weapon.adeptusastartes.sprenggranaten.descr=
+kt.weapon.adeptusastartes.stalkerboltgewehr.descr=
+kt.weapon.adeptusastartes.sturmboltgewehr.descr=
+# eo weapons adeptusastartes
+
+# weapons orks
+kt.weapon.orks.aufgemotztamegablasta.descr=Bei einem unmodifizierten Trefferwurf von 1 erleidet der Träger eine tödliche Verwundung.
+kt.weapon.orks.bazzukka.descr=
+kt.weapon.orks.brennafernkampf.descr=Diese Waffe trifft ihr Ziel automatisch.
+kt.weapon.orks.brennanahkampf.descr=
+kt.weapon.orks.donnabuexae.descr=
+kt.weapon.orks.energiekrallae.descr=Wenn du mit dieser Waffe attackierst, musst du 1 von den Trefferwürfen abziehen.
+kt.weapon.orks.fettewumme.descr=
+kt.weapon.orks.fetterspalta.descr=
+kt.weapon.orks.killablasta.descr=
+kt.weapon.orks.knarre.descr=
+kt.weapon.orks.kombiwummemitbazzukkabazzuka.descr=Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.
+kt.weapon.orks.kombiwummemitbazzukkawumme.descr=
+kt.weapon.orks.kombiwummemitgitbrennagitbrenna.descr=Diese Waffe trifft ihr Ziel automatisch.
+kt.weapon.orks.kombiwummemitgitbrennawumme.descr=Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.
+kt.weapon.orks.spalta.descr=Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.
+kt.weapon.orks.stikkbomb.descr=
+kt.weapon.orks.wumme.descr=
+# eo weapons orks
 
 
