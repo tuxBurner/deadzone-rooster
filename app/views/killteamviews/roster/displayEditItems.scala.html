@@ -17,7 +17,7 @@
         class="bg-success"}>
         <th scope="row">@itemOption.item.name</th>
         <td>@itemOption.item.points</td>
-        <td>TODO</td>
+        <td>@Messages(FixMessagesKey.fixKey(s"kt.item.${itemOption.item.faction}.${itemOption.item.name}.descr"))</td>
         <td>
         @if(itemOption.selected == false) {
           <a href="@routes.KTRosterController.addItemToTroop(troop.uuid, itemOption.item.name)" class="btn btn-sm btn-primary">
