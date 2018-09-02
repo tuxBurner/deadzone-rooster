@@ -193,9 +193,10 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def getTablePdf() = Action {
     request =>
-    val army = getArmyFromCache(request)
-    val pdfBytes = pdfGenerator.toBytes(views.html.killteamviews.pdf.rosterTable.render(army,messagesApi.preferred(request)), "http://localhost:9000")
-    withCacheId(Ok(pdfBytes), request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
+      val army = getArmyFromCache(request)
+      val armyAbilities = KTAbilityLogic.getAllAbilitiesFromArmy(army)
+      val pdfBytes = pdfGenerator.toBytes(views.html.killteamviews.pdf.rosterTable.render(army, armyAbilities, messagesApi.preferred(request)), "http://localhost:9000")
+      withCacheId(Ok(pdfBytes), request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
   }
 
   /**

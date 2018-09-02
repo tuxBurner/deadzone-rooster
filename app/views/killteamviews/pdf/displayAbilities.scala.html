@@ -1,6 +1,6 @@
 @(abilities: List[killteam.logic.KTAbilityDto])(implicit messages: Messages)
 @if(abilities.isEmpty == false) {
-  <table class="table table-sm table-bordered">
+  <table class="pdf">
     <thead class="thead-dark">
       <th colspan="2">@Messages("kt.ability.tbl.title")</th>
       <tr>
@@ -11,7 +11,7 @@
     <tbody>
       @for(ability <- abilities) {
         <tr>
-          <th scope="row">@ability.name</th>
+          <td>@ability.name</td>
           <td>@Messages(FixMessagesKey.fixKey(s"kt.ability.${ability.faction}.${ability.name}.descr"))</td>
         </tr>
       }

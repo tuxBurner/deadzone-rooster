@@ -1,5 +1,6 @@
 @import killteam.logic.KTArmyDto
-@(armyDto:KTArmyDto)(implicit messages: Messages)
+@import killteam.logic.KTAbilityDto
+@(armyDto:KTArmyDto, armyAbilities: List[KTAbilityDto])(implicit messages: Messages)
 
 <html>
   <head>
@@ -45,6 +46,10 @@
     @* normal troops *@
     @views.html.killteamviews.pdf.displayTroopTypeTable(killteam.logic.KTArmyLogic.getNormalTroopsFromArmy(armyDto),"normal",armyDto)
     @* eo normal troops *@
+
+    @* abilities *@
+    @views.html.killteamviews.pdf.displayAbilities(armyAbilities)
+    @* eo abilities *@
 
 
     @* tactics *@
