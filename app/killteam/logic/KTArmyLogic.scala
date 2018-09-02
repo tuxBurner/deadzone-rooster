@@ -93,7 +93,7 @@ object KTArmyLogic {
           })
 
 
-        val itemsForTroop = getPossibleItemsForTroop(troopDto)
+        val itemsForTroop = KTItemLogic.getPossibleItemsForTroop(troopDto)
           .map(item => {
             val selected = troopDto.items.exists(_.name == item.name)
             KTItemOptionDto(selected = selected, item = item)
@@ -112,47 +112,7 @@ object KTArmyLogic {
       })
   }
 
-  /**
-    * Adds an item to the given troop
-    *
-    * @param itemName the name of the item to add
-    * @param uuid     the uuid of the troop where to add the item
-    * @param armyDto  the army containing the troop
-    * @return
-    */
-  def setItemAtTroop(itemName: String, uuid: String, armyDto: KTArmyDto): KTArmyDto = {
-    Logger.info(s"Setting item: $itemName at troop: $uuid")
-    getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, troopDto => {
-      KTItemsDao.getItemByNameAndFaction(itemName = itemName, factionName = troopDto.faction)
-        .map(itemDo => {
-          val itemDto = itemDoToDto(itemDo)
-          val newTroopItems = (itemDto :: troopDto.items).sortBy(_.name)
-          val troopWitNewItem = troopDto.copy(items = newTroopItems)
-          Some(troopWitNewItem)
-        })
-        .getOrElse({
-          Logger.error(s"Cannot find item: $itemName for faction: ${troopDto.faction}")
-          None
-        })
-    })
-  }
 
-  /**
-    * Removes an item to the given troop
-    *
-    * @param itemName the name of the item to remove
-    * @param uuid     the uuid of the troop where to remove the item
-    * @param armyDto  the army containing the troop
-    * @return
-    */
-  def removeItemFromTroop(itemName: String, uuid: String, armyDto: KTArmyDto): KTArmyDto = {
-    Logger.info(s"Removing item: $itemName from troop: $uuid")
-    getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, troopDto => {
-      val newTroopItems = troopDto.items.filterNot(_.name == itemName)
-      val troopWitNewItem = troopDto.copy(items = newTroopItems)
-      Some(troopWitNewItem)
-    })
-  }
 
 
   /**
@@ -209,47 +169,6 @@ object KTArmyLogic {
   }
 
   /**
-    * Gets all possible items from the troop
-    *
-    * @param troopDto the troop to get the items for
-    * @return
-    */
-  private def getPossibleItemsForTroop(troopDto: KTArmyTroopDto): List[KTItemDto] = {
-    KTTroopDao.getTroopByFactionAndName(troopName = troopDto.name, factionName = troopDto.faction)
-      .map(troopDo => itemDosToSortedDtos(troopDo.items))
-      .getOrElse({
-        Logger.error(s"Troop: ${troopDto.name} not found in faction: ${troopDto.faction}")
-        List()
-      })
-
-  }
-
-
-  /**
-    * Transforms the given [[KTItemDo]]s to a [[List]] of [[KTItemDto]] and sorts them by there name
-    *
-    * @param itemDos the dos to convert
-    * @return
-    */
-  private def itemDosToSortedDtos(itemDos: Set[KTItemDo]): List[KTItemDto] = {
-    itemDos
-      .map(itemDoToDto(_))
-      .toList
-      .sortBy(_.name)
-  }
-
-  /**
-    * Converts a [[KTItemDo]] to its corresponding [[KTItemDto]]
-    *
-    * @param itemDo the item to convert
-    * @return
-    */
-  private def itemDoToDto(itemDo: KTItemDo): KTItemDto = {
-    KTItemDto(name = itemDo.name,
-      points = itemDo.points)
-  }
-
-  /**
     * Converts a [[KTLoadoutDo]] to its corresponding [[KTLoadoutDto]]
     *
     * @param loadoutDo the loadout to convert
@@ -259,7 +178,7 @@ object KTArmyLogic {
     val weapons = KTWeaponLogic.weaponDosToSortedDtos(loadoutDo.weapons)
     val weaponPoints = weapons.map(_.points).sum
 
-    val items = itemDosToSortedDtos(loadoutDo.items)
+    val items = KTItemLogic.itemDosToSortedDtos(loadoutDo.items)
     val itemsPoints = items.map(_.points).sum
 
     KTLoadoutDto(name = loadoutDo.name,
@@ -459,14 +378,6 @@ case class KTTroopStats(movement: Int,
                         moral: Int,
                         armor: Int)
 
-/**
-  * Represents an item
-  *
-  * @param name   the name of the item
-  * @param points how many points id the item worth
-  */
-case class KTItemDto(name: String,
-                     points: Int)
 
 
 /**

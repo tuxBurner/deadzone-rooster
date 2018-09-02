@@ -154,7 +154,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def addItemToTroop(uuid: String, itemName: String) = Action {
     implicit request =>
-      getArmyFromCacheAndUpdateIt((armyFromCache) => KTArmyLogic.setItemAtTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache))
+      getArmyFromCacheAndUpdateIt((armyFromCache) => KTItemLogic.setItemAtTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache))
       Redirect(routes.KTRosterController.displayEditOptions(uuid))
   }
 
@@ -167,7 +167,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def removeItemFromTroop(uuid: String, itemName: String) = Action {
     implicit request =>
-      getArmyFromCacheAndUpdateIt((armyFromCache) => KTArmyLogic.removeItemFromTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache))
+      getArmyFromCacheAndUpdateIt((armyFromCache) => KTItemLogic.removeItemFromTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache))
       Redirect(routes.KTRosterController.displayEditOptions(uuid))
   }
 

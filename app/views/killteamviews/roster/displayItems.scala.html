@@ -14,7 +14,7 @@
         <tr>
           <th scope="row">@item.name</th>
           <td>@item.points</td>
-          <td>TODO</td>
+          <td>@Messages(FixMessagesKey.fixKey(s"kt.item.${item.faction}.${item.name}.descr"))</td>
         </tr>
       }
     </tbody>

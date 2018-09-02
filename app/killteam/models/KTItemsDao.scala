@@ -59,6 +59,15 @@ object KTItemsDao {
 
     itemDo
   }
+
+  /**
+    * Gets all items for the given faction
+    * @param factionName the name of the faction
+    * @return
+    */
+  def getItemsByFaction(factionName: String) : List[KTItemDo] = {
+    items.filter(_.faction.name == factionName).sortBy(_.name).toList
+  }
 }
 
 /**

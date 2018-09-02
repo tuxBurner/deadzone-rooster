@@ -1,7 +1,7 @@
 package controllers
 
 import javax.inject._
-import killteam.logic.{KTFactionLogic, KTWeaponLogic}
+import killteam.logic.{KTFactionLogic, KTItemLogic, KTWeaponLogic}
 import play.api.i18n.I18nSupport
 import play.api.mvc._
 import play.i18n.Langs
@@ -23,13 +23,15 @@ class KTHomeController @Inject()(cc: ControllerComponents, langs: Langs, mainTpl
 
   /**
     * Display overview of a fraction
+    *
     * @return
     */
   def displayFactionOverview(factionName: String) = Action {
     implicit request =>
       val allFactions = KTFactionLogic.getAllFactions()
-      val weaponsGroupedByFaction = KTWeaponLogic.getAllWeaponsByFactionName(factionName = factionName)
-      Ok(views.html.killteamviews.displayFactionOverview(weaponsGroupedByFaction, factionName, allFactions))
+      val allFactionWeapons = KTWeaponLogic.getAllWeaponsByFactionName(factionName = factionName)
+      val allFactionItems = KTItemLogic.getAllItemsForFaction(factionName = factionName)
+      Ok(views.html.killteamviews.displayFactionOverview(allFactionWeapons, allFactionItems, factionName, allFactions))
   }
 
 
