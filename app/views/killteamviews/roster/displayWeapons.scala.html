@@ -1,36 +1,39 @@
 @(weapons: List[killteam.logic.KTWeaponDto])(implicit messages: Messages)
-<table class="table table-sm table-bordered">
-  <thead class="thead-dark">
-    <th colspan="9">@Messages("kt.weapon.tbl.title")</th>
-    <tr>
-      <th>@Messages("kt.weapon.tbl.name")</th>
-      <th>@Messages("kt.weapon.tbl.range")</th>
-      <th>@Messages("kt.weapon.tbl.type")</th>
-      <th>@Messages("kt.weapon.tbl.strength")</th>
-      <th>@Messages("kt.weapon.tbl.puncture")</th>
-      <th>@Messages("kt.weapon.tbl.damage")</th>
-      <th>@Messages("kt.weapon.tbl.points")</th>
-      <th>@Messages("kt.weapon.tbl.description")</th>
-    </tr>
-  </thead>
-  <tbody>
-  @for(weapon <- weapons) {
-    <tr>
-      <th scope="row">@weapon.name</th>
-      <td>
+
+@if(weapons.isEmpty == false) {
+  <table class="table table-sm table-bordered">
+    <thead class="thead-dark">
+      <th colspan="9">@Messages("kt.weapon.tbl.title")</th>
+      <tr>
+        <th>@Messages("kt.weapon.tbl.name")</th>
+        <th>@Messages("kt.weapon.tbl.range")</th>
+        <th>@Messages("kt.weapon.tbl.type")</th>
+        <th>@Messages("kt.weapon.tbl.strength")</th>
+        <th>@Messages("kt.weapon.tbl.puncture")</th>
+        <th>@Messages("kt.weapon.tbl.damage")</th>
+        <th>@Messages("kt.weapon.tbl.points")</th>
+        <th>@Messages("kt.weapon.tbl.description")</th>
+      </tr>
+    </thead>
+    <tbody>
+    @for(weapon <- weapons) {
+      <tr>
+        <th scope="row">@weapon.name</th>
+        <td>
         @if(weapon.range != 0) {
           @weapon.range"
         } else {
           -
         }
-      </td>
-      <td>@Messages(s"kt.weapon.type.${weapon.weaponType}") @weapon.weaponTypeModifier</td>
-      <td>@weapon.strength</td>
-      <td>@weapon.puncture</td>
-      <td>@weapon.damage</td>
-      <td>@weapon.points</td>
-      <td>@Messages(FixMessagesKey.fixKey(s"kt.weapon.${weapon.faction}.${weapon.name}.descr"))</td>
-    </tr>
-  }
-  </tbody>
-</table>
+        </td>
+        <td>@Messages(s"kt.weapon.type.${weapon.weaponType}") @weapon.weaponTypeModifier</td>
+        <td>@weapon.strength</td>
+        <td>@weapon.puncture</td>
+        <td>@weapon.damage</td>
+        <td>@weapon.points</td>
+        <td>@Messages(FixMessagesKey.fixKey(s"kt.weapon.${weapon.faction}.${weapon.name}.descr"))</td>
+      </tr>
+    }
+    </tbody>
+  </table>
+}

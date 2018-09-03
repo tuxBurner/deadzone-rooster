@@ -64,7 +64,6 @@ object KTLoadoutDao {
 
     Logger.info(s"KT adding Loadout: ${csvLoadoutDto.name} to troop: ${troopDo.name} and faction: ${factionDo.name}")
 
-
     val weapons: ListBuffer[KTWeaponDo] = ListBuffer()
     csvLoadoutDto.weapons.foreach(weaponName => {
       val weaponDo = KTWeaponDao.getWeaponByNameAndFaction(weaponName, factionDo)
