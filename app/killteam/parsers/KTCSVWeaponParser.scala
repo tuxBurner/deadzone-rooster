@@ -39,14 +39,11 @@ class KTCSVWeaponParser @Inject()(configuration: Configuration, csvWeaponImporte
   /**
     * Gets all weapons for the given faction
     *
-    * @param faction the name of the faction
+    * @param factionName the name of the faction
     * @return
     */
-  def getWeaponsForFaction(faction: String): List[KTCsvWeaponDto] = {
-    weapons.groupBy(_.faction).getOrElse(faction, {
-      Logger.error(s"Could not find any weapon for faction: $faction")
-      List()
-    })
+  def getWeaponsForFaction(factionName: String): List[KTCsvWeaponDto] = {
+    weapons.filter(_.factions.exists(_ == factionName))
   }
 
 
@@ -76,7 +73,7 @@ class KTCSVWeaponParser @Inject()(configuration: Configuration, csvWeaponImporte
   private def parseLineMap(lineData: Map[String, String]): Option[KTCsvWeaponDto] = {
 
     try {
-      val parsedWeapon = KTCsvWeaponDto(faction = getDataFromLine(CSV_HEADER_FRACTION, lineData),
+      val parsedWeapon = KTCsvWeaponDto(factions = getSetFromLine(CSV_HEADER_FRACTION, lineData),
         name = getDataFromLine(CSV_HEADER_NAME, lineData),
         points = getIntFromLine(CSV_HEADER_POINTS, lineData),
         range = getIntFromLine(CSV_HEADER_RANGE, lineData),
@@ -108,7 +105,7 @@ class KTCSVWeaponParser @Inject()(configuration: Configuration, csvWeaponImporte
   * @param damage       the damage the weapon causes
   * @param linkedWeapon when set the weapon is linked with another weapon
   */
-case class KTCsvWeaponDto(faction: String,
+case class KTCsvWeaponDto(factions: Set[String],
                           name: String,
                           points: Int,
                           range: Int,

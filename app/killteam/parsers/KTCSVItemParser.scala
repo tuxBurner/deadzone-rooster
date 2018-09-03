@@ -26,14 +26,11 @@ class KTCSVItemParser @Inject()(configuration: Configuration) extends CSVDataPar
   /**
     * Gets all items for the given faction
     *
-    * @param faction the name of the faction
+    * @param factionName the name of the faction
     * @return
     */
-  def getItemsForFaction(faction: String): List[KTCsvItemDto] = {
-    items.groupBy(_.faction).getOrElse(faction, {
-      Logger.warn(s"KT Could not find any item for faction: $faction")
-      List()
-    })
+  def getItemsForFaction(factionName: String): List[KTCsvItemDto] = {
+    items.filter(_.factions.exists(_ == factionName))
   }
 
 
@@ -63,7 +60,7 @@ class KTCSVItemParser @Inject()(configuration: Configuration) extends CSVDataPar
   private def parseLineMap(lineData: Map[String, String]): Option[KTCsvItemDto] = {
 
     try {
-      val parsedItem = KTCsvItemDto(faction = getDataFromLine(CSV_HEADER_FRACTION, lineData),
+      val parsedItem = KTCsvItemDto(factions = getSetFromLine(CSV_HEADER_FRACTION, lineData),
         name = getDataFromLine(CSV_HEADER_NAME, lineData),
         points = getIntFromLine(CSV_HEADER_POINTS, lineData))
       //Logger.info(s"Parsed troop: $parsedTroop from line $lineData")
@@ -83,7 +80,7 @@ class KTCSVItemParser @Inject()(configuration: Configuration) extends CSVDataPar
   * @param name    the name of the item
   * @param points  how many points is the item worth
   */
-case class KTCsvItemDto(faction: String,
+case class KTCsvItemDto(factions: Set[String],
                         name: String,
                         points: Int)
 
