@@ -21,6 +21,8 @@ class KTCSVArmyParser @Inject()(configuration: Configuration) extends CSVDataPar
 
   private val CSV_HEADER_NAME = "Name"
 
+  private val CSV_HEADER_UNIT = "Einheit"
+
   private val CSV_HEADER_POINTS = "Punkte"
 
   private val CSV_HEADER_MOVEMENT = "B"
@@ -50,6 +52,8 @@ class KTCSVArmyParser @Inject()(configuration: Configuration) extends CSVDataPar
   private val CSV_HEADER_SPECIALIST = "Spezialisten"
 
   private val CSV_HEADER_KEY_WORDS = "Schlüsselwörter"
+
+  private val CSV_HEADER_REQUIRED_UNITS = "Benötigt"
 
   /**
     * Gets all troops for the given faction
@@ -88,7 +92,7 @@ class KTCSVArmyParser @Inject()(configuration: Configuration) extends CSVDataPar
     * @return
     */
   private def importTroopsFromCsvs(): List[KTCsvTroopDto] = {
-    val dataWithHeaders = readCsvFile("armies.csv","killteam")
+    val dataWithHeaders = readCsvFile("armies.csv", "killteam")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 
@@ -103,6 +107,7 @@ class KTCSVArmyParser @Inject()(configuration: Configuration) extends CSVDataPar
     try {
       val parsedTroop = KTCsvTroopDto(faction = getDataFromLine(CSV_HEADER_FRACTION, lineData),
         name = getDataFromLine(CSV_HEADER_NAME, lineData),
+        unit = getDataFromLine(CSV_HEADER_UNIT, lineData),
         points = getIntFromLine(CSV_HEADER_POINTS, lineData),
         movement = getIntFromLine(CSV_HEADER_MOVEMENT, lineData),
         fightStat = getIntFromLine(CSV_HEADER_FIGHTSTAT, lineData),
@@ -117,7 +122,8 @@ class KTCSVArmyParser @Inject()(configuration: Configuration) extends CSVDataPar
         items = getSetFromLine(CSV_HEADER_ITEMS, lineData, true),
         abilities = getSetFromLine(CSV_HEADER_ABILITIES, lineData, true),
         specialist = getSetFromLine(CSV_HEADER_SPECIALIST, lineData, true),
-        keyWords = getSetFromLine(CSV_HEADER_KEY_WORDS, lineData, true)
+        keyWords = getSetFromLine(CSV_HEADER_KEY_WORDS, lineData, true),
+        requiredUnits = getSetFromLine(CSV_HEADER_REQUIRED_UNITS, lineData, true)
       )
       //Logger.info(s"Parsed troop: $parsedTroop from line $lineData")
       Some(parsedTroop)
@@ -134,6 +140,7 @@ class KTCSVArmyParser @Inject()(configuration: Configuration) extends CSVDataPar
   *
   * @param faction    the faction the troop belongs to
   * @param name       the name of the troop
+  * @param unit       the unit the troop belongs to
   * @param points     how many points is the troop worth
   * @param movement   how far can the troop move
   * @param fightStat  the fight stat the troop has
@@ -152,6 +159,7 @@ class KTCSVArmyParser @Inject()(configuration: Configuration) extends CSVDataPar
   */
 case class KTCsvTroopDto(faction: String,
                          name: String,
+                         unit: String,
                          points: Int,
                          movement: Int,
                          fightStat: Int,
@@ -166,5 +174,6 @@ case class KTCsvTroopDto(faction: String,
                          items: Set[String],
                          abilities: Set[String],
                          specialist: Set[String],
-                         keyWords: Set[String]
+                         keyWords: Set[String],
+                         requiredUnits: Set[String]
                         )

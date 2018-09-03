@@ -78,7 +78,9 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   @JSRoute
   def getSelectTroopsForFaction(factionName: String) = Action {
-    val troopsForFaction = KTTroopLogic.getAllSelectTroopsForFaction(faction = factionName)
+    implicit request =>
+    val armyFromCache = getArmyFromCache(request)
+    val troopsForFaction = KTTroopLogic.getAllSelectTroopsForFaction(faction = factionName, armyDto = armyFromCache)
     Ok(Json.toJson(troopsForFaction))
   }
 

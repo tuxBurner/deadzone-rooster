@@ -56,6 +56,7 @@ object KTArmyLogic {
 
       val newTroop = KTArmyTroopDto(uuid = UUID.randomUUID().toString,
         name = troopName,
+        unit = troop.unit,
         faction = factionName,
         stats = troopStats,
         loadout = loadout,
@@ -64,7 +65,8 @@ object KTArmyLogic {
         level = 1,
         totalPoints = calculateTroopPoints(troop.points, List(), loadout, 1),
         abilities = abilities,
-        specialist = specialist)
+        specialist = specialist,
+        requiredUnits = troop.requiredUnits)
 
       val newTroops = armyDto.troops :+ newTroop
 
@@ -111,8 +113,6 @@ object KTArmyLogic {
         None
       })
   }
-
-
 
 
   /**
@@ -329,21 +329,24 @@ case class KTArmyDto(name: String = "",
 /**
   * Represents a troop in the army
   *
-  * @param uuid        the uuid of the troop
-  * @param name        the name of the troop
-  * @param faction     the faction of the troop
-  * @param stats       the stats the troop has
-  * @param loadout     the loadout the tropp is equiped with
-  * @param amount      how many of the troop are in the army
-  * @param points      the base points of the troop
-  * @param level       the level of the troop
-  * @param totalPoints the total points the troop cost
-  * @param abilities   the abilities the troop has
-  * @param items       the items the troop is equiped with
-  * @param specialist  when set the troop is a specialist
+  * @param uuid          the uuid of the troop
+  * @param name          the name of the troop
+  * @param unit          the unit the troop belongs to
+  * @param faction       the faction of the troop
+  * @param stats         the stats the troop has
+  * @param loadout       the loadout the tropp is equiped with
+  * @param amount        how many of the troop are in the army
+  * @param points        the base points of the troop
+  * @param level         the level of the troop
+  * @param totalPoints   the total points the troop cost
+  * @param abilities     the abilities the troop has
+  * @param items         the items the troop is equiped with
+  * @param specialist    when set the troop is a specialist
+  * @param requiredUnits the units required for having this unit in the army
   */
 case class KTArmyTroopDto(uuid: String,
                           name: String,
+                          unit: String,
                           faction: String,
                           stats: KTTroopStats,
                           loadout: KTLoadoutDto,
@@ -353,7 +356,8 @@ case class KTArmyTroopDto(uuid: String,
                           totalPoints: Int,
                           abilities: List[KTAbilityDto],
                           items: List[KTItemDto] = List(),
-                          specialist: Option[KTSpecialistTroopDto] = None)
+                          specialist: Option[KTSpecialistTroopDto] = None,
+                          requiredUnits: Set[String])
 
 /**
   * The stats of a troop
@@ -379,7 +383,6 @@ case class KTTroopStats(movement: Int,
                         armor: Int)
 
 
-
 /**
   * Option if an item is selected by the troop or not
   *
@@ -388,9 +391,6 @@ case class KTTroopStats(movement: Int,
   */
 case class KTItemOptionDto(selected: Boolean,
                            item: KTItemDto)
-
-
-
 
 
 /**

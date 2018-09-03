@@ -10,9 +10,10 @@ object KTTroopLogic {
     * @param faction the faction to get the troops for
     * @return
     */
-  def getAllSelectTroopsForFaction(faction: String): List[KTTroopSelectDto] = {
+  def getAllSelectTroopsForFaction(faction: String, armyDto: KTArmyDto): List[KTTroopSelectDto] = {
     KTTroopDao.getAllTroopsOfFaction(factionName = faction)
       .toList
+      .filter(troop => troop.requiredUnits.isEmpty || armyDto.troops.exists(armyTroop => troop.requiredUnits.contains(armyTroop.unit)))
       .sortBy(_.name)
       .map(troopDo => KTTroopSelectDto(name = troopDo.name, points = troopDo.points))
   }
