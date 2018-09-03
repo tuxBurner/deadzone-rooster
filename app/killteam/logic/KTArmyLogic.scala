@@ -199,15 +199,19 @@ object KTArmyLogic {
     Logger.info(s"Removing troop: $uuid from army")
 
     val newTroops = armyDto.troops.filter(_.uuid != uuid)
+    
+    val checkedWithRequiredUnits = newTroops.filter(newTroop => {
+      newTroop.requiredUnits.isEmpty || newTroops.exists(troop => newTroop.requiredUnits.contains(troop.unit))
+    })
 
-    val newFaction = if (newTroops.isEmpty) {
+    val newFaction = if (checkedWithRequiredUnits.isEmpty) {
       Logger.info("No more troops in the army removing the faction")
       StringUtils.EMPTY
     } else {
       armyDto.faction
     }
 
-    val newArmy = armyDto.copy(faction = newFaction, points = calculateArmyPoints(newTroops), troops = newTroops)
+    val newArmy = armyDto.copy(faction = newFaction, points = calculateArmyPoints(checkedWithRequiredUnits), troops = checkedWithRequiredUnits)
     newArmy.copy(tactics = KTTacticsLogic.getTacticsForArmy(newArmy))
   }
 
