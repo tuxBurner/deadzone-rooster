@@ -68,7 +68,7 @@ class KTCSVLoadoutParser @Inject()(configuration: Configuration) extends CSVData
       val parsedLoadout = KTCsvLoadoutDto(faction = getDataFromLine(CSV_HEADER_FRACTION, lineData),
         troop = getDataFromLine(CSV_HEADER_TROOP, lineData),
         name = getDataFromLine(CSV_HEADER_NAME, lineData),
-        weapons = getSetFromLine(CSV_HEADER_WEAPONS, lineData),
+        weapons = getListFromLine(CSV_HEADER_WEAPONS, lineData),
         items = getSetFromLine(CSV_HEADER_ITEMS, lineData, true)
       )
       //Logger.info(s"Parsed troop: $parsedTroop from line $lineData")
@@ -93,7 +93,7 @@ class KTCSVLoadoutParser @Inject()(configuration: Configuration) extends CSVData
 case class KTCsvLoadoutDto(faction: String,
                            troop: String,
                            name: String,
-                           weapons: Set[String],
+                           weapons: List[String],
                            items: Set[String])
 
 

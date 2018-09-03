@@ -6,3 +6,66 @@ Anführer;3;Kühn;Vorbild;"Wiederhole Trefferwürfe von 1 für befreundete Model
 Anführer;3;Kühn;Tyrann;"Dein(e) Gegner muss/müssen 1 zu Nerventests für alle feindlichen Modelle innerhalb von 6"" um dieses Modell addieren, solange es nicht erschüttert ist."
 Anführer;3;Inspirierend;Taktiker;Wirf jedesmla einen W6, wenn du eine Taktik einsetzt, solange sich dieses Model auf dem Schlachtfeld befindet und nicht erschüttert ist. Bei 5+ erhälst du einen Befehlspunkt.
 Anführer;3;Inspirierend;Mentor;"Wenn dieses Model nicht erschüttert ist, darfst du einmal pro Schlachtrunde, wenn du in der Fernkampfphase ein befreundetes Modell innerhalb von 3"" um dieses Modell wählst, um zu schießen, für das gewählte Modell bis zum Ende der Phase misslungene Trefferwürfe wiederholen."
+Nahkampfspezialist;1;;Meisterhafter Kämpfer;Addiere in der Nahkampfphase 1 zum Attackenwert dieses Modells.
+Nahkampfspezialist;2;Meisterhafter Kämpfer;Kriegeradept;Addiere in der Nahkampfphase 1 zu den Trefferwürfen dieses Modells.
+Nahkampfspezialist;2;Meisterhafter Kämpfer;Tödlicher Gegenschlag;Wenn ein Modell in der Nahkampfphase für Attacken gegen dieses Modell von 1 oder weniger erziehlt, wirf einen W6, solange dieses Modell nicht erschüttert ist. Bei 5+ erleidet das Modell, das die Attacken durchgeführt hat, 1 tödliche Verwundung, nachdem alle seine Attacken abgehandelt wurden.
+Nahkampfspezialist;3;Kriegeradept;Todesstoß;Jeder Verwundungswurf von 6, den du in der Nahkampfphase für dieses Modell erzielst, verursacht zusätzlich zu sonstigem Schaden 1 tödliche Verwundung.
+Nahkampfspezialist;3;Kriegeradept;Meister des Kampfes;"Addiere bis zum Ende der Phase für jedes feindliche Modell, das sich zu Beginn der Nahkampfphase innerhalb von 1"" um es befindet, 1 zum Ataackenwert des Modells."
+Nahkampfspezialist;3;Tödlicher Gegenschlag;Killerinstinkt;Du darfst in der Nahkampfphase alle misslungenen Trefferwürfe für dieses Modell wiederholen.
+Nahkampfspezialist;3;Tödlicher Gegenschlag;Blutgier;Du darfst für dieses Modell misslungene Angriffswürfe wiederholen.
+Funker;1;;Scanner;"Wenn dieses Modell nicht erschüttert ist, darfst du einmal pro Fernkampfphase, wenn du ein Modell deines Kill Teams wählst, um zu schießen, das sich innerhalb von 6"" um dieses Modell befindet, in dieser Phase zu den Trefferwürfen des gewählten Modelle 1 addieren."
+Funker;2;Scanner;Experte;Wirf zu Beginn jeder Schlachtrunde einen W6, solange dieses Modell nicht erschüttert ist. Bei 5+ erhälst du einen zusätzlichen Befehlspunkt. Dieser zusätzliche Befehlspunkt verfällt am Ende der Schlachtrunde, wenn er nicht eingesetzt wurde.
+Funker;2;Scanner;Statisches Kreischen;"Einmal pro Schlacht, wenn dieses Modell nicht erschüttert ist, ziehst du zu Beginn der Nahkampfphase und bis zum Ende der Phase von den Trefferwürfen feindlicher Modelle 1 ab, wenn sie Attacken innerhalb von 6"" um dieses Modell durchführen."
+Funker;3;Experte;Vox-Geist;Ziehe vom Moralwert feindlicher Modelle 1 ab, während sich dieses Modell auf dem Schlachtfeld befindet und nicht erschüttert ist.
+Funker;3;Experte;Befehlsrelais;Wirf jedesmal einen W6, wenn du eine taktik einsetzt, solange dieses Modell auf dem Schlachtfeld und nicht erschüttert ist. Bei einer 6 werden die für die Taktik ausgegebenen Befehlspunkte sofort zurückerstattet.
+Funker;3;Statisches Kreischen;Triangulation;Einmal pro Fernkampfphase, wenn dieses Modell nicht erschüttert ist und du ein Modell deines Kill teams wählst, um mit einer schweren Waffe zu schießen, darfst du den Wurf wiederholen, wenn du die Anzahl der Attacken für das gewählte Modell bestimmst.
+Funker;3;Statisches Kreischen;Vox-Hacker;Nach jeder Schlacht, in der das Modell in deinem Kill team war, kannst du einen W6 werfen, solange sich dieses Modell nicht in Genesung befindet (S. 204) oder tot ist. Bei 5+ erhälst du 1 Informationen.
+Sprengstoffspezialist;1;;Durchbruchspezialist;Du darfst 1 zu den Verwundungswürfen dieses Modells gegen Ziele addieren, die verdeckt sind.
+Sprengstoffspezialist;2;Durchbruchspezialist;Pyromane;Du darfst Verwundungswürfe von 1 für dieses Modell wiederholen, wenn es mit einer Waffe attackert, die automatisch trifft.
+Sprengstoffspezialist;2;Durchbruchspezialist;Grenadier;"Addiere 3"" zu reichweite aller Granaten, die dieses Modell einsetzt. Du darfst Trefferwürfe von 1 für Granaten wiederholen, die dieses Modell einsetzt."
+Sprengstoffspezialist;3;Pyromane;Saboteur;"Wenn dieses Modell in deinem Kill Team ist und nicht ausgeschaltet ist, wenn du deine Verlustwürfe durchführst, wirf einen W6. Bei 5+ wähle einen Gegner aus dieser Mission; er verliert ein Material."
+Sprengstoffspezialist;3;Pyromane;Pionier;"Wenn dieses Modell in deinem Kill team ist und du die Strategie ""Fallen stellen"" wählst (S. 49), kannst du 1 zu der Anzahl der Geländestücke addieren, die du mit Sprengfallen verminen kannst."
+Sprengstoffspezialist;3;Grenadier;Belagerungsmeister;Du darfst 1 zu Verletzungswürfen addieren, die in der Fernkampfphase von Attacken dieses Modells verursacht werden, wenn die Verletzungswürfe für Modelle sind, die verdeckt sind.
+Sprengstoffspezialist;3;Grenadier;Munitionssammler;Wenn dieses Modell in deinem Kill Team ist und nicht ausgeschaltet ist, wenn du deine Verlustwürfe durchführst, wirf einen W6. Bei 5+ erhälst du ein Material.
+Schwerer Schütze;1;;Unaufhaltsam;Dieses Modell erleidet nicht den Abzug von -1 für das Schießen mit einer schweren Waffe, nachdem es sich in der vorangegangenen Bewegungsphase bewegt hat oder für das Schießen mit einer Sturmwaffe, nachdem es vorgerrückt ist.
+Schwerer Schütze;2;Unaufhaltsam;Deckungsfeuer;Feindliche Modelle, die von diesem Modell in der Fernkampfphase als Ziel gewählt wurden, erleiden bis zum Ende der Phase -1 auf ihre Trefferwürfe.
+Schwerer Schütze;2;Unaufhaltsam;Zusätzliche Rüstung;Ignoriere Durchschlagswerte von -1 für Attacken, die dieses Modell zum Ziel haben.
+Schwerer Schütze;3;Deckungsfeuer;Verwüster;Du darfst Würfe für den Schaden von Fernkampfwaffen dieses Modells, die einen zufälligen Schadenswert haben, wiederholen.
+Schwerer Schütze;3;Deckungsfeuer;Präzise;Du darfst in der Fernkampfphase Trefferwürfe von 1 für dieses Modell wiederholen.
+Schwerer Schütze;3;Zusätzliche Rüstung;Unbezwingbar;Einmal pro Schlachtrunde darfst du deinen Gegner den Verletzungswurf für dieses Modell wiederholen lassen.
+Schwerer Schütze;3;Zusätzliche Rüstung;Muskelberge;Du darfst in der Nahkampfphase Verwundungswürfe von 1 für dieses Modell wiederholen.
+Sanitäter;1;;Beruhigend;Diese Modell wird niemals als erschüttert behandelt, wenn du Nerventests für andere Modelle deines Kill Teams ablegst.
+Sanitäter;2;Beruhigend;Feldsanitäter;"Wirf einen W6, wenn ein befreundetes Modell innerhalb von 3"" um dieses Modell einen Lebenspunktverlust erleidet, solange dieses Sanitäter-Modell nicht erschüttert ist, bei einer 6 verliert das befreundete Modell den Lebenspunkt nicht."
+Sanitäter;2;Beruhigend;Anatom;Du darfst in der Nahkampfphase Verwundungswürfe von 1 für dieses Modell wiederholen.
+Sanitäter;3;Feldsanitäter;Traumaspezialist;"Wirf einen zusätzlichen Würfel, wenn ein Verletzungswurf für ein befreundetes Modell innerhalb von 3"" um dieses Modell abgelegt wird und dieses Modell nicht erschüttert ist, und verwende das niedrigere Ergebnis."
+Sanitäter;3;Feldsanitäter;Triage-Experte;Wenn diese Modell in deinem Kill Team und am Ende des Gefechts nicht ausgeschaltet ist, darfst du einen W6 werfen, wenn du bei einem Verlustwurf (S. 204) für ein Modell aus deinem Kill Team das Ergebnis Tot würfelst. Bei 4+ wendest du stattdessen das Ergenis Genesung an.
+Sanitäter;3;Anatom;Verhörspezialist;"Wirf am Ende jedes Gefechts, in dem du siegreich warst, einen W6, wenn dieses Modell in deinem Kill Team war und nicht ausgeschaltet wurde; bei 5+ erhälst du 1 Informationen."
+Sanitäter;3;Anatom;Toxikologe;Vor der Aufstellung darfst du bis zu 3 Modelle aus deinem Kill Team wählen. Bis zum Ende des Gefechts addierst du 1 zu Verwundungswürfen mit allen Nahkampfwaffen, mit denen die gewählten Modelle bewaffnet sind.
+Aufklärer;1;;Flink;Du darfst Vorrücken-Würfe für dieses Modell wiederholen.
+Aufklärer;2;Flink;Vorgeschobener Kundschafter;Diese Modell besteht automatisch Tests für gefährliches Gelände (S. 42).
+Aufklärer;2;Flink;Pfadfinder;Solange sich dieses Modell nicht in Genesung (S. 204) befindet, darfst du 1 zum Ergebnis addieren oder von ihm abziehen, wenn du würfelst um eine Mid´ssion zu bestimmen. Wenn du dies tust, muss da Modell in deinem Kill Team enthalten sein.
+Aufklärer;3;Vorgeschobener Kundschafter;Plänkler;"Deine Gegner müssen für Fernkampfattacken, die dieses Model zum Ziel haben, 1 vom Trefferwurf abziehen, wenn sich das schießende Modell weiter als 12"" von diesem Modell entfernt befindet und dieses Modell nicht erschüttert oder verdeckt ist."
+Aufklärer;3;Vorgeschobener Kundschafter;Vorhut;"Du darfst in der Fernkampfphase für Modelle aus deinem Kill Team Trefferwürfe von 1 wiederholen gegen feindliche Modelle, die sich innerhalb von 6"" um dieses Modell befinden, solange dieses Modell nicht erschüttert ist."
+Aufklärer;3;Pfadfinder;Beobachter;Wenn dieses Modell in deinem Kill Team ist, darfst du zu Beginn der Aufklärungsphase einen W6 werfen. Bei 4+ darfst du eine zusätzliche Strategie wählen.
+Aufklärer;3;Pfadfinder;Erkunder;Nach jedem Gefecht, in dem dieses Modell in deinem Kill Team war, darfst du einen W6 werfen, wenn sich dieses Modell nicht in Genesung (S. 204) befindet. Bei 5+ erhälst du 1 Territorium.
+Scharfschütze;1;;Präzisionsschütze;Du darfst für dieses Modell Trefferwürfe von 1 wiederholen, wenn es eine Fernkampfattacke durchführt.
+Scharfschütze;2;Präzisionsschütze;Attentäter;Du darfst für dieses Modell Verwundungswürfe von 1 wiederholen, wenn es eine Fernkampfattacke durchführt.
+Scharfschütze;2;Präzisionsschütze;Meisterschütze;Wenn dieses Modell in Feuerbereitschaft ist, addiere 1 zu Trefferwürfen, wenn es eine Fernkampfattacke durchführt.
+Scharfschütze;3;Attentäter;Tödliche Genauigkeit;Bei einem unmodifizierten Verwundungswurf von 6 für die Fernkampfattacken dieses Modells erhöht sich der Schadenswert der jeweiligen Attacke um 1.
+Scharfschütze;3;Attentäter;Rüstungsbrechend;Bei einem unmodifizierten Verwundungswurf von 6 für die Fernkampfattacken dieses Modells verbessert sich der DS-Wert der jeweiligen Attacke um 1.
+Scharfschütze;3;Meisterschütze;Beweglich;Dieses Modell erleidet nicht den Abzug von -1 für das Schießen mit einer schweren Waffe, nachdem es sich in der vorangegangenen Bewegungsphase bewegt hat oder für das Schießen mit einer Sturmwaffe, nachdem es vorgerrückt ist.
+Scharfschütze;3;Meisterschütze;Falkenauge;"Erhöhe den Profilwert Reichweite aller Schnellfeuerwaffen und Schweren Waffen, mit denen dieses Modell bewaffnet ist, um 6""."
+Veteran;1;;Ergraut;Dieses Modell ignoriert Abzüge auf seinen Moralwert und Nerventests.
+Veteran;2;Ergraut;Geübt;Du darfst in dieser Schlachtrunde für dieses Modell einen einzelnen Treffer- oder Verwundungswurf wiederholen.
+Veteran;2;Ergraut;Alles schon gesehen;"Du darfst 1 von Nerventests für Modelle aus deinem Kill Team abziehen, die sich innerhalb von 3"" Zoll um dieses Modell befinden, solange es nicht erschüttert ist."
+Veteran;3;Geübt;Überlebenskünstler;Du darfst für dieses Modell 1 zu Schutzwürfen addieren.
+Veteran;3;Geübt;Ein-Mann-Armee;Dieses Modell generiert zu Beginn jeder Schlachtrunde 1 Befehlspunkt, solange es nicht erschüttert oder ausgeschaltet ist. Dieser Befehlspunkt darf nur für Veteranen Taktiken ausgegeben werden.
+Veteran;3;Alles schon gesehen;Kampfnarbe;"Feindliche Modelle erleiden einen Abzug von -1 auf ihren Moralwert, während si sich innerhalb von 6"" um dieses Modell befinden, solange es nicht erschüttert ist."
+Veteran;3;Alles schon gesehen;Nerven aus Stahl;Du darfst misslungene Trefferwürfe für dieses Modell wiederholen, wenn es Abwehfeuer abgibt.
+Zelot;1;;Rasend;In einer chlachtrunde, in der dieses Modell angegriffen hat, darfst du zu seinen Attacken- und zu seinem Stärkewert 1 addieren.
+Zelot;2;Rasend;Jubel;"Deine gegner müssen für Modelle aus ihrem Kill Team, die sich innerhalb von 3"" um dieses Modell befinden, unmodifizierte Trefferwürfe von 6 wiederholen, solange dieses Modell nicht erschüttert ist."
+Zelot;2;Rasend;Flagelant;Wirf jedes mal einen W6, wenn dieses Modell einen Lebenspunkt verliert. Bei einer 6 wird der Lebenspunktverlust ignoriert.
+Zelot;3;Jubel;Puritaner;Du drafst in der Nahkampfphase für dieses Modell Trefferwürfe gegen feindliche Modelle wiederholen, die kein Fraktionsschlüsselwort mit ihm gemeinsam haben.
+Zelot;3;Jubel;Feuereifer;"Addiere 1 zum Moralwert von Modellen aus deinem Kill Team, die sich innerhalb von 6"" um dieses Modell befinden, solange es nicht erschüttert ist."
+Zelot;3;Flagelant;Fanatisch;Dieses Modell besteht Nerventests automatisch.
+Zelot;3;Flagelant;Geistesstärke;Ziehe 1 ab, von Verletzungswürfen, die für dieses Modell abgelegt werden.

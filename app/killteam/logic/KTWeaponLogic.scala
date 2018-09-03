@@ -24,10 +24,9 @@ object KTWeaponLogic {
     * @param weaponDos the dos to convert
     * @return
     */
-  def weaponDosToSortedDtos(weaponDos: Set[KTWeaponDo]): List[KTWeaponDto] = {
+  def weaponDosToSortedDtos(weaponDos: List[KTWeaponDo]): List[KTWeaponDto] = {
     weaponDos
       .map(weaponDoToDto(_))
-      .toList
       .sortBy(_.name)
   }
 

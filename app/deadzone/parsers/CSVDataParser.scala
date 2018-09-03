@@ -55,18 +55,46 @@ class CSVDataParser(configuration: Configuration) {
     stringToSplit.split(',').map(_.trim)
   }
 
+  /**
+    * Gets a line from the csv data as a set
+    * @param columnName the name of the column to parse
+    * @param lineData the line to parse
+    * @param emptyOkay when true it is okay that the column is empty
+    * @return
+    */
   def getSetFromLine(columnName: String, lineData: Map[String, String], emptyOkay: Boolean = false): Set[String] = {
+    getListFromLine(columnName, lineData, emptyOkay).toSet
+  }
+
+
+  /**
+    * Gets a line from the csv data as a list
+    * @param columnName the name of the column to parse
+    * @param lineData the line to parse
+    * @param emptyOkay when true it is okay that the column is empty
+    * @return
+    */
+  def getListFromLine(columnName: String, lineData: Map[String, String], emptyOkay: Boolean = false): List[String] = {
     getDataFromLine(columnName, lineData, emptyOkay)
       .split(',')
       .map(_.trim)
       .filter(StringUtils.isNotBlank(_))
-      .toSet
+      .toList
   }
 
+  /**
+    * Gets an int value from the line
+    * @param columnName the column to get the data from
+    * @param lineData the line to parse
+    * @param emptyOkay when true it is okay when the column is empty
+    * @return
+    */
   def getIntFromLine(columnName: String, lineData: Map[String, String], emptyOkay: Boolean = false): Int = {
     val cleanedField = getDataFromLine(columnName, lineData, emptyOkay)
       .replace("+", "")
       .replace("\"", "")
+      .replace("Nahkampf","")
+      .replace("-","")
 
     if (StringUtils.isBlank(cleanedField)) {
       0

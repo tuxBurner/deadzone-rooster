@@ -1,17 +1,34 @@
 Fraktion;Waffe;Punkte;RW;Typ;S;DS;SW;Beschreibung;Kombiwaffe
 Adeptus Astartes;Astartes-Schrotflinte;0;"12""";Sturm 2;4;0;1;Wenn sich das Ziel innerhalb der halben Reichweite befindet, addiere 1 zur Stärke dieser Waffe.;
+Orks;Aufgemotzta Mega-Blasta;0;"24""";Sturm 1;8;-3;W3;Bei einem unmodifizierten Trefferwurf von 1 erleidet der Träger eine tödliche Verwundung.;
+Orks;Bazzukka;3;"24""";Sturm 1;8;-2;3;;
 Adeptus Astartes;Bolter;0;"24""";Schnellfeuer 1;4;0;1;;
 Adeptus Astartes;Boltgewehr;0;"30""";Schnellfeuer 1;4;-1;1;;
 Adeptus Astartes;Boltkarabiner;0;"24""";Sturm 2;4;0;1;;
 Adeptus Astartes;Boltpistole;0;"12""";Pistole 1;4;0;1;;
-Adeptus Astartes;Energiefaust;4;0;Nahkampf;x2;-3;W3;Wenn du mit dieser Waffe attackierst, musst du 1 von den Trefferwürfen abziehen.;
-Adeptus Astartes;Energieschwert;2;0;Nahkampf;T;-3;1;;
+Orks;Brenna - Fernkampf;0;"8""";Sturm W3;4;0;1;Diese Waffe trifft ihr Ziel automatisch.;Brenna
+Orks;Brenna - Nahkampf;0;Nahkampf;Nahkampf;T;-2;1;;Brenna
+Tau;Bündelkanone;0;"18""";Sturm 4;5;0;1;;
+Orks;Donnabüxä;0;"12""";Pistole 1;3;0;1;;
+Adeptus Astartes;Energiefaust;4;Nahkampf;Nahkampf;x2;-3;W3;Wenn du mit dieser Waffe attackierst, musst du 1 von den Trefferwürfen abziehen.;
+Orks;Energiekrallä;4;Nahkampf;Nahkampf;x2;-3;W3;Wenn du mit dieser Waffe attackierst, musst du 1 von den Trefferwürfen abziehen.;
+Adeptus Astartes;Energieschwert;2;Nahkampf;Nahkampf;T;-3;1;;
+Orks;Fette Wumme;0;"36""";Sturm 3;5;0;1;;
+Orks;Fetter Spalta;2;Nahkampf;Nahkampf;+2;-1;2;;
 Adeptus Astartes;Flammenwerfer;3;"8""";Sturm W6;4;0;1;Diese Waffe trifft ihr Ziel automatisch.;
 Adeptus Astartes;Fragmentgranaten;0;"6""";Granate W6;3;0;1;;
+Tau;Fusionsblaster;4;"18""";Sturm 1;8;-4;W6;Wenn das Ziel innerhalb der halben Reichweite dieser Waffe ist, wirf bei der Ermittlung ihres Schadens zwei Würfel und lege das niedrigere Ergebnis ab.;
 Adeptus Astartes;Gravpistole;1;"12""";Pistole 1;5;-3;1;Wenn das Ziel einen Rüstungswurf-Profilwert von 3+ oder besser hat, hat diese Waffe einen Schadenswert von W3.;
 Adeptus Astartes;Gravstrahler;2;"18""";Schnellfeuer 1;5;-3;1;Wenn das Ziel einen Rüstungswurf-Profilwert von 3+ oder besser hat, hat diese Waffe einen Schadenswert von W3.;
-Adeptus Astartes;Kampfmesser;0;0;Nahkampf;T;0;1;Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.;
-Adeptus Astartes;Kettenschwert;0;0;Nahkampf;T;0;1;Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.;
+Thousand Sons;Inferno-Bolter;0;"24""";Schnellfeuer 1;4;-2;1;;
+Thousand Sons;Inferno-Boltpistole;0;"12""";Pistole 1;4;-2;1;;
+Tau;Ionengewehr Standard;3;"30""";Schnellfeuer 1;7;-1;1;;Ionengewehr
+Tau;Ionengewehr Überladung;0;"30""";Schwer W3;8;-1;2;Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet, nachdem alle Schüße dieser Waffe abgehandelt wurden.;Ionengewehr
+Adeptus Astartes;Kampfmesser;0;Nahkampf;Nahkampf;T;0;1;Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.;
+Adeptus Astartes;Kettenschwert;0;Nahkampf;Nahkampf;T;0;1;Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.;
+Thousand Sons;Kettenschwert;0;Nahkampf;Nahkampf;T;0;1;Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.;
+Orks;Killablasta;0;"48""";Schwer W3;7;-1;2;;
+Orks;Knarre;0;12;Pistole 1;4;0;1;;
 Adeptus Astartes;Kombi-Flammenwerfer Bolter;3;"24""";Schnellfeuer 1;4;0;1;Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.;Kombi-Flammenwerfer
 Adeptus Astartes;Kombi-Flammenwerfer Flammenwerfer;0;"8""";Sturm W6;4;0;1;Diese Waffe trifft ihr Ziel automatisch;Kombi-Flammenwerfer
 Adeptus Astartes;Kombi-Gravstrahler Bolter;3;"24""";Schnellfeuer 1;4;0;1;Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.;Kombi-Gravstrahler
@@ -21,34 +38,52 @@ Adeptus Astartes;Kombi-Melter Melter;0;"12""";Sturm 1;8;-4;W6;Wenn das Ziel inne
 Adeptus Astartes;Kombi-Plasmawerfer Bolter;4;"24""";Schnellfeuer 1;4;0;1;Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.;Kombi-Plasmawerfer
 Adeptus Astartes;Kombi-Plasmawerfer Standard;0;"24""";Schnellfeuer 1;7;-3;1;;Kombi-Plasmawerfer
 Adeptus Astartes;Kombi-Plasmawerfer Überladung;0;"24""";Schnellfeuer 1;8;-3;2;Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet, nachdem alle Schüße dieser Waffe abgehandelt wurden.;Kombi-Plasmawerfer
-Adeptus Astartes;Melter;3;"12""";Sturm 1;8;-4;W6;Wenn das Ziel innerhalb der halben Reichweite dieser Waffe ist, wirf bei der Ermittlung ihres Schadens zwei Würfel und lege das niedrigere Ergebnis ab.;
-Adeptus Astartes;Plasmapistole Standard;1;"12""";Pistole 1;7;-3;1;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Plasmapistole
-Adeptus Astartes;Plasmapistole Überladung;0;"12""";Pistole 1;8;-3;2;Wenn du mit dieser Waffe schießt, wähle eines der Profile. Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet.;Plasmapistole
-Adeptus Astartes;Plasmawerfer Standard;3;"24""";Schnellfeuer 1;7;-3;1;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Plasmawerfer
-Adeptus Astartes;Plasmawerfer Überladung;0;"24""";Schnellfeuer 1;8;-3;2;Wenn du mit dieser Waffe schießt, wähle eines der Profile. Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet, nachdem alle Schüße dieser Waffe abgehandelt wurden.;Plasmawerfer
-Adeptus Astartes;Raketenwerfer Fragmentrakete;5;"48""";Schwer W6;4;0;1;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Raketenwerfer
-Adeptus Astartes;Raketenwerfer Sprengrakete;0;"48""";Schwer 1;8;-2;W6;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Raketenwerfer
-Adeptus Astartes;Scharfschützengewehr;1;"36""";Schwer 1;4;0;1;Ein Modell, das ein Scharfschützengewer abfeuert, erleidet keinen Malus auf seinen Trefferwurf für ein Ziel in langer Reichweite. Für jeden Verwundungswurf von 6+ mit dieser Waffe erleidet erleidet das Ziel zusätzlich zu allem anderen Schaden eine tödliche Verletzung.;
-Adeptus Astartes;Schockgranate;0;"6""";Granate W3;0;0;0;Diese Waffe verursacht keinen Schaden. Wenn ein feindliches INFANTRIE Modell von Schockgranten getroffen wird, ist das getroffene Modell bis zum Ende des Zuges betäubt - es kann weder Abwehrfeuer abgeben noch in Feuerbereitschaft versetzt werden und dein Gegner muss von allen Trefferwürfen des Modells 1 abziehen.;
-Adeptus Astartes;Schwere Boltpistole;0;"12""";Pistole 1;4;-1;1;;
-Adeptus Astartes;Schwerer Bolter;3;"36""";Schwer 3;5;-1;1;;
-Adeptus Astartes;Sprenggranaten;0;"6""";Granate 1;6;-1;W3;;
-Adeptus Astartes;Stalker Boltgewehr;0;"26""";Schwer 1;4;-2;1;;
-Adeptus Astartes;Sturmboltgewehr;0;"24""";Sturm 2;4;0;1;;
-Orks;Aufgemotzta Mega-Blasta;0;"24""";Sturm 1;8;-3;W3;Bei einem unmodifizierten Trefferwurf von 1 erleidet der Träger eine tödliche Verwundung.;
-Orks;Bazzukka;3;"24""";Sturm 1;8;-2;3;;
-Orks;Brenna - Fernkampf;0;"8""";Sturm W3;4;0;1;Diese Waffe trifft ihr Ziel automatisch.;Brenna
-Orks;Brenna - Nahkampf;0;0;Nahkampf;T;-2;1;;Brenna
-Orks;Donnabüxä;0;"12""";Pistole 1;3;0;1;;
-Orks;Energiekrallä;4;0;Nahkampf;x2;-3;W3;Wenn du mit dieser Waffe attackierst, musst du 1 von den Trefferwürfen abziehen.;
-Orks;Fette Wumme;0;"36""";Sturm 3;5;0;1;;
-Orks;Fetter Spalta;2;0;Nahkampf;+2;-1;2;;
-Orks;Killablasta;0;"48""";Schwer W3;7;-1;2;;
-Orks;Knarre;0;12;Pistole 1;4;0;1;;
 Orks;Kombiwumme mit Bazzukka - Bazzuka;0;"24""";Sturm 1;8;-2;3;Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.;Kombiwumme mit Bazzukka
 Orks;Kombiwumme mit Bazzukka - Wumme;3;"18""";Sturm 2;4;0;1;;Kombiwumme mit Bazzukka
 Orks;Kombiwumme mit Gitbrenna - Gitbrenna;0;"8""";Sturm W6;4;-1;1;Diese Waffe trifft ihr Ziel automatisch.;Kombiwumme mit Gitbrenna
 Orks;Kombiwumme mit Gitbrenna - Wumme;4;"18""";Sturm 2;4;0;1;Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.;Kombiwumme mit Gitbrenna
-Orks;Spalta;0;0;Nahkampf;T;0;1;Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.;
-Orks;Stikkbomb;0;"6""";Granate W6;3;0;1;;
+Thousand Sons;Maschinenpistole;0;"12""";Pistole 1;3;0;1;;
+Tau;Massebeschleunigergewehr;5;"30""";Schnellfeuer 1;6;-4;W3;Für jeden Verwundungswurf von 6+ mit dieser Waffe erleidet erleidet das Ziel zusätzlich zu allem anderen Schaden eine tödliche Verletzung.;
+Adeptus Astartes;Melter;3;"12""";Sturm 1;8;-4;W6;Wenn das Ziel innerhalb der halben Reichweite dieser Waffe ist, wirf bei der Ermittlung ihres Schadens zwei Würfel und lege das niedrigere Ergebnis ab.;
+Tau;Photonengranate;0;"6""";Granate W6;-;-;-;Diese Waffe verursacht keinen Schaden. Dein Gegner muss bis zum Ende der Schlachtrunde 1 von Trefferwürfen für IINFANTRIE-Modelle abziehen, die von Photonen Granaten getroffen wurden.;
+Adeptus Astartes;Plasmapistole Standard;1;"12""";Pistole 1;7;-3;1;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Plasmapistole
+Adeptus Astartes;Plasmapistole Überladung;0;"12""";Pistole 1;8;-3;2;Wenn du mit dieser Waffe schießt, wähle eines der Profile. Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet.;Plasmapistole
+Adeptus Astartes;Plasmawerfer Standard;3;"24""";Schnellfeuer 1;7;-3;1;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Plasmawerfer
+Adeptus Astartes;Plasmawerfer Überladung;0;"24""";Schnellfeuer 1;8;-3;2;Wenn du mit dieser Waffe schießt, wähle eines der Profile. Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet, nachdem alle Schüße dieser Waffe abgehandelt wurden.;Plasmawerfer
+Thousand Sons;Psistab;0;Nahkampf;Nahkampf;+2;-1;W3;;
+Tau;Pulsblaster Kurz;0;"5""";Sturm 2;6;-2;1;;Pulsblaster
+Tau;Pulsblaster Lang;0;"15""";Sturm 2;4;0;1;;Pulsblaster
+Tau;Pulsblaster Mittel;0;"10""";Sturm 2;5;-1;1;;Pulsblaster
+Tau;Pulsgewehr;0;"30""";Schnellfeuer 1;5;0;1;;
+Tau;Pulskarabiner;0;"18""";Sturm 2;5;0;1;;
+Tau;Pulspistole;0;"12""";Pistole 1;5;0;1;;
+Tau;Raketenmagazin;7;"36""";Sturm 2;7;-1;W3;;
+Adeptus Astartes;Raketenwerfer Fragmentrakete;5;"48""";Schwer W6;4;0;1;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Raketenwerfer
+Adeptus Astartes;Raketenwerfer Sprengrakete;0;"48""";Schwer 1;8;-2;W6;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Raketenwerfer
+Adeptus Astartes;Scharfschützengewehr;1;"36""";Schwer 1;4;0;1;Ein Modell, das ein Scharfschützengewer abfeuert, erleidet keinen Malus auf seinen Trefferwurf für ein Ziel in langer Reichweite. Für jeden Verwundungswurf von 6+ mit dieser Waffe erleidet erleidet das Ziel zusätzlich zu allem anderen Schaden eine tödliche Verletzung.;
+Adeptus Astartes;Schockgranaten;0;"6""";Granate W3;-;-;-;Diese Waffe verursacht keinen Schaden. Wenn ein feindliches INFANTRIE Modell von Schockgranten getroffen wird, ist das getroffene Modell bis zum Ende des Zuges betäubt - es kann weder Abwehrfeuer abgeben noch in Feuerbereitschaft versetzt werden und dein Gegner muss von allen Trefferwürfen des Modells 1 abziehen.;
+Tau;Schwärmer-Raketensystem;5;"30""";Schwer 4;5;0;1;Diese Waffe kann auf Modelle abgefeuert werden, die für den Träger nicht sichtbar sind. Wenn das Ziel für den Träger nicht sichtbar ist, benötigst du für einen erfolgreichen Trefferwurf eine 6, unabhängig vom BF des Modells oder etwaiger Modifikatoren.;
+Adeptus Astartes;Schwere Boltpistole;0;"12""";Pistole 1;4;-1;1;;
+Adeptus Astartes;Schwerer Bolter;3;"36""";Schwer 3;5;-1;1;;
+Thousand Sons;Seelenschnitterkanone;4;"24""";Schwer 4;5;-3;1;;
+Orks;Spalta;0;Nahkampf;Nahkampf;T;0;1;Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.;
+Adeptus Astartes;Sprenggranaten;0;"6""";Granate 1;6;-1;W3;;
+Adeptus Astartes;Stalker Boltgewehr;0;"26""";Schwer 1;4;-2;1;;
+Orks;Stikkbombs;0;"6""";Granate W6;3;0;1;;
+Adeptus Astartes;Sturmboltgewehr;0;"24""";Sturm 2;4;0;1;;
+Thousand Sons;Tzaangorklingen;0;Nahkampf;Nahkampf;T;-1;1;Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.;
+Thousand Sons;Warpflammenpistole;1;"6""";Pistole W6;3;-2;1;Diese Waffe trifft ihr Ziel automatisch.;
+Thousand Sons;Warpflammenwerfer;4;"8""";Sturm W6;4;-2;1;Diese Waffe trifft ihr Ziel automatisch.;
 Orks;Wumme;0;"18""";Sturm 2;4;0;1;;
+Grey Knights;Anti-Psi-Granate;0;"6""";Granate W3;2;0;1;Jedes mal, wenn du einen Trefferwurf von 6+ für diese Waffe erzielst, wenn das Ziel ein PSIONIKER oder DAEMON ist, erleidet das Ziel statt des normalen Schadens eine tödliche Verwundung.;
+Grey Knights;Erlöser-Flammenwerfer;3;"8""";Sturm W6;6;-1;1;Diese Waffe trufft ihr Ziel automatisch.;
+Grey Knights;Fragmentgranaten;0;"6""";Granate W6;3;0;1;;
+Grey Knights;Psibolter;2;"24""";Schwer 4;7;-1;1;;
+Grey Knights;Psipulser;3;"24""";Schwer 6;4;0;W3;;
+Grey Knights;Sprenggranaten;0;"6""";Granate 1;6;-1;W3;;
+Grey Knights;Sturmbolter;0;"24""";Schnellfeuer 2;4;0;1;;
+Grey Knights;Nemesis-Dämonenhammer;2;Nahkampf;Nahkampf;x2;-3;3;Wenn du mit dieser Waffe attackierst, musst du 1 von den Trefferwürfen abziehen.;
+Grey Knights;Nemesis-Falchion;1;Nahkampf;Nahkampf;T;-2;W3;Wenn ein Modell mit zwei Nemesis-Falchions bewaffnet ist, darf es jedesmal, wenn es kämpft, 1 zusätzliche Attacke mit ihnen durchführen.;
+Grey Knights;Nemesis-Psihellebarde;0;Nahkampf;Nahkampf;+1;-2;W3;;
+Grey Knights;Nemesis-Psischwert;0;Nahkampf;Nahkampf;T;-3;W3;;
+Grey Knights;Nemesis-Wehrstab;0;Nahkampf;Nahkampf;+2;-1;W3;Ein mit dieser Waffe bewaffnetes Modell hat einen Rettungswurf von 5+ gegen Attacken in der Nahkampfphase. Wenn es bereits einen Rettungswurf hat, addiere 1 zu Rettungswürfen, die du für es in der Nahkampfphase ablegst.;

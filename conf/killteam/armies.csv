@@ -1,22 +1,50 @@
-Fraktion;Name;Punkte;B;KG;BF;S;W;LP;A;MW;RW;Max;Ausrüstungsoption;Fähigkeiten;Spezialisten;Schlüsselwörter
-Adeptus Astartes;Scout;10;"6""";3+;3+;4;4;1;1;7;4+;;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Aufklärer, Scharfschütze;Imperium, Infantrie, Scout
-Adeptus Astartes;Scout Gunner;11;"6""";3+;3+;4;4;1;1;7;4+;2;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Aufklärer, Scharfschütze, Schwerer Schütze;Imperium, Infantrie, Scout
-Adeptus Astartes;Scout Sergeant;11;"6""";3+;3+;4;4;1;2;8;4+;1;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Aufklärer, Scharfschütze, Anführer;Imperium, Infantrie, Scout
-Adeptus Astartes;Tactical Marine;12;"6""";3+;3+;4;4;1;1;7;3+;;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Scharfschütze, Veteran;Imperium, Infantrie, Tactical Marine
-Adeptus Astartes;Tactical Marine Gunner;13;"6""";3+;3+;4;4;1;1;7;3+;2;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Scharfschütze, Veteran, Schwerer Schütze;Imperium, Infantrie, Tactical Marine
-Adeptus Astartes;Tactical Marine Sergeant;13;"6""";3+;3+;4;4;1;2;8;3+;1;Auspex;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Scharfschütze, Veteran, Anführer;Imperium, Infantrie, Tactical Marine
-Adeptus Astartes;Reiver;16;"6""";3+;3+;4;4;2;2;7;3+;;Greifhakenwerfer, Gravschirm;Die keine Furcht kennen, Transhumane Physiologie, Terrortruppen;Nahkampfspezialist, Funker, Sprengstoffspezialist, Aufklärer, Veteran;Imperium, Infantrie, Primaris, Reiver
-Adeptus Astartes;Reiver Sergeant;17;"6""";3+;3+;4;4;2;3;8;3+;1;Greifhakenwerfer, Gravschirm;Die keine Furcht kennen, Transhumane Physiologie, Terrortruppen;Nahkampfspezialist, Funker, Sprengstoffspezialist, Aufklärer, Veteran, Anführer;Imperium, Infantrie, Primaris, Reiver
-Adeptus Astartes;Intercessor;15;"6""";3+;3+;4;4;2;2;7;3+;;;Die keine Furcht kennen, Transhumane Physiologie;Nahkampfspezialist, Funker, Scharfschütze, Veteran;Imperium, Infantrie, Primaris, Intercessor
-Adeptus Astartes;Intercessor Gunner;16;"6""";3+;3+;4;4;2;2;7;3+;2;Unterlauf Granatwerfer;Die keine Furcht kennen, Transhumane Physiologie;Nahkampfspezialist, Funker, Scharfschütze, Veteran, Sprengstoffspezialist;Imperium, Infantrie, Primaris, Intercessor
-Adeptus Astartes;Intercessor Sergeant;16;"6""";3+;3+;4;4;2;3;8;3+;1;;Die keine Furcht kennen, Transhumane Physiologie;Nahkampfspezialist, Funker, Scharfschütze, Veteran, Anführer;Imperium, Infantrie, Primaris, Intercessor
-Orks;Ork Boy;6;"5""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!;Nahkampfspezialist, Sprengstoffspezialist, Veteran;Infantrie, Ork Boy
-Orks;Ork Boy Gunner;7;"5""";3+;5+;4;4;1;2;6;6+;2;;Jetz' geht'z los!;Nahkampfspezialist, Sprengstoffspezialist, Veteran, Schwerer Schütze;Infantrie, Ork Boy
-Orks;Boss Nob;10;"5""";3+;5+;5;4;2;3;7;6+;1;;Jetz' geht'z los!;Nahkampfspezialist, Sprengstoffspezialist, Veteran;Infantrie, Ork Boy
-Orks;Gretchin;3;"5""";5+;4+;2;2;1;1;4;6+;;;;Anführer, Aufklärer;Infantrie, Gretchin
-Orks;Kommando;8;"6""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!, Verstohlene Gits;Nahkampfspezialist, Sprengstoffspezialist, Aufklärer, Veteran;Infantrie, Kommando
-Orks;Kommando Boss Nob;12;"6""";3+;5+;5;4;2;3;7;6+;1;;Jetz' geht'z los!, Verstohlene Gits;Nahkampfspezialist, Sprengstoffspezialist, Aufklärer, Veteran, Anführer;Infantrie, Kommando
-Orks;Burna Boy;12;"5""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Veteran, Zelot;Infantrie, Burna Boy
-Orks;Burna Spanner;10;"5""";3+;5+;4;4;1;2;6;6+;3;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Veteran, Zelot, Funker;Infantrie, Burna Boy
-Orks;Loota;12;"5""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Schwerer Schütze, Veteran;Infantrie, Loota
-Orks;Loota Spanner;10;"5""";3+;5+;4;4;1;2;6;6+;3;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Schwerer Schütze, Veteran, Funker;Infantrie, Loota
+Fraktion;Einheit;Name;Punkte;B;KG;BF;S;W;LP;A;MW;RW;Max;Ausrüstungsoption;Fähigkeiten;Spezialisten;Schlüsselwörter;Benötigt
+Adeptus Astartes;Scout;Scout;10;"6""";3+;3+;4;4;1;1;7;4+;;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Aufklärer, Scharfschütze;Imperium, Infantrie, Scout;
+Adeptus Astartes;Scout;Scout Gunner;11;"6""";3+;3+;4;4;1;1;7;4+;2;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Aufklärer, Scharfschütze, Schwerer Schütze;Imperium, Infantrie, Scout;
+Adeptus Astartes;Scout;Scout Sergeant;11;"6""";3+;3+;4;4;1;2;8;4+;1;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Aufklärer, Scharfschütze, Anführer;Imperium, Infantrie, Scout;
+Adeptus Astartes;Tactcal Marine;Tactical Marine;12;"6""";3+;3+;4;4;1;1;7;3+;;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Scharfschütze, Veteran;Imperium, Infantrie, Tactical Marine;
+Adeptus Astartes;Tactcal Marine;Tactical Marine Gunner;13;"6""";3+;3+;4;4;1;1;7;3+;2;;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Scharfschütze, Veteran, Schwerer Schütze;Imperium, Infantrie, Tactical Marine;
+Adeptus Astartes;Tactcal Marine;Tactical Marine Sergeant;13;"6""";3+;3+;4;4;1;2;8;3+;1;Auspex;Die keine Furcht kennen, Transhumane Physiologie;Funker, Sprengstoffspezialist, Scharfschütze, Veteran, Anführer;Imperium, Infantrie, Tactical Marine;
+Adeptus Astartes;Reiver;Reiver;16;"6""";3+;3+;4;4;2;2;7;3+;;Greifhakenwerfer, Gravschirm;Die keine Furcht kennen, Transhumane Physiologie, Terrortruppen;Nahkampfspezialist, Funker, Sprengstoffspezialist, Aufklärer, Veteran;Imperium, Infantrie, Primaris, Reiver;
+Adeptus Astartes;Reiver;Reiver Sergeant;17;"6""";3+;3+;4;4;2;3;8;3+;1;Greifhakenwerfer, Gravschirm;Die keine Furcht kennen, Transhumane Physiologie, Terrortruppen;Nahkampfspezialist, Funker, Sprengstoffspezialist, Aufklärer, Veteran, Anführer;Imperium, Infantrie, Primaris, Reiver;
+Adeptus Astartes;Intercessor;Intercessor;15;"6""";3+;3+;4;4;2;2;7;3+;;;Die keine Furcht kennen, Transhumane Physiologie;Nahkampfspezialist, Funker, Scharfschütze, Veteran;Imperium, Infantrie, Primaris, Intercessor;
+Adeptus Astartes;Intercessor;Intercessor Gunner;16;"6""";3+;3+;4;4;2;2;7;3+;2;Unterlauf Granatwerfer;Die keine Furcht kennen, Transhumane Physiologie;Nahkampfspezialist, Funker, Scharfschütze, Veteran, Sprengstoffspezialist;Imperium, Infantrie, Primaris, Intercessor;
+Adeptus Astartes;Intercessor;Intercessor Sergeant;16;"6""";3+;3+;4;4;2;3;8;3+;1;;Die keine Furcht kennen, Transhumane Physiologie;Nahkampfspezialist, Funker, Scharfschütze, Veteran, Anführer;Imperium, Infantrie, Primaris, Intercessor;
+Orks;Ork Boy;Ork Boy;6;"5""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!;Nahkampfspezialist, Sprengstoffspezialist, Veteran;Infantrie, Ork Boy;
+Orks;Ork Boy;Ork Boy Gunner;7;"5""";3+;5+;4;4;1;2;6;6+;2;;Jetz' geht'z los!;Nahkampfspezialist, Sprengstoffspezialist, Veteran, Schwerer Schütze;Infantrie, Ork Boy;
+Orks;Ork Boy;Boss Nob;10;"5""";3+;5+;5;4;2;3;7;6+;1;;Jetz' geht'z los!;Nahkampfspezialist, Sprengstoffspezialist, Veteran;Infantrie, Ork Boy;
+Orks;Gretchin;Gretchin;3;"5""";5+;4+;2;2;1;1;4;6+;;;;Anführer, Aufklärer;Infantrie, Gretchin;
+Orks;Kommando;Kommando;8;"6""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!, Verstohlene Gits;Nahkampfspezialist, Sprengstoffspezialist, Aufklärer, Veteran;Infantrie, Kommando;
+Orks;Kommando;Kommando Boss Nob;12;"6""";3+;5+;5;4;2;3;7;6+;1;;Jetz' geht'z los!, Verstohlene Gits;Nahkampfspezialist, Sprengstoffspezialist, Aufklärer, Veteran, Anführer;Infantrie, Kommando;
+Orks;Burna Boy;Burna Boy;12;"5""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Veteran, Zelot;Infantrie, Burna Boy;
+Orks;Burna Boy;Burna Spanner;10;"5""";3+;5+;4;4;1;2;6;6+;3;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Veteran, Zelot, Funker;Infantrie, Burna Boy;
+Orks;Loota;Loota;12;"5""";3+;5+;4;4;1;2;6;6+;;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Schwerer Schütze, Veteran;Infantrie, Loota;
+Orks;Loota;Loota Spanner;10;"5""";3+;5+;4;4;1;2;6;6+;3;;Jetz' geht'z los!;Anführer, Nahkampfspezialist, Sprengstoffspezialist, Schwerer Schütze, Veteran, Funker;Infantrie, Loota;
+Thousand Sons;Rubric Marine;Rubric Marine;16;"5""";3+;3+;4;4;1;1;7;3+;;;Tod dem falschen Imperator, Alles ist Staub, Günstlinge des Tzeentch;Nahkampfspezialist, Sprengstoffspezialist, Veteran;Chaos, Tzeentch, Heretic Astartes, Infantrie, Rubric Marine;
+Thousand Sons;Rubric Marine;Rubric Marine (Ikone);16;"5""";3+;3+;4;4;1;1;7;3+;1;;Tod dem falschen Imperator, Alles ist Staub, Günstlinge des Tzeentch;Nahkampfspezialist, Sprengstoffspezialist, Veteran;Chaos, Tzeentch, Heretic Astartes, Infantrie, Rubric Marine;
+Thousand Sons;Rubric Marine;Rubric Marine Gunner;16;"5""";3+;3+;4;4;1;1;7;3+;1;;Tod dem falschen Imperator, Alles ist Staub, Günstlinge des Tzeentch;Nahkampfspezialist, Sprengstoffspezialist, Veteran, Schwerer Schütze;Chaos, Tzeentch, Heretic Astartes, Infantrie, Rubric Marine;
+Thousand Sons;Rubric Marine;Aspiring Sorcerer;17;"5""";3+;3+;4;4;1;2;8;3+;1;;Tod dem falschen Imperator, Alles ist Staub, Günstlinge des Tzeentch, Transhumane Physiologie, Psioniker;Nahkampfspezialist, Sprengstoffspezialist, Veteran, Anführer;Chaos, Tzeentch, Heretic Astartes, Infantrie, Rubric Marine, Psioniker;
+Thousand Sons;Tzaangor;Tzaangor;7;"6""";3+;4+;4;4;1;1;6;6+;;;Aura dunkler Pracht;Nahkampfspezialist, Sanitäter, Veteran, Zelot;Chaos, Tzeentch, Heretic Astartes, Infantrie, Tzaangor;
+Thousand Sons;Tzaangor;Tzaangor (Funker);7;"6""";3+;4+;4;4;1;1;6;6+;1;;Aura dunkler Pracht;Funker, Nahkampfspezialist, Sanitäter, Veteran, Zelot;Chaos, Tzeentch, Heretic Astartes, Infantrie, Tzaangor;
+Thousand Sons;Tzaangor;Twistbray;7;"6""";3+;4+;4;4;1;2;7;6+;1;;Aura dunkler Pracht;Nahkampfspezialist, Sanitäter, Veteran, Zelot, Anführer;Chaos, Tzeentch, Heretic Astartes, Infantrie, Tzaangor;
+Tau;Fire Warrior;Shas'la;8;"6""";5+;4+;3;3;1;1;6;4+;;;Für das höhere Wohl, Ritual des Klingenbundes;Funker, Sanitäter, Aufklärer, Scharfschütze, Veteran;Infantrie, Fire Warrior;
+Tau;Fire Warrior;Shas'ui;8;"6""";5+;4+;3;3;1;2;7;4+;1;Zielmarkierer;Für das höhere Wohl, Ritual des Klingenbundes;Funker, Sanitäter, Aufklärer, Scharfschütze, Veteran, Anführer;Infantrie, Fire Warrior;
+Tau;Fire Warrior;DS8 Tactical Support Turret;0;0;0;4+;3;3;1;0;4;4+;1;;DS8 Tactical Support Turret;;Infantrie, Fire Warrior;
+Tau;Pathfinder;Pathfinder;6;"7""";5+;4+;3;3;1;1;6;5+;;;Für das höhere Wohl, Ritual des Klingenbundes;Funker, Sprengstoffspezialist, Sanitäter, Aufklärer, Veteran;Infantrie, Pathfinder;
+Tau;Pathfinder;Pathfinder Gunner;7;"7""";5+;4+;3;3;1;1;6;5+;3;;Für das höhere Wohl, Ritual des Klingenbundes;Funker, Sprengstoffspezialist, Sanitäter, Aufklärer, Veteran, Scharfschütze;Infantrie, Pathfinder;
+Tau;Pathfinder;Pathfinder Shas'ui;7;"7""";5+;4+;3;3;1;2;7;5+;1;;Für das höhere Wohl, Ritual des Klingenbundes;Funker, Sprengstoffspezialist, Sanitäter, Aufklärer, Veteran, Anführer;Infantrie, Pathfinder;
+Tau;Fire Warrior Breacher;Breacher Shas'la;8;"6""";5+;4+;3;3;1;1;6;4+;;;Für das höhere Wohl, Ritual des Klingenbundes;Funker, Sprengstoffspezialist, Sanitäter, Aufklärer, Veteran;Infantrie, Fire Warrior Breacher;
+Tau;Fire Warrior Breacher;Breacher Shas'ui;8;"6""";5+;4+;3;3;1;2;7;4+;1;Zielmarkierer;Für das höhere Wohl, Ritual des Klingenbundes;Funker, Sprengstoffspezialist, Sanitäter, Aufklärer, Veteran, Anführer;Infantrie, Fire Warrior Breacher;
+Tau;Fire Warrior Breacher;Breacher DS8 Tactical Support Turret;0;0;0;4+;3;3;1;0;4;4+;1;;DS8 Tactical Support Turret;;Infantrie, Fire Warrior Breacher;
+Tau;XV25 Stealth Battlesuit;Stealth Shas'ui;20;"8""";5+;4+;4;4;2;2;7;3+;;;Für das höhere Wohl, Ritual des Klingenbundes, Camouflage Felder;Funker, Schwerer Schütze, Aufklärer, Veteran;Battlesuit, Infantrie, Schwebemodul, XV25 Stealth Battlesuit;
+Tau;XV25 Stealth Battlesuit;Stealth Shas'vre;20;"8""";5+;4+;4;4;2;3;8;3+;1;Zielmarkierer, Feuerleitsystem;Für das höhere Wohl, Ritual des Klingenbundes, Camouflage Felder;Funker, Schwerer Schütze, Aufklärer, Veteran, Anführer;Battlesuit, Infantrie, Schwebemodul, XV25 Stealth Battlesuit;
+Tau;Drone;MV1 Gun Drone;7;"8""";5+;5+;3;4;1;1;6;5+;;;Unterstützungssubroutine, Für das höhere Wohl, Retter-Protokolle;;Fliegen, Drone;
+Tau;Drone;MV4 Shield Drone;7;"8""";5+;5+;3;4;1;1;6;5+;;;Unterstützungssubroutine, Für das höhere Wohl, Retter-Protokolle;;Fliegen, Drone;
+Tau;Drone;MV7 Marker Drone;7;"8""";5+;5+;3;4;1;1;6;5+;;;Unterstützungssubroutine, Für das höhere Wohl, Retter-Protokolle;;Fliegen, Drone;
+Tau;Drone;MV36 Guardian Drone;7;"8""";5+;5+;3;4;1;1;6;5+;1;;Unterstützungssubroutine, Für das höhere Wohl, Retter-Protokolle;;Fliegen, Drone;Fire Warrior, Fire Warrior Breacher
+Tau;Drone;MV33 Grav-Inhibitor Drone;7;"8""";5+;5+;3;4;1;1;6;5+;1;;Unterstützungssubroutine, Für das höhere Wohl, Retter-Protokolle;;Fliegen, Drone;Pathfinder
+Tau;Drone;MV31 Pulse Accelerator Drone;7;"8""";5+;5+;3;4;1;1;6;5+;1;;Unterstützungssubroutine, Für das höhere Wohl, Retter-Protokolle;;Fliegen, Drone;Pathfinder
+Tau;Drone;MB3 Recon Drone;7;"8""";5+;5+;3;4;1;1;6;5+;1;;Unterstützungssubroutine, Für das höhere Wohl, Retter-Protokolle;;Fliegen, Drone;Pathfinder
+Grey Knights;Grey Knight;Grey Knight;18;"6""";3+;3+;4;4;1;1;7;3+;;;Die keine Furcht kennen, Dämonenjäger, Riten der Verbannung, Transhumane Physiologie;Nahkampfspezialist, Funker, Spregstoffspezialist, Veteran, Zelot;Imperium, Adeptus Astartes, Infantrie, Psioniker, Grey Knight;
+Grey Knights;Grey Knight;Grey Knight Gunner;19;"6""";3+;3+;4;4;1;1;7;3+;2;;Die keine Furcht kennen, Dämonenjäger, Riten der Verbannung, Transhumane Physiologie;Nahkampfspezialist, Funker, Spregstoffspezialist, Veteran, Zelot, Schwerer Schütze;Imperium, Adeptus Astartes, Infantrie, Psioniker, Grey Knight;
+Grey Knights;Grey Knight;Justicar;19;"6""";3+;3+;4;4;1;2;8;3+;1;;Die keine Furcht kennen, Dämonenjäger, Riten der Verbannung, Transhumane Physiologie;Nahkampfspezialist, Funker, Spregstoffspezialist, Veteran, Zelot, Anführer;Imperium, Adeptus Astartes, Infantrie, Psioniker, Grey Knight;

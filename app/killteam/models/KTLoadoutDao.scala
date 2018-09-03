@@ -96,7 +96,7 @@ object KTLoadoutDao {
     val loadout = KTLoadoutDo(name = csvLoadoutDto.name,
       troop = troopDo,
       faction = factionDo,
-      weapons = weapons.toSet,
+      weapons = weapons.toList,
       items = items.toSet
     )
 
@@ -119,7 +119,7 @@ object KTLoadoutDao {
 case class KTLoadoutDo(faction: KTFactionDo,
                        troop: KTTroopDo,
                        name: String,
-                       weapons: Set[KTWeaponDo],
+                       weapons: List[KTWeaponDo],
                        items: Set[KTItemDo])
 
 
