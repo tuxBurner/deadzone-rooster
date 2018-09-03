@@ -22,13 +22,7 @@ object KTTacticsLogic {
       .getGeneralTactics()
       .map(tacticDoToDto)
 
-    val factionTactics = if (StringUtils.isBlank(armyDto.faction)) {
-      List()
-    } else {
-      KTTacticsDao
-        .getFactionTactics(armyDto.faction)
-        .map(tacticDoToDto)
-    }
+    val factionTactics = getTacticsForFaction(armyDto.faction)
 
 
     val specialistTactics = armyDto
@@ -43,6 +37,22 @@ object KTTacticsLogic {
     Map(ETacticType.GENERAL -> generalTactics, ETacticType.FACTION -> factionTactics, ETacticType.SPECIALIST -> specialistTactics)
   }
 
+
+  /**
+    * Gets all faction tactics
+    *
+    * @param factionName the name of the faction to get the tactics for
+    * @return
+    */
+  def getTacticsForFaction(factionName: String): List[KTTacticDto] = {
+    if (StringUtils.isBlank(factionName)) {
+      List()
+    } else {
+      KTTacticsDao
+        .getFactionTactics(factionName)
+        .map(tacticDoToDto)
+    }
+  }
 
   /**
     * Converts the given do to a dto

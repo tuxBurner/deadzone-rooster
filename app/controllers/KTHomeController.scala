@@ -29,10 +29,10 @@ class KTHomeController @Inject()(cc: ControllerComponents, langs: Langs, mainTpl
   def displayFactionOverview(factionName: String) = Action {
     implicit request =>
       val allFactions = KTFactionLogic.getAllFactions()
-      val allFactionWeapons = KTWeaponLogic.getAllWeaponsByFactionName(factionName = factionName)
-      val allFactionItems = KTItemLogic.getAllItemsForFaction(factionName = factionName)
-      val allFactionAbilities = KTAbilityLogic.getAllAbilitiesForFaction(factionName = factionName)
-      Ok(views.html.killteamviews.displayFactionOverview(allFactionWeapons, allFactionItems,allFactionAbilities, factionName, allFactions))
+
+      val factionInfos = KTFactionLogic.getFactionInfos(factionName = factionName)
+
+      Ok(views.html.killteamviews.displayFactionOverview(factionInfos, factionName, allFactions))
   }
 
 

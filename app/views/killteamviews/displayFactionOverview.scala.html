@@ -2,7 +2,9 @@
 @import killteam.logic.KTFactionDto
 @import killteam.logic.KTItemDto
 @import killteam.logic.KTAbilityDto
-@(allWeaponsByFaction: List[KTWeaponDto], allFactionItems: List[KTItemDto], allFactionAbilities: List[KTAbilityDto] ,factionName: String, allFactions: List[KTFactionDto])(implicit messages: Messages, mainTpl: views.html.killteamviews.main)
+@import killteam.logic.KTFactionInfosDto
+@import killteam.logic.ETacticType
+@(factionInfo: KTFactionInfosDto,factionName: String, allFactions: List[KTFactionDto])(implicit messages: Messages, mainTpl: views.html.killteamviews.main)
 
 @mainTpl("kt.mainmenu.factionOverview") {
 
@@ -16,10 +18,12 @@
 
   <h2>@factionName</h2>
 
-  @views.html.killteamviews.roster.displayWeapons(allWeaponsByFaction)
+  @views.html.killteamviews.roster.displayWeapons(factionInfo.allWeapons)
 
-  @views.html.killteamviews.roster.displayItems(allFactionItems)
+  @views.html.killteamviews.roster.displayItems(factionInfo.allItems)
 
-  @views.html.killteamviews.roster.displayAbilities(allFactionAbilities)
+  @views.html.killteamviews.roster.displayAbilities(factionInfo.allAbilities)
+
+  @views.html.killteamviews.roster.displayTacticsTable(ETacticType.FACTION, factionInfo.allTactics)
 
 }
