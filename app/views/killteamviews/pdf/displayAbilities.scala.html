@@ -1,6 +1,6 @@
 @(abilities: List[killteam.logic.KTAbilityDto])(implicit messages: Messages)
 @if(abilities.isEmpty == false) {
-  <table class="pdf">
+  <table class="pdf" style="page-break-before: always;">
     <thead class="thead-dark">
       <th colspan="2">@Messages("kt.ability.tbl.title")</th>
       <tr>
