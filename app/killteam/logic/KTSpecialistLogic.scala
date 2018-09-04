@@ -91,6 +91,12 @@ object KTSpecialistLogic {
     * @return
     */
   def getAvaibleSpecialistSelectOptions(troopName: String, factionName: String, armyDto: KTArmyDto): List[String] = {
+
+    // only 4 specialist allowed
+    if(armyDto.troops.count(_.specialist.isDefined) >= 4) {
+      return List("")
+    }
+
     val specialistsForTroop = KTTroopDao.getTroopByFactionAndName(troopName = troopName, factionName = factionName)
       .map(_.specialists.map(_.name).toList)
       .getOrElse(List("None"))

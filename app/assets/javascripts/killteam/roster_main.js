@@ -43,7 +43,7 @@ let ktRosterGuiHandler = {
     let selectedTroop = $('#roster_addTroop_select').val();
     jsRoutes.controllers.KTRosterController.getSelectSpecialistsForTroop(selectedTroop,selectedFaction).ajax({
       success: function (data) {
-        if(data.length == 1) {
+        if(data.length === 1) {
           $('#roster_specialists_select_wrapper').hide();
         } else {
           $('#roster_specialists_select_wrapper').show();
