@@ -96,7 +96,9 @@ object KTLoadoutDao {
       troop = troopDo,
       faction = factionDo,
       weapons = weapons.toList,
-      items = items.toSet
+      items = items.toSet,
+      maxPerUnit = csvLoadoutDto.maxPerUnit,
+      unit = csvLoadoutDto.unit
     )
 
     loadOuts += loadout
@@ -109,17 +111,21 @@ object KTLoadoutDao {
 /**
   * Represents a loadout
   *
-  * @param faction the faction the loadout belongs to
-  * @param troop   the troop of the loadout
-  * @param name    the name of the loadout
-  * @param weapons the weapons in the loadout
-  * @param items   the items in the loadout
+  * @param faction    the faction the loadout belongs to
+  * @param troop      the troop of the loadout
+  * @param name       the name of the loadout
+  * @param weapons    the weapons in the loadout
+  * @param items      the items in the loadout
+  * @param maxPerUnit how often may this loadout be equiped on a unit
+  * @param unit       when max in army != 0 and this is set this means only n unit may equip this
   */
 case class KTLoadoutDo(faction: KTFactionDo,
                        troop: KTTroopDo,
                        name: String,
                        weapons: List[KTWeaponDo],
-                       items: Set[KTItemDo])
+                       items: Set[KTItemDo],
+                       maxPerUnit: Int,
+                       unit: String)
 
 
 

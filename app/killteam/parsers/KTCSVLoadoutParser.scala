@@ -27,6 +27,9 @@ class KTCSVLoadoutParser @Inject()(configuration: Configuration) extends CSVData
 
   private val CSV_HEADER_ITEMS = "Ausrüstung"
 
+  private val CSV_HEADER_MAX_PER_UNIT = "Max Einheit"
+
+  private val CSV_HEADER_UNIT = "Einheit"
 
   /**
     * Refreshs all loadouts from the csv
@@ -52,7 +55,7 @@ class KTCSVLoadoutParser @Inject()(configuration: Configuration) extends CSVData
     * @return
     */
   private def importLoadoutFromCsvs(): List[KTCsvLoadoutDto] = {
-    val dataWithHeaders = readCsvFile("loadout.csv","killteam")
+    val dataWithHeaders = readCsvFile("loadout.csv", "killteam")
     dataWithHeaders.map(parseLineMap(_)).flatten
   }
 
@@ -69,9 +72,11 @@ class KTCSVLoadoutParser @Inject()(configuration: Configuration) extends CSVData
         troop = getDataFromLine(CSV_HEADER_TROOP, lineData),
         name = getDataFromLine(CSV_HEADER_NAME, lineData),
         weapons = getListFromLine(CSV_HEADER_WEAPONS, lineData, true),
-        items = getSetFromLine(CSV_HEADER_ITEMS, lineData, true)
+        items = getSetFromLine(CSV_HEADER_ITEMS, lineData, true),
+        maxPerUnit = getIntFromLine(CSV_HEADER_MAX_PER_UNIT, lineData, true),
+        unit = getDataFromLine(CSV_HEADER_UNIT, lineData, true)
       )
-      //Logger.info(s"Parsed troop: $parsedTroop from line $lineData")
+
       Some(parsedLoadout)
 
     } catch {
@@ -84,16 +89,20 @@ class KTCSVLoadoutParser @Inject()(configuration: Configuration) extends CSVData
 /**
   * Represents a loadout from the loadout.csv
   *
-  * @param faction the faction the loadout belongs to
-  * @param troop   the troop of the loadout
-  * @param name    the name of the loadout
-  * @param weapons the weapons in the loadout
-  * @param items   the items in the loadout
+  * @param faction    the faction the loadout belongs to
+  * @param troop      the troop of the loadout
+  * @param name       the name of the loadout
+  * @param weapons    the weapons in the loadout
+  * @param items      the items in the loadout
+  * @param maxPerUnit how often may this loadout be equiped on a unit
+  * @param unit       when max in army != 0 and this is set this means only n unit may equip this
   */
 case class KTCsvLoadoutDto(faction: String,
                            troop: String,
                            name: String,
                            weapons: List[String],
-                           items: Set[String])
+                           items: Set[String],
+                           maxPerUnit: Int,
+                           unit: String)
 
 

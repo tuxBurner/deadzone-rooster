@@ -5,13 +5,15 @@
 <table class="table table-sm table-bordered">
   <thead class="thead-dark">
     <tr>
-      <th colspan="5">@Messages("kt.troop.loadouts.title")</th>
+      <th colspan="7">@Messages("kt.troop.loadouts.title")</th>
     </tr>
     <tr>
       <th>@Messages("kt.loadout.name")</th>
       <th>@Messages("kt.loadout.weapons")</th>
       <th>@Messages("kt.loadout.items")</th>
       <th>@Messages("kt.loadout.points")</th>
+      <th>@Messages("kt.loadout.unit")</th>
+      <th>@Messages("kt.loadout.max")</th>
       <th></th>
     </tr>
   </thead>
@@ -26,8 +28,10 @@
       <td>@loadoutOption.loadout.weapons.map(_.name).mkString(" / ")</td>
       <td>@loadoutOption.loadout.items.map(_.name).mkString(" / ")</td>
       <td>@loadoutOption.loadout.points</td>
+      <td>@loadoutOption.loadout.unit</td>
+      <td>@if(loadoutOption.loadout.maxPerUnit > 0) { @loadoutOption.loadout.maxPerUnit } else { - }</td>
       <td>
-      @if(loadoutOption.selected == false) {
+      @if(loadoutOption.selected == false && loadoutOption.selectable) {
         <a class="btn btn-sm btn-dark" href="@routes.KTRosterController.setNewLoadoutAtTroop(troop.uuid, loadoutOption.loadout.name)">
           SETME
         </a>

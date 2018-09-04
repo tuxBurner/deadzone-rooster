@@ -249,6 +249,8 @@ kt.loadout.name=Name
 kt.loadout.weapons=Waffen
 kt.loadout.items=Ausrüstung
 kt.loadout.points=Punkte
+kt.loadout.unit=Einheit
+kt.loadout.max=Max in Armee
 
 kt.specialist.tbl.title=Spezialist
 kt.special.tbl.name=Spezial Name

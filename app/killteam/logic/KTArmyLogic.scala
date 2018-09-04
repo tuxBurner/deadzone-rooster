@@ -90,8 +90,14 @@ object KTArmyLogic {
       .map(troopDto => {
         val loadOutsForTroop = getPossibleLoadoutsForTroop(troopDto)
           .map(loadout => {
+
+            // check if the loadout is selectable it may not because it is a unique one and already used
+            val selectable = loadout.unit.isEmpty || !armyDto.troops.exists(troop => {
+              troop.unit == loadout.unit && troop.loadout.name == loadout.name
+            })
+
             val selected = loadout.name == troopDto.loadout.name
-            KTOptionLoadout(selected = selected, loadout = loadout)
+            KTOptionLoadout(selected = selected,selectable = selectable ,loadout = loadout)
           })
 
 
@@ -166,6 +172,8 @@ object KTArmyLogic {
     KTLoadoutDao.getLoadoutsByTroopAndName(troopName = troopDto.name, factionName = troopDto.faction)
       .map(loadoutDoToDto(_))
       .sortBy(_.name)
+
+
   }
 
   /**
@@ -184,7 +192,9 @@ object KTArmyLogic {
     KTLoadoutDto(name = loadoutDo.name,
       points = weaponPoints + itemsPoints,
       weapons = weapons,
-      items = items)
+      items = items,
+      unit = loadoutDo.unit,
+      maxPerUnit = loadoutDo.maxPerUnit)
   }
 
 
@@ -199,7 +209,7 @@ object KTArmyLogic {
     Logger.info(s"Removing troop: $uuid from army")
 
     val newTroops = armyDto.troops.filter(_.uuid != uuid)
-    
+
     val checkedWithRequiredUnits = newTroops.filter(newTroop => {
       newTroop.requiredUnits.isEmpty || newTroops.exists(troop => newTroop.requiredUnits.contains(troop.unit))
     })
@@ -411,21 +421,27 @@ case class KTTroopOptionsDto(loadoutOptions: List[KTOptionLoadout],
 /**
   * Loadout option
   *
-  * @param selected true when the loadout is currently selected in the troop
-  * @param loadout  the loadout itself
+  * @param selected   true when the loadout is currently selected in the troop
+  * @param loadout    the loadout itself
+  * @param selectable when false the loadout cannot be selected
   */
 case class KTOptionLoadout(selected: Boolean,
+                           selectable: Boolean,
                            loadout: KTLoadoutDto)
 
 /**
   * Loadout a troop can get
   *
-  * @param name    the name of the loadout
-  * @param weapons the weapons of the loadout
-  * @param items   the items of the loadout
-  * @param points  how many points is the loadout worth
+  * @param name       the name of the loadout
+  * @param weapons    the weapons of the loadout
+  * @param items      the items of the loadout
+  * @param points     how many points is the loadout worth
+  * @param maxPerUnit how often this loadout may be used per unit
+  * @param unit       the name of the unit
   */
 case class KTLoadoutDto(name: String,
                         points: Int,
                         weapons: List[KTWeaponDto],
-                        items: List[KTItemDto])
+                        items: List[KTItemDto],
+                        maxPerUnit: Int,
+                        unit: String)
