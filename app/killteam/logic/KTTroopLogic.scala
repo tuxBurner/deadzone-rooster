@@ -13,7 +13,8 @@ object KTTroopLogic {
   def getAllSelectTroopsForFaction(faction: String, armyDto: KTArmyDto): List[KTTroopSelectDto] = {
     KTTroopDao.getAllTroopsOfFaction(factionName = faction)
       .toList
-      .filter(troop => troop.requiredUnits.isEmpty || armyDto.troops.exists(armyTroop => troop.requiredUnits.contains(armyTroop.unit)))
+      .filter(troop => troop.requiredUnits.isEmpty || armyDto.troops.exists(armyTroop => troop.requiredUnits.contains(armyTroop.unit)))  // filter if there are troops which are required
+      .filter(troop=> troop.maxInArmy == 0 || armyDto.troops.count(armyTroop => armyTroop.name == troop.name) <  troop.maxInArmy) // filter where there are more troops than max allowed
       .sortBy(_.name)
       .map(troopDo => KTTroopSelectDto(name = troopDo.name, points = troopDo.points))
   }
