@@ -96,7 +96,7 @@ object KTSpecialistLogic {
       .getOrElse(List("None"))
 
     val returnList = "" :: specialistsForTroop
-    returnList
+    returnList.sorted
   }
 
   /**
