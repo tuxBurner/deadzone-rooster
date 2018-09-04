@@ -18,9 +18,13 @@ object KTTacticsLogic {
   def getTacticsForArmy(armyDto: KTArmyDto): Map[ETacticType, List[KTTacticDto]] = {
     Logger.info(s"Collecting tactics for the army")
 
-    val generalTactics = KTTacticsDao
-      .getGeneralTactics()
-      .map(tacticDoToDto)
+    val generalTactics = if(armyDto.troops.isEmpty == false) {
+      KTTacticsDao
+        .getGeneralTactics()
+        .map(tacticDoToDto)
+    } else {
+      List()
+    }
 
     val factionTactics = getTacticsForFaction(armyDto.faction)
 
