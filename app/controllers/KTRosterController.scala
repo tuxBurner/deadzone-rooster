@@ -43,7 +43,9 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def rosterMain = Action {
     implicit request =>
-      withCacheId(Ok(views.html.killteamviews.roster.roster(getArmyFromCache(request))), request)
+      getArmyFromCacheAndHandleResult(army => {
+        Ok(views.html.killteamviews.roster.roster(army))
+      })
   }
 
 
@@ -55,7 +57,15 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def displayEditOptions(uuid: String) = Action {
     implicit request =>
-      withCacheId(Ok(views.html.killteamviews.roster.roster(getArmyFromCache(request), uuid)), request)
+      getArmyFromCacheAndHandleResult(army => {
+        KTArmyLogic.getPossibleConfigurationOptionsForTroop(uuid, army)
+          .map(troopConfigOption => {
+            Ok(views.html.killteamviews.roster.editTroop(troopConfigOption))
+          })
+          .getOrElse({
+            Redirect(routes.KTRosterController.rosterMain())
+          })
+      })
   }
 
   /**
@@ -66,7 +76,9 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   @JSRoute
   def getFactions = Action {
     implicit request =>
-      Ok(Json.toJson(KTFactionLogic.getAllOrTheOneFromTheArmyFactions(getArmyFromCache(request))))
+      getArmyFromCacheAndHandleResult(army => {
+        Ok(Json.toJson(KTFactionLogic.getAllOrTheOneFromTheArmyFactions(army)))
+      })
   }
 
 
@@ -79,9 +91,10 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   @JSRoute
   def getSelectTroopsForFaction(factionName: String) = Action {
     implicit request =>
-    val armyFromCache = getArmyFromCache(request)
-    val troopsForFaction = KTTroopLogic.getAllSelectTroopsForFaction(faction = factionName, armyDto = armyFromCache)
-    Ok(Json.toJson(troopsForFaction))
+      getArmyFromCacheAndHandleResult(army => {
+        val troopsForFaction = KTTroopLogic.getAllSelectTroopsForFaction(faction = factionName, armyDto = army)
+        Ok(Json.toJson(troopsForFaction))
+      })
   }
 
   /**
@@ -93,9 +106,11 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   @JSRoute
   def getSelectSpecialistsForTroop(troopName: String, factionName: String) = Action {
-    request =>
-      val specialists = KTSpecialistLogic.getAvaibleSpecialistSelectOptions(troopName = troopName, factionName = factionName, getArmyFromCache(request))
-      Ok(Json.toJson(specialists))
+    implicit request =>
+      getArmyFromCacheAndHandleResult(army => {
+        val specialists = KTSpecialistLogic.getAvaibleSpecialistSelectOptions(troopName = troopName, factionName = factionName, army)
+        Ok(Json.toJson(specialists))
+      })
   }
 
   /**
@@ -111,14 +126,13 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
       val troopName = (request.body \ "troop").as[String]
       val specialistName = (request.body \ "specialist").as[String]
 
-      val armyFromCache = getArmyFromCache(request)
-      val armyWithNewTroop = KTArmyLogic.addTroopToArmy(factionName = factionName,
-        troopName = troopName,
-        specialistName = specialistName,
-        armyDto = armyFromCache)
+      getArmyFromCacheAndUpdateIt(army => {
+        KTArmyLogic.addTroopToArmy(factionName = factionName,
+          troopName = troopName,
+          specialistName = specialistName,
+          armyDto = army)
+      }, Ok(""))
 
-      writeArmyToCache(request, armyWithNewTroop)
-      withCacheId(Ok(""), request)
   }
 
   /**
@@ -129,8 +143,8 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def removeTroopFromArmy(uuid: String) = Action {
     implicit request =>
-      getArmyFromCacheAndUpdateIt((armyFromCache) => KTArmyLogic.removeTroopFromArmy(uuid = uuid, armyDto = armyFromCache))
-      Redirect(routes.KTRosterController.rosterMain())
+      getArmyFromCacheAndUpdateIt(armyFromCache => KTArmyLogic.removeTroopFromArmy(uuid = uuid, armyDto = armyFromCache),
+        Redirect(routes.KTRosterController.rosterMain()))
   }
 
   /**
@@ -142,8 +156,8 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def setNewLoadoutAtTroop(uuid: String, loadoutName: String) = Action {
     implicit request =>
-      getArmyFromCacheAndUpdateIt((armyFromCache) => KTArmyLogic.setLoadoutAtTroop(loadoutName = loadoutName, uuid = uuid, armyDto = armyFromCache))
-      Redirect(routes.KTRosterController.displayEditOptions(uuid))
+      getArmyFromCacheAndUpdateIt(armyFromCache => KTArmyLogic.setLoadoutAtTroop(loadoutName = loadoutName, uuid = uuid, armyDto = armyFromCache),
+      Redirect(routes.KTRosterController.displayEditOptions(uuid)))
   }
 
 
@@ -156,8 +170,8 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def addItemToTroop(uuid: String, itemName: String) = Action {
     implicit request =>
-      getArmyFromCacheAndUpdateIt((armyFromCache) => KTItemLogic.setItemAtTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache))
-      Redirect(routes.KTRosterController.displayEditOptions(uuid))
+      getArmyFromCacheAndUpdateIt(armyFromCache => KTItemLogic.setItemAtTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache),
+      Redirect(routes.KTRosterController.displayEditOptions(uuid)))
   }
 
   /**
@@ -169,8 +183,8 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def removeItemFromTroop(uuid: String, itemName: String) = Action {
     implicit request =>
-      getArmyFromCacheAndUpdateIt((armyFromCache) => KTItemLogic.removeItemFromTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache))
-      Redirect(routes.KTRosterController.displayEditOptions(uuid))
+      getArmyFromCacheAndUpdateIt(armyFromCache => KTItemLogic.removeItemFromTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache),
+      Redirect(routes.KTRosterController.displayEditOptions(uuid)))
   }
 
 
@@ -184,8 +198,8 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def addSpecialToTroop(uuid: String, specialName: String, specialLevel: Int) = Action {
     implicit request =>
-      getArmyFromCacheAndUpdateIt((armyFromCache) => KTSpecialistLogic.setSpecialAtTroop(specialName = specialName, specialLevel = specialLevel, uuid = uuid, armyFromCache))
-      Redirect(routes.KTRosterController.displayEditOptions(uuid))
+      getArmyFromCacheAndUpdateIt(armyFromCache => KTSpecialistLogic.setSpecialAtTroop(specialName = specialName, specialLevel = specialLevel, uuid = uuid, armyFromCache),
+      Redirect(routes.KTRosterController.displayEditOptions(uuid)))
   }
 
   /**
@@ -194,11 +208,12 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     * @return
     */
   def getTablePdf() = Action {
-    request =>
-      val army = getArmyFromCache(request)
-      val armyAbilities = KTAbilityLogic.getAllAbilitiesFromArmy(army)
-      val pdfBytes = pdfGenerator.toBytes(views.html.killteamviews.pdf.rosterTable.render(army, armyAbilities, messagesApi.preferred(request)), "http://localhost:9000")
-      withCacheId(Ok(pdfBytes), request).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
+    implicit request =>
+      getArmyFromCacheAndHandleResult(army => {
+        val armyAbilities = KTAbilityLogic.getAllAbilitiesFromArmy(army)
+        val pdfBytes = pdfGenerator.toBytes(views.html.killteamviews.pdf.rosterTable.render(army, armyAbilities, messagesApi.preferred(request)), "http://localhost:9000")
+        Ok(pdfBytes).as("application/pdf").withHeaders("Content-Disposition" -> "inline; filename=rooster.pdf")
+      })
   }
 
   /**
@@ -208,7 +223,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     * @param request
     * @return
     */
-  private def withCacheId(result: Result, request: Request[Any]): Result = {
+  private def withCacheId(result: Result)(implicit request: Request[Any]): Result = {
     val cacheId = getCacheIdFromSession(request)
     result.withSession(request.session + (KT_SESSION_ARMY_CACHE_ID_NAME -> cacheId))
   }
@@ -219,7 +234,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     * @param request
     * @return
     */
-  private def getArmyFromCache(request: Request[Any]): KTArmyDto = {
+  private def getArmyFromCache()(implicit request: Request[Any]): KTArmyDto = {
     val cacheId = getCacheIdFromSession(request)
     cache.get[KTArmyDto](cacheId).getOrElse(KTArmyDto())
   }
@@ -252,11 +267,26 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     * @param request            the request which holds the session information's
     * @return
     */
-  private def getArmyFromCacheAndUpdateIt(changeArmyFunction: (KTArmyDto) => KTArmyDto)(implicit request: Request[Any]): KTArmyDto = {
-    val armyFromCache = getArmyFromCache(request)
-    val updatedArmy = changeArmyFunction(armyFromCache)
-    writeArmyToCache(request, updatedArmy)
-    armyFromCache
+  private def getArmyFromCacheAndUpdateIt(changeArmyFunction: (KTArmyDto) => KTArmyDto, result: Result)(implicit request: Request[Any]): Result = {
+    getArmyFromCacheAndHandleResult(army => {
+      val changedArmy = changeArmyFunction(army)
+      writeArmyToCache(request, changedArmy)
+      result
+    })
+  }
+
+
+  /**
+    * Gets the army from cache and handles the result with it
+    *
+    * @param handleArmyFunction the function doing something with the army and returning a result
+    * @param request            the request from the user
+    * @return
+    */
+  private def getArmyFromCacheAndHandleResult(handleArmyFunction: (KTArmyDto) => Result)(implicit request: Request[Any]): Result = {
+    val armyFromCache = getArmyFromCache()
+    val result = handleArmyFunction(armyFromCache)
+    withCacheId(result)
   }
 
 }

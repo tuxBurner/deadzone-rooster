@@ -1,6 +1,5 @@
-@import killteam.logic.KTOptionLoadout
-@import killteam.logic.KTArmyTroopDto
-@(loadoutOptions: List[KTOptionLoadout], troop: KTArmyTroopDto)(implicit messages: Messages)
+@import killteam.logic.KTTroopOptionsDto
+@(troopConfigOptions: KTTroopOptionsDto)(implicit messages: Messages)
 
 <table class="table table-sm table-bordered">
   <thead class="thead-dark">
@@ -18,7 +17,7 @@
     </tr>
   </thead>
   <tbody>
-  @for((loadoutOption, loadoutIndex) <- loadoutOptions.zipWithIndex) {
+  @for((loadoutOption, loadoutIndex) <- troopConfigOptions.loadoutOptions.zipWithIndex) {
     <tr class="@if(loadoutOption.selected) {bg-success}">
       <th scope="row">
         <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse@loadoutIndex">
@@ -29,10 +28,12 @@
       <td>@loadoutOption.loadout.items.map(_.name).mkString(" / ")</td>
       <td>@loadoutOption.loadout.points</td>
       <td>@loadoutOption.loadout.unit</td>
-      <td>@if(loadoutOption.loadout.maxPerUnit > 0) { @loadoutOption.loadout.maxPerUnit } else { - }</td>
+      <td>@if(loadoutOption.loadout.maxPerUnit > 0) {
+        @loadoutOption.loadout.maxPerUnit
+      } else { - }</td>
       <td>
       @if(loadoutOption.selected == false && loadoutOption.selectable) {
-        <a class="btn btn-sm btn-dark" href="@routes.KTRosterController.setNewLoadoutAtTroop(troop.uuid, loadoutOption.loadout.name)">
+        <a class="btn btn-sm btn-dark" href="@routes.KTRosterController.setNewLoadoutAtTroop(troopConfigOptions.troop.uuid, loadoutOption.loadout.name)">
           SETME
         </a>
       }

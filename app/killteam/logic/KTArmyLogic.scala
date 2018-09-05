@@ -97,7 +97,7 @@ object KTArmyLogic {
             })
 
             val selected = loadout.name == troopDto.loadout.name
-            KTOptionLoadout(selected = selected,selectable = selectable ,loadout = loadout)
+            KTOptionLoadout(selected = selected, selectable = selectable, loadout = loadout)
           })
 
 
@@ -110,7 +110,8 @@ object KTArmyLogic {
 
         val specialistsOption = KTSpecialistLogic.getSpecialistOptionForTroop(troopDto)
 
-        Some(KTTroopOptionsDto(loadoutOptions = loadOutsForTroop,
+        Some(KTTroopOptionsDto(troop = troopDto,
+          loadoutOptions = loadOutsForTroop,
           itemOptions = itemsForTroop,
           specialistsOption = specialistsOption))
       })
@@ -410,11 +411,13 @@ case class KTItemOptionDto(selected: Boolean,
 /**
   * Contains all options a troop can have
   *
+  * @param troop             the troop te loadout is for
   * @param loadoutOptions    all possible loadouts options for the troop
   * @param items             all possible items the troop can equip
   * @param specialistsOption the specialist this troop has and which specials can or are be selected
   */
-case class KTTroopOptionsDto(loadoutOptions: List[KTOptionLoadout],
+case class KTTroopOptionsDto(troop: KTArmyTroopDto,
+                             loadoutOptions: List[KTOptionLoadout],
                              itemOptions: List[KTItemOptionDto],
                              specialistsOption: Option[KTSpecialistOptionDto])
 

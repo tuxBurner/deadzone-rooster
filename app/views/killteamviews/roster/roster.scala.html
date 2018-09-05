@@ -1,4 +1,4 @@
-@(armyDto: killteam.logic.KTArmyDto, editTroopUuid: String = "")(implicit messages: Messages, mainTpl: views.html.killteamviews.main)
+@(armyDto: killteam.logic.KTArmyDto)(implicit messages: Messages, mainTpl: views.html.killteamviews.main)
 
 @scripts = {
   <script type="text/javascript" src="@routes.Assets.versioned("javascripts/killteam/roster_main.js")"> </script>
@@ -73,15 +73,15 @@
   <hr />
 
   @* leader troop *@
-  @views.html.killteamviews.roster.displayTroopTypeTable(killteam.logic.KTArmyLogic.getLeadersFromArmy(armyDto),"leader",armyDto,editTroopUuid)
+  @views.html.killteamviews.roster.displayTroopTypeTable(killteam.logic.KTArmyLogic.getLeadersFromArmy(armyDto),"leader",armyDto)
   @* eo leader troop *@
 
   @* special troops *@
-  @views.html.killteamviews.roster.displayTroopTypeTable(killteam.logic.KTArmyLogic.getSpecialistsFromArmy(armyDto),"specialist",armyDto,editTroopUuid)
+  @views.html.killteamviews.roster.displayTroopTypeTable(killteam.logic.KTArmyLogic.getSpecialistsFromArmy(armyDto),"specialist",armyDto)
   @* eo special troops *@
 
   @* normal troops *@
-  @views.html.killteamviews.roster.displayTroopTypeTable(killteam.logic.KTArmyLogic.getNormalTroopsFromArmy(armyDto),"normal",armyDto,editTroopUuid)
+  @views.html.killteamviews.roster.displayTroopTypeTable(killteam.logic.KTArmyLogic.getNormalTroopsFromArmy(armyDto),"normal",armyDto)
   @* eo normal troops *@
 
   @* tactics *@

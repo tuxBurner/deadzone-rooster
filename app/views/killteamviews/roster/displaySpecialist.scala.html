@@ -1,8 +1,6 @@
-@import killteam.logic.KTArmyTroopDto
-@import killteam.logic.KTSpecialistOptionDto
-@(specialistOption: Option[KTSpecialistOptionDto], troop: KTArmyTroopDto)(implicit messages: Messages)
+@(troopConfigOptions: killteam.logic.KTTroopOptionsDto)(implicit messages: Messages)
 
-@if(specialistOption.isEmpty == false) {
+@if(troopConfigOptions.specialistsOption.isEmpty == false) {
   <table class="table table-sm table-bordered">
     <thead class="thead-dark">
       <tr>
@@ -12,12 +10,12 @@
     <tbody>
       <tr>
         <td class="text-white">
-        @specialistOption.get.name
+        @troopConfigOptions.specialistsOption.get.name
         </td>
       </tr>
       <tr>
         <td>
-        @views.html.killteamviews.roster.displaySpecial(specialistOption.get.baseSpecial.get,troop,specialistOption.get)
+        @views.html.killteamviews.roster.displaySpecial(troopConfigOptions.specialistsOption.get.baseSpecial.get,troopConfigOptions.troop,troopConfigOptions.specialistsOption.get)
         </td>
       </tr>
     </tbody>

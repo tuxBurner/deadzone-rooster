@@ -1,6 +1,6 @@
-@import killteam.logic.KTArmyTroopDto
-@(itemOptions: List[killteam.logic.KTItemOptionDto], troop: KTArmyTroopDto)(implicit messages: Messages)
-@if(itemOptions.isEmpty == false) {
+@import killteam.logic.KTTroopOptionsDto
+@(troopConfigOptions: KTTroopOptionsDto)(implicit messages: Messages)
+@if(troopConfigOptions.itemOptions.isEmpty == false) {
   <table class="table table-sm table-bordered">
     <thead class="thead-dark">
       <th colspan="4">@Messages("kt.item.tbl.title")</th>
@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-    @for(itemOption <- itemOptions) {
+    @for(itemOption <- troopConfigOptions.itemOptions) {
       <tr @if(itemOption.selected) {
         class="bg-success"}>
         <th scope="row">@itemOption.item.name</th>
@@ -20,10 +20,10 @@
         <td>@Messages(FixMessagesKey.fixKey(s"kt.item.${itemOption.item.faction}.${itemOption.item.name}.descr"))</td>
         <td>
         @if(itemOption.selected == false) {
-          <a href="@routes.KTRosterController.addItemToTroop(troop.uuid, itemOption.item.name)" class="btn btn-sm btn-primary">
+          <a href="@routes.KTRosterController.addItemToTroop(troopConfigOptions.troop.uuid, itemOption.item.name)" class="btn btn-sm btn-primary">
             Set</a>
         } else {
-          <a href="@routes.KTRosterController.removeItemFromTroop(troop.uuid, itemOption.item.name)" class="btn btn-sm btn-primary">
+          <a href="@routes.KTRosterController.removeItemFromTroop(troopConfigOptions.troop.uuid, itemOption.item.name)" class="btn btn-sm btn-primary">
             Rem</a>
         }
         </td>
