@@ -21,8 +21,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "bootstrap" % "4.0.0-2",
   "org.webjars" % "font-awesome" % "5.0.10",
 
-
-"com.github.tuxBurner" %% "play-jsannotations" % "2.6.0",
+  "com.github.tuxBurner" %% "play-jsannotations" % "2.6.0",
 
   "it.innove" % "play2-pdf" % "1.8.0",
   "io.methvin" %% "directory-watcher-better-files" % "0.4.0"
@@ -33,7 +32,7 @@ libraryDependencies ++= Seq(
 enablePlugins(LauncherJarPlugin)
 
 // compile all less files
-includeFilter in (Assets, LessKeys.less) := "*.less"
+includeFilter in(Assets, LessKeys.less) := "*.less"
 
 
 

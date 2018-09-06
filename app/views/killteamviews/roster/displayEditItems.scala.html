@@ -5,16 +5,20 @@
     <thead class="thead-dark">
       <th colspan="4">@Messages("kt.item.tbl.title")</th>
       <tr>
+        <th></th>
         <th>@Messages("kt.item.tbl.name")</th>
         <th>@Messages("kt.item.tbl.points")</th>
         <th>@Messages("kt.item.tbl.description")</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
     @for(itemOption <- troopConfigOptions.itemOptions) {
-      <tr @if(itemOption.selected) {
-        class="bg-success"}>
+      <tr>
+        <th>
+        @views.html.killteamviews.roster.checkBoxBtn(if(loadoutOption.selected == false && loadoutOption.selectable) {
+          Some(routes.KTRosterController.setNewLoadoutAtTroop(troopConfigOptions.troop.uuid, loadoutOption.loadout.name)  ) }
+        else { None })
+        </th>
         <th scope="row">@itemOption.item.name</th>
         <td>@itemOption.item.points</td>
         <td>@Messages(FixMessagesKey.fixKey(s"kt.item.${itemOption.item.faction}.${itemOption.item.name}.descr"))</td>

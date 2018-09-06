@@ -7,18 +7,23 @@
       <th colspan="7">@Messages("kt.troop.loadouts.title")</th>
     </tr>
     <tr>
+      <th></th>
       <th>@Messages("kt.loadout.name")</th>
       <th>@Messages("kt.loadout.weapons")</th>
       <th>@Messages("kt.loadout.items")</th>
       <th>@Messages("kt.loadout.points")</th>
       <th>@Messages("kt.loadout.unit")</th>
       <th>@Messages("kt.loadout.max")</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
   @for((loadoutOption, loadoutIndex) <- troopConfigOptions.loadoutOptions.zipWithIndex) {
-    <tr class="@if(loadoutOption.selected) {bg-success}">
+    <tr>
+      <td>
+        @views.html.killteamviews.roster.checkBoxBtn(if(loadoutOption.selected == false && loadoutOption.selectable) {
+          Some(routes.KTRosterController.setNewLoadoutAtTroop(troopConfigOptions.troop.uuid, loadoutOption.loadout.name)  ) }
+        else { None })
+      </td>
       <th scope="row">
         <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse@loadoutIndex">
         @loadoutOption.loadout.name
@@ -30,18 +35,13 @@
       <td>@loadoutOption.loadout.unit</td>
       <td>@if(loadoutOption.loadout.maxPerUnit > 0) {
         @loadoutOption.loadout.maxPerUnit
-      } else { - }</td>
-      <td>
-      @if(loadoutOption.selected == false && loadoutOption.selectable) {
-        <a class="btn btn-sm btn-dark" href="@routes.KTRosterController.setNewLoadoutAtTroop(troopConfigOptions.troop.uuid, loadoutOption.loadout.name)">
-          SETME
-        </a>
-      }
+      } else { - }
       </td>
+
     </tr>
     <tr id="collapse@loadoutIndex" class="collapse">
       <td></td>
-      <td colspan="4">
+      <td colspan="7">
         @views.html.killteamviews.roster.displayWeapons(loadoutOption.loadout.weapons)
         @views.html.killteamviews.roster.displayItems(loadoutOption.loadout.items)
       </td>

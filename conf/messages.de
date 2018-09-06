@@ -245,6 +245,9 @@ kt.tactics.specialist=Spezialist
 kt.tactics.level=Spezialist Level
 kt.tactics.description=Beschreibung
 
+kt.edit.title=Bearbeiten von: {0} Einheit: {1} Punkte: {2}
+kt.edit.doneBtn=Zurück
+
 kt.loadout.name=Name
 kt.loadout.weapons=Waffen
 kt.loadout.items=Ausrüstung

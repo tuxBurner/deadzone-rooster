@@ -1,18 +1,21 @@
-@import killteam.logic.KTArmyTroopDto
 @(troopConfigOptions: killteam.logic.KTTroopOptionsDto)(implicit messages: Messages, mainTpl: views.html.killteamviews.main)
 
 
 @mainTpl("kt.mainmenu.editTroop") {
-  <div class=" table-responsive-sm">
 
-    <h4>EEEEDIITTTIITIITIT</h4>
+  <h2>@Messages("kt.edit.title",troopConfigOptions.troop.name, troopConfigOptions.troop.unit, troopConfigOptions.troop.totalPoints)</h2>
+  <hr />
 
 
-    @views.html.killteamviews.roster.displaySpecialist(troopConfigOptions)
 
-    @views.html.killteamviews.roster.loadoutsDisplay(troopConfigOptions)
 
-    @views.html.killteamviews.roster.displayEditItems(troopConfigOptions)
-  </div>
+  @views.html.killteamviews.roster.loadoutsDisplay(troopConfigOptions)
+
+  @views.html.killteamviews.roster.displayEditItems(troopConfigOptions)
+
+  @views.html.killteamviews.roster.displaySpecialist(troopConfigOptions)
+
+  <hr />
+  <a href="@routes.KTRosterController.rosterMain()" class="btn btn-sm btn-info">@Messages("kt.edit.doneBtn")</a>
 }
 
