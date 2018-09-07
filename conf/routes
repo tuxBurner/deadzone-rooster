@@ -43,6 +43,7 @@ POST          /killteam/roster/troop                                            
 GET           /killteam/roster/troop/:uuid/remove                                        controllers.KTRosterController.removeTroopFromArmy(uuid:String)
 GET           /killteam/roster/troop/:uuid/setLoadout/:loadoutName                       controllers.KTRosterController.setNewLoadoutAtTroop(uuid:String, loadoutName: String)
 GET           /killteam/roster/troop/:uuid/setSpeciale/:specialName/:specialLevel        controllers.KTRosterController.addSpecialToTroop(uuid:String, specialName: String, specialLevel: Int)
+GET           /killteam/roster/troop/:uuid/setLevel/:level                               controllers.KTRosterController.setLevelAtTroop(uuid:String, level: Int)
 GET           /killteam/roster/troop/:uuid/item/:itemName/add                            controllers.KTRosterController.addItemToTroop(uuid:String, itemName: String)
 GET           /killteam/roster/troop/:uuid/item/:itemName/remove                         controllers.KTRosterController.removeItemFromTroop(uuid:String, itemName: String)
 GET           /killteam/roster/pdf                                                       controllers.KTRosterController.getTablePdf()

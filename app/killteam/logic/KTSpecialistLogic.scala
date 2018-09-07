@@ -45,7 +45,7 @@ object KTSpecialistLogic {
               }
 
               // find the special in the specials we need some different handling on level4
-              val specialDoOptional = if(specialLevel < 4) {
+              val specialDoOptional = if (specialLevel < 4) {
                 specialistDo.specials.find(special => special.name == specialName && special.level == specialLevel)
               } else {
                 specialistDo.specials.find(special => special.name == specialName && !troopDto.specialist.get.selectedSpecials.exists(_.name == specialName))
@@ -81,6 +81,25 @@ object KTSpecialistLogic {
     })
   }
 
+  /**
+    * Sets the given level at the given troop and resets all specials to fit the selected level
+    *
+    * @param uuid    the uuid of the troop to set the level on
+    * @param level   the level to set
+    * @param armyDto the army containing the troop
+    * @return
+    */
+  def setLevelAtTroop(uuid: String, level: Int, armyDto: KTArmyDto): KTArmyDto = {
+    KTArmyLogic.getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, troopDto => {
+      // nothing  when smaller or 1 when setting level
+      if (level <= 1 || troopDto.specialist.isEmpty) {
+        Some(troopDto)
+      }
+      val newSpecials = troopDto.specialist.get.selectedSpecials.filter(special => special.level <= level)
+      Some(troopDto.copy(level = level, specialist = Some(troopDto.specialist.get.copy(selectedSpecials = newSpecials))))
+    })
+  }
+
 
   /**
     * Gets the possible specialist options for the given troop type and army
@@ -93,7 +112,7 @@ object KTSpecialistLogic {
   def getAvaibleSpecialistSelectOptions(troopName: String, factionName: String, armyDto: KTArmyDto): List[String] = {
 
     // only 4 specialist allowed
-    if(armyDto.troops.count(_.specialist.isDefined) >= 4) {
+    if (armyDto.troops.count(_.specialist.isDefined) >= 4) {
       return List("")
     }
 

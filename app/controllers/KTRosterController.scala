@@ -157,7 +157,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   def setNewLoadoutAtTroop(uuid: String, loadoutName: String) = Action {
     implicit request =>
       getArmyFromCacheAndUpdateIt(armyFromCache => KTArmyLogic.setLoadoutAtTroop(loadoutName = loadoutName, uuid = uuid, armyDto = armyFromCache),
-      Redirect(routes.KTRosterController.displayEditOptions(uuid)))
+        Redirect(routes.KTRosterController.displayEditOptions(uuid)))
   }
 
 
@@ -171,7 +171,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   def addItemToTroop(uuid: String, itemName: String) = Action {
     implicit request =>
       getArmyFromCacheAndUpdateIt(armyFromCache => KTItemLogic.setItemAtTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache),
-      Redirect(routes.KTRosterController.displayEditOptions(uuid)))
+        Redirect(routes.KTRosterController.displayEditOptions(uuid)))
   }
 
   /**
@@ -184,7 +184,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   def removeItemFromTroop(uuid: String, itemName: String) = Action {
     implicit request =>
       getArmyFromCacheAndUpdateIt(armyFromCache => KTItemLogic.removeItemFromTroop(itemName = itemName, uuid = uuid, armyDto = armyFromCache),
-      Redirect(routes.KTRosterController.displayEditOptions(uuid)))
+        Redirect(routes.KTRosterController.displayEditOptions(uuid)))
   }
 
 
@@ -199,7 +199,19 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
   def addSpecialToTroop(uuid: String, specialName: String, specialLevel: Int) = Action {
     implicit request =>
       getArmyFromCacheAndUpdateIt(armyFromCache => KTSpecialistLogic.setSpecialAtTroop(specialName = specialName, specialLevel = specialLevel, uuid = uuid, armyFromCache),
-      Redirect(routes.KTRosterController.displayEditOptions(uuid)))
+        Redirect(routes.KTRosterController.displayEditOptions(uuid)))
+  }
+
+  /**
+    * Sets the given level at the troop
+    * @param uuid the uuid of the troop to set the given level at
+    * @param level the level to set
+    * @return
+    */
+  def setLevelAtTroop(uuid: String, level: Int) = Action {
+    implicit request =>
+      getArmyFromCacheAndUpdateIt(armyFromCache => KTSpecialistLogic.setLevelAtTroop(uuid = uuid, level = level, armyFromCache),
+        Redirect(routes.KTRosterController.displayEditOptions(uuid)))
   }
 
   /**

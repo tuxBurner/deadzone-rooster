@@ -18,7 +18,7 @@ libraryDependencies ++= Seq(
   "com.github.tototoshi" %% "scala-csv" % "1.3.5",
   "org.webjars" %% "webjars-play" % "2.6.3",
 
-  "org.webjars" % "bootstrap" % "4.0.0-2",
+  "org.webjars" % "bootstrap" % "4.1.3",
   "org.webjars" % "font-awesome" % "5.0.10",
 
   "com.github.tuxBurner" %% "play-jsannotations" % "2.6.0",
