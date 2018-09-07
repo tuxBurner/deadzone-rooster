@@ -92,11 +92,12 @@ object KTSpecialistLogic {
   def setLevelAtTroop(uuid: String, level: Int, armyDto: KTArmyDto): KTArmyDto = {
     KTArmyLogic.getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, troopDto => {
       // nothing  when smaller or 1 when setting level
-      if (level <= 1 || troopDto.specialist.isEmpty) {
+      if (level < 1 || troopDto.specialist.isEmpty) {
         Some(troopDto)
+      } else {
+        val newSpecials = troopDto.specialist.get.selectedSpecials.filter(special => special.level <= level)
+        Some(troopDto.copy(level = level, specialist = Some(troopDto.specialist.get.copy(selectedSpecials = newSpecials))))
       }
-      val newSpecials = troopDto.specialist.get.selectedSpecials.filter(special => special.level <= level)
-      Some(troopDto.copy(level = level, specialist = Some(troopDto.specialist.get.copy(selectedSpecials = newSpecials))))
     })
   }
 
