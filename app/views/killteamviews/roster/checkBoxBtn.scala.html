@@ -1,11 +1,5 @@
-@(routeToSelect: Option[Call])
-@if(routeToSelect.isDefined) {
-  <a class="btn btn-sm btn-outline-dark" href="@routeToSelect.get">
-    <i class="far fa-square"></i>
-  </a>
-} else {
-  <a href="#" class="btn btn-sm btn-outline-dark">
-    <i class="far  fa-check-square"></i>
-  </a>
-}
+@(routeToSelect: Option[Call],selected: Boolean)
+<a class="btn btn-sm btn-outline-dark border-0" href="@if(routeToSelect.isDefined) { @routeToSelect.get } else { # }">
+  <i class="far @if(selected == false) { fa-square } else { fa-check-square }"></i>
+</a>
 

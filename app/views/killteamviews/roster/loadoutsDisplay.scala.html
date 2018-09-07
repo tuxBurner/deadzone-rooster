@@ -20,9 +20,11 @@
   @for((loadoutOption, loadoutIndex) <- troopConfigOptions.loadoutOptions.zipWithIndex) {
     <tr>
       <td>
-        @views.html.killteamviews.roster.checkBoxBtn(if(loadoutOption.selected == false && loadoutOption.selectable) {
-          Some(routes.KTRosterController.setNewLoadoutAtTroop(troopConfigOptions.troop.uuid, loadoutOption.loadout.name)  ) }
-        else { None })
+        @if(loadoutOption.selected == false && loadoutOption.selectable) {
+          @views.html.killteamviews.roster.checkBoxBtn(Some(routes.KTRosterController.setNewLoadoutAtTroop(troopConfigOptions.troop.uuid, loadoutOption.loadout.name)), false)
+        } else {
+          @views.html.killteamviews.roster.checkBoxBtn(None, true)
+        }
       </td>
       <th scope="row">
         <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse@loadoutIndex">

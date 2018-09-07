@@ -14,23 +14,16 @@
     <tbody>
     @for(itemOption <- troopConfigOptions.itemOptions) {
       <tr>
-        <th>
-        @views.html.killteamviews.roster.checkBoxBtn(if(loadoutOption.selected == false && loadoutOption.selectable) {
-          Some(routes.KTRosterController.setNewLoadoutAtTroop(troopConfigOptions.troop.uuid, loadoutOption.loadout.name)  ) }
-        else { None })
-        </th>
+        <td>
+        @if(itemOption.selected == false ) {
+          @views.html.killteamviews.roster.checkBoxBtn(Some(routes.KTRosterController.addItemToTroop(troopConfigOptions.troop.uuid, itemOption.item.name)), false)
+        } else {
+          @views.html.killteamviews.roster.checkBoxBtn(Some(routes.KTRosterController.removeItemFromTroop(troopConfigOptions.troop.uuid, itemOption.item.name)), true)
+        }
+        </td>
         <th scope="row">@itemOption.item.name</th>
         <td>@itemOption.item.points</td>
         <td>@Messages(FixMessagesKey.fixKey(s"kt.item.${itemOption.item.faction}.${itemOption.item.name}.descr"))</td>
-        <td>
-        @if(itemOption.selected == false) {
-          <a href="@routes.KTRosterController.addItemToTroop(troopConfigOptions.troop.uuid, itemOption.item.name)" class="btn btn-sm btn-primary">
-            Set</a>
-        } else {
-          <a href="@routes.KTRosterController.removeItemFromTroop(troopConfigOptions.troop.uuid, itemOption.item.name)" class="btn btn-sm btn-primary">
-            Rem</a>
-        }
-        </td>
       </tr>
     }
     </tbody>
