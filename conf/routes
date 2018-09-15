@@ -49,6 +49,7 @@ GET           /killteam/roster/troop/:uuid/item/:itemName/remove                
 GET           /killteam/roster/pdf                                                       controllers.KTRosterController.getTablePdf()
 GET           /killteam/faction                                                          controllers.KTHomeController.displayFirstFactionOverview()
 GET           /killteam/faction/:factionName                                             controllers.KTHomeController.displayFactionOverview(factionName: String)
+GET           /killteam/specialists                                                      controllers.KTHomeController.displaySpecialists()
 
 
 

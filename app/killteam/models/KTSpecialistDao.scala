@@ -12,15 +12,25 @@ object KTSpecialistDao {
   /**
     * All killteam specialists
     */
-  val specialists: ListBuffer[KTSpecialistDo] = ListBuffer()
+  private val specialists: ListBuffer[KTSpecialistDo] = ListBuffer()
 
 
   /**
+    * Returns all specialists known in the roster
+    *
+    * @return
+    */
+  def getAllSpecialists(): List[KTSpecialistDo] = {
+    specialists.toList
+  }
+
+  /**
     * Finds the specialists by its name
+    *
     * @param name the name of the specialist
     * @return
     */
-  def findSpecialistByName(name: String) : Option[KTSpecialistDo] = {
+  def findSpecialistByName(name: String): Option[KTSpecialistDo] = {
     specialists.find(_.name == name)
   }
 

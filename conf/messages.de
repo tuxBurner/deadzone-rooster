@@ -187,6 +187,7 @@ cheatSheet.commandDice.armySpecial.desc=Aktiviere deine Armee spezial Fähigkeit
 kt.application.title=Killteam-Roster
 kt.mainmenu.roster=Roster
 kt.mainmenu.factionsOverview=Fraktionen
+kt.mainmenu.specialistsOverview=Spezialisten
 kt.troop.tbl.name=Name
 kt.troop.tbl.movement=B
 kt.troop.tbl.fightStat=KG
@@ -256,8 +257,10 @@ kt.loadout.unit=Einheit
 kt.loadout.max=Max in Armee
 
 kt.specialist.tbl.title=Spezialist
-kt.special.tbl.name=Spezial Name
-kt.special.tbl.level=Spezial Level
+kt.special.tbl.name=Name
+kt.special.tbl.level=Level
+kt.special.tbl.description=Beschreibung
+kt.special.tbl.require=Benötigt
 
 kt.army.faction=Fraktion
 kt.army.points=Armee Punkte

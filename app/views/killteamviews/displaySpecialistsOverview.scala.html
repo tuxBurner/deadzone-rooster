@@ -1,0 +1,16 @@
+@import killteam.logic.{ETacticType, KTSpecialistTroopDto}
+@(allSpecilists: List[KTSpecialistTroopDto])(implicit messages: Messages, mainTpl: views.html.killteamviews.main)
+
+@mainTpl("kt.mainmenu.specialistsOverview") {
+
+  @for(specialist <- allSpecilists) {
+
+    @*<h2>@specialist.name</h2>*@
+
+    @views.html.killteamviews.roster.displayTroopSpecialist(Some(specialist))
+    
+  }
+
+  
+
+}

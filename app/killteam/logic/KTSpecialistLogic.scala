@@ -1,6 +1,6 @@
 package killteam.logic
 
-import killteam.models.{KTSpecialistDao, KTSpecialistDo, KTTroopDao}
+import killteam.models.{KTSpecialDo, KTSpecialistDao, KTSpecialistDo, KTTroopDao}
 import org.apache.commons.lang3.StringUtils
 import play.api.Logger
 
@@ -9,6 +9,27 @@ import play.api.Logger
   * Logic handling specialist data
   */
 object KTSpecialistLogic {
+
+  /**
+    * Gets all specialist known to the roster
+    *
+    * @return
+    */
+  def getAllSpecialist(): List[KTSpecialistTroopDto] = {
+    KTSpecialistDao
+      .getAllSpecialists()
+      .sortBy(_.name)
+      .map(specialist => {
+
+        val specials = specialist
+          .specials
+          .toList
+          .sortBy(_.level)
+          .map(special => specialDoToDto(specialDo = special))
+
+        KTSpecialistTroopDto(name = specialist.name, selectedSpecials = specials)
+      })
+  }
 
 
   /**
@@ -55,7 +76,7 @@ object KTSpecialistLogic {
               specialDoOptional
                 .map(specialDo => {
                   // the newspecials list remove all the specials which are higher than the new one and add the new one
-                  val newSpecials = specialist.selectedSpecials.filter(_.level <= specialLevel) :+ KTSpecialTroopDto(name = specialDo.name, level = specialLevel)
+                  val newSpecials = specialist.selectedSpecials.filter(_.level <= specialLevel) :+ specialDoToDto(specialDo = specialDo)
 
                   // filter out all speciales which are on the same level and dont have the same name
                   val cleanedSpecials = newSpecials.filter(special => special.level != specialLevel || (special.level == specialLevel && special.name == specialName))
@@ -95,7 +116,7 @@ object KTSpecialistLogic {
       if (troopDto.specialist.isEmpty) {
         Some(troopDto)
       } else {
-        val levelToSet = if(level < 1) 1 else level
+        val levelToSet = if (level < 1) 1 else level
         val newSpecials = troopDto.specialist.get.selectedSpecials.filter(special => special.level <= levelToSet)
         Some(troopDto.copy(level = levelToSet, specialist = Some(troopDto.specialist.get.copy(selectedSpecials = newSpecials))))
       }
@@ -172,7 +193,7 @@ object KTSpecialistLogic {
 
         val baseSpecial = specialistDo.specials.find(_.level == 1)
           .map(specialDo => {
-            List(KTSpecialTroopDto(name = specialDo.name, level = specialDo.level))
+            List(KTSpecialTroopDto(name = specialDo.name, level = specialDo.level, specialDo.require))
           })
           .getOrElse(List())
 
@@ -182,6 +203,16 @@ object KTSpecialistLogic {
         Logger.error(s"Cannot find specialist: $specialistName")
         None
       })
+  }
+
+  /**
+    * Converts a special do to its dto
+    *
+    * @param specialDo the do to convert
+    * @return
+    */
+  private def specialDoToDto(specialDo: KTSpecialDo): KTSpecialTroopDto = {
+    KTSpecialTroopDto(name = specialDo.name, level = specialDo.level, requires = specialDo.require)
   }
 
 
@@ -252,8 +283,10 @@ case class KTSpecialistTroopDto(name: String,
 /**
   * Represents a special a troop can have
   *
-  * @param name  the name of the special
-  * @param level the level when this special was aquired
+  * @param name     the name of the special
+  * @param level    the level when this special was acquired
+  * @param requires when set the special required to get this special
   */
 case class KTSpecialTroopDto(name: String,
-                             level: Int)
+                             level: Int,
+                             requires: String)

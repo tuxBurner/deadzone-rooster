@@ -1,7 +1,7 @@
 package controllers
 
 import javax.inject._
-import killteam.logic.{KTAbilityLogic, KTFactionLogic, KTItemLogic, KTWeaponLogic}
+import killteam.logic._
 import play.api.i18n.I18nSupport
 import play.api.mvc._
 import play.i18n.Langs
@@ -33,6 +33,17 @@ class KTHomeController @Inject()(cc: ControllerComponents, langs: Langs, mainTpl
       val factionInfos = KTFactionLogic.getFactionInfos(factionName = factionName)
 
       Ok(views.html.killteamviews.displayFactionOverview(factionInfos, factionName, allFactions))
+  }
+
+
+  /**
+    * Displays all known specialists in the roster
+    * @return
+    */
+  def displaySpecialists() = Action {
+    implicit  request =>
+      val allSpecialists = KTSpecialistLogic.getAllSpecialist()
+      Ok(views.html.killteamviews.displaySpecialistsOverview(allSpecialists))
   }
 
 
