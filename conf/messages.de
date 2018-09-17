@@ -278,16 +278,6 @@ kt.ability.tbl.title=Fähigkeiten
 kt.ability.tbl.name=Name
 kt.ability.tbl.description=Beschreibung
 
-# specials
-kt.special.anfuehrer.listenreich.descr=Solange sich dieses Modell auf dem Schlachtfeld befindet und nicht erschüttert ist, erhälst du zu Begin der Schlachtrunde einen zusätzlichen Befehlspunkt.
-kt.special.anfuehrer.kuehn.descr=Diese Modell besteht Nerventests automatisch.
-kt.special.anfuehrer.inspirierend.descr=Befreundete Modelle innerhalb von 3" um dieses Modell bestehen - solange es nicht erschüttert ist - Nerventests automatisch.
-kt.special.anfuehrer.vorbild.descr=Wiederhole Trefferwürfe von 1 für befreundete Modelle innerhalb von 3" um dieses Modell, solange es nicht erschüttert ist.
-kt.special.anfuehrer.tyrann.descr=Dein(e) Gegner muss/müssen 1 zu Nerventests für alle feindlichen Modelle innerhalb von 6" um dieses Modell addieren, solange es nicht erschüttert ist.
-kt.special.anfuehrer.taktiker.descr=Wirf jedesmla einen W6, wenn du eine Taktik einsetzt, solange sich dieses Model auf dem Schlachtfeld befindet und nicht erschüttert ist. Bei 5+ erhälst du einen Befehlspunkt.
-kt.special.anfuehrer.mentor.descr=Wenn dieses Model nicht erschüttert ist, darfst du einmal pro Schlachtrunde, wenn du in der Fernkampfphase ein befreundetes Modell innerhalb von 3" um dieses Modell wählst, um zu schießen, für das gewählte Modell bis zum Ende der Phase misslungene Trefferwürfe wiederholen.
-# eo specials
-
 # general tactics
 kt.tactic.general.zaehnezusammenbeissen.descr=Setze diese Taktik ein, wenn du ein Modell mit einer oder mehreren Fleischwunden in der Fernkampfphase  wählst, um zu schießen, oder in der Nahkampfphase um zu kämpfen. Bis zum Ende der jeweiligen Phase erleidet das Modell durch seine Fleischwunde(n) keinen Abzug auf seine Trefferwürfe.
 kt.tactic.general.wahnsinnigermut.descr=Setze diese Taktik ein, bevor du in der Moralphase Nerventests ablegst. Du darfst einen einzelnen Nerventest für ein Modell in deinem Kill team automatisch bestehen.
@@ -400,4 +390,86 @@ kt.ability.orks.verstohlenegits.descr=Wenn ein Gegner einen Trefferwurf für ein
 # eo abilities orks
 
 
+# specials
+        
+kt.special.anfuehrer.listenreich.descr=Solange sich dieses Modell auf dem Schlachtfeld befindet und nicht erschüttert ist, erhälst du zu Begin der Schlachtrunde einen zusätzlichen Befehlspunkt.
+kt.special.anfuehrer.kuehn.descr=Diese Modell besteht Nerventests automatisch.
+kt.special.anfuehrer.inspirierend.descr=Befreundete Modelle innerhalb von 3" um dieses Modell bestehen - solange es nicht erschüttert ist - Nerventests automatisch.
+kt.special.anfuehrer.vorbild.descr=Wiederhole Trefferwürfe von 1 für befreundete Modelle innerhalb von 3" um dieses Modell, solange es nicht erschüttert ist.
+kt.special.anfuehrer.tyrann.descr=Dein(e) Gegner muss/müssen 1 zu Nerventests für alle feindlichen Modelle innerhalb von 6" um dieses Modell addieren, solange es nicht erschüttert ist.
+kt.special.anfuehrer.taktiker.descr=Wirf jedesmla einen W6, wenn du eine Taktik einsetzt, solange sich dieses Model auf dem Schlachtfeld befindet und nicht erschüttert ist. Bei 5+ erhälst du einen Befehlspunkt.
+kt.special.anfuehrer.mentor.descr=Wenn dieses Model nicht erschüttert ist, darfst du einmal pro Schlachtrunde, wenn du in der Fernkampfphase ein befreundetes Modell innerhalb von 3" um dieses Modell wählst, um zu schießen, für das gewählte Modell bis zum Ende der Phase misslungene Trefferwürfe wiederholen.
 
+
+kt.special.aufklaerer.flink.descr=Du darfst Vorrücken-Würfe für dieses Modell wiederholen.
+kt.special.aufklaerer.pfadfinder.descr=Solange sich dieses Modell nicht in Genesung (S. 204) befindet, darfst du 1 zum Ergebnis addieren oder von ihm abziehen, wenn du würfelst um eine Mission zu bestimmen. Wenn du dies tust, muss da Modell in deinem Kill Team enthalten sein.
+kt.special.aufklaerer.vorgeschobenerkundschafter.descr=Diese Modell besteht automatisch Tests für gefährliches Gelände (S. 42).
+kt.special.aufklaerer.plaenkler.descr=Deine Gegner müssen für Fernkampfattacken, die dieses Model zum Ziel haben, 1 vom Trefferwurf abziehen, wenn sich das schießende Modell weiter als 12" von diesem Modell entfernt befindet und dieses Modell nicht erschüttert oder verdeckt ist.
+kt.special.aufklaerer.beobachter.descr=Wenn dieses Modell in deinem Kill Team ist, darfst du zu Beginn der Aufklärungsphase einen W6 werfen. Bei 4+ darfst du eine zusätzliche Strategie wählen.
+kt.special.aufklaerer.erkunder.descr=Nach jedem Gefecht, in dem dieses Modell in deinem Kill Team war, darfst du einen W6 werfen, wenn sich dieses Modell nicht in Genesung (S. 204) befindet. Bei 5+ erhälst du 1 Territorium.
+kt.special.aufklaerer.vorhut.descr=Du darfst in der Fernkampfphase für Modelle aus deinem Kill Team Trefferwürfe von 1 wiederholen gegen feindliche Modelle, die sich innerhalb von 6" um dieses Modell befinden, solange dieses Modell nicht erschüttert ist.
+
+kt.special.funker.scanner.descr=Wenn dieses Modell nicht erschüttert ist, darfst du einmal pro Fernkampfphase, wenn du ein Modell deines Kill Teams wählst, um zu schießen, das sich innerhalb von 6" um dieses Modell befindet, in dieser Phase zu den Trefferwürfen des gewählten Modelle 1 addieren.
+kt.special.funker.experte.descr=Wirf zu Beginn jeder Schlachtrunde einen W6, solange dieses Modell nicht erschüttert ist. Bei 5+ erhälst du einen zusätzlichen Befehlspunkt. Dieser zusätzliche Befehlspunkt verfällt am Ende der Schlachtrunde, wenn er nicht eingesetzt wurde.
+kt.special.funker.statischeskreischen.descr=Einmal pro Schlacht, wenn dieses Modell nicht erschüttert ist, ziehst du zu Beginn der Nahkampfphase und bis zum Ende der Phase von den Trefferwürfen feindlicher Modelle 1 ab, wenn sie Attacken innerhalb von 6" um dieses Modell durchführen.
+kt.special.funker.befehlsrelais.descr=Wirf jedesmal einen W6, wenn du eine taktik einsetzt, solange dieses Modell auf dem Schlachtfeld und nicht erschüttert ist. Bei einer 6 werden die für die Taktik ausgegebenen Befehlspunkte sofort zurückerstattet.
+kt.special.funker.voxgeist.descr=Ziehe vom Moralwert feindlicher Modelle 1 ab, während sich dieses Modell auf dem Schlachtfeld befindet und nicht erschüttert ist.
+kt.special.funker.triangulation.descr=Einmal pro Fernkampfphase, wenn dieses Modell nicht erschüttert ist und du ein Modell deines Kill teams wählst, um mit einer schweren Waffe zu schießen, darfst du den Wurf wiederholen, wenn du die Anzahl der Attacken für das gewählte Modell bestimmst.
+kt.special.funker.voxhacker.descr=Nach jeder Schlacht, in der das Modell in deinem Kill team war, kannst du einen W6 werfen, solange sich dieses Modell nicht in Genesung befindet (S. 204) oder tot ist. Bei 5+ erhälst du 1 Informationen.
+
+kt.special.nahkampfspezialist.meisterhafterkaempfer.descr=Addiere in der Nahkampfphase 1 zum Attackenwert dieses Modells.
+kt.special.nahkampfspezialist.kriegeradept.descr=Addiere in der Nahkampfphase 1 zu den Trefferwürfen dieses Modells.
+kt.special.nahkampfspezialist.toedlichergegenschlag.descr=Wenn ein Modell in der Nahkampfphase für Attacken gegen dieses Modell von 1 oder weniger erziehlt, wirf einen W6, solange dieses Modell nicht erschüttert ist. Bei 5+ erleidet das Modell, das die Attacken durchgeführt hat, 1 tödliche Verwundung, nachdem alle seine Attacken abgehandelt wurden.
+kt.special.nahkampfspezialist.meisterdeskampfes.descr=Addiere bis zum Ende der Phase für jedes feindliche Modell, das sich zu Beginn der Nahkampfphase innerhalb von 1" um es befindet, 1 zum Ataackenwert des Modells.
+kt.special.nahkampfspezialist.blutgier.descr=Du darfst für dieses Modell misslungene Angriffswürfe wiederholen.
+kt.special.nahkampfspezialist.killerinstinkt.descr=Du darfst in der Nahkampfphase alle misslungenen Trefferwürfe für dieses Modell wiederholen.
+kt.special.nahkampfspezialist.todesstoss.descr=Jeder Verwundungswurf von 6, den du in der Nahkampfphase für dieses Modell erzielst, verursacht zusätzlich zu sonstigem Schaden 1 tödliche Verwundung.
+
+kt.special.sanitaeter.beruhigend.descr=Diese Modell wird niemals als erschüttert behandelt, wenn du Nerventests für andere Modelle deines Kill Teams ablegst.
+kt.special.sanitaeter.feldsanitaeter.descr=Wirf einen W6, wenn ein befreundetes Modell innerhalb von 3" um dieses Modell einen Lebenspunktverlust erleidet, solange dieses Sanitäter-Modell nicht erschüttert ist, bei einer 6 verliert das befreundete Modell den Lebenspunkt nicht.
+kt.special.sanitaeter.anatom.descr=Du darfst in der Nahkampfphase Verwundungswürfe von 1 für dieses Modell wiederholen.
+kt.special.sanitaeter.verhoerspezialist.descr=Wirf am Ende jedes Gefechts, in dem du siegreich warst, einen W6, wenn dieses Modell in deinem Kill Team war und nicht ausgeschaltet wurde; bei 5+ erhälst du 1 Informationen.
+kt.special.sanitaeter.toxikologe.descr=Vor der Aufstellung darfst du bis zu 3 Modelle aus deinem Kill Team wählen. Bis zum Ende des Gefechts addierst du 1 zu Verwundungswürfen mit allen Nahkampfwaffen, mit denen die gewählten Modelle bewaffnet sind.
+kt.special.sanitaeter.traumaspezialist.descr=Wirf einen zusätzlichen Würfel, wenn ein Verletzungswurf für ein befreundetes Modell innerhalb von 3" um dieses Modell abgelegt wird und dieses Modell nicht erschüttert ist, und verwende das niedrigere Ergebnis.
+kt.special.sanitaeter.triageexperte.descr=Wenn diese Modell in deinem Kill Team und am Ende des Gefechts nicht ausgeschaltet ist, darfst du einen W6 werfen, wenn du bei einem Verlustwurf (S. 204) für ein Modell aus deinem Kill Team das Ergebnis Tot würfelst. Bei 4+ wendest du stattdessen das Ergenis Genesung an.
+
+kt.special.scharfschuetze.praezisionsschuetze.descr=Du darfst für dieses Modell Trefferwürfe von 1 wiederholen, wenn es eine Fernkampfattacke durchführt.
+kt.special.scharfschuetze.meisterschuetze.descr=Wenn dieses Modell in Feuerbereitschaft ist, addiere 1 zu Trefferwürfen, wenn es eine Fernkampfattacke durchführt.
+kt.special.scharfschuetze.attentaeter.descr=Du darfst für dieses Modell Verwundungswürfe von 1 wiederholen, wenn es eine Fernkampfattacke durchführt.
+kt.special.scharfschuetze.toedlichegenauigkeit.descr=Bei einem unmodifizierten Verwundungswurf von 6 für die Fernkampfattacken dieses Modells erhöht sich der Schadenswert der jeweiligen Attacke um 1.
+kt.special.scharfschuetze.ruestungsbrechend.descr=Bei einem unmodifizierten Verwundungswurf von 6 für die Fernkampfattacken dieses Modells verbessert sich der DS-Wert der jeweiligen Attacke um 1.
+kt.special.scharfschuetze.falkenauge.descr=Erhöhe den Profilwert Reichweite aller Schnellfeuerwaffen und Schweren Waffen, mit denen dieses Modell bewaffnet ist, um 6".
+kt.special.scharfschuetze.beweglich.descr=Dieses Modell erleidet nicht den Abzug von -1 für das Schießen mit einer schweren Waffe, nachdem es sich in der vorangegangenen Bewegungsphase bewegt hat oder für das Schießen mit einer Sturmwaffe, nachdem es vorgerrückt ist.
+
+kt.special.schwererschuetze.unaufhaltsam.descr=Dieses Modell erleidet nicht den Abzug von -1 für das Schießen mit einer schweren Waffe, nachdem es sich in der vorangegangenen Bewegungsphase bewegt hat oder für das Schießen mit einer Sturmwaffe, nachdem es vorgerrückt ist.
+kt.special.schwererschuetze.deckungsfeuer.descr=Feindliche Modelle, die von diesem Modell in der Fernkampfphase als Ziel gewählt wurden, erleiden bis zum Ende der Phase -1 auf ihre Trefferwürfe.
+kt.special.schwererschuetze.zusaetzlicheruestung.descr=Ignoriere Durchschlagswerte von -1 für Attacken, die dieses Modell zum Ziel haben.
+kt.special.schwererschuetze.verwuester.descr=Du darfst Würfe für den Schaden von Fernkampfwaffen dieses Modells, die einen zufälligen Schadenswert haben, wiederholen.
+kt.special.schwererschuetze.muskelberge.descr=Du darfst in der Nahkampfphase Verwundungswürfe von 1 für dieses Modell wiederholen.
+kt.special.schwererschuetze.praezise.descr=Du darfst in der Fernkampfphase Trefferwürfe von 1 für dieses Modell wiederholen.
+kt.special.schwererschuetze.unbezwingbar.descr=Einmal pro Schlachtrunde darfst du deinen Gegner den Verletzungswurf für dieses Modell wiederholen lassen.
+
+kt.special.sprengstoffspezialist.durchbruchspezialist.descr=Du darfst 1 zu den Verwundungswürfen dieses Modells gegen Ziele addieren, die verdeckt sind.
+kt.special.sprengstoffspezialist.pyromane.descr=Du darfst Verwundungswürfe von 1 für dieses Modell wiederholen, wenn es mit einer Waffe attackert, die automatisch trifft.
+kt.special.sprengstoffspezialist.grenadier.descr=Addiere 3" zu reichweite aller Granaten, die dieses Modell einsetzt. Du darfst Trefferwürfe von 1 für Granaten wiederholen, die dieses Modell einsetzt.
+kt.special.sprengstoffspezialist.munitionssammler.descr=Wenn dieses Modell in deinem Kill Team ist und nicht ausgeschaltet ist, wenn du deine Verlustwürfe durchführst, wirf einen W6. Bei 5+ erhälst du ein Material.
+kt.special.sprengstoffspezialist.saboteur.descr=Wenn dieses Modell in deinem Kill Team ist und nicht ausgeschaltet ist, wenn du deine Verlustwürfe durchführst, wirf einen W6. Bei 5+ wähle einen Gegner aus dieser Mission; er verliert ein Material.
+kt.special.sprengstoffspezialist.pionier.descr=Wenn dieses Modell in deinem Kill team ist und du die Strategie "Fallen stellen" wählst (S. 49), kannst du 1 zu der Anzahl der Geländestücke addieren, die du mit Sprengfallen verminen kannst.
+kt.special.sprengstoffspezialist.belagerungsmeister.descr=Du darfst 1 zu Verletzungswürfen addieren, die in der Fernkampfphase von Attacken dieses Modells verursacht werden, wenn die Verletzungswürfe für Modelle sind, die verdeckt sind.
+
+kt.special.veteran.ergraut.descr=Dieses Modell ignoriert Abzüge auf seinen Moralwert und Nerventests.
+kt.special.veteran.allesschongesehen.descr=Du darfst 1 von Nerventests für Modelle aus deinem Kill Team abziehen, die sich innerhalb von 3" Zoll um dieses Modell befinden, solange es nicht erschüttert ist.
+kt.special.veteran.geuebt.descr=Du darfst in dieser Schlachtrunde für dieses Modell einen einzelnen Treffer- oder Verwundungswurf wiederholen.
+kt.special.veteran.kampfnarbe.descr=Feindliche Modelle erleiden einen Abzug von -1 auf ihren Moralwert, während si sich innerhalb von 6" um dieses Modell befinden, solange es nicht erschüttert ist.
+kt.special.veteran.ueberlebenskuenstler.descr=Du darfst für dieses Modell 1 zu Schutzwürfen addieren.
+kt.special.veteran.nervenausstahl.descr=Du darfst misslungene Trefferwürfe für dieses Modell wiederholen, wenn es Abwehfeuer abgibt.
+kt.special.veteran.einmannarmee.descr=Dieses Modell generiert zu Beginn jeder Schlachtrunde 1 Befehlspunkt, solange es nicht erschüttert oder ausgeschaltet ist. Dieser Befehlspunkt darf nur für Veteranen Taktiken ausgegeben werden.
+
+kt.special.zelot.rasend.descr=In einer chlachtrunde, in der dieses Modell angegriffen hat, darfst du zu seinen Attacken- und zu seinem Stärkewert 1 addieren.
+kt.special.zelot.jubel.descr=Deine gegner müssen für Modelle aus ihrem Kill Team, die sich innerhalb von 3" um dieses Modell befinden, unmodifizierte Trefferwürfe von 6 wiederholen, solange dieses Modell nicht erschüttert ist.
+kt.special.zelot.flagelant.descr=Wirf jedes mal einen W6, wenn dieses Modell einen Lebenspunkt verliert. Bei einer 6 wird der Lebenspunktverlust ignoriert.
+kt.special.zelot.feuereifer.descr=Addiere 1 zum Moralwert von Modellen aus deinem Kill Team, die sich innerhalb von 6" um dieses Modell befinden, solange es nicht erschüttert ist.
+kt.special.zelot.fanatisch.descr=Dieses Modell besteht Nerventests automatisch.
+kt.special.zelot.puritaner.descr=Du drafst in der Nahkampfphase für dieses Modell Trefferwürfe gegen feindliche Modelle wiederholen, die kein Fraktionsschlüsselwort mit ihm gemeinsam haben.
+kt.special.zelot.geistesstaerke.descr=Ziehe 1 ab, von Verletzungswürfen, die für dieses Modell abgelegt werden.
+# eo specials
