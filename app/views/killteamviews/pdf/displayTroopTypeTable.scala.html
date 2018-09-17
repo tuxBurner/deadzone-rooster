@@ -4,7 +4,8 @@
 @(troops: List[KTArmyTroopDto], troopType: String, army: KTArmyDto)(implicit messages: Messages)
 
 
-  @if(troops.isEmpty == false) {
+@if(troops.isEmpty == false) {
+  <div style="page-break-inside: avoid">
     <h2>@Messages("kt.troops." + troopType + ".title")</h2>
 
     @for(troop <- troops) {
@@ -77,4 +78,5 @@
         <hr />
       </div>
     }
-  }
+  </div>
+}
