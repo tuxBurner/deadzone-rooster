@@ -300,7 +300,9 @@ object KTArmyLogic {
     * @return
     */
   def getLeadersFromArmy(armyDto: KTArmyDto): List[KTArmyTroopDto] = {
-    armyDto.troops.filter(troop => troop.specialist.isDefined && troop.specialist.get.name == "Anführer")
+    armyDto.troops
+      .filter(troop => troop.specialist.isDefined && troop.specialist.get.name == "Anführer")
+      .sortBy(_.name)
   }
 
   /**
@@ -310,7 +312,9 @@ object KTArmyLogic {
     * @return
     */
   def getSpecialistsFromArmy(armyDto: KTArmyDto): List[KTArmyTroopDto] = {
-    armyDto.troops.filter(troop => troop.specialist.isDefined && troop.specialist.get.name != "Anführer")
+    armyDto.troops
+      .filter(troop => troop.specialist.isDefined && troop.specialist.get.name != "Anführer")
+      .sortBy(_.name)
   }
 
   /**
@@ -320,7 +324,9 @@ object KTArmyLogic {
     * @return
     */
   def getNormalTroopsFromArmy(armyDto: KTArmyDto): List[KTArmyTroopDto] = {
-    armyDto.troops.filter(_.specialist.isEmpty)
+    armyDto.troops
+      .filter(_.specialist.isEmpty)
+      .sortBy(_.name)
   }
 
 }
