@@ -24,7 +24,7 @@ object KTSpecialistLogic {
         val specials = specialist
           .specials
           .toList
-          .sortBy(_.level)
+          .sortBy(special => (special.level,special.name))
           .map(special => specialDoToDto(specialDo = special))
 
         KTSpecialistTroopDto(name = specialist.name, selectedSpecials = specials)
