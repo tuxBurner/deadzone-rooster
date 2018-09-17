@@ -6,7 +6,7 @@
 @import killteam.logic.ETacticType
 @(factionInfo: KTFactionInfosDto,factionName: String, allFactions: List[KTFactionDto])(implicit messages: Messages, mainTpl: views.html.killteamviews.main)
 
-@mainTpl("kt.mainmenu.factionOverview") {
+@mainTpl("kt.mainmenu.factionsOverview") {
 
   <ul class="nav justify-content-center">
     @for(faction <- allFactions) {

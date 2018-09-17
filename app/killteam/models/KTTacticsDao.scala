@@ -14,7 +14,7 @@ object KTTacticsDao {
   /**
     * All killteam tactics
     */
-  val tactics: ListBuffer[KTTacticDo] = ListBuffer()
+  private val tactics: ListBuffer[KTTacticDo] = ListBuffer()
 
 
   /**

@@ -35,13 +35,25 @@ class KTHomeController @Inject()(cc: ControllerComponents, langs: Langs, mainTpl
       Ok(views.html.killteamviews.displayFactionOverview(factionInfos, factionName, allFactions))
   }
 
+  /**
+    * Displays all tactics known in the roster
+    *
+    * @return
+    */
+  def displayTacticsOverview() = Action {
+    implicit request =>
+      val tactics = KTTacticsLogic.getAllTactics()
+      Ok(views.html.killteamviews.displayTacticsOverview(tactics))
+  }
+
 
   /**
     * Displays all known specialists in the roster
+    *
     * @return
     */
   def displaySpecialists() = Action {
-    implicit  request =>
+    implicit request =>
       val allSpecialists = KTSpecialistLogic.getAllSpecialist()
       Ok(views.html.killteamviews.displaySpecialistsOverview(allSpecialists))
   }

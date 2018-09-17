@@ -10,6 +10,29 @@ import play.api.Logger
 object KTTacticsLogic {
 
   /**
+    * Gets all tactics known to the roster
+    *
+    * @return
+    */
+  def getAllTactics(): Map[ETacticType, List[KTTacticDto]] = {
+
+    val generalTactics = KTTacticsDao.getGeneralTactics().map(tacticDoToDto).sortBy(_.name)
+
+    val specialistTactics = KTSpecialistLogic.getAllSpecialist().flatMap(specialist => {
+      KTTacticsDao
+        .getSpecialistTactics(specialistName = specialist.name, maxLevel = 4)
+        .map(tacticDoToDto)
+    }).sortBy(tactic => (tactic.specialist, tactic.specialistLevel))
+
+    val factionTactics = KTFactionLogic.getAllFactions().flatMap(faction => {
+      KTTacticsDao.getFactionTactics(factionName = faction.name)
+        .map(tacticDoToDto)
+    }).sortBy(tactic => (tactic.faction, tactic.name))
+
+    Map(ETacticType.GENERAL -> generalTactics, ETacticType.FACTION -> factionTactics, ETacticType.SPECIALIST -> specialistTactics)
+  }
+
+  /**
     * Gets all tactics which are avaible for the army
     *
     * @param armyDto
@@ -18,7 +41,7 @@ object KTTacticsLogic {
   def getTacticsForArmy(armyDto: KTArmyDto): Map[ETacticType, List[KTTacticDto]] = {
     Logger.info(s"Collecting tactics for the army")
 
-    val generalTactics = if(armyDto.troops.isEmpty == false) {
+    val generalTactics = if (armyDto.troops.isEmpty == false) {
       KTTacticsDao
         .getGeneralTactics()
         .map(tacticDoToDto)
@@ -26,7 +49,7 @@ object KTTacticsLogic {
       List()
     }
 
-    val factionTactics = getTacticsForFaction(armyDto.faction)
+    val factionTactics = getTacticsForFaction(armyDto.faction).sortBy(tactic => (tactic.faction, tactic.name))
 
 
     val specialistTactics = armyDto
@@ -36,6 +59,7 @@ object KTTacticsLogic {
       .map(entry => entry._2.maxBy(_.level)).flatMap(troopWithSpecial => KTTacticsDao.getSpecialistTactics(troopWithSpecial.specialist.get.name, troopWithSpecial.level))
       .map(tacticDoToDto)
       .toList
+      .sortBy(tactic => (tactic.specialist, tactic.specialistLevel))
 
 
     Map(ETacticType.GENERAL -> generalTactics, ETacticType.FACTION -> factionTactics, ETacticType.SPECIALIST -> specialistTactics)

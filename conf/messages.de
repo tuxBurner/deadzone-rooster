@@ -188,6 +188,7 @@ kt.application.title=Killteam-Roster
 kt.mainmenu.roster=Roster
 kt.mainmenu.factionsOverview=Fraktionen
 kt.mainmenu.specialistsOverview=Spezialisten
+kt.mainmenu.tacticsOverview=Taktiken
 kt.troop.tbl.name=Name
 kt.troop.tbl.movement=B
 kt.troop.tbl.fightStat=KG
@@ -245,6 +246,7 @@ kt.tactics.commandPoints=BP
 kt.tactics.specialist=Spezialist
 kt.tactics.level=Spezialist Level
 kt.tactics.description=Beschreibung
+kt.tactics.faction=Fraktion
 
 kt.edit.title=Bearbeiten von: {0} Einheit: {1} Punkte: {2}
 kt.edit.doneBtn=Zurück
@@ -305,11 +307,47 @@ kt.tactic.faction.orks.nurnefleischwundae.descr=Setze diese Taktik ein, wenn ein
 kt.tactic.faction.orks.mekspezialstikkbomb.descr=Setze diese Taktik ein, wenn due ein Modell deines Kill Teams wählst, um mit einer Stikkbomb zu attackieren. Bis zum Ende dieser Phase änderst du den Typ der Waffe zu Granate W3 und addierst 1 jeweils zu ihrem Stärke- und Schadenswert.
 #eo orks tactics
 
-# specialist leader tactics
+# specialist tactics
 kt.tactic.specialist.anfuehrer.vorbildlichesverhalten.descr=Setze diese Taktik ein, wenn du einen Anführer deines Kill Teams in der Nahkampf wählst, um zu kämpfen. Wähle ein weiteres befreundetes Modell innerhalb von 3" um ihn, das kämpfen darf. Du darfst mit jedem dieser Modelle in beliebiger reihenfolge kämpfen, bevor der nächste Spieler am Zug ist.
 kt.tactic.specialist.anfuehrer.schiessaufmeinziel.descr=Setze diese Taktik ein, wenn du in der Fernkampfphase einen Anführer der Stufe 2 oder höher deines Kill Teams wählst, um mit ihm zu schießen. Wähle ein weiteres befreundetes Modell innerhalb von 3" um ihn, das schießen darf. Du darfst mit jedem dieser Modelle in beliebiger Reihenfolge eine Fernkampfattacke durchführen, bevor der nächste Spieler am Zug ist.
 kt.tactic.specialist.anfuehrer.willenskraft.descr=Setze diese Taktik zum Begin der Schlachtrunde ein, wenn sich ein Anführer Stufe 3 oder höher aus deinem Kill Team auf dem Schlachtfeld befindet und nicht erschüttert ist. In dieser Runde erleidet dein Kill Team keine Abzüge dafür, dass es aufgerieben ist.
-# eo specialist leader tactics
+
+kt.tactic.specialist.aufklaerer.schnellermarsch.descr=Setze diese Taktik ein, wenn du in der Bewegungsphase einen Aufklärer deiens Kill Teams wählst, um ihn zu bewegen. Du kannst entweder den Bewegungswert dieses Modells in dieser Phase um 2" erhöhen oder du kannst den Würfelwurf wiederholen, wenn dieses Modell in dieser Phase vorrückt.
+kt.tactic.specialist.aufklaerer.markiertepositionen.descr=Setze diese Taktik zu Beginn der Fernkampfphase ein. Wähle ein feindliches Modell innerhalb von 6" um eine Aufklärer der Stufe 2 oder höher aus deinem Kill team, der nicht erschüttert ist. Bis zum Ende der Schlachtrunde kannst du für Modelle in deinem Kill Team für Fernkampfattacken, die das gewählte Modell als Ziel haben, Trefferwürfe von 1 wiederholen.
+kt.tactic.specialist.aufklaerer.ungesehenebewegung.descr=Setze diese Taktik zu Beginn deines Zuges in der Bewegungsphase ein. Wähle einen Aufklärer der Stufe 3 oder höher aus deinem Kill Team, der nicht erschüttert ist. Entferne das Modell vom Schlachtfeld und stelle es beliebig innerhalb von 18" um seine vorherige Position und weiter als 3" von feindlichen Modellen entfernt wieder auf. Es wird behandelt, als wäre es vorgerrückt.
+
+kt.tactic.specialist.funker.mitreissendeuebertragung.descr=Setze diese Taktik in der Moralphase ein, bevor du Nerventests ablegst. Bis zum Ende der Phase kannst du für Modell aus deinem Kill Team 1 von Nerventests abziehen, als befände sich der Funker innerhalb von 2" um sie.
+kt.tactic.specialist.funker.scanneraufschaltung.descr=Setze diese Taktik ein, wenn du in der Fernkampfphase ein Modell deines Kill Teams wählst, um zu schießen, das sich innerhalb von 6" um einen befreundeten Funker der Stufe 2 oder höher befindet. Das gewählte Modell kann ein feindliches Modell, das es nicht sehen kann als Ziel wählen. Wenn es dies tut, ist für einen erfolgreichen Treffer eine 6 notwendig, unabhängig von der Ballistischen Fertigkeit des Modells und aller anderen Modifikatoren, auch wenn die Waffe normalerweise automatisch treffen würde. Das Ziel wird als verdeckt behandelt.
+kt.tactic.specialist.funker.neueaufklaerungsdaten.descr=Setze diese Taktik am Ende einer Bewegungsphase ein. Wähle ein Modell aus deinem Kill Team, das sich innerhalb von 12" um einen befreundeten Funker der Stufe 3 befindet. Versetze dieses Modell in Feuerbereitschaft.
+
+kt.tactic.specialist.nahkampfspezialist.schnapptsieeuch.descr=Setze diese Taktik in der Nahkampfphase ein, nachdem du mit einem Modell aus deinem Kill Team attackiert hast. Wähle einen Nahkampfspezialisten deines Kill Teams, der in dieser Phase noch nicht attackiert hat: du kannst mit ihm sofort kämpfen.
+kt.tactic.specialist.nahkampfspezialist.defensiverkaempfer.descr=Setze diese Taktik zu Beginn der Nahkampfphase ein. Wähle einen Nahkampfspezialisten der Stufe 2 oder höher aus deinem Kill Team. Bis zum Ende der Phase muss du 2 vom Attackenwert des Modells abziehen (bis zu einem Minimum von 1), aber deine Gegner müssen erfolgreiche Trefferwürfe gegen das Modell wiederholen.
+kt.tactic.specialist.nahkampfspezialist.toedlichersturmangriff.descr=Setze diese Taktik ein, wenn ein Nahkampfspezialist der Stufe 3 oder höher aus deinem Kill Teameine Angriffsbewegung innerhalb von 1" um ein feindliches Modell beendet. Wirf einen W6; bei einer 5+ erleidet das feindliche Modell eine tödliche Verwundung.
+
+kt.tactic.specialist.sanitaeter.stimulanzdosis.descr=Setze diese Taktik zu Beginn der Bewegungsphase ein. Wähle ein Modell aus deinem Kill Team, das sich innerhalb von 2" um einen befreundeten Sanitäter befindet, der nicht erschüttert ist. Bis zum Ende der Schlachtrunde darfst du für das gewählte Modell 1 zu Vorrücken- und Angriffswürfen addieren und addierst 1 zum Attackenwert des gewählten Modells.
+kt.tactic.specialist.sanitaeter.schmerzmittel.descr=Setze diese Taktik am Ende der Bewegungsphase ein. Wähle ein Modell aus deinem Kill Team, das sich innerhalb von 2" um einen befreundeten Sanitäter der Stufe 2 oder höher befindet, der nicht erschüttert ist. Addiere bis zum Ende der Schlachtrunde 2 zum Widerstandswert des gewählten Modells.
+kt.tactic.specialist.sanitaeter.notfallreanimation.descr=Setze diese Taktik ein, wenn sich ein Sanitäter der Stufe 3 oder höher deines Kill Teams, der nicht erschüttert ist, innerhalb von 2" um ein anderes Modell deines Kill Teams befindet, das das Verletzungswurf-Ergenbnis Ausgeschaltet erleidet. Das Modell erleidet stattdessen eine Fleischwunde.
+
+kt.tactic.specialist.scharfschuetze.sorgfaeltigeszielen.descr=Setze diese Taktik ein, wenn du in der Fernkampfphase einen Scharfschützen deines Kill Teams wählst, um mit ihm zu schießen. Bis zum Ende der Phase darfst du zu den Trefferwürfen für das Modell 1 addieren.
+kt.tactic.specialist.scharfschuetze.kopfschuss.descr=Setze diese Taktik ein, wenn du in der Fernkampfphase einen Scharfschützen der Stufe 2 oder höher deines Kill Teams wählst, um mit ihm zu schießen. Bis zum Ende der Phase gelten verdeckte Ziele nicht als verdeckt, wenn dieses Modell auf sie schießt.
+kt.tactic.specialist.scharfschuetze.schnellschuss.descr=Setze diese Taktik ein, wenn du in der Fernkampfphase einen Scharfschützen der Stufe 3 oder höher deines Kill Teams wählst, um mit ihm zu schießen. In dieser Fernkampfphase verdoppelst du die Anzahl der Schüße, die die Fernkampfwaffe des Modells abfeuert, aber du ziehst 1 von den Trefferwürfen für dieses Modell ab. Du darfst diese Taktik nicht in der selben Schlachtrunde wie die Taktik "Kopfschuß" einsetzen.
+
+kt.tactic.specialist.schwererschuetze.mehrkugeln.descr=Setze diese Taktik ein, wenn du in der Fernkampfphase einen Schweren Schützen deines Kill teams wählst, um zu schießen. Du darfst 1 zu der Anzahl der Schüße addieren, die von der Fernkampfwaffe dieses Modells abgefeuert werden, mit Ausnahme von Waffen, die normalerweise in dieser Fernkampfphase 1 Schuss abgegeben würden.
+kt.tactic.specialist.schwererschuetze.ueberwaeltigendefeuerkraft.descr=Setze diese Taktik ein, wenn du in der Fernkampfphase einen Schweren Schützen der Stufe 2 oder höher deines Kill Teams wählst, um zu schießen. Dieses Modell darf in der Fernkampfphase zweimal schießen, schieße ein zweites Mal mit ihm, unmittelbar, anchdem du das erste Mal geschossen hast. Du darfst diese Taktik nicht in der selben Schlachtrunde einsetzen wie die Taktik "Mehr Kugeln".
+kt.tactic.specialist.schwererschuetze.nichtzutoeten.descr=Setze diese Taktik zu Beginn deines Zuges in der Moralphase ein. Wähle einen Schweren Schützen der Stufe 3 oder höher aus deinem Kill Team, der eine oder mehrere Fleischwunden hat. Entferne eine der Fleischwunden des Modells.
+
+kt.tactic.specialist.sprengstoffspezialist.massgefertigtemunition.descr=Setze diese Taktik ein, wenn du in der Fernkapmfphase eine Sprengstoffspezialisten deines Kill Teams wählst. Du kannst in dieser Phase für Fernkampfwaffen dieses Modells 1 zu Verwundungswürfen addieren.
+kt.tactic.specialist.sprengstoffspezialist.gluecklicheflucht.descr=Setze diese Taktik zu Beginn der Fernkampfphase ein. Wähle einen Sprengstoffspezialisten der Stufe 2 oder höher aus deinem Kill Team. Wirf jedes mal einen W6, wenn das Modell in dieser Phase einen Lebenspunkt verliert; bei 5+ verliert es den Lebenspunkt nicht.
+kt.tactic.specialist.sprengstoffspezialist.hochexplosiv.descr=Setze diese Taktik ein, wenn du in der Fernkampfphase einen Sprengstoffspezialisten der Stufe 3 oder höher aus deinem Kill Team wählst, um zu schießen. In dieser Fernkampfphase kann er nur eine einzelne Waffe abfeuern und diese Waffe kann nur einen Schuß abgeben (selbst wenn sie normalerweise mehr abfeuern würde). Der Schadenswert dieser Waffe wird jedoch um 2 erhöht. Du darfst diese Taktik nicht in der selben Schlachtrunde einsetzen wie die Taktik "Maßgefertigte Munition".
+
+kt.tactic.specialist.veteran.adaptivetaktiken.descr=Setze diese Taktik zu Beginn der ersten Schlachtrunde ein, jedoch vor der Initiativphase. Wähle einen Veteranen aus deinem Kill Team. Der gewählte Veteran kann eine normale Bewegung durchführen oder Vorrücken. Du darfst diese Taktik nur einmal pro Schlacht einsetzen.
+kt.tactic.specialist.veteran.gutausgebildet.descr=Setze diese Taktik zu Beginn deines Zuges in der Fernkampfphase ein. Wähle eine Veteranen der Stufe 2 oder höher aus deinem Kill Team. Versetze ihn in Feuerbereitschaft, außer er befindet sich innerhalb von 1" um einen Feind. Er kann in dieser Phase schießen, als hätte er sich nicht bewegt.
+kt.tactic.specialist.veteran.halbsoschlimm.descr=Setze diese Taktik während des generischen Zugs in der Fernkampfphase ein. Wähle einen Veteranen der Stuffe 3 oder höher aus deinem Kill Team, der verletzt wurde, bevor dein Gegner den Verletzungswurf durchführt. Dein Gegner darf den Verletzungswurf nur mit einem einzigen Würfel durchführen.
+
+kt.tactic.specialist.zelot.mordrausch.descr=Setze diese Taktik ein, wenn du in der Nahkampfphase einen Zeloten deines Kill teams wählst, um zu kämpfen. Bis zum Ende der Phase darfst du jedes Mal, wenn du einen trefferwurf von 6+ für dieses Modell erzielst, eine weitere Attacke gegen dasselbe Ziel durchführen. Diese zusätzliche Attacken können keine weiteren Attacken erzeugen.
+kt.tactic.specialist.zelot.maertyrer.descr=Setze diese Taktik ein, wenn ein Zelot der Stufe 2 oder höher aus deinem Kill Team seinen letzten Lebenspunkt verliert, bevor ein Spieler auf die Verletzungstabelle würfelt. Du darfst sofort mit einer seiner Waffen schießen, als wäre die Fernkampfphase, oder nachrücken und eine einzelne Attacke durchführen, als wäre die Nahkampfphase.
+kt.tactic.specialist.zelot.schrecklichestoben.descr=Setze diese Taktik zu Beginn der Moralphase ein. Wähle einen Zeloten der Stufe 3 oder höher aus deinem Kill Team, der in der vorangegangenen Nahkampfphase ein feindliches Modell ausgeschaltet hat. Jedes feindliche Modell innerhalb von 6" um den Zeloten muss einen Nerventest ablegen. Wenn der Test misslingt, ist das testende Modell erschüttert.
+# eo specialist  tactics
 
 # weapons adeptusastartes
 kt.weapon.adeptusastartes.astartesschrotflinte.descr=Wenn sich das Ziel innerhalb der halben Reichweite befindet, addiere 1 zur Stärke dieser Waffe.
@@ -342,7 +380,7 @@ kt.weapon.adeptusastartes.plasmawerferueberladung.descr=Wenn du mit dieser Waffe
 kt.weapon.adeptusastartes.raketenwerferfragmentrakete.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile.
 kt.weapon.adeptusastartes.raketenwerfersprengrakete.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile.
 kt.weapon.adeptusastartes.scharfschuetzengewehr.descr=Ein Modell, das ein Scharfschützengewer abfeuert, erleidet keinen Malus auf seinen Trefferwurf für ein Ziel in langer Reichweite. Für jeden Verwundungswurf von 6+ mit dieser Waffe erleidet erleidet das Ziel zusätzlich zu allem anderen Schaden eine tödliche Verletzung.
-kt.weapon.adeptusastartes.schockgranate.descr=Diese Waffe verursacht keinen Schaden. Wenn ein feindliches INFANTRIE Modell von Schockgranten getroffen wird, ist das getroffene Modell bis zum Ende des Zuges betäubt - es kann weder Abwehrfeuer abgeben noch in Feuerbereitschaft versetzt werden und dein Gegner muss von allen Trefferwürfen des Modells 1 abziehen.
+kt.weapon.adeptusastartes.schockgranaten.descr=Diese Waffe verursacht keinen Schaden. Wenn ein feindliches INFANTRIE Modell von Schockgranten getroffen wird, ist das getroffene Modell bis zum Ende des Zuges betäubt - es kann weder Abwehrfeuer abgeben noch in Feuerbereitschaft versetzt werden und dein Gegner muss von allen Trefferwürfen des Modells 1 abziehen.
 kt.weapon.adeptusastartes.schwereboltpistole.descr=
 kt.weapon.adeptusastartes.schwererbolter.descr=
 kt.weapon.adeptusastartes.sprenggranaten.descr=
@@ -380,7 +418,7 @@ kt.weapon.orks.kombiwummemitbazzukkawumme.descr=
 kt.weapon.orks.kombiwummemitgitbrennagitbrenna.descr=Diese Waffe trifft ihr Ziel automatisch.
 kt.weapon.orks.kombiwummemitgitbrennawumme.descr=Wenn du mit dieser Waffe attackierst, wähle eines oder beide der Profile. Wenn du beide wählst, ziehe 1 von allen trefferwürfen für diese Waffe ab.
 kt.weapon.orks.spalta.descr=Jedes mal, wenn der Träger kämpft, kann er mit dieser Waffe  1 zusätzliche Attacke durchführen.
-kt.weapon.orks.stikkbomb.descr=
+kt.weapon.orks.stikkbombs.descr=
 kt.weapon.orks.wumme.descr=
 # eo weapons orks
 

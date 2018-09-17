@@ -50,6 +50,7 @@ GET           /killteam/roster/pdf                                              
 GET           /killteam/faction                                                          controllers.KTHomeController.displayFirstFactionOverview()
 GET           /killteam/faction/:factionName                                             controllers.KTHomeController.displayFactionOverview(factionName: String)
 GET           /killteam/specialists                                                      controllers.KTHomeController.displaySpecialists()
+GET           /killteam/tactics                                                          controllers.KTHomeController.displayTacticsOverview()
 
 
 

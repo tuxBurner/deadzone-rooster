@@ -26,11 +26,7 @@
             @views.html.mainNav(routes.KTRosterController.rosterMain(), "kt.mainmenu.roster", currentActiveNav)
             @views.html.mainNav(routes.KTHomeController.displayFirstFactionOverview(), "kt.mainmenu.factionsOverview", currentActiveNav)
             @views.html.mainNav(routes.KTHomeController.displaySpecialists(), "kt.mainmenu.specialistsOverview", currentActiveNav)
-            @* @views.html.mainNav(routes.HomeController.displayTroopsOfFaction(FactionLogic.getAllFactions()(0).name), "mainmenu.armyTroops", currentActiveNav)
-            @views.html.mainNav(routes.HomeController.displayAllAbilities(), "mainmenu.abilities", currentActiveNav)
-            @views.html.mainNav(routes.HomeController.displayAllItems(), "mainmenu.items", currentActiveNav)
-            @views.html.mainNav(routes.HomeController.displayAllArmySpecials(), "mainmenu.armyspecials", currentActiveNav)
-            @views.html.mainNav(routes.HomeController.displayCheatSheet(), "mainmenu.cheatsheet", currentActiveNav) *@
+            @views.html.mainNav(routes.KTHomeController.displayTacticsOverview(), "kt.mainmenu.tacticsOverview", currentActiveNav)
           </ul>
 
           <ul class="navbar-nav navbar-right">

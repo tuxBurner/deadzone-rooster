@@ -5,10 +5,15 @@
   <table class="table table-sm table-bordered">
     <thead class="thead-dark">
       <tr>
-        <th>@Messages("kt.tactics.name")</th>
         @if(tacticType == ETacticType.SPECIALIST) {
           <th>@Messages("kt.tactics.specialist")</th>
+        }
+        <th>@Messages("kt.tactics.name")</th>
+        @if(tacticType == ETacticType.SPECIALIST) {
           <th>@Messages("kt.tactics.level")</th>
+        }
+        @if(tacticType == ETacticType.FACTION) {
+          <th>@Messages("kt.tactics.faction")</th>
         }
         <th>@Messages("kt.tactics.description")</th>
         <th>@Messages("kt.tactics.commandPoints")</th>
@@ -17,25 +22,30 @@
     <tbody>
     @for(tactic <- tactics) {
       <tr>
-        <td>@tactic.name</td>
         @if(tacticType == ETacticType.SPECIALIST) {
           <td>@tactic.specialist</td>
+        }
+      <td>@tactic.name</td>
+        @if(tacticType == ETacticType.SPECIALIST) {
           <td>@tactic.specialistLevel</td>
         }
-        <td>
-          @if(tacticType == ETacticType.SPECIALIST) {
-            @Messages(FixMessagesKey.fixKey(s"kt.tactic.${tacticType}.${tactic.specialist}.${tactic.name}.descr"))
-          }
+        @if(tacticType == ETacticType.FACTION) {
+          <td>@tactic.faction</td>
+        }
+      <td>
+        @if(tacticType == ETacticType.SPECIALIST) {
+          @Messages(FixMessagesKey.fixKey(s"kt.tactic.${tacticType}.${tactic.specialist}.${tactic.name}.descr"))
+        }
 
-          @if(tacticType == ETacticType.GENERAL) {
-            @Messages(FixMessagesKey.fixKey(s"kt.tactic.${tacticType}.${tactic.name}.descr"))
-          }
+        @if(tacticType == ETacticType.GENERAL) {
+          @Messages(FixMessagesKey.fixKey(s"kt.tactic.${tacticType}.${tactic.name}.descr"))
+        }
 
-          @if(tacticType == ETacticType.FACTION) {
-            @Messages(FixMessagesKey.fixKey(s"kt.tactic.${tacticType}.${tactic.faction}.${tactic.name}.descr"))
-          }
-        </td>
-        <td>@tactic.commandPoints</td>
+        @if(tacticType == ETacticType.FACTION) {
+          @Messages(FixMessagesKey.fixKey(s"kt.tactic.${tacticType}.${tactic.faction}.${tactic.name}.descr"))
+        }
+      </td>
+      <td>@tactic.commandPoints</td>
       </tr>
     }
     </tbody>
