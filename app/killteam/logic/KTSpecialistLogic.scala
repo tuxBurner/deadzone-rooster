@@ -125,6 +125,15 @@ object KTSpecialistLogic {
 
 
   /**
+    * Counts the total amount of specialists in the army
+    * @param armyDto the army where to count the specialists
+    * @return
+    */
+  def countSpecialistsInArmy(armyDto: KTArmyDto) : Int = {
+    armyDto.troops.filter(_.specialist.isDefined).map(_.amount).sum
+  }
+
+  /**
     * Gets the possible specialist options for the given troop type and army
     *
     * @param troopName   the name of the troop to get the specials for
@@ -135,7 +144,7 @@ object KTSpecialistLogic {
   def getAvaibleSpecialistSelectOptions(troopName: String, factionName: String, armyDto: KTArmyDto): List[String] = {
 
     // only 4 specialist allowed
-    if (armyDto.troops.count(_.specialist.isDefined) >= 4) {
+    if (countSpecialistsInArmy(armyDto = armyDto) >= 4) {
       return List("")
     }
 

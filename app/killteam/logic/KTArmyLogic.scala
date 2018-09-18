@@ -10,6 +10,40 @@ object KTArmyLogic {
 
 
   /**
+    * Sets the amount of the troop in the army
+    *
+    * @param uuid    the uuid of the troop to set the amount for
+    * @param amount  the amount to set
+    * @param armyDto the army where the troop is in
+    * @return
+    */
+  def setAmountOfTroopInArmy(uuid: String, amount: Int, armyDto: KTArmyDto): KTArmyDto = {
+
+    if (amount <= 0) {
+      Logger.error(s"Amount is: $amount must be bigger than 1")
+      return armyDto
+    }
+    
+    getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, troopDto => {
+      if (troopDto.specialist.isDefined) {
+        // count how many specialist are in the army
+        val specialists = KTSpecialistLogic.countSpecialistsInArmy(armyDto = armyDto)
+
+        val difference =   amount - troopDto.amount
+
+        if (specialists >= 4 && specialists + difference > 4) {
+          Logger.warn(s"Cannot change amount of troop because it is a specialist: ${troopDto.specialist.get.name} and there are already: $specialists in army")
+          Some(troopDto)
+        } else {
+          Some(troopDto.copy(amount = amount))
+        }
+      } else {
+        Some(troopDto.copy(amount = amount))
+      }
+    })
+  }
+
+  /**
     * Adds a troop to the given army
     *
     * @param factionName    the faction name of the troop to add
@@ -63,7 +97,7 @@ object KTArmyLogic {
         amount = 1,
         points = troop.points,
         level = 1,
-        totalPoints = calculateTroopPoints(troop.points, List(), loadout, 1),
+        totalPoints = calculateTroopPoints(basePoints = troop.points, items = List(), loadout = loadout, level = 1),
         abilities = abilities,
         specialist = specialist,
         requiredUnits = troop.requiredUnits)
@@ -238,7 +272,7 @@ object KTArmyLogic {
     getTroopFromArmyByUUID(uuid = uuid, armyDto = armyDto)
       .map(troopDto => {
         successHandler(troopDto)
-          .map(updatedTroop => updateArmyWithTroop(updatedTroop = updatedTroop.copy(totalPoints = calculateTroopPoints(updatedTroop.points, updatedTroop.items, updatedTroop.loadout, updatedTroop.level)), armyDto = armyDto))
+          .map(updatedTroop => updateArmyWithTroop(updatedTroop = updatedTroop.copy(totalPoints = calculateTroopPoints(basePoints = updatedTroop.points, items = updatedTroop.items, loadout = updatedTroop.loadout, level = updatedTroop.level)), armyDto = armyDto))
           .getOrElse(armyDto)
       })
       .getOrElse({
