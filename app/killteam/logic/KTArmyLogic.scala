@@ -23,14 +23,25 @@ object KTArmyLogic {
       Logger.error(s"Amount is: $amount must be bigger than 1")
       return armyDto
     }
-    
+
     getTroopFromArmyByUUIDAndPerformChanges(uuid = uuid, armyDto = armyDto, troopDto => {
+
+      // check if maximum is already reached
+      if(troopDto.maxInArmy != 0) {
+        val foundInArmy = KTTroopLogic.countAmountInArmy(troopDto = troopDto, armyDto = armyDto)
+
+        if(foundInArmy >= troopDto.maxInArmy && amount > troopDto.maxInArmy) {
+          Logger.error(s"Found: $foundInArmy of troop: ${troopDto.name} max allowed are: ${troopDto.maxInArmy}")
+          return armyDto
+        }
+      }
+
+      // check if there may be more specialists in the army
       if (troopDto.specialist.isDefined) {
         // count how many specialist are in the army
         val specialists = KTSpecialistLogic.countSpecialistsInArmy(armyDto = armyDto)
 
-        val difference =   amount - troopDto.amount
-
+        val difference = amount - troopDto.amount
         if (specialists >= 4 && specialists + difference > 4) {
           Logger.warn(s"Cannot change amount of troop because it is a specialist: ${troopDto.specialist.get.name} and there are already: $specialists in army")
           Some(troopDto)
@@ -100,7 +111,8 @@ object KTArmyLogic {
         totalPoints = calculateTroopPoints(basePoints = troop.points, items = List(), loadout = loadout, level = 1),
         abilities = abilities,
         specialist = specialist,
-        requiredUnits = troop.requiredUnits)
+        requiredUnits = troop.requiredUnits,
+        maxInArmy = troopDo.get.maxInArmy)
 
       val newTroops = armyDto.troops :+ newTroop
 
@@ -388,6 +400,7 @@ case class KTArmyDto(name: String = "",
   * @param name          the name of the troop
   * @param unit          the unit the troop belongs to
   * @param faction       the faction of the troop
+  * @param maxInArmy     how many of this troop may in the army
   * @param stats         the stats the troop has
   * @param loadout       the loadout the tropp is equiped with
   * @param amount        how many of the troop are in the army
@@ -403,6 +416,7 @@ case class KTArmyTroopDto(uuid: String,
                           name: String,
                           unit: String,
                           faction: String,
+                          maxInArmy: Int,
                           stats: KTTroopStats,
                           loadout: KTLoadoutDto,
                           amount: Int,

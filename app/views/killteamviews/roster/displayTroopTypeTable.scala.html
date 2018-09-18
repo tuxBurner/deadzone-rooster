@@ -1,4 +1,5 @@
 @import killteam.logic.{KTArmyDto, KTArmyTroopDto}
+@import killteam.logic.KTTroopLogic
 @(troops: List[KTArmyTroopDto], troopType: String, army: KTArmyDto)(implicit messages: Messages)
 
 
@@ -62,20 +63,31 @@
 
             <tr>
               <td>
+
                 <div class="btn-group btn-group-sm" role="group">
                   <a href="@routes.KTRosterController.displayEditOptions(troop.uuid)" class="btn btn-info btn-sm roster_edit_btn"><i class="fas fa-edit fa-xs"></i></a>
                   <button class="btn btn-warning roster_clone_btn"><i class="fas fa-clone fa-xs"></i></button>
                   <a class="btn btn-danger roster_del_btn" href="@routes.KTRosterController.removeTroopFromArmy(troop.uuid)"><i class="fas fa-trash fa-xs"></i></a>
                 </div>
 
+                @* Increase decrease amount *@
                 <div class="btn-group btn-group-sm" role="group">
                   @if(troop.amount > 1) {
-                    <a class="btn btn-danger" href="@routes.KTRosterController.setAmountOfTroopInArmy(troop.uuid,troop.amount - 1)"><i class="fas fa-trash fa-xs"></i></a>
+                    <a class="btn btn-primary" href="@routes.KTRosterController.setAmountOfTroopInArmy(troop.uuid,troop.amount - 1)"><i class="fas fa-minus fa-xs"></i></a>
+                  } else {
+                    <a class="btn btn-primary disabled" href="#"><i class="fas fa-minus fa-xs"></i></a>
                   }
 
-                  <button class="btn btn-warning">@troop.amount</button>
-                  <a class="btn btn-danger" href="@routes.KTRosterController.setAmountOfTroopInArmy(troop.uuid,troop.amount + 1)"><i class="fas fa-trash fa-xs"></i></a>
+                  <button class="btn btn-dark">@troop.amount</button>
+
+                  @if(troop.maxInArmy == 0 || (troop.maxInArmy != 0 && troop.maxInArmy > KTTroopLogic.countAmountInArmy(troop, army))) {
+                    <a class="btn btn-primary" href="@routes.KTRosterController.setAmountOfTroopInArmy(troop.uuid, troop.amount + 1)"><i class="fas fa-plus fa-xs"></i></a>
+                  } else {
+                    <a class="btn btn-primary disabled" href="#"><i class="fas fa-plus fa-xs"></i></a>
+                  }
                 </div>
+                @* EO Increase decrease amount *@
+
               </td>
               <td colspan="12">
 
