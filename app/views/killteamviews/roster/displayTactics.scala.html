@@ -3,13 +3,8 @@
 @(army: KTArmyDto)(implicit messages: Messages)
 
   @for((tacticType, tactics) <- army.tactics) {
-    <h5>@Messages(s"kt.tactics.$tacticType.title")</h5>
-    
-    @if(tactics.isEmpty) {
-      <div class="alert alert-primary" role="alert">
-      @Messages(s"kt.tactics.$tacticType.noTactics")
-      </div>
-    } else {
+    @if(tactics.isEmpty == false) {
+      <h5>@Messages(s"kt.tactics.$tacticType.title")</h5>
       @views.html.killteamviews.roster.displayTacticsTable(tacticType, tactics)
     }
   }

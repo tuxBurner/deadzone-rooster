@@ -75,8 +75,15 @@ object KTSpecialistLogic {
               // find the special in the specialist
               specialDoOptional
                 .map(specialDo => {
+
+                  var specialToSet = if(specialLevel == 4) {
+                    specialDo.copy(level = 4)
+                  } else {
+                    specialDo
+                  }
+
                   // the newspecials list remove all the specials which are higher than the new one and add the new one
-                  val newSpecials = specialist.selectedSpecials.filter(_.level <= specialLevel) :+ specialDoToDto(specialDo = specialDo)
+                  val newSpecials = specialist.selectedSpecials.filter(_.level <= specialLevel) :+ specialDoToDto(specialDo = specialToSet)
 
                   // filter out all speciales which are on the same level and dont have the same name
                   val cleanedSpecials = newSpecials.filter(special => special.level != specialLevel || (special.level == specialLevel && special.name == specialName))
