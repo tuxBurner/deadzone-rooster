@@ -76,7 +76,8 @@ object KTSpecialistLogic {
               specialDoOptional
                 .map(specialDo => {
 
-                  var specialToSet = if(specialLevel == 4) {
+                  // when it is level 4 we have to set it at the special
+                  val specialToSet = if(specialLevel == 4) {
                     specialDo.copy(level = 4)
                   } else {
                     specialDo
