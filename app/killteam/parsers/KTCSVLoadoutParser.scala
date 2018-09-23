@@ -31,6 +31,11 @@ class KTCSVLoadoutParser @Inject()(configuration: Configuration) extends CSVData
 
   private val CSV_HEADER_UNIT = "Einheit"
 
+  private val CSV_SUB_LOADOUT = "Sub-Loadout"
+
+  private val CSV_SUB_LOADOUT_MAX = "Sub-Max"
+
+
   /**
     * Refreshs all loadouts from the csv
     */
@@ -74,11 +79,11 @@ class KTCSVLoadoutParser @Inject()(configuration: Configuration) extends CSVData
         weapons = getListFromLine(CSV_HEADER_WEAPONS, lineData, true),
         items = getSetFromLine(CSV_HEADER_ITEMS, lineData, true),
         maxPerUnit = getIntFromLine(CSV_HEADER_MAX_PER_UNIT, lineData, true),
-        unit = getDataFromLine(CSV_HEADER_UNIT, lineData, true)
+        unit = getDataFromLine(CSV_HEADER_UNIT, lineData, true),
+        subLoadout = getDataFromLine(CSV_SUB_LOADOUT, lineData, true),
+        subMax = getIntFromLine(CSV_SUB_LOADOUT_MAX, lineData, true),
       )
-
       Some(parsedLoadout)
-
     } catch {
       case c: CSVDataEmptyException => None
     }
@@ -96,6 +101,8 @@ class KTCSVLoadoutParser @Inject()(configuration: Configuration) extends CSVData
   * @param items      the items in the loadout
   * @param maxPerUnit how often may this loadout be equiped on a unit
   * @param unit       when max in army != 0 and this is set this means only n unit may equip this
+  * @param subLoadout when set this means this is a sub loadout which can be only n time equipped in the army
+  * @param subMax     when subLoadout is set and this is > 0 means how often this can be equipped in the army
   */
 case class KTCsvLoadoutDto(faction: String,
                            troop: String,
@@ -103,6 +110,8 @@ case class KTCsvLoadoutDto(faction: String,
                            weapons: List[String],
                            items: Set[String],
                            maxPerUnit: Int,
-                           unit: String)
+                           unit: String,
+                           subLoadout: String,
+                           subMax: Int)
 
 

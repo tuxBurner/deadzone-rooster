@@ -156,7 +156,7 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
     */
   def setNewLoadoutAtTroop(uuid: String, loadoutName: String) = Action {
     implicit request =>
-      getArmyFromCacheAndUpdateIt(armyFromCache => KTArmyLogic.setLoadoutAtTroop(loadoutName = loadoutName, uuid = uuid, armyDto = armyFromCache),
+      getArmyFromCacheAndUpdateIt(armyFromCache => KTLoadoutLogic.setLoadoutAtTroop(loadoutName = loadoutName, uuid = uuid, armyDto = armyFromCache),
         Redirect(routes.KTRosterController.displayEditOptions(uuid)))
   }
 
@@ -217,7 +217,8 @@ class KTRosterController @Inject()(cc: ControllerComponents, cache: SyncCacheApi
 
   /**
     * Sets the amount of the troop in the army
-    * @param uuid the uuid of the troop to set the amount of
+    *
+    * @param uuid   the uuid of the troop to set the amount of
     * @param amount the amount of troops in the army with this configuration
     * @return
     */

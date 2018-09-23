@@ -98,7 +98,9 @@ object KTLoadoutDao {
       weapons = weapons.toList,
       items = items.toSet,
       maxPerUnit = csvLoadoutDto.maxPerUnit,
-      unit = csvLoadoutDto.unit
+      unit = csvLoadoutDto.unit,
+      subLoadout = csvLoadoutDto.subLoadout,
+      subMax = csvLoadoutDto.subMax
     )
 
     loadOuts += loadout
@@ -118,6 +120,8 @@ object KTLoadoutDao {
   * @param items      the items in the loadout
   * @param maxPerUnit how often may this loadout be equiped on a unit
   * @param unit       when max in army != 0 and this is set this means only n unit may equip this
+  * @param subLoadout when set this means this is a sub loadout which can be only n time equipped in the army
+  * @param subMax     when subLoadout is set and this is > 0 means how often this can be equipped in the army
   */
 case class KTLoadoutDo(faction: KTFactionDo,
                        troop: KTTroopDo,
@@ -125,7 +129,9 @@ case class KTLoadoutDo(faction: KTFactionDo,
                        weapons: List[KTWeaponDo],
                        items: Set[KTItemDo],
                        maxPerUnit: Int,
-                       unit: String)
+                       unit: String,
+                       subLoadout: String,
+                       subMax: Int)
 
 
 
