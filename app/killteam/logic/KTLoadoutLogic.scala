@@ -18,9 +18,16 @@ object KTLoadoutLogic {
       .map(loadout => {
 
         // check if the loadout is selectable it may not because it is a unique one and already used
-        val selectable = loadout.unit.isEmpty || !armyDto.troops.exists(troop => {
+        val selectableByUnit = loadout.unit.isEmpty || !armyDto.troops.exists(troop => {
           troop.unit == loadout.unit && troop.loadout.name == loadout.name
         })
+
+        // check if this is a subloadout and if the maximum is already taken by the troops in the army
+        val selectableSubLoadout = loadout.subLoadout.isEmpty || armyDto.troops.count(armyTroop => {
+          armyTroop.name == troopDto.name && loadout.subLoadout == armyTroop.loadout.subLoadout && troopDto.uuid != armyTroop.uuid
+        }) < loadout.subMax
+
+        val selectable = selectableByUnit && selectableSubLoadout
 
         val selected = loadout.name == troopDto.loadout.name
         KTOptionLoadout(selected = selected, selectable = selectable, loadout = loadout)

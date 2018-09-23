@@ -28,7 +28,7 @@
       </td>
       <th scope="row">
         <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse@loadoutIndex">
-        @loadoutOption.loadout.name
+        @loadoutOption.loadout.name @if(loadoutOption.loadout.subLoadout.isEmpty == false) { -  @loadoutOption.loadout.subLoadout (@loadoutOption.loadout.subMax)}
         </button>
       </th>
       <td>@loadoutOption.loadout.weapons.map(_.name).mkString(" / ")</td>
