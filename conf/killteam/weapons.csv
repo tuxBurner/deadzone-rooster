@@ -46,9 +46,9 @@ Thousand Sons, Heretic Astartes;Maschinenpistole;0;"12""";Pistole 1;3;0;1;;
 Tau;Massebeschleunigergewehr;5;"30""";Schnellfeuer 1;6;-4;W3;Für jeden Verwundungswurf von 6+ mit dieser Waffe erleidet erleidet das Ziel zusätzlich zu allem anderen Schaden eine tödliche Verletzung.;
 Adeptus Astartes, Heretic Astartes;Melter;3;"12""";Sturm 1;8;-4;W6;Wenn das Ziel innerhalb der halben Reichweite dieser Waffe ist, wirf bei der Ermittlung ihres Schadens zwei Würfel und lege das niedrigere Ergebnis ab.;
 Tau;Photonengranate;0;"6""";Granate W6;-;-;-;Diese Waffe verursacht keinen Schaden. Dein Gegner muss bis zum Ende der Schlachtrunde 1 von Trefferwürfen für IINFANTRIE-Modelle abziehen, die von Photonen Granaten getroffen wurden.;
-Adeptus Astartes;Plasmapistole Standard;1;"12""";Pistole 1;7;-3;1;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Plasmapistole
+Adeptus Astartes, Heretic Astartes;Plasmapistole Standard;1;"12""";Pistole 1;7;-3;1;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Plasmapistole
 Adeptus Astartes, Heretic Astartes;Plasmapistole Überladung;0;"12""";Pistole 1;8;-3;2;Wenn du mit dieser Waffe schießt, wähle eines der Profile. Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet.;Plasmapistole
-Adeptus Astartes;Plasmawerfer Standard;3;"24""";Schnellfeuer 1;7;-3;1;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Plasmawerfer
+Adeptus Astartes, Heretic Astartes;Plasmawerfer Standard;3;"24""";Schnellfeuer 1;7;-3;1;Wenn du mit dieser Waffe schießt, wähle eines der Profile.;Plasmawerfer
 Adeptus Astartes, Heretic Astartes;Plasmawerfer Überladung;0;"24""";Schnellfeuer 1;8;-3;2;Wenn du mit dieser Waffe schießt, wähle eines der Profile. Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet, nachdem alle Schüße dieser Waffe abgehandelt wurden.;Plasmawerfer
 Thousand Sons;Psistab;0;Nahkampf;Nahkampf;2;-1;W3;;
 Tau;Pulsblaster Kurz;0;"5""";Sturm 2;6;-2;1;;Pulsblaster

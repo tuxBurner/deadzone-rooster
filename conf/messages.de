@@ -307,6 +307,13 @@ kt.tactic.faction.orks.nurnefleischwundae.descr=Setze diese Taktik ein, wenn ein
 kt.tactic.faction.orks.mekspezialstikkbomb.descr=Setze diese Taktik ein, wenn due ein Modell deines Kill Teams wählst, um mit einer Stikkbomb zu attackieren. Bis zum Ende dieser Phase änderst du den Typ der Waffe zu Granate W3 und addierst 1 jeweils zu ihrem Stärke- und Schadenswert.
 #eo orks tactics
 
+# heretic astartes tactics
+kt.tactic.faction.hereticastartes.veteranendeslangenkrieges.descr=Setze diese Taktik ein, wenn ein Chaos-Space-Marine Modell aus deinem Kill Team in der Ferkampf- oder Nahkampf-Phase gewählt wird, um zu attackieren. Du darfst bis zum Ende der Phase für Attacken des Modells gegen Modell des IMPERIUM 1 auf Verwundungswürfe addieren.
+kt.tactic.faction.hereticastartes.wutdeskhorne.descr=Setze diese Taktik am ende der Nahkampfphase ein. Wähle ein Khorne-Modell aus deinem Kill Team, das sich innerhalb von 1 Zoll um feindliche Modelle befindet- dein Modell darf sofort noch einmal kämpfen.
+kt.tactic.faction.hereticastartes.daemonengeist.descr=Setze diese Taktik am Ende der Bewegungsphase ein. Wähle ein feindliches Modell innerhalb von 1 Zoll um deinen Anführer und wirf einen W6. Bei 4+ erleidet das Modell eine tödliche Verwundung.
+kt.tactic.faction.hereticastartes.rufediegoetteran.descr=Setze diese Taktik zu Beginn der ersten Schlachtrunde ein. Wähle ein Modell aus deinem Kill Team und wirf einen W6. Bei einer 1 wurde das Modell für unwürdig befunden und erleidet W3 tödliche Verwundungen. Bei 2+ addierst du bis zum Ende des Gefechts 1 auf Treffer- und Verwundungswürfe dieses Modells. Du kannst diese Taktik pro Gefecht nur einmal einsetzen.
+# eo heretic astartes tactics
+
 # specialist tactics
 kt.tactic.specialist.anfuehrer.vorbildlichesverhalten.descr=Setze diese Taktik ein, wenn du einen Anführer deines Kill Teams in der Nahkampf wählst, um zu kämpfen. Wähle ein weiteres befreundetes Modell innerhalb von 3" um ihn, das kämpfen darf. Du darfst mit jedem dieser Modelle in beliebiger reihenfolge kämpfen, bevor der nächste Spieler am Zug ist.
 kt.tactic.specialist.anfuehrer.schiessaufmeinziel.descr=Setze diese Taktik ein, wenn du in der Fernkampfphase einen Anführer der Stufe 2 oder höher deines Kill Teams wählst, um mit ihm zu schießen. Wähle ein weiteres befreundetes Modell innerhalb von 3" um ihn, das schießen darf. Du darfst mit jedem dieser Modelle in beliebiger Reihenfolge eine Fernkampfattacke durchführen, bevor der nächste Spieler am Zug ist.
@@ -402,6 +409,7 @@ kt.ability.adeptusastartes.terrortruppen.descr=Feindliche Modelle müssen 1 von 
 kt.ability.adeptusastartes.transhumanephysiologie.descr=Ignoriere den Abzug auf Trefferwürfe diese Modells durch erlittene Fleischwunden.
 # eo abilities adeptusastartes
 
+
 # weapons orks
 kt.weapon.orks.aufgemotztamegablasta.descr=Bei einem unmodifizierten Trefferwurf von 1 erleidet der Träger eine tödliche Verwundung.
 kt.weapon.orks.bazzukka.descr=
@@ -426,6 +434,42 @@ kt.weapon.orks.wumme.descr=
 kt.ability.orks.jetzgehtzlos.descr=Wiederhole misslungene Angriffswürfe für ein Modell mit dieser Fähigkeit.
 kt.ability.orks.verstohlenegits.descr=Wenn ein Gegner einen Trefferwurf für ein Fernkampfattacke gegen dieses Modell ausführt und diese Modell verdeckt ist, wird der Trefferwurf zusätzlich um -1 modifiziert.
 # eo abilities orks
+
+# items heretic astartes
+kt.item.hereticastartes.ikonederausschweifung.descr=Die Fähigkeite Tod den falschen Imperator innerhalb von 6 Zoll um ein befreundetes Modell mit einer Ikone der Ausschweifung wirkt bereits bei 5+ statt 6+.
+kt.item.hereticastartes.ikonederflammen.descr=Wirf zu Beginn deines Zuges in der Psiphase einen W6 für jedes Modell in deinem Kill Team, das mit einer Ikone der der Flammen ausgerüstet ist. Bei einer 6 erleidet das nächste feindliche Modell in 12 Zoll um das Modell mit der Ikone der Flammen eine tödliche Verwundung.
+kt.item.hereticastartes.ikonedervergeltung.descr=Erhöhe den Moralwert aller Modelle um 1, die sich innerhalb von 6 Zoll um mindestens ein befreundetes Modell mit der Ikone der Vergeltung befindet.
+kt.item.hereticastartes.ikonederverzweiflung.descr=Feindliche Modelle innerhalb von 6 Zoll um mindestens ein Modell mit einer Ikone der Verzweiflung ziehen 1 von ihrem Moralwert ab.
+kt.item.hereticastartes.ikonedeszorns.descr=Für alle Modelle des Khorne innerhalb von 6 Zoll um befreundete Modelle mit der Ikone des Zorns darfst du Angriffswürfe wiederholen.
+# eo items heretic astartes
+
+# abilities heretic astartes
+kt.ability.hereticastartes.maldeschaos.descr=Wenn du deinem Kill Team ein Modell mit dem Schlüsselwort <Mal des Chaos> hinzufügst, darfst du dieses durch eines der folgenden SChlüsselwörter ersetzen: Khoren, Nurgel, Tzeentch oder Slaanesh, oder du darfst dich dazu entscheiden, ihm kein Mal zuzuweisen. Notiere es auf der Datenkarte des Modells, wenn du ein Mal wählst.
+kt.ability.hereticastartes.toddemfalschenimperator.descr=Jedes Mal, wenn du für ein Modell mit dieser Fähigkeit in der Nahkampfphase einen Trefferwurf von 6+ erzielst, kann es, sofern das Ziel ein Modell des Imperiums ist, sofort eine zusätzliche Attacke mit derselben Waffe gegen dasselbe Ziel durchführen. Diese Zusatzattacken können keine weiteren Bonusattacken erzeugen.
+kt.ability.hereticastartes.transhumanephysiologie.descr=Ignoriere den Abzug auf Trefferwürfe diese Modells durch erlittene Fleischwunden.
+# eo abilities heretic astartes
+
+# weapons heretic astartes
+kt.weapon.hereticastartes.bolter.descr=
+kt.weapon.hereticastartes.boltpistole.descr=
+kt.weapon.hereticastartes.brutalenahkampfwaffe.descr=
+kt.weapon.hereticastartes.energiefaust.descr=
+kt.weapon.hereticastartes.energieschwert.descr=
+kt.weapon.hereticastartes.flammenwerfer.descr=Diese Waffe trifft ihr Ziel automatisch
+kt.weapon.hereticastartes.fragmentgranaten.descr=
+kt.weapon.hereticastartes.kettenschwert.descr=
+kt.weapon.hereticastartes.maschinengewehr.descr=
+kt.weapon.hereticastartes.maschinenpistole.descr=
+kt.weapon.hereticastartes.melter.descr=Wenn das Ziel innerhalb der halben Reichweite dieser Waffe ist, wirf bei der Ermittlung ihres Schadens zwei Würfel und lege das niedrigere Ergebnis ab.
+kt.weapon.hereticastartes.plasmapistolestandard.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile.
+kt.weapon.hereticastartes.plasmapistoleueberladung.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile. Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet.
+kt.weapon.hereticastartes.plasmawerferstandard.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile.
+kt.weapon.hereticastartes.plasmawerferueberladung.descr=Wenn du mit dieser Waffe schießt, wähle eines der Profile. Bei einem unmodifizierten Trefferwurf von 1 wird der Träger ausgeschaltet, nachdem alle Schüße dieser Waffe abgehandelt wurden.
+kt.weapon.hereticastartes.schrotflinte.descr=
+kt.weapon.hereticastartes.schwererbolter.descr=
+kt.weapon.hereticastartes.sprenggranaten.descr=
+kt.weapon.hereticastartes.sturmgewehr.descr=
+# eo weapons heretic astartes
 
 
 # specials
