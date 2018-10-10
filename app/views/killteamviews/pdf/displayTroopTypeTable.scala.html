@@ -11,7 +11,7 @@
     @for(troop <- troops) {
 
       <div style="page-break-inside: avoid">
-        <h3>@Messages("kt.troop.tbl.name") @troop.name</h3>
+        <h3>@Messages("kt.troop.tbl.name") @troop.name @if(troop.amount > 1) { x  @troop.amount }</h3>
         <hr />
 
         <table class="pdf">
