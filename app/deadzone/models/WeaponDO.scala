@@ -28,6 +28,12 @@ object WeaponDAO {
     findByNameAndFactionNameAndAllowedTypes(name, factionDo.name, allowedTypes)
   }
 
+  /**
+    * Finds all weapons which are in the faction and have the linkedName
+    * @param faction the name of the faction the weapons belong to
+    * @param linkedName the linked name of the weapon to search for
+    * @return
+    */
   def findByFactionAndLinkedName(faction: String, linkedName: String)  : List[WeaponDO] = {
     weapons
       .filter(_.faction.name == faction)
