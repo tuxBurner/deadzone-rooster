@@ -115,18 +115,20 @@ object TroopDAO {
     * @return
     */
   private def findAllDefaultWeaponsForTroop(csvTroopDto: CSVTroopDto): List[WeaponDO] = {
-    csvTroopDto.defaultWeaponNames
-      .map(
-        weaponName => {
-          val weapon = WeaponDAO.findByNameAndFactionNameAndAllowedTypes(weaponName, csvTroopDto.faction, csvTroopDto.weaponTypes.toList)
-          if (weapon.isEmpty) {
-            Logger.error(s"Could not add default weapon ${weaponName} to troop: ${csvTroopDto.name} faction: ${csvTroopDto.faction} was not found in the db")
-          }
-          weapon
-        }
-      )
-      .filter(_.isDefined)
-      .map(_.get)
+   csvTroopDto.defaultWeaponNames.flatMap(weaponName => {
+     val weapon = WeaponDAO.findByNameAndFactionNameAndAllowedTypes(weaponName, csvTroopDto.faction, csvTroopDto.weaponTypes.toList)
+     if (weapon.isEmpty) {
+       Logger.error(s"Could not add default weapon ${weaponName} to troop: ${csvTroopDto.name} faction: ${csvTroopDto.faction} was not found in the db")
+     }
+
+     // check if the weapon is a linked weapon
+     if (StringUtils.isNotBlank(weapon.get.linkedName)) {
+       WeaponDAO.findByFactionAndLinkedName(csvTroopDto.faction, weapon.get.linkedName)
+         .map(Some(_))
+     } else {
+       List(weapon)
+     }
+   }).flatten
   }
 
   /**

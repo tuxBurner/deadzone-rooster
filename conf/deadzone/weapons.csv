@@ -3,7 +3,7 @@ Forge Fathers, Forge Fathers (Outbreak);2-handed Heat Hammer;8;1;RF;2;Knockback;
 GCPS, Enforcers (Outbreak), GCPS (Outbreak);Accutek LR-AWP;12;1;R10;0;Sniper Scope, Heavy;Light Sniper;;;
 Plague, Plague (Outbreak);Acid Bite;0;0;RF;2;;Acid Bite Swarm;;;
 Mazon Labs;Anaesthetic Injectors;0;0;RF;0;Stun;DrKoyner;;;Anaesthetic Injectors
-Mazon Labs;Anaesthetic Injectors;0;0;R1;0;Stun;DrKoyner;;;Anaesthetic Injectors
+Mazon Labs;Anaesthetic Injectors (R1);0;0;R1;0;Stun;DrKoyner;;;Anaesthetic Injectors
 Enforcers, Rebs, Asterians, Forge Fathers, Marauders, GCPS, Rebs (Exham IV), Nameless;ARC Launcher;0;0;R4;1;;Teraton Shock Trooper;;;
 Enforcers, Rebs, Plague, GCPS, Plague (Nexus-Psi), Enforcers (Exham IV), Mazon Labs;Assault Flamer;6;0;R2;1;Volatile, It Burns!;Walker Assault;1;;
 GCPS, GCPS (Outbreak);Autocannon;4;0;R6;0;Suppression, Weight of Fire(1), Heavy;Heavy Crew Served Weapon;;;
@@ -88,7 +88,7 @@ Marauders;HEW Cannon;10;2;R12;5;Heavy, Weight of Fire(1);Vehicle Lance, Hulk;;;
 Plague, Marauders, Plague (Nexus-Psi), Marauders (Exham IV), Marauders (Outbreak);HMG;4;0;R6;0;Weight of Fire(1), Suppression;Light Automatic;;;
 Marauders, Marauders (Outbreak);Hrunka;5;0;RF;0;Frenzy(1);Light Melee;;;
 Mazon Labs;Hyperkinesis;0;0;R4;0;Invigorate, Psychic;DataStorage;;;
-Veer-Myn;Hysteria;0;0;R4;0;Suppresion, Psychic;Tangle;;;
+Veer-Myn;Hysteria;0;0;R4;0;Suppression, Psychic;Tangle;;;
 Forge Fathers, Forge Fathers (Outbreak);IA Forge Hammer;5;1;RF;2;;Walker Melee;1;;
 Enforcers, Enforcers (Exham IV);Incinerator;4;0;R2;0;Volatile, It Burns!;Light Assault, Heavy Assault;;;
 Forge Fathers, Forge Fathers (Exham IV);Inferno Drills;0;0;R4;2;;Hammerfist Drop Armour;;;

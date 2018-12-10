@@ -191,8 +191,8 @@ Plague (Outbreak);Subject 901;24;L;1-2;0;4+;4+;2;1;3;Teeth and Claws;;Rampage, T
 Asterians;Support Drone;9;S;1-2;5+;0;6+;1;0;1;;;Construct, Beast;Platform Camouflage, Platform Communications, Platform Automatic;;;;;
 Rebs, Rebs (Exham IV);Survey Drone;7;S;2-3;0;0;4+;1;0;0;;;Construct, Agile, Evade;;;;;;
 Veer-Myn;Tangle;25;V;1-1;5+;6+;5+;4;1;3;Visions of Glory, Visions of Death, Hysteria;;Psychic, Vehicle;Tangle;Command;;;;
-Asterians;Ten 'Ur-Go;35;C;1-2;3+;4+;4+;1;1;4;Noh Pistol, Singing Blade;Energy Shield(4), Jump Pack;Constuct Vulnerable, Glide, Frenzy(2);TenUrGo;;;;;
-Asterians (Outbreak);Ten 'Ur-Go;35;L;1-2;3+;4+;4+;1;1;4;Noh Pistol, Singing Blade;Energy Shield(4), Jump Pack;Constuct Vulnerable, Glide, Frenzy(2);TenUrGo;;;4+;Memories of the Clade;
+Asterians;Ten 'Ur-Go;35;C;1-2;3+;4+;4+;1;1;4;Noh Pistol, Singing Blade;Energy Shield(4), Jump Pack;Construct, Vulnerable, Glide, Frenzy(2);TenUrGo;;;;;
+Asterians (Outbreak);Ten 'Ur-Go;35;L;1-2;3+;4+;4+;1;1;4;Noh Pistol, Singing Blade;Energy Shield(4), Jump Pack;Construct, Vulnerable, Glide, Frenzy(2);TenUrGo;;;4+;Memories of the Clade;
 Rebs;Teraton Shock Trooper;20;S;1-2;5+;5+;4+;2;1;2;ARC Launcher, Mace;;Teleport;Teraton Shock Trooper;Ranged, Melee;;;;http://www.manticgames.com/ImageCache/Products/4956.1.87.87.FFFFFF.0.jpeg
 Asterians, Enforcers, Forge Fathers, Marauders, GCPS, Nameless;Teraton Shock Trooper;20;C;1-2;5+;5+;4+;2;1;2;ARC Launcher, Mace;;Teleport;Teraton Shock Trooper;;;;;http://www.manticgames.com/ImageCache/Products/4956.1.87.87.FFFFFF.0.jpeg
 Nameless;The Blight;30;L;1-2;5+;4+;4+;2;1;3;Ravenous Maw, Corrosive Blast;;Tactician(1), Resilient(1), Tough;Light Melee, Light Assault, Heavy Assault;Command, Ranged, Melee;;5+;Caustic Spittle;

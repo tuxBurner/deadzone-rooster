@@ -89,7 +89,6 @@ armyspecial.faction=Faction
 armyspecial.troop=Troop
 armyspecial.desc=Description
 armyspecial.desc.DroneStrike=<p>Spend an Army Special result. The active model may take a Special Action to perform an R8, Indirect (2) attack.</p>
-armyspecial.desc.DroneStrike=<p>Spend an Army Special result when an enemy model moves into a cube containing an unactivated friendly model equipped with a weapon with the Rapid Fire ability. The friendly model may make a free Shoot action with that weapon after the enemy model has moved, but prior to resolving the Fight action initiated as part of the enemy’s Move action. This shoot action is not modified for Clear Shot, High Ground or Friendly Fire (Deadzone Rulebook page 20) but is still modified by other bonuses or penalties (eg, Holo-sight or Sniper Scope). This Army Special cannot be played on a friendly model that is in the same cube as an enemy model (other than the model moving into the cube), and the free Shoot action cannot be used to Fire for Effect.</p>
 armyspecial.desc.EyeintheSky=<p>Spend an Army Special result to reroll any number of dice when rolling to hit the target cube with an Indirect weapon or grenade during a Shoot action. You may only use 1 Army Special result per Shoot action.</p>
 armyspecial.desc.Stealth=<p>Spend an Army Special result on a model with Cypher or Black Talon in their type name, who is the target of a Shoot action, to give a +1 dice to a Survive roll. You may spend more than one Army Special Result on the same dice roll but must declare how many before rolling.</p>
 armyspecial.desc.DanceofDeath=<p>After the active model performs a Fight action use an Army Special Result on a Command Dice to allow the model to move as if it had a Move Command Dice played on it, with the exception that the model does not need to make a Break Away test to leave a cube containing an enemy model. Maximum once per activation.</p>
@@ -281,7 +280,7 @@ ability.desc.SmokeGrenade=<p>Smoke Grenades are One-Use, R3, Grenades</p>\
 ability.desc.HoloSight=<p>A model that is equipped with a Holo-Sight adds a +1 modifier to their Shoot actions. A Holo-Sight cannot be used with Indirect weapons. Also, a weapon with Sniper Scope may not benefit from the +1 Dice from a Holo-Sight.</p>
 ability.desc.Smoke=<p>This weapon follows the normal rules for weapons except that a smokescreen is placed in the target cube as if a smoke grenade had been used (page 39 of the Deadzone 2.0 rulebook).</p>
 ability.desc.Evade=<p>If this model is hit but not killed or pinned by a shoot action it may make an immediate 1 cube move action in any direction. This may generate a fight as normal.</p>
-ability.desc.Dismatle=<p>This modelhas a special knack for finding the weak spots in mechanical objects. Whenever this model deals potential damage to a model with the vehicle or construct ability, add 1 to the potential caused damage.</p>
+ability.desc.Dismantle=<p>This modelhas a special knack for finding the weak spots in mechanical objects. Whenever this model deals potential damage to a model with the vehicle or construct ability, add 1 to the potential caused damage.</p>
 ability.desc.CombatTeamTraining=<p>As long as a model with this ability remains in the game their strike team may re-roll command dice, even if it has lost more than 50% of its models.</p>
 ability.desc.Resilient=<p>This model may reroll (n) dice when making survive tests.</p>
 ability.desc.Tenacious=<p>This model is able to entangle and restrict a model as it moves away. A model leaving a cube containing a model with this ability rolls one dice less for Break Away actions.</p>
@@ -290,8 +289,8 @@ ability.desc.Smash=<p>When a weapon or model with this ability hits and causes p
 ability.desc.TriclinicShard=<p>If this weapon causes Potential Damage, place a Triclinic Shard token on the target model. Nameless models targeting a model with a Triclinic Shard token receive +1 dice to Fight tests. This effect is not cumulative.</p>
 ability.desc.FaithfulCompanion=<p>You may only include Padd in a Strike Team that contains Forge Lord Ingulf Krestürsson. Padd may only be included once per strike Team.</p>
 ability.desc.Stealthy=<p>When this model is the target of a Shoot action, the attacking model may not benefit from the Clear Shot modifier.</p>
-ability.desc.Strategist=<p>If this model is the leader of the Strike Team, you may re-roll one failed dice in your Recon test.</p>
-ability.desc.Logistics=<p>After the Recon & Deploy step of set-up, if this model is the leader of the Strike Team, you may move one item one cube after resolving any Recon dice effects, and prior to taking the first Turn. You may not move the item into any player’s deployment zone.</p>
+ability.desc.Strategist=<p>Missing in Rulebook.</p>
+ability.desc.Logistics=<p>Missing in Rulebook.</p>
 
 
 item.desc.Ammo=<p>Ammo is One-Use.</p>\
